@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Relewise\Factory;
+use Relewise\Factory\UserFactory;
 
 final class StackTest extends TestCase {
 
