@@ -1,0 +1,48 @@
+version: '3'
+
+volumes:
+  mysql_data:
+  mysql_data_test:
+
+networks:
+  dev_network:
+
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - 8080:80
+    volumes:
+      - .:/var/www/html
+      - ./dockerconfigs/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./dockerconfigs/php.ini:/usr/local/etc/php/php.ini
+    environment:
+      APACHE_DOCUMENT_ROOT: /var/www/html/public
+      XDEBUG_CONFIG: remote_host=host.docker.internal
+    networks:
+      - dev_network
+    restart: on-failure
+
+  db:
+    image: mysql:5.7
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=devDB
+      - MYSQL_ROOT_PASSWORD=test
+    networks:
+      - dev_network
+    restart: on-failure
+
+
+  db_test:
+    image: mysql:5.7
+    volumes:
+      - mysql_data_test:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=devTestDB
+      - MYSQL_ROOT_PASSWORD=test
+    networks:
+      - dev_network
+    restart: on-failure

@@ -1,0 +1,32 @@
+{
+    "name": "relewise/client",
+    "description": "Relewise is a next generation personalization SaaS-platform, which offers functionality within product- and content recommendations and personalized search. This official SDK helps you interact with our API.",
+    "type": "library",
+    "keywords": [
+        "relewise",
+    	"recommendations",
+    	"personalization"
+    ],
+    "homepage": "https://relewise.com",
+    "license": "MIT",
+    "config": {
+        "platform": {
+            "php": "8.0"
+        },
+        "sort-packages": true,
+        "process-timeout": 7200
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "scripts": {
+    }
+}
