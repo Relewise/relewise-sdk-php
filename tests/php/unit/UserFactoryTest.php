@@ -2,20 +2,14 @@
 
 namespace Relewise\Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
 use Relewise\Factory\UserFactory;
 
-/**
- * @internal
- *
- * @coversDefaultClass \Relewise\Factory\UserFactory
- */
-class StackTest extends TestCase {
+class StackTest extends \PHPUnit\Framework\TestCase {
 
     public function testAnonymous(): void {
         
-        $user = UserFactory.anonymous();
+        $user = UserFactory::anonymous();
 
-        this->assertNotNull($user);
+        self::assertNotNull($user);
     }
 }
