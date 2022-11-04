@@ -3,12 +3,12 @@
 use PHPUnit\Framework\TestCase;
 use Relewise\Factory;
 
-class UserFactoryTest extends TestCase {
-    public function anonymous(): void {
+final class StackTest extends TestCase {
+
+    public function testAnonymous(): void {
         
         $user = UserFactory.anonymous();
 
-        static::assertNotNull($user);
-
+        this->assertNotNull($user);
     }
 }
