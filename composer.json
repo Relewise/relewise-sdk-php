@@ -17,16 +17,13 @@
         "process-timeout": 7200
     },
     "autoload": {
-        "classmap": [
-            "src/"
-        ],
 		"psr-4": {
 			"Relewise\\": "src"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Relewise\\Tests": "tests"
+			"Relewise\\Tests\\": "tests"
 		}
 	},
     "require": {
