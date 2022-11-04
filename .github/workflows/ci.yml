@@ -26,3 +26,5 @@ jobs:
 
     - name: Run test suite
       uses: php-actions/phpunit@v3
+      with:
+        configuration: ./phpunit.xml
