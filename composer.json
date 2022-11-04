@@ -17,6 +17,9 @@
         "process-timeout": 7200
     },
     "autoload": {
+        "classmap": [
+            "src/"
+        ],
 		"psr-4": {
 			"Relewise\\": "src"
 		}
