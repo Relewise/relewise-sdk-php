@@ -1,0 +1,1 @@
+docker run --rm  -v C:\projects\Relewise\relewise-sdk-php:/local openapitools/openapi-generator-cli generate -i https://api.relewise.com/public/swagger.json -g php-dt -o /local/src/.. --additional-properties=modern --additional-properties=invokerPackage='Relewise\Models' --global-property models
