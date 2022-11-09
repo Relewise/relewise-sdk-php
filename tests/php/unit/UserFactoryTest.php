@@ -3,8 +3,9 @@
 namespace Relewise\Tests\Unit;
 
 use Relewise\Factory\UserFactory;
+use \PHPUnit\Framework\TestCase;
 
-class StackTest extends \PHPUnit\Framework\TestCase {
+class StackTest extends TestCase {
 
     public function testAnonymous(): void {
         

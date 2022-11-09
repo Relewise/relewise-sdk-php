@@ -8,9 +8,9 @@ class UserFactory {
         return new User();
     }
 
-    public static function byTemporaryId(string $temporary_id) {
+    public static function byTemporaryId(string $temporaryId) {
         $user = new User();
-        $user.$temporary_id = $temporary_id;
+        $user::$temporary_id = $temporaryId;
         return $user;
     }
 }
