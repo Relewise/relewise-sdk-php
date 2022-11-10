@@ -5,9 +5,9 @@ namespace Relewise\Models\DTO;
 
 class User
 {
-    public string|null $authenticated_id = null;
+    public string|null $authenticatedId = null;
 
-    public string|null $temporary_id = null;
+    public string|null $temporaryId = null;
 
     public string|null $email = null;
 
@@ -18,4 +18,5 @@ class User
     public array|null $data = null;
 
     public string|null $fingerprint = null;
+
 }

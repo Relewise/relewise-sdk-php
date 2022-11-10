@@ -4,6 +4,8 @@ namespace Relewise\Infrastructure\HttpClient;
 use Relewise\Infrastructure\HttpClient\ClientException;
 use Relewise\Infrastructure\HttpClient\Response;
 
+use function PHPUnit\Framework\isNull;
+
 class CurlClient implements Client
 {
     private const METHOD_GET = 'GET';
@@ -15,19 +17,8 @@ class CurlClient implements Client
      * @var string[]
      */
     protected $validMethods = [
-        self::METHOD_GET,
-        self::METHOD_PUT,
         self::METHOD_POST,
-        self::METHOD_DELETE,
     ];
-
-    /**
-     * {@inheritdoc}
-     */
-    public function get($url, array $header = []): Response
-    {
-        return $this->call($url, self::METHOD_GET, $header);
-    }
 
     /**
      * {@inheritdoc}
@@ -36,23 +27,6 @@ class CurlClient implements Client
     {
         return $this->call($url, self::METHOD_POST, $header, $data);
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function put($url, $data = null, array $header = []): Response
-    {
-        return $this->call($url, self::METHOD_PUT, $header, $data);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function delete($url, $data = null, array $header = []): Response
-    {
-        return $this->call($url, self::METHOD_DELETE, $header, $data);
-    }
-
     /**
      * @param string       $url
      * @param string       $method
@@ -79,12 +53,17 @@ class CurlClient implements Client
 
         //Initializes the cURL instance
         $curl = curl_init();
-        curl_setopt($curl, \CURLOPT_HTTPHEADER, $header);
-        curl_setopt($curl, \CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, \CURLOPT_HEADER, true);
-        curl_setopt($curl, \CURLOPT_URL, $url);
-        curl_setopt($curl, \CURLOPT_CUSTOMREQUEST, $method);
-        curl_setopt($curl, \CURLOPT_POSTFIELDS, $data);
+        // curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($curl, CURLOPT_HEADER, true);
+        // curl_setopt($curl, CURLOPT_URL, $url);
+        // curl_setopt($curl, CURLOPT_POST, 1);
+        // curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);           
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
 
         $content = curl_exec($curl);
 
@@ -97,8 +76,8 @@ class CurlClient implements Client
             throw new ClientException($errmsg, $error);
         }
 
-        list($header, $body) = explode("\r\n\r\n", $content, 2);
+        $body= json_decode($content, true);
 
-        return new Response($body, $httpCode, $header);
+        return new Response($body, $httpCode, '');
     }
 }

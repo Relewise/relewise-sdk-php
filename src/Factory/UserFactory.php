@@ -10,7 +10,7 @@ class UserFactory {
 
     public static function byTemporaryId(string $temporaryId) {
         $user = new User();
-        $user::$temporary_id = $temporaryId;
+        $user->temporaryId = $temporaryId;
         return $user;
     }
 }

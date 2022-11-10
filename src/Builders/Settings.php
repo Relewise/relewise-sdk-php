@@ -1,6 +1,7 @@
 <?php
 
 namespace Relewise\Builders;
+
 use Relewise\Models\DTO\User;
 
 class Settings 

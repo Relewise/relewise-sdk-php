@@ -10,7 +10,7 @@
 		</report>
 	</coverage>
 	<testsuites>
-		<testsuite name="main">
+		<testsuite name="Unit">
 			<directory suffix="Test.php">.</directory>
 		</testsuite>
 	</testsuites>
