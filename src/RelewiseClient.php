@@ -16,7 +16,7 @@ abstract class RelewiseClient {
         $this->client = new CurlClient();
     }
 
-    protected function post($body): Response 
+    protected function doRequest($body): Response 
     {
         return $this->client->post(
             $this->createRequestUrl($this->serverUrl, $this->datasetId, $this->apiVersion, "TrackProductViewRequest"), 

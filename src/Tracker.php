@@ -3,6 +3,10 @@
 namespace Relewise;
 
 use Relewise\Infrastructure\HttpClient\Response;
+// use Relewise\Models\DTO\Product;
+// use Relewise\Models\DTO\ProductVariant;
+// use Relewise\Models\DTO\ProductView;
+use Relewise\Models\DTO\User;
 
 class Tracker extends RelewiseClient
 {
@@ -15,10 +19,25 @@ class Tracker extends RelewiseClient
     //     );
     // }
 
-    public function trackProductView(string $productId): Response
+    public function trackProductView(User $user, string $productId, string|null $variantId = null): Response
     {
-        $productView = array("product" => array("id" => $productId), "\$type" => "Relewise.Client.DataTypes.ProductView, Relewise.Client");
+        // $productView = new ProductView();
+        
+        // $product = new Product();
+        // $product->id = $productId;
 
-        return $this->post(array("productView" => $productView, "\$type" => "Relewise.Client.Requests.Tracking.TrackProductViewRequest, Relewise.Client"));
+        // if (!is_null($variantId)) {
+        //     $variant = new ProductVariant();
+        //     $variant->id = $variantId;
+        //     $productView->variant = $variant;
+        // }
+
+        // $productView->user = $user;
+        // $productView->product = $product;
+        // $productView->type = "Relewise.Client.DataTypes.ProductView, Relewise.Client";
+
+        $productView = array("product" => array("id" => $productId), "user" => (array) $user, "\$type" => "Relewise.Client.DataTypes.ProductView, Relewise.Client");
+
+        return $this->doRequest(array("productView" => $productView, "\$type" => "Relewise.Client.Requests.Tracking.TrackProductViewRequest, Relewise.Client"));
     }
 }
