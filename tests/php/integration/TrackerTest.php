@@ -10,8 +10,8 @@ class TrackerTest extends TestCase
     public function testProductView(): void 
     {
         DotEnv::load();
-        $datasetId = getenv('DATASET_ID', true) ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY', true) ?: $_ENV['API_KEY'];
+        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
+        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
         
         $tracker = new Tracker($datasetId, $apiKey);
 
