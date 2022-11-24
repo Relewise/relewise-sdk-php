@@ -1,4 +1,5 @@
-﻿<?php
+﻿<?php declare(strict_types=1);
+
 namespace Relewise\Tests\Integration;
 
 use \PHPUnit\Framework\TestCase;
