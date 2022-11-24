@@ -8,7 +8,6 @@ class Response
     {
         $this->body = $body;
         $this->code = $code;
-        $this->header = $header;
     }
 
     public mixed $body;
