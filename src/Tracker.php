@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+﻿<?php declare(strict_types=1);
 
 namespace Relewise;
 
@@ -7,6 +7,7 @@ use Relewise\Infrastructure\HttpClient\Response;
 // use Relewise\Models\DTO\ProductVariant;
 // use Relewise\Models\DTO\ProductView;
 use Relewise\Models\DTO\User;
+use Relewise\Models\Model\TrackProductViewRequest;
 
 class Tracker extends RelewiseClient
 {

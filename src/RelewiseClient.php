@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+﻿<?php declare(strict_types=1);
 
 namespace Relewise;
 use Relewise\Infrastructure\HttpClient\Client;

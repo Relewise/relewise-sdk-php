@@ -1,10 +1,10 @@
-<?php declare(strict_types=1);
+﻿<?php declare(strict_types=1);
 
 namespace Relewise\Infrastructure\HttpClient;
 
 class Response
 {
-    public function __construct(mixed $body, int $code, string $header)
+    public function __construct(mixed $body, int $code)
     {
         $this->body = $body;
         $this->code = $code;
@@ -13,5 +13,4 @@ class Response
 
     public mixed $body;
     public int $code;
-    public string $header;
 }

@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+﻿<?php declare(strict_types=1);
 
 namespace Relewise\Infrastructure\HttpClient;
 use Relewise\Infrastructure\HttpClient\ClientException;
@@ -27,6 +27,7 @@ class CurlClient implements Client
     {
         return $this->call($url, self::METHOD_POST, $header, $data);
     }
+
     /**
      * @param string       $url
      * @param string       $method
@@ -51,14 +52,7 @@ class CurlClient implements Client
             throw new ClientException('Invalid URL given');
         }
 
-        //Initializes the cURL instance
         $curl = curl_init();
-        // curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($curl, CURLOPT_HEADER, true);
-        // curl_setopt($curl, CURLOPT_URL, $url);
-        // curl_setopt($curl, CURLOPT_POST, 1);
-        // curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_POST, 1);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -76,8 +70,8 @@ class CurlClient implements Client
             throw new ClientException($errmsg, $error);
         }
 
-        $body= json_decode($content, true);
+        $body = json_decode($content, true);
 
-        return new Response($body, $httpCode, '');
+        return new Response($body, $httpCode);
     }
 }
