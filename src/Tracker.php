@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 namespace Relewise;
 
 use Relewise\Infrastructure\HttpClient\Response;
