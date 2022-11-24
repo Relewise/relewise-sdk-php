@@ -1,5 +1,4 @@
-﻿<?php
-
+<?php declare(strict_types=1);
 namespace Relewise\Factory;
 use Relewise\Models\DTO\User;
 

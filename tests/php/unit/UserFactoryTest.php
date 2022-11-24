@@ -1,5 +1,4 @@
-﻿<?php declare(strict_types=1);
-
+<?php
 namespace Relewise\Tests\Unit;
 
 use Relewise\Factory\UserFactory;

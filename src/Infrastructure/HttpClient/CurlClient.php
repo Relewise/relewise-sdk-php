@@ -1,10 +1,7 @@
-﻿<?php declare(strict_types=1);
-
+<?php declare(strict_types=1);
 namespace Relewise\Infrastructure\HttpClient;
 use Relewise\Infrastructure\HttpClient\ClientException;
 use Relewise\Infrastructure\HttpClient\Response;
-
-use function PHPUnit\Framework\isNull;
 
 class CurlClient implements Client
 {
