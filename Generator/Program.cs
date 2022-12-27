@@ -1,26 +1,12 @@
-﻿using System.CodeDom.Compiler;
-using System.IO;
-using System.Reflection;
-using MessagePack;
+﻿using Newtonsoft.Json;
 using Relewise.Client.Requests;
 using Relewise.Client.Responses;
-using Relewise.Client.Responses.Search;
+using System.CodeDom.Compiler;
+using System.Reflection;
 
 HashSet<Type> TypeDefintions = new();
 HashSet<string> GeneratedTypeNames = new();
 HashSet<Type> MissingTypeDefintions = new();
-
-using var streamWriter = File.CreateText("../../../../src/Models/models.php");
-using var writer = new IndentedTextWriter(streamWriter);
-
-writer.WriteLine("""
-<?php declare(strict_types=1);
-
-namespace Relewise\Models\DTO;
-
-use DateTime;
-
-""");
 
 var typesToGenerate = new Queue<Type>();
 
@@ -49,46 +35,56 @@ while (typesToGenerate.Count > 0)
         {
             continue;
         }
-        WriteClass(writer, type);
+        WriteClass(type);
     }
     else if (type.IsEnum)
     {
-        WriteEnum(writer, type);
+        WriteEnum(type);
     }
     else if (type.IsInterface)
     {
-        WriteInterface(writer, type);
+        WriteInterface(type);
     }
     else
     {
         MissingTypeDefintions.Add(type);
     }
-    writer.WriteLine();
 }
 
 
 if (MissingTypeDefintions.Count > 0)
 {
-    writer.WriteLine("// We are missing these still");
-    writer.Indent++;
+    Console.WriteLine("// We are missing these still");
     foreach (var typeDefinition in MissingTypeDefintions)
     {
-        writer.WriteLine($"// {typeDefinition.Name}");
+        Console.WriteLine($"// {typeDefinition.Name}");
     }
-    writer.Indent--;
 }
 
 
-void WriteClass(IndentedTextWriter writer, Type type)
+void WriteClass(Type type)
 {
-    if (!GeneratedTypeNames.Add(PhpType(type))) return;
+    var typeName = PhpType(type);
+    if (!GeneratedTypeNames.Add(typeName)) return;
+    using var streamWriter = File.CreateText($"../../../../src/Models/DTO/{typeName}.php");
+    using var writer = new IndentedTextWriter(streamWriter);
+
+    writer.WriteLine("""
+<?php declare(strict_types=1);
+
+namespace Relewise\Models\DTO;
+
+use DateTime;
+
+""");
     writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {PhpType(type)}{(type.BaseType != typeof(object) && type.BaseType is { } baseType ? $" extends {PhpType(baseType)}" : "")}");
     writer.WriteLine("{");
     writer.Indent++;
+    writer.WriteLine($"public string $type = \"{type.FullName}, Relewise.Client\";");
     foreach (var propertyInfo in type.GetProperties().Where(info => info.MemberType is MemberTypes.Property
                                                                     && info.SetMethod is not null
                                                                     && !info.GetSetMethod().IsAbstract
-                                                                    && !Attribute.IsDefined(info, typeof(IgnoreMemberAttribute))
+                                                                    && !Attribute.IsDefined(info, typeof(JsonIgnoreAttribute))
                                                                     && info.GetAccessors(false).All(ax => !ax.IsAbstract && ax.IsPublic)
                                                                     && (info.DeclaringType.IsAbstract == type.IsAbstract)))
     {
@@ -98,9 +94,21 @@ void WriteClass(IndentedTextWriter writer, Type type)
     writer.WriteLine("}");
 }
 
-void WriteEnum(IndentedTextWriter writer, Type type)
+void WriteEnum(Type type)
 {
-    if (!GeneratedTypeNames.Add(type.Name.Replace("`1", ""))) return;
+    var typeName = PhpType(type);
+    if (!GeneratedTypeNames.Add(typeName)) return;
+    using var streamWriter = File.CreateText($"../../../../src/Models/DTO/{typeName}.php");
+    using var writer = new IndentedTextWriter(streamWriter);
+
+    writer.WriteLine("""
+<?php declare(strict_types=1);
+
+namespace Relewise\Models\DTO;
+
+use DateTime;
+
+""");
     writer.WriteLine($"enum {type.Name.Replace("`1", "")}");
     writer.WriteLine("{");
     writer.Indent++;
@@ -112,9 +120,21 @@ void WriteEnum(IndentedTextWriter writer, Type type)
     writer.WriteLine("}");
 }
 
-void WriteInterface(IndentedTextWriter writer, Type type)
+void WriteInterface(Type type)
 {
-    if (!GeneratedTypeNames.Add(type.Name.Replace("`1", ""))) return;
+    var typeName = PhpType(type);
+    if (!GeneratedTypeNames.Add(typeName)) return;
+    using var streamWriter = File.CreateText($"../../../../src/Models/DTO/{typeName}.php");
+    using var writer = new IndentedTextWriter(streamWriter);
+
+    writer.WriteLine("""
+<?php declare(strict_types=1);
+
+namespace Relewise\Models\DTO;
+
+use DateTime;
+
+""");
     writer.WriteLine($"interface {type.Name.Replace("`1", "")}");
     writer.WriteLine("{");
     writer.WriteLine("}");
@@ -129,6 +149,7 @@ string PhpType(Type type)
         "Int64" => "int",
         "float" => "float",
         "Double" => "float",
+        "Decimal" => "float",
         "Boolean" => "bool",
         "Guid" => "string",
         "Byte" => "int",
