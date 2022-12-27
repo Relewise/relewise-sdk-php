@@ -19,6 +19,8 @@ jobs:
 
       - name: Generate PHP classes
         run: |
+          mkdir src
+          mkdir src/Models
           mkdir src/Models/DTO
           dotnet run --project Generator src/Models/DTO
 
