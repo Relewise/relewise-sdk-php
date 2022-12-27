@@ -4,6 +4,17 @@ using Relewise.Client.Responses;
 using System.CodeDom.Compiler;
 using System.Reflection;
 
+if (args.Length is not 1)
+{
+    throw new ArgumentException("There needs to be parsed exactly one parameter to this program which is the path to where the class files should be generated.");
+}
+
+string basePath = args[0];
+if (basePath.EndsWith("/"))
+{
+    basePath = basePath[..^1];
+}
+
 HashSet<Type> TypeDefintions = new();
 HashSet<string> GeneratedTypeNames = new();
 HashSet<Type> MissingTypeDefintions = new();
@@ -66,7 +77,7 @@ void WriteClass(Type type)
 {
     var typeName = PhpType(type);
     if (!GeneratedTypeNames.Add(typeName)) return;
-    using var streamWriter = File.CreateText($"../../../../src/Models/DTO/{typeName}.php");
+    using var streamWriter = File.CreateText($"{basePath}/{typeName}.php");
     using var writer = new IndentedTextWriter(streamWriter);
 
     writer.WriteLine("""
@@ -98,7 +109,7 @@ void WriteEnum(Type type)
 {
     var typeName = PhpType(type);
     if (!GeneratedTypeNames.Add(typeName)) return;
-    using var streamWriter = File.CreateText($"../../../../src/Models/DTO/{typeName}.php");
+    using var streamWriter = File.CreateText($"{basePath}/{typeName}.php");
     using var writer = new IndentedTextWriter(streamWriter);
 
     writer.WriteLine("""
@@ -124,7 +135,7 @@ void WriteInterface(Type type)
 {
     var typeName = PhpType(type);
     if (!GeneratedTypeNames.Add(typeName)) return;
-    using var streamWriter = File.CreateText($"../../../../src/Models/DTO/{typeName}.php");
+    using var streamWriter = File.CreateText($"{basePath}/{typeName}.php");
     using var writer = new IndentedTextWriter(streamWriter);
 
     writer.WriteLine("""

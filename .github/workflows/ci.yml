@@ -12,6 +12,15 @@ jobs:
 
       - uses: php-actions/composer@v5
 
+      - name: Setup .NET 7 preview
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Generate PHP classes
+        run: mkdir src/Models/DTO
+        run: dotnet run --project Generator src/Models/DTO
+
       - name: PHPUnit Tests
         uses: php-actions/phpunit@v2
         with:
