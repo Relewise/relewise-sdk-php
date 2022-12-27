@@ -36,6 +36,55 @@ class GeneratedRequestsTest extends TestCase
         self::assertEquals(200, $response->code);
         self::assertEquals(null, $response->body);
     }
+
+    public function testTrackerOrderRequestWithBuilderPattern(): void 
+    {
+        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
+        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
+        
+        $tracker = new RelewiseClient($datasetId, $apiKey);
+
+        $trackOrderRequest = (new TrackOrderRequest())
+            ->withOrder((new Order())
+                ->withUser(UserFactory::byTemporaryId("t-Id"))
+                ->withSubtotal((new Money())
+                    ->withAmount(100)
+                    ->withCurrency((new Currency())
+                        ->withValue("DKK")
+                    )
+                )
+                ->withOrderNumber("1"));
+
+        $response = $tracker->Request('TrackOrderRequest', $trackOrderRequest);
+
+        self::assertEquals(200, $response->code);
+        self::assertEquals(null, $response->body);
+    }
+    
+    public function testTrackerOrderRequestWithBuilderPatternAndCreatorMethod(): void 
+    {
+        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
+        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
+        
+        $tracker = new RelewiseClient($datasetId, $apiKey);
+
+        $trackOrderRequest = TrackOrderRequest::create()
+            ->withOrder(Order::create()
+                ->withUser(UserFactory::byTemporaryId("t-Id"))
+                ->withSubtotal(Money::create()
+                    ->withAmount(100)
+                    ->withCurrency(Currency::create()
+                        ->withValue("DKK")
+                    )
+                )
+                ->withOrderNumber("1")
+            );
+
+        $response = $tracker->Request('TrackOrderRequest', $trackOrderRequest);
+
+        self::assertEquals(200, $response->code);
+        self::assertEquals(null, $response->body);
+    }
 }
 
 

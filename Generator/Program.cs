@@ -15,22 +15,26 @@ if (basePath.EndsWith("/"))
     basePath = basePath[..^1];
 }
 
-HashSet<Type> TypeDefintions = new();
+var assembly = Assembly.GetAssembly(typeof(Relewise.Client.ClientBase));
+if (assembly is null)
+{
+    throw new ArgumentException("Could not load Relewise Client assembly.");
+}
+
+HashSet <Type> TypeDefintions = new();
 HashSet<string> GeneratedTypeNames = new();
 HashSet<Type> MissingTypeDefintions = new();
 
 var typesToGenerate = new Queue<Type>();
 
-foreach (var requestType in Assembly
-             .GetAssembly(typeof(LicensedRequest))
+foreach (var requestType in assembly
              .GetTypes()
              .Where(type => type.IsSubclassOf(typeof(LicensedRequest))))
 {
     AddTypeDefinition(requestType);
 }
 
-foreach (var responseType in Assembly
-             .GetAssembly(typeof(TimedResponse))
+foreach (var responseType in assembly
              .GetTypes()
              .Where(type => type.IsSubclassOf(typeof(TimedResponse))))
 {
@@ -92,14 +96,35 @@ use DateTime;
     writer.WriteLine("{");
     writer.Indent++;
     writer.WriteLine($"public string $type = \"{type.FullName}, Relewise.Client\";");
-    foreach (var propertyInfo in type.GetProperties().Where(info => info.MemberType is MemberTypes.Property
-                                                                    && info.SetMethod is not null
-                                                                    && !info.GetSetMethod().IsAbstract
+    var settableProperties = type.GetProperties().Where(info => info.MemberType is MemberTypes.Property
+                                                                    && info.SetMethod is { IsAbstract: false }
                                                                     && !Attribute.IsDefined(info, typeof(JsonIgnoreAttribute))
                                                                     && info.GetAccessors(false).All(ax => !ax.IsAbstract && ax.IsPublic)
-                                                                    && (info.DeclaringType.IsAbstract == type.IsAbstract)))
+                                                                    && (info.DeclaringType?.IsAbstract == type.IsAbstract)).ToArray();
+    foreach (var propertyInfo in settableProperties)
     {
         writer.WriteLine($"public {PhpType(propertyInfo.PropertyType)} ${propertyInfo.Name};");
+    }
+
+    var parameterInformation = settableProperties.Select(info => (propertyType: PhpType(info.PropertyType), propertyName: info.Name, paramName: $"{Char.ToLower(info.Name[0])}{info.Name[1..]}")).ToArray();
+    
+    writer.WriteLine($"public function __construct() {{ }}");
+    writer.WriteLine("public static function create()");
+    writer.WriteLine("{");
+    writer.Indent++;
+    writer.WriteLine($"return new {typeName}();");
+    writer.Indent--;
+    writer.WriteLine("}");
+
+    foreach (var (propertyType, propertyName, paramName) in parameterInformation)
+    {
+        writer.WriteLine($"function with{propertyName}({propertyType} ${paramName})");
+        writer.WriteLine("{");
+        writer.Indent++;
+        writer.WriteLine($"$this->{propertyName} = ${paramName};");
+        writer.WriteLine($"return $this;");
+        writer.Indent--;
+        writer.WriteLine("}");
     }
     writer.Indent--;
     writer.WriteLine("}");
@@ -123,7 +148,7 @@ use DateTime;
     writer.WriteLine($"enum {type.Name.Replace("`1", "")}");
     writer.WriteLine("{");
     writer.Indent++;
-    foreach (var enumName in type.GetMembers().Where(propertyInfo => propertyInfo.DeclaringType.IsEnum && propertyInfo.Name is not "__value" and not "value__"))
+    foreach (var enumName in type.GetMembers().Where(propertyInfo => propertyInfo.DeclaringType is { IsEnum: true } && propertyInfo.Name is not "__value" and not "value__"))
     {
         writer.WriteLine($"case {enumName.Name};");
     }
@@ -194,8 +219,7 @@ string AddGenericTypeDefinition(Type type)
     if (genericTypeArgumentConstraint.IsAbstract)
     {
         AddTypeDefinition(genericTypeArgumentConstraint);
-        var derivedTypes = Assembly
-            .GetAssembly(genericTypeArgumentConstraint)
+        var derivedTypes = assembly
             .GetTypes()
             .Where(derivingType => derivingType.IsAssignableFrom(genericTypeArgumentConstraint));
         foreach (var derivedType in derivedTypes.Skip(1))
