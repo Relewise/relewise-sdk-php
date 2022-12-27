@@ -118,7 +118,7 @@ use DateTime;
 
     foreach (var (propertyType, propertyName, paramName) in parameterInformation)
     {
-        writer.WriteLine($"function with{propertyName}({propertyType} ${paramName})");
+        writer.WriteLine($"function with{propertyName}({propertyType} ${paramName}) : {typeName}");
         writer.WriteLine("{");
         writer.Indent++;
         writer.WriteLine($"$this->{propertyName} = ${paramName};");

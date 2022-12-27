@@ -1,4 +1,5 @@
 <?php
+
 namespace Relewise\Tests\Integration;
 
 use \PHPUnit\Framework\TestCase;
@@ -11,11 +12,11 @@ use Relewise\Models\DTO\TrackOrderRequest;
 
 class GeneratedRequestsTest extends TestCase
 {
-    public function testTrackerOrderRequest(): void 
+    public function testTrackOrderRequest(): void
     {
         $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
         $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-        
+
         $tracker = new RelewiseClient($datasetId, $apiKey);
 
         $money = new Money();
@@ -37,21 +38,21 @@ class GeneratedRequestsTest extends TestCase
         self::assertEquals(null, $response->body);
     }
 
-    public function testTrackerOrderRequestWithBuilderPattern(): void 
+    public function testTrackOrderRequestWithBuilderPattern(): void
     {
         $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
         $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-        
+
         $tracker = new RelewiseClient($datasetId, $apiKey);
 
         $trackOrderRequest = (new TrackOrderRequest())
             ->withOrder((new Order())
                 ->withUser(UserFactory::byTemporaryId("t-Id"))
                 ->withSubtotal((new Money())
-                    ->withAmount(100)
-                    ->withCurrency((new Currency())
-                        ->withValue("DKK")
-                    )
+                        ->withAmount(100)
+                        ->withCurrency((new Currency())
+                                ->withValue("DKK")
+                        )
                 )
                 ->withOrderNumber("1"));
 
@@ -60,24 +61,27 @@ class GeneratedRequestsTest extends TestCase
         self::assertEquals(200, $response->code);
         self::assertEquals(null, $response->body);
     }
-    
-    public function testTrackerOrderRequestWithBuilderPatternAndCreatorMethod(): void 
+
+    public function testTrackOrderRequestWithBuilderPatternAndCreatorMethod(): void
     {
         $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
         $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-        
+
         $tracker = new RelewiseClient($datasetId, $apiKey);
 
         $trackOrderRequest = TrackOrderRequest::create()
-            ->withOrder(Order::create()
-                ->withUser(UserFactory::byTemporaryId("t-Id"))
-                ->withSubtotal(Money::create()
-                    ->withAmount(100)
-                    ->withCurrency(Currency::create()
-                        ->withValue("DKK")
+            ->withOrder(
+                Order::create()
+                    ->withUser(UserFactory::byTemporaryId("t-Id"))
+                    ->withSubtotal(
+                        Money::create()
+                            ->withAmount(100)
+                            ->withCurrency(
+                                Currency::create()
+                                    ->withValue("DKK")
+                            )
                     )
-                )
-                ->withOrderNumber("1")
+                    ->withOrderNumber("1")
             );
 
         $response = $tracker->Request('TrackOrderRequest', $trackOrderRequest);
@@ -86,5 +90,3 @@ class GeneratedRequestsTest extends TestCase
         self::assertEquals(null, $response->body);
     }
 }
-
-
