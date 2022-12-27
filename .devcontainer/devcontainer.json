@@ -16,7 +16,8 @@
         "vscode": {
             // Set *default* container specific settings.json values on container create.
             "settings": { 
-                "php.executablePath": "/usr/local/bin/php"
+                "php.executablePath": "/usr/local/bin/php",
+                "intelephense.environment.phpVersion": "8.1.0"
             },
 
             // Add the IDs of extensions you want installed when the container is created.

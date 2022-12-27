@@ -155,7 +155,7 @@ string AddGenericTypeDefinition(Type type)
 {
     if (type.GenericTypeArguments.Length > 0)
     {
-        return $"{AddTypeDefinition(type)}With{PhpType(type.GenericTypeArguments.Single())}";
+        return $"{PhpType(type.GenericTypeArguments.Single())}{AddTypeDefinition(type)}";
     }
     var genericTypeArgumentDefinition = type.GetGenericArguments().Single();
     var genericTypeArgumentConstraint = genericTypeArgumentDefinition.GetGenericParameterConstraints().Single();
@@ -170,7 +170,7 @@ string AddGenericTypeDefinition(Type type)
         {
             AddTypeDefinition(derivedType);
         }
-        return $"{AddTypeDefinition(type)}With{PhpType(derivedTypes.First())}";
+        return $"{PhpType(derivedTypes.First())}{AddTypeDefinition(type)}";
     }
 
     return AddTypeDefinition(type);
