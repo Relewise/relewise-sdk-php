@@ -13,8 +13,8 @@ class GeneratedRequestsTest extends TestCase
 {
     public function testTrackerOrderRequest(): void 
     {
-        $datasetId = '***REMOVED***';
-        $apiKey = '***REMOVED***';
+        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
+        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
         
         $tracker = new RelewiseClient($datasetId, $apiKey);
 
@@ -37,3 +37,5 @@ class GeneratedRequestsTest extends TestCase
         self::assertEquals(null, $response->body);
     }
 }
+
+
