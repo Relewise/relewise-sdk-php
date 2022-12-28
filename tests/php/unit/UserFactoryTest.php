@@ -18,14 +18,14 @@ class UserFactoryTest extends TestCase {
         $user = UserFactory::byTemporaryId("test");
 
         self::assertNotNull($user);
-        self::assertEquals("test", $user->temporaryId);
+        self::assertEquals("test", $user->TemporaryId);
     }
 
     public function testClassifications(): void 
     {
         $user = UserFactory::anonymous();
-        $user->classifications = array("Country" => "DK");
+        $user->Classifications = array("Country" => "DK");
 
-        self::assertEquals("DK", $user->classifications["Country"]);
+        self::assertEquals("DK", $user->Classifications["Country"]);
     }
 }
