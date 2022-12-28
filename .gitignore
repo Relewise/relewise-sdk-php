@@ -1,4 +1,7 @@
 src/Models/DTO/
+src/Searcher.php
+src/Tracker.php
+src/Recommender.php
 
 # OS generated files
 .DS_Store
