@@ -34,9 +34,7 @@ class SearchTermPredictionTest extends TestCase
             ->withDisplayedAtLocation("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
-        $response = $searcher->SearchTermPredictionRequest($searchTermPrediction);
-
-        fwrite(STDOUT, json_encode($response->body, JSON_FORCE_OBJECT));
+        $response = $searcher->searchTermPredictionRequest($searchTermPrediction);
 
         $searchTermPredictionResponse = SearchTermPredictionResponse::hydrate($response->body);
 

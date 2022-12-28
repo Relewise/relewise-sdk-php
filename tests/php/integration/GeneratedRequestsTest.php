@@ -32,7 +32,7 @@ class GeneratedRequestsTest extends TestCase
         $trackOrderRequest = new TrackOrderRequest();
         $trackOrderRequest->Order = $order;
 
-        $response = $tracker->Request('TrackOrderRequest', $trackOrderRequest);
+        $response = $tracker->request('TrackOrderRequest', $trackOrderRequest);
 
         self::assertEquals(200, $response->code);
         self::assertEquals(null, $response->body);
@@ -56,7 +56,7 @@ class GeneratedRequestsTest extends TestCase
                 )
                 ->withOrderNumber("1"));
 
-        $response = $tracker->Request('TrackOrderRequest', $trackOrderRequest);
+        $response = $tracker->request('TrackOrderRequest', $trackOrderRequest);
 
         self::assertEquals(200, $response->code);
         self::assertEquals(null, $response->body);
@@ -84,7 +84,7 @@ class GeneratedRequestsTest extends TestCase
                     ->withOrderNumber("1")
             );
 
-        $response = $tracker->Request('TrackOrderRequest', $trackOrderRequest);
+        $response = $tracker->request('TrackOrderRequest', $trackOrderRequest);
 
         self::assertEquals(200, $response->code);
         self::assertEquals(null, $response->body);

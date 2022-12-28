@@ -5,8 +5,7 @@ use Relewise\Infrastructure\HttpClient\CurlClient;
 use Relewise\Infrastructure\HttpClient\Response;
 use Relewise\Models\DTO\LicensedRequest;
 
-class RelewiseClient {
-
+class abstract RelewiseClient {
     private string $serverUrl = "https://api.relewise.com";
     private string $apiVersion = "v1";
     private Client $client;
@@ -16,16 +15,7 @@ class RelewiseClient {
         $this->client = new CurlClient();
     }
 
-    protected function doRequest($body): Response 
-    {
-        return $this->client->post(
-            $this->createRequestUrl($this->serverUrl, $this->datasetId, $this->apiVersion, "TrackProductViewRequest"), 
-            json_encode($body, JSON_FORCE_OBJECT),
-            array("Authorization: ApiKey " . $this->apiKey, "Content-Type: application/json")
-        );
-    }
-
-    public function Request($endpoint, LicensedRequest $request): Response 
+    public function request($endpoint, LicensedRequest $request): Response 
     {
         return $this->client->post(
             $this->createRequestUrl($this->serverUrl, $this->datasetId, $this->apiVersion, $endpoint), 

@@ -377,10 +377,10 @@ use Relewise\Infrastructure\HttpClient\Response;
     writer.Indent++;
     foreach (var method in requestTypeMethods.Union(clientMethods))
     {
-        writer.WriteLine($"public function {method.methodName}({method.parameterType} ${method.parameterName}) : Response");
+        writer.WriteLine($"public function {Char.ToLower(method.methodName[0])}{method.methodName[1..]}({method.parameterType} ${method.parameterName}) : Response");
         writer.WriteLine("{");
         writer.Indent++;
-        writer.WriteLine($"return $this->Request(\"{method.parameterType}\", ${method.parameterName});");
+        writer.WriteLine($"return $this->request(\"{method.parameterType}\", ${method.parameterName});");
         writer.Indent--;
         writer.WriteLine("}");
     }
