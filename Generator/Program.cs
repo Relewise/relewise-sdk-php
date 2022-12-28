@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MessagePack;
+using Newtonsoft.Json;
 using Relewise.Client;
 using Relewise.Client.Requests;
 using Relewise.Client.Requests.Search;
@@ -73,7 +74,7 @@ while (typesToGenerate.Count > 0)
 
 if (MissingTypeDefintions.Count > 0)
 {
-    Console.WriteLine("We are missing these still types from generation as they were not supported");
+    Console.WriteLine("We are missing these types from generation as they were not supported with the current implementation.");
     foreach (var typeDefinition in MissingTypeDefintions)
     {
         Console.WriteLine($"- {typeDefinition.Name}");
@@ -108,10 +109,11 @@ use DateTime;
         writer.WriteLine($"public string $type = \"{type.FullName}, Relewise.Client\";");
     }
     var settableProperties = type.GetProperties().Where(info => info.MemberType is MemberTypes.Property
-                                                                    && info.SetMethod is { IsAbstract: false }
-                                                                    && !Attribute.IsDefined(info, typeof(JsonIgnoreAttribute))
-                                                                    && info.GetAccessors(false).All(ax => !ax.IsAbstract && ax.IsPublic)
-                                                                    && (info.DeclaringType?.IsAbstract == type.IsAbstract)).ToArray();
+                                                                && info.GetIndexParameters().Length is 0
+                                                                && info.SetMethod is { IsAbstract: false }
+                                                                && !Attribute.IsDefined(info, typeof(JsonIgnoreAttribute))
+                                                                && info.GetAccessors(false).All(ax => !ax.IsAbstract && ax.IsPublic)
+                                                                && (info.DeclaringType?.IsAbstract == type.IsAbstract)).ToArray();
     foreach (var propertyInfo in settableProperties)
     {
         writer.WriteLine($"public {PhpType(propertyInfo.PropertyType)} ${propertyInfo.Name};");
@@ -248,28 +250,23 @@ string HydrationExpression(Type type, string jsonValue)
     }
 }
 
-string PhpType(Type type)
+string PhpType(Type type) => type.Name switch
 {
-    return type.Name switch
-    {
-        "String" => "string",
-        "Int32" => "int",
-        "Int64" => "int",
-        "float" => "float",
-        "Double" => "float",
-        "Decimal" => "float",
-        "Boolean" => "bool",
-        "Guid" => "string",
-        "Byte" => "int",
-        "DateTimeOffset" => "DateTime",
-        var value when value.StartsWith("Nullable") => $"?{PhpType(type.GenericTypeArguments.First())}",
-        var value when value.StartsWith("List") => AddArrayTypeDefinition(type),
-        var value when value.StartsWith("Dictionary") => AddArrayTypeDefinition(type),
-        var value when value.EndsWith("[]") => AddArrayTypeDefinition(type),
-        _ when type.IsGenericType => AddGenericTypeDefinition(type),
-        _ => AddTypeDefinition(type)
-    };
-}
+    "String" => "string",
+    "Int32" => "int",
+    "Int64" => "int",
+    "float" => "float",
+    "Double" => "float",
+    "Decimal" => "float",
+    "Boolean" => "bool",
+    "Guid" => "string",
+    "Byte" => "int",
+    "DateTimeOffset" => "DateTime",
+    var value when value.StartsWith("Nullable") => $"?{PhpType(type.GetGenericArguments()[0])}",
+    var value when value.StartsWith("List") || value.StartsWith("Dictionary") || value.EndsWith("[]") => AddArrayTypeDefinition(type),
+    _ when type.IsGenericType => AddGenericTypeDefinition(type),
+    _ => AddTypeDefinition(type)
+};
 
 string AddTypeDefinition(Type type)
 {
@@ -285,17 +282,33 @@ string AddArrayTypeDefinition(Type type)
     if (type.IsArray && type.GetElementType() is { } elementType)
     {
         PhpType(elementType);
+        if (elementType.IsAbstract)
+        {
+            AddDerivedTypeDefinitions(elementType);
+        }
     }
     else if (type.IsGenericType)
     {
         if (type.GetGenericTypeDefinition() == typeof(List<>))
         {
             PhpType(type.GetGenericArguments()[0]);
+            if (type.GetGenericArguments()[0].IsAbstract)
+            {
+                AddDerivedTypeDefinitions(type.GetGenericArguments()[0]);
+            }
         }
         else if (type.GetGenericTypeDefinition() == typeof(Dictionary<,>))
         {
             PhpType(type.GetGenericArguments()[0]);
             PhpType(type.GetGenericArguments()[1]);
+            if (type.GetGenericArguments()[0].IsAbstract)
+            {
+                AddDerivedTypeDefinitions(type.GetGenericArguments()[0]);
+            }
+            if (type.GetGenericArguments()[1].IsAbstract)
+            {
+                AddDerivedTypeDefinitions(type.GetGenericArguments()[1]);
+            }
         }
     }
     return "array";
@@ -315,19 +328,24 @@ string AddGenericTypeDefinition(Type type)
     var genericTypeArgumentConstraint = genericTypeArgumentDefinition.GetGenericParameterConstraints().Single();
     if (genericTypeArgumentConstraint.IsAbstract)
     {
-        AddTypeDefinition(genericTypeArgumentConstraint);
-        var derivedTypes = assembly
-            .GetTypes()
-            .Where(derivingType => derivingType.IsAssignableFrom(genericTypeArgumentConstraint));
-        // We do the extra work of generating classes for all the types that implement the 'genericTypeArgumentConstraint'
-        foreach (var derivedType in derivedTypes.Skip(1))
-        {
-            AddTypeDefinition(derivedType);
-        }
-        return $"{PhpType(derivedTypes.First())}{AddTypeDefinition(type)}";
+        return $"{AddDerivedTypeDefinitions(genericTypeArgumentConstraint)}{AddTypeDefinition(type)}";
     }
 
     return AddTypeDefinition(type);
+}
+
+string AddDerivedTypeDefinitions(Type type)
+{
+    AddTypeDefinition(type);
+    var derivedTypes = assembly
+        .GetTypes()
+        .Where(derivingType => derivingType.IsAssignableFrom(type));
+    // We do the extra work of generating classes for all the types that implement the 'genericTypeArgumentConstraint'
+    foreach (var derivedType in derivedTypes.Skip(1))
+    {
+        AddTypeDefinition(derivedType);
+    }
+    return PhpType(derivedTypes.First());
 }
 
 void GenerateClientClass(Type requestType, Type clientType)
