@@ -5,7 +5,7 @@ use Relewise\Infrastructure\HttpClient\CurlClient;
 use Relewise\Infrastructure\HttpClient\Response;
 use Relewise\Models\DTO\LicensedRequest;
 
-class abstract RelewiseClient {
+abstract class RelewiseClient {
     private string $serverUrl = "https://api.relewise.com";
     private string $apiVersion = "v1";
     private Client $client;
