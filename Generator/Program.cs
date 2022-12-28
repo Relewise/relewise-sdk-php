@@ -1,7 +1,12 @@
 ﻿using Newtonsoft.Json;
+using Relewise.Client;
 using Relewise.Client.Requests;
+using Relewise.Client.Requests.Search;
+using Relewise.Client.Requests.Tracking;
 using Relewise.Client.Responses;
+using Relewise.Client.Search;
 using System.CodeDom.Compiler;
+using System.Linq;
 using System.Reflection;
 
 if (args.Length is not 1)
@@ -21,7 +26,7 @@ if (assembly is null)
     throw new ArgumentException("Could not load Relewise Client assembly.");
 }
 
-HashSet <Type> TypeDefintions = new();
+HashSet<Type> TypeDefintions = new();
 HashSet<string> GeneratedTypeNames = new();
 HashSet<Type> MissingTypeDefintions = new();
 
@@ -66,22 +71,25 @@ while (typesToGenerate.Count > 0)
     }
 }
 
-
 if (MissingTypeDefintions.Count > 0)
 {
-    Console.WriteLine("// We are missing these still");
+    Console.WriteLine("We are missing these still types from generation as they were not supported");
     foreach (var typeDefinition in MissingTypeDefintions)
     {
-        Console.WriteLine($"// {typeDefinition.Name}");
+        Console.WriteLine($"- {typeDefinition.Name}");
     }
 }
 
+GenerateClientClass(typeof(TrackingRequest), typeof(Tracker));
+GenerateClientClass(typeof(SearchRequest), typeof(Searcher));
+
+#region Helper methods
 
 void WriteClass(Type type)
 {
     var typeName = PhpType(type);
     if (!GeneratedTypeNames.Add(typeName)) return;
-    using var streamWriter = File.CreateText($"{basePath}/{typeName}.php");
+    using var streamWriter = File.CreateText($"{basePath}/Models/DTO/{typeName}.php");
     using var writer = new IndentedTextWriter(streamWriter);
 
     writer.WriteLine("""
@@ -106,22 +114,35 @@ use DateTime;
         writer.WriteLine($"public {PhpType(propertyInfo.PropertyType)} ${propertyInfo.Name};");
     }
 
-    var parameterInformation = settableProperties.Select(info => (propertyType: PhpType(info.PropertyType), propertyName: info.Name, paramName: $"{Char.ToLower(info.Name[0])}{info.Name[1..]}")).ToArray();
-    
+    var parameterInformation = settableProperties.Select(info => (type: info.PropertyType, propertyTypeName: PhpType(info.PropertyType), propertyName: info.Name, lowerCaseName: $"{Char.ToLower(info.Name[0])}{info.Name[1..]}")).ToArray();
+
     writer.WriteLine($"public function __construct() {{ }}");
-    writer.WriteLine("public static function create()");
+
+    writer.WriteLine($"public static function create() : {typeName}");
     writer.WriteLine("{");
     writer.Indent++;
     writer.WriteLine($"return new {typeName}();");
     writer.Indent--;
     writer.WriteLine("}");
 
-    foreach (var (propertyType, propertyName, paramName) in parameterInformation)
+    writer.WriteLine($"public static function hydrate(array $arr) : {typeName}");
+    writer.WriteLine("{");
+    writer.Indent++;
+    writer.WriteLine($"$result = new {typeName}();");
+    foreach (var (propertyType, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
     {
-        writer.WriteLine($"function with{propertyName}({propertyType} ${paramName}) : {typeName}");
+        WriteHydrationSetter(writer, propertyType, propertyName, lowerCaseName);
+    }
+    writer.WriteLine($"return $result;");
+    writer.Indent--;
+    writer.WriteLine("}");
+
+    foreach (var (_, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
+    {
+        writer.WriteLine($"function with{propertyName}({propertyTypeName} ${lowerCaseName}) : {typeName}");
         writer.WriteLine("{");
         writer.Indent++;
-        writer.WriteLine($"$this->{propertyName} = ${paramName};");
+        writer.WriteLine($"$this->{propertyName} = ${lowerCaseName};");
         writer.WriteLine($"return $this;");
         writer.Indent--;
         writer.WriteLine("}");
@@ -134,7 +155,7 @@ void WriteEnum(Type type)
 {
     var typeName = PhpType(type);
     if (!GeneratedTypeNames.Add(typeName)) return;
-    using var streamWriter = File.CreateText($"{basePath}/{typeName}.php");
+    using var streamWriter = File.CreateText($"{basePath}/Models/DTO/{typeName}.php");
     using var writer = new IndentedTextWriter(streamWriter);
 
     writer.WriteLine("""
@@ -160,7 +181,7 @@ void WriteInterface(Type type)
 {
     var typeName = PhpType(type);
     if (!GeneratedTypeNames.Add(typeName)) return;
-    using var streamWriter = File.CreateText($"{basePath}/{typeName}.php");
+    using var streamWriter = File.CreateText($"{basePath}/Models/DTO/{typeName}.php");
     using var writer = new IndentedTextWriter(streamWriter);
 
     writer.WriteLine("""
@@ -174,6 +195,44 @@ use DateTime;
     writer.WriteLine($"interface {type.Name.Replace("`1", "")}");
     writer.WriteLine("{");
     writer.WriteLine("}");
+}
+
+void WriteHydrationSetter(IndentedTextWriter writer, Type propertyType, string propertyName, string lowerCaseName)
+{
+    if (propertyType.IsArray && propertyType.GetElementType() is { } elementType)
+    {
+        writer.WriteLine($"$result->{propertyName} = array();");
+        writer.WriteLine($"foreach($arr as &$value)");
+        writer.WriteLine("{");
+        writer.Indent++;
+        writer.WriteLine($"array_push($result->{propertyName}, {HydrationExpression(elementType, "$value")});");
+        writer.Indent--;
+        writer.WriteLine("}");
+    }
+    else
+    {
+        writer.WriteLine($"$result->{propertyName} = {HydrationExpression(propertyType, $"$arr[\"{lowerCaseName}\"]")};");
+    }
+}
+
+string HydrationExpression(Type type, string jsonValue)
+{
+    if (type.IsValueType || type == typeof(string) || type == typeof(Guid))
+    {
+        return jsonValue;
+    }
+    if (type == typeof(DateTimeOffset))
+    {
+        return $"new DateTime({jsonValue})";
+    }
+    else if (TypeDefintions.Contains(type) || typesToGenerate.Contains(type))
+    {
+        return $"{PhpType(type)}::hydrate({jsonValue})";
+    }
+    else
+    {
+        return "NULL";
+    }
 }
 
 string PhpType(Type type)
@@ -191,9 +250,9 @@ string PhpType(Type type)
         "Byte" => "int",
         "DateTimeOffset" => "DateTime",
         var value when value.StartsWith("Nullable") => $"?{PhpType(type.GenericTypeArguments.First())}",
-        var value when value.StartsWith("List") => "array",
-        var value when value.StartsWith("Dictionary") => "array",
-        var value when value.EndsWith("[]") => "array",
+        var value when value.StartsWith("List") => AddArrayTypeDefinition(type),
+        var value when value.StartsWith("Dictionary") => AddArrayTypeDefinition(type),
+        var value when value.EndsWith("[]") => AddArrayTypeDefinition(type),
         _ when type.IsGenericType => AddGenericTypeDefinition(type),
         _ => AddTypeDefinition(type)
     };
@@ -208,11 +267,36 @@ string AddTypeDefinition(Type type)
     return type.Name.Replace("`1", "");
 }
 
+string AddArrayTypeDefinition(Type type)
+{
+    if (type.IsArray && type.GetElementType() is { } elementType)
+    {
+        PhpType(elementType);
+    }
+    else if (type.IsGenericType)
+    {
+        if (type.GetGenericTypeDefinition() == typeof(List<>))
+        {
+            PhpType(type.GetGenericArguments()[0]);
+        }
+        else if (type.GetGenericTypeDefinition() == typeof(Dictionary<,>))
+        {
+            PhpType(type.GetGenericArguments()[0]);
+            PhpType(type.GetGenericArguments()[1]);
+        }
+    }
+    return "array";
+}
+
 string AddGenericTypeDefinition(Type type)
 {
-    if (type.GenericTypeArguments.Length > 0)
+    if (type.GenericTypeArguments.Length == 1)
     {
         return $"{PhpType(type.GenericTypeArguments.Single())}{AddTypeDefinition(type)}";
+    }
+    else if (type.GenericTypeArguments.Length == 2)
+    {
+        return $"{PhpType(type.GenericTypeArguments.First())}{PhpType(type.GenericTypeArguments.Last())}{AddTypeDefinition(type)}";
     }
     var genericTypeArgumentDefinition = type.GetGenericArguments().Single();
     var genericTypeArgumentConstraint = genericTypeArgumentDefinition.GetGenericParameterConstraints().Single();
@@ -222,6 +306,7 @@ string AddGenericTypeDefinition(Type type)
         var derivedTypes = assembly
             .GetTypes()
             .Where(derivingType => derivingType.IsAssignableFrom(genericTypeArgumentConstraint));
+        // We do the extra work of generating classes for all the types that implement the 'genericTypeArgumentConstraint'
         foreach (var derivedType in derivedTypes.Skip(1))
         {
             AddTypeDefinition(derivedType);
@@ -231,3 +316,63 @@ string AddGenericTypeDefinition(Type type)
 
     return AddTypeDefinition(type);
 }
+
+void GenerateClientClass(Type requestType, Type clientType)
+{
+    HashSet<string> GeneratedMethods = new();
+
+    using var streamWriter = File.CreateText($"{basePath}/{clientType.Name}.php");
+    using var writer = new IndentedTextWriter(streamWriter);
+
+    var requestTypeMethods = assembly
+        .GetTypes()
+        .Where(derivingType => derivingType.IsSubclassOf(requestType))
+        .Select(info =>
+        {
+            var typeName = PhpType(info);
+            return (methodName: typeName, parameterType: typeName, parameterName: $"{Char.ToLower(typeName[0])}{typeName[1..]}");
+        });
+
+    var clientMethods = clientType
+        .GetMethods()
+        .Where(info => info.DeclaringType == clientType
+                    && !info.Name.EndsWith("Async")
+                    && info.GetParameters().Length is 1
+                    && !info.GetParameters().First().ParameterType.IsGenericType
+                    && info.GetParameters().First().ParameterType.IsClass
+                    && info.GetParameters().First().ParameterType != requestType
+                    && info.GetParameters().First().ParameterType.Name.EndsWith("Request")
+        )
+        .Select(info => (methodName: info.Name, parameterType: PhpType(info.GetParameters().First().ParameterType), parameterName: info.GetParameters().First().Name!));
+
+    writer.WriteLine($"""
+<?php declare(strict_types=1);
+
+namespace Relewise;
+
+use Relewise\Infrastructure\HttpClient\Response;
+""");
+
+    foreach (var method in requestTypeMethods.Union(clientMethods))
+    {
+        writer.WriteLine($"use Relewise\\Models\\DTO\\{method.parameterType};");
+    }
+    writer.WriteLine($"");
+
+    writer.WriteLine($"class {clientType.Name} extends RelewiseClient");
+    writer.WriteLine("{");
+    writer.Indent++;
+    foreach (var method in requestTypeMethods.Union(clientMethods))
+    {
+        writer.WriteLine($"public function {method.methodName}({method.parameterType} ${method.parameterName}) : Response");
+        writer.WriteLine("{");
+        writer.Indent++;
+        writer.WriteLine($"return $this->Request(\"{method.parameterType}\", ${method.parameterName});");
+        writer.Indent--;
+        writer.WriteLine("}");
+    }
+    writer.Indent--;
+    writer.WriteLine("}");
+}
+
+#endregion
