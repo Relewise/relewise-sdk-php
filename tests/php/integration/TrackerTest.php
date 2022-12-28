@@ -29,10 +29,5 @@ class TrackerTest extends TestCase
         $response = $tracker->TrackProductViewRequest($productViewRequest);
         self::assertEquals(200, $response->code);
         self::assertEquals(null, $response->body);
-
-        
-        $jsonobj = '{"Peter":30,"Ben":37,"Joe":43}';
-        $obj = json_decode($jsonobj);
-        self::assertEquals("31", $obj->Peter);
     }
 }

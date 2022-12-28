@@ -10,11 +10,6 @@ use Relewise\Models\DTO\ProductCategorySearchRequest;
 use Relewise\Models\DTO\ProductSearchRequest;
 use Relewise\Models\DTO\SearchRequestCollection;
 use Relewise\Models\DTO\SearchTermPredictionRequest;
-use Relewise\Models\DTO\ProductSearchRequest;
-use Relewise\Models\DTO\ContentSearchRequest;
-use Relewise\Models\DTO\ProductCategorySearchRequest;
-use Relewise\Models\DTO\ContentCategorySearchRequest;
-use Relewise\Models\DTO\SearchTermPredictionRequest;
 
 class Searcher extends RelewiseClient
 {
@@ -46,23 +41,23 @@ class Searcher extends RelewiseClient
     {
         return $this->Request("SearchTermPredictionRequest", $searchTermPredictionRequest);
     }
-    public function Search(ProductSearchRequest $request) : Response
+    public function SearchProductSearchRequest(ProductSearchRequest $request) : Response
     {
         return $this->Request("ProductSearchRequest", $request);
     }
-    public function Search(ContentSearchRequest $request) : Response
+    public function SearchContentSearchRequest(ContentSearchRequest $request) : Response
     {
         return $this->Request("ContentSearchRequest", $request);
     }
-    public function Search(ProductCategorySearchRequest $request) : Response
+    public function SearchProductCategorySearchRequest(ProductCategorySearchRequest $request) : Response
     {
         return $this->Request("ProductCategorySearchRequest", $request);
     }
-    public function Search(ContentCategorySearchRequest $request) : Response
+    public function SearchContentCategorySearchRequest(ContentCategorySearchRequest $request) : Response
     {
         return $this->Request("ContentCategorySearchRequest", $request);
     }
-    public function Predict(SearchTermPredictionRequest $request) : Response
+    public function PredictSearchTermPredictionRequest(SearchTermPredictionRequest $request) : Response
     {
         return $this->Request("SearchTermPredictionRequest", $request);
     }

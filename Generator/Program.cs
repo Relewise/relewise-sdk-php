@@ -103,7 +103,10 @@ use DateTime;
     writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {PhpType(type)}{(type.BaseType != typeof(object) && type.BaseType is { } baseType ? $" extends {PhpType(baseType)}" : "")}");
     writer.WriteLine("{");
     writer.Indent++;
-    writer.WriteLine($"public string $type = \"{type.FullName}, Relewise.Client\";");
+    if (type.BaseType != typeof(object) && type.BaseType is { } extended && extended.IsAbstract)
+    {
+        writer.WriteLine($"public string $type = \"{type.FullName}, Relewise.Client\";");
+    }
     var settableProperties = type.GetProperties().Where(info => info.MemberType is MemberTypes.Property
                                                                     && info.SetMethod is { IsAbstract: false }
                                                                     && !Attribute.IsDefined(info, typeof(JsonIgnoreAttribute))
@@ -116,30 +119,31 @@ use DateTime;
 
     var parameterInformation = settableProperties.Select(info => (type: info.PropertyType, propertyTypeName: PhpType(info.PropertyType), propertyName: info.Name, lowerCaseName: $"{Char.ToLower(info.Name[0])}{info.Name[1..]}")).ToArray();
 
-    writer.WriteLine($"public function __construct() {{ }}");
-
-    writer.WriteLine($"public static function create() : {typeName}");
-    writer.WriteLine("{");
-    writer.Indent++;
-    writer.WriteLine($"return new {typeName}();");
-    writer.Indent--;
-    writer.WriteLine("}");
-
-    writer.WriteLine($"public static function hydrate(array $arr) : {typeName}");
-    writer.WriteLine("{");
-    writer.Indent++;
-    writer.WriteLine($"$result = new {typeName}();");
-    foreach (var (propertyType, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
+    if (!type.IsAbstract)
     {
-        WriteHydrationSetter(writer, propertyType, propertyName, lowerCaseName);
+        writer.WriteLine($"public static function create() : {typeName}");
+        writer.WriteLine("{");
+        writer.Indent++;
+        writer.WriteLine($"return new {typeName}();");
+        writer.Indent--;
+        writer.WriteLine("}");
+
+        writer.WriteLine($"public static function hydrate(array $arr) : {typeName}");
+        writer.WriteLine("{");
+        writer.Indent++;
+        writer.WriteLine($"$result = new {typeName}();");
+        foreach (var (propertyType, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
+        {
+            WriteHydrationSetter(writer, propertyType, propertyName, lowerCaseName);
+        }
+        writer.WriteLine($"return $result;");
+        writer.Indent--;
+        writer.WriteLine("}");
     }
-    writer.WriteLine($"return $result;");
-    writer.Indent--;
-    writer.WriteLine("}");
 
     foreach (var (_, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
     {
-        writer.WriteLine($"function with{propertyName}({propertyTypeName} ${lowerCaseName}) : {typeName}");
+        writer.WriteLine($"function with{propertyName}({propertyTypeName} ${lowerCaseName})");
         writer.WriteLine("{");
         writer.Indent++;
         writer.WriteLine($"$this->{propertyName} = ${lowerCaseName};");
@@ -166,12 +170,12 @@ namespace Relewise\Models\DTO;
 use DateTime;
 
 """);
-    writer.WriteLine($"enum {type.Name.Replace("`1", "")}");
+    writer.WriteLine($"enum {type.Name.Replace("`1", "")} : string");
     writer.WriteLine("{");
     writer.Indent++;
-    foreach (var enumName in type.GetMembers().Where(propertyInfo => propertyInfo.DeclaringType is { IsEnum: true } && propertyInfo.Name is not "__value" and not "value__"))
+    foreach (var enumMember in type.GetMembers().Where(propertyInfo => propertyInfo.DeclaringType is { IsEnum: true } && propertyInfo.Name is not "__value" and not "value__"))
     {
-        writer.WriteLine($"case {enumName.Name};");
+        writer.WriteLine($"case {enumMember.Name} = '{enumMember.Name}';");
     }
     writer.Indent--;
     writer.WriteLine("}");
@@ -199,10 +203,13 @@ use DateTime;
 
 void WriteHydrationSetter(IndentedTextWriter writer, Type propertyType, string propertyName, string lowerCaseName)
 {
+    writer.WriteLine($"if (array_key_exists(\"{lowerCaseName}\", $arr))");
+    writer.WriteLine("{");
+    writer.Indent++;
     if (propertyType.IsArray && propertyType.GetElementType() is { } elementType)
     {
         writer.WriteLine($"$result->{propertyName} = array();");
-        writer.WriteLine($"foreach($arr as &$value)");
+        writer.WriteLine($"foreach($arr[\"{lowerCaseName}\"] as &$value)");
         writer.WriteLine("{");
         writer.Indent++;
         writer.WriteLine($"array_push($result->{propertyName}, {HydrationExpression(elementType, "$value")});");
@@ -213,10 +220,16 @@ void WriteHydrationSetter(IndentedTextWriter writer, Type propertyType, string p
     {
         writer.WriteLine($"$result->{propertyName} = {HydrationExpression(propertyType, $"$arr[\"{lowerCaseName}\"]")};");
     }
+    writer.Indent--;
+    writer.WriteLine("}");
 }
 
 string HydrationExpression(Type type, string jsonValue)
 {
+    if (type.IsEnum)
+    {
+        return $"{PhpType(type)}::from({jsonValue})";
+    }
     if (type.IsValueType || type == typeof(string) || type == typeof(Guid))
     {
         return jsonValue;
@@ -225,7 +238,7 @@ string HydrationExpression(Type type, string jsonValue)
     {
         return $"new DateTime({jsonValue})";
     }
-    else if (TypeDefintions.Contains(type) || typesToGenerate.Contains(type))
+    if (TypeDefintions.Contains(type) || typesToGenerate.Contains(type))
     {
         return $"{PhpType(type)}::hydrate({jsonValue})";
     }
@@ -343,7 +356,7 @@ void GenerateClientClass(Type requestType, Type clientType)
                     && info.GetParameters().First().ParameterType != requestType
                     && info.GetParameters().First().ParameterType.Name.EndsWith("Request")
         )
-        .Select(info => (methodName: info.Name, parameterType: PhpType(info.GetParameters().First().ParameterType), parameterName: info.GetParameters().First().Name!));
+        .Select(info => (methodName: info.Name + PhpType(info.GetParameters().First().ParameterType), parameterType: PhpType(info.GetParameters().First().ParameterType), parameterName: info.GetParameters().First().Name!));
 
     writer.WriteLine($"""
 <?php declare(strict_types=1);
@@ -353,7 +366,7 @@ namespace Relewise;
 use Relewise\Infrastructure\HttpClient\Response;
 """);
 
-    foreach (var method in requestTypeMethods.Union(clientMethods))
+    foreach (var method in requestTypeMethods.Union(clientMethods).DistinctBy(method => method.parameterType))
     {
         writer.WriteLine($"use Relewise\\Models\\DTO\\{method.parameterType};");
     }
