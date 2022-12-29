@@ -1,4 +1,5 @@
 <?php
+
 namespace Relewise\Tests\Integration;
 
 use \PHPUnit\Framework\TestCase;
@@ -11,11 +12,11 @@ use Relewise\Models\DTO\TrackProductViewRequest;
 
 class TrackerTest extends TestCase
 {
-    public function testProductView(): void 
+    public function testProductView(): void
     {
         $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
         $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-        
+
         $tracker = new Tracker($datasetId, $apiKey);
 
         $productViewRequest = TrackProductViewRequest::create()

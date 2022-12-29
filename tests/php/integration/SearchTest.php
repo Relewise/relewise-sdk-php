@@ -6,15 +6,11 @@ use \PHPUnit\Framework\TestCase;
 use Relewise\Factory\UserFactory;
 use Relewise\Models\DTO\Currency;
 use Relewise\Models\DTO\DataDoubleSelector;
-use Relewise\Models\DTO\ProductSearchResponse;
 use Relewise\Models\DTO\Language;
 use Relewise\Models\DTO\ProductCategorySearchRequest;
-use Relewise\Models\DTO\ProductCategorySearchResponse;
 use Relewise\Models\DTO\ProductDataRelevanceModifier;
 use Relewise\Models\DTO\ProductSearchRequest;
-use Relewise\Models\DTO\ProductSearchSettings;
 use Relewise\Models\DTO\RelevanceModifierCollection;
-use Relewise\Models\DTO\SelectedProductPropertiesSettings;
 use Relewise\Searcher;
 
 class SearchTest extends TestCase
@@ -29,14 +25,14 @@ class SearchTest extends TestCase
         $productSearch = ProductSearchRequest::create()
             ->withRelevanceModifiers(
                 RelevanceModifierCollection::create()
-                    ->withItems(array(
+                    ->withItems(
                         ProductDataRelevanceModifier::create()
                             ->withKey("NoveltyBoostModifier")
                             ->withMultiplierSelector(
                                 DataDoubleSelector::create()
                                     ->withKey("NoveltyBoostModifier")
                             )
-                    ))
+                    )
             )
             ->withTake(3)
             ->withLanguage(Language::create()->withValue("en-US"))
@@ -51,7 +47,6 @@ class SearchTest extends TestCase
         self::assertNotEmpty($response->Results);
     }
 
-    
     public function testProductCategorySearchWithNoConditions(): void
     {
         $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
@@ -62,14 +57,14 @@ class SearchTest extends TestCase
         $productCategorySearch = ProductCategorySearchRequest::create()
             ->withRelevanceModifiers(
                 RelevanceModifierCollection::create()
-                    ->withItems(array(
+                    ->withItems(
                         ProductDataRelevanceModifier::create()
                             ->withKey("NoveltyBoostModifier")
                             ->withMultiplierSelector(
                                 DataDoubleSelector::create()
                                     ->withKey("NoveltyBoostModifier")
                             )
-                    ))
+                    )
             )
             ->withTake(3)
             ->withLanguage(Language::create()->withValue("en-US"))

@@ -72,30 +72,28 @@ class ProductRecommendationsTest extends TestCase
             ->withFilters(
                 FilterCollection::create()
                     ->withItems(
-                        array(
-                            ProductDataFilter::create()
-                                ->withKey("ShortDescription")
-                                ->withConditions(
-                                    ValueConditionCollection::create()
-                                        ->withItems(array(
-                                            ContainsCondition::create()
-                                                ->withValue(DataValueFactory::stringListDataValue(array("d")))
-                                                ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
-                                            ContainsCondition::create()
-                                                ->withValue(DataValueFactory::booleanListDataValue(array(true)))
-                                                ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
-                                            ContainsCondition::create()
-                                                ->withValue(DataValueFactory::doubleListDataValue(array(1)))
-                                                ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
-                                            ContainsCondition::create()
-                                                ->withValue(DataValueFactory::multilingualCollectionDataValueFromLanguageAndCollection(Language::create()->withValue("en-us"), array("d")))
-                                                ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
-                                            ContainsCondition::create()
-                                                ->withValue(DataValueFactory::multiCurrencyDataValueFromSingleCurrency(Money::create()->withCurrency(Currency::create()->withValue("USD"))->withAmount(1)))
-                                                ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
-                                        ))
-                                )
-                        )
+                        ProductDataFilter::create()
+                            ->withKey("ShortDescription")
+                            ->withConditions(
+                                ValueConditionCollection::create()
+                                    ->withItems(
+                                        ContainsCondition::create()
+                                            ->withValue(DataValueFactory::stringListDataValue("d"))
+                                            ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
+                                        ContainsCondition::create()
+                                            ->withValue(DataValueFactory::booleanListDataValue(true))
+                                            ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
+                                        ContainsCondition::create()
+                                            ->withValue(DataValueFactory::doubleListDataValue(1))
+                                            ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
+                                        ContainsCondition::create()
+                                            ->withValue(DataValueFactory::multilingualCollectionDataValueFromLanguageAndCollection(Language::create()->withValue("en-us"), "d"))
+                                            ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
+                                        ContainsCondition::create()
+                                            ->withValue(DataValueFactory::multiCurrencyDataValueFromSingleCurrency(Money::create()->withCurrency(Currency::create()->withValue("USD"))->withAmount(1)))
+                                            ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
+                                    )
+                            )
                     )
             )
             ->withLanguage(Language::create()->withValue("en-US"))

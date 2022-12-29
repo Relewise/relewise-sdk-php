@@ -36,7 +36,7 @@ class DataValueFactory {
             );
     }
 
-    public static function multiCurrencyDataValueFromMultipleCurrencies(array $moneyValues) : DataValue {
+    public static function multiCurrencyDataValueFromMultipleMoney(Money ... $moneyValues) : DataValue {
         return DataValue::create()
             ->withType(DataValueTypes::MultiCurrency)
             ->withValue(
@@ -47,7 +47,7 @@ class DataValueFactory {
             );
     }
 
-    public static function stringListDataValue(array $values) : DataValue {
+    public static function stringListDataValue(string ... $values) : DataValue {
         return DataValue::create()
             ->withType(DataValueTypes::StringList)
             ->withValue(
@@ -58,7 +58,7 @@ class DataValueFactory {
             );
     }
 
-    public static function doubleListDataValue(array $values) : DataValue {
+    public static function doubleListDataValue(float ... $values) : DataValue {
         return DataValue::create()
             ->withType(DataValueTypes::DoubleList)
             ->withValue(
@@ -69,7 +69,7 @@ class DataValueFactory {
             );
     }
 
-    public static function booleanListDataValue(array $values) : DataValue {
+    public static function booleanListDataValue(bool ... $values) : DataValue {
         return DataValue::create()
             ->withType(DataValueTypes::BooleanList)
             ->withValue(
@@ -80,7 +80,7 @@ class DataValueFactory {
             );
     }
 
-    public static function multilingualCollectionDataValueFromLanguageAndCollection(Language $language, array $values) : DataValue {
+    public static function multilingualCollectionDataValueFromLanguageAndCollection(Language $language, string ... $values) : DataValue {
         return DataValue::create()
             ->withType(DataValueTypes::MultilingualCollection)
             ->withValue(

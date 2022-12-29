@@ -120,9 +120,10 @@ use DateTime;
 
     WriteHydrationAndCreatorMethod(writer, type, parameterInformation);
 
-    foreach (var (_, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
+    foreach (var (propertyType, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
     {
-        writer.WriteLine($"function with{propertyName}({propertyTypeName} ${lowerCaseName})");
+        var parameterType = propertyTypeName is "array" ? propertyType.IsGenericType && propertyType.GenericTypeArguments is [var arrayType] ? PhpType(arrayType) + " ..." : "..." : propertyTypeName;
+        writer.WriteLine($"function with{propertyName}({parameterType} ${lowerCaseName})");
         writer.WriteLine("{");
         writer.Indent++;
         writer.WriteLine($"$this->{propertyName} = ${lowerCaseName};");
