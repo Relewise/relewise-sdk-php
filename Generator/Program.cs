@@ -1,13 +1,9 @@
-﻿using MessagePack;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Relewise.Client;
 using Relewise.Client.Requests;
-using Relewise.Client.Requests.Search;
-using Relewise.Client.Requests.Tracking;
 using Relewise.Client.Responses;
 using Relewise.Client.Search;
 using System.CodeDom.Compiler;
-using System.Linq;
 using System.Reflection;
 
 if (args.Length is not 1)
@@ -83,6 +79,7 @@ if (MissingTypeDefintions.Count > 0)
 
 GenerateClientClass(typeof(Tracker), new []{ "Track" });
 GenerateClientClass(typeof(Searcher), new []{ "Search", "Predict", "Batch" });
+GenerateClientClass(typeof(Recommender), new[] { "Recommend" });
 
 #region Helper methods
 
@@ -262,7 +259,7 @@ string HydrationExpression(Type type, string jsonValue)
     {
         return $"{PhpType(type)}::from({jsonValue})";
     }
-    if (type.IsValueType || type == typeof(string) || type == typeof(Guid))
+    if (type.IsValueType || type == typeof(string) || type == typeof(Guid) || type == typeof(object))
     {
         return jsonValue;
     }
@@ -288,6 +285,7 @@ string PhpType(Type type) => type.Name switch
     "Boolean" => "bool",
     "Guid" => "string",
     "Byte" => "int",
+    "Object" => "mixed",
     "DateTimeOffset" => "DateTime",
     var value when value.StartsWith("Nullable") => $"?{PhpType(type.GetGenericArguments()[0])}",
     var value when value.StartsWith("List") || value.StartsWith("Dictionary") || value.EndsWith("[]") => AddArrayTypeDefinition(type),
