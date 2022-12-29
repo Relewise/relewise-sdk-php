@@ -89,7 +89,7 @@ GenerateClientClass(typeof(SearchRequest), typeof(Searcher));
 void WriteClass(Type type)
 {
     var typeName = PhpType(type);
-    if (!GeneratedTypeNames.Add(typeName)) return;
+    if (!GeneratedTypeNames.Add(typeName) || typeName[0] is '?') return;
     using var streamWriter = File.CreateText($"{basePath}/Models/DTO/{typeName}.php");
     using var writer = new IndentedTextWriter(streamWriter);
 
@@ -140,7 +140,7 @@ use DateTime;
 void WriteEnum(Type type)
 {
     var typeName = PhpType(type);
-    if (!GeneratedTypeNames.Add(typeName)) return;
+    if (!GeneratedTypeNames.Add(typeName) || typeName[0] is '?') return;
     using var streamWriter = File.CreateText($"{basePath}/Models/DTO/{typeName}.php");
     using var writer = new IndentedTextWriter(streamWriter);
 
@@ -166,7 +166,7 @@ use DateTime;
 void WriteInterface(Type type)
 {
     var typeName = PhpType(type);
-    if (!GeneratedTypeNames.Add(typeName)) return;
+    if (!GeneratedTypeNames.Add(typeName) || typeName[0] is '?') return;
     using var streamWriter = File.CreateText($"{basePath}/Models/DTO/{typeName}.php");
     using var writer = new IndentedTextWriter(streamWriter);
 
@@ -300,6 +300,7 @@ string AddTypeDefinition(Type type)
     if (TypeDefintions.Add(type))
     {
         typesToGenerate.Enqueue(type);
+        AddDerivedTypeDefinitions(type);
     }
     return type.Name.Replace("`1", "");
 }
@@ -309,33 +310,17 @@ string AddArrayTypeDefinition(Type type)
     if (type.IsArray && type.GetElementType() is { } elementType)
     {
         PhpType(elementType);
-        if (elementType.IsAbstract)
-        {
-            AddDerivedTypeDefinitions(elementType);
-        }
     }
     else if (type.IsGenericType)
     {
         if (type.GetGenericTypeDefinition() == typeof(List<>))
         {
             PhpType(type.GetGenericArguments()[0]);
-            if (type.GetGenericArguments()[0].IsAbstract)
-            {
-                AddDerivedTypeDefinitions(type.GetGenericArguments()[0]);
-            }
         }
         else if (type.GetGenericTypeDefinition() == typeof(Dictionary<,>))
         {
             PhpType(type.GetGenericArguments()[0]);
             PhpType(type.GetGenericArguments()[1]);
-            if (type.GetGenericArguments()[0].IsAbstract)
-            {
-                AddDerivedTypeDefinitions(type.GetGenericArguments()[0]);
-            }
-            if (type.GetGenericArguments()[1].IsAbstract)
-            {
-                AddDerivedTypeDefinitions(type.GetGenericArguments()[1]);
-            }
         }
     }
     return "array";
@@ -347,26 +332,43 @@ string AddGenericTypeDefinition(Type type)
     {
         return $"{PhpType(type.GenericTypeArguments.Single())}{AddTypeDefinition(type)}";
     }
-    else if (type.GenericTypeArguments.Length == 2)
+    if (type.GenericTypeArguments.Length == 2)
     {
         return $"{PhpType(type.GenericTypeArguments.First())}{PhpType(type.GenericTypeArguments.Last())}{AddTypeDefinition(type)}";
     }
-    var genericTypeArgumentDefinition = type.GetGenericArguments().Single();
-    var genericTypeArgumentConstraint = genericTypeArgumentDefinition.GetGenericParameterConstraints().Single();
-    if (genericTypeArgumentConstraint.IsAbstract)
+
+    if (type.GetGenericArguments() is not [var genericTypeArgumentDefinition])
     {
-        return $"{AddDerivedTypeDefinitions(genericTypeArgumentConstraint)}{AddTypeDefinition(type)}";
+        return AddTypeDefinition(type);
+    }
+
+    if (genericTypeArgumentDefinition.GetGenericParameterConstraints() is not [var genericTypeArgumentConstraint])
+    {
+        return AddTypeDefinition(type);
+    }
+
+    AddTypeDefinition(genericTypeArgumentConstraint);
+    if (AddDerivedTypeDefinitions(genericTypeArgumentConstraint) is { } concreteTypeName)
+    {
+        return $"{concreteTypeName}{AddTypeDefinition(type)}";
     }
 
     return AddTypeDefinition(type);
 }
 
-string AddDerivedTypeDefinitions(Type type)
+string? AddDerivedTypeDefinitions(Type type)
 {
-    AddTypeDefinition(type);
+    if (!type.IsAbstract)
+    {
+        return null;
+    }
     var derivedTypes = assembly
         .GetTypes()
-        .Where(derivingType => derivingType.IsAssignableFrom(type));
+        .Where(derivingType => derivingType.IsAssignableTo(type)).ToArray();
+    if (derivedTypes.Count() is 0)
+    {
+        return null;
+    }
     // We do the extra work of generating classes for all the types that implement the 'genericTypeArgumentConstraint'
     foreach (var derivedType in derivedTypes.Skip(1))
     {
