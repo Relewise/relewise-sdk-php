@@ -81,8 +81,8 @@ if (MissingTypeDefintions.Count > 0)
     }
 }
 
-GenerateClientClass(typeof(TrackingRequest), typeof(Tracker));
-GenerateClientClass(typeof(SearchRequest), typeof(Searcher));
+GenerateClientClass(typeof(Tracker), new []{ "Track" });
+GenerateClientClass(typeof(Searcher), new []{ "Search", "Predict", "Batch" });
 
 #region Helper methods
 
@@ -119,7 +119,7 @@ use DateTime;
         writer.WriteLine($"public {PhpType(propertyInfo.PropertyType)} ${propertyInfo.Name};");
     }
 
-    var parameterInformation = settableProperties.Select(info => (type: info.PropertyType, propertyTypeName: PhpType(info.PropertyType), propertyName: info.Name, lowerCaseName: $"{Char.ToLower(info.Name[0])}{info.Name[1..]}")).ToArray();
+    var parameterInformation = settableProperties.Select(info => (type: info.PropertyType, propertyTypeName: PhpType(info.PropertyType), propertyName: info.Name, lowerCaseName: $"{ToCamelCase(info.Name)}")).ToArray();
 
     WriteHydrationAndCreatorMethod(writer, type, parameterInformation);
 
@@ -152,7 +152,7 @@ namespace Relewise\Models\DTO;
 use DateTime;
 
 """);
-    writer.WriteLine($"enum {type.Name.Replace("`1", "")} : string");
+    writer.WriteLine($"enum {typeName} : string");
     writer.WriteLine("{");
     writer.Indent++;
     foreach (var enumMember in type.GetMembers().Where(propertyInfo => propertyInfo.DeclaringType is { IsEnum: true } && propertyInfo.Name is not "__value" and not "value__"))
@@ -178,7 +178,7 @@ namespace Relewise\Models\DTO;
 use DateTime;
 
 """);
-    writer.WriteLine($"interface {type.Name.Replace("`1", "")}");
+    writer.WriteLine($"interface {typeName}");
     writer.WriteLine("{");
     writer.WriteLine("}");
 }
@@ -302,7 +302,7 @@ string AddTypeDefinition(Type type)
         typesToGenerate.Enqueue(type);
         AddDerivedTypeDefinitions(type);
     }
-    return type.Name.Replace("`1", "");
+    return type.Name.Replace("`1", "").Replace("`2", "");
 }
 
 string AddArrayTypeDefinition(Type type)
@@ -377,33 +377,37 @@ string? AddDerivedTypeDefinitions(Type type)
     return PhpType(derivedTypes.First());
 }
 
-void GenerateClientClass(Type requestType, Type clientType)
+void GenerateClientClass(Type clientType, string[] clientMethodNames)
 {
-    HashSet<string> GeneratedMethods = new();
-
     using var streamWriter = File.CreateText($"{basePath}/{clientType.Name}.php");
     using var writer = new IndentedTextWriter(streamWriter);
-
-    var requestTypeMethods = assembly
-        .GetTypes()
-        .Where(derivingType => derivingType.IsSubclassOf(requestType))
-        .Select(info =>
-        {
-            var typeName = PhpType(info);
-            return (methodName: typeName, parameterType: typeName, parameterName: $"{Char.ToLower(typeName[0])}{typeName[1..]}");
-        });
 
     var clientMethods = clientType
         .GetMethods()
         .Where(info => info.DeclaringType == clientType
-                    && !info.Name.EndsWith("Async")
-                    && info.GetParameters().Length is 1
-                    && !info.GetParameters().First().ParameterType.IsGenericType
-                    && info.GetParameters().First().ParameterType.IsClass
-                    && info.GetParameters().First().ParameterType != requestType
-                    && info.GetParameters().First().ParameterType.Name.EndsWith("Request")
+                       && clientMethodNames.Contains(info.Name)
+                       && info.GetParameters().Length is 1
+                       && !info.GetParameters().First().ParameterType.IsGenericType
+                       && info.GetParameters().First().ParameterType.IsClass
+                       && info.GetParameters().First().ParameterType.Name.EndsWith("Request")
         )
-        .Select(info => (methodName: info.Name + PhpType(info.GetParameters().First().ParameterType), parameterType: PhpType(info.GetParameters().First().ParameterType), parameterName: info.GetParameters().First().Name!));
+        .SelectMany(info =>  info.GetParameters().First().ParameterType.IsAbstract
+            ? assembly
+                .GetTypes()
+                .Where(derivingType => derivingType.IsAssignableTo(info.GetParameters().First().ParameterType))
+                .Select(derivedType => (
+                    methodName: ToCamelCase(PhpType(derivedType)),
+                    parameterType: PhpType(derivedType),
+                    parameterName: info.GetParameters().First().Name!,
+                    returnType: info.ReturnType))
+            : new[]
+            {
+                (
+                    methodName: ToCamelCase(PhpType(info.GetParameters().First().ParameterType)),
+                    parameterType: PhpType(info.GetParameters().First().ParameterType),
+                    parameterName: info.GetParameters().First().Name!,
+                    returnType: info.ReturnType)
+            });
 
     writer.WriteLine($"""
 <?php declare(strict_types=1);
@@ -413,26 +417,49 @@ namespace Relewise;
 use Relewise\Infrastructure\HttpClient\Response;
 """);
 
-    foreach (var method in requestTypeMethods.Union(clientMethods).DistinctBy(method => method.parameterType))
+    foreach (var method in clientMethods.DistinctBy(method => method.parameterType))
     {
         writer.WriteLine($"use Relewise\\Models\\DTO\\{method.parameterType};");
+    }
+    foreach (var method in clientMethods.DistinctBy(method => method.returnType).Where(method => method.returnType != typeof(void)))
+    {
+        writer.WriteLine($"use Relewise\\Models\\DTO\\{PhpType(method.returnType)};");
     }
     writer.WriteLine($"");
 
     writer.WriteLine($"class {clientType.Name} extends RelewiseClient");
     writer.WriteLine("{");
     writer.Indent++;
-    foreach (var method in requestTypeMethods.Union(clientMethods))
+    foreach (var method in clientMethods.DistinctBy(method => method.parameterType))
     {
-        writer.WriteLine($"public function {Char.ToLower(method.methodName[0])}{method.methodName[1..]}({method.parameterType} ${method.parameterName}) : Response");
+        writer.WriteLine($"public function {ToCamelCase(method.methodName)}({method.parameterType} ${method.parameterName}) : {(method.returnType != typeof(void) ? $"?{PhpType(method.returnType)}" : "Response")}");
         writer.WriteLine("{");
         writer.Indent++;
-        writer.WriteLine($"return $this->request(\"{method.parameterType}\", ${method.parameterName});");
+        if (method.returnType == typeof(void))
+        {
+            writer.WriteLine($"return $this->request(\"{method.parameterType}\", ${method.parameterName});");
+        }
+        else
+        {
+            writer.WriteLine($"$response = $this->request(\"{method.parameterType}\", ${method.parameterName});");
+            writer.WriteLine("if ($response->code != 200 && $response->code != 202)");
+            writer.WriteLine("{");
+            writer.Indent++;
+            writer.WriteLine("return Null;");
+            writer.Indent--;
+            writer.WriteLine("}");
+            writer.WriteLine($"return {PhpType(method.returnType)}::hydrate($response->body);");
+        }
         writer.Indent--;
         writer.WriteLine("}");
     }
     writer.Indent--;
     writer.WriteLine("}");
+}
+
+string ToCamelCase(string input)
+{
+    return char.ToLower(input[0]) + input[1..];
 }
 
 #endregion

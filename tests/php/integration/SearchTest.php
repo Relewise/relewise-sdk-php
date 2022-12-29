@@ -44,14 +44,11 @@ class SearchTest extends TestCase
             ->withDisplayedAtLocation("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
-        $response = $searcher->searchProductSearchRequest($productSearch);
+        $response = $searcher->productSearchRequest($productSearch);
 
-        $productSearchResponse = ProductSearchResponse::hydrate($response->body);
-
-        self::assertEquals(200, $response->code);
-        self::assertNotEquals(null, $response->body);
-        self::assertGreaterThan(0, $productSearchResponse->Hits);
-        self::assertNotEmpty($productSearchResponse->Results);
+        self::assertNotNull($response);
+        self::assertGreaterThan(0, $response->Hits);
+        self::assertNotEmpty($response->Results);
     }
 
     
@@ -80,13 +77,10 @@ class SearchTest extends TestCase
             ->withDisplayedAtLocation("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
-        $response = $searcher->searchProductCategorySearchRequest($productCategorySearch);
+        $response = $searcher->productCategorySearchRequest($productCategorySearch);
 
-        $productCategorySearchResponse = ProductCategorySearchResponse::hydrate($response->body);
-
-        self::assertEquals(200, $response->code);
-        self::assertNotEquals(null, $response->body);
-        self::assertGreaterThan(0, $productCategorySearchResponse->Hits);
-        self::assertNotEmpty($productCategorySearchResponse->Results);
+        self::assertNotNull($response);
+        self::assertGreaterThan(0, $response->Hits);
+        self::assertNotEmpty($response->Results);
     }
 }
