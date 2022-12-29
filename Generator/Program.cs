@@ -270,7 +270,7 @@ string HydrationExpression(Type type, string jsonValue)
     }
     if (TypeDefintions.Contains(type) || typesToGenerate.Contains(type))
     {
-        return $"{PhpType(type)}::hydrate({jsonValue})";
+        return $"{PhpType(type).Replace("?", "")}::hydrate({jsonValue})";
     }
     return "NULL";
 }
