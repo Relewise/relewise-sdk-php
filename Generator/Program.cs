@@ -121,27 +121,7 @@ use DateTime;
 
     var parameterInformation = settableProperties.Select(info => (type: info.PropertyType, propertyTypeName: PhpType(info.PropertyType), propertyName: info.Name, lowerCaseName: $"{Char.ToLower(info.Name[0])}{info.Name[1..]}")).ToArray();
 
-    if (!type.IsAbstract)
-    {
-        writer.WriteLine($"public static function create() : {typeName}");
-        writer.WriteLine("{");
-        writer.Indent++;
-        writer.WriteLine($"return new {typeName}();");
-        writer.Indent--;
-        writer.WriteLine("}");
-
-        writer.WriteLine($"public static function hydrate(array $arr) : {typeName}");
-        writer.WriteLine("{");
-        writer.Indent++;
-        writer.WriteLine($"$result = new {typeName}();");
-        foreach (var (propertyType, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
-        {
-            WriteHydrationSetter(writer, propertyType, propertyName, lowerCaseName);
-        }
-        writer.WriteLine($"return $result;");
-        writer.Indent--;
-        writer.WriteLine("}");
-    }
+    WriteHydrationAndCreatorMethod(writer, type, parameterInformation);
 
     foreach (var (_, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
     {
@@ -203,6 +183,56 @@ use DateTime;
     writer.WriteLine("}");
 }
 
+void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, (Type, string, string, string)[] parameterInformation)
+{
+    if (type.IsAbstract)
+    {
+        writer.WriteLine($"public static function hydrateBase(mixed $result, array $arr)");
+        writer.WriteLine("{");
+        writer.Indent++;
+        if (type.BaseType is { IsAbstract: true } abstractBase)
+        {
+            writer.WriteLine($"$result = {PhpType(abstractBase)}::hydrateBase($result, $arr);");
+        }
+        foreach (var (propertyType, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
+        {
+            WriteHydrationSetter(writer, propertyType, propertyName, lowerCaseName);
+        }
+        writer.WriteLine("return $result;");
+        writer.Indent--;
+        writer.WriteLine("}");
+    }
+    else
+    {
+        var typeName = PhpType(type);
+        writer.WriteLine($"public static function create() : {typeName}");
+        writer.WriteLine("{");
+        writer.Indent++;
+        writer.WriteLine($"return new {typeName}();");
+        writer.Indent--;
+        writer.WriteLine("}");
+
+        writer.WriteLine($"public static function hydrate(array $arr) : {typeName}");
+        writer.WriteLine("{");
+        writer.Indent++;
+        if (type.BaseType is { IsAbstract: true } abstractBase)
+        {
+            writer.WriteLine($"$result = {PhpType(abstractBase)}::hydrateBase(new {typeName}(), $arr);");
+        }
+        else
+        {
+            writer.WriteLine($"$result = new {typeName}();");
+        }
+        foreach (var (propertyType, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
+        {
+            WriteHydrationSetter(writer, propertyType, propertyName, lowerCaseName);
+        }
+        writer.WriteLine($"return $result;");
+        writer.Indent--;
+        writer.WriteLine("}");
+    }
+}
+
 void WriteHydrationSetter(IndentedTextWriter writer, Type propertyType, string propertyName, string lowerCaseName)
 {
     writer.WriteLine($"if (array_key_exists(\"{lowerCaseName}\", $arr))");
@@ -244,10 +274,7 @@ string HydrationExpression(Type type, string jsonValue)
     {
         return $"{PhpType(type)}::hydrate({jsonValue})";
     }
-    else
-    {
-        return "NULL";
-    }
+    return "NULL";
 }
 
 string PhpType(Type type) => type.Name switch
