@@ -77,8 +77,8 @@ if (MissingTypeDefintions.Count > 0)
     }
 }
 
-GenerateClientClass(typeof(Tracker), new []{ "Track" });
-GenerateClientClass(typeof(Searcher), new []{ "Search", "Predict", "Batch" });
+GenerateClientClass(typeof(Tracker), new[] { "Track" });
+GenerateClientClass(typeof(Searcher), new[] { "Search", "Predict", "Batch" });
 GenerateClientClass(typeof(Recommender), new[] { "Recommend" });
 
 #region Helper methods
@@ -102,6 +102,10 @@ use DateTime;
     writer.WriteLine("{");
     writer.Indent++;
     if (type.BaseType != typeof(object) && type.BaseType is { } extended && extended.IsAbstract)
+    {
+        writer.WriteLine($"public string $type = \"{type.FullName}, Relewise.Client\";");
+    }
+    else if (type.IsAbstract)
     {
         writer.WriteLine($"public string $type = \"{type.FullName}, Relewise.Client\";");
     }
@@ -185,12 +189,35 @@ void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, (Type,
 {
     if (type.IsAbstract)
     {
+        writer.WriteLine("public static function hydrate(array $arr)");
+        writer.WriteLine("{");
+        writer.Indent++;
+
+        var derivedTypes = assembly
+            .GetTypes()
+            .Where(derivingType => derivingType.IsAssignableTo(type) && !derivingType.IsGenericType)
+            .DistinctBy(derivingType => PhpType(derivingType))
+            .ToArray();
+        writer.WriteLine("$type = $arr[\"\\$type\"];");
+        foreach (var derivedType in derivedTypes)
+        {
+            writer.WriteLine($"if ($type==\"{derivedType.FullName}, Relewise.Client\")");
+            writer.WriteLine("{");
+            writer.Indent++;
+            writer.WriteLine($"return {PhpType(derivedType)}::hydrate($arr);");
+            writer.Indent--;
+            writer.WriteLine("}");
+        }
+
+        writer.Indent--;
+        writer.WriteLine("}");
+
         writer.WriteLine($"public static function hydrateBase(mixed $result, array $arr)");
         writer.WriteLine("{");
         writer.Indent++;
         if (type.BaseType is { IsAbstract: true } abstractBase)
         {
-            writer.WriteLine($"$result = {PhpType(abstractBase)}::hydrateBase($result, $arr);");
+            writer.WriteLine($"$result = {PhpType(abstractBase).Replace("?", "")}::hydrateBase($result, $arr);");
         }
         foreach (var (propertyType, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
         {
@@ -215,7 +242,7 @@ void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, (Type,
         writer.Indent++;
         if (type.BaseType is { IsAbstract: true } abstractBase)
         {
-            writer.WriteLine($"$result = {PhpType(abstractBase)}::hydrateBase(new {typeName}(), $arr);");
+            writer.WriteLine($"$result = {PhpType(abstractBase).Replace("?", "")}::hydrateBase(new {typeName}(), $arr);");
         }
         else
         {
@@ -238,18 +265,27 @@ void WriteHydrationSetter(IndentedTextWriter writer, Type propertyType, string p
     writer.Indent++;
     if (propertyType.IsArray && propertyType.GetElementType() is { } elementType)
     {
-        writer.WriteLine($"$result->{propertyName} = array();");
-        writer.WriteLine($"foreach($arr[\"{lowerCaseName}\"] as &$value)");
-        writer.WriteLine("{");
-        writer.Indent++;
-        writer.WriteLine($"array_push($result->{propertyName}, {HydrationExpression(elementType, "$value")});");
-        writer.Indent--;
-        writer.WriteLine("}");
+        WriteArrayLikeHydrationSetter(writer, elementType, propertyName, lowerCaseName);
+    }
+    else if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>))
+    {
+        WriteArrayLikeHydrationSetter(writer, propertyType.GenericTypeArguments.Single(), propertyName, lowerCaseName);
     }
     else
     {
         writer.WriteLine($"$result->{propertyName} = {HydrationExpression(propertyType, $"$arr[\"{lowerCaseName}\"]")};");
     }
+    writer.Indent--;
+    writer.WriteLine("}");
+}
+
+void WriteArrayLikeHydrationSetter(IndentedTextWriter writer, Type elementType, string propertyName, string lowerCaseName)
+{
+    writer.WriteLine($"$result->{propertyName} = array();");
+    writer.WriteLine($"foreach($arr[\"{lowerCaseName}\"] as &$value)");
+    writer.WriteLine("{");
+    writer.Indent++;
+    writer.WriteLine($"array_push($result->{propertyName}, {HydrationExpression(elementType, "$value")});");
     writer.Indent--;
     writer.WriteLine("}");
 }
@@ -363,7 +399,9 @@ string? AddDerivedTypeDefinitions(Type type)
     }
     var derivedTypes = assembly
         .GetTypes()
-        .Where(derivingType => derivingType.IsAssignableTo(type)).ToArray();
+        .Where(derivingType => derivingType.IsAssignableTo(type) && !derivingType.IsGenericType)
+        .Distinct()
+        .ToArray();
     if (derivedTypes.Count() is 0)
     {
         return null;
@@ -390,7 +428,7 @@ void GenerateClientClass(Type clientType, string[] clientMethodNames)
                        && info.GetParameters().First().ParameterType.IsClass
                        && info.GetParameters().First().ParameterType.Name.EndsWith("Request")
         )
-        .SelectMany(info =>  info.GetParameters().First().ParameterType.IsAbstract
+        .SelectMany(info => info.GetParameters().First().ParameterType.IsAbstract
             ? assembly
                 .GetTypes()
                 .Where(derivingType => derivingType.IsAssignableTo(info.GetParameters().First().ParameterType))

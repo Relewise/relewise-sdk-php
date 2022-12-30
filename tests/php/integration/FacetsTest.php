@@ -40,16 +40,14 @@ class FacetsTest extends TestCase
                 UserFactory::anonymous()
             );
 
-        //fwrite(STDOUT, str_replace("\"type\":", "\"\$type\":", json_encode($productSearch)));
+        $response = $searcher->productSearchRequest($productSearch);
 
-        $response = $searcher->request("ProductSearchRequest", $productSearch);
+        fwrite(STDOUT, json_encode($response));
 
-        //fwrite(STDOUT, json_encode($response->body));
-
-        self::assertNotNull($response->body);
-        self::assertNotNull($response->body->Facets);
-        self::assertNotNull($response->body->Facets->Items);
-        self::assertNotEmpty($response->body->Facets->Items);
-        self::assertEquals("Brand", $response->body->Facets->Items[0]->field);
+        self::assertNotNull($response);
+        self::assertNotNull($response->Facets);
+        self::assertNotNull($response->Facets->Items);
+        self::assertNotEmpty($response->Facets->Items);
+        self::assertEquals(FacetingField::SalesPrice, $response->Facets->Items[0]->Field);
     }
 }
