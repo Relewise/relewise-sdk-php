@@ -98,7 +98,7 @@ namespace Relewise\Models\DTO;
 use DateTime;
 
 """);
-    writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {PhpType(type)}{(type.BaseType != typeof(object) && type.BaseType is { } baseType ? $" extends {PhpType(baseType)}" : "")}");
+    writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {PhpType(type)}{(type.BaseType != typeof(object) && type.BaseType is { } baseType ? $" extends {PhpType(baseType).Replace("?", "")}" : "")}");
     writer.WriteLine("{");
     writer.Indent++;
     if (type.BaseType != typeof(object) && type.BaseType is { } extended && extended.IsAbstract)
@@ -195,7 +195,9 @@ void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, (Type,
 
         var derivedTypes = assembly
             .GetTypes()
-            .Where(derivingType => derivingType.IsAssignableTo(type) && !derivingType.IsGenericType)
+            .Where(derivingType => derivingType.IsAssignableTo(type)
+                                   && !derivingType.IsGenericType
+                                   && !derivingType.IsAbstract)
             .DistinctBy(derivingType => PhpType(derivingType))
             .ToArray();
         writer.WriteLine("$type = $arr[\"\\$type\"];");
@@ -399,7 +401,7 @@ string? AddDerivedTypeDefinitions(Type type)
     }
     var derivedTypes = assembly
         .GetTypes()
-        .Where(derivingType => derivingType.IsAssignableTo(type) && !derivingType.IsGenericType)
+        .Where(derivingType => derivingType != type && derivingType.IsAssignableTo(type) && !derivingType.IsGenericType)
         .Distinct()
         .ToArray();
     if (derivedTypes.Count() is 0)
