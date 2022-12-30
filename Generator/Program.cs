@@ -428,7 +428,6 @@ void GenerateClientClass(Type clientType, string[] clientMethodNames)
                        && info.GetParameters().Length is 1
                        && !info.GetParameters().First().ParameterType.IsGenericType
                        && info.GetParameters().First().ParameterType.IsClass
-                       && info.GetParameters().First().ParameterType.Name.EndsWith("Request")
         )
         .SelectMany(info => info.GetParameters().First().ParameterType.IsAbstract
             ? assembly
