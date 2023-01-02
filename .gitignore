@@ -371,3 +371,4 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+/tests/env
