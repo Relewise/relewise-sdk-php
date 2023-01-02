@@ -43,8 +43,8 @@ class SearchTest extends TestCase
         $response = $searcher->productSearchRequest($productSearch);
 
         self::assertNotNull($response);
-        self::assertGreaterThan(0, $response->Hits);
-        self::assertNotEmpty($response->Results);
+        self::assertGreaterThan(0, $response->hits);
+        self::assertNotEmpty($response->results);
     }
 
     public function testProductCategorySearchWithNoConditions(): void
@@ -75,7 +75,7 @@ class SearchTest extends TestCase
         $response = $searcher->productCategorySearchRequest($productCategorySearch);
 
         self::assertNotNull($response);
-        self::assertGreaterThan(0, $response->Hits);
-        self::assertNotEmpty($response->Results);
+        self::assertGreaterThan(0, $response->hits);
+        self::assertNotEmpty($response->results);
     }
 }

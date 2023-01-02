@@ -44,9 +44,9 @@ class BatchedProductRecommendationTest extends TestCase
         $response = $recommender->productRecommendationRequestCollection($productRecommendationRequestCollection);
 
         self::assertNotNull($response);
-        self::assertNotEmpty($response->Responses);
-        self::assertEquals(2, count($response->Responses));
-        self::assertNotEmpty($response->Responses[0]->Recommendations);
-        self::assertNotEmpty($response->Responses[1]->Recommendations);
+        self::assertNotEmpty($response->responses);
+        self::assertEquals(2, count($response->responses));
+        self::assertNotEmpty($response->responses[0]->recommendations);
+        self::assertNotEmpty($response->responses[1]->recommendations);
     }
 }

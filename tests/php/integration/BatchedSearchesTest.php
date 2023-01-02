@@ -35,6 +35,6 @@ class BatchedSearchesTest extends TestCase
         $response = $searcher->searchRequestCollection($searchRequestCollection);
 
         self::assertNotNull($response);
-        self::assertNotEmpty($response->Responses);
+        self::assertNotEmpty($response->responses);
     }
 }

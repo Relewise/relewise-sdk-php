@@ -38,7 +38,7 @@ class ProductRecommendationsTest extends TestCase
         $response = $recommender->purchasedWithProductRequest($purchasedWtihProduct);
 
         self::assertNotNull($response);
-        self::assertNotEmpty($response->Recommendations);
+        self::assertNotEmpty($response->recommendations);
     }
 
     public function testProductsViewedAfterViewingProduct(): void
@@ -58,7 +58,7 @@ class ProductRecommendationsTest extends TestCase
         $response = $recommender->productsViewedAfterViewingProductRequest($productsViewedAfterViewingProduct);
 
         self::assertNotNull($response);
-        self::assertNotEmpty($response->Recommendations);
+        self::assertNotEmpty($response->recommendations);
     }
 
     public function testProductsViewedAfterViewingProductWithAllConditions(): void
@@ -107,6 +107,6 @@ class ProductRecommendationsTest extends TestCase
         $response = $recommender->productsViewedAfterViewingProductRequest($productsViewedAfterViewingProduct);
 
         self::assertNotNull($response);
-        self::assertEmpty($response->Recommendations);
+        self::assertEmpty($response->recommendations);
     }
 }

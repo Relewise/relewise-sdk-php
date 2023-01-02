@@ -38,7 +38,7 @@ class FiltersTest extends TestCase
         $response = $searcher->productSearchRequest($productSearchRequest);
 
         self::assertNotNull($response);
-        self::assertEmpty($response->Results);
+        self::assertEmpty($response->results);
     }
 
     public function testProductIdFilter(): void
@@ -65,6 +65,6 @@ class FiltersTest extends TestCase
         $response = $searcher->productSearchRequest($productSearchRequest);
 
         self::assertNotNull($response);
-        self::assertEquals(1, count($response->Results));
+        self::assertEquals(1, count($response->results));
     }
 }

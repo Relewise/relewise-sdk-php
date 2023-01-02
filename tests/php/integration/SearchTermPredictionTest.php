@@ -35,6 +35,6 @@ class SearchTermPredictionTest extends TestCase
         $response = $searcher->searchTermPredictionRequest($searchTermPrediction);
 
         self::assertNotNull($response);
-        self::assertNotEmpty($response->Predictions);
+        self::assertNotEmpty($response->predictions);
     }
 }

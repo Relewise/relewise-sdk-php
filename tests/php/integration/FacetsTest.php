@@ -47,11 +47,11 @@ class FacetsTest extends TestCase
         $response = $searcher->productSearchRequest($productSearch);
 
         self::assertNotNull($response);
-        self::assertNotNull($response->Facets);
-        self::assertNotNull($response->Facets->Items);
-        self::assertNotEmpty($response->Facets->Items);
-        self::assertEquals("Relewise\Models\DTO\PriceRangeFacetResult", get_class($response->Facets->Items[0]));
-        self::assertEquals(FacetingField::SalesPrice, $response->Facets->Items[0]->Field);
+        self::assertNotNull($response->facets);
+        self::assertNotNull($response->facets->items);
+        self::assertNotEmpty($response->facets->items);
+        self::assertEquals("Relewise\Models\DTO\PriceRangeFacetResult", get_class($response->facets->items[0]));
+        self::assertEquals(FacetingField::SalesPrice, $response->facets->items[0]->field);
     }
 
     public function testBrandFacet(): void
@@ -79,11 +79,11 @@ class FacetsTest extends TestCase
         $response = $searcher->productSearchRequest($productSearch);
 
         self::assertNotNull($response);
-        self::assertNotNull($response->Facets);
-        self::assertNotNull($response->Facets->Items);
-        self::assertNotEmpty($response->Facets->Items);
-        self::assertEquals("Relewise\Models\DTO\BrandFacetResult", get_class($response->Facets->Items[0]));
-        self::assertEquals(FacetingField::Brand, $response->Facets->Items[0]->Field);
+        self::assertNotNull($response->facets);
+        self::assertNotNull($response->facets->items);
+        self::assertNotEmpty($response->facets->items);
+        self::assertEquals("Relewise\Models\DTO\BrandFacetResult", get_class($response->facets->items[0]));
+        self::assertEquals(FacetingField::Brand, $response->facets->items[0]->field);
     }
 
     public function testProductDataFacet(): void
@@ -113,11 +113,11 @@ class FacetsTest extends TestCase
         $response = $searcher->productSearchRequest($productSearch);
 
         self::assertNotNull($response);
-        self::assertNotNull($response->Facets);
-        self::assertNotNull($response->Facets->Items);
-        self::assertNotEmpty($response->Facets->Items);
-        self::assertEquals("Relewise\Models\DTO\ProductDataStringValueFacetResult", get_class($response->Facets->Items[0]));
-        self::assertEquals(FacetingField::Data, $response->Facets->Items[0]->Field);
+        self::assertNotNull($response->facets);
+        self::assertNotNull($response->facets->items);
+        self::assertNotEmpty($response->facets->items);
+        self::assertEquals("Relewise\Models\DTO\ProductDataStringValueFacetResult", get_class($response->facets->items[0]));
+        self::assertEquals(FacetingField::Data, $response->facets->items[0]->field);
     }
 
     public function testCategoryFacet(): void
@@ -146,10 +146,10 @@ class FacetsTest extends TestCase
         $response = $searcher->productSearchRequest($productSearch);
 
         self::assertNotNull($response);
-        self::assertNotNull($response->Facets);
-        self::assertNotNull($response->Facets->Items);
-        self::assertNotEmpty($response->Facets->Items);
-        self::assertEquals("Relewise\Models\DTO\CategoryFacetResult", get_class($response->Facets->Items[0]));
-        self::assertEquals(FacetingField::Category, $response->Facets->Items[0]->Field);
+        self::assertNotNull($response->facets);
+        self::assertNotNull($response->facets->items);
+        self::assertNotEmpty($response->facets->items);
+        self::assertEquals("Relewise\Models\DTO\CategoryFacetResult", get_class($response->facets->items[0]));
+        self::assertEquals(FacetingField::Category, $response->facets->items[0]->field);
     }
 }
