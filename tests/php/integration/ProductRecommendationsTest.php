@@ -75,8 +75,6 @@ class ProductRecommendationsTest extends TestCase
                     ->withItems(
                         ProductDataFilter::create()
                             ->withKey("ShortDescription")
-                            // ->withFilterOutIfKeyIsNotFound(true)
-                            // ->withMustMatchAllConditions(true)
                             ->withConditions(
                                 ValueConditionCollection::create()
                                     ->withItems(

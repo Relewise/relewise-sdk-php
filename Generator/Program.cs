@@ -27,7 +27,7 @@ HashSet<Type> TypeDefintions = new();
 HashSet<string> GeneratedTypeNames = new();
 HashSet<Type> MissingTypeDefintions = new();
 
-Queue<Type> TypesToGenerate = new ();
+Queue<Type> TypesToGenerate = new();
 
 foreach (var requestType in assembly
              .GetTypes()
@@ -113,7 +113,7 @@ use DateTime;
                                                                 && (info.DeclaringType?.IsAbstract == type.IsAbstract)).ToArray();
     foreach (var propertyInfo in settableProperties)
     {
-        writer.WriteLine($"public {PhpType(propertyInfo.PropertyType)} ${ToCamelCase(propertyInfo.Name)};");
+        WriteProperty(writer, type, propertyInfo);
     }
 
     var parameterInformation = settableProperties.Select(info => (type: info.PropertyType, propertyTypeName: PhpType(info.PropertyType), propertyName: info.Name, lowerCaseName: $"{ToCamelCase(info.Name)}")).ToArray();
@@ -122,12 +122,12 @@ use DateTime;
 
     foreach (var (propertyType, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
     {
-        var parameterType = propertyTypeName is "array" ? propertyType.IsGenericType && propertyType.GenericTypeArguments is [var arrayType] ? PhpType(arrayType) + " ..." : "..." : propertyTypeName;
+        var parameterType = propertyTypeName is "array" ? propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>) && propertyType.GenericTypeArguments is [var listType] ? PhpType(listType) + " ..." : propertyType.IsArray ? PhpType(propertyType.GetElementType()!) + " ..." : "..." : propertyTypeName;
         writer.WriteLine($"function with{propertyName}({parameterType} ${lowerCaseName})");
         writer.WriteLine("{");
         writer.Indent++;
-        writer.WriteLine($"$this->{lowerCaseName} = ${lowerCaseName};");
-        writer.WriteLine($"return $this;");
+        writer.WriteLine($"$this->{(propertyName == "Type" ? propertyName : lowerCaseName)} = ${lowerCaseName};");
+        writer.WriteLine("return $this;");
         writer.Indent--;
         writer.WriteLine("}");
     }
@@ -183,6 +183,11 @@ use DateTime;
     WriteHydrationAndCreatorMethod(writer, type, Array.Empty<(Type, string, string, string)>());
     writer.Indent--;
     writer.WriteLine("}");
+}
+
+void WriteProperty(IndentedTextWriter writer, Type type, PropertyInfo propertyInfo)
+{
+    writer.WriteLine($"public {PhpType(propertyInfo.PropertyType)} ${(propertyInfo.Name == "Type" ? propertyInfo.Name : ToCamelCase(propertyInfo.Name))};");
 }
 
 #endregion
@@ -256,7 +261,7 @@ string? AddDerivedTypeDefinitions(Type type)
     {
         return null;
     }
-    var derivedTypes = assembly
+    var derivedTypes = assembly!
         .GetTypes()
         .Where(derivingType => derivingType != type && derivingType.IsAssignableTo(type) && !derivingType.IsGenericType)
         .Distinct()
@@ -277,7 +282,7 @@ string? AddDerivedTypeDefinitions(Type type)
 
 #region Hydration Generation
 
-void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, (Type, string, string, string)[] parameterInformation)
+void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, (Type type, string propertyTypeName, string propertyName, string lowerCaseName)[] parameterInformation)
 {
     if (type.IsAbstract || type.IsInterface)
     {
@@ -313,9 +318,9 @@ void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, (Type,
         {
             writer.WriteLine($"$result = {PhpType(abstractBase).Replace("?", "")}::hydrateBase($result, $arr);");
         }
-        foreach (var (propertyType, _, _, lowerCaseName) in parameterInformation)
+        foreach (var (propertyType, _, propertyName, lowerCaseName) in parameterInformation)
         {
-            WriteHydrationSetter(writer, propertyType, lowerCaseName);
+            WriteHydrationSetter(writer, propertyType, propertyName, lowerCaseName);
         }
         writer.WriteLine("return $result;");
         writer.Indent--;
@@ -327,7 +332,20 @@ void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, (Type,
         writer.WriteLine($"public static function create() : {typeName}");
         writer.WriteLine("{");
         writer.Indent++;
-        writer.WriteLine($"return new {typeName}();");
+        writer.WriteLine($"$result = new {typeName}();");
+
+        var defaultValueParameterizedProperties = type.GetConstructors()
+            .SelectMany(constructor => constructor.GetParameters())
+            .Where(parameter => parameter.HasDefaultValue &&
+                                type.GetProperties().Any(property => ToCamelCase(property.Name) == parameter.Name)
+                                && parameter.DefaultValue is not null)
+            .DistinctBy(parameter => parameter.Name);
+        foreach (var parameter in defaultValueParameterizedProperties)
+        {
+            writer.WriteLine($"$result->{parameter.Name} = {System.Text.Json.JsonSerializer.Serialize(parameter.DefaultValue)};");
+        }
+
+        writer.WriteLine("return $result;");
         writer.Indent--;
         writer.WriteLine("}");
 
@@ -342,9 +360,9 @@ void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, (Type,
         {
             writer.WriteLine($"$result = new {typeName}();");
         }
-        foreach (var (propertyType, _, _, lowerCaseName) in parameterInformation)
+        foreach (var (propertyType, _, propertyName, lowerCaseName) in parameterInformation)
         {
-            WriteHydrationSetter(writer, propertyType, lowerCaseName);
+            WriteHydrationSetter(writer, propertyType, propertyName, lowerCaseName);
         }
         writer.WriteLine($"return $result;");
         writer.Indent--;
@@ -352,49 +370,49 @@ void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, (Type,
     }
 }
 
-void WriteHydrationSetter(IndentedTextWriter writer, Type propertyType, string lowerCaseName)
+void WriteHydrationSetter(IndentedTextWriter writer, Type propertyType, string propertyName, string lowerCaseName)
 {
     writer.WriteLine($"if (array_key_exists(\"{lowerCaseName}\", $arr))");
     writer.WriteLine("{");
     writer.Indent++;
     if (propertyType.IsArray && propertyType.GetElementType() is { } elementType)
     {
-        WriteArrayLikeHydrationSetter(writer, elementType, lowerCaseName);
+        WriteArrayLikeHydrationSetter(writer, elementType, propertyName, lowerCaseName);
     }
     else if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>))
     {
-        WriteArrayLikeHydrationSetter(writer, propertyType.GenericTypeArguments.Single(), lowerCaseName);
+        WriteArrayLikeHydrationSetter(writer, propertyType.GenericTypeArguments.Single(), propertyName, lowerCaseName);
     }
     else if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(Dictionary<,>))
     {
-        WriteDictionaryHydrationSetter(writer, propertyType.GenericTypeArguments[0], propertyType.GenericTypeArguments[1], lowerCaseName);
+        WriteDictionaryHydrationSetter(writer, propertyType.GenericTypeArguments[0], propertyType.GenericTypeArguments[1], propertyName, lowerCaseName);
     }
     else
     {
-        writer.WriteLine($"$result->{lowerCaseName} = {HydrationExpression(propertyType, $"$arr[\"{lowerCaseName}\"]")};");
+        writer.WriteLine($"$result->{(propertyName == "Type" ? propertyName : lowerCaseName)} = {HydrationExpression(propertyType, $"$arr[\"{lowerCaseName}\"]")};");
     }
     writer.Indent--;
     writer.WriteLine("}");
 }
 
-void WriteArrayLikeHydrationSetter(IndentedTextWriter writer, Type elementType, string lowerCaseName)
+void WriteArrayLikeHydrationSetter(IndentedTextWriter writer, Type elementType, string propertyName, string lowerCaseName)
 {
     writer.WriteLine($"$result->{lowerCaseName} = array();");
     writer.WriteLine($"foreach($arr[\"{lowerCaseName}\"] as &$value)");
     writer.WriteLine("{");
     writer.Indent++;
-    writer.WriteLine($"array_push($result->{lowerCaseName}, {HydrationExpression(elementType, "$value")});");
+    writer.WriteLine($"array_push($result->{(propertyName == "Type" ? propertyName : lowerCaseName)}, {HydrationExpression(elementType, "$value")});");
     writer.Indent--;
     writer.WriteLine("}");
 }
 
-void WriteDictionaryHydrationSetter(IndentedTextWriter writer, Type keyType, Type valueType, string lowerCaseName)
+void WriteDictionaryHydrationSetter(IndentedTextWriter writer, Type keyType, Type valueType, string propertyName, string lowerCaseName)
 {
     writer.WriteLine($"$result->{lowerCaseName} = array();");
     writer.WriteLine($"foreach($arr[\"{lowerCaseName}\"] as $key => $value)");
     writer.WriteLine("{");
     writer.Indent++;
-    writer.WriteLine($"$result->{lowerCaseName}[{HydrationExpression(keyType, "$key")}] = {HydrationExpression(valueType, "$value")};");
+    writer.WriteLine($"$result->{(propertyName == "Type" ? propertyName : lowerCaseName)}[{HydrationExpression(keyType, "$key")}] = {HydrationExpression(valueType, "$value")};");
     writer.Indent--;
     writer.WriteLine("}");
 }
@@ -455,7 +473,8 @@ void GenerateClientClass(Type clientType, string[] clientMethodNames)
                     parameterType: PhpType(info.GetParameters().First().ParameterType),
                     parameterName: info.GetParameters().First().Name!,
                     returnType: info.ReturnType)
-            });
+            })
+        .ToArray();
 
     writer.WriteLine($"""
 <?php declare(strict_types=1);
