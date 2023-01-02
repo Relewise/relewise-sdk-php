@@ -20,17 +20,17 @@ class GeneratedRequestsTest extends TestCase
         $tracker = new Tracker($datasetId, $apiKey);
 
         $money = new Money();
-        $money->Amount = 100;
-        $money->Currency = new Currency();
-        $money->Currency->Value = "DKK";
+        $money->amount = 100;
+        $money->currency = new Currency();
+        $money->currency->value = "DKK";
 
         $order = new Order();
-        $order->User = UserFactory::byTemporaryId("t-Id");
-        $order->Subtotal = $money;
-        $order->OrderNumber = "1";
+        $order->user = UserFactory::byTemporaryId("t-Id");
+        $order->subtotal = $money;
+        $order->orderNumber = "1";
 
         $trackOrderRequest = new TrackOrderRequest();
-        $trackOrderRequest->Order = $order;
+        $trackOrderRequest->order = $order;
 
         $response = $tracker->request('TrackOrderRequest', $trackOrderRequest);
 

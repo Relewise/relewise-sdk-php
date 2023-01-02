@@ -51,6 +51,6 @@ class DataObjectsTest extends TestCase
         self::assertNotNull($response);
         // TODO: This test should actually return 0 as shown in the original test, but it sounds like it is a work in progress to have these filters actually apply.
         // Context: https://github.com/Relewise/relewise-sdk-javascript/blob/main/lib/tests/integration-tests/data-objects.test.ts-disabled#L17
-        self::assertEquals(0, $response->Hits);
+        self::assertEquals(0, $response->hits);
     }
 }

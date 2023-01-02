@@ -27,7 +27,7 @@ HashSet<Type> TypeDefintions = new();
 HashSet<string> GeneratedTypeNames = new();
 HashSet<Type> MissingTypeDefintions = new();
 
-var typesToGenerate = new Queue<Type>();
+Queue<Type> TypesToGenerate = new ();
 
 foreach (var requestType in assembly
              .GetTypes()
@@ -43,9 +43,9 @@ foreach (var responseType in assembly
     AddTypeDefinition(responseType);
 }
 
-while (typesToGenerate.Count > 0)
+while (TypesToGenerate.Count > 0)
 {
-    var type = typesToGenerate.Dequeue();
+    var type = TypesToGenerate.Dequeue();
     if (type.IsClass && !(type.IsAbstract && type.IsGenericType && type.GenericTypeArguments.Length == 0))
     {
         WriteClass(type);
@@ -193,7 +193,7 @@ string AddTypeDefinition(Type type)
 {
     if (TypeDefintions.Add(type))
     {
-        typesToGenerate.Enqueue(type);
+        TypesToGenerate.Enqueue(type);
         AddDerivedTypeDefinitions(type);
     }
     return type.Name.Replace("`1", "").Replace("`2", "");
@@ -413,7 +413,7 @@ string HydrationExpression(Type type, string jsonValue)
     {
         return $"new DateTime({jsonValue})";
     }
-    if (TypeDefintions.Contains(type) || typesToGenerate.Contains(type))
+    if (TypeDefintions.Contains(type) || TypesToGenerate.Contains(type))
     {
         return $"{PhpType(type).Replace("?", "")}::hydrate({jsonValue})";
     }
