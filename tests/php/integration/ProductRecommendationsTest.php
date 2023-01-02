@@ -13,6 +13,7 @@ use Relewise\Models\DTO\Language;
 use Relewise\Models\DTO\Money;
 use Relewise\Models\DTO\ProductAndVariantId;
 use Relewise\Models\DTO\ProductDataFilter;
+use Relewise\Models\DTO\ProductRecommendationRequestSettings;
 use Relewise\Models\DTO\ProductsViewedAfterViewingProductRequest;
 use Relewise\Models\DTO\PurchasedWithProductRequest;
 use Relewise\Models\DTO\ValueConditionCollection;
@@ -74,6 +75,8 @@ class ProductRecommendationsTest extends TestCase
                     ->withItems(
                         ProductDataFilter::create()
                             ->withKey("ShortDescription")
+                            // ->withFilterOutIfKeyIsNotFound(true)
+                            // ->withMustMatchAllConditions(true)
                             ->withConditions(
                                 ValueConditionCollection::create()
                                     ->withItems(
@@ -104,7 +107,6 @@ class ProductRecommendationsTest extends TestCase
         $response = $recommender->productsViewedAfterViewingProductRequest($productsViewedAfterViewingProduct);
 
         self::assertNotNull($response);
-        // TODO: From the test that this was inspired from we would expect the opposite: https://github.com/Relewise/relewise-sdk-javascript/blob/main/lib/tests/integration-tests/productRecommendations.integration.test.ts
-        self::assertNotEmpty($response->Recommendations);
+        self::assertEmpty($response->Recommendations);
     }
 }

@@ -18,10 +18,7 @@ jobs:
           dotnet-version: '7.0.x'
 
       - name: Generate PHP classes
-        run: |
-          mkdir src/Models
-          mkdir src/Models/DTO
-          dotnet run --project Generator src
+        run: generate.sh
 
       - name: PHPUnit Tests
         uses: php-actions/phpunit@v2
