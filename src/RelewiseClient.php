@@ -19,7 +19,7 @@ abstract class RelewiseClient {
     {
         return $this->client->post(
             $this->createRequestUrl($this->serverUrl, $this->datasetId, $this->apiVersion, $endpoint), 
-            str_replace("\"type\":", "\"\$type\":", json_encode($request)),
+            str_replace("\"typeDefinition\":", "\"\$type\":", json_encode($request)),
             array("Authorization: ApiKey " . $this->apiKey, "Content-Type: application/json")
         );
     }

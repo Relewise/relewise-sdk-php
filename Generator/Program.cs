@@ -97,13 +97,9 @@ use DateTime;
     writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {PhpType(type)}{(type.BaseType != typeof(object) && type.BaseType is { } baseType ? $" extends {PhpType(baseType).Replace("?", "")}" : "")}");
     writer.WriteLine("{");
     writer.Indent++;
-    if (type.BaseType != typeof(object) && type.BaseType is { } extended && extended.IsAbstract)
+    if (type.BaseType != typeof(object) && type.BaseType is { } extended && extended.IsAbstract || type.IsAbstract)
     {
-        writer.WriteLine($"public string $type = \"{type.FullName}, {type.Assembly.FullName.Split(",")[0]}\";");
-    }
-    else if (type.IsAbstract)
-    {
-        writer.WriteLine($"public string $type = \"{type.FullName}, {type.Assembly.FullName.Split(",")[0]}\";");
+        writer.WriteLine($"public string $typeDefinition = \"{type.FullName}, {type.Assembly.FullName.Split(",")[0]}\";");
     }
     var settableProperties = type.GetProperties().Where(info => info.MemberType is MemberTypes.Property
                                                                 && info.GetIndexParameters().Length is 0
@@ -126,7 +122,7 @@ use DateTime;
         writer.WriteLine($"function with{propertyName}({parameterType} ${lowerCaseName})");
         writer.WriteLine("{");
         writer.Indent++;
-        writer.WriteLine($"$this->{(propertyName == "Type" ? propertyName : lowerCaseName)} = ${lowerCaseName};");
+        writer.WriteLine($"$this->{lowerCaseName} = ${lowerCaseName};");
         writer.WriteLine("return $this;");
         writer.Indent--;
         writer.WriteLine("}");
@@ -187,7 +183,7 @@ use DateTime;
 
 void WriteProperty(IndentedTextWriter writer, Type type, PropertyInfo propertyInfo)
 {
-    writer.WriteLine($"public {PhpType(propertyInfo.PropertyType)} ${(propertyInfo.Name == "Type" ? propertyInfo.Name : ToCamelCase(propertyInfo.Name))};");
+    writer.WriteLine($"public {PhpType(propertyInfo.PropertyType)} ${ToCamelCase(propertyInfo.Name)};");
 }
 
 #endregion
@@ -389,7 +385,7 @@ void WriteHydrationSetter(IndentedTextWriter writer, Type propertyType, string p
     }
     else
     {
-        writer.WriteLine($"$result->{(propertyName == "Type" ? propertyName : lowerCaseName)} = {HydrationExpression(propertyType, $"$arr[\"{lowerCaseName}\"]")};");
+        writer.WriteLine($"$result->{lowerCaseName} = {HydrationExpression(propertyType, $"$arr[\"{lowerCaseName}\"]")};");
     }
     writer.Indent--;
     writer.WriteLine("}");
@@ -401,7 +397,7 @@ void WriteArrayLikeHydrationSetter(IndentedTextWriter writer, Type elementType, 
     writer.WriteLine($"foreach($arr[\"{lowerCaseName}\"] as &$value)");
     writer.WriteLine("{");
     writer.Indent++;
-    writer.WriteLine($"array_push($result->{(propertyName == "Type" ? propertyName : lowerCaseName)}, {HydrationExpression(elementType, "$value")});");
+    writer.WriteLine($"array_push($result->{lowerCaseName}, {HydrationExpression(elementType, "$value")});");
     writer.Indent--;
     writer.WriteLine("}");
 }
@@ -412,7 +408,7 @@ void WriteDictionaryHydrationSetter(IndentedTextWriter writer, Type keyType, Typ
     writer.WriteLine($"foreach($arr[\"{lowerCaseName}\"] as $key => $value)");
     writer.WriteLine("{");
     writer.Indent++;
-    writer.WriteLine($"$result->{(propertyName == "Type" ? propertyName : lowerCaseName)}[{HydrationExpression(keyType, "$key")}] = {HydrationExpression(valueType, "$value")};");
+    writer.WriteLine($"$result->{lowerCaseName}[{HydrationExpression(keyType, "$key")}] = {HydrationExpression(valueType, "$value")};");
     writer.Indent--;
     writer.WriteLine("}");
 }
