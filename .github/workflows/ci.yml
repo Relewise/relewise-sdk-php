@@ -18,7 +18,7 @@ jobs:
           dotnet-version: '7.0.x'
 
       - name: Generate PHP classes
-        run: generate.sh
+        run: ./generate.sh
 
       - name: PHPUnit Tests
         uses: php-actions/phpunit@v2
