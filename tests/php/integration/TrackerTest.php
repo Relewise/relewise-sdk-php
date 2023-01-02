@@ -28,7 +28,6 @@ class TrackerTest extends TestCase
             );
 
             $response = $tracker->trackProductView($productViewRequest);
-            self::assertEquals(200, $response->code);
-            self::assertEquals(null, $response->body);
+            self::assertNull($response);
     }
 }
