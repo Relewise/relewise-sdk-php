@@ -44,7 +44,7 @@ class FacetsTest extends TestCase
                 UserFactory::anonymous()
             );
 
-        $response = $searcher->productSearchRequest($productSearch);
+        $response = $searcher->productSearch($productSearch);
 
         self::assertNotNull($response);
         self::assertNotNull($response->facets);
@@ -76,7 +76,7 @@ class FacetsTest extends TestCase
                 UserFactory::anonymous()
             );
 
-        $response = $searcher->productSearchRequest($productSearch);
+        $response = $searcher->productSearch($productSearch);
 
         self::assertNotNull($response);
         self::assertNotNull($response->facets);
@@ -110,7 +110,7 @@ class FacetsTest extends TestCase
                 UserFactory::anonymous()
             );
 
-        $response = $searcher->productSearchRequest($productSearch);
+        $response = $searcher->productSearch($productSearch);
 
         self::assertNotNull($response);
         self::assertNotNull($response->facets);
@@ -143,7 +143,7 @@ class FacetsTest extends TestCase
                 UserFactory::anonymous()
             );
 
-        $response = $searcher->productSearchRequest($productSearch);
+        $response = $searcher->productSearch($productSearch);
 
         self::assertNotNull($response);
         self::assertNotNull($response->facets);

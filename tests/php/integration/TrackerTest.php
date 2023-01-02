@@ -27,8 +27,8 @@ class TrackerTest extends TestCase
                     ->withVariant(ProductVariant::create()->withId("v-1"))
             );
 
-        $response = $tracker->trackProductViewRequest($productViewRequest);
-        self::assertEquals(200, $response->code);
-        self::assertEquals(null, $response->body);
+            $response = $tracker->trackProductView($productViewRequest);
+            self::assertEquals(200, $response->code);
+            self::assertEquals(null, $response->body);
     }
 }

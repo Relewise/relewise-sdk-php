@@ -32,7 +32,7 @@ class BatchedSearchesTest extends TestCase
             ->withDisplayedAtLocation("integration test")
             ->withUser(UserFactory::anonymous());
 
-        $response = $searcher->searchRequestCollection($searchRequestCollection);
+        $response = $searcher->batchSearch($searchRequestCollection);
 
         self::assertNotNull($response);
         self::assertNotEmpty($response->responses);

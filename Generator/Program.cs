@@ -480,7 +480,8 @@ use Relewise\Infrastructure\HttpClient\Response;
     writer.Indent++;
     foreach (var method in clientMethods.DistinctBy(method => method.parameterType))
     {
-        writer.WriteLine($"public function {ToCamelCase(method.methodName)}({method.parameterType} ${method.parameterName}) : {(method.returnType != typeof(void) ? $"?{PhpType(method.returnType)}" : "Response")}");
+        var methodName = method.methodName.EndsWith("Request") ? ToCamelCase(method.methodName[..^7]) : method.methodName.EndsWith("RequestCollection") ? $"batch{method.methodName[..^17]}" : ToCamelCase(method.methodName);
+        writer.WriteLine($"public function {methodName}({method.parameterType} ${method.parameterName}) : {(method.returnType != typeof(void) ? $"?{PhpType(method.returnType)}" : "Response")}");
         writer.WriteLine("{");
         writer.Indent++;
         if (method.returnType == typeof(void))

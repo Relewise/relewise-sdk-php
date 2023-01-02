@@ -32,7 +32,7 @@ class SearchTermPredictionTest extends TestCase
             ->withDisplayedAtLocation("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
-        $response = $searcher->searchTermPredictionRequest($searchTermPrediction);
+        $response = $searcher->searchTermPrediction($searchTermPrediction);
 
         self::assertNotNull($response);
         self::assertNotEmpty($response->predictions);

@@ -44,7 +44,7 @@ class DataObjectsTest extends TestCase
             ->withDisplayedAtLocation("integration test - data object")
             ->withUser(UserFactory::anonymous());
 
-        $response = $searcher->productSearchRequest($productSearch);
+        $response = $searcher->productSearch($productSearch);
 
         fwrite(STDOUT, json_encode($response));
 

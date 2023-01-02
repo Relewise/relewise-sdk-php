@@ -44,7 +44,7 @@ class BatchedContentRecommendationTest extends TestCase
                     ->withUser(UserFactory::byTemporaryId("t-Id"))
             );
 
-        $response = $recommender->contentRecommendationRequestCollection($contentRecommendationRequestCollection);
+        $response = $recommender->batchContentRecommendation($contentRecommendationRequestCollection);
 
         self::assertNotNull($response);
         self::assertNotEmpty($response->responses);

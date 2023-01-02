@@ -40,7 +40,7 @@ class SearchTest extends TestCase
             ->withDisplayedAtLocation("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
-        $response = $searcher->productSearchRequest($productSearch);
+        $response = $searcher->productSearch($productSearch);
 
         self::assertNotNull($response);
         self::assertGreaterThan(0, $response->hits);
@@ -72,7 +72,7 @@ class SearchTest extends TestCase
             ->withDisplayedAtLocation("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
-        $response = $searcher->productCategorySearchRequest($productCategorySearch);
+        $response = $searcher->productCategorySearch($productCategorySearch);
 
         self::assertNotNull($response);
         self::assertGreaterThan(0, $response->hits);

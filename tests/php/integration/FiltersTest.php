@@ -35,7 +35,7 @@ class FiltersTest extends TestCase
             ->withDisplayedAtLocation("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
-        $response = $searcher->productSearchRequest($productSearchRequest);
+        $response = $searcher->productSearch($productSearchRequest);
 
         self::assertNotNull($response);
         self::assertEmpty($response->results);
@@ -62,7 +62,7 @@ class FiltersTest extends TestCase
             ->withDisplayedAtLocation("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
-        $response = $searcher->productSearchRequest($productSearchRequest);
+        $response = $searcher->productSearch($productSearchRequest);
 
         self::assertNotNull($response);
         self::assertEquals(1, count($response->results));

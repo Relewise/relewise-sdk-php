@@ -38,10 +38,9 @@ class BatchedProductRecommendationTest extends TestCase
                     ->withCurrency(Currency::create()->withValue("USD"))
                     ->withDisplayedAtLocationType("batched integration test")
                     ->withUser(UserFactory::byTemporaryId("t-Id"))
-            )
-;
+            );
 
-        $response = $recommender->productRecommendationRequestCollection($productRecommendationRequestCollection);
+        $response = $recommender->batchProductRecommendation($productRecommendationRequestCollection);
 
         self::assertNotNull($response);
         self::assertNotEmpty($response->responses);

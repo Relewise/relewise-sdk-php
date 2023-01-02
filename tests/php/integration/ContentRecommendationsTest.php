@@ -26,7 +26,7 @@ class ContentRecommendationsTest extends TestCase
             ->withDisplayedAtLocationType("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
-        $response = $recommender->contentsViewedAfterViewingContentRequest($contentsViewedAfterViewingContent);
+        $response = $recommender->contentsViewedAfterViewingContent($contentsViewedAfterViewingContent);
 
         self::assertNotNull($response);
         self::assertNotEmpty($response->recommendations);
@@ -46,7 +46,7 @@ class ContentRecommendationsTest extends TestCase
             ->withDisplayedAtLocationType("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
-        $response = $recommender->popularContentsRequest($popularContents);
+        $response = $recommender->popularContents($popularContents);
 
         self::assertNotNull($response);
         self::assertNotEmpty($response->recommendations);

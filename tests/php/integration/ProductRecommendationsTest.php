@@ -35,7 +35,7 @@ class ProductRecommendationsTest extends TestCase
             ->withDisplayedAtLocationType("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
-        $response = $recommender->purchasedWithProductRequest($purchasedWtihProduct);
+        $response = $recommender->purchasedWithProduct($purchasedWtihProduct);
 
         self::assertNotNull($response);
         self::assertNotEmpty($response->recommendations);
@@ -55,7 +55,7 @@ class ProductRecommendationsTest extends TestCase
             ->withDisplayedAtLocationType("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
-        $response = $recommender->productsViewedAfterViewingProductRequest($productsViewedAfterViewingProduct);
+        $response = $recommender->productsViewedAfterViewingProduct($productsViewedAfterViewingProduct);
 
         self::assertNotNull($response);
         self::assertNotEmpty($response->recommendations);
@@ -104,7 +104,7 @@ class ProductRecommendationsTest extends TestCase
             ->withDisplayedAtLocationType("integration test Conditions")
             ->withUser(UserFactory::anonymous());
 
-        $response = $recommender->productsViewedAfterViewingProductRequest($productsViewedAfterViewingProduct);
+        $response = $recommender->productsViewedAfterViewingProduct($productsViewedAfterViewingProduct);
 
         self::assertNotNull($response);
         self::assertEmpty($response->recommendations);
