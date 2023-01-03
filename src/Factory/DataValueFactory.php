@@ -4,30 +4,30 @@ namespace Relewise\Factory;
 use Relewise\Models\DTO\DataValue;
 use Relewise\Models\DTO\Language;
 use Relewise\Models\DTO\Money;
-use Relewise\Models\DTO\DataValueTypes;
+use Relewise\Models\DTO\DataValueDataValueTypes;
 
 class DataValueFactory {
     public static function stringDataValue(string $value) : DataValue {
         return DataValue::create()
-            ->withType(DataValueTypes::String)
+            ->withType(DataValueDataValueTypes::String)
             ->withValue($value);
     }
 
     public static function doubleDataValue(float $value) : DataValue {
         return DataValue::create()
-            ->withType(DataValueTypes::Double)
+            ->withType(DataValueDataValueTypes::Double)
             ->withValue($value);
     }
     
     public static function booleanDataValue(bool $value) : DataValue {
         return DataValue::create()
-            ->withType(DataValueTypes::Boolean)
+            ->withType(DataValueDataValueTypes::Boolean)
             ->withValue($value);
     }
 
     public static function multiCurrencyDataValueFromSingleCurrency(Money $money) : DataValue {
         return DataValue::create()
-            ->withType(DataValueTypes::MultiCurrency)
+            ->withType(DataValueDataValueTypes::MultiCurrency)
             ->withValue(
                 array(
                     "\$type" => "Relewise.Client.DataTypes.MultiCurrency, Relewise.Client",
@@ -38,7 +38,7 @@ class DataValueFactory {
 
     public static function multiCurrencyDataValueFromMultipleMoney(Money ... $moneyValues) : DataValue {
         return DataValue::create()
-            ->withType(DataValueTypes::MultiCurrency)
+            ->withType(DataValueDataValueTypes::MultiCurrency)
             ->withValue(
                 array(
                     "\$type" => "Relewise.Client.DataTypes.MultiCurrency, Relewise.Client",
@@ -49,7 +49,7 @@ class DataValueFactory {
 
     public static function stringListDataValue(string ... $values) : DataValue {
         return DataValue::create()
-            ->withType(DataValueTypes::StringList)
+            ->withType(DataValueDataValueTypes::StringList)
             ->withValue(
                 array(
                     "\$type" => "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
@@ -60,7 +60,7 @@ class DataValueFactory {
 
     public static function doubleListDataValue(float ... $values) : DataValue {
         return DataValue::create()
-            ->withType(DataValueTypes::DoubleList)
+            ->withType(DataValueDataValueTypes::DoubleList)
             ->withValue(
                 array(
                     "\$type" => "System.Collections.Generic.List`1[[System.Double, System.Private.CoreLib]], System.Private.CoreLib",
@@ -71,7 +71,7 @@ class DataValueFactory {
 
     public static function booleanListDataValue(bool ... $values) : DataValue {
         return DataValue::create()
-            ->withType(DataValueTypes::BooleanList)
+            ->withType(DataValueDataValueTypes::BooleanList)
             ->withValue(
                 array(
                     "\$type" => "System.Collections.Generic.List`1[[System.Boolean, System.Private.CoreLib]], System.Private.CoreLib",
@@ -82,7 +82,7 @@ class DataValueFactory {
 
     public static function multilingualCollectionDataValueFromLanguageAndCollection(Language $language, string ... $values) : DataValue {
         return DataValue::create()
-            ->withType(DataValueTypes::MultilingualCollection)
+            ->withType(DataValueDataValueTypes::MultilingualCollection)
             ->withValue(
                 array(
                     "\$type" => "Relewise.Client.DataTypes.MultilingualCollection, Relewise.Client",
@@ -97,7 +97,7 @@ class DataValueFactory {
 
     public static function multilingualCollectionDataValueFromMultilingualCollectionValues(array $values) : DataValue {
         return DataValue::create()
-            ->withType(DataValueTypes::MultilingualCollection)
+            ->withType(DataValueDataValueTypes::MultilingualCollection)
             ->withValue(
                 array(
                     "\$type" => "Relewise.Client.DataTypes.MultilingualCollection, Relewise.Client",
@@ -113,7 +113,7 @@ class DataValueFactory {
 
     public static function objectDataValue(mixed $data) : DataValue {
         return DataValue::create()
-            ->withType(DataValueTypes::Object)
+            ->withType(DataValueDataValueTypes::Object)
             ->withValue(
                 array(
                     "\$type" => "Relewise.Client.DataTypes.DataObject, Relewise.Client",
@@ -123,7 +123,7 @@ class DataValueFactory {
 
     public static function objectListDataValue(array $objects) : DataValue {
         return DataValue::create()
-            ->withType(DataValueTypes::ObjectList)
+            ->withType(DataValueDataValueTypes::ObjectList)
             ->withValue(
                 array(
                     "\$type" => "System.Collections.Generic.List`1[[Relewise.Client.DataTypes.DataObject, Relewise.Client]], System.Private.CoreLib",

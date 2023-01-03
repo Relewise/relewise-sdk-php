@@ -22,7 +22,7 @@ use Relewise\Models\DTO\ProductView;
 use Relewise\Models\DTO\SelectedProductPropertiesSettings;
 use Relewise\Models\DTO\TrackProductUpdateRequest;
 use Relewise\Models\DTO\TrackProductViewRequest;
-use Relewise\Models\DTO\UpdateKind;
+use Relewise\Models\DTO\ProductUpdateUpdateKind;
 
 class TrackerTest extends TestCase
 {
@@ -56,7 +56,7 @@ class TrackerTest extends TestCase
         $productUpdate = TrackProductUpdateRequest::create()
             ->withProductUpdate(
                 ProductUpdate::create()
-                    ->withProductUpdateKind(UpdateKind::ReplaceProvidedProperties)
+                    ->withProductUpdateKind(ProductUpdateUpdateKind::ReplaceProvidedProperties)
                     ->withProduct(
                         Product::create()
                             ->withId("p-1")

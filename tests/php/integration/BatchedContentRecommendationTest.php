@@ -10,11 +10,6 @@ use Relewise\Models\DTO\ContentsViewedAfterViewingContentRequest;
 use Relewise\Models\DTO\Currency;
 use Relewise\Models\DTO\Language;
 use Relewise\Models\DTO\PopularContentsRequest;
-use Relewise\Models\DTO\ProductAndVariantId;
-use Relewise\Models\DTO\ProductRecommendationRequestCollection;
-use Relewise\Models\DTO\ProductRecommendationRequestSettings;
-use Relewise\Models\DTO\ProductsViewedAfterViewingProductRequest;
-use Relewise\Models\DTO\PurchasedWithProductRequest;
 use Relewise\Recommender;
 
 class BatchedContentRecommendationTest extends TestCase

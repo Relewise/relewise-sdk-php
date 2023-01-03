@@ -10,7 +10,6 @@ use Relewise\Models\DTO\CategorySelectionStrategy;
 use Relewise\Models\DTO\Currency;
 use Relewise\Models\DTO\DataSelectionStrategy;
 use Relewise\Models\DTO\FacetingField;
-use Relewise\Models\DTO\FacetSettings;
 use Relewise\Models\DTO\Language;
 use Relewise\Models\DTO\PriceRangeFacet;
 use Relewise\Models\DTO\PriceSelectionStrategy;

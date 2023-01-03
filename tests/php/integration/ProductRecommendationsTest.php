@@ -7,13 +7,12 @@ use Relewise\Factory\DataValueFactory;
 use Relewise\Factory\UserFactory;
 use Relewise\Models\DTO\ContainsCondition;
 use Relewise\Models\DTO\Currency;
-use Relewise\Models\DTO\CollectionArgumentEvaluationMode;
+use Relewise\Models\DTO\ContainsConditionCollectionArgumentEvaluationMode;
 use Relewise\Models\DTO\FilterCollection;
 use Relewise\Models\DTO\Language;
 use Relewise\Models\DTO\Money;
 use Relewise\Models\DTO\ProductAndVariantId;
 use Relewise\Models\DTO\ProductDataFilter;
-use Relewise\Models\DTO\ProductRecommendationRequestSettings;
 use Relewise\Models\DTO\ProductsViewedAfterViewingProductRequest;
 use Relewise\Models\DTO\PurchasedWithProductRequest;
 use Relewise\Models\DTO\ValueConditionCollection;
@@ -80,19 +79,19 @@ class ProductRecommendationsTest extends TestCase
                                     ->withItems(
                                         ContainsCondition::create()
                                             ->withValue(DataValueFactory::stringListDataValue("d"))
-                                            ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
+                                            ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                         ContainsCondition::create()
                                             ->withValue(DataValueFactory::booleanListDataValue(true))
-                                            ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
+                                            ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                         ContainsCondition::create()
                                             ->withValue(DataValueFactory::doubleListDataValue(1))
-                                            ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
+                                            ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                         ContainsCondition::create()
                                             ->withValue(DataValueFactory::multilingualCollectionDataValueFromLanguageAndCollection(Language::create()->withValue("en-us"), "d"))
-                                            ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
+                                            ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                         ContainsCondition::create()
                                             ->withValue(DataValueFactory::multiCurrencyDataValueFromSingleCurrency(Money::create()->withCurrency(Currency::create()->withValue("USD"))->withAmount(1)))
-                                            ->withValueCollectionEvaluationMode(CollectionArgumentEvaluationMode::Any),
+                                            ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                     )
                             )
                     )

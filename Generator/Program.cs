@@ -208,6 +208,12 @@ string AddTypeDefinition(Type type)
         TypesToGenerate.Enqueue(type);
         AddDerivedTypeDefinitions(type);
     }
+
+    if (type.IsNested && type.IsEnum)
+    {
+        return type.DeclaringType.Name + type.Name.Replace("`1", "").Replace("`2", "");
+    }
+
     return type.Name.Replace("`1", "").Replace("`2", "");
 }
 
