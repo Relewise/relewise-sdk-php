@@ -4,7 +4,9 @@ using Relewise.Client.Requests;
 using Relewise.Client.Responses;
 using Relewise.Client.Search;
 using System.CodeDom.Compiler;
+using System.Globalization;
 using System.Reflection;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 if (args.Length is not 1)
 {
@@ -118,14 +120,33 @@ use DateTime;
 
     foreach (var (propertyType, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
     {
-        var parameterType = propertyTypeName is "array" ? propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>) && propertyType.GenericTypeArguments is [var listType] ? PhpType(listType) + " ..." : propertyType.IsArray ? PhpType(propertyType.GetElementType()!) + " ..." : "..." : propertyTypeName;
-        writer.WriteLine($"function with{propertyName}({parameterType} ${lowerCaseName})");
-        writer.WriteLine("{");
-        writer.Indent++;
-        writer.WriteLine($"$this->{lowerCaseName} = ${lowerCaseName};");
-        writer.WriteLine("return $this;");
-        writer.Indent--;
-        writer.WriteLine("}");
+        if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(Dictionary<,>) && propertyType.GenericTypeArguments is [var keyType, var valueType])
+        {
+            writer.WriteLine($"function with{propertyName}({PhpType(keyType)} $key, {PhpType(valueType)} $value)");
+            writer.WriteLine("{");
+            writer.Indent++;
+            writer.WriteLine($"if (!isset($this->{lowerCaseName}))");
+            writer.WriteLine("{");
+            writer.Indent++;
+            writer.WriteLine($"$this->{lowerCaseName} = array();");
+            writer.Indent--;
+            writer.WriteLine("}");
+            writer.WriteLine($"$this->{lowerCaseName}[$key] = $value;");
+            writer.WriteLine("return $this;");
+            writer.Indent--;
+            writer.WriteLine("}");
+        }
+        else
+        {
+            var parameterType = propertyTypeName is "array" ? propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>) && propertyType.GenericTypeArguments is [var listType] ? PhpType(listType) + " ..." : propertyType.IsArray ? PhpType(propertyType.GetElementType()!) + " ..." : "..." : propertyTypeName;
+            writer.WriteLine($"function with{propertyName}({parameterType} ${lowerCaseName})");
+            writer.WriteLine("{");
+            writer.Indent++;
+            writer.WriteLine($"$this->{lowerCaseName} = ${lowerCaseName};");
+            writer.WriteLine("return $this;");
+            writer.Indent--;
+            writer.WriteLine("}");
+        }
     }
     writer.Indent--;
     writer.WriteLine("}");
@@ -338,7 +359,7 @@ void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, (Type 
             .DistinctBy(parameter => parameter.Name);
         foreach (var parameter in defaultValueParameterizedProperties)
         {
-            writer.WriteLine($"$result->{parameter.Name} = {System.Text.Json.JsonSerializer.Serialize(parameter.DefaultValue)};");
+            writer.WriteLine($"$result->{parameter.Name} = {LiteralValueExpression(parameter.DefaultValue!)};");
         }
 
         writer.WriteLine("return $result;");
@@ -432,6 +453,19 @@ string HydrationExpression(Type type, string jsonValue)
         return $"{PhpType(type).Replace("?", "")}::hydrate({jsonValue})";
     }
     return "NULL";
+}
+
+string LiteralValueExpression(object obj)
+{
+    return obj switch
+    {
+        int number => $"{number}",
+        double number => $"{number.ToString(CultureInfo.InvariantCulture)}",
+        float number => $"{number.ToString(CultureInfo.InvariantCulture)}",
+        string stringLiteral => $"\"{stringLiteral}\"",
+        _ when obj.GetType().IsEnum => $"{PhpType(obj.GetType())}::{obj}",
+        _ => System.Text.Json.JsonSerializer.Serialize(obj)
+    };
 }
 
 #endregion
