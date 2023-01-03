@@ -34,8 +34,8 @@ class UserFactoryTest extends TestCase {
         $user = UserFactory::byIdentifier("idKey", "idValue");
 
         self::assertNotEmpty($user->identifiers);
-        self::assertEquals("idKey", array_keys($user->identifiers[0])[0]);
-        self::assertEquals("idValue", $user->identifiers[0]["idKey"]);
+        self::assertEquals("idKey", array_keys($user->identifiers)[0]);
+        self::assertEquals("idValue", $user->identifiers["idKey"]);
     }
 
     public function testIdentifiers(): void
@@ -43,10 +43,10 @@ class UserFactoryTest extends TestCase {
         $user = UserFactory::byIdentifiers(["idKey1" => "idValue1", "idKey2" => "idValue2"]);
 
         self::assertNotEmpty($user->identifiers);
-        self::assertEquals("idKey1", array_keys($user->identifiers[0])[0]);
-        self::assertEquals("idValue1", $user->identifiers[0]["idKey1"]);
-        self::assertEquals("idKey2", array_keys($user->identifiers[0])[1]);
-        self::assertEquals("idValue2", $user->identifiers[0]["idKey2"]);
+        self::assertEquals("idKey1", array_keys($user->identifiers)[0]);
+        self::assertEquals("idValue1", $user->identifiers["idKey1"]);
+        self::assertEquals("idKey2", array_keys($user->identifiers)[1]);
+        self::assertEquals("idValue2", $user->identifiers["idKey2"]);
     }
 
     public function testEmail(): void

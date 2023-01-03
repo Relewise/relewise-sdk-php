@@ -23,12 +23,13 @@ class UserFactory {
 
     public static function byIdentifier(string $key, string $value) {
         return User::create()
-            ->withIdentifiers(array($key => $value));
+            ->withIdentifiers($key, $value);
     }
 
     public static function byIdentifiers(array $identifiers) {
-        return User::create()
-            ->withIdentifiers($identifiers);
+        $result = User::create();
+        $result->identifiers = $identifiers;
+        return $result;
     }
 
     public static function byEmail(string $email) {
