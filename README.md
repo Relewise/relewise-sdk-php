@@ -12,3 +12,13 @@ Requires dev containers in VS Code and docker.
 
 Setup is created using https://blog.devsense.com/2022/develop-php-in-docker
 
+### Known Bugs
+#### Wrongly generated
+- Category (is generated as a concrete class, but is actually abstract.)
+- UpdateKind (This name is used by multiple Enums with different values so we have to include the name of the encapsulating class somehow.)
+#### Not generated
+- ContentCategoryIdFilterCategoryQuery (because we don't generate Generic abstract classes with 1 generic argument)
+- DecompoundRuleSearchRulesResponse (because we don't generate Generic abstract classes with 1 generic argument)
+- DecompoundRuleSaveSearchRulesRequest (because we don't generate Generic abstract classes with 1 generic argument)
+- DecompoundRuleSaveSearchRulesResponse (because we don't generate Generic abstract classes with 1 generic argument)
+- stringstringKeyValuePair (because we don't generate Generic abstract classes with 2 generic arguments)

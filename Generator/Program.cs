@@ -6,7 +6,6 @@ using Relewise.Client.Search;
 using System.CodeDom.Compiler;
 using System.Globalization;
 using System.Reflection;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 if (args.Length is not 1)
 {
@@ -48,17 +47,23 @@ foreach (var responseType in assembly
 while (TypesToGenerate.Count > 0)
 {
     var type = TypesToGenerate.Dequeue();
+    var potentialNullableTypeName = PhpType(type);
+    var typeName = potentialNullableTypeName[0] is '?' ? potentialNullableTypeName[1..] : potentialNullableTypeName;
+    if (GeneratedTypeNames.Contains(typeName) || typeName.Contains("d__")) continue;
+    GeneratedTypeNames.Add(typeName);
+    using var streamWriter = File.CreateText($"{basePath}/Models/DTO/{typeName}.php");
+    using var writer = new IndentedTextWriter(streamWriter);
     if (type.IsClass && !(type.IsAbstract && type.IsGenericType && type.GenericTypeArguments.Length == 0))
     {
-        WriteClass(type);
+        WriteClass(type, writer, typeName);
     }
     else if (type.IsEnum)
     {
-        WriteEnum(type);
+        WriteEnum(type, writer, typeName);
     }
     else if (type.IsInterface)
     {
-        WriteInterface(type);
+        WriteInterface(type, writer, typeName);
     }
     else
     {
@@ -81,13 +86,8 @@ GenerateClientClass(typeof(Recommender), new[] { "Recommend" });
 
 #region Type Writers
 
-void WriteClass(Type type)
+void WriteClass(Type type, IndentedTextWriter writer, string typeName)
 {
-    var typeName = PhpType(type);
-    if (!GeneratedTypeNames.Add(typeName) || typeName[0] is '?') return;
-    using var streamWriter = File.CreateText($"{basePath}/Models/DTO/{typeName}.php");
-    using var writer = new IndentedTextWriter(streamWriter);
-
     writer.WriteLine("""
 <?php declare(strict_types=1);
 
@@ -96,7 +96,7 @@ namespace Relewise\Models\DTO;
 use DateTime;
 
 """);
-    writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {PhpType(type)}{(type.BaseType != typeof(object) && type.BaseType is { } baseType ? $" extends {PhpType(baseType).Replace("?", "")}" : "")}");
+    writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {typeName}{(type.BaseType != typeof(object) && type.BaseType is { } baseType ? $" extends {PhpType(baseType).Replace("?", "")}" : "")}");
     writer.WriteLine("{");
     writer.Indent++;
     if (type.BaseType != typeof(object) && type.BaseType is { } extended && extended.IsAbstract || type.IsAbstract)
@@ -116,7 +116,7 @@ use DateTime;
 
     var parameterInformation = settableProperties.Select(info => (type: info.PropertyType, propertyTypeName: PhpType(info.PropertyType), propertyName: info.Name, lowerCaseName: $"{ToCamelCase(info.Name)}")).ToArray();
 
-    WriteHydrationAndCreatorMethod(writer, type, parameterInformation);
+    WriteHydrationAndCreatorMethod(writer, type, typeName, parameterInformation);
 
     foreach (var (propertyType, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
     {
@@ -152,13 +152,8 @@ use DateTime;
     writer.WriteLine("}");
 }
 
-void WriteEnum(Type type)
+void WriteEnum(Type type, IndentedTextWriter writer, string typeName)
 {
-    var typeName = PhpType(type);
-    if (!GeneratedTypeNames.Add(typeName) || typeName[0] is '?') return;
-    using var streamWriter = File.CreateText($"{basePath}/Models/DTO/{typeName}.php");
-    using var writer = new IndentedTextWriter(streamWriter);
-
     writer.WriteLine("""
 <?php declare(strict_types=1);
 
@@ -178,13 +173,8 @@ use DateTime;
     writer.WriteLine("}");
 }
 
-void WriteInterface(Type type)
+void WriteInterface(Type type, IndentedTextWriter writer, string typeName)
 {
-    var typeName = PhpType(type);
-    if (!GeneratedTypeNames.Add(typeName) || typeName[0] is '?') return;
-    using var streamWriter = File.CreateText($"{basePath}/Models/DTO/{typeName}.php");
-    using var writer = new IndentedTextWriter(streamWriter);
-
     writer.WriteLine("""
 <?php declare(strict_types=1);
 
@@ -197,7 +187,7 @@ use DateTime;
     writer.WriteLine($"abstract class {typeName}");
     writer.WriteLine("{");
     writer.Indent++;
-    WriteHydrationAndCreatorMethod(writer, type, Array.Empty<(Type, string, string, string)>());
+    WriteHydrationAndCreatorMethod(writer, type, typeName, Array.Empty<(Type, string, string, string)>());
     writer.Indent--;
     writer.WriteLine("}");
 }
@@ -299,7 +289,7 @@ string? AddDerivedTypeDefinitions(Type type)
 
 #region Hydration Generation
 
-void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, (Type type, string propertyTypeName, string propertyName, string lowerCaseName)[] parameterInformation)
+void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, string typeName, (Type type, string propertyTypeName, string propertyName, string lowerCaseName)[] parameterInformation)
 {
     if (type.IsAbstract || type.IsInterface)
     {
@@ -310,8 +300,10 @@ void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, (Type 
         var derivedTypes = assembly
             .GetTypes()
             .Where(derivingType => derivingType.IsAssignableTo(type)
+                                   && derivingType.IsClass
                                    && !derivingType.IsGenericType
-                                   && !derivingType.IsAbstract)
+                                   && !derivingType.IsAbstract
+                                   && !PhpType(derivingType).Contains("d__"))
             .DistinctBy(PhpType)
             .ToArray();
         writer.WriteLine("$type = $arr[\"\\$type\"];");
@@ -345,7 +337,6 @@ void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, (Type 
     }
     else
     {
-        var typeName = PhpType(type);
         writer.WriteLine($"public static function create() : {typeName}");
         writer.WriteLine("{");
         writer.Indent++;
