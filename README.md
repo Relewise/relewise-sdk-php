@@ -23,4 +23,4 @@ Setup is created using https://blog.devsense.com/2022/develop-php-in-docker
 - stringstringKeyValuePair (because we don't generate Generic abstract classes with 2 generic arguments)
 
 ### Things to improve.
-- Currently for any nested Enum type with prepend the name of the enum with the name of its outer class so that there can't be any naming collisions. This could be better. We could check if there would actually be any collision and only do this if there would be but that would need an extra pass of all types before generating enums.
+- Currently for any nested Enum type we prepend the name of the enum with the name of its outer class so that there can't be any naming collisions. This could be better. We could check if there would actually be any collision and only do this if there would be but that would need an extra pass of all types before generating enums.
