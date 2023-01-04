@@ -93,13 +93,15 @@ public class PhpCreatorMethodWriter
 
     private static bool EqualCollectionElementType(Type type1, Type type2)
     {
-        return (type1.IsGenericType
-                && type1.GetGenericTypeDefinition() == typeof(List<>)
-                && type2.IsArray
-                && type1.GenericTypeArguments[0] == type2.GetElementType())
-            || (type1.IsArray
-                && type2.IsGenericType
-                && type2.GetGenericTypeDefinition() == typeof(List<>)
-                && type1 == type2.GenericTypeArguments[0]);
+        return ListTypeArgumentMatchesArrayElementType(type1, type2)
+            || ListTypeArgumentMatchesArrayElementType(type2, type1);
+    }
+
+    private static bool ListTypeArgumentMatchesArrayElementType(Type type1, Type type2)
+    {
+        return type1.IsGenericType
+               && type1.GetGenericTypeDefinition() == typeof(List<>)
+               && type2.IsArray
+               && type1.GenericTypeArguments[0] == type2.GetElementType();
     }
 }
