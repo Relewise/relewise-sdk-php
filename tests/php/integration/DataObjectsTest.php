@@ -38,9 +38,8 @@ class DataObjectsTest extends TestCase
                     )
                 )
             )
-            ->withTake(3)
-            ->withLanguage(Language::create()->withValue("da"))
-            ->withCurrency(Currency::create()->withValue("DKK"))
+            ->withLanguage(Language::create("da-dk"))
+            ->withCurrency(Currency::create("DKK"))
             ->withDisplayedAtLocation("integration test - data object")
             ->withUser(UserFactory::anonymous());
 
