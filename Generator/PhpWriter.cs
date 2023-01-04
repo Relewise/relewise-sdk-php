@@ -67,15 +67,15 @@ public class PhpWriter
 
     public string PhpTypeName(Type type) => phpTypeResolver.ResolveType(type);
 
-    public string BetterTypedParameterTypeName(string propertyTypeName, Type propertyType)
+    public string BetterTypedParameterTypeName(string parameterTypeName, Type propertyType)
     {
-        return propertyTypeName is "array"
+        return parameterTypeName is "array"
             ? propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>) &&
               propertyType.GenericTypeArguments is [var elementType]
                 ? PhpTypeName(elementType) + " ..."
                 : propertyType.IsArray
                     ? PhpTypeName(propertyType.GetElementType()!) + " ..."
                     : "..."
-            : propertyTypeName;
+            : parameterTypeName;
     }
 }
