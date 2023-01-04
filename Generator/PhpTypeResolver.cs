@@ -41,9 +41,9 @@ public class PhpTypeResolver
 
     private string GetOrAddTypeDefinition(Type type)
     {
-        if (typeDefintions.ContainsKey(type))
+        if (typeDefintions.TryGetValue(type, out var value))
         {
-            return typeDefintions[type];
+            return value;
         }
 
         var typeName = GetTypeName(type);
