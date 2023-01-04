@@ -47,23 +47,32 @@ foreach (var responseType in assembly
 while (TypesToGenerate.Count > 0)
 {
     var type = TypesToGenerate.Dequeue();
+    if ((type.IsGenericTypeDefinition || type.IsGenericTypeParameter))
+    {
+        continue;
+    }
+
     var potentialNullableTypeName = PhpType(type);
     var typeName = potentialNullableTypeName[0] is '?' ? potentialNullableTypeName[1..] : potentialNullableTypeName;
     if (GeneratedTypeNames.Contains(typeName) || typeName.Contains("d__")) continue;
     GeneratedTypeNames.Add(typeName);
     using var streamWriter = File.CreateText($"{basePath}/Models/DTO/{typeName}.php");
     using var writer = new IndentedTextWriter(streamWriter);
-    if (type.IsClass && !(type.IsAbstract && type.IsGenericType && type.GenericTypeArguments.Length == 0))
+    if (type.IsClass)
     {
-        WriteClass(type, writer, typeName);
+        WriteClass(writer, type, typeName);
     }
     else if (type.IsEnum)
     {
-        WriteEnum(type, writer, typeName);
+        WriteEnum(writer, type, typeName);
     }
     else if (type.IsInterface)
     {
-        WriteInterface(type, writer, typeName);
+        WriteInterface(writer, type, typeName);
+    }
+    else if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(KeyValuePair<,>))
+    {
+        WriteKeyValuePair(writer, type, typeName);
     }
     else
     {
@@ -79,6 +88,10 @@ if (MissingTypeDefintions.Count > 0)
         Console.WriteLine($"- {typeDefinition.Name}");
     }
 }
+else
+{
+    Console.WriteLine("All types referenced or otherwise traversed were successfully generated.");
+}
 
 GenerateClientClass(typeof(Tracker), new[] { "Track" });
 GenerateClientClass(typeof(Searcher), new[] { "Search", "Predict", "Batch" });
@@ -86,7 +99,7 @@ GenerateClientClass(typeof(Recommender), new[] { "Recommend" });
 
 #region Type Writers
 
-void WriteClass(Type type, IndentedTextWriter writer, string typeName)
+void WriteClass(IndentedTextWriter writer, Type type, string typeName)
 {
     writer.WriteLine("""
 <?php declare(strict_types=1);
@@ -114,45 +127,19 @@ use DateTime;
         WriteProperty(writer, type, propertyInfo);
     }
 
-    var parameterInformation = settableProperties.Select(info => (type: info.PropertyType, propertyTypeName: PhpType(info.PropertyType), propertyName: info.Name, lowerCaseName: $"{ToCamelCase(info.Name)}")).ToArray();
+    var propertyInformations = settableProperties.Select(info => (type: info.PropertyType, propertyTypeName: PhpType(info.PropertyType, type), propertyName: info.Name, lowerCaseName: $"{ToCamelCase(info.Name)}")).ToArray();
 
-    WriteHydrationAndCreatorMethod(writer, type, typeName, parameterInformation);
+    WriteHydrationAndCreatorMethod(writer, type, typeName, propertyInformations);
 
-    foreach (var (propertyType, propertyTypeName, propertyName, lowerCaseName) in parameterInformation)
+    foreach (var (propertyType, propertyTypeName, propertyName, lowerCaseName) in propertyInformations)
     {
-        if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(Dictionary<,>) && propertyType.GenericTypeArguments is [var keyType, var valueType])
-        {
-            writer.WriteLine($"function with{propertyName}({PhpType(keyType)} $key, {PhpType(valueType)} $value)");
-            writer.WriteLine("{");
-            writer.Indent++;
-            writer.WriteLine($"if (!isset($this->{lowerCaseName}))");
-            writer.WriteLine("{");
-            writer.Indent++;
-            writer.WriteLine($"$this->{lowerCaseName} = array();");
-            writer.Indent--;
-            writer.WriteLine("}");
-            writer.WriteLine($"$this->{lowerCaseName}[$key] = $value;");
-            writer.WriteLine("return $this;");
-            writer.Indent--;
-            writer.WriteLine("}");
-        }
-        else
-        {
-            var parameterType = propertyTypeName is "array" ? propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>) && propertyType.GenericTypeArguments is [var listType] ? PhpType(listType) + " ..." : propertyType.IsArray ? PhpType(propertyType.GetElementType()!) + " ..." : "..." : propertyTypeName;
-            writer.WriteLine($"function with{propertyName}({parameterType} ${lowerCaseName})");
-            writer.WriteLine("{");
-            writer.Indent++;
-            writer.WriteLine($"$this->{lowerCaseName} = ${lowerCaseName};");
-            writer.WriteLine("return $this;");
-            writer.Indent--;
-            writer.WriteLine("}");
-        }
+        WritePropertySetter(writer, propertyType, type, propertyTypeName, propertyName, lowerCaseName);
     }
     writer.Indent--;
     writer.WriteLine("}");
 }
 
-void WriteEnum(Type type, IndentedTextWriter writer, string typeName)
+void WriteEnum(IndentedTextWriter writer, Type type, string typeName)
 {
     writer.WriteLine("""
 <?php declare(strict_types=1);
@@ -173,7 +160,7 @@ use DateTime;
     writer.WriteLine("}");
 }
 
-void WriteInterface(Type type, IndentedTextWriter writer, string typeName)
+void WriteInterface(IndentedTextWriter writer, Type type, string typeName)
 {
     writer.WriteLine("""
 <?php declare(strict_types=1);
@@ -192,9 +179,83 @@ use DateTime;
     writer.WriteLine("}");
 }
 
-void WriteProperty(IndentedTextWriter writer, Type type, PropertyInfo propertyInfo)
+void WriteKeyValuePair(IndentedTextWriter writer, Type type, string typeName)
 {
-    writer.WriteLine($"public {PhpType(propertyInfo.PropertyType)} ${ToCamelCase(propertyInfo.Name)};");
+    writer.WriteLine("""
+<?php declare(strict_types=1);
+
+namespace Relewise\Models\DTO;
+
+use DateTime;
+
+""");
+    writer.WriteLine($"class {typeName}");
+    writer.WriteLine("{");
+    writer.Indent++;
+
+    writer.WriteLine($"public {PhpType(type.GenericTypeArguments[0])} $key;");
+    writer.WriteLine($"public {PhpType(type.GenericTypeArguments[1])} $value;");
+
+    writer.WriteLine($"function __construct({PhpType(type.GenericTypeArguments[0])} $key, {PhpType(type.GenericTypeArguments[1])} $value)");
+    writer.WriteLine("{");
+    writer.Indent++;
+    writer.WriteLine("$this->key = $key;");
+    writer.WriteLine("$this->value = $value;");
+    writer.Indent--;
+    writer.WriteLine("}");
+
+    writer.WriteLine($"public static function create({PhpType(type.GenericTypeArguments[0])} $key, {PhpType(type.GenericTypeArguments[1])} $value) : {typeName}");
+    writer.WriteLine("{");
+    writer.Indent++;
+    writer.WriteLine($"return new {typeName}($key, $value);");
+    writer.Indent--;
+    writer.WriteLine("}");
+
+    writer.WriteLine($"public static function hydrate(array $arr) : {typeName}");
+    writer.WriteLine("{");
+    writer.Indent++;
+    writer.WriteLine($"return {typeName}::create($arr[\"key\"], $arr[\"value\"]);");
+    writer.Indent--;
+    writer.WriteLine("}");
+
+    writer.Indent--;
+    writer.WriteLine("}");
+}
+
+void WriteProperty(IndentedTextWriter writer, Type contextType, PropertyInfo propertyInfo)
+{
+    writer.WriteLine($"public {PhpType(propertyInfo.PropertyType, contextType)} ${ToCamelCase(propertyInfo.Name)};");
+}
+
+void WritePropertySetter(IndentedTextWriter writer, Type propertyType, Type contextType, string propertyTypeName, string propertyName, string lowerCaseName)
+{
+    if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(Dictionary<,>) && propertyType.GenericTypeArguments is [var keyType, var valueType])
+    {
+        writer.WriteLine($"function with{propertyName}({PhpType(keyType, contextType)} $key, {PhpType(valueType)} $value)");
+        writer.WriteLine("{");
+        writer.Indent++;
+        writer.WriteLine($"if (!isset($this->{lowerCaseName}))");
+        writer.WriteLine("{");
+        writer.Indent++;
+        writer.WriteLine($"$this->{lowerCaseName} = array();");
+        writer.Indent--;
+        writer.WriteLine("}");
+        writer.WriteLine($"$this->{lowerCaseName}[$key] = $value;");
+        writer.WriteLine("return $this;");
+        writer.Indent--;
+        writer.WriteLine("}");
+    }
+    else
+    {
+        var parameterType = propertyTypeName is "array" ? propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>) && propertyType.GenericTypeArguments is [var elementType] ? PhpType(elementType, contextType) + " ..." : propertyType.IsArray ? PhpType(propertyType.GetElementType()!, contextType) + " ..." : "..." : propertyTypeName;
+        writer.WriteLine($"function with{propertyName}({parameterType} ${lowerCaseName})");
+        writer.WriteLine("{");
+        writer.Indent++;
+        writer.WriteLine($"$this->{lowerCaseName} = ${lowerCaseName};");
+        writer.WriteLine("return $this;");
+        writer.Indent--;
+        writer.WriteLine("}");
+    }
 }
 
 #endregion
@@ -209,7 +270,7 @@ string AddTypeDefinition(Type type)
         AddDerivedTypeDefinitions(type);
     }
 
-    if (type.IsNested && type.IsEnum)
+    if (type.IsNested)
     {
         return type.DeclaringType.Name + type.Name.Replace("`1", "").Replace("`2", "");
     }
@@ -310,7 +371,7 @@ void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, string
                                    && !derivingType.IsGenericType
                                    && !derivingType.IsAbstract
                                    && !PhpType(derivingType).Contains("d__"))
-            .DistinctBy(PhpType)
+            .DistinctBy(derivingType => PhpType(derivingType, type))
             .ToArray();
         writer.WriteLine("$type = $arr[\"\\$type\"];");
         foreach (var derivedType in derivedTypes)
@@ -335,7 +396,7 @@ void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, string
         }
         foreach (var (propertyType, _, propertyName, lowerCaseName) in parameterInformation)
         {
-            WriteHydrationSetter(writer, propertyType, propertyName, lowerCaseName);
+            WriteHydrationSetter(writer, propertyType, type, propertyName, lowerCaseName);
         }
         writer.WriteLine("return $result;");
         writer.Indent--;
@@ -376,7 +437,7 @@ void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, string
         }
         foreach (var (propertyType, _, propertyName, lowerCaseName) in parameterInformation)
         {
-            WriteHydrationSetter(writer, propertyType, propertyName, lowerCaseName);
+            WriteHydrationSetter(writer, propertyType, type, propertyName, lowerCaseName);
         }
         writer.WriteLine($"return $result;");
         writer.Indent--;
@@ -384,54 +445,54 @@ void WriteHydrationAndCreatorMethod(IndentedTextWriter writer, Type type, string
     }
 }
 
-void WriteHydrationSetter(IndentedTextWriter writer, Type propertyType, string propertyName, string lowerCaseName)
+void WriteHydrationSetter(IndentedTextWriter writer, Type propertyType, Type contextType, string propertyName, string lowerCaseName)
 {
     writer.WriteLine($"if (array_key_exists(\"{lowerCaseName}\", $arr))");
     writer.WriteLine("{");
     writer.Indent++;
     if (propertyType.IsArray && propertyType.GetElementType() is { } elementType)
     {
-        WriteArrayLikeHydrationSetter(writer, elementType, propertyName, lowerCaseName);
+        WriteArrayLikeHydrationSetter(writer, elementType, contextType, propertyName, lowerCaseName);
     }
     else if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>))
     {
-        WriteArrayLikeHydrationSetter(writer, propertyType.GenericTypeArguments.Single(), propertyName, lowerCaseName);
+        WriteArrayLikeHydrationSetter(writer, propertyType.GenericTypeArguments.Single(), contextType, propertyName, lowerCaseName);
     }
     else if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(Dictionary<,>))
     {
-        WriteDictionaryHydrationSetter(writer, propertyType.GenericTypeArguments[0], propertyType.GenericTypeArguments[1], propertyName, lowerCaseName);
+        WriteDictionaryHydrationSetter(writer, propertyType.GenericTypeArguments[0], contextType, propertyType.GenericTypeArguments[1], propertyName, lowerCaseName);
     }
     else
     {
-        writer.WriteLine($"$result->{lowerCaseName} = {HydrationExpression(propertyType, $"$arr[\"{lowerCaseName}\"]")};");
+        writer.WriteLine($"$result->{lowerCaseName} = {HydrationExpression(propertyType, contextType, $"$arr[\"{lowerCaseName}\"]")};");
     }
     writer.Indent--;
     writer.WriteLine("}");
 }
 
-void WriteArrayLikeHydrationSetter(IndentedTextWriter writer, Type elementType, string propertyName, string lowerCaseName)
+void WriteArrayLikeHydrationSetter(IndentedTextWriter writer, Type elementType, Type contextType, string propertyName, string lowerCaseName)
 {
     writer.WriteLine($"$result->{lowerCaseName} = array();");
     writer.WriteLine($"foreach($arr[\"{lowerCaseName}\"] as &$value)");
     writer.WriteLine("{");
     writer.Indent++;
-    writer.WriteLine($"array_push($result->{lowerCaseName}, {HydrationExpression(elementType, "$value")});");
+    writer.WriteLine($"array_push($result->{lowerCaseName}, {HydrationExpression(elementType, contextType, "$value")});");
     writer.Indent--;
     writer.WriteLine("}");
 }
 
-void WriteDictionaryHydrationSetter(IndentedTextWriter writer, Type keyType, Type valueType, string propertyName, string lowerCaseName)
+void WriteDictionaryHydrationSetter(IndentedTextWriter writer, Type keyType, Type valueType, Type contextType, string propertyName, string lowerCaseName)
 {
     writer.WriteLine($"$result->{lowerCaseName} = array();");
     writer.WriteLine($"foreach($arr[\"{lowerCaseName}\"] as $key => $value)");
     writer.WriteLine("{");
     writer.Indent++;
-    writer.WriteLine($"$result->{lowerCaseName}[{HydrationExpression(keyType, "$key")}] = {HydrationExpression(valueType, "$value")};");
+    writer.WriteLine($"$result->{lowerCaseName}[{HydrationExpression(keyType, contextType, "$key")}] = {HydrationExpression(valueType, contextType, "$value")};");
     writer.Indent--;
     writer.WriteLine("}");
 }
 
-string HydrationExpression(Type type, string jsonValue)
+string HydrationExpression(Type type, Type contextType, string jsonValue)
 {
     if (type.IsEnum)
     {
@@ -447,7 +508,7 @@ string HydrationExpression(Type type, string jsonValue)
     }
     if (TypeDefintions.Contains(type) || TypesToGenerate.Contains(type))
     {
-        return $"{PhpType(type).Replace("?", "")}::hydrate({jsonValue})";
+        return $"{PhpType(type, contextType).Replace("?", "")}::hydrate({jsonValue})";
     }
     return "NULL";
 }
@@ -556,7 +617,7 @@ use Relewise\Infrastructure\HttpClient\Response;
 
 #region Helper methods
 
-string PhpType(Type type) => type.Name switch
+string PhpType(Type type, Type? contextType = null) => type.Name switch
 {
     "String" => "string",
     "Int32" => "int",

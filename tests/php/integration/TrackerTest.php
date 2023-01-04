@@ -8,13 +8,12 @@ use Relewise\Factory\UserFactory;
 use Relewise\Models\DTO\Brand;
 use Relewise\Models\DTO\Language;
 use Relewise\Models\DTO\Multilingual;
+use Relewise\Models\DTO\MultilingualValue;
 use Relewise\Models\DTO\SelectedVariantPropertiesSettings;
-use Relewise\Models\DTO\Value;
 use Relewise\Models\DTO\ProductVariant;
 use Relewise\Searcher;
 use Relewise\Tracker;
 use Relewise\Models\DTO\Product;
-use Relewise\Models\DTO\ProductResult;
 use Relewise\Models\DTO\ProductSearchRequest;
 use Relewise\Models\DTO\ProductSearchSettings;
 use Relewise\Models\DTO\ProductUpdate;
@@ -63,7 +62,7 @@ class TrackerTest extends TestCase
                             ->withDisplayName(
                                 Multilingual::create()
                                     ->withValues(
-                                        Value::create()
+                                        MultilingualValue::create()
                                             ->withLanguage(Language::create()->withValue("da-dk"))
                                             ->withText("MyProduct1")
                                     )
@@ -84,7 +83,7 @@ class TrackerTest extends TestCase
                             ->withDisplayName(
                                 Multilingual::create()
                                     ->withValues(
-                                        Value::create()->withLanguage(Language::create()->withValue("da-dk"))
+                                        MultilingualValue::create()->withLanguage(Language::create()->withValue("da-dk"))
                                             ->withText("MyVariant1")
                                     )
                             )

@@ -13,14 +13,8 @@ Requires dev containers in VS Code and docker.
 Setup is created using https://blog.devsense.com/2022/develop-php-in-docker
 
 ## Known Bugs
-### Wrongly generated
-- Category (is generated as a concrete class, but is actually abstract.)
-### Not generated
-- ContentCategoryIdFilterCategoryQuery (because we don't generate Generic abstract classes with 1 generic argument)
-- DecompoundRuleSearchRulesResponse (because we don't generate Generic abstract classes with 1 generic argument)
-- DecompoundRuleSaveSearchRulesRequest (because we don't generate Generic abstract classes with 1 generic argument)
-- DecompoundRuleSaveSearchRulesResponse (because we don't generate Generic abstract classes with 1 generic argument)
-- stringstringKeyValuePair (because we don't generate Generic abstract classes with 2 generic arguments)
+- There are currently no known bugs.
 
 ## Things to improve.
 - Currently for any nested Enum type we prepend the name of the enum with the name of its outer class so that there can't be any naming collisions. This could be better. We could check if there would actually be any collision and only do this if there would be but that would need an extra pass of all types before generating enums.
+- We eventually want to use MessagePack as the serializer.
