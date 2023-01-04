@@ -33,7 +33,7 @@ public class PhpPropertySetterMethodsWriter
             }
             else
             {
-                var parameterType = propertyTypeName is "array" ? propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>) && propertyType.GenericTypeArguments is [var elementType] ? phpWriter.PhpTypeName(elementType) + " ..." : propertyType.IsArray ? phpWriter.PhpTypeName(propertyType.GetElementType()!) + " ..." : "..." : propertyTypeName;
+                var parameterType = phpWriter.BetterTypedParameterTypeName(propertyTypeName, propertyType);
                 writer.WriteLine($"function with{propertyName}({parameterType} ${lowerCaseName})");
                 writer.WriteLine("{");
                 writer.Indent++;

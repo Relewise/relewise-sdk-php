@@ -32,13 +32,12 @@ class TrackerTest extends TestCase
 
         $tracker = new Tracker($datasetId, $apiKey);
 
-        $productViewRequest = TrackProductViewRequest::create()
-            ->withProductView(
-                ProductView::create()
-                    ->withUser(UserFactory::byTemporaryId("t-Id"))
-                    ->withProduct(Product::create()->withId("p-1"))
-                    ->withVariant(ProductVariant::create()->withId("v-1"))
-            );
+        $productViewRequest = TrackProductViewRequest::create(
+            ProductView::create()
+                ->withUser(UserFactory::byTemporaryId("t-Id"))
+                ->withProduct(Product::create()->withId("p-1"))
+                ->withVariant(ProductVariant::create()->withId("v-1"))
+        );
 
         $response = $tracker->trackProductView($productViewRequest);
         self::assertNull($response);
@@ -52,43 +51,38 @@ class TrackerTest extends TestCase
         // Create Product by tracking it.
         $tracker = new Tracker($datasetId, $apiKey);
 
-        $productUpdate = TrackProductUpdateRequest::create()
-            ->withProductUpdate(
-                ProductUpdate::create()
-                    ->withProductUpdateKind(ProductUpdateUpdateKind::ReplaceProvidedProperties)
-                    ->withProduct(
-                        Product::create()
-                            ->withId("p-1")
-                            ->withDisplayName(
-                                Multilingual::create()
-                                    ->withValues(
-                                        MultilingualValue::create()
-                                            ->withLanguage(Language::create()->withValue("da-dk"))
-                                            ->withText("MyProduct1")
-                                    )
+        $productUpdate = TrackProductUpdateRequest::create(
+            ProductUpdate::create()
+                ->withProductUpdateKind(ProductUpdateUpdateKind::ReplaceProvidedProperties)
+                ->withProduct(
+                    Product::create()
+                        ->withId("p-1")
+                        ->withDisplayName(
+                            Multilingual::create()
+                                ->withValues(
+                                    MultilingualValue::create(Language::create("da-dk"), "MyProduct1")
+                                )
+                        )
+                        ->withBrand(
+                            Brand::create()
+                                ->withId("b-1")
+                                ->withDisplayName("MyBrand1")
+                        )
+                        ->withData("SomeString", DataValueFactory::stringDataValue("SomeValue"))
+                        ->withData("SomeObject", DataValueFactory::objectDataValue(array("SomeString" => DataValueFactory::stringDataValue("SomeValue"))))
+                        ->withData("SomeStringList", DataValueFactory::stringListDataValue("FirstString", "SecondString"))
+                        ->withData("SomeBooleanList", DataValueFactory::booleanListDataValue(true, true, false))
+                )
+                ->withVariants(
+                    ProductVariant::create()
+                        ->withId("v-1")
+                        ->withDisplayName(
+                            Multilingual::create(
+                                MultilingualValue::create(Language::create("da-dk"), "MyVariant1")
                             )
-                            ->withBrand(
-                                Brand::create()
-                                    ->withId("b-1")
-                                    ->withDisplayName("MyBrand1")
-                            )
-                            ->withData("SomeString", DataValueFactory::stringDataValue("SomeValue"))
-                            ->withData("SomeObject", DataValueFactory::objectDataValue(array("SomeString" => DataValueFactory::stringDataValue("SomeValue"))))
-                            ->withData("SomeStringList", DataValueFactory::stringListDataValue("FirstString", "SecondString"))
-                            ->withData("SomeBooleanList", DataValueFactory::booleanListDataValue(true, true, false))
-                    )
-                    ->withVariants(
-                        ProductVariant::create()
-                            ->withId("v-1")
-                            ->withDisplayName(
-                                Multilingual::create()
-                                    ->withValues(
-                                        MultilingualValue::create()->withLanguage(Language::create()->withValue("da-dk"))
-                                            ->withText("MyVariant1")
-                                    )
-                            )
-                    )
-            );
+                        )
+                )
+        );
 
         $tracking = $tracker->trackProductUpdate($productUpdate);
         self::assertNull($tracking);
@@ -109,7 +103,7 @@ class TrackerTest extends TestCase
                             ->withDisplayName(true)
                     )
             )
-            ->withLanguage(Language::create()->withValue("da-dk"))
+            ->withLanguage(Language::create("da-dk"))
             ->withTake(1);
 
         $searchResult = $searcher->productSearch($productSearch);

@@ -30,8 +30,8 @@ class FiltersTest extends TestCase
                     )
             )
             ->withTake(20)
-            ->withLanguage(Language::create()->withValue("en-US"))
-            ->withCurrency(Currency::create()->withValue("USD"))
+            ->withLanguage(Language::create("en-US"))
+            ->withCurrency(Currency::create("USD"))
             ->withDisplayedAtLocation("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
@@ -57,8 +57,8 @@ class FiltersTest extends TestCase
                     )
             )
             ->withTake(20)
-            ->withLanguage(Language::create()->withValue("en-US"))
-            ->withCurrency(Currency::create()->withValue("USD"))
+            ->withLanguage(Language::create("en-US"))
+            ->withCurrency(Currency::create("USD"))
             ->withDisplayedAtLocation("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 

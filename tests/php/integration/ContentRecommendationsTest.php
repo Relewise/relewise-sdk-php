@@ -21,8 +21,8 @@ class ContentRecommendationsTest extends TestCase
 
         $contentsViewedAfterViewingContent = ContentsViewedAfterViewingContentRequest::create()
             ->withContentId("1")
-            ->withLanguage(Language::create()->withValue("en-US"))
-            ->withCurrency(Currency::create()->withValue("USD"))
+            ->withLanguage(Language::create("en-US"))
+            ->withCurrency(Currency::create("USD"))
             ->withDisplayedAtLocationType("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
@@ -41,8 +41,8 @@ class ContentRecommendationsTest extends TestCase
 
         $popularContents = PopularContentsRequest::create()
             ->withSinceMinutesAgo(5000)
-            ->withLanguage(Language::create()->withValue("en-US"))
-            ->withCurrency(Currency::create()->withValue("USD"))
+            ->withLanguage(Language::create("en-US"))
+            ->withCurrency(Currency::create("USD"))
             ->withDisplayedAtLocationType("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 

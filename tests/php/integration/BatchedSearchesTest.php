@@ -27,8 +27,8 @@ class BatchedSearchesTest extends TestCase
                 ProductSearchRequest::create()->withTerm("a"),
                 ProductCategorySearchRequest::create()->withTerm("c")
             )
-            ->withLanguage(Language::create()->withValue("en-US"))
-            ->withCurrency(Currency::create()->withValue("USD"))
+            ->withLanguage(Language::create("en-US"))
+            ->withCurrency(Currency::create("USD"))
             ->withDisplayedAtLocation("integration test")
             ->withUser(UserFactory::anonymous());
 

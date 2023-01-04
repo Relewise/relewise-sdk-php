@@ -36,8 +36,8 @@ class FacetsTest extends TestCase
                             ->withPriceSelectionStrategy(PriceSelectionStrategy::Product)
                     )
             )
-            ->withLanguage(Language::create()->withValue("en-us"))
-            ->withCurrency(Currency::create()->withValue("USD"))
+            ->withLanguage(Language::create("en-US"))
+            ->withCurrency(Currency::create("USD"))
             ->withDisplayedAtLocation("integration test")
             ->withUser(
                 UserFactory::anonymous()
@@ -68,8 +68,8 @@ class FacetsTest extends TestCase
                             ->withField(FacetingField::Brand)
                     )
             )
-            ->withLanguage(Language::create()->withValue("en-us"))
-            ->withCurrency(Currency::create()->withValue("USD"))
+            ->withLanguage(Language::create("en-US"))
+            ->withCurrency(Currency::create("USD"))
             ->withDisplayedAtLocation("integration test")
             ->withUser(
                 UserFactory::anonymous()
@@ -102,8 +102,8 @@ class FacetsTest extends TestCase
                             ->withDataSelectionStrategy(DataSelectionStrategy::Product)
                     )
             )
-            ->withLanguage(Language::create()->withValue("en-us"))
-            ->withCurrency(Currency::create()->withValue("USD"))
+            ->withLanguage(Language::create("en-US"))
+            ->withCurrency(Currency::create("USD"))
             ->withDisplayedAtLocation("integration test")
             ->withUser(
                 UserFactory::anonymous()
@@ -135,8 +135,8 @@ class FacetsTest extends TestCase
                             ->withCategorySelectionStrategy(CategorySelectionStrategy::ImmediateParent)
                     )
             )
-            ->withLanguage(Language::create()->withValue("en-us"))
-            ->withCurrency(Currency::create()->withValue("USD"))
+            ->withLanguage(Language::create("en-US"))
+            ->withCurrency(Currency::create("USD"))
             ->withDisplayedAtLocation("integration test")
             ->withUser(
                 UserFactory::anonymous()

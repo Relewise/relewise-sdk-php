@@ -29,8 +29,8 @@ class ProductRecommendationsTest extends TestCase
 
         $purchasedWtihProduct = PurchasedWithProductRequest::create()
             ->withProductAndVariantId(ProductAndVariantId::create()->withProductId("1"))
-            ->withLanguage(Language::create()->withValue("en-US"))
-            ->withCurrency(Currency::create()->withValue("USD"))
+            ->withLanguage(Language::create("en-US"))
+            ->withCurrency(Currency::create("USD"))
             ->withDisplayedAtLocationType("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
@@ -49,8 +49,8 @@ class ProductRecommendationsTest extends TestCase
 
         $productsViewedAfterViewingProduct = ProductsViewedAfterViewingProductRequest::create()
             ->withProductAndVariantId(ProductAndVariantId::create()->withProductId("1"))
-            ->withLanguage(Language::create()->withValue("en-US"))
-            ->withCurrency(Currency::create()->withValue("USD"))
+            ->withLanguage(Language::create("en-US"))
+            ->withCurrency(Currency::create("USD"))
             ->withDisplayedAtLocationType("integration test")
             ->withUser(UserFactory::byTemporaryId("t-Id"));
 
@@ -87,21 +87,23 @@ class ProductRecommendationsTest extends TestCase
                                             ->withValue(DataValueFactory::doubleListDataValue(1))
                                             ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                         ContainsCondition::create()
-                                            ->withValue(DataValueFactory::multilingualCollectionDataValueFromLanguageAndCollection(Language::create()->withValue("en-us"), "d"))
+                                            ->withValue(DataValueFactory::multilingualCollectionDataValueFromLanguageAndCollection(Language::create("en-US"), "d"))
                                             ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                         ContainsCondition::create()
-                                            ->withValue(DataValueFactory::multiCurrencyDataValueFromSingleCurrency(Money::create()->withCurrency(Currency::create()->withValue("USD"))->withAmount(1)))
+                                            ->withValue(DataValueFactory::multiCurrencyDataValueFromSingleCurrency(Money::create(Currency::create("USD"), 1)))
                                             ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                     )
                             )
                     )
             )
-            ->withLanguage(Language::create()->withValue("en-US"))
-            ->withCurrency(Currency::create()->withValue("USD"))
+            ->withLanguage(Language::create("en-US"))
+            ->withCurrency(Currency::create("USD"))
             ->withDisplayedAtLocationType("integration test Conditions")
             ->withUser(UserFactory::anonymous());
 
         $response = $recommender->productsViewedAfterViewingProduct($productsViewedAfterViewingProduct);
+
+        fwrite(STDOUT, json_encode($response));
 
         self::assertNotNull($response);
         self::assertEmpty($response->recommendations);
