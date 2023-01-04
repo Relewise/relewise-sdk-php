@@ -7,7 +7,7 @@ class UserFactory {
         return User::create();
     }
 
-    public static function byAuthenticatedId(string $authenticatedId, ?string $temporaryId) {
+    public static function byAuthenticatedId(string $authenticatedId, ?string $temporaryId = null) {
         $user = new User();
         $user->authenticatedId = $authenticatedId;
         if ($temporaryId != Null) {

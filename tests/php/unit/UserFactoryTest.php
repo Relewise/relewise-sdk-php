@@ -13,6 +13,23 @@ class UserFactoryTest extends TestCase {
         self::assertNotNull($user);
     }
 
+    public function testByAuthenticatedId(): void 
+    {
+        $user = UserFactory::byAuthenticatedId("test");
+
+        self::assertNotNull($user);
+        self::assertEquals("test", $user->authenticatedId);
+    }
+
+    public function testByAuthenticatedIdWithTemporary(): void 
+    {
+        $user = UserFactory::byAuthenticatedId("authenticated", "temporary");
+
+        self::assertNotNull($user);
+        self::assertEquals("authenticated", $user->authenticatedId);
+        self::assertEquals("temporary", $user->temporaryId);
+    }
+
     public function testByTemporaryId(): void 
     {
         $user = UserFactory::byTemporaryId("test");
