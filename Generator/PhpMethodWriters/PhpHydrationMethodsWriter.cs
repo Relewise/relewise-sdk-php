@@ -2,11 +2,11 @@
 
 namespace Generator.PhpMethodWriters;
 
-public class PhpHydrationMethodWriter
+public class PhpHydrationMethodsWriter
 {
     private readonly PhpWriter phpWriter;
 
-    public PhpHydrationMethodWriter(PhpWriter phpWriter)
+    public PhpHydrationMethodsWriter(PhpWriter phpWriter)
     {
         this.phpWriter = phpWriter;
     }

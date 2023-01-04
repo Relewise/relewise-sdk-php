@@ -13,8 +13,9 @@ public class PhpWriter
     public HashSet<Type> MissingTypeDefinitions { get; set; } = new();
     public Assembly Assembly { get; }
     public string BasePath { get; }
-    public PhpHydrationMethodWriter PhpHydrationMethodWriter { get; }
+    public PhpHydrationMethodsWriter PhpHydrationMethodsWriter { get; }
     public PhpCreatorMethodWriter PhpCreatorMethodWriter { get; }
+    public PhpPropertySetterMethodsWriter PhpPropertySetterMethodsWriter { get; }
 
     public PhpWriter(Assembly assembly, string basePath)
     {
@@ -22,8 +23,9 @@ public class PhpWriter
         phpTypeResolver = new PhpTypeResolver(assembly);
         Assembly = assembly;
         BasePath = basePath;
-        PhpHydrationMethodWriter = new PhpHydrationMethodWriter(this);
+        PhpHydrationMethodsWriter = new PhpHydrationMethodsWriter(this);
         PhpCreatorMethodWriter = new PhpCreatorMethodWriter(this);
+        PhpPropertySetterMethodsWriter = new PhpPropertySetterMethodsWriter(this);
     }
 
     public void WritePhpTypes(IEnumerable<Type> types)
