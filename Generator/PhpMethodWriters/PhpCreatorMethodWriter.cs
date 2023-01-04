@@ -20,19 +20,21 @@ public class PhpCreatorMethodWriter
         var directlyMappableConstructor = type
             .GetConstructors() // All 
             .FirstOrDefault(c => c.GetParameters()
-                                     .Count(parameter => !parameter.HasDefaultValue)
+                                    .Count(parameter => !parameter.HasDefaultValue)
                                  == c.GetParameters()
-                                     .Where(parameter => !parameter.HasDefaultValue)
-                                     .DistinctBy(parameter => parameter.ParameterType)
-                                     .Count() // There are no parameters with the same type.
+                                    .Where(parameter => !parameter.HasDefaultValue)
+                                    .DistinctBy(parameter => parameter.ParameterType)
+                                    .Count() // There are no parameters with the same type.
                               && c.GetParameters()
-                                     .Count(parameter => !parameter.HasDefaultValue)
+                                    .Count(parameter => !parameter.HasDefaultValue)
                                  == propertyInformations.Length // There are as many parameters as there are properties.
                               && c.GetParameters()
-                                     .Where(parameter => !parameter.HasDefaultValue)
-                                     .All(parameter => propertyInformations
-                                         .Any(property => property.type == parameter.ParameterType)
-                                     ) // There is a property type that matches each parameter type.
+                                    .Where(parameter => !parameter.HasDefaultValue)
+                                    .All(parameter => propertyInformations.
+                                        Any(property => property.type == parameter.ParameterType
+                                                        || EqualCollectionElementType(property.type, parameter.ParameterType)
+                                        )
+                                    ) // There is a property type that matches each parameter type.
             );
 
         if (directlyMappableConstructor is not null)
@@ -44,7 +46,10 @@ public class PhpCreatorMethodWriter
 
             foreach (var parameter in directlyMappableConstructor.GetParameters().Where(parameter => !parameter.HasDefaultValue))
             {
-                var propertyName = propertyInformations.Single(property => property.type == parameter.ParameterType).lowerCaseName;
+                var propertyName = propertyInformations
+                    .Single(property => property.type == parameter.ParameterType || EqualCollectionElementType(property.type, parameter.ParameterType))
+                    .lowerCaseName;
+
                 writer.WriteLine($"$result->{propertyName} = ${parameter.Name};");
             }
         }
@@ -84,5 +89,17 @@ public class PhpCreatorMethodWriter
             _ when obj.GetType().IsEnum => $"{phpWriter.PhpTypeName(obj.GetType())}::{obj}",
             _ => System.Text.Json.JsonSerializer.Serialize(obj)
         };
+    }
+
+    private static bool EqualCollectionElementType(Type type1, Type type2)
+    {
+        return (type1.IsGenericType
+                && type1.GetGenericTypeDefinition() == typeof(List<>)
+                && type2.IsArray
+                && type1.GenericTypeArguments[0] == type2.GetElementType())
+            || (type1.IsArray
+                && type2.IsGenericType
+                && type2.GetGenericTypeDefinition() == typeof(List<>)
+                && type1 == type2.GenericTypeArguments[0]);
     }
 }

@@ -22,23 +22,23 @@ class BatchedProductRecommendationTest extends TestCase
 
         $recommender = new Recommender($datasetId, $apiKey);
 
-        $productRecommendationRequestCollection = ProductRecommendationRequestCollection::create()
-            ->withRequests(
-                ProductsViewedAfterViewingProductRequest::create()
-                    ->withSettings(ProductRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
-                    ->withProductAndVariantId(ProductAndVariantId::create()->withProductId("1"))
-                    ->withLanguage(Language::create("en-US"))
-                    ->withCurrency(Currency::create("USD"))
-                    ->withDisplayedAtLocationType("batched integration test")
-                    ->withUser(UserFactory::byTemporaryId("t-Id")),
-                PurchasedWithProductRequest::create()
-                    ->withSettings(ProductRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
-                    ->withProductAndVariantId(ProductAndVariantId::create()->withProductId("1"))
-                    ->withLanguage(Language::create("en-US"))
-                    ->withCurrency(Currency::create("USD"))
-                    ->withDisplayedAtLocationType("batched integration test")
-                    ->withUser(UserFactory::byTemporaryId("t-Id"))
-            );
+        $productRecommendationRequestCollection = ProductRecommendationRequestCollection::create(
+            false,
+            ProductsViewedAfterViewingProductRequest::create()
+                ->withSettings(ProductRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
+                ->withProductAndVariantId(ProductAndVariantId::create()->withProductId("1"))
+                ->withLanguage(Language::create("en-US"))
+                ->withCurrency(Currency::create("USD"))
+                ->withDisplayedAtLocationType("batched integration test")
+                ->withUser(UserFactory::byTemporaryId("t-Id")),
+            PurchasedWithProductRequest::create()
+                ->withSettings(ProductRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
+                ->withProductAndVariantId(ProductAndVariantId::create()->withProductId("1"))
+                ->withLanguage(Language::create("en-US"))
+                ->withCurrency(Currency::create("USD"))
+                ->withDisplayedAtLocationType("batched integration test")
+                ->withUser(UserFactory::byTemporaryId("t-Id"))
+        );
 
         $response = $recommender->batchProductRecommendation($productRecommendationRequestCollection);
 

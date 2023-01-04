@@ -21,23 +21,23 @@ class BatchedContentRecommendationTest extends TestCase
 
         $recommender = new Recommender($datasetId, $apiKey);
 
-        $contentRecommendationRequestCollection = ContentRecommendationRequestCollection::create()
-            ->withRequests(
-                PopularContentsRequest::create()
-                    ->withSettings(ContentRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
-                    ->withSinceMinutesAgo(5000)
-                    ->withLanguage(Language::create("en-US"))
-                    ->withCurrency(Currency::create("USD"))
-                    ->withDisplayedAtLocationType("batched integration test")
-                    ->withUser(UserFactory::byTemporaryId("t-Id")),
-                ContentsViewedAfterViewingContentRequest::create()
-                    ->withSettings(ContentRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
-                    ->withContentId("1")
-                    ->withLanguage(Language::create("en-US"))
-                    ->withCurrency(Currency::create("USD"))
-                    ->withDisplayedAtLocationType("batched integration test")
-                    ->withUser(UserFactory::byTemporaryId("t-Id"))
-            );
+        $contentRecommendationRequestCollection = ContentRecommendationRequestCollection::create(
+            false,
+            PopularContentsRequest::create()
+                ->withSettings(ContentRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
+                ->withSinceMinutesAgo(5000)
+                ->withLanguage(Language::create("en-US"))
+                ->withCurrency(Currency::create("USD"))
+                ->withDisplayedAtLocationType("batched integration test")
+                ->withUser(UserFactory::byTemporaryId("t-Id")),
+            ContentsViewedAfterViewingContentRequest::create()
+                ->withSettings(ContentRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
+                ->withContentId("1")
+                ->withLanguage(Language::create("en-US"))
+                ->withCurrency(Currency::create("USD"))
+                ->withDisplayedAtLocationType("batched integration test")
+                ->withUser(UserFactory::byTemporaryId("t-Id"))
+        );
 
         $response = $recommender->batchContentRecommendation($contentRecommendationRequestCollection);
 
