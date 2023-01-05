@@ -4,7 +4,7 @@ use Relewise\Models\DTO\User;
 
 class UserFactory {
     public static function anonymous() {
-        return User::create();
+        return new User();
     }
 
     public static function byAuthenticatedId(string $authenticatedId, ?string $temporaryId = null) {
@@ -17,28 +17,28 @@ class UserFactory {
     }
 
     public static function byTemporaryId(string $temporaryId) {
-        return User::create()
+        return (new User())
             ->withTemporaryId($temporaryId);
     }
 
     public static function byIdentifier(string $key, string $value) {
-        return User::create()
+        return (new User())
             ->withIdentifiers($key, $value);
     }
 
     public static function byIdentifiers(array $identifiers) {
-        $result = User::create();
+        $result = new User();
         $result->identifiers = $identifiers;
         return $result;
     }
 
     public static function byEmail(string $email) {
-        return User::create()
+        return (new User())
             ->withEmail($email);
     }
 
     public static function byFingerprint(string $fingerprint) {
-        return User::create()
+        return (new User())
             ->withFingerprint($fingerprint);
     }
 }

@@ -20,17 +20,17 @@ class SearchTermPredictionTest extends TestCase
 
         $searcher = new Searcher($datasetId, $apiKey);
 
-        $searchTermPrediction = SearchTermPredictionRequest::create()
-            ->withTerm('1')
-            ->withTake(1)
-            ->withSettings(
-                SearchTermPredictionSettings::create()
-                    ->withTargetEntityTypes(EntityType::Product, EntityType::Content)
-            )
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocation("integration test")
-            ->withUser(UserFactory::byTemporaryId("t-Id"));
+        $searchTermPrediction = SearchTermPredictionRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            UserFactory::byTemporaryId("t-Id"),
+            "integration test",
+            "1",
+            1
+        )->withSettings(
+            SearchTermPredictionSettings::create()
+                ->withTargetEntityTypes(EntityType::Product, EntityType::Content)
+        );
 
         $response = $searcher->searchTermPrediction($searchTermPrediction);
 

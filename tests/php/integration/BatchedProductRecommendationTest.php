@@ -24,20 +24,20 @@ class BatchedProductRecommendationTest extends TestCase
 
         $productRecommendationRequestCollection = ProductRecommendationRequestCollection::create(
             false,
-            ProductsViewedAfterViewingProductRequest::create()
-                ->withSettings(ProductRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
-                ->withProductAndVariantId(ProductAndVariantId::create()->withProductId("1"))
-                ->withLanguage(Language::create("en-US"))
-                ->withCurrency(Currency::create("USD"))
-                ->withDisplayedAtLocationType("batched integration test")
-                ->withUser(UserFactory::byTemporaryId("t-Id")),
-            PurchasedWithProductRequest::create()
-                ->withSettings(ProductRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
-                ->withProductAndVariantId(ProductAndVariantId::create()->withProductId("1"))
-                ->withLanguage(Language::create("en-US"))
-                ->withCurrency(Currency::create("USD"))
-                ->withDisplayedAtLocationType("batched integration test")
-                ->withUser(UserFactory::byTemporaryId("t-Id"))
+            ProductsViewedAfterViewingProductRequest::create(
+                Language::create("en-US"),
+                Currency::create("USD"),
+                "batched integration test",
+                UserFactory::byTemporaryId("t-Id"),
+                ProductAndVariantId::create("1")
+            )->withSettings(ProductRecommendationRequestSettings::create()->withNumberOfRecommendations(1)),
+            PurchasedWithProductRequest::create(
+                Language::create("en-US"),
+                Currency::create("USD"),
+                "batched integration test",
+                UserFactory::byTemporaryId("t-Id"),
+                ProductAndVariantId::create("1")
+            )->withSettings(ProductRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
         );
 
         $response = $recommender->batchProductRecommendation($productRecommendationRequestCollection);

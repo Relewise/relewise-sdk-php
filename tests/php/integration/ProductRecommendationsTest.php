@@ -27,12 +27,13 @@ class ProductRecommendationsTest extends TestCase
 
         $recommender = new Recommender($datasetId, $apiKey);
 
-        $purchasedWtihProduct = PurchasedWithProductRequest::create()
-            ->withProductAndVariantId(ProductAndVariantId::create()->withProductId("1"))
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocationType("integration test")
-            ->withUser(UserFactory::byTemporaryId("t-Id"));
+        $purchasedWtihProduct = PurchasedWithProductRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            "integration test",
+            UserFactory::byTemporaryId("t-Id"),
+            ProductAndVariantId::create("1")
+        );
 
         $response = $recommender->purchasedWithProduct($purchasedWtihProduct);
 
@@ -47,12 +48,13 @@ class ProductRecommendationsTest extends TestCase
 
         $recommender = new Recommender($datasetId, $apiKey);
 
-        $productsViewedAfterViewingProduct = ProductsViewedAfterViewingProductRequest::create()
-            ->withProductAndVariantId(ProductAndVariantId::create()->withProductId("1"))
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocationType("integration test")
-            ->withUser(UserFactory::byTemporaryId("t-Id"));
+        $productsViewedAfterViewingProduct = ProductsViewedAfterViewingProductRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            "integration test",
+            UserFactory::byTemporaryId("t-Id"),
+            ProductAndVariantId::create("1")
+        );
 
         $response = $recommender->productsViewedAfterViewingProduct($productsViewedAfterViewingProduct);
 
@@ -67,39 +69,38 @@ class ProductRecommendationsTest extends TestCase
 
         $recommender = new Recommender($datasetId, $apiKey);
 
-        $productsViewedAfterViewingProduct = ProductsViewedAfterViewingProductRequest::create()
-            ->withProductAndVariantId(ProductAndVariantId::create()->withProductId("1"))
-            ->withFilters(
-                FilterCollection::create()
-                    ->withItems(
-                        ProductDataFilter::create()
-                            ->withKey("ShortDescription")
-                            ->withConditions(
-                                ValueConditionCollection::create()
-                                    ->withItems(
-                                        ContainsCondition::create()
-                                            ->withValue(DataValueFactory::stringListDataValue("d"))
-                                            ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
-                                        ContainsCondition::create()
-                                            ->withValue(DataValueFactory::booleanListDataValue(true))
-                                            ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
-                                        ContainsCondition::create()
-                                            ->withValue(DataValueFactory::doubleListDataValue(1))
-                                            ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
-                                        ContainsCondition::create()
-                                            ->withValue(DataValueFactory::multilingualCollectionDataValueFromLanguageAndCollection(Language::create("en-US"), "d"))
-                                            ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
-                                        ContainsCondition::create()
-                                            ->withValue(DataValueFactory::multiCurrencyDataValueFromSingleCurrency(Money::create(Currency::create("USD"), 1)))
-                                            ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
-                                    )
+        $productsViewedAfterViewingProduct = ProductsViewedAfterViewingProductRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            "integration test Conditions",
+            UserFactory::anonymous(),
+            ProductAndVariantId::create("1")
+        )->withFilters(
+            FilterCollection::create(
+                ProductDataFilter::create()
+                    ->withKey("ShortDescription")
+                    ->withConditions(
+                        ValueConditionCollection::create()
+                            ->withItems(
+                                ContainsCondition::create()
+                                    ->withValue(DataValueFactory::stringListDataValue("d"))
+                                    ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
+                                ContainsCondition::create()
+                                    ->withValue(DataValueFactory::booleanListDataValue(true))
+                                    ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
+                                ContainsCondition::create()
+                                    ->withValue(DataValueFactory::doubleListDataValue(1))
+                                    ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
+                                ContainsCondition::create()
+                                    ->withValue(DataValueFactory::multilingualCollectionDataValueFromLanguageAndCollection(Language::create("en-US"), "d"))
+                                    ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
+                                ContainsCondition::create()
+                                    ->withValue(DataValueFactory::multiCurrencyDataValueFromSingleCurrency(Money::create(Currency::create("USD"), 1)))
+                                    ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                             )
                     )
             )
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocationType("integration test Conditions")
-            ->withUser(UserFactory::anonymous());
+        );
 
         $response = $recommender->productsViewedAfterViewingProduct($productsViewedAfterViewingProduct);
 

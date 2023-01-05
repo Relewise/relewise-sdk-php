@@ -23,20 +23,20 @@ class BatchedContentRecommendationTest extends TestCase
 
         $contentRecommendationRequestCollection = ContentRecommendationRequestCollection::create(
             false,
-            PopularContentsRequest::create()
-                ->withSettings(ContentRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
-                ->withSinceMinutesAgo(5000)
-                ->withLanguage(Language::create("en-US"))
-                ->withCurrency(Currency::create("USD"))
-                ->withDisplayedAtLocationType("batched integration test")
-                ->withUser(UserFactory::byTemporaryId("t-Id")),
-            ContentsViewedAfterViewingContentRequest::create()
-                ->withSettings(ContentRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
-                ->withContentId("1")
-                ->withLanguage(Language::create("en-US"))
-                ->withCurrency(Currency::create("USD"))
-                ->withDisplayedAtLocationType("batched integration test")
-                ->withUser(UserFactory::byTemporaryId("t-Id"))
+            PopularContentsRequest::create(
+                Language::create("en-US"),
+                Currency::create("USD"),
+                "batched integration test",
+                UserFactory::byTemporaryId("t-Id")
+            )->withSettings(ContentRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
+            ->withSinceMinutesAgo(5000),
+            ContentsViewedAfterViewingContentRequest::create(
+                Language::create("en-US"),
+                Currency::create("USD"),
+                "batched integration test",
+                UserFactory::byTemporaryId("t-Id"),
+                "1"
+            )->withSettings(ContentRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
         );
 
         $response = $recommender->batchContentRecommendation($contentRecommendationRequestCollection);

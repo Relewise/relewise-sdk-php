@@ -70,12 +70,12 @@ class GeneratedRequestsTest extends TestCase
         $tracker = new Tracker($datasetId, $apiKey);
 
         $trackOrderRequest = TrackOrderRequest::create(
-            Order::create()
-                ->withUser(UserFactory::byTemporaryId("t-Id"))
-                ->withSubtotal(
-                    Money::create(Currency::create("DKK"), 100)
-                )
-                ->withOrderNumber("1")
+            Order::create(
+                UserFactory::byTemporaryId("t-Id"),
+                Money::create(Currency::create("DKK"), 100),
+                "1",
+                "1"
+            )
         );
 
         $response = $tracker->request('TrackOrderRequest', $trackOrderRequest);

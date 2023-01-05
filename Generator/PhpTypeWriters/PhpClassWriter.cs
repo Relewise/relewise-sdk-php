@@ -34,24 +34,32 @@ use DateTime;
             writer.WriteLine($"public string $typeDefinition = \"{type.FullName}, {type.Assembly.FullName!.Split(",")[0]}\";");
         }
 
-        var settableProperties = type
+        var settablePropertyInfo = type
             .GetProperties()
             .Where(info => info.MemberType is MemberTypes.Property
-                        && info.GetIndexParameters().Length is 0
-                        && info.SetMethod is { IsAbstract: false }
-                        && !Attribute.IsDefined(info, typeof(JsonIgnoreAttribute))
-                        && info.GetAccessors(false).All(ax => !ax.IsAbstract && ax.IsPublic)
-                        && (info.DeclaringType?.IsAbstract == type.IsAbstract))
-            .Select(info => (type: info.PropertyType, propertyTypeName: phpWriter.PhpTypeName(info.PropertyType), propertyName: info.Name, lowerCaseName: info.Name.ToCamelCase()))
+                           && info.GetIndexParameters().Length is 0
+                           && info.SetMethod is { IsAbstract: false }
+                           && !Attribute.IsDefined(info, typeof(JsonIgnoreAttribute))
+                           && info.GetAccessors(false).All(ax => !ax.IsAbstract && ax.IsPublic))
             .ToArray();
 
-        foreach (var (_, propertyTypeName, _, lowerCaseName) in settableProperties)
+        var settableProperties = settablePropertyInfo
+            .Select(info => (type: info.PropertyType, propertyTypeName: phpWriter.PhpTypeName(info), propertyName: info.Name, lowerCaseName: info.Name.ToCamelCase()))
+            .ToArray();
+
+        var ownedProperties = settablePropertyInfo
+            .Where(info => info.DeclaringType == type 
+                        && info.DeclaringType?.IsAbstract == type.IsAbstract)
+            .Select(info => (type: info.PropertyType, propertyTypeName: phpWriter.PhpTypeName(info), propertyName: info.Name, lowerCaseName: info.Name.ToCamelCase()))
+            .ToArray();
+
+        foreach (var (_, propertyTypeName, _, lowerCaseName) in ownedProperties)
         {
             writer.WriteLine($"public {propertyTypeName} ${lowerCaseName};");
         }
 
-        phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, settableProperties);
-        phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, settableProperties);
+        phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, ownedProperties);
+        phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, ownedProperties);
         phpWriter.PhpPropertySetterMethodsWriter.Write(writer, settableProperties);
 
         writer.Indent--;

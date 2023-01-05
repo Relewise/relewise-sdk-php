@@ -21,19 +21,21 @@ class FiltersTest extends TestCase
 
         $searcher = new Searcher($datasetId, $apiKey);
 
-        $productSearchRequest = ProductSearchRequest::create()
-            ->withFilters(
-                FilterCollection::create()
-                    ->withItems(
-                        ProductAssortmentFilter::create()
-                            ->withAssortments(10_000_000)
-                    )
-            )
-            ->withTake(20)
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocation("integration test")
-            ->withUser(UserFactory::byTemporaryId("t-Id"));
+        $productSearchRequest = ProductSearchRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            UserFactory::byTemporaryId("t-Id"),
+            "integration test",
+            "1",
+            0,
+            20
+        )->withFilters(
+            FilterCollection::create()
+                ->withItems(
+                    ProductAssortmentFilter::create()
+                        ->withAssortments(10_000_000)
+                )
+        );
 
         $response = $searcher->productSearch($productSearchRequest);
 
@@ -48,19 +50,21 @@ class FiltersTest extends TestCase
 
         $searcher = new Searcher($datasetId, $apiKey);
 
-        $productSearchRequest = ProductSearchRequest::create()
-            ->withFilters(
-                FilterCollection::create()
-                    ->withItems(
-                        ProductIdFilter::create()
-                            ->withProductIds("1")
-                    )
-            )
-            ->withTake(20)
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocation("integration test")
-            ->withUser(UserFactory::byTemporaryId("t-Id"));
+        $productSearchRequest = ProductSearchRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            UserFactory::byTemporaryId("t-Id"),
+            "integration test",
+            "1",
+            0,
+            20
+        )->withFilters(
+            FilterCollection::create()
+                ->withItems(
+                    ProductIdFilter::create()
+                        ->withProductIds("1")
+                )
+        );
 
         $response = $searcher->productSearch($productSearchRequest);
 

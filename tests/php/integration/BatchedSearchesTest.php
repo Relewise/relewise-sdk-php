@@ -21,16 +21,12 @@ class BatchedSearchesTest extends TestCase
 
         $searcher = new Searcher($datasetId, $apiKey);
 
-        $searchRequestCollection = SearchRequestCollection::create()
-            ->withRequests(
-                SearchTermPredictionRequest::create(),
-                ProductSearchRequest::create()->withTerm("a"),
-                ProductCategorySearchRequest::create()->withTerm("c")
-            )
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocation("integration test")
-            ->withUser(UserFactory::anonymous());
+        $searchRequestCollection = SearchRequestCollection::create(
+
+            SearchTermPredictionRequest::create(Language::create("en-US"), Currency::create("USD"), UserFactory::anonymous(), "integration test", "", 0),
+            ProductSearchRequest::create(Language::create("en-US"), Currency::create("USD"), UserFactory::anonymous(), "integration test", "a", 0, 0),
+            ProductCategorySearchRequest::create(Language::create("en-US"), Currency::create("USD"), UserFactory::anonymous(), "integration test", "c", 0, 0)
+        );
 
         $response = $searcher->batchSearch($searchRequestCollection);
 

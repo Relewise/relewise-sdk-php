@@ -22,22 +22,22 @@ class SearchTest extends TestCase
 
         $searcher = new Searcher($datasetId, $apiKey);
 
-        $productSearch = ProductSearchRequest::create()
-            ->withRelevanceModifiers(
-                RelevanceModifierCollection::create()
-                    ->withItems(
-                        ProductDataRelevanceModifier::create()
-                            ->withKey("NoveltyBoostModifier")
-                            ->withMultiplierSelector(
-                                DataDoubleSelector::create("NoveltyBoostModifier")
-                            )
-                    )
+        $productSearch = ProductSearchRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            UserFactory::byTemporaryId("t-Id"),
+            "integration test",
+            "p-1",
+            0,
+            3
+        )->withRelevanceModifiers(
+            RelevanceModifierCollection::create(
+                ProductDataRelevanceModifier::create(
+                    "NoveltyBoostModifier",
+                    DataDoubleSelector::create("NoveltyBoostModifier")
+                )
             )
-            ->withTake(3)
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocation("integration test")
-            ->withUser(UserFactory::byTemporaryId("t-Id"));
+        );
 
         $response = $searcher->productSearch($productSearch);
 
@@ -53,22 +53,22 @@ class SearchTest extends TestCase
 
         $searcher = new Searcher($datasetId, $apiKey);
 
-        $productCategorySearch = ProductCategorySearchRequest::create()
-            ->withRelevanceModifiers(
-                RelevanceModifierCollection::create()
-                    ->withItems(
-                        ProductDataRelevanceModifier::create()
-                            ->withKey("NoveltyBoostModifier")
-                            ->withMultiplierSelector(
-                                DataDoubleSelector::create("NoveltyBoostModifier")
-                            )
-                    )
+        $productCategorySearch = ProductCategorySearchRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            UserFactory::byTemporaryId("t-Id"),
+            "integration test",
+            Null,
+            0,
+            3
+        )->withRelevanceModifiers(
+            RelevanceModifierCollection::create(
+                ProductDataRelevanceModifier::create(
+                    "NoveltyBoostModifier",
+                    DataDoubleSelector::create("NoveltyBoostModifier")
+                )
             )
-            ->withTake(3)
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocation("integration test")
-            ->withUser(UserFactory::byTemporaryId("t-Id"));
+        );
 
         $response = $searcher->productCategorySearch($productCategorySearch);
 

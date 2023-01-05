@@ -1,6 +1,7 @@
 ﻿using Generator.Extensions;
 using System.CodeDom.Compiler;
 using System.Globalization;
+using System.Reflection;
 
 namespace Generator.PhpMethodWriters;
 
@@ -17,40 +18,67 @@ public class PhpCreatorMethodWriter
     {
         if (type.IsAbstract || type.IsInterface) return;
 
-        var directlyMappableConstructor = type
+        var coveringTypeMappableConstructorParameters = type
             .GetConstructors() // All 
-            .FirstOrDefault(c => c.GetParameters()
-                                    .Count(parameter => !parameter.HasDefaultValue)
-                                 == c.GetParameters()
-                                    .Where(parameter => !parameter.HasDefaultValue)
-                                    .DistinctBy(parameter => parameter.ParameterType)
-                                    .Count() // There are no parameters with the same type.
+            .FirstOrDefault(c => c.GetParameters().Count()== c.GetParameters().DistinctBy(parameter => parameter.ParameterType).Count() // There are no parameters with the same type.
+                              && c.GetParameters().Count() == propertyInformations.Length // There are as many parameters as there are properties.
                               && c.GetParameters()
-                                    .Count(parameter => !parameter.HasDefaultValue)
-                                 == propertyInformations.Length // There are as many parameters as there are properties.
-                              && c.GetParameters()
-                                    .Where(parameter => !parameter.HasDefaultValue)
-                                    .All(parameter => propertyInformations.
-                                        Any(property => property.type == parameter.ParameterType
-                                                        || EqualCollectionElementType(property.type, parameter.ParameterType)
+                                    .All(parameter => propertyInformations
+                                        .Any(property =>
+                                            property.type == parameter.ParameterType
+                                            || EqualCollectionElementType(property.type, parameter.ParameterType)
                                         )
                                     ) // There is a property type that matches each parameter type.
-            );
+            )
+            ?.GetParameters()
+            .ToArray();
 
-        if (directlyMappableConstructor is not null)
+        var allConstructorParametersIntersectionWithMappableNamesAndTypes = type
+            .GetConstructors()
+            .Where(c => c.GetParameters().Length > 0)
+            .MinBy(c => c.GetParameters().Length)
+            ?.GetParameters()
+            .Where(parameter => type
+                .GetConstructors()
+                .Where(c => c.GetParameters().Length > 0)
+                .All(c => c.GetParameters().Any(cParameter => 
+                    cParameter.Name == parameter.Name
+                    && cParameter.ParameterType == parameter.ParameterType))
+                && type.GetProperties().Any(property =>
+                    property.Name.ToCamelCase() == parameter.Name
+                    && (
+                        property.PropertyType == parameter.ParameterType
+                        || EqualCollectionElementType(property.PropertyType, parameter.ParameterType)
+                    ))
+            )
+            .ToArray();
+        
+        if (coveringTypeMappableConstructorParameters is not null)
         {
-            writer.WriteLine($"public static function create({string.Join(", ", directlyMappableConstructor.GetParameters().Select(parameter => $"{phpWriter.BetterTypedParameterTypeName(phpWriter.PhpTypeName(parameter.ParameterType), parameter.ParameterType)} ${parameter.Name}"))}) : {typeName}");
+            writer.WriteLine($"public static function create({ParameterList(coveringTypeMappableConstructorParameters)}) : {typeName}");
             writer.WriteLine("{");
             writer.Indent++;
             writer.WriteLine($"$result = new {typeName}();");
 
-            foreach (var parameter in directlyMappableConstructor.GetParameters().Where(parameter => !parameter.HasDefaultValue))
+            foreach (var parameter in coveringTypeMappableConstructorParameters)
             {
                 var propertyName = propertyInformations
                     .Single(property => property.type == parameter.ParameterType || EqualCollectionElementType(property.type, parameter.ParameterType))
                     .lowerCaseName;
 
                 writer.WriteLine($"$result->{propertyName} = ${parameter.Name};");
+            }
+        }
+        else if (allConstructorParametersIntersectionWithMappableNamesAndTypes is not null)
+        {
+            writer.WriteLine($"public static function create({ParameterList(allConstructorParametersIntersectionWithMappableNamesAndTypes)}) : {typeName}");
+            writer.WriteLine("{");
+            writer.Indent++;
+            writer.WriteLine($"$result = new {typeName}();");
+
+            foreach (var parameter in allConstructorParametersIntersectionWithMappableNamesAndTypes)
+            {
+                writer.WriteLine($"$result->{parameter.Name} = ${parameter.Name};");
             }
         }
         else
@@ -61,21 +89,51 @@ public class PhpCreatorMethodWriter
             writer.WriteLine($"$result = new {typeName}();");
         }
 
-        var defaultValueParameterizedProperties = type.GetConstructors()
-            .SelectMany(constructor => constructor.GetParameters())
-            .Where(parameter => parameter.HasDefaultValue &&
-                                type.GetProperties().Any(property => property.Name.ToCamelCase() == parameter.Name)
-                                && parameter.DefaultValue is not null)
-            .DistinctBy(parameter => parameter.Name);
+        var coveredParameterNames = coveringTypeMappableConstructorParameters is not null
+            ? coveringTypeMappableConstructorParameters.Select(parameter => parameter.Name)
+            : allConstructorParametersIntersectionWithMappableNamesAndTypes is not null
+                ? allConstructorParametersIntersectionWithMappableNamesAndTypes.Select(parameter => parameter.Name)
+                : new List<string>();
 
-        foreach (var parameter in defaultValueParameterizedProperties)
+        var extraDefaultSetParameters = type.GetConstructors()
+            .SelectMany(constructor => constructor.GetParameters())
+            .Where(parameter => !coveredParameterNames.Contains(parameter.Name)
+                                && parameter.DefaultValue is { } defaultValue && (defaultValue.GetType().IsValueType)
+                                && type.GetProperties().Any(property =>
+                                    property.Name.ToCamelCase() == parameter.Name
+                                    && (
+                                        property.PropertyType == parameter.ParameterType
+                                        || EqualCollectionElementType(property.PropertyType, parameter.ParameterType)
+                                    )
+                                )
+            )
+            .DistinctBy(parameter => parameter.Name)
+            .ToArray();
+
+        foreach (var parameter in extraDefaultSetParameters)
         {
-            writer.WriteLine($"$result->{parameter.Name} = {LiteralValueExpression(parameter.DefaultValue!)};");
+            var propertyName = type
+                .GetProperties()
+                .Single(property =>
+                    property.Name.ToCamelCase() == parameter.Name
+                    && (
+                        property.PropertyType == parameter.ParameterType
+                        || EqualCollectionElementType(property.PropertyType, parameter.ParameterType)
+                    )
+            ).Name.ToCamelCase();
+
+            writer.WriteLine($"$result->{propertyName}{DefaultValueSetter(parameter)};");
         }
+
 
         writer.WriteLine("return $result;");
         writer.Indent--;
         writer.WriteLine("}");
+    }
+
+    private string DefaultValueSetter(ParameterInfo parameter)
+    {
+        return parameter.ParameterType == typeof(string) && parameter.DefaultValue is null ? " = Null" : parameter.DefaultValue is { } defaultValue && (defaultValue.GetType().IsValueType) ? $" = {LiteralValueExpression(defaultValue)}" : "";
     }
 
     private string LiteralValueExpression(object obj)
@@ -89,6 +147,15 @@ public class PhpCreatorMethodWriter
             _ when obj.GetType().IsEnum => $"{phpWriter.PhpTypeName(obj.GetType())}::{obj}",
             _ => System.Text.Json.JsonSerializer.Serialize(obj)
         };
+    }
+
+    private string ParameterList(ParameterInfo[] parameters)
+    {
+        return string.Join(", ",
+            parameters.Select(parameter =>
+                $"{(parameters[^1] == parameter ? phpWriter.BetterTypedParameterTypeName(phpWriter.PhpTypeName(parameter), parameter.ParameterType) : phpWriter.PhpTypeName(parameter))} ${parameter.Name}{DefaultValueSetter(parameter)}"
+            )
+        );
     }
 
     private static bool EqualCollectionElementType(Type type1, Type type2)

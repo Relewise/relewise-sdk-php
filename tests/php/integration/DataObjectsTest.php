@@ -25,31 +25,30 @@ class DataObjectsTest extends TestCase
 
         $searcher = new Searcher($datasetId, $apiKey);
 
-        $productSearch = ProductSearchRequest::create()
-            ->withSettings(ProductSearchSettings::create()->withSelectedProductProperties(SelectedProductPropertiesSettings::create()->withAllData(true)))
-            ->withFilters(FilterCollection::create()
-                ->withItems(ProductDataFilter::create()
-                    ->withKey("DataObject")
-                    ->withConditions(ValueConditionCollection::create()
-                        ->withItems(
-                            ContainsCondition::create()
-                                ->withValue(DataValueFactory::objectDataValue(array("d" => DataValueFactory::stringDataValue("a"))))
-                        )
+        $productSearch = ProductSearchRequest::create(
+            Language::create("da-dk"),
+            Currency::create("DKK"),
+            UserFactory::anonymous(),
+            "integration test - data object",
+            "1",
+            0,
+            0
+        )->withSettings(ProductSearchSettings::create()->withSelectedProductProperties(SelectedProductPropertiesSettings::create()->withAllData(true)))
+        ->withFilters(FilterCollection::create()
+            ->withItems(ProductDataFilter::create()
+                ->withKey("DataObject")
+                ->withConditions(ValueConditionCollection::create()
+                    ->withItems(
+                        ContainsCondition::create()
+                            ->withValue(DataValueFactory::objectDataValue(array("d" => DataValueFactory::stringDataValue("a"))))
                     )
                 )
             )
-            ->withLanguage(Language::create("da-dk"))
-            ->withCurrency(Currency::create("DKK"))
-            ->withDisplayedAtLocation("integration test - data object")
-            ->withUser(UserFactory::anonymous());
+        );
 
         $response = $searcher->productSearch($productSearch);
 
-        fwrite(STDOUT, json_encode($response));
-
         self::assertNotNull($response);
-        // TODO: This test should actually return 0 as shown in the original test, but it sounds like it is a work in progress to have these filters actually apply.
-        // Context: https://github.com/Relewise/relewise-sdk-javascript/blob/main/lib/tests/integration-tests/data-objects.test.ts-disabled#L17
         self::assertEquals(0, $response->hits);
     }
 }

@@ -6,6 +6,9 @@ use \PHPUnit\Framework\TestCase;
 use Relewise\Factory\DataValueFactory;
 use Relewise\Factory\UserFactory;
 use Relewise\Models\DTO\Brand;
+use Relewise\Models\DTO\CategoryNameAndId;
+use Relewise\Models\DTO\CategoryPath;
+use Relewise\Models\DTO\Currency;
 use Relewise\Models\DTO\Language;
 use Relewise\Models\DTO\Multilingual;
 use Relewise\Models\DTO\MultilingualValue;
@@ -33,10 +36,11 @@ class TrackerTest extends TestCase
         $tracker = new Tracker($datasetId, $apiKey);
 
         $productViewRequest = TrackProductViewRequest::create(
-            ProductView::create()
-                ->withUser(UserFactory::byTemporaryId("t-Id"))
-                ->withProduct(Product::create()->withId("p-1"))
-                ->withVariant(ProductVariant::create()->withId("v-1"))
+            ProductView::create(
+                UserFactory::byTemporaryId("t-Id"),
+                Product::create("p-1"),
+                ProductVariant::create()->withId("v-1")
+            )
         );
 
         $response = $tracker->trackProductView($productViewRequest);
@@ -52,36 +56,33 @@ class TrackerTest extends TestCase
         $tracker = new Tracker($datasetId, $apiKey);
 
         $productUpdate = TrackProductUpdateRequest::create(
-            ProductUpdate::create()
-                ->withProductUpdateKind(ProductUpdateUpdateKind::ReplaceProvidedProperties)
-                ->withProduct(
-                    Product::create()
-                        ->withId("p-1")
-                        ->withDisplayName(
-                            Multilingual::create()
-                                ->withValues(
-                                    MultilingualValue::create(Language::create("da-dk"), "MyProduct1")
-                                )
-                        )
-                        ->withBrand(
-                            Brand::create()
-                                ->withId("b-1")
-                                ->withDisplayName("MyBrand1")
-                        )
-                        ->withData("SomeString", DataValueFactory::stringDataValue("SomeValue"))
-                        ->withData("SomeObject", DataValueFactory::objectDataValue(array("SomeString" => DataValueFactory::stringDataValue("SomeValue"))))
-                        ->withData("SomeStringList", DataValueFactory::stringListDataValue("FirstString", "SecondString"))
-                        ->withData("SomeBooleanList", DataValueFactory::booleanListDataValue(true, true, false))
-                )
-                ->withVariants(
-                    ProductVariant::create()
-                        ->withId("v-1")
-                        ->withDisplayName(
-                            Multilingual::create(
-                                MultilingualValue::create(Language::create("da-dk"), "MyVariant1")
+            ProductUpdate::create(
+                Product::create("p-1")
+                    ->withDisplayName(
+                        Multilingual::create()
+                            ->withValues(
+                                MultilingualValue::create(Language::create("da-dk"), "MyProduct1")
                             )
+                    )
+                    ->withBrand(
+                        Brand::create("b-1")
+                            ->withDisplayName("MyBrand1")
+                    )
+                    ->withCategoryPaths(CategoryPath::create(CategoryNameAndId::create("c-1", Multilingual::create(MultilingualValue::create(Language::create("da-dk"), "Category 1")))))
+                    ->withData("SomeString", DataValueFactory::stringDataValue("SomeValue"))
+                    ->withData("SomeObject", DataValueFactory::objectDataValue(array("SomeString" => DataValueFactory::stringDataValue("SomeValue"))))
+                    ->withData("SomeStringList", DataValueFactory::stringListDataValue("FirstString", "SecondString"))
+                    ->withData("SomeBooleanList", DataValueFactory::booleanListDataValue(true, true, false)),
+                ProductUpdateUpdateKind::ReplaceProvidedProperties
+            )->withVariants(
+                ProductVariant::create()
+                    ->withId("v-1")
+                    ->withDisplayName(
+                        Multilingual::create(
+                            MultilingualValue::create(Language::create("da-dk"), "MyVariant1")
                         )
-                )
+                    )
+            )
         );
 
         $tracking = $tracker->trackProductUpdate($productUpdate);
@@ -90,21 +91,25 @@ class TrackerTest extends TestCase
         // Validate that the product was created with search.
         $searcher = new Searcher($datasetId, $apiKey);
 
-        $productSearch = ProductSearchRequest::create()
-            ->withTerm("p-1")
-            ->withSettings(
-                ProductSearchSettings::create()
-                    ->withSelectedVariantProperties(
-                        SelectedVariantPropertiesSettings::create()
-                            ->withDisplayName(true)
-                    )
-                    ->withSelectedProductProperties(
-                        SelectedProductPropertiesSettings::create()
-                            ->withDisplayName(true)
-                    )
-            )
-            ->withLanguage(Language::create("da-dk"))
-            ->withTake(1);
+        $productSearch = ProductSearchRequest::create(
+            Language::create("da-dk"),
+            Currency::create("DKK"),
+            UserFactory::anonymous(),
+            "integration test",
+            "p-1",
+            0,
+            1
+        )->withSettings(
+            ProductSearchSettings::create()
+                ->withSelectedVariantProperties(
+                    SelectedVariantPropertiesSettings::create()
+                        ->withDisplayName(true)
+                )
+                ->withSelectedProductProperties(
+                    SelectedProductPropertiesSettings::create()
+                        ->withDisplayName(true)
+                )
+        );
 
         $searchResult = $searcher->productSearch($productSearch);
 

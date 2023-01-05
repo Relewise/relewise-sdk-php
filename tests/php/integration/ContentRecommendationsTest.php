@@ -19,12 +19,13 @@ class ContentRecommendationsTest extends TestCase
 
         $recommender = new Recommender($datasetId, $apiKey);
 
-        $contentsViewedAfterViewingContent = ContentsViewedAfterViewingContentRequest::create()
-            ->withContentId("1")
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocationType("integration test")
-            ->withUser(UserFactory::byTemporaryId("t-Id"));
+        $contentsViewedAfterViewingContent = ContentsViewedAfterViewingContentRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            "integration test",
+            UserFactory::byTemporaryId("t-Id"),
+            "1"
+        );
 
         $response = $recommender->contentsViewedAfterViewingContent($contentsViewedAfterViewingContent);
 
@@ -39,12 +40,12 @@ class ContentRecommendationsTest extends TestCase
 
         $recommender = new Recommender($datasetId, $apiKey);
 
-        $popularContents = PopularContentsRequest::create()
-            ->withSinceMinutesAgo(5000)
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocationType("integration test")
-            ->withUser(UserFactory::byTemporaryId("t-Id"));
+        $popularContents = PopularContentsRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            "integration test",
+            UserFactory::byTemporaryId("t-Id")
+        )->withSinceMinutesAgo(5000);
 
         $response = $recommender->popularContents($popularContents);
 

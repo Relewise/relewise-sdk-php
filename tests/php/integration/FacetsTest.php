@@ -27,21 +27,20 @@ class FacetsTest extends TestCase
 
         $searcher = new Searcher($datasetId, $apiKey);
 
-        $productSearch = ProductSearchRequest::create()
-            ->withFacets(
-                ProductFacetQuery::create()
-                    ->withItems(
-                        PriceRangeFacet::create()
-                            ->withField(FacetingField::SalesPrice)
-                            ->withPriceSelectionStrategy(PriceSelectionStrategy::Product)
-                    )
-            )
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocation("integration test")
-            ->withUser(
-                UserFactory::anonymous()
-            );
+        $productSearch = ProductSearchRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            UserFactory::anonymous(),
+            "integration test",
+            "1",
+            0,
+            0
+        )->withFacets(
+            ProductFacetQuery::create()
+                ->withItems(
+                    PriceRangeFacet::create(FacetingField::SalesPrice, PriceSelectionStrategy::Product, Null)
+                )
+        );
 
         $response = $searcher->productSearch($productSearch);
 
@@ -60,20 +59,21 @@ class FacetsTest extends TestCase
 
         $searcher = new Searcher($datasetId, $apiKey);
 
-        $productSearch = ProductSearchRequest::create()
-            ->withFacets(
-                ProductFacetQuery::create()
-                    ->withItems(
-                        BrandFacet::create()
-                            ->withField(FacetingField::Brand)
-                    )
-            )
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocation("integration test")
-            ->withUser(
-                UserFactory::anonymous()
-            );
+        $productSearch = ProductSearchRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            UserFactory::anonymous(),
+            "integration test",
+            "1",
+            0,
+            0
+        )->withFacets(
+            ProductFacetQuery::create()
+                ->withItems(
+                    BrandFacet::create()
+                        ->withField(FacetingField::Brand)
+                )
+        );
 
         $response = $searcher->productSearch($productSearch);
 
@@ -92,22 +92,23 @@ class FacetsTest extends TestCase
 
         $searcher = new Searcher($datasetId, $apiKey);
 
-        $productSearch = ProductSearchRequest::create()
-            ->withFacets(
-                ProductFacetQuery::create()
-                    ->withItems(
-                        ProductDataStringValueFacet::create()
-                            ->withField(FacetingField::Data)
-                            ->withKey("ShortDescription")
-                            ->withDataSelectionStrategy(DataSelectionStrategy::Product)
-                    )
-            )
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocation("integration test")
-            ->withUser(
-                UserFactory::anonymous()
-            );
+        $productSearch = ProductSearchRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            UserFactory::anonymous(),
+            "integration test",
+            "1",
+            0,
+            0
+        )->withFacets(
+            ProductFacetQuery::create()
+                ->withItems(
+                    ProductDataStringValueFacet::create()
+                        ->withField(FacetingField::Data)
+                        ->withKey("ShortDescription")
+                        ->withDataSelectionStrategy(DataSelectionStrategy::Product)
+                )
+        );
 
         $response = $searcher->productSearch($productSearch);
 
@@ -126,21 +127,21 @@ class FacetsTest extends TestCase
 
         $searcher = new Searcher($datasetId, $apiKey);
 
-        $productSearch = ProductSearchRequest::create()
-            ->withFacets(
-                ProductFacetQuery::create()
-                    ->withItems(
-                        CategoryFacet::create()
-                            ->withField(FacetingField::Category)
-                            ->withCategorySelectionStrategy(CategorySelectionStrategy::ImmediateParent)
-                    )
-            )
-            ->withLanguage(Language::create("en-US"))
-            ->withCurrency(Currency::create("USD"))
-            ->withDisplayedAtLocation("integration test")
-            ->withUser(
-                UserFactory::anonymous()
-            );
+        $productSearch = ProductSearchRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            UserFactory::anonymous(),
+            "integration test",
+            "1",
+            0,
+            0
+        )->withFacets(
+            ProductFacetQuery::create()
+                ->withItems(
+                    CategoryFacet::create(CategorySelectionStrategy::ImmediateParent)
+                        ->withField(FacetingField::Category)
+                )
+        );
 
         $response = $searcher->productSearch($productSearch);
 

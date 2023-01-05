@@ -67,9 +67,32 @@ public class PhpWriter
 
     public string PhpTypeName(Type type) => phpTypeResolver.ResolveType(type);
 
+    public string PhpTypeName(PropertyInfo property)
+    {
+        var typeName = PhpTypeName(property.PropertyType);
+        return PrependNullableIfApplicable(typeName, new NullabilityInfoContext().Create(property));
+    }
+
+    public string PhpTypeName(ParameterInfo property)
+    {
+        var typeName = PhpTypeName(property.ParameterType);
+        return PrependNullableIfApplicable(typeName, new NullabilityInfoContext().Create(property));
+    }
+
+    private static string PrependNullableIfApplicable(string typeName, NullabilityInfo nullabilityInfo)
+    {
+        if (!typeName.StartsWith('?')
+            && typeName != "mixed"
+            && nullabilityInfo.WriteState is NullabilityState.Nullable)
+        {
+            return $"?{typeName}";
+        }
+        return typeName;
+    }
+
     public string BetterTypedParameterTypeName(string parameterTypeName, Type propertyType)
     {
-        return parameterTypeName is "array"
+        return parameterTypeName is "array" or "?array"
             ? propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>) &&
               propertyType.GenericTypeArguments is [var elementType]
                 ? PhpTypeName(elementType) + " ..."
