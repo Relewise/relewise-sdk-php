@@ -32,7 +32,7 @@ class FacetsTest extends TestCase
             Currency::create("USD"),
             UserFactory::anonymous(),
             "integration test",
-            "1",
+            Null,
             0,
             0
         )->withFacets(
@@ -64,7 +64,7 @@ class FacetsTest extends TestCase
             Currency::create("USD"),
             UserFactory::anonymous(),
             "integration test",
-            "1",
+            Null,
             0,
             0
         )->withFacets(
@@ -97,7 +97,7 @@ class FacetsTest extends TestCase
             Currency::create("USD"),
             UserFactory::anonymous(),
             "integration test",
-            "1",
+            Null,
             0,
             0
         )->withFacets(
@@ -132,7 +132,7 @@ class FacetsTest extends TestCase
             Currency::create("USD"),
             UserFactory::anonymous(),
             "integration test",
-            "1",
+            Null,
             0,
             0
         )->withFacets(
