@@ -1,20 +1,24 @@
-# relewise-sdk-php
+# relewise-sdk-php [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) [![Latest Stable Version](http://poser.pugx.org/relewise/client/v)](https://packagist.org/packages/relewise/client) [![PHP Version Require](http://poser.pugx.org/relewise/client/require/php)](https://packagist.org/packages/relewise/client) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Relewise/relewise-sdk-php/pulls)
 
-## Setup
-### Prerequisites
-To run the generator you need to have .NET 7 or newer installed on your machine. [Download .NET 7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
-### Generate PHP DTO's and clients
-To generate the DTO's and clients of the SDK run `generate.ps1` if you're on Windows, else run `generate.sh`.
+## Installation
 
-## Local development using VS Code
+Install via composer.
 
-Requires dev containers in VS Code and docker.
+```
+composer require relewise/client
+```
 
-Setup is created using https://blog.devsense.com/2022/develop-php-in-docker
+## Contributing
 
-## Known Bugs
-- There are currently no known bugs.
+Pull requests are always welcome.  
+Please fork this repository and make a PR when you are ready with your contribution.  
 
-## Things to improve.
-- Currently for any nested Enum type we prepend the name of the enum with the name of its outer class so that there can't be any naming collisions. This could be better. We could check if there would actually be any collision and only do this if there would be but that would need an extra pass of all types before generating enums.
-- We eventually want to use MessagePack as the serializer.
+Otherwise you are welcome to open an Issue in our [issue tracker](https://github.com/Relewise/relewise-sdk-php/issues).
+
+## License
+
+relewise-sdk-php is licensed under the [MIT license](./LICENSE)
+
+## Local Development
+
+Check [DEVELOPMENT.md](./DEVELOPMENT.md) for details on running this project locally for development.
