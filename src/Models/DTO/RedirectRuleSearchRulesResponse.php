@@ -39,6 +39,15 @@ abstract class RedirectRuleSearchRulesResponse extends TimedResponse
         $this->rules = $rules;
         return $this;
     }
+    function addToRules(RedirectRule $rules)
+    {
+        if (!isset($this->rules))
+        {
+            $this->rules = array();
+        }
+        array_push($this->rules, $rules);
+        return $this;
+    }
     function setHits(int $hits)
     {
         $this->hits = $hits;

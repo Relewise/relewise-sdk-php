@@ -30,7 +30,7 @@ class DataIndexConfiguration
         }
         return $result;
     }
-    function addKeys(string $key, FieldIndexConfiguration $value)
+    function addToKeys(string $key, FieldIndexConfiguration $value)
     {
         if (!isset($this->keys))
         {

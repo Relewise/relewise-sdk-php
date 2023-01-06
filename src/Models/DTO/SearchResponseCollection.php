@@ -31,6 +31,15 @@ class SearchResponseCollection extends SearchResponse
         $this->responses = $responses;
         return $this;
     }
+    function addToResponses(SearchResponse $responses)
+    {
+        if (!isset($this->responses))
+        {
+            $this->responses = array();
+        }
+        array_push($this->responses, $responses);
+        return $this;
+    }
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

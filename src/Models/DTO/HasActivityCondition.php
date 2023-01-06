@@ -20,7 +20,7 @@ class HasActivityCondition extends UserCondition
         $result = UserCondition::hydrateBase(new HasActivityCondition(), $arr);
         if (array_key_exists("withinMinutes", $arr))
         {
-            $result->setinMinutes = $arr["withinMinutes"];
+            $result->withinMinutes = $arr["withinMinutes"];
         }
         if (array_key_exists("forAtLeastSeconds", $arr))
         {
@@ -30,7 +30,7 @@ class HasActivityCondition extends UserCondition
     }
     function setWithinMinutes(int $withinMinutes)
     {
-        $this->setinMinutes = $withinMinutes;
+        $this->withinMinutes = $withinMinutes;
         return $this;
     }
     function setForAtLeastSeconds(int $forAtLeastSeconds)

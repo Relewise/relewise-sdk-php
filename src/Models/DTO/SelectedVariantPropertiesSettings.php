@@ -89,9 +89,27 @@ class SelectedVariantPropertiesSettings
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    function addToDataKeys(string $dataKeys)
+    {
+        if (!isset($this->dataKeys))
+        {
+            $this->dataKeys = array();
+        }
+        array_push($this->dataKeys, $dataKeys);
+        return $this;
+    }
     function setSpecificationKeys(string ... $specificationKeys)
     {
         $this->specificationKeys = $specificationKeys;
+        return $this;
+    }
+    function addToSpecificationKeys(string $specificationKeys)
+    {
+        if (!isset($this->specificationKeys))
+        {
+            $this->specificationKeys = array();
+        }
+        array_push($this->specificationKeys, $specificationKeys);
         return $this;
     }
 }

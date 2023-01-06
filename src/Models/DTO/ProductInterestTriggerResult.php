@@ -40,4 +40,13 @@ class ProductInterestTriggerResult
         $this->products = $products;
         return $this;
     }
+    function addToProducts(ProductInterestTriggerResultProductAndVariant $products)
+    {
+        if (!isset($this->products))
+        {
+            $this->products = array();
+        }
+        array_push($this->products, $products);
+        return $this;
+    }
 }

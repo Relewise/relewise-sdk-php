@@ -39,6 +39,15 @@ abstract class RedirectRuleSaveSearchRulesRequest extends LicensedRequest
         $this->rules = $rules;
         return $this;
     }
+    function addToRules(RedirectRule $rules)
+    {
+        if (!isset($this->rules))
+        {
+            $this->rules = array();
+        }
+        array_push($this->rules, $rules);
+        return $this;
+    }
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

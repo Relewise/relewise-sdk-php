@@ -44,6 +44,15 @@ class ProductCategoryInterestTriggerResultCategory
         $this->lastPath = $lastPath;
         return $this;
     }
+    function addToLastPath(string $lastPath)
+    {
+        if (!isset($this->lastPath))
+        {
+            $this->lastPath = array();
+        }
+        array_push($this->lastPath, $lastPath);
+        return $this;
+    }
     function setViews(int $views)
     {
         $this->views = $views;
@@ -52,6 +61,15 @@ class ProductCategoryInterestTriggerResultCategory
     function setViewedProducts(CategoryProductAndVariant ... $viewedProducts)
     {
         $this->viewedProducts = $viewedProducts;
+        return $this;
+    }
+    function addToViewedProducts(CategoryProductAndVariant $viewedProducts)
+    {
+        if (!isset($this->viewedProducts))
+        {
+            $this->viewedProducts = array();
+        }
+        array_push($this->viewedProducts, $viewedProducts);
         return $this;
     }
 }

@@ -36,6 +36,15 @@ class ContentsViewedAfterViewingMultipleContentsRequest extends ContentRecommend
         $this->contentIds = $contentIds;
         return $this;
     }
+    function addToContentIds(string $contentIds)
+    {
+        if (!isset($this->contentIds))
+        {
+            $this->contentIds = array();
+        }
+        array_push($this->contentIds, $contentIds);
+        return $this;
+    }
     function setSettings(ContentRecommendationRequestSettings $settings)
     {
         $this->settings = $settings;

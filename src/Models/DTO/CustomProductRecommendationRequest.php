@@ -41,7 +41,7 @@ class CustomProductRecommendationRequest extends ProductRecommendationRequest
         $this->recommendationType = $recommendationType;
         return $this;
     }
-    function addParameters(string $key, string $value)
+    function addToParameters(string $key, string $value)
     {
         if (!isset($this->parameters))
         {

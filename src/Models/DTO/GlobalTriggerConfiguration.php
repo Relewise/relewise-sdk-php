@@ -85,7 +85,7 @@ class GlobalTriggerConfiguration
         $this->minimumCooldownSameGroup = $minimumCooldownSameGroup;
         return $this;
     }
-    function addSettings(string $key, string $value)
+    function addToSettings(string $key, string $value)
     {
         if (!isset($this->settings))
         {

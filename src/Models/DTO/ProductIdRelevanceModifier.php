@@ -43,6 +43,15 @@ class ProductIdRelevanceModifier extends RelevanceModifier
         $this->productIds = $productIds;
         return $this;
     }
+    function addToProductIds(string $productIds)
+    {
+        if (!isset($this->productIds))
+        {
+            $this->productIds = array();
+        }
+        array_push($this->productIds, $productIds);
+        return $this;
+    }
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;

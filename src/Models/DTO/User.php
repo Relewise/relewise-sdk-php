@@ -85,7 +85,7 @@ class User
         $this->email = $email;
         return $this;
     }
-    function addClassifications(string $key, string $value)
+    function addToClassifications(string $key, string $value)
     {
         if (!isset($this->classifications))
         {
@@ -94,7 +94,7 @@ class User
         $this->classifications[$key] = $value;
         return $this;
     }
-    function addIdentifiers(string $key, string $value)
+    function addToIdentifiers(string $key, string $value)
     {
         if (!isset($this->identifiers))
         {
@@ -103,7 +103,7 @@ class User
         $this->identifiers[$key] = $value;
         return $this;
     }
-    function addData(string $key, DataValue $value)
+    function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
         {

@@ -54,6 +54,15 @@ class ProductSearchResponse extends PaginatedSearchResponse
         $this->results = $results;
         return $this;
     }
+    function addToResults(ProductResult $results)
+    {
+        if (!isset($this->results))
+        {
+            $this->results = array();
+        }
+        array_push($this->results, $results);
+        return $this;
+    }
     function setFacets(ProductFacetResult $facets)
     {
         $this->facets = $facets;
@@ -64,9 +73,27 @@ class ProductSearchResponse extends PaginatedSearchResponse
         $this->recommendations = $recommendations;
         return $this;
     }
+    function addToRecommendations(ProductResult $recommendations)
+    {
+        if (!isset($this->recommendations))
+        {
+            $this->recommendations = array();
+        }
+        array_push($this->recommendations, $recommendations);
+        return $this;
+    }
     function setRedirects(RedirectResult ... $redirects)
     {
         $this->redirects = $redirects;
+        return $this;
+    }
+    function addToRedirects(RedirectResult $redirects)
+    {
+        if (!isset($this->redirects))
+        {
+            $this->redirects = array();
+        }
+        array_push($this->redirects, $redirects);
         return $this;
     }
     function setHits(int $hits)

@@ -69,12 +69,21 @@ class CartDetails
         $this->lineItems = $lineItems;
         return $this;
     }
+    function addToLineItems(LineItem $lineItems)
+    {
+        if (!isset($this->lineItems))
+        {
+            $this->lineItems = array();
+        }
+        array_push($this->lineItems, $lineItems);
+        return $this;
+    }
     function setSubtotal(Money $subtotal)
     {
         $this->subtotal = $subtotal;
         return $this;
     }
-    function addData(string $key, DataValue $value)
+    function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
         {

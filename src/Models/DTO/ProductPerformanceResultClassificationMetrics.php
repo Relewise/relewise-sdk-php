@@ -45,7 +45,7 @@ class ProductPerformanceResultClassificationMetrics
         }
         return $result;
     }
-    function addCombination(string $key, string $value)
+    function addToCombination(string $key, string $value)
     {
         if (!isset($this->combination))
         {

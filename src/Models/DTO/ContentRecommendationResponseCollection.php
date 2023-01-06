@@ -32,6 +32,15 @@ class ContentRecommendationResponseCollection extends TimedResponse
         $this->responses = $responses;
         return $this;
     }
+    function addToResponses(ContentRecommendationResponse $responses)
+    {
+        if (!isset($this->responses))
+        {
+            $this->responses = array();
+        }
+        array_push($this->responses, $responses);
+        return $this;
+    }
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

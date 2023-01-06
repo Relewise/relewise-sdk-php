@@ -42,4 +42,13 @@ class PredictionRulePromotion
         $this->values = $values;
         return $this;
     }
+    function addToValues(string $values)
+    {
+        if (!isset($this->values))
+        {
+            $this->values = array();
+        }
+        array_push($this->values, $values);
+        return $this;
+    }
 }

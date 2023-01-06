@@ -59,7 +59,7 @@ class RedirectResult
         $this->destination = $destination;
         return $this;
     }
-    function addData(string $key, string $value)
+    function addToData(string $key, string $value)
     {
         if (!isset($this->data))
         {

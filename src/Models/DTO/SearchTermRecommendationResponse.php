@@ -31,6 +31,15 @@ class SearchTermRecommendationResponse extends RecommendationResponse
         $this->recommendations = $recommendations;
         return $this;
     }
+    function addToRecommendations(SearchTermResult $recommendations)
+    {
+        if (!isset($this->recommendations))
+        {
+            $this->recommendations = array();
+        }
+        array_push($this->recommendations, $recommendations);
+        return $this;
+    }
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

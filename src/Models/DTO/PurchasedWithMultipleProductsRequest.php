@@ -35,6 +35,15 @@ class PurchasedWithMultipleProductsRequest extends ProductRecommendationRequest
         $this->productAndVariantIds = $productAndVariantIds;
         return $this;
     }
+    function addToProductAndVariantIds(ProductAndVariantId $productAndVariantIds)
+    {
+        if (!isset($this->productAndVariantIds))
+        {
+            $this->productAndVariantIds = array();
+        }
+        array_push($this->productAndVariantIds, $productAndVariantIds);
+        return $this;
+    }
     function setSettings(ProductRecommendationRequestSettings $settings)
     {
         $this->settings = $settings;

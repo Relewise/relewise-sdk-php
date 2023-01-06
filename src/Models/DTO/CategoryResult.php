@@ -95,12 +95,30 @@ abstract class CategoryResult
         $this->paths = $paths;
         return $this;
     }
+    function addToPaths(CategoryPathResult $paths)
+    {
+        if (!isset($this->paths))
+        {
+            $this->paths = array();
+        }
+        array_push($this->paths, $paths);
+        return $this;
+    }
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
-    function addData(string $key, DataValue $value)
+    function addToAssortments(int $assortments)
+    {
+        if (!isset($this->assortments))
+        {
+            $this->assortments = array();
+        }
+        array_push($this->assortments, $assortments);
+        return $this;
+    }
+    function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
         {

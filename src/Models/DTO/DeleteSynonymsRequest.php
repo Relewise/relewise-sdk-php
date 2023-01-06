@@ -38,6 +38,15 @@ class DeleteSynonymsRequest extends LicensedRequest
         $this->ids = $ids;
         return $this;
     }
+    function addToIds(string $ids)
+    {
+        if (!isset($this->ids))
+        {
+            $this->ids = array();
+        }
+        array_push($this->ids, $ids);
+        return $this;
+    }
     function setDeletedBy(string $deletedBy)
     {
         $this->deletedBy = $deletedBy;

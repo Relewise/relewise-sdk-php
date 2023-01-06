@@ -38,6 +38,15 @@ class SaveSynonymsRequest extends LicensedRequest
         $this->synonyms = $synonyms;
         return $this;
     }
+    function addToSynonyms(Synonym $synonyms)
+    {
+        if (!isset($this->synonyms))
+        {
+            $this->synonyms = array();
+        }
+        array_push($this->synonyms, $synonyms);
+        return $this;
+    }
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

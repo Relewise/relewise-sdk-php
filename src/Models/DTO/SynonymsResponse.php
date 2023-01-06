@@ -38,6 +38,15 @@ class SynonymsResponse extends TimedResponse
         $this->values = $values;
         return $this;
     }
+    function addToValues(Synonym $values)
+    {
+        if (!isset($this->values))
+        {
+            $this->values = array();
+        }
+        array_push($this->values, $values);
+        return $this;
+    }
     function setHits(int $hits)
     {
         $this->hits = $hits;

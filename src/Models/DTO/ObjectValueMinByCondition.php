@@ -33,4 +33,13 @@ class ObjectValueMinByCondition extends ObjectValueCondition
         $this->objectPath = $objectPath;
         return $this;
     }
+    function addToObjectPath(string $objectPath)
+    {
+        if (!isset($this->objectPath))
+        {
+            $this->objectPath = array();
+        }
+        array_push($this->objectPath, $objectPath);
+        return $this;
+    }
 }

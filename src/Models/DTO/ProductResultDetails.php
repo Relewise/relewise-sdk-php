@@ -158,7 +158,16 @@ class ProductResultDetails
         $this->assortments = $assortments;
         return $this;
     }
-    function addData(string $key, DataValue $value)
+    function addToAssortments(int $assortments)
+    {
+        if (!isset($this->assortments))
+        {
+            $this->assortments = array();
+        }
+        array_push($this->assortments, $assortments);
+        return $this;
+    }
+    function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
         {
@@ -170,6 +179,15 @@ class ProductResultDetails
     function setCategoryPaths(CategoryPathResultDetails ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
+        return $this;
+    }
+    function addToCategoryPaths(CategoryPathResultDetails $categoryPaths)
+    {
+        if (!isset($this->categoryPaths))
+        {
+            $this->categoryPaths = array();
+        }
+        array_push($this->categoryPaths, $categoryPaths);
         return $this;
     }
     function setPurchasedByUser(PurchasedByUserInfo $purchasedByUser)
@@ -185,6 +203,15 @@ class ProductResultDetails
     function setAllVariants(VariantResultDetails ... $allVariants)
     {
         $this->allVariants = $allVariants;
+        return $this;
+    }
+    function addToAllVariants(VariantResultDetails $allVariants)
+    {
+        if (!isset($this->allVariants))
+        {
+            $this->allVariants = array();
+        }
+        array_push($this->allVariants, $allVariants);
         return $this;
     }
     function setCreatedUtc(DateTime $createdUtc)

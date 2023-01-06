@@ -121,7 +121,7 @@ class UserResultDetails
         $this->email = $email;
         return $this;
     }
-    function addClassifications(string $key, string $value)
+    function addToClassifications(string $key, string $value)
     {
         if (!isset($this->classifications))
         {
@@ -145,7 +145,7 @@ class UserResultDetails
         $this->lastOrderUtc = $lastOrderUtc;
         return $this;
     }
-    function addCarts(string $key, CartDetails $value)
+    function addToCarts(string $key, CartDetails $value)
     {
         if (!isset($this->carts))
         {
@@ -164,7 +164,7 @@ class UserResultDetails
         $this->totalNumberOfOrders = $totalNumberOfOrders;
         return $this;
     }
-    function addIdentifiers(string $key, string $value)
+    function addToIdentifiers(string $key, string $value)
     {
         if (!isset($this->identifiers))
         {
@@ -178,7 +178,7 @@ class UserResultDetails
         $this->key = $key;
         return $this;
     }
-    function addData(string $key, DataValue $value)
+    function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
         {
@@ -190,6 +190,15 @@ class UserResultDetails
     function setTemporaryIds(string ... $temporaryIds)
     {
         $this->temporaryIds = $temporaryIds;
+        return $this;
+    }
+    function addToTemporaryIds(string $temporaryIds)
+    {
+        if (!isset($this->temporaryIds))
+        {
+            $this->temporaryIds = array();
+        }
+        array_push($this->temporaryIds, $temporaryIds);
         return $this;
     }
 }

@@ -31,4 +31,13 @@ class ApplicableIndexes
         $this->indexes = $indexes;
         return $this;
     }
+    function addToIndexes(string $indexes)
+    {
+        if (!isset($this->indexes))
+        {
+            $this->indexes = array();
+        }
+        array_push($this->indexes, $indexes);
+        return $this;
+    }
 }

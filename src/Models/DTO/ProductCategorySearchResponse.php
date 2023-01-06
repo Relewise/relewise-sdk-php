@@ -45,6 +45,15 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
         $this->results = $results;
         return $this;
     }
+    function addToResults(ProductCategoryResult $results)
+    {
+        if (!isset($this->results))
+        {
+            $this->results = array();
+        }
+        array_push($this->results, $results);
+        return $this;
+    }
     function setFacets(ProductCategoryFacetResult $facets)
     {
         $this->facets = $facets;
@@ -53,6 +62,15 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
     function setRecommendations(ProductCategoryResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
+        return $this;
+    }
+    function addToRecommendations(ProductCategoryResult $recommendations)
+    {
+        if (!isset($this->recommendations))
+        {
+            $this->recommendations = array();
+        }
+        array_push($this->recommendations, $recommendations);
         return $this;
     }
     function setHits(int $hits)

@@ -77,10 +77,10 @@ class AbandonedCartTriggerConfiguration extends AbandonedCartTriggerResultTrigge
     }
     function setWithinTimeSpanMinutes(int $withinTimeSpanMinutes)
     {
-        $this->setinTimeSpanMinutes = $withinTimeSpanMinutes;
+        $this->withinTimeSpanMinutes = $withinTimeSpanMinutes;
         return $this;
     }
-    function addSettings(string $key, string $value)
+    function addToSettings(string $key, string $value)
     {
         if (!isset($this->settings))
         {

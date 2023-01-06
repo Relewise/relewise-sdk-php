@@ -104,7 +104,16 @@ class ContentResultDetails
         $this->assortments = $assortments;
         return $this;
     }
-    function addData(string $key, DataValue $value)
+    function addToAssortments(int $assortments)
+    {
+        if (!isset($this->assortments))
+        {
+            $this->assortments = array();
+        }
+        array_push($this->assortments, $assortments);
+        return $this;
+    }
+    function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
         {
@@ -116,6 +125,15 @@ class ContentResultDetails
     function setCategoryPaths(CategoryPathResultDetails ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
+        return $this;
+    }
+    function addToCategoryPaths(CategoryPathResultDetails $categoryPaths)
+    {
+        if (!isset($this->categoryPaths))
+        {
+            $this->categoryPaths = array();
+        }
+        array_push($this->categoryPaths, $categoryPaths);
         return $this;
     }
     function setViewedByUser(ViewedByUserInfo $viewedByUser)

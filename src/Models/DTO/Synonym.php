@@ -122,9 +122,27 @@ class Synonym
         $this->indexes = $indexes;
         return $this;
     }
+    function addToIndexes(string $indexes)
+    {
+        if (!isset($this->indexes))
+        {
+            $this->indexes = array();
+        }
+        array_push($this->indexes, $indexes);
+        return $this;
+    }
     function setLanguages(Language ... $languages)
     {
         $this->languages = $languages;
+        return $this;
+    }
+    function addToLanguages(Language $languages)
+    {
+        if (!isset($this->languages))
+        {
+            $this->languages = array();
+        }
+        array_push($this->languages, $languages);
         return $this;
     }
     function setCreated(DateTime $created)
@@ -152,9 +170,27 @@ class Synonym
         $this->from = $from;
         return $this;
     }
+    function addToFrom(string $from)
+    {
+        if (!isset($this->from))
+        {
+            $this->from = array();
+        }
+        array_push($this->from, $from);
+        return $this;
+    }
     function setWords(string ... $words)
     {
         $this->words = $words;
+        return $this;
+    }
+    function addToWords(string $words)
+    {
+        if (!isset($this->words))
+        {
+            $this->words = array();
+        }
+        array_push($this->words, $words);
         return $this;
     }
     function setApproved(?DateTime $approved)

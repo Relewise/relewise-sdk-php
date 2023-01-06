@@ -38,6 +38,15 @@ class ProductDetailsCollectionResponse extends TimedResponse
         $this->products = $products;
         return $this;
     }
+    function addToProducts(ProductResultDetails $products)
+    {
+        if (!isset($this->products))
+        {
+            $this->products = array();
+        }
+        array_push($this->products, $products);
+        return $this;
+    }
     function setTotalNumberOfResults(?int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;

@@ -35,6 +35,15 @@ class RecommendPopularSearchTermSettings
         $this->targetEntityTypes = $targetEntityTypes;
         return $this;
     }
+    function addToTargetEntityTypes(EntityType $targetEntityTypes)
+    {
+        if (!isset($this->targetEntityTypes))
+        {
+            $this->targetEntityTypes = array();
+        }
+        array_push($this->targetEntityTypes, $targetEntityTypes);
+        return $this;
+    }
     function setNumberOfRecommendations(int $numberOfRecommendations)
     {
         $this->numberOfRecommendations = $numberOfRecommendations;

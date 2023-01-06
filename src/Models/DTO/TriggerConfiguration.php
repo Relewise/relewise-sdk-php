@@ -83,7 +83,7 @@ abstract class TriggerConfiguration
         }
         if (array_key_exists("withinTimeSpanMinutes", $arr))
         {
-            $result->setinTimeSpanMinutes = $arr["withinTimeSpanMinutes"];
+            $result->withinTimeSpanMinutes = $arr["withinTimeSpanMinutes"];
         }
         if (array_key_exists("settings", $arr))
         {
@@ -146,10 +146,10 @@ abstract class TriggerConfiguration
     }
     function setWithinTimeSpanMinutes(int $withinTimeSpanMinutes)
     {
-        $this->setinTimeSpanMinutes = $withinTimeSpanMinutes;
+        $this->withinTimeSpanMinutes = $withinTimeSpanMinutes;
         return $this;
     }
-    function addSettings(string $key, string $value)
+    function addToSettings(string $key, string $value)
     {
         if (!isset($this->settings))
         {

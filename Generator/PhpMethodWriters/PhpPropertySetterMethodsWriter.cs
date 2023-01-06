@@ -17,7 +17,7 @@ public class PhpPropertySetterMethodsWriter
         {
             if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(Dictionary<,>) && propertyType.GenericTypeArguments is [var keyType, var valueType])
             {
-                writer.WriteLine($"function add{propertyName}({phpWriter.PhpTypeName(keyType)} $key, {phpWriter.PhpTypeName(valueType)} $value)");
+                writer.WriteLine($"function addTo{propertyName}({phpWriter.PhpTypeName(keyType)} $key, {phpWriter.PhpTypeName(valueType)} $value)");
                 writer.WriteLine("{");
                 writer.Indent++;
                 writer.WriteLine($"if (!isset($this->{lowerCaseName}))");
@@ -38,6 +38,32 @@ public class PhpPropertySetterMethodsWriter
                 writer.WriteLine("{");
                 writer.Indent++;
                 writer.WriteLine($"$this->{lowerCaseName} = ${lowerCaseName};");
+                writer.WriteLine("return $this;");
+                writer.Indent--;
+                writer.WriteLine("}");
+            }
+
+            Type? elementType = null;
+            if (propertyType.IsArray)
+            {
+                elementType = propertyType.GetElementType();
+            }
+            else if (propertyType.IsGenericType && propertyType.DeclaringType == typeof(List<>))
+            {
+                elementType = propertyType.GenericTypeArguments[0];
+            }
+            if (elementType is not null)
+            {
+                writer.WriteLine($"function addTo{propertyName}({phpWriter.PhpTypeName(elementType)} ${lowerCaseName})");
+                writer.WriteLine("{");
+                writer.Indent++;
+                writer.WriteLine($"if (!isset($this->{lowerCaseName}))");
+                writer.WriteLine("{");
+                writer.Indent++;
+                writer.WriteLine($"$this->{lowerCaseName} = array();");
+                writer.Indent--;
+                writer.WriteLine("}");
+                writer.WriteLine($"array_push($this->{lowerCaseName}, ${lowerCaseName});");
                 writer.WriteLine("return $this;");
                 writer.Indent--;
                 writer.WriteLine("}");

@@ -22,6 +22,15 @@ class SaveStemmingRulesRequest extends StemmingRuleSaveSearchRulesRequest
         $this->rules = $rules;
         return $this;
     }
+    function addToRules(StemmingRule $rules)
+    {
+        if (!isset($this->rules))
+        {
+            $this->rules = array();
+        }
+        array_push($this->rules, $rules);
+        return $this;
+    }
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

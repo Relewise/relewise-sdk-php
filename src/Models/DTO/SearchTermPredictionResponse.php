@@ -31,6 +31,15 @@ class SearchTermPredictionResponse extends SearchResponse
         $this->predictions = $predictions;
         return $this;
     }
+    function addToPredictions(SearchTermPredictionResult $predictions)
+    {
+        if (!isset($this->predictions))
+        {
+            $this->predictions = array();
+        }
+        array_push($this->predictions, $predictions);
+        return $this;
+    }
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

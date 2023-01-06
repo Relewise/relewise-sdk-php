@@ -31,4 +31,13 @@ class TrimStringTransformer
         $this->valuesToTrim = $valuesToTrim;
         return $this;
     }
+    function addToValuesToTrim(string $valuesToTrim)
+    {
+        if (!isset($this->valuesToTrim))
+        {
+            $this->valuesToTrim = array();
+        }
+        array_push($this->valuesToTrim, $valuesToTrim);
+        return $this;
+    }
 }

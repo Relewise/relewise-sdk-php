@@ -38,6 +38,15 @@ class ContentDetailsCollectionResponse extends TimedResponse
         $this->contents = $contents;
         return $this;
     }
+    function addToContents(ContentResultDetails $contents)
+    {
+        if (!isset($this->contents))
+        {
+            $this->contents = array();
+        }
+        array_push($this->contents, $contents);
+        return $this;
+    }
     function setTotalNumberOfResults(?int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;

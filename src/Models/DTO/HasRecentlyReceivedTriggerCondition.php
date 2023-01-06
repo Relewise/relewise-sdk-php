@@ -24,7 +24,7 @@ class HasRecentlyReceivedTriggerCondition extends UserCondition
         $result = UserCondition::hydrateBase(new HasRecentlyReceivedTriggerCondition(), $arr);
         if (array_key_exists("withinMinutes", $arr))
         {
-            $result->setinMinutes = $arr["withinMinutes"];
+            $result->withinMinutes = $arr["withinMinutes"];
         }
         if (array_key_exists("id", $arr))
         {
@@ -42,7 +42,7 @@ class HasRecentlyReceivedTriggerCondition extends UserCondition
     }
     function setWithinMinutes(int $withinMinutes)
     {
-        $this->setinMinutes = $withinMinutes;
+        $this->withinMinutes = $withinMinutes;
         return $this;
     }
     function setId(?string $id)

@@ -43,4 +43,13 @@ class ContentCategoryView extends Trackable
         $this->idPath = $idPath;
         return $this;
     }
+    function addToIdPath(string $idPath)
+    {
+        if (!isset($this->idPath))
+        {
+            $this->idPath = array();
+        }
+        array_push($this->idPath, $idPath);
+        return $this;
+    }
 }

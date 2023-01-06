@@ -31,4 +31,13 @@ class ApplicableLanguages
         $this->languages = $languages;
         return $this;
     }
+    function addToLanguages(Language $languages)
+    {
+        if (!isset($this->languages))
+        {
+            $this->languages = array();
+        }
+        array_push($this->languages, $languages);
+        return $this;
+    }
 }

@@ -110,7 +110,16 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         $this->assortments = $assortments;
         return $this;
     }
-    function addData(string $key, DataValue $value)
+    function addToAssortments(int $assortments)
+    {
+        if (!isset($this->assortments))
+        {
+            $this->assortments = array();
+        }
+        array_push($this->assortments, $assortments);
+        return $this;
+    }
+    function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
         {
@@ -154,9 +163,27 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         $this->childCategories = $childCategories;
         return $this;
     }
+    function addToChildCategories(ContentCategoryResultDetails $childCategories)
+    {
+        if (!isset($this->childCategories))
+        {
+            $this->childCategories = array();
+        }
+        array_push($this->childCategories, $childCategories);
+        return $this;
+    }
     function setParentCategories(ContentCategoryResultDetails ... $parentCategories)
     {
         $this->parentCategories = $parentCategories;
+        return $this;
+    }
+    function addToParentCategories(ContentCategoryResultDetails $parentCategories)
+    {
+        if (!isset($this->parentCategories))
+        {
+            $this->parentCategories = array();
+        }
+        array_push($this->parentCategories, $parentCategories);
         return $this;
     }
 }

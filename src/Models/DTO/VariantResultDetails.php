@@ -79,7 +79,7 @@ class VariantResultDetails
         $this->displayName = $displayName;
         return $this;
     }
-    function addSpecification(string $key, string $value)
+    function addToSpecification(string $key, string $value)
     {
         if (!isset($this->specification))
         {
@@ -93,7 +93,16 @@ class VariantResultDetails
         $this->assortments = $assortments;
         return $this;
     }
-    function addData(string $key, DataValue $value)
+    function addToAssortments(int $assortments)
+    {
+        if (!isset($this->assortments))
+        {
+            $this->assortments = array();
+        }
+        array_push($this->assortments, $assortments);
+        return $this;
+    }
+    function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
         {

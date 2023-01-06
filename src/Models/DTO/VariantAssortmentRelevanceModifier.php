@@ -37,6 +37,15 @@ class VariantAssortmentRelevanceModifier extends RelevanceModifier
         $this->assortments = $assortments;
         return $this;
     }
+    function addToAssortments(int $assortments)
+    {
+        if (!isset($this->assortments))
+        {
+            $this->assortments = array();
+        }
+        array_push($this->assortments, $assortments);
+        return $this;
+    }
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;

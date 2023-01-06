@@ -22,6 +22,15 @@ class SaveRedirectRulesResponse extends RedirectRuleSaveSearchRulesResponse
         $this->rules = $rules;
         return $this;
     }
+    function addToRules(RedirectRule $rules)
+    {
+        if (!isset($this->rules))
+        {
+            $this->rules = array();
+        }
+        array_push($this->rules, $rules);
+        return $this;
+    }
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

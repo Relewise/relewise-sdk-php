@@ -64,6 +64,15 @@ class SearchTermPredictionResult
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;
     }
+    function addToExpectedResultTypes(ExpectedSearchTermResult $expectedResultTypes)
+    {
+        if (!isset($this->expectedResultTypes))
+        {
+            $this->expectedResultTypes = array();
+        }
+        array_push($this->expectedResultTypes, $expectedResultTypes);
+        return $this;
+    }
     function setType(SearchTermPredictionResultPredictionType $type)
     {
         $this->type = $type;
@@ -72,6 +81,15 @@ class SearchTermPredictionResult
     function setCorrectedWordsMask(bool ... $correctedWordsMask)
     {
         $this->correctedWordsMask = $correctedWordsMask;
+        return $this;
+    }
+    function addToCorrectedWordsMask(bool $correctedWordsMask)
+    {
+        if (!isset($this->correctedWordsMask))
+        {
+            $this->correctedWordsMask = array();
+        }
+        array_push($this->correctedWordsMask, $correctedWordsMask);
         return $this;
     }
 }

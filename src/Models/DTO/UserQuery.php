@@ -44,6 +44,15 @@ class UserQuery extends LicensedRequest
         $this->criteria = $criteria;
         return $this;
     }
+    function addToCriteria(UserQueryCriteria $criteria)
+    {
+        if (!isset($this->criteria))
+        {
+            $this->criteria = array();
+        }
+        array_push($this->criteria, $criteria);
+        return $this;
+    }
     function setLanguage(Language $language)
     {
         $this->language = $language;

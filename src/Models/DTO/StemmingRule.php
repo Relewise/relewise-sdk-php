@@ -42,6 +42,15 @@ class StemmingRule extends SearchRule
         $this->words = $words;
         return $this;
     }
+    function addToWords(string $words)
+    {
+        if (!isset($this->words))
+        {
+            $this->words = array();
+        }
+        array_push($this->words, $words);
+        return $this;
+    }
     function setStem(?string $stem)
     {
         $this->stem = $stem;

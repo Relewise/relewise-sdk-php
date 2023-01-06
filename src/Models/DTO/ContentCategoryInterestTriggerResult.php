@@ -40,4 +40,13 @@ class ContentCategoryInterestTriggerResult
         $this->categories = $categories;
         return $this;
     }
+    function addToCategories(ContentCategoryInterestTriggerResultCategory $categories)
+    {
+        if (!isset($this->categories))
+        {
+            $this->categories = array();
+        }
+        array_push($this->categories, $categories);
+        return $this;
+    }
 }

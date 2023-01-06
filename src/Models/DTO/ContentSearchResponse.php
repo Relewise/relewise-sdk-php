@@ -45,6 +45,15 @@ class ContentSearchResponse extends PaginatedSearchResponse
         $this->results = $results;
         return $this;
     }
+    function addToResults(ContentResult $results)
+    {
+        if (!isset($this->results))
+        {
+            $this->results = array();
+        }
+        array_push($this->results, $results);
+        return $this;
+    }
     function setFacets(ContentFacetResult $facets)
     {
         $this->facets = $facets;
@@ -53,6 +62,15 @@ class ContentSearchResponse extends PaginatedSearchResponse
     function setRecommendations(ContentResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
+        return $this;
+    }
+    function addToRecommendations(ContentResult $recommendations)
+    {
+        if (!isset($this->recommendations))
+        {
+            $this->recommendations = array();
+        }
+        array_push($this->recommendations, $recommendations);
         return $this;
     }
     function setHits(int $hits)

@@ -19,13 +19,13 @@ class HasRecentlyReceivedSameTriggerCondition extends UserCondition
         $result = UserCondition::hydrateBase(new HasRecentlyReceivedSameTriggerCondition(), $arr);
         if (array_key_exists("withinMinutes", $arr))
         {
-            $result->setinMinutes = $arr["withinMinutes"];
+            $result->withinMinutes = $arr["withinMinutes"];
         }
         return $result;
     }
     function setWithinMinutes(int $withinMinutes)
     {
-        $this->setinMinutes = $withinMinutes;
+        $this->withinMinutes = $withinMinutes;
         return $this;
     }
     function setNegated(bool $negated)
