@@ -10,7 +10,6 @@ class OverriddenContentRecommendationRequestSettings
     public ?bool $allowFillIfNecessaryToReachNumberOfRecommendations;
     public ?bool $allowReplacingOfRecentlyShownRecommendations;
     public OverriddenSelectedContentPropertiesSettings $selectedContentProperties;
-    public array $custom;
     public ?bool $prioritizeDiversityBetweenRequests;
     public static function create() : OverriddenContentRecommendationRequestSettings
     {
@@ -36,14 +35,6 @@ class OverriddenContentRecommendationRequestSettings
         {
             $result->selectedContentProperties = OverriddenSelectedContentPropertiesSettings::hydrate($arr["selectedContentProperties"]);
         }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         if (array_key_exists("prioritizeDiversityBetweenRequests", $arr))
         {
             $result->prioritizeDiversityBetweenRequests = $arr["prioritizeDiversityBetweenRequests"];
@@ -68,15 +59,6 @@ class OverriddenContentRecommendationRequestSettings
     function withSelectedContentProperties(OverriddenSelectedContentPropertiesSettings $selectedContentProperties)
     {
         $this->selectedContentProperties = $selectedContentProperties;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
     function withPrioritizeDiversityBetweenRequests(?bool $prioritizeDiversityBetweenRequests)

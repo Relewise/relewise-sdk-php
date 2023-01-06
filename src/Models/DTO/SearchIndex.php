@@ -14,7 +14,6 @@ class SearchIndex
     public string $createdBy;
     public DateTime $modified;
     public string $modifiedBy;
-    public array $custom;
     public IndexConfiguration $configuration;
     public static function create(string $id, string $description, bool $isDefault) : SearchIndex
     {
@@ -58,14 +57,6 @@ class SearchIndex
         if (array_key_exists("modifiedBy", $arr))
         {
             $result->modifiedBy = $arr["modifiedBy"];
-        }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
         }
         if (array_key_exists("configuration", $arr))
         {
@@ -111,15 +102,6 @@ class SearchIndex
     function withModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
     function withConfiguration(IndexConfiguration $configuration)

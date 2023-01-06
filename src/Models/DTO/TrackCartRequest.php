@@ -28,13 +28,4 @@ class TrackCartRequest extends TrackingRequest
         $this->cart = $cart;
         return $this;
     }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
-        return $this;
-    }
 }

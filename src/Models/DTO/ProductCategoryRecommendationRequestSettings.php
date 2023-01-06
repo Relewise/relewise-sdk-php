@@ -11,7 +11,6 @@ class ProductCategoryRecommendationRequestSettings
     public bool $allowReplacingOfRecentlyShownRecommendations;
     public bool $prioritizeDiversityBetweenRequests;
     public SelectedProductCategoryPropertiesSettings $selectedProductCategoryProperties;
-    public array $custom;
     public static function create() : ProductCategoryRecommendationRequestSettings
     {
         $result = new ProductCategoryRecommendationRequestSettings();
@@ -40,14 +39,6 @@ class ProductCategoryRecommendationRequestSettings
         {
             $result->selectedProductCategoryProperties = SelectedProductCategoryPropertiesSettings::hydrate($arr["selectedProductCategoryProperties"]);
         }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         return $result;
     }
     function withNumberOfRecommendations(int $numberOfRecommendations)
@@ -73,15 +64,6 @@ class ProductCategoryRecommendationRequestSettings
     function withSelectedProductCategoryProperties(SelectedProductCategoryPropertiesSettings $selectedProductCategoryProperties)
     {
         $this->selectedProductCategoryProperties = $selectedProductCategoryProperties;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
 }

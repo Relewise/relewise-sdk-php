@@ -12,7 +12,6 @@ class VariantResult
     public array $assortments;
     public array $data;
     public int $rank;
-    public array $custom;
     public ?float $listPrice;
     public ?float $salesPrice;
     public static function create(string $variantId, int $rank) : VariantResult
@@ -61,14 +60,6 @@ class VariantResult
         {
             $result->rank = $arr["rank"];
         }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         if (array_key_exists("listPrice", $arr))
         {
             $result->listPrice = $arr["listPrice"];
@@ -115,15 +106,6 @@ class VariantResult
     function withRank(int $rank)
     {
         $this->rank = $rank;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
     function withListPrice(?float $listPrice)

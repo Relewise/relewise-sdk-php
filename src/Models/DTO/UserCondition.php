@@ -7,7 +7,6 @@ use DateTime;
 abstract class UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.UserCondition, Relewise.Client";
-    public array $custom;
     public bool $negated;
     public static function hydrate(array $arr)
     {
@@ -63,28 +62,11 @@ abstract class UserCondition
     }
     public static function hydrateBase(mixed $result, array $arr)
     {
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         if (array_key_exists("negated", $arr))
         {
             $result->negated = $arr["negated"];
         }
         return $result;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
-        return $this;
     }
     function withNegated(bool $negated)
     {

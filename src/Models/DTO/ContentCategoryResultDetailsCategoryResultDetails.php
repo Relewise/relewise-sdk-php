@@ -17,7 +17,6 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
     public int $viewedTotalNumberOfTimes;
     public int $viewedByDifferentNumberOfUsers;
     public bool $disabled;
-    public array $custom;
     public array $childCategories;
     public array $parentCategories;
     public static function hydrate(array $arr)
@@ -77,14 +76,6 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         if (array_key_exists("disabled", $arr))
         {
             $result->disabled = $arr["disabled"];
-        }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
         }
         if (array_key_exists("childCategories", $arr))
         {
@@ -156,15 +147,6 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
     function withDisabled(bool $disabled)
     {
         $this->disabled = $disabled;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
     function withChildCategories(ContentCategoryResultDetails ... $childCategories)

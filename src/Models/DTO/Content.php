@@ -11,7 +11,6 @@ class Content
     public ?array $categoryPaths;
     public ?array $assortments;
     public ?array $data;
-    public ?array $custom;
     public static function create(string $id) : Content
     {
         $result = new Content();
@@ -53,14 +52,6 @@ class Content
                 $result->data[$key] = DataValue::hydrate($value);
             }
         }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         return $result;
     }
     function withId(string $id)
@@ -90,15 +81,6 @@ class Content
             $this->data = array();
         }
         $this->data[$key] = $value;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
 }

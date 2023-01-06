@@ -7,7 +7,6 @@ use DateTime;
 abstract class Trackable
 {
     public string $typeDefinition = "Relewise.Client.Requests.Trackable, Relewise.Client";
-    public array $custom;
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -90,23 +89,6 @@ abstract class Trackable
     }
     public static function hydrateBase(mixed $result, array $arr)
     {
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         return $result;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
-        return $this;
     }
 }

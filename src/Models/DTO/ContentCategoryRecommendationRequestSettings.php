@@ -11,7 +11,6 @@ class ContentCategoryRecommendationRequestSettings
     public bool $allowReplacingOfRecentlyShownRecommendations;
     public bool $prioritizeDiversityBetweenRequests;
     public SelectedContentCategoryPropertiesSettings $selectedContentCategoryProperties;
-    public array $custom;
     public static function create() : ContentCategoryRecommendationRequestSettings
     {
         $result = new ContentCategoryRecommendationRequestSettings();
@@ -40,14 +39,6 @@ class ContentCategoryRecommendationRequestSettings
         {
             $result->selectedContentCategoryProperties = SelectedContentCategoryPropertiesSettings::hydrate($arr["selectedContentCategoryProperties"]);
         }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         return $result;
     }
     function withNumberOfRecommendations(int $numberOfRecommendations)
@@ -73,15 +64,6 @@ class ContentCategoryRecommendationRequestSettings
     function withSelectedContentCategoryProperties(SelectedContentCategoryPropertiesSettings $selectedContentCategoryProperties)
     {
         $this->selectedContentCategoryProperties = $selectedContentCategoryProperties;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
 }

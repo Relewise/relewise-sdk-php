@@ -42,15 +42,6 @@ abstract class PaginatedSearchResponse extends SearchResponse
         $this->hits = $hits;
         return $this;
     }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
-        return $this;
-    }
     function withStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

@@ -16,7 +16,6 @@ class BrandResultDetails
     public int $viewedTotalNumberOfTimes;
     public int $viewedByDifferentNumberOfUsers;
     public bool $disabled;
-    public array $custom;
     public int $purchasedFromByDifferentNumberOfUsers;
     public PurchasedByUserInfo $purchasedByUser;
     public static function create(string $brandId) : BrandResultDetails
@@ -75,14 +74,6 @@ class BrandResultDetails
         if (array_key_exists("disabled", $arr))
         {
             $result->disabled = $arr["disabled"];
-        }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
         }
         if (array_key_exists("purchasedFromByDifferentNumberOfUsers", $arr))
         {
@@ -146,15 +137,6 @@ class BrandResultDetails
     function withDisabled(bool $disabled)
     {
         $this->disabled = $disabled;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
     function withPurchasedFromByDifferentNumberOfUsers(int $purchasedFromByDifferentNumberOfUsers)

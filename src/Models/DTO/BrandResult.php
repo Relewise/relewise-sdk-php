@@ -12,7 +12,6 @@ class BrandResult
     public ViewedByUserInfo $viewedByUser;
     public array $assortments;
     public array $data;
-    public array $custom;
     public static function create(string $id, int $rank) : BrandResult
     {
         $result = new BrandResult();
@@ -55,14 +54,6 @@ class BrandResult
                 $result->data[$key] = DataValue::hydrate($value);
             }
         }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         return $result;
     }
     function withId(string $id)
@@ -97,15 +88,6 @@ class BrandResult
             $this->data = array();
         }
         $this->data[$key] = $value;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
 }

@@ -20,15 +20,6 @@ abstract class ContentCategoryInterestTriggerResultTriggerConfiguration extends 
         $result = TriggerConfiguration::hydrateBase($result, $arr);
         return $result;
     }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
-        return $this;
-    }
     function withId(string $id)
     {
         $this->id = $id;

@@ -12,7 +12,6 @@ class ProductRecommendationRequestSettings
     public bool $recommendVariant;
     public ?SelectedProductPropertiesSettings $selectedProductProperties;
     public ?SelectedVariantPropertiesSettings $selectedVariantProperties;
-    public ?array $custom;
     public bool $prioritizeDiversityBetweenRequests;
     public ?bool $allowProductsCurrentlyInCart;
     public ?SelectedBrandPropertiesSettings $selectedBrandProperties;
@@ -47,14 +46,6 @@ class ProductRecommendationRequestSettings
         if (array_key_exists("selectedVariantProperties", $arr))
         {
             $result->selectedVariantProperties = SelectedVariantPropertiesSettings::hydrate($arr["selectedVariantProperties"]);
-        }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
         }
         if (array_key_exists("prioritizeDiversityBetweenRequests", $arr))
         {
@@ -98,15 +89,6 @@ class ProductRecommendationRequestSettings
     function withSelectedVariantProperties(?SelectedVariantPropertiesSettings $selectedVariantProperties)
     {
         $this->selectedVariantProperties = $selectedVariantProperties;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
     function withPrioritizeDiversityBetweenRequests(bool $prioritizeDiversityBetweenRequests)

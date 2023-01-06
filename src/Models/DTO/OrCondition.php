@@ -29,15 +29,6 @@ class OrCondition extends UserCondition
         $this->conditions = $conditions;
         return $this;
     }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
-        return $this;
-    }
     function withNegated(bool $negated)
     {
         $this->negated = $negated;

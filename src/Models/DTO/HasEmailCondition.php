@@ -17,15 +17,6 @@ class HasEmailCondition extends UserCondition
         $result = UserCondition::hydrateBase(new HasEmailCondition(), $arr);
         return $result;
     }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
-        return $this;
-    }
     function withNegated(bool $negated)
     {
         $this->negated = $negated;

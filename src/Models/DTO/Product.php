@@ -11,7 +11,6 @@ class Product
     public ?array $categoryPaths;
     public ?array $assortments;
     public ?array $data;
-    public ?array $custom;
     public ?MultiCurrency $listPrice;
     public ?MultiCurrency $salesPrice;
     public ?Brand $brand;
@@ -56,14 +55,6 @@ class Product
                 $result->data[$key] = DataValue::hydrate($value);
             }
         }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         if (array_key_exists("listPrice", $arr))
         {
             $result->listPrice = MultiCurrency::hydrate($arr["listPrice"]);
@@ -105,15 +96,6 @@ class Product
             $this->data = array();
         }
         $this->data[$key] = $value;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
     function withListPrice(?MultiCurrency $listPrice)

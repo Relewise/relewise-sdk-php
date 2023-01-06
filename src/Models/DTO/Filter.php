@@ -8,7 +8,6 @@ abstract class Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.Filter, Relewise.Client";
     public bool $negated;
-    public ?array $custom;
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -171,28 +170,11 @@ abstract class Filter
         {
             $result->negated = $arr["negated"];
         }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         return $result;
     }
     function withNegated(bool $negated)
     {
         $this->negated = $negated;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
 }

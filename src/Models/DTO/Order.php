@@ -105,13 +105,4 @@ class Order extends Trackable
         $this->trackingNumber = $trackingNumber;
         return $this;
     }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
-        return $this;
-    }
 }

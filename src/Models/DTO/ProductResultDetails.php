@@ -14,7 +14,6 @@ class ProductResultDetails
     public array $categoryPaths;
     public PurchasedByUserInfo $purchasedByUser;
     public ViewedByUserInfo $viewedByUser;
-    public array $custom;
     public array $allVariants;
     public DateTime $createdUtc;
     public ?DateTime $lastPurchasedUtc;
@@ -80,14 +79,6 @@ class ProductResultDetails
         if (array_key_exists("viewedByUser", $arr))
         {
             $result->viewedByUser = ViewedByUserInfo::hydrate($arr["viewedByUser"]);
-        }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
         }
         if (array_key_exists("allVariants", $arr))
         {
@@ -189,15 +180,6 @@ class ProductResultDetails
     function withViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
     function withAllVariants(VariantResultDetails ... $allVariants)

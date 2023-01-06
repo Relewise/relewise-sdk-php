@@ -50,13 +50,4 @@ class ProductView extends Trackable
         $this->variant = $variant;
         return $this;
     }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
-        return $this;
-    }
 }

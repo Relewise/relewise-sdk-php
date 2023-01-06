@@ -110,13 +110,4 @@ abstract class ContentCategoryIdFilterCategoryQuery extends LicensedRequest
         $this->includeParentCategoriesToDepth = $includeParentCategoriesToDepth;
         return $this;
     }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
-        return $this;
-    }
 }

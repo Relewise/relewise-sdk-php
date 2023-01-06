@@ -14,7 +14,6 @@ abstract class CategoryResult
     public array $paths;
     public array $assortments;
     public array $data;
-    public array $custom;
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -69,14 +68,6 @@ abstract class CategoryResult
                 $result->data[$key] = DataValue::hydrate($value);
             }
         }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         return $result;
     }
     function withCategoryId(string $categoryId)
@@ -116,15 +107,6 @@ abstract class CategoryResult
             $this->data = array();
         }
         $this->data[$key] = $value;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
 }

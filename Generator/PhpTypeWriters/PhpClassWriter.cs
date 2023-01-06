@@ -40,7 +40,8 @@ use DateTime;
                            && info.GetIndexParameters().Length is 0
                            && info.SetMethod is { IsAbstract: false }
                            && !Attribute.IsDefined(info, typeof(JsonIgnoreAttribute))
-                           && info.GetAccessors(false).All(ax => !ax.IsAbstract && ax.IsPublic))
+                           && info.GetAccessors(false).All(ax => !ax.IsAbstract && ax.IsPublic)
+                           && info.Name != "Custom") // It is a special requirement that we should ignore the property Custom from all classes.
             .ToArray();
 
         var settableProperties = settablePropertyInfo

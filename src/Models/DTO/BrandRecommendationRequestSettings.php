@@ -11,7 +11,6 @@ class BrandRecommendationRequestSettings
     public bool $allowReplacingOfRecentlyShownRecommendations;
     public bool $prioritizeDiversityBetweenRequests;
     public ?SelectedBrandPropertiesSettings $selectedBrandProperties;
-    public ?array $custom;
     public static function create() : BrandRecommendationRequestSettings
     {
         $result = new BrandRecommendationRequestSettings();
@@ -40,14 +39,6 @@ class BrandRecommendationRequestSettings
         {
             $result->selectedBrandProperties = SelectedBrandPropertiesSettings::hydrate($arr["selectedBrandProperties"]);
         }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         return $result;
     }
     function withNumberOfRecommendations(int $numberOfRecommendations)
@@ -73,15 +64,6 @@ class BrandRecommendationRequestSettings
     function withSelectedBrandProperties(?SelectedBrandPropertiesSettings $selectedBrandProperties)
     {
         $this->selectedBrandProperties = $selectedBrandProperties;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
 }

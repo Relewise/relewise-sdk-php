@@ -8,7 +8,6 @@ abstract class RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier, Relewise.Client";
     public FilterCollection $filters;
-    public array $custom;
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -83,28 +82,11 @@ abstract class RelevanceModifier
         {
             $result->filters = FilterCollection::hydrate($arr["filters"]);
         }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         return $result;
     }
     function withFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
 }

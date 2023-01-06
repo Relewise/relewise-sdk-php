@@ -18,7 +18,6 @@ class ContentResultDetails
     public int $viewedByDifferentNumberOfUsers;
     public bool $disabled;
     public bool $deleted;
-    public array $custom;
     public static function create(string $contentId) : ContentResultDetails
     {
         $result = new ContentResultDetails();
@@ -88,14 +87,6 @@ class ContentResultDetails
         {
             $result->deleted = $arr["deleted"];
         }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         return $result;
     }
     function withContentId(string $contentId)
@@ -160,15 +151,6 @@ class ContentResultDetails
     function withDeleted(bool $deleted)
     {
         $this->deleted = $deleted;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
 }

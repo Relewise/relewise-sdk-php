@@ -17,13 +17,4 @@ class GlobalTriggerConfigurationRequest extends LicensedRequest
         $result = LicensedRequest::hydrateBase(new GlobalTriggerConfigurationRequest(), $arr);
         return $result;
     }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
-        return $this;
-    }
 }

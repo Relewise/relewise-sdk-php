@@ -8,12 +8,15 @@ class LineItem
 {
     public Product $product;
     public ?ProductVariant $variant;
-    public ?array $custom;
     public int $quantity;
     public float $lineTotal;
-    public static function create() : LineItem
+    public static function create(Product $product, ?ProductVariant $variant, int $quantity, float $lineTotal) : LineItem
     {
         $result = new LineItem();
+        $result->product = $product;
+        $result->variant = $variant;
+        $result->quantity = $quantity;
+        $result->lineTotal = $lineTotal;
         return $result;
     }
     public static function hydrate(array $arr) : LineItem
@@ -26,14 +29,6 @@ class LineItem
         if (array_key_exists("variant", $arr))
         {
             $result->variant = ProductVariant::hydrate($arr["variant"]);
-        }
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
         }
         if (array_key_exists("quantity", $arr))
         {
@@ -53,15 +48,6 @@ class LineItem
     function withVariant(?ProductVariant $variant)
     {
         $this->variant = $variant;
-        return $this;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
         return $this;
     }
     function withQuantity(int $quantity)

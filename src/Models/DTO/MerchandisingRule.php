@@ -7,7 +7,6 @@ use DateTime;
 abstract class MerchandisingRule
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Rules.MerchandisingRule, Relewise.Client";
-    public array $custom;
     public string $id;
     public string $name;
     public string $description;
@@ -43,14 +42,6 @@ abstract class MerchandisingRule
     }
     public static function hydrateBase(mixed $result, array $arr)
     {
-        if (array_key_exists("custom", $arr))
-        {
-            $result->custom = array();
-            foreach($arr["custom"] as $key => $value)
-            {
-                $result->custom[$key] = $value;
-            }
-        }
         if (array_key_exists("id", $arr))
         {
             $result->id = $arr["id"];
@@ -108,15 +99,6 @@ abstract class MerchandisingRule
             }
         }
         return $result;
-    }
-    function withCustom(string $key, string $value)
-    {
-        if (!isset($this->custom))
-        {
-            $this->custom = array();
-        }
-        $this->custom[$key] = $value;
-        return $this;
     }
     function withId(string $id)
     {
