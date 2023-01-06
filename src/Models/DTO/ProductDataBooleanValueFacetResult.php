@@ -37,9 +37,27 @@ class ProductDataBooleanValueFacetResult extends boolProductDataValueFacetResult
         $this->selected = $selected;
         return $this;
     }
+    function addToSelected(bool $selected)
+    {
+        if (!isset($this->selected))
+        {
+            $this->selected = array();
+        }
+        array_push($this->selected, $selected);
+        return $this;
+    }
     function setAvailable(boolAvailableFacetValue ... $available)
     {
         $this->available = $available;
+        return $this;
+    }
+    function addToAvailable(boolAvailableFacetValue $available)
+    {
+        if (!isset($this->available))
+        {
+            $this->available = array();
+        }
+        array_push($this->available, $available);
         return $this;
     }
     function setField(FacetingField $field)

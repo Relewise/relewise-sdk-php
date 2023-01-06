@@ -48,7 +48,7 @@ public class PhpPropertySetterMethodsWriter
             {
                 elementType = propertyType.GetElementType();
             }
-            else if (propertyType.IsGenericType && propertyType.DeclaringType == typeof(List<>))
+            else if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>))
             {
                 elementType = propertyType.GenericTypeArguments[0];
             }

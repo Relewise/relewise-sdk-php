@@ -22,6 +22,15 @@ class BrandFacet extends stringValueFacet
         $this->selected = $selected;
         return $this;
     }
+    function addToSelected(string $selected)
+    {
+        if (!isset($this->selected))
+        {
+            $this->selected = array();
+        }
+        array_push($this->selected, $selected);
+        return $this;
+    }
     function setField(FacetingField $field)
     {
         $this->field = $field;

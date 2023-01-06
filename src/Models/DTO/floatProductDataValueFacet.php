@@ -45,6 +45,15 @@ abstract class floatProductDataValueFacet extends floatDataValueFacet
         $this->selected = $selected;
         return $this;
     }
+    function addToSelected(float $selected)
+    {
+        if (!isset($this->selected))
+        {
+            $this->selected = array();
+        }
+        array_push($this->selected, $selected);
+        return $this;
+    }
     function setField(FacetingField $field)
     {
         $this->field = $field;

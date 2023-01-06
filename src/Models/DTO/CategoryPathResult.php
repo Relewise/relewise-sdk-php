@@ -36,6 +36,15 @@ class CategoryPathResult
         $this->pathFromRoot = $pathFromRoot;
         return $this;
     }
+    function addToPathFromRoot(CategoryNameAndIdResult $pathFromRoot)
+    {
+        if (!isset($this->pathFromRoot))
+        {
+            $this->pathFromRoot = array();
+        }
+        array_push($this->pathFromRoot, $pathFromRoot);
+        return $this;
+    }
     function setRank(int $rank)
     {
         $this->rank = $rank;

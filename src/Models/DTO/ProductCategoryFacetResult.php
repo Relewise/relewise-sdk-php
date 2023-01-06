@@ -30,4 +30,13 @@ class ProductCategoryFacetResult
         $this->items = $items;
         return $this;
     }
+    function addToItems(FacetResult $items)
+    {
+        if (!isset($this->items))
+        {
+            $this->items = array();
+        }
+        array_push($this->items, $items);
+        return $this;
+    }
 }

@@ -68,14 +68,41 @@ class RequestContextFilter
         $this->locations = $locations;
         return $this;
     }
+    function addToLocations(string $locations)
+    {
+        if (!isset($this->locations))
+        {
+            $this->locations = array();
+        }
+        array_push($this->locations, $locations);
+        return $this;
+    }
     function setLanguages(Language ... $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    function addToLanguages(Language $languages)
+    {
+        if (!isset($this->languages))
+        {
+            $this->languages = array();
+        }
+        array_push($this->languages, $languages);
+        return $this;
+    }
     function setCurrencies(Currency ... $currencies)
     {
         $this->currencies = $currencies;
+        return $this;
+    }
+    function addToCurrencies(Currency $currencies)
+    {
+        if (!isset($this->currencies))
+        {
+            $this->currencies = array();
+        }
+        array_push($this->currencies, $currencies);
         return $this;
     }
 }

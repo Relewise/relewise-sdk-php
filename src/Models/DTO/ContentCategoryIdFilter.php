@@ -23,6 +23,15 @@ class ContentCategoryIdFilter extends CategoryIdFilter
         $this->categoryIds = $categoryIds;
         return $this;
     }
+    function addToCategoryIds(string $categoryIds)
+    {
+        if (!isset($this->categoryIds))
+        {
+            $this->categoryIds = array();
+        }
+        array_push($this->categoryIds, $categoryIds);
+        return $this;
+    }
     function setEvaluationScope(CategoryScope $evaluationScope)
     {
         $this->evaluationScope = $evaluationScope;

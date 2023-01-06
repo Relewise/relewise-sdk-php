@@ -80,6 +80,15 @@ class ProductDataRelevanceModifier extends RelevanceModifier
         $this->conditions = $conditions;
         return $this;
     }
+    function addToConditions(ValueCondition $conditions)
+    {
+        if (!isset($this->conditions))
+        {
+            $this->conditions = array();
+        }
+        array_push($this->conditions, $conditions);
+        return $this;
+    }
     function setMultiplierSelector(ValueSelector $multiplierSelector)
     {
         $this->multiplierSelector = $multiplierSelector;

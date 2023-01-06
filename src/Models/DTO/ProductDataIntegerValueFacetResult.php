@@ -37,9 +37,27 @@ class ProductDataIntegerValueFacetResult extends intProductDataValueFacetResult
         $this->selected = $selected;
         return $this;
     }
+    function addToSelected(int $selected)
+    {
+        if (!isset($this->selected))
+        {
+            $this->selected = array();
+        }
+        array_push($this->selected, $selected);
+        return $this;
+    }
     function setAvailable(intAvailableFacetValue ... $available)
     {
         $this->available = $available;
+        return $this;
+    }
+    function addToAvailable(intAvailableFacetValue $available)
+    {
+        if (!isset($this->available))
+        {
+            $this->available = array();
+        }
+        array_push($this->available, $available);
         return $this;
     }
     function setField(FacetingField $field)

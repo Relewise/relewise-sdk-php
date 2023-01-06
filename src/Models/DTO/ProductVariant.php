@@ -78,6 +78,15 @@ class ProductVariant
         $this->assortments = $assortments;
         return $this;
     }
+    function addToAssortments(int $assortments)
+    {
+        if (!isset($this->assortments))
+        {
+            $this->assortments = array();
+        }
+        array_push($this->assortments, $assortments);
+        return $this;
+    }
     function addToSpecification(string $key, string $value)
     {
         if (!isset($this->specification))

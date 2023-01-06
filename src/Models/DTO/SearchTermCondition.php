@@ -61,9 +61,27 @@ class SearchTermCondition
         $this->andConditions = $andConditions;
         return $this;
     }
+    function addToAndConditions(SearchTermCondition $andConditions)
+    {
+        if (!isset($this->andConditions))
+        {
+            $this->andConditions = array();
+        }
+        array_push($this->andConditions, $andConditions);
+        return $this;
+    }
     function setOrConditions(SearchTermCondition ... $orConditions)
     {
         $this->orConditions = $orConditions;
+        return $this;
+    }
+    function addToOrConditions(SearchTermCondition $orConditions)
+    {
+        if (!isset($this->orConditions))
+        {
+            $this->orConditions = array();
+        }
+        array_push($this->orConditions, $orConditions);
         return $this;
     }
 }

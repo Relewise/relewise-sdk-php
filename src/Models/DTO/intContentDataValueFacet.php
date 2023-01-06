@@ -35,6 +35,15 @@ abstract class intContentDataValueFacet extends intDataValueFacet
         $this->selected = $selected;
         return $this;
     }
+    function addToSelected(int $selected)
+    {
+        if (!isset($this->selected))
+        {
+            $this->selected = array();
+        }
+        array_push($this->selected, $selected);
+        return $this;
+    }
     function setField(FacetingField $field)
     {
         $this->field = $field;

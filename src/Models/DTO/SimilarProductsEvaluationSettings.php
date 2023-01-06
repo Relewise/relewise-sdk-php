@@ -120,6 +120,15 @@ class SimilarProductsEvaluationSettings
         $this->significantProductDataFields = $significantProductDataFields;
         return $this;
     }
+    function addToSignificantProductDataFields(SignificantDataValue $significantProductDataFields)
+    {
+        if (!isset($this->significantProductDataFields))
+        {
+            $this->significantProductDataFields = array();
+        }
+        array_push($this->significantProductDataFields, $significantProductDataFields);
+        return $this;
+    }
     function setSignificanceOfSimilarSalesPrice(float $significanceOfSimilarSalesPrice)
     {
         $this->significanceOfSimilarSalesPrice = $significanceOfSimilarSalesPrice;

@@ -38,6 +38,15 @@ class ContentRecommendationRequestCollection extends LicensedRequest
         $this->requests = $requests;
         return $this;
     }
+    function addToRequests(ContentRecommendationRequest $requests)
+    {
+        if (!isset($this->requests))
+        {
+            $this->requests = array();
+        }
+        array_push($this->requests, $requests);
+        return $this;
+    }
     function setRequireDistinctContentAcrossResults(bool $requireDistinctContentAcrossResults)
     {
         $this->requireDistinctContentAcrossResults = $requireDistinctContentAcrossResults;

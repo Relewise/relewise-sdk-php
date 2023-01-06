@@ -38,6 +38,15 @@ class ProductRecommendationRequestCollection extends LicensedRequest
         $this->requests = $requests;
         return $this;
     }
+    function addToRequests(ProductRecommendationRequest $requests)
+    {
+        if (!isset($this->requests))
+        {
+            $this->requests = array();
+        }
+        array_push($this->requests, $requests);
+        return $this;
+    }
     function setRequireDistinctProductsAcrossResults(bool $requireDistinctProductsAcrossResults)
     {
         $this->requireDistinctProductsAcrossResults = $requireDistinctProductsAcrossResults;

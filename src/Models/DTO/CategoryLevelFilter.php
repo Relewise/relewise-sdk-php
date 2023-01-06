@@ -38,6 +38,15 @@ abstract class CategoryLevelFilter extends Filter
         $this->levels = $levels;
         return $this;
     }
+    function addToLevels(int $levels)
+    {
+        if (!isset($this->levels))
+        {
+            $this->levels = array();
+        }
+        array_push($this->levels, $levels);
+        return $this;
+    }
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

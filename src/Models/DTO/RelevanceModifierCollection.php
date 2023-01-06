@@ -31,4 +31,13 @@ class RelevanceModifierCollection
         $this->items = $items;
         return $this;
     }
+    function addToItems(RelevanceModifier $items)
+    {
+        if (!isset($this->items))
+        {
+            $this->items = array();
+        }
+        array_push($this->items, $items);
+        return $this;
+    }
 }

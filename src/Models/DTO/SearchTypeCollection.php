@@ -30,4 +30,13 @@ class SearchTypeCollection
         $this->unionCodes = $unionCodes;
         return $this;
     }
+    function addToUnionCodes(int $unionCodes)
+    {
+        if (!isset($this->unionCodes))
+        {
+            $this->unionCodes = array();
+        }
+        array_push($this->unionCodes, $unionCodes);
+        return $this;
+    }
 }

@@ -32,6 +32,15 @@ class SearchRequestCollection extends SearchRequest
         $this->requests = $requests;
         return $this;
     }
+    function addToRequests(SearchRequest $requests)
+    {
+        if (!isset($this->requests))
+        {
+            $this->requests = array();
+        }
+        array_push($this->requests, $requests);
+        return $this;
+    }
     function setLanguage(?Language $language)
     {
         $this->language = $language;

@@ -32,6 +32,15 @@ class ContentIdFilter extends Filter
         $this->contentIds = $contentIds;
         return $this;
     }
+    function addToContentIds(string $contentIds)
+    {
+        if (!isset($this->contentIds))
+        {
+            $this->contentIds = array();
+        }
+        array_push($this->contentIds, $contentIds);
+        return $this;
+    }
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

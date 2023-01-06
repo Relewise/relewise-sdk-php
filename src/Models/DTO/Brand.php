@@ -60,6 +60,15 @@ class Brand
         $this->assortments = $assortments;
         return $this;
     }
+    function addToAssortments(int $assortments)
+    {
+        if (!isset($this->assortments))
+        {
+            $this->assortments = array();
+        }
+        array_push($this->assortments, $assortments);
+        return $this;
+    }
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))

@@ -140,6 +140,15 @@ class ProductPerformanceRequest extends AnalyzerRequest
         $this->classifications = $classifications;
         return $this;
     }
+    function addToClassifications(stringstringKeyValuePair $classifications)
+    {
+        if (!isset($this->classifications))
+        {
+            $this->classifications = array();
+        }
+        array_push($this->classifications, $classifications);
+        return $this;
+    }
     function setSelectedBrandProperties(?SelectedBrandPropertiesSettings $selectedBrandProperties)
     {
         $this->selectedBrandProperties = $selectedBrandProperties;

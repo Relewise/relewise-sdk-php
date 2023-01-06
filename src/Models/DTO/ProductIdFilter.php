@@ -32,6 +32,15 @@ class ProductIdFilter extends Filter
         $this->productIds = $productIds;
         return $this;
     }
+    function addToProductIds(string $productIds)
+    {
+        if (!isset($this->productIds))
+        {
+            $this->productIds = array();
+        }
+        array_push($this->productIds, $productIds);
+        return $this;
+    }
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

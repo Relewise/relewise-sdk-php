@@ -75,9 +75,27 @@ abstract class Category
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    function addToCategoryPaths(CategoryPath $categoryPaths)
+    {
+        if (!isset($this->categoryPaths))
+        {
+            $this->categoryPaths = array();
+        }
+        array_push($this->categoryPaths, $categoryPaths);
+        return $this;
+    }
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
+        return $this;
+    }
+    function addToAssortments(int $assortments)
+    {
+        if (!isset($this->assortments))
+        {
+            $this->assortments = array();
+        }
+        array_push($this->assortments, $assortments);
         return $this;
     }
     function addToData(string $key, DataValue $value)

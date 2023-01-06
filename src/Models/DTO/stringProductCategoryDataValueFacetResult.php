@@ -35,9 +35,27 @@ abstract class stringProductCategoryDataValueFacetResult extends stringDataValue
         $this->selected = $selected;
         return $this;
     }
+    function addToSelected(string $selected)
+    {
+        if (!isset($this->selected))
+        {
+            $this->selected = array();
+        }
+        array_push($this->selected, $selected);
+        return $this;
+    }
     function setAvailable(stringAvailableFacetValue ... $available)
     {
         $this->available = $available;
+        return $this;
+    }
+    function addToAvailable(stringAvailableFacetValue $available)
+    {
+        if (!isset($this->available))
+        {
+            $this->available = array();
+        }
+        array_push($this->available, $available);
         return $this;
     }
     function setField(FacetingField $field)

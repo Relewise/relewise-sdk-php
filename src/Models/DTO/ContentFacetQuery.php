@@ -30,4 +30,13 @@ class ContentFacetQuery
         $this->items = $items;
         return $this;
     }
+    function addToItems(Facet $items)
+    {
+        if (!isset($this->items))
+        {
+            $this->items = array();
+        }
+        array_push($this->items, $items);
+        return $this;
+    }
 }

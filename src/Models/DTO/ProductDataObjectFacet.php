@@ -38,6 +38,15 @@ class ProductDataObjectFacet extends DataObjectFacet
         $this->items = $items;
         return $this;
     }
+    function addToItems(Facet $items)
+    {
+        if (!isset($this->items))
+        {
+            $this->items = array();
+        }
+        array_push($this->items, $items);
+        return $this;
+    }
     function setFilter(DataObjectFilter $filter)
     {
         $this->filter = $filter;

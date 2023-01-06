@@ -32,6 +32,15 @@ class VariantIdFilter extends Filter
         $this->variantIds = $variantIds;
         return $this;
     }
+    function addToVariantIds(string $variantIds)
+    {
+        if (!isset($this->variantIds))
+        {
+            $this->variantIds = array();
+        }
+        array_push($this->variantIds, $variantIds);
+        return $this;
+    }
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

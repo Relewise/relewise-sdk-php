@@ -31,4 +31,13 @@ class UserConditionCollection
         $this->items = $items;
         return $this;
     }
+    function addToItems(UserCondition $items)
+    {
+        if (!isset($this->items))
+        {
+            $this->items = array();
+        }
+        array_push($this->items, $items);
+        return $this;
+    }
 }

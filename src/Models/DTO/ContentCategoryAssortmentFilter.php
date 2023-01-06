@@ -32,6 +32,15 @@ class ContentCategoryAssortmentFilter extends Filter
         $this->assortments = $assortments;
         return $this;
     }
+    function addToAssortments(int $assortments)
+    {
+        if (!isset($this->assortments))
+        {
+            $this->assortments = array();
+        }
+        array_push($this->assortments, $assortments);
+        return $this;
+    }
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

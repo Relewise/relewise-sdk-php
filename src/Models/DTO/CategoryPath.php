@@ -31,4 +31,13 @@ class CategoryPath
         $this->breadcrumbPathStartingFromRoot = $breadcrumbPathStartingFromRoot;
         return $this;
     }
+    function addToBreadcrumbPathStartingFromRoot(CategoryNameAndId $breadcrumbPathStartingFromRoot)
+    {
+        if (!isset($this->breadcrumbPathStartingFromRoot))
+        {
+            $this->breadcrumbPathStartingFromRoot = array();
+        }
+        array_push($this->breadcrumbPathStartingFromRoot, $breadcrumbPathStartingFromRoot);
+        return $this;
+    }
 }

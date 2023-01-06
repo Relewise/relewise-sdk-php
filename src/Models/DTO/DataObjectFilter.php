@@ -40,6 +40,15 @@ class DataObjectFilter
         $this->conditions = $conditions;
         return $this;
     }
+    function addToConditions(ObjectValueCondition $conditions)
+    {
+        if (!isset($this->conditions))
+        {
+            $this->conditions = array();
+        }
+        array_push($this->conditions, $conditions);
+        return $this;
+    }
     function setSkip(?int $skip)
     {
         $this->skip = $skip;

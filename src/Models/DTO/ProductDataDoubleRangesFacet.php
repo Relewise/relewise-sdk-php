@@ -27,6 +27,15 @@ class ProductDataDoubleRangesFacet extends floatProductDataRangesFacet
         $this->predefinedRanges = $predefinedRanges;
         return $this;
     }
+    function addToPredefinedRanges(?floatChainableRange $predefinedRanges)
+    {
+        if (!isset($this->predefinedRanges))
+        {
+            $this->predefinedRanges = array();
+        }
+        array_push($this->predefinedRanges, $predefinedRanges);
+        return $this;
+    }
     function setExpandedRangeSize(?float $expandedRangeSize)
     {
         $this->expandedRangeSize = $expandedRangeSize;
@@ -35,6 +44,15 @@ class ProductDataDoubleRangesFacet extends floatProductDataRangesFacet
     function setSelected(?floatChainableRange ... $selected)
     {
         $this->selected = $selected;
+        return $this;
+    }
+    function addToSelected(?floatChainableRange $selected)
+    {
+        if (!isset($this->selected))
+        {
+            $this->selected = array();
+        }
+        array_push($this->selected, $selected);
         return $this;
     }
     function setKey(string $key)

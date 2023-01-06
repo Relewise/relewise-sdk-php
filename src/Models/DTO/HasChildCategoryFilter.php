@@ -38,6 +38,15 @@ abstract class HasChildCategoryFilter extends Filter
         $this->categoryIds = $categoryIds;
         return $this;
     }
+    function addToCategoryIds(string $categoryIds)
+    {
+        if (!isset($this->categoryIds))
+        {
+            $this->categoryIds = array();
+        }
+        array_push($this->categoryIds, $categoryIds);
+        return $this;
+    }
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
