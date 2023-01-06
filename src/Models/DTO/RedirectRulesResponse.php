@@ -17,17 +17,17 @@ class RedirectRulesResponse extends RedirectRuleSearchRulesResponse
         $result = RedirectRuleSearchRulesResponse::hydrateBase(new RedirectRulesResponse(), $arr);
         return $result;
     }
-    function withRules(RedirectRule ... $rules)
+    function setRules(RedirectRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
-    function withHits(int $hits)
+    function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

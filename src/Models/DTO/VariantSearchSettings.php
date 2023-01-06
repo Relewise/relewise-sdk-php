@@ -21,7 +21,7 @@ class VariantSearchSettings
         }
         return $result;
     }
-    function withExcludeResultsWithoutVariant(bool $excludeResultsWithoutVariant)
+    function setExcludeResultsWithoutVariant(bool $excludeResultsWithoutVariant)
     {
         $this->excludeResultsWithoutVariant = $excludeResultsWithoutVariant;
         return $this;

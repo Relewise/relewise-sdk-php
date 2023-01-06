@@ -30,17 +30,17 @@ class ProductListPriceFilter extends Filter
         }
         return $result;
     }
-    function withRange(?floatRange $range)
+    function setRange(?floatRange $range)
     {
         $this->range = $range;
         return $this;
     }
-    function withCurrency(?Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

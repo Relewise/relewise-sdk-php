@@ -31,17 +31,17 @@ class CategoryIndexConfigurationEntry
         }
         return $result;
     }
-    function withId(FieldIndexConfiguration $id)
+    function setId(FieldIndexConfiguration $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withDisplayName(FieldIndexConfiguration $displayName)
+    function setDisplayName(FieldIndexConfiguration $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    function withData(DataIndexConfiguration $data)
+    function setData(DataIndexConfiguration $data)
     {
         $this->data = $data;
         return $this;

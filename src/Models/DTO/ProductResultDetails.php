@@ -138,22 +138,22 @@ class ProductResultDetails
         }
         return $result;
     }
-    function withProductId(string $productId)
+    function setProductId(string $productId)
     {
         $this->productId = $productId;
         return $this;
     }
-    function withDisplayName(Multilingual $displayName)
+    function setDisplayName(Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    function withVariant(VariantResult $variant)
+    function setVariant(VariantResult $variant)
     {
         $this->variant = $variant;
         return $this;
     }
-    function withAssortments(int ... $assortments)
+    function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
@@ -167,82 +167,82 @@ class ProductResultDetails
         $this->data[$key] = $value;
         return $this;
     }
-    function withCategoryPaths(CategoryPathResultDetails ... $categoryPaths)
+    function setCategoryPaths(CategoryPathResultDetails ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
-    function withPurchasedByUser(PurchasedByUserInfo $purchasedByUser)
+    function setPurchasedByUser(PurchasedByUserInfo $purchasedByUser)
     {
         $this->purchasedByUser = $purchasedByUser;
         return $this;
     }
-    function withViewedByUser(ViewedByUserInfo $viewedByUser)
+    function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;
     }
-    function withAllVariants(VariantResultDetails ... $allVariants)
+    function setAllVariants(VariantResultDetails ... $allVariants)
     {
         $this->allVariants = $allVariants;
         return $this;
     }
-    function withCreatedUtc(DateTime $createdUtc)
+    function setCreatedUtc(DateTime $createdUtc)
     {
         $this->createdUtc = $createdUtc;
         return $this;
     }
-    function withLastPurchasedUtc(?DateTime $lastPurchasedUtc)
+    function setLastPurchasedUtc(?DateTime $lastPurchasedUtc)
     {
         $this->lastPurchasedUtc = $lastPurchasedUtc;
         return $this;
     }
-    function withLastViewedUtc(?DateTime $lastViewedUtc)
+    function setLastViewedUtc(?DateTime $lastViewedUtc)
     {
         $this->lastViewedUtc = $lastViewedUtc;
         return $this;
     }
-    function withContainedInTotalNumberOfOrders(int $containedInTotalNumberOfOrders)
+    function setContainedInTotalNumberOfOrders(int $containedInTotalNumberOfOrders)
     {
         $this->containedInTotalNumberOfOrders = $containedInTotalNumberOfOrders;
         return $this;
     }
-    function withViewedTotalNumberOfTimes(int $viewedTotalNumberOfTimes)
+    function setViewedTotalNumberOfTimes(int $viewedTotalNumberOfTimes)
     {
         $this->viewedTotalNumberOfTimes = $viewedTotalNumberOfTimes;
         return $this;
     }
-    function withPurchasedByDifferentNumberOfUsers(int $purchasedByDifferentNumberOfUsers)
+    function setPurchasedByDifferentNumberOfUsers(int $purchasedByDifferentNumberOfUsers)
     {
         $this->purchasedByDifferentNumberOfUsers = $purchasedByDifferentNumberOfUsers;
         return $this;
     }
-    function withViewedByDifferentNumberOfUsers(int $viewedByDifferentNumberOfUsers)
+    function setViewedByDifferentNumberOfUsers(int $viewedByDifferentNumberOfUsers)
     {
         $this->viewedByDifferentNumberOfUsers = $viewedByDifferentNumberOfUsers;
         return $this;
     }
-    function withDisabled(bool $disabled)
+    function setDisabled(bool $disabled)
     {
         $this->disabled = $disabled;
         return $this;
     }
-    function withDeleted(bool $deleted)
+    function setDeleted(bool $deleted)
     {
         $this->deleted = $deleted;
         return $this;
     }
-    function withListPrice(MultiCurrency $listPrice)
+    function setListPrice(MultiCurrency $listPrice)
     {
         $this->listPrice = $listPrice;
         return $this;
     }
-    function withSalesPrice(MultiCurrency $salesPrice)
+    function setSalesPrice(MultiCurrency $salesPrice)
     {
         $this->salesPrice = $salesPrice;
         return $this;
     }
-    function withBrand(BrandResultDetails $brand)
+    function setBrand(BrandResultDetails $brand)
     {
         $this->brand = $brand;
         return $this;

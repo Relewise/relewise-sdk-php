@@ -26,12 +26,12 @@ class SearchIndexCollectionResponse extends TimedResponse
         }
         return $result;
     }
-    function withIndexes(SearchIndex ... $indexes)
+    function setIndexes(SearchIndex ... $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

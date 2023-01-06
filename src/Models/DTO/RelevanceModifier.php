@@ -84,7 +84,7 @@ abstract class RelevanceModifier
         }
         return $result;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;

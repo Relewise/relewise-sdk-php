@@ -49,32 +49,32 @@ class ProductSearchResponse extends PaginatedSearchResponse
         }
         return $result;
     }
-    function withResults(ProductResult ... $results)
+    function setResults(ProductResult ... $results)
     {
         $this->results = $results;
         return $this;
     }
-    function withFacets(ProductFacetResult $facets)
+    function setFacets(ProductFacetResult $facets)
     {
         $this->facets = $facets;
         return $this;
     }
-    function withRecommendations(ProductResult ... $recommendations)
+    function setRecommendations(ProductResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
-    function withRedirects(RedirectResult ... $redirects)
+    function setRedirects(RedirectResult ... $redirects)
     {
         $this->redirects = $redirects;
         return $this;
     }
-    function withHits(int $hits)
+    function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

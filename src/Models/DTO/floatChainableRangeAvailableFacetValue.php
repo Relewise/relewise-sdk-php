@@ -34,17 +34,17 @@ class floatChainableRangeAvailableFacetValue
         }
         return $result;
     }
-    function withValue(?floatChainableRange $value)
+    function setValue(?floatChainableRange $value)
     {
         $this->value = $value;
         return $this;
     }
-    function withHits(int $hits)
+    function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
-    function withSelected(bool $selected)
+    function setSelected(bool $selected)
     {
         $this->selected = $selected;
         return $this;

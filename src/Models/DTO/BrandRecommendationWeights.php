@@ -34,17 +34,17 @@ class BrandRecommendationWeights
         }
         return $result;
     }
-    function withBrandViews(float $brandViews)
+    function setBrandViews(float $brandViews)
     {
         $this->brandViews = $brandViews;
         return $this;
     }
-    function withProductViews(float $productViews)
+    function setProductViews(float $productViews)
     {
         $this->productViews = $productViews;
         return $this;
     }
-    function withProductPurchases(float $productPurchases)
+    function setProductPurchases(float $productPurchases)
     {
         $this->productPurchases = $productPurchases;
         return $this;

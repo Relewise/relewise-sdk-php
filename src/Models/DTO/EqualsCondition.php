@@ -24,12 +24,12 @@ class EqualsCondition extends ValueCondition
         }
         return $result;
     }
-    function withValue(DataValue $value)
+    function setValue(DataValue $value)
     {
         $this->value = $value;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

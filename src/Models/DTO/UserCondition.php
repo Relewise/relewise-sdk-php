@@ -68,7 +68,7 @@ abstract class UserCondition
         }
         return $result;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

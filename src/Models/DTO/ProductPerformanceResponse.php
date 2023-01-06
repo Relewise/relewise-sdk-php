@@ -36,22 +36,22 @@ class ProductPerformanceResponse extends TimedResponse
         }
         return $result;
     }
-    function withResults(ProductPerformanceResult ... $results)
+    function setResults(ProductPerformanceResult ... $results)
     {
         $this->results = $results;
         return $this;
     }
-    function withTotalNumberOfResults(int $totalNumberOfResults)
+    function setTotalNumberOfResults(int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;
         return $this;
     }
-    function withRemainingNumberOfResults(int $remainingNumberOfResults)
+    function setRemainingNumberOfResults(int $remainingNumberOfResults)
     {
         $this->remainingNumberOfResults = $remainingNumberOfResults;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

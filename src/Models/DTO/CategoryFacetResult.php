@@ -25,22 +25,22 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         }
         return $result;
     }
-    function withCategorySelectionStrategy(CategorySelectionStrategy $categorySelectionStrategy)
+    function setCategorySelectionStrategy(CategorySelectionStrategy $categorySelectionStrategy)
     {
         $this->categorySelectionStrategy = $categorySelectionStrategy;
         return $this;
     }
-    function withSelected(string ... $selected)
+    function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withAvailable(CategoryNameAndIdResultAvailableFacetValue ... $available)
+    function setAvailable(CategoryNameAndIdResultAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

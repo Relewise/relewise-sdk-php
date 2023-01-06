@@ -17,54 +17,54 @@ class UserActivityTriggerConfiguration extends UserActivityTriggerResultTriggerC
         $result = UserActivityTriggerResultTriggerConfiguration::hydrateBase(new UserActivityTriggerConfiguration(), $arr);
         return $result;
     }
-    function withId(string $id)
+    function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withName(string $name)
+    function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
-    function withDescription(string $description)
+    function setDescription(string $description)
     {
         $this->description = $description;
         return $this;
     }
-    function withGroup(string $group)
+    function setGroup(string $group)
     {
         $this->group = $group;
         return $this;
     }
-    function withEnabled(bool $enabled)
+    function setEnabled(bool $enabled)
     {
         $this->enabled = $enabled;
         return $this;
     }
-    function withCreated(DateTime $created)
+    function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
-    function withCreatedBy(string $createdBy)
+    function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
-    function withModified(DateTime $modified)
+    function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
-    function withModifiedBy(string $modifiedBy)
+    function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
-    function withWithinTimeSpanMinutes(int $withinTimeSpanMinutes)
+    function setWithinTimeSpanMinutes(int $withinTimeSpanMinutes)
     {
-        $this->withinTimeSpanMinutes = $withinTimeSpanMinutes;
+        $this->setinTimeSpanMinutes = $withinTimeSpanMinutes;
         return $this;
     }
     function addSettings(string $key, string $value)
@@ -76,7 +76,7 @@ class UserActivityTriggerConfiguration extends UserActivityTriggerResultTriggerC
         $this->settings[$key] = $value;
         return $this;
     }
-    function withUserConditions(UserConditionCollection $userConditions)
+    function setUserConditions(UserConditionCollection $userConditions)
     {
         $this->userConditions = $userConditions;
         return $this;

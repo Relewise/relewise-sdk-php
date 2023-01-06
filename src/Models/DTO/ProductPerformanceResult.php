@@ -30,12 +30,12 @@ class ProductPerformanceResult
         }
         return $result;
     }
-    function withProduct(ProductResult $product)
+    function setProduct(ProductResult $product)
     {
         $this->product = $product;
         return $this;
     }
-    function withClassifications(ProductPerformanceResultClassificationMetrics ... $classifications)
+    function setClassifications(ProductPerformanceResultClassificationMetrics ... $classifications)
     {
         $this->classifications = $classifications;
         return $this;

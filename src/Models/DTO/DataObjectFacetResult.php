@@ -39,22 +39,22 @@ class DataObjectFacetResult extends FacetResult
         }
         return $result;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withItems(FacetResult ... $items)
+    function setItems(FacetResult ... $items)
     {
         $this->items = $items;
         return $this;
     }
-    function withFilter(DataObjectFilter $filter)
+    function setFilter(DataObjectFilter $filter)
     {
         $this->filter = $filter;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

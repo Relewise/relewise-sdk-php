@@ -17,27 +17,27 @@ class ContentDataBooleanValueFacetResult extends boolContentDataValueFacetResult
         $result = boolContentDataValueFacetResult::hydrateBase(new ContentDataBooleanValueFacetResult(), $arr);
         return $result;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withCollectionFilterType(?CollectionFilterType $collectionFilterType)
+    function setCollectionFilterType(?CollectionFilterType $collectionFilterType)
     {
         $this->collectionFilterType = $collectionFilterType;
         return $this;
     }
-    function withSelected(bool ... $selected)
+    function setSelected(bool ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withAvailable(boolAvailableFacetValue ... $available)
+    function setAvailable(boolAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

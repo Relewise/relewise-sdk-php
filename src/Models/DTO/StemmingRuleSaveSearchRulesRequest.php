@@ -34,12 +34,12 @@ abstract class StemmingRuleSaveSearchRulesRequest extends LicensedRequest
         }
         return $result;
     }
-    function withRules(StemmingRule ... $rules)
+    function setRules(StemmingRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
-    function withModifiedBy(string $modifiedBy)
+    function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;

@@ -36,22 +36,22 @@ class RequestConfiguration
         }
         return $result;
     }
-    function withFilters(RequestConfigurationPrioritization $filters)
+    function setFilters(RequestConfigurationPrioritization $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withRelevanceModifiers(RequestConfigurationPrioritization $relevanceModifiers)
+    function setRelevanceModifiers(RequestConfigurationPrioritization $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
-    function withOverriddenProductRecommendationRequestSettings(OverriddenProductRecommendationRequestSettings $overriddenProductRecommendationRequestSettings)
+    function setOverriddenProductRecommendationRequestSettings(OverriddenProductRecommendationRequestSettings $overriddenProductRecommendationRequestSettings)
     {
         $this->overriddenProductRecommendationRequestSettings = $overriddenProductRecommendationRequestSettings;
         return $this;
     }
-    function withOverriddenContentRecommendationRequestSettings(OverriddenContentRecommendationRequestSettings $overriddenContentRecommendationRequestSettings)
+    function setOverriddenContentRecommendationRequestSettings(OverriddenContentRecommendationRequestSettings $overriddenContentRecommendationRequestSettings)
     {
         $this->overriddenContentRecommendationRequestSettings = $overriddenContentRecommendationRequestSettings;
         return $this;

@@ -50,27 +50,27 @@ class PriceRangesFacetResult extends FacetResult
         }
         return $result;
     }
-    function withExpandedRangeSize(?float $expandedRangeSize)
+    function setExpandedRangeSize(?float $expandedRangeSize)
     {
         $this->expandedRangeSize = $expandedRangeSize;
         return $this;
     }
-    function withSelected(?floatChainableRange ... $selected)
+    function setSelected(?floatChainableRange ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withAvailable(?floatChainableRangeAvailableFacetValue ... $available)
+    function setAvailable(?floatChainableRangeAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
-    function withPriceSelectionStrategy(PriceSelectionStrategy $priceSelectionStrategy)
+    function setPriceSelectionStrategy(PriceSelectionStrategy $priceSelectionStrategy)
     {
         $this->priceSelectionStrategy = $priceSelectionStrategy;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

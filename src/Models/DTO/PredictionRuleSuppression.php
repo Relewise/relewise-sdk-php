@@ -32,12 +32,12 @@ class PredictionRuleSuppression
         }
         return $result;
     }
-    function withCondition(SuppressionConditionKind $condition)
+    function setCondition(SuppressionConditionKind $condition)
     {
         $this->condition = $condition;
         return $this;
     }
-    function withValues(string ... $values)
+    function setValues(string ... $values)
     {
         $this->values = $values;
         return $this;

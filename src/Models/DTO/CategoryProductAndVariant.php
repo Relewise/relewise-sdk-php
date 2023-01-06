@@ -26,12 +26,12 @@ class CategoryProductAndVariant
         }
         return $result;
     }
-    function withProduct(ProductResultDetails $product)
+    function setProduct(ProductResultDetails $product)
     {
         $this->product = $product;
         return $this;
     }
-    function withVariant(VariantResultDetails $variant)
+    function setVariant(VariantResultDetails $variant)
     {
         $this->variant = $variant;
         return $this;

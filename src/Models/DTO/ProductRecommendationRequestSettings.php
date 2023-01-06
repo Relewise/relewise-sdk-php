@@ -61,47 +61,47 @@ class ProductRecommendationRequestSettings
         }
         return $result;
     }
-    function withNumberOfRecommendations(int $numberOfRecommendations)
+    function setNumberOfRecommendations(int $numberOfRecommendations)
     {
         $this->numberOfRecommendations = $numberOfRecommendations;
         return $this;
     }
-    function withAllowFillIfNecessaryToReachNumberOfRecommendations(bool $allowFillIfNecessaryToReachNumberOfRecommendations)
+    function setAllowFillIfNecessaryToReachNumberOfRecommendations(bool $allowFillIfNecessaryToReachNumberOfRecommendations)
     {
         $this->allowFillIfNecessaryToReachNumberOfRecommendations = $allowFillIfNecessaryToReachNumberOfRecommendations;
         return $this;
     }
-    function withAllowReplacingOfRecentlyShownRecommendations(bool $allowReplacingOfRecentlyShownRecommendations)
+    function setAllowReplacingOfRecentlyShownRecommendations(bool $allowReplacingOfRecentlyShownRecommendations)
     {
         $this->allowReplacingOfRecentlyShownRecommendations = $allowReplacingOfRecentlyShownRecommendations;
         return $this;
     }
-    function withRecommendVariant(bool $recommendVariant)
+    function setRecommendVariant(bool $recommendVariant)
     {
         $this->recommendVariant = $recommendVariant;
         return $this;
     }
-    function withSelectedProductProperties(?SelectedProductPropertiesSettings $selectedProductProperties)
+    function setSelectedProductProperties(?SelectedProductPropertiesSettings $selectedProductProperties)
     {
         $this->selectedProductProperties = $selectedProductProperties;
         return $this;
     }
-    function withSelectedVariantProperties(?SelectedVariantPropertiesSettings $selectedVariantProperties)
+    function setSelectedVariantProperties(?SelectedVariantPropertiesSettings $selectedVariantProperties)
     {
         $this->selectedVariantProperties = $selectedVariantProperties;
         return $this;
     }
-    function withPrioritizeDiversityBetweenRequests(bool $prioritizeDiversityBetweenRequests)
+    function setPrioritizeDiversityBetweenRequests(bool $prioritizeDiversityBetweenRequests)
     {
         $this->prioritizeDiversityBetweenRequests = $prioritizeDiversityBetweenRequests;
         return $this;
     }
-    function withAllowProductsCurrentlyInCart(?bool $allowProductsCurrentlyInCart)
+    function setAllowProductsCurrentlyInCart(?bool $allowProductsCurrentlyInCart)
     {
         $this->allowProductsCurrentlyInCart = $allowProductsCurrentlyInCart;
         return $this;
     }
-    function withSelectedBrandProperties(?SelectedBrandPropertiesSettings $selectedBrandProperties)
+    function setSelectedBrandProperties(?SelectedBrandPropertiesSettings $selectedBrandProperties)
     {
         $this->selectedBrandProperties = $selectedBrandProperties;
         return $this;

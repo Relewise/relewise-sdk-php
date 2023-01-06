@@ -31,17 +31,17 @@ class SearchRuleFilters
         }
         return $result;
     }
-    function withTerm(?string $term)
+    function setTerm(?string $term)
     {
         $this->term = $term;
         return $this;
     }
-    function withApproved(?bool $approved)
+    function setApproved(?bool $approved)
     {
         $this->approved = $approved;
         return $this;
     }
-    function withId(?string $id)
+    function setId(?string $id)
     {
         $this->id = $id;
         return $this;

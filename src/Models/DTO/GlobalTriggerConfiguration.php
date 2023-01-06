@@ -55,32 +55,32 @@ class GlobalTriggerConfiguration
         }
         return $result;
     }
-    function withModified(DateTime $modified)
+    function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
-    function withModifiedBy(string $modifiedBy)
+    function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
-    function withEnabled(bool $enabled)
+    function setEnabled(bool $enabled)
     {
         $this->enabled = $enabled;
         return $this;
     }
-    function withMinimumCooldownAnyTrigger(?int $minimumCooldownAnyTrigger)
+    function setMinimumCooldownAnyTrigger(?int $minimumCooldownAnyTrigger)
     {
         $this->minimumCooldownAnyTrigger = $minimumCooldownAnyTrigger;
         return $this;
     }
-    function withMinimumCooldownSameTrigger(?int $minimumCooldownSameTrigger)
+    function setMinimumCooldownSameTrigger(?int $minimumCooldownSameTrigger)
     {
         $this->minimumCooldownSameTrigger = $minimumCooldownSameTrigger;
         return $this;
     }
-    function withMinimumCooldownSameGroup(?int $minimumCooldownSameGroup)
+    function setMinimumCooldownSameGroup(?int $minimumCooldownSameGroup)
     {
         $this->minimumCooldownSameGroup = $minimumCooldownSameGroup;
         return $this;

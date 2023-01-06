@@ -24,12 +24,12 @@ class ProductHasVariantsFilter extends Filter
         }
         return $result;
     }
-    function withNumberOfVariants(?intRange $numberOfVariants)
+    function setNumberOfVariants(?intRange $numberOfVariants)
     {
         $this->numberOfVariants = $numberOfVariants;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

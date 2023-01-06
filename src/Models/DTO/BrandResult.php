@@ -56,27 +56,27 @@ class BrandResult
         }
         return $result;
     }
-    function withId(string $id)
+    function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withDisplayName(string $displayName)
+    function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    function withRank(int $rank)
+    function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;
     }
-    function withViewedByUser(ViewedByUserInfo $viewedByUser)
+    function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;
     }
-    function withAssortments(int ... $assortments)
+    function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;

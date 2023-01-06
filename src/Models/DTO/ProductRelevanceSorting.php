@@ -18,12 +18,12 @@ class ProductRelevanceSorting extends ProductSorting
         $result = ProductSorting::hydrateBase(new ProductRelevanceSorting(), $arr);
         return $result;
     }
-    function withOrder(SortOrder $order)
+    function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
-    function withThenBy(ProductSorting $thenBy)
+    function setThenBy(ProductSorting $thenBy)
     {
         $this->thenBy = $thenBy;
         return $this;

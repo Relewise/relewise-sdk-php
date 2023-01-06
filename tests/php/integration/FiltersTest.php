@@ -26,11 +26,11 @@ class FiltersTest extends BaseTest
             "1",
             0,
             20
-        )->withFilters(
+        )->setFilters(
             FilterCollection::create()
-                ->withItems(
+                ->setItems(
                     ProductAssortmentFilter::create()
-                        ->withAssortments(10_000_000)
+                        ->setAssortments(10_000_000)
                 )
         );
 
@@ -52,11 +52,11 @@ class FiltersTest extends BaseTest
             "1",
             0,
             20
-        )->withFilters(
+        )->setFilters(
             FilterCollection::create()
-                ->withItems(
+                ->setItems(
                     ProductIdFilter::create()
-                        ->withProductIds("1")
+                        ->setProductIds("1")
                 )
         );
 

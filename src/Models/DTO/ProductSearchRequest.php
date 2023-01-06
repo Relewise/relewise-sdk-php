@@ -44,72 +44,72 @@ class ProductSearchRequest extends PaginatedSearchRequest
         }
         return $result;
     }
-    function withTerm(?string $term)
+    function setTerm(?string $term)
     {
         $this->term = $term;
         return $this;
     }
-    function withFacets(?ProductFacetQuery $facets)
+    function setFacets(?ProductFacetQuery $facets)
     {
         $this->facets = $facets;
         return $this;
     }
-    function withSettings(?ProductSearchSettings $settings)
+    function setSettings(?ProductSearchSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
-    function withSorting(?ProductSortBySpecification $sorting)
+    function setSorting(?ProductSortBySpecification $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
-    function withSkip(int $skip)
+    function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
-    function withTake(int $take)
+    function setTake(int $take)
     {
         $this->take = $take;
         return $this;
     }
-    function withLanguage(?Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withCurrency(?Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
-    function withUser(?User $user)
+    function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
-    function withDisplayedAtLocation(?string $displayedAtLocation)
+    function setDisplayedAtLocation(?string $displayedAtLocation)
     {
         $this->displayedAtLocation = $displayedAtLocation;
         return $this;
     }
-    function withRelevanceModifiers(?RelevanceModifierCollection $relevanceModifiers)
+    function setRelevanceModifiers(?RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
-    function withFilters(?FilterCollection $filters)
+    function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withIndexSelector(?SearchIndexSelector $indexSelector)
+    function setIndexSelector(?SearchIndexSelector $indexSelector)
     {
         $this->indexSelector = $indexSelector;
         return $this;
     }
-    function withPostFilters(?FilterCollection $postFilters)
+    function setPostFilters(?FilterCollection $postFilters)
     {
         $this->postFilters = $postFilters;
         return $this;

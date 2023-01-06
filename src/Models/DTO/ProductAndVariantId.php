@@ -28,12 +28,12 @@ class ProductAndVariantId
         }
         return $result;
     }
-    function withProductId(string $productId)
+    function setProductId(string $productId)
     {
         $this->productId = $productId;
         return $this;
     }
-    function withVariantId(?string $variantId)
+    function setVariantId(?string $variantId)
     {
         $this->variantId = $variantId;
         return $this;

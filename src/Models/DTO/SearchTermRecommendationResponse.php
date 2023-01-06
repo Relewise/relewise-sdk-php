@@ -26,12 +26,12 @@ class SearchTermRecommendationResponse extends RecommendationResponse
         }
         return $result;
     }
-    function withRecommendations(SearchTermResult ... $recommendations)
+    function setRecommendations(SearchTermResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

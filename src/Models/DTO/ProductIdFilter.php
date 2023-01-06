@@ -27,12 +27,12 @@ class ProductIdFilter extends Filter
         }
         return $result;
     }
-    function withProductIds(string ... $productIds)
+    function setProductIds(string ... $productIds)
     {
         $this->productIds = $productIds;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

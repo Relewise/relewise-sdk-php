@@ -17,32 +17,32 @@ class ProductDataDoubleRangesFacetResult extends floatProductDataRangesFacetResu
         $result = floatProductDataRangesFacetResult::hydrateBase(new ProductDataDoubleRangesFacetResult(), $arr);
         return $result;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
+    function setDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
     {
         $this->dataSelectionStrategy = $dataSelectionStrategy;
         return $this;
     }
-    function withExpandedRangeSize(?float $expandedRangeSize)
+    function setExpandedRangeSize(?float $expandedRangeSize)
     {
         $this->expandedRangeSize = $expandedRangeSize;
         return $this;
     }
-    function withSelected(?floatChainableRange ... $selected)
+    function setSelected(?floatChainableRange ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withAvailable(?floatChainableRangeAvailableFacetValue ... $available)
+    function setAvailable(?floatChainableRangeAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

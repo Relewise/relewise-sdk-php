@@ -21,7 +21,7 @@ class HasModifiedCartCondition extends UserCondition
         $result = UserCondition::hydrateBase(new HasModifiedCartCondition(), $arr);
         if (array_key_exists("withinMinutes", $arr))
         {
-            $result->withinMinutes = $arr["withinMinutes"];
+            $result->setinMinutes = $arr["withinMinutes"];
         }
         if (array_key_exists("cartName", $arr))
         {
@@ -29,17 +29,17 @@ class HasModifiedCartCondition extends UserCondition
         }
         return $result;
     }
-    function withWithinMinutes(int $withinMinutes)
+    function setWithinMinutes(int $withinMinutes)
     {
-        $this->withinMinutes = $withinMinutes;
+        $this->setinMinutes = $withinMinutes;
         return $this;
     }
-    function withCartName(string $cartName)
+    function setCartName(string $cartName)
     {
         $this->cartName = $cartName;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

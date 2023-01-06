@@ -36,22 +36,22 @@ class ConditionConfiguration
         }
         return $result;
     }
-    function withUser(UserConditionConfiguration $user)
+    function setUser(UserConditionConfiguration $user)
     {
         $this->user = $user;
         return $this;
     }
-    function withInput(InputConditionConfiguration $input)
+    function setInput(InputConditionConfiguration $input)
     {
         $this->input = $input;
         return $this;
     }
-    function withTarget(TargetConditionConfiguration $target)
+    function setTarget(TargetConditionConfiguration $target)
     {
         $this->target = $target;
         return $this;
     }
-    function withContext(ContextConditionConfiguration $context)
+    function setContext(ContextConditionConfiguration $context)
     {
         $this->context = $context;
         return $this;

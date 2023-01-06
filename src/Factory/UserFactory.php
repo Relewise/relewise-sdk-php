@@ -18,7 +18,7 @@ class UserFactory {
 
     public static function byTemporaryId(string $temporaryId) {
         return (new User())
-            ->withTemporaryId($temporaryId);
+            ->setTemporaryId($temporaryId);
     }
 
     public static function byIdentifier(string $key, string $value) {
@@ -34,11 +34,11 @@ class UserFactory {
 
     public static function byEmail(string $email) {
         return (new User())
-            ->withEmail($email);
+            ->setEmail($email);
     }
 
     public static function byFingerprint(string $fingerprint) {
         return (new User())
-            ->withFingerprint($fingerprint);
+            ->setFingerprint($fingerprint);
     }
 }

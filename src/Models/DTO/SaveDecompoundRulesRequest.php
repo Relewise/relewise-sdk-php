@@ -17,12 +17,12 @@ class SaveDecompoundRulesRequest extends DecompoundRuleSaveSearchRulesRequest
         $result = DecompoundRuleSaveSearchRulesRequest::hydrateBase(new SaveDecompoundRulesRequest(), $arr);
         return $result;
     }
-    function withRules(DecompoundRule ... $rules)
+    function setRules(DecompoundRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
-    function withModifiedBy(string $modifiedBy)
+    function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;

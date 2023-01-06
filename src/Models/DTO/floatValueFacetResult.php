@@ -32,17 +32,17 @@ abstract class floatValueFacetResult extends floatfloatValueFacetResult
         $result = floatfloatValueFacetResult::hydrateBase($result, $arr);
         return $result;
     }
-    function withSelected(float ... $selected)
+    function setSelected(float ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withAvailable(floatAvailableFacetValue ... $available)
+    function setAvailable(floatAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

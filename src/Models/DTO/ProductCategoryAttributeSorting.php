@@ -30,22 +30,22 @@ class ProductCategoryAttributeSorting extends ProductCategorySorting
         }
         return $result;
     }
-    function withAttribute(ProductCategoryAttributeSortingSortableAttribute $attribute)
+    function setAttribute(ProductCategoryAttributeSortingSortableAttribute $attribute)
     {
         $this->attribute = $attribute;
         return $this;
     }
-    function withMode(SortMode $mode)
+    function setMode(SortMode $mode)
     {
         $this->mode = $mode;
         return $this;
     }
-    function withOrder(SortOrder $order)
+    function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
-    function withThenBy(ProductCategorySorting $thenBy)
+    function setThenBy(ProductCategorySorting $thenBy)
     {
         $this->thenBy = $thenBy;
         return $this;

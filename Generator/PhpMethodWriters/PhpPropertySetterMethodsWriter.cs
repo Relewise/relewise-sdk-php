@@ -34,7 +34,7 @@ public class PhpPropertySetterMethodsWriter
             else
             {
                 var parameterType = phpWriter.BetterTypedParameterTypeName(propertyTypeName, propertyType);
-                writer.WriteLine($"function with{propertyName}({parameterType} ${lowerCaseName})");
+                writer.WriteLine($"function set{propertyName}({parameterType} ${lowerCaseName})");
                 writer.WriteLine("{");
                 writer.Indent++;
                 writer.WriteLine($"$this->{lowerCaseName} = ${lowerCaseName};");

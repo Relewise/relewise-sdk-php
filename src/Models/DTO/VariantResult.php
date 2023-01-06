@@ -70,12 +70,12 @@ class VariantResult
         }
         return $result;
     }
-    function withVariantId(string $variantId)
+    function setVariantId(string $variantId)
     {
         $this->variantId = $variantId;
         return $this;
     }
-    function withDisplayName(string $displayName)
+    function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;
         return $this;
@@ -89,7 +89,7 @@ class VariantResult
         $this->specification[$key] = $value;
         return $this;
     }
-    function withAssortments(int ... $assortments)
+    function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
@@ -103,17 +103,17 @@ class VariantResult
         $this->data[$key] = $value;
         return $this;
     }
-    function withRank(int $rank)
+    function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;
     }
-    function withListPrice(?float $listPrice)
+    function setListPrice(?float $listPrice)
     {
         $this->listPrice = $listPrice;
         return $this;
     }
-    function withSalesPrice(?float $salesPrice)
+    function setSalesPrice(?float $salesPrice)
     {
         $this->salesPrice = $salesPrice;
         return $this;

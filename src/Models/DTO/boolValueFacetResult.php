@@ -32,17 +32,17 @@ abstract class boolValueFacetResult extends boolboolValueFacetResult
         $result = boolboolValueFacetResult::hydrateBase($result, $arr);
         return $result;
     }
-    function withSelected(bool ... $selected)
+    function setSelected(bool ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withAvailable(boolAvailableFacetValue ... $available)
+    function setAvailable(boolAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

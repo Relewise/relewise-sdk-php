@@ -23,7 +23,7 @@ class TrackContentUpdateRequest extends TrackingRequest
         }
         return $result;
     }
-    function withContentUpdate(ContentUpdate $contentUpdate)
+    function setContentUpdate(ContentUpdate $contentUpdate)
     {
         $this->contentUpdate = $contentUpdate;
         return $this;

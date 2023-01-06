@@ -26,12 +26,12 @@ class BrandIndexConfiguration
         }
         return $result;
     }
-    function withId(FieldIndexConfiguration $id)
+    function setId(FieldIndexConfiguration $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withDisplayName(FieldIndexConfiguration $displayName)
+    function setDisplayName(FieldIndexConfiguration $displayName)
     {
         $this->displayName = $displayName;
         return $this;

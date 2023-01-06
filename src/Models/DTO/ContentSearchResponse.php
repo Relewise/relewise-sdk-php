@@ -40,27 +40,27 @@ class ContentSearchResponse extends PaginatedSearchResponse
         }
         return $result;
     }
-    function withResults(ContentResult ... $results)
+    function setResults(ContentResult ... $results)
     {
         $this->results = $results;
         return $this;
     }
-    function withFacets(ContentFacetResult $facets)
+    function setFacets(ContentFacetResult $facets)
     {
         $this->facets = $facets;
         return $this;
     }
-    function withRecommendations(ContentResult ... $recommendations)
+    function setRecommendations(ContentResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
-    function withHits(int $hits)
+    function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

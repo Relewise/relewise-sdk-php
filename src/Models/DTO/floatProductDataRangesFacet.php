@@ -25,37 +25,37 @@ abstract class floatProductDataRangesFacet extends floatDataRangesFacet
         }
         return $result;
     }
-    function withDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
+    function setDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
     {
         $this->dataSelectionStrategy = $dataSelectionStrategy;
         return $this;
     }
-    function withPredefinedRanges(?floatChainableRange ... $predefinedRanges)
+    function setPredefinedRanges(?floatChainableRange ... $predefinedRanges)
     {
         $this->predefinedRanges = $predefinedRanges;
         return $this;
     }
-    function withExpandedRangeSize(?float $expandedRangeSize)
+    function setExpandedRangeSize(?float $expandedRangeSize)
     {
         $this->expandedRangeSize = $expandedRangeSize;
         return $this;
     }
-    function withSelected(?floatChainableRange ... $selected)
+    function setSelected(?floatChainableRange ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
-    function withSettings(?FacetSettings $settings)
+    function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;
         return $this;

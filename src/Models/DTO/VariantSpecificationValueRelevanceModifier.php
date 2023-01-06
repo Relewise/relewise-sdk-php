@@ -47,32 +47,32 @@ class VariantSpecificationValueRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withValue(string $value)
+    function setValue(string $value)
     {
         $this->value = $value;
         return $this;
     }
-    function withIfIdenticalMultiplyWeightBy(float $ifIdenticalMultiplyWeightBy)
+    function setIfIdenticalMultiplyWeightBy(float $ifIdenticalMultiplyWeightBy)
     {
         $this->ifIdenticalMultiplyWeightBy = $ifIdenticalMultiplyWeightBy;
         return $this;
     }
-    function withIfNotIdenticalMultiplyWeightBy(float $ifNotIdenticalMultiplyWeightBy)
+    function setIfNotIdenticalMultiplyWeightBy(float $ifNotIdenticalMultiplyWeightBy)
     {
         $this->ifNotIdenticalMultiplyWeightBy = $ifNotIdenticalMultiplyWeightBy;
         return $this;
     }
-    function withIfSpecificationKeyNotFoundApplyNotEqualMultiplier(bool $ifSpecificationKeyNotFoundApplyNotEqualMultiplier)
+    function setIfSpecificationKeyNotFoundApplyNotEqualMultiplier(bool $ifSpecificationKeyNotFoundApplyNotEqualMultiplier)
     {
         $this->ifSpecificationKeyNotFoundApplyNotEqualMultiplier = $ifSpecificationKeyNotFoundApplyNotEqualMultiplier;
         return $this;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;

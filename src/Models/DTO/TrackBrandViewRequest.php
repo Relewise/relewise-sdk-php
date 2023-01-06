@@ -23,7 +23,7 @@ class TrackBrandViewRequest extends TrackingRequest
         }
         return $result;
     }
-    function withBrandView(BrandView $brandView)
+    function setBrandView(BrandView $brandView)
     {
         $this->brandView = $brandView;
         return $this;

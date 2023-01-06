@@ -35,17 +35,17 @@ class SearchTermResult
         }
         return $result;
     }
-    function withTerm(string $term)
+    function setTerm(string $term)
     {
         $this->term = $term;
         return $this;
     }
-    function withRank(int $rank)
+    function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;
     }
-    function withExpectedResultTypes(ExpectedSearchTermResult ... $expectedResultTypes)
+    function setExpectedResultTypes(ExpectedSearchTermResult ... $expectedResultTypes)
     {
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;

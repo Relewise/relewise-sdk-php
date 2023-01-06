@@ -35,17 +35,17 @@ class SearchTerm extends Trackable
         }
         return $result;
     }
-    function withLanguage(Language $language)
+    function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withUser(User $user)
+    function setUser(User $user)
     {
         $this->user = $user;
         return $this;
     }
-    function withTerm(string $term)
+    function setTerm(string $term)
     {
         $this->term = $term;
         return $this;

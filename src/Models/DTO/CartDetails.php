@@ -54,22 +54,22 @@ class CartDetails
         }
         return $result;
     }
-    function withName(string $name)
+    function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
-    function withModifiedUtc(DateTime $modifiedUtc)
+    function setModifiedUtc(DateTime $modifiedUtc)
     {
         $this->modifiedUtc = $modifiedUtc;
         return $this;
     }
-    function withLineItems(LineItem ... $lineItems)
+    function setLineItems(LineItem ... $lineItems)
     {
         $this->lineItems = $lineItems;
         return $this;
     }
-    function withSubtotal(Money $subtotal)
+    function setSubtotal(Money $subtotal)
     {
         $this->subtotal = $subtotal;
         return $this;

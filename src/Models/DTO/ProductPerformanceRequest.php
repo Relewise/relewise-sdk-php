@@ -85,72 +85,72 @@ class ProductPerformanceRequest extends AnalyzerRequest
         }
         return $result;
     }
-    function withFromUnixTimeSeconds(int $fromUnixTimeSeconds)
+    function setFromUnixTimeSeconds(int $fromUnixTimeSeconds)
     {
         $this->fromUnixTimeSeconds = $fromUnixTimeSeconds;
         return $this;
     }
-    function withToUnixTimeSeconds(int $toUnixTimeSeconds)
+    function setToUnixTimeSeconds(int $toUnixTimeSeconds)
     {
         $this->toUnixTimeSeconds = $toUnixTimeSeconds;
         return $this;
     }
-    function withFilters(?FilterCollection $filters)
+    function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withNumberOfResults(int $numberOfResults)
+    function setNumberOfResults(int $numberOfResults)
     {
         $this->numberOfResults = $numberOfResults;
         return $this;
     }
-    function withSkipNumberOfResults(int $skipNumberOfResults)
+    function setSkipNumberOfResults(int $skipNumberOfResults)
     {
         $this->skipNumberOfResults = $skipNumberOfResults;
         return $this;
     }
-    function withByVariant(bool $byVariant)
+    function setByVariant(bool $byVariant)
     {
         $this->byVariant = $byVariant;
         return $this;
     }
-    function withSelectedProductProperties(?SelectedProductPropertiesSettings $selectedProductProperties)
+    function setSelectedProductProperties(?SelectedProductPropertiesSettings $selectedProductProperties)
     {
         $this->selectedProductProperties = $selectedProductProperties;
         return $this;
     }
-    function withSelectedVariantProperties(?SelectedVariantPropertiesSettings $selectedVariantProperties)
+    function setSelectedVariantProperties(?SelectedVariantPropertiesSettings $selectedVariantProperties)
     {
         $this->selectedVariantProperties = $selectedVariantProperties;
         return $this;
     }
-    function withOrderBy(ProductPerformanceRequestOrderByOptions $orderBy)
+    function setOrderBy(ProductPerformanceRequestOrderByOptions $orderBy)
     {
         $this->orderBy = $orderBy;
         return $this;
     }
-    function withVariantData(ProductPerformanceRequestVariantDataOptions $variantData)
+    function setVariantData(ProductPerformanceRequestVariantDataOptions $variantData)
     {
         $this->variantData = $variantData;
         return $this;
     }
-    function withClassifications(stringstringKeyValuePair ... $classifications)
+    function setClassifications(stringstringKeyValuePair ... $classifications)
     {
         $this->classifications = $classifications;
         return $this;
     }
-    function withSelectedBrandProperties(?SelectedBrandPropertiesSettings $selectedBrandProperties)
+    function setSelectedBrandProperties(?SelectedBrandPropertiesSettings $selectedBrandProperties)
     {
         $this->selectedBrandProperties = $selectedBrandProperties;
         return $this;
     }
-    function withLanguage(?Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withCurrency(?Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;

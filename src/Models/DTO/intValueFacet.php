@@ -45,17 +45,17 @@ abstract class intValueFacet extends Facet
         }
         return $result;
     }
-    function withSelected(int ... $selected)
+    function setSelected(int ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
-    function withSettings(?FacetSettings $settings)
+    function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;
         return $this;

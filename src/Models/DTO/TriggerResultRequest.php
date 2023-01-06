@@ -23,7 +23,7 @@ class TriggerResultRequest extends LicensedRequest
         }
         return $result;
     }
-    function withConfigurationId(string $configurationId)
+    function setConfigurationId(string $configurationId)
     {
         $this->configurationId = $configurationId;
         return $this;

@@ -33,17 +33,17 @@ class ProductCategoryDetailsCollectionResponse extends TimedResponse
         }
         return $result;
     }
-    function withCategories(ProductCategoryResultDetails ... $categories)
+    function setCategories(ProductCategoryResultDetails ... $categories)
     {
         $this->categories = $categories;
         return $this;
     }
-    function withTotalNumberOfResults(?int $totalNumberOfResults)
+    function setTotalNumberOfResults(?int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

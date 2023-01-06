@@ -29,12 +29,12 @@ class BrandUpdate extends Trackable
         }
         return $result;
     }
-    function withBrand(Brand $brand)
+    function setBrand(Brand $brand)
     {
         $this->brand = $brand;
         return $this;
     }
-    function withKind(BrandUpdateUpdateKind $kind)
+    function setKind(BrandUpdateUpdateKind $kind)
     {
         $this->kind = $kind;
         return $this;

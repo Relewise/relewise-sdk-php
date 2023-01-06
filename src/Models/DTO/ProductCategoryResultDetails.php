@@ -28,27 +28,27 @@ class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryR
         }
         return $result;
     }
-    function withPurchasedFromByDifferentNumberOfUsers(int $purchasedFromByDifferentNumberOfUsers)
+    function setPurchasedFromByDifferentNumberOfUsers(int $purchasedFromByDifferentNumberOfUsers)
     {
         $this->purchasedFromByDifferentNumberOfUsers = $purchasedFromByDifferentNumberOfUsers;
         return $this;
     }
-    function withPurchasedByUser(PurchasedByUserInfo $purchasedByUser)
+    function setPurchasedByUser(PurchasedByUserInfo $purchasedByUser)
     {
         $this->purchasedByUser = $purchasedByUser;
         return $this;
     }
-    function withCategoryId(string $categoryId)
+    function setCategoryId(string $categoryId)
     {
         $this->categoryId = $categoryId;
         return $this;
     }
-    function withDisplayName(Multilingual $displayName)
+    function setDisplayName(Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    function withAssortments(int ... $assortments)
+    function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
@@ -62,42 +62,42 @@ class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryR
         $this->data[$key] = $value;
         return $this;
     }
-    function withViewedByUser(ViewedByUserInfo $viewedByUser)
+    function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;
     }
-    function withCreatedUtc(DateTime $createdUtc)
+    function setCreatedUtc(DateTime $createdUtc)
     {
         $this->createdUtc = $createdUtc;
         return $this;
     }
-    function withLastViewedUtc(?DateTime $lastViewedUtc)
+    function setLastViewedUtc(?DateTime $lastViewedUtc)
     {
         $this->lastViewedUtc = $lastViewedUtc;
         return $this;
     }
-    function withViewedTotalNumberOfTimes(int $viewedTotalNumberOfTimes)
+    function setViewedTotalNumberOfTimes(int $viewedTotalNumberOfTimes)
     {
         $this->viewedTotalNumberOfTimes = $viewedTotalNumberOfTimes;
         return $this;
     }
-    function withViewedByDifferentNumberOfUsers(int $viewedByDifferentNumberOfUsers)
+    function setViewedByDifferentNumberOfUsers(int $viewedByDifferentNumberOfUsers)
     {
         $this->viewedByDifferentNumberOfUsers = $viewedByDifferentNumberOfUsers;
         return $this;
     }
-    function withDisabled(bool $disabled)
+    function setDisabled(bool $disabled)
     {
         $this->disabled = $disabled;
         return $this;
     }
-    function withChildCategories(ProductCategoryResultDetails ... $childCategories)
+    function setChildCategories(ProductCategoryResultDetails ... $childCategories)
     {
         $this->childCategories = $childCategories;
         return $this;
     }
-    function withParentCategories(ProductCategoryResultDetails ... $parentCategories)
+    function setParentCategories(ProductCategoryResultDetails ... $parentCategories)
     {
         $this->parentCategories = $parentCategories;
         return $this;

@@ -26,7 +26,7 @@ class UserConditionCollection
         }
         return $result;
     }
-    function withItems(UserCondition ... $items)
+    function setItems(UserCondition ... $items)
     {
         $this->items = $items;
         return $this;

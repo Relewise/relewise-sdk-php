@@ -31,42 +31,42 @@ class PopularSearchTermsRecommendationRequest extends RecommendationRequest
         }
         return $result;
     }
-    function withTerm(?string $term)
+    function setTerm(?string $term)
     {
         $this->term = $term;
         return $this;
     }
-    function withSettings(?RecommendPopularSearchTermSettings $settings)
+    function setSettings(?RecommendPopularSearchTermSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
-    function withLanguage(?Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withUser(User $user)
+    function setUser(User $user)
     {
         $this->user = $user;
         return $this;
     }
-    function withRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
+    function setRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withDisplayedAtLocationType(string $displayedAtLocationType)
+    function setDisplayedAtLocationType(string $displayedAtLocationType)
     {
         $this->displayedAtLocationType = $displayedAtLocationType;
         return $this;
     }
-    function withCurrency(?Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;

@@ -19,42 +19,42 @@ class BrandDataFilter extends DataFilter
         $result = DataFilter::hydrateBase(new BrandDataFilter(), $arr);
         return $result;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withFilterOutIfKeyIsNotFound(bool $filterOutIfKeyIsNotFound)
+    function setFilterOutIfKeyIsNotFound(bool $filterOutIfKeyIsNotFound)
     {
         $this->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
         return $this;
     }
-    function withMustMatchAllConditions(bool $mustMatchAllConditions)
+    function setMustMatchAllConditions(bool $mustMatchAllConditions)
     {
         $this->mustMatchAllConditions = $mustMatchAllConditions;
         return $this;
     }
-    function withConditions(?ValueConditionCollection $conditions)
+    function setConditions(?ValueConditionCollection $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
-    function withLanguage(?Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withCurrency(?Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
-    function withObjectPath(string ... $objectPath)
+    function setObjectPath(string ... $objectPath)
     {
         $this->objectPath = $objectPath;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

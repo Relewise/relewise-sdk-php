@@ -17,17 +17,17 @@ class PredictionRulesResponse extends PredictionRuleSearchRulesResponse
         $result = PredictionRuleSearchRulesResponse::hydrateBase(new PredictionRulesResponse(), $arr);
         return $result;
     }
-    function withRules(PredictionRule ... $rules)
+    function setRules(PredictionRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
-    function withHits(int $hits)
+    function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

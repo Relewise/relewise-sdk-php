@@ -16,7 +16,7 @@ class ProductCategoryIndexConfiguration extends CategoryIndexConfiguration
         $result = new ProductCategoryIndexConfiguration();
         return $result;
     }
-    function withUnspecified(CategoryIndexConfigurationEntry $unspecified)
+    function setUnspecified(CategoryIndexConfigurationEntry $unspecified)
     {
         $this->unspecified = $unspecified;
         return $this;

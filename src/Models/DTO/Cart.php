@@ -52,22 +52,22 @@ class Cart extends Trackable
         }
         return $result;
     }
-    function withUser(?User $user)
+    function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
-    function withName(?string $name)
+    function setName(?string $name)
     {
         $this->name = $name;
         return $this;
     }
-    function withSubtotal(?Money $subtotal)
+    function setSubtotal(?Money $subtotal)
     {
         $this->subtotal = $subtotal;
         return $this;
     }
-    function withLineItems(LineItem ... $lineItems)
+    function setLineItems(LineItem ... $lineItems)
     {
         $this->lineItems = $lineItems;
         return $this;

@@ -32,12 +32,12 @@ abstract class ProductCategorySorting extends ProductCategorySortingSorting
         $result = ProductCategorySortingSorting::hydrateBase($result, $arr);
         return $result;
     }
-    function withOrder(SortOrder $order)
+    function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
-    function withThenBy(ProductCategorySorting $thenBy)
+    function setThenBy(ProductCategorySorting $thenBy)
     {
         $this->thenBy = $thenBy;
         return $this;

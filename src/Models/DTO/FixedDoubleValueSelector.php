@@ -23,7 +23,7 @@ class FixedDoubleValueSelector extends ValueSelector
         }
         return $result;
     }
-    function withValue(float $value)
+    function setValue(float $value)
     {
         $this->value = $value;
         return $this;

@@ -26,7 +26,7 @@ class CategoryPathResultDetails
         }
         return $result;
     }
-    function withBreadcrumbPathStartingFromRoot(CategoryNameAndId ... $breadcrumbPathStartingFromRoot)
+    function setBreadcrumbPathStartingFromRoot(CategoryNameAndId ... $breadcrumbPathStartingFromRoot)
     {
         $this->breadcrumbPathStartingFromRoot = $breadcrumbPathStartingFromRoot;
         return $this;

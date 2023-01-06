@@ -25,27 +25,27 @@ class ProductDataObjectFacetResult extends DataObjectFacetResult
         }
         return $result;
     }
-    function withDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
+    function setDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
     {
         $this->dataSelectionStrategy = $dataSelectionStrategy;
         return $this;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withItems(FacetResult ... $items)
+    function setItems(FacetResult ... $items)
     {
         $this->items = $items;
         return $this;
     }
-    function withFilter(DataObjectFilter $filter)
+    function setFilter(DataObjectFilter $filter)
     {
         $this->filter = $filter;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

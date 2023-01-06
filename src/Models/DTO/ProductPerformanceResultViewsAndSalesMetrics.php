@@ -26,12 +26,12 @@ class ProductPerformanceResultViewsAndSalesMetrics
         }
         return $result;
     }
-    function withByViews(float $byViews)
+    function setByViews(float $byViews)
     {
         $this->byViews = $byViews;
         return $this;
     }
-    function withBySales(float $bySales)
+    function setBySales(float $bySales)
     {
         $this->bySales = $bySales;
         return $this;

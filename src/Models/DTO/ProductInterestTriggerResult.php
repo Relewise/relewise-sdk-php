@@ -30,12 +30,12 @@ class ProductInterestTriggerResult
         }
         return $result;
     }
-    function withUser(UserResultDetails $user)
+    function setUser(UserResultDetails $user)
     {
         $this->user = $user;
         return $this;
     }
-    function withProducts(ProductInterestTriggerResultProductAndVariant ... $products)
+    function setProducts(ProductInterestTriggerResultProductAndVariant ... $products)
     {
         $this->products = $products;
         return $this;

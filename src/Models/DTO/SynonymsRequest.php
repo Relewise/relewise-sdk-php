@@ -42,27 +42,27 @@ class SynonymsRequest extends LicensedRequest
         }
         return $result;
     }
-    function withSorting(SynonymsRequestSynonymSortingSorting $sorting)
+    function setSorting(SynonymsRequestSynonymSortingSorting $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
-    function withTake(int $take)
+    function setTake(int $take)
     {
         $this->take = $take;
         return $this;
     }
-    function withSkip(int $skip)
+    function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
-    function withTerm(string $term)
+    function setTerm(string $term)
     {
         $this->term = $term;
         return $this;
     }
-    function withIsApproved(?bool $isApproved)
+    function setIsApproved(?bool $isApproved)
     {
         $this->isApproved = $isApproved;
         return $this;

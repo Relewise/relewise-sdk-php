@@ -26,12 +26,12 @@ class ProductInterestTriggerResultResultSettings
         }
         return $result;
     }
-    function withSelectedProductProperties(SelectedProductPropertiesSettings $selectedProductProperties)
+    function setSelectedProductProperties(SelectedProductPropertiesSettings $selectedProductProperties)
     {
         $this->selectedProductProperties = $selectedProductProperties;
         return $this;
     }
-    function withSelectedVariantProperties(SelectedVariantPropertiesSettings $selectedVariantProperties)
+    function setSelectedVariantProperties(SelectedVariantPropertiesSettings $selectedVariantProperties)
     {
         $this->selectedVariantProperties = $selectedVariantProperties;
         return $this;

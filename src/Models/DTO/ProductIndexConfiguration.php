@@ -46,32 +46,32 @@ class ProductIndexConfiguration
         }
         return $result;
     }
-    function withId(FieldIndexConfiguration $id)
+    function setId(FieldIndexConfiguration $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withDisplayName(FieldIndexConfiguration $displayName)
+    function setDisplayName(FieldIndexConfiguration $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    function withCategory(CategoryIndexConfiguration $category)
+    function setCategory(CategoryIndexConfiguration $category)
     {
         $this->category = $category;
         return $this;
     }
-    function withBrand(BrandIndexConfiguration $brand)
+    function setBrand(BrandIndexConfiguration $brand)
     {
         $this->brand = $brand;
         return $this;
     }
-    function withData(DataIndexConfiguration $data)
+    function setData(DataIndexConfiguration $data)
     {
         $this->data = $data;
         return $this;
     }
-    function withVariants(VariantIndexConfiguration $variants)
+    function setVariants(VariantIndexConfiguration $variants)
     {
         $this->variants = $variants;
         return $this;

@@ -32,47 +32,47 @@ class PopularContentCategoriesRecommendationRequest extends ContentCategoryRecom
         }
         return $result;
     }
-    function withSinceMinutesAgo(int $sinceMinutesAgo)
+    function setSinceMinutesAgo(int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
-    function withWeights(ContentCategoryRecommendationWeights $weights)
+    function setWeights(ContentCategoryRecommendationWeights $weights)
     {
         $this->weights = $weights;
         return $this;
     }
-    function withSettings(ContentCategoryRecommendationRequestSettings $settings)
+    function setSettings(ContentCategoryRecommendationRequestSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
-    function withLanguage(?Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withUser(User $user)
+    function setUser(User $user)
     {
         $this->user = $user;
         return $this;
     }
-    function withRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
+    function setRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withDisplayedAtLocationType(string $displayedAtLocationType)
+    function setDisplayedAtLocationType(string $displayedAtLocationType)
     {
         $this->displayedAtLocationType = $displayedAtLocationType;
         return $this;
     }
-    function withCurrency(?Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;

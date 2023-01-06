@@ -27,12 +27,12 @@ class ContentCategoryRecommendationResponse extends RecommendationResponse
         }
         return $result;
     }
-    function withRecommendations(ContentCategoryResult ... $recommendations)
+    function setRecommendations(ContentCategoryResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

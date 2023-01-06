@@ -17,17 +17,17 @@ class BrandFacet extends stringValueFacet
         $result = stringValueFacet::hydrateBase(new BrandFacet(), $arr);
         return $result;
     }
-    function withSelected(string ... $selected)
+    function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
-    function withSettings(?FacetSettings $settings)
+    function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;
         return $this;

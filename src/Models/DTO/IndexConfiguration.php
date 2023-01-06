@@ -36,22 +36,22 @@ class IndexConfiguration
         }
         return $result;
     }
-    function withLanguage(LanguageIndexConfiguration $language)
+    function setLanguage(LanguageIndexConfiguration $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withProduct(ProductIndexConfiguration $product)
+    function setProduct(ProductIndexConfiguration $product)
     {
         $this->product = $product;
         return $this;
     }
-    function withContent(ContentIndexConfiguration $content)
+    function setContent(ContentIndexConfiguration $content)
     {
         $this->content = $content;
         return $this;
     }
-    function withProductCategory(ProductCategoryIndexConfiguration $productCategory)
+    function setProductCategory(ProductCategoryIndexConfiguration $productCategory)
     {
         $this->productCategory = $productCategory;
         return $this;

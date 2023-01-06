@@ -35,22 +35,22 @@ class ProductRecentlyViewedByUserRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    function withSinceUtc(DateTime $sinceUtc)
+    function setSinceUtc(DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
-    function withIfPreviouslyViewedByUserMultiplyWeightBy(float $ifPreviouslyViewedByUserMultiplyWeightBy)
+    function setIfPreviouslyViewedByUserMultiplyWeightBy(float $ifPreviouslyViewedByUserMultiplyWeightBy)
     {
         $this->ifPreviouslyViewedByUserMultiplyWeightBy = $ifPreviouslyViewedByUserMultiplyWeightBy;
         return $this;
     }
-    function withIfNotPreviouslyViewedByUserMultiplyWeightBy(float $ifNotPreviouslyViewedByUserMultiplyWeightBy)
+    function setIfNotPreviouslyViewedByUserMultiplyWeightBy(float $ifNotPreviouslyViewedByUserMultiplyWeightBy)
     {
         $this->ifNotPreviouslyViewedByUserMultiplyWeightBy = $ifNotPreviouslyViewedByUserMultiplyWeightBy;
         return $this;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;

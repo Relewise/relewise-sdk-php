@@ -23,7 +23,7 @@ class TrackProductViewRequest extends TrackingRequest
         }
         return $result;
     }
-    function withProductView(ProductView $productView)
+    function setProductView(ProductView $productView)
     {
         $this->productView = $productView;
         return $this;

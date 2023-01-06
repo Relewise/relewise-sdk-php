@@ -55,32 +55,32 @@ class ProductUpdate extends Trackable
         }
         return $result;
     }
-    function withProduct(Product $product)
+    function setProduct(Product $product)
     {
         $this->product = $product;
         return $this;
     }
-    function withVariants(ProductVariant ... $variants)
+    function setVariants(ProductVariant ... $variants)
     {
         $this->variants = $variants;
         return $this;
     }
-    function withProductUpdateKind(ProductUpdateUpdateKind $productUpdateKind)
+    function setProductUpdateKind(ProductUpdateUpdateKind $productUpdateKind)
     {
         $this->productUpdateKind = $productUpdateKind;
         return $this;
     }
-    function withVariantUpdateKind(ProductUpdateUpdateKind $variantUpdateKind)
+    function setVariantUpdateKind(ProductUpdateUpdateKind $variantUpdateKind)
     {
         $this->variantUpdateKind = $variantUpdateKind;
         return $this;
     }
-    function withReplaceExistingVariants(bool $replaceExistingVariants)
+    function setReplaceExistingVariants(bool $replaceExistingVariants)
     {
         $this->replaceExistingVariants = $replaceExistingVariants;
         return $this;
     }
-    function withBrandUpdateKind(?BrandUpdateUpdateKind $brandUpdateKind)
+    function setBrandUpdateKind(?BrandUpdateUpdateKind $brandUpdateKind)
     {
         $this->brandUpdateKind = $brandUpdateKind;
         return $this;

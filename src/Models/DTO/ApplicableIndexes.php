@@ -26,7 +26,7 @@ class ApplicableIndexes
         }
         return $result;
     }
-    function withIndexes(string ... $indexes)
+    function setIndexes(string ... $indexes)
     {
         $this->indexes = $indexes;
         return $this;

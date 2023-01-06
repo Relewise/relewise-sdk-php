@@ -18,12 +18,12 @@ class ContentCategoryHasParentFilter extends HasParentCategoryFilter
         $result = HasParentCategoryFilter::hydrateBase(new ContentCategoryHasParentFilter(), $arr);
         return $result;
     }
-    function withCategoryIds(string ... $categoryIds)
+    function setCategoryIds(string ... $categoryIds)
     {
         $this->categoryIds = $categoryIds;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

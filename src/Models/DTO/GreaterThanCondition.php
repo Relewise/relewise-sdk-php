@@ -24,12 +24,12 @@ class GreaterThanCondition extends ValueCondition
         }
         return $result;
     }
-    function withValue(float $value)
+    function setValue(float $value)
     {
         $this->value = $value;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

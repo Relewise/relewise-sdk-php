@@ -47,32 +47,32 @@ class ProductSearchSettings extends SearchSettings
         }
         return $result;
     }
-    function withSelectedProductProperties(?SelectedProductPropertiesSettings $selectedProductProperties)
+    function setSelectedProductProperties(?SelectedProductPropertiesSettings $selectedProductProperties)
     {
         $this->selectedProductProperties = $selectedProductProperties;
         return $this;
     }
-    function withSelectedVariantProperties(?SelectedVariantPropertiesSettings $selectedVariantProperties)
+    function setSelectedVariantProperties(?SelectedVariantPropertiesSettings $selectedVariantProperties)
     {
         $this->selectedVariantProperties = $selectedVariantProperties;
         return $this;
     }
-    function withExplodedVariants(?int $explodedVariants)
+    function setExplodedVariants(?int $explodedVariants)
     {
         $this->explodedVariants = $explodedVariants;
         return $this;
     }
-    function withRecommendations(RecommendationSettings $recommendations)
+    function setRecommendations(RecommendationSettings $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
-    function withSelectedBrandProperties(?SelectedBrandPropertiesSettings $selectedBrandProperties)
+    function setSelectedBrandProperties(?SelectedBrandPropertiesSettings $selectedBrandProperties)
     {
         $this->selectedBrandProperties = $selectedBrandProperties;
         return $this;
     }
-    function withVariantSettings(?VariantSearchSettings $variantSettings)
+    function setVariantSettings(?VariantSearchSettings $variantSettings)
     {
         $this->variantSettings = $variantSettings;
         return $this;

@@ -22,7 +22,7 @@ class SearchIndexSelector
         }
         return $result;
     }
-    function withId(string $id)
+    function setId(string $id)
     {
         $this->id = $id;
         return $this;

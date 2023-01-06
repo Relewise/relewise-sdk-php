@@ -55,37 +55,37 @@ class ProductDataRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withConsiderAsMatchIfKeyIsNotFound(bool $considerAsMatchIfKeyIsNotFound)
+    function setConsiderAsMatchIfKeyIsNotFound(bool $considerAsMatchIfKeyIsNotFound)
     {
         $this->considerAsMatchIfKeyIsNotFound = $considerAsMatchIfKeyIsNotFound;
         return $this;
     }
-    function withMultiplyWeightBy(float $multiplyWeightBy)
+    function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
-    function withMustMatchAllConditions(bool $mustMatchAllConditions)
+    function setMustMatchAllConditions(bool $mustMatchAllConditions)
     {
         $this->mustMatchAllConditions = $mustMatchAllConditions;
         return $this;
     }
-    function withConditions(ValueCondition ... $conditions)
+    function setConditions(ValueCondition ... $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
-    function withMultiplierSelector(ValueSelector $multiplierSelector)
+    function setMultiplierSelector(ValueSelector $multiplierSelector)
     {
         $this->multiplierSelector = $multiplierSelector;
         return $this;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;

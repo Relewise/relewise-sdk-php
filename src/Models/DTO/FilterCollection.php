@@ -26,7 +26,7 @@ class FilterCollection
         }
         return $result;
     }
-    function withItems(Filter ... $items)
+    function setItems(Filter ... $items)
     {
         $this->items = $items;
         return $this;

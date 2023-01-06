@@ -17,22 +17,22 @@ class ContentAssortmentFacet extends AssortmentFacet
         $result = AssortmentFacet::hydrateBase(new ContentAssortmentFacet(), $arr);
         return $result;
     }
-    function withAssortmentFilterType(AssortmentFilterType $assortmentFilterType)
+    function setAssortmentFilterType(AssortmentFilterType $assortmentFilterType)
     {
         $this->assortmentFilterType = $assortmentFilterType;
         return $this;
     }
-    function withSelected(int ... $selected)
+    function setSelected(int ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
-    function withSettings(?FacetSettings $settings)
+    function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;
         return $this;

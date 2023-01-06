@@ -34,17 +34,17 @@ class ProductCategoryRecommendationWeights
         }
         return $result;
     }
-    function withCategoryViews(float $categoryViews)
+    function setCategoryViews(float $categoryViews)
     {
         $this->categoryViews = $categoryViews;
         return $this;
     }
-    function withProductViews(float $productViews)
+    function setProductViews(float $productViews)
     {
         $this->productViews = $productViews;
         return $this;
     }
-    function withProductPurchases(float $productPurchases)
+    function setProductPurchases(float $productPurchases)
     {
         $this->productPurchases = $productPurchases;
         return $this;

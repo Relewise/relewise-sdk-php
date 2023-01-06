@@ -41,27 +41,27 @@ class OverriddenContentRecommendationRequestSettings
         }
         return $result;
     }
-    function withNumberOfRecommendations(?int $numberOfRecommendations)
+    function setNumberOfRecommendations(?int $numberOfRecommendations)
     {
         $this->numberOfRecommendations = $numberOfRecommendations;
         return $this;
     }
-    function withAllowFillIfNecessaryToReachNumberOfRecommendations(?bool $allowFillIfNecessaryToReachNumberOfRecommendations)
+    function setAllowFillIfNecessaryToReachNumberOfRecommendations(?bool $allowFillIfNecessaryToReachNumberOfRecommendations)
     {
         $this->allowFillIfNecessaryToReachNumberOfRecommendations = $allowFillIfNecessaryToReachNumberOfRecommendations;
         return $this;
     }
-    function withAllowReplacingOfRecentlyShownRecommendations(?bool $allowReplacingOfRecentlyShownRecommendations)
+    function setAllowReplacingOfRecentlyShownRecommendations(?bool $allowReplacingOfRecentlyShownRecommendations)
     {
         $this->allowReplacingOfRecentlyShownRecommendations = $allowReplacingOfRecentlyShownRecommendations;
         return $this;
     }
-    function withSelectedContentProperties(OverriddenSelectedContentPropertiesSettings $selectedContentProperties)
+    function setSelectedContentProperties(OverriddenSelectedContentPropertiesSettings $selectedContentProperties)
     {
         $this->selectedContentProperties = $selectedContentProperties;
         return $this;
     }
-    function withPrioritizeDiversityBetweenRequests(?bool $prioritizeDiversityBetweenRequests)
+    function setPrioritizeDiversityBetweenRequests(?bool $prioritizeDiversityBetweenRequests)
     {
         $this->prioritizeDiversityBetweenRequests = $prioritizeDiversityBetweenRequests;
         return $this;

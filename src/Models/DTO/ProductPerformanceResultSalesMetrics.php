@@ -36,28 +36,28 @@ class ProductPerformanceResultSalesMetrics
         }
         if (array_key_exists("withKnownCartOpener", $arr))
         {
-            $result->withKnownCartOpener = ProductPerformanceResultSalesWithKnownCartOpenerMetrics::hydrate($arr["withKnownCartOpener"]);
+            $result->setKnownCartOpener = ProductPerformanceResultSalesWithKnownCartOpenerMetrics::hydrate($arr["withKnownCartOpener"]);
         }
         return $result;
     }
-    function withOrders(int $orders)
+    function setOrders(int $orders)
     {
         $this->orders = $orders;
         return $this;
     }
-    function withAverageNoOfLineItems(float $averageNoOfLineItems)
+    function setAverageNoOfLineItems(float $averageNoOfLineItems)
     {
         $this->averageNoOfLineItems = $averageNoOfLineItems;
         return $this;
     }
-    function withCurrencies(ProductPerformanceResultSalesByCurrency ... $currencies)
+    function setCurrencies(ProductPerformanceResultSalesByCurrency ... $currencies)
     {
         $this->currencies = $currencies;
         return $this;
     }
-    function withWithKnownCartOpener(ProductPerformanceResultSalesWithKnownCartOpenerMetrics $withKnownCartOpener)
+    function setWithKnownCartOpener(ProductPerformanceResultSalesWithKnownCartOpenerMetrics $withKnownCartOpener)
     {
-        $this->withKnownCartOpener = $withKnownCartOpener;
+        $this->setKnownCartOpener = $withKnownCartOpener;
         return $this;
     }
 }

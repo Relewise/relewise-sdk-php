@@ -27,12 +27,12 @@ class ContentCategorySearchSettings extends SearchSettings
         }
         return $result;
     }
-    function withNumberOfRecommendations(?int $numberOfRecommendations)
+    function setNumberOfRecommendations(?int $numberOfRecommendations)
     {
         $this->numberOfRecommendations = $numberOfRecommendations;
         return $this;
     }
-    function withOnlyIncludeRecommendationsForEmptyResults(?bool $onlyIncludeRecommendationsForEmptyResults)
+    function setOnlyIncludeRecommendationsForEmptyResults(?bool $onlyIncludeRecommendationsForEmptyResults)
     {
         $this->onlyIncludeRecommendationsForEmptyResults = $onlyIncludeRecommendationsForEmptyResults;
         return $this;

@@ -18,12 +18,12 @@ class ContentRelevanceSorting extends ContentSorting
         $result = ContentSorting::hydrateBase(new ContentRelevanceSorting(), $arr);
         return $result;
     }
-    function withOrder(SortOrder $order)
+    function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
-    function withThenBy(ContentSorting $thenBy)
+    function setThenBy(ContentSorting $thenBy)
     {
         $this->thenBy = $thenBy;
         return $this;

@@ -33,12 +33,12 @@ class SaveSynonymsRequest extends LicensedRequest
         }
         return $result;
     }
-    function withSynonyms(Synonym ... $synonyms)
+    function setSynonyms(Synonym ... $synonyms)
     {
         $this->synonyms = $synonyms;
         return $this;
     }
-    function withModifiedBy(string $modifiedBy)
+    function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;

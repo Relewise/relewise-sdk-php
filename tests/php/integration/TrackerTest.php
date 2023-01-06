@@ -36,7 +36,7 @@ class TrackerTest extends BaseTest
             ProductView::create(
                 UserFactory::byTemporaryId("t-Id"),
                 Product::create("p-1"),
-                ProductVariant::create()->withId("v-1")
+                ProductVariant::create()->setId("v-1")
             )
         );
 
@@ -52,26 +52,26 @@ class TrackerTest extends BaseTest
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
                 Product::create("p-1")
-                    ->withDisplayName(
+                    ->setDisplayName(
                         Multilingual::create()
-                            ->withValues(
+                            ->setValues(
                                 MultilingualValue::create(Language::create("da-dk"), "MyProduct1")
                             )
                     )
-                    ->withBrand(
+                    ->setBrand(
                         Brand::create("b-1")
-                            ->withDisplayName("MyBrand1")
+                            ->setDisplayName("MyBrand1")
                     )
-                    ->withCategoryPaths(CategoryPath::create(CategoryNameAndId::create("c-1", Multilingual::create(MultilingualValue::create(Language::create("da-dk"), "Category 1")))))
+                    ->setCategoryPaths(CategoryPath::create(CategoryNameAndId::create("c-1", Multilingual::create(MultilingualValue::create(Language::create("da-dk"), "Category 1")))))
                     ->addData("SomeString", DataValueFactory::stringDataValue("SomeValue"))
                     ->addData("SomeObject", DataValueFactory::objectDataValue(array("SomeString" => DataValueFactory::stringDataValue("SomeValue"))))
                     ->addData("SomeStringList", DataValueFactory::stringListDataValue("FirstString", "SecondString"))
                     ->addData("SomeBooleanList", DataValueFactory::booleanListDataValue(true, true, false)),
                 ProductUpdateUpdateKind::ReplaceProvidedProperties
-            )->withVariants(
+            )->setVariants(
                 ProductVariant::create()
-                    ->withId("v-1")
-                    ->withDisplayName(
+                    ->setId("v-1")
+                    ->setDisplayName(
                         Multilingual::create(
                             MultilingualValue::create(Language::create("da-dk"), "MyVariant1")
                         )
@@ -93,15 +93,15 @@ class TrackerTest extends BaseTest
             "p-1",
             0,
             1
-        )->withSettings(
+        )->setSettings(
             ProductSearchSettings::create()
-                ->withSelectedVariantProperties(
+                ->setSelectedVariantProperties(
                     SelectedVariantPropertiesSettings::create()
-                        ->withDisplayName(true)
+                        ->setDisplayName(true)
                 )
-                ->withSelectedProductProperties(
+                ->setSelectedProductProperties(
                     SelectedProductPropertiesSettings::create()
-                        ->withDisplayName(true)
+                        ->setDisplayName(true)
                 )
         );
 

@@ -29,12 +29,12 @@ abstract class PredictionRuleSaveSearchRulesResponse extends TimedResponse
         }
         return $result;
     }
-    function withRules(PredictionRule ... $rules)
+    function setRules(PredictionRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

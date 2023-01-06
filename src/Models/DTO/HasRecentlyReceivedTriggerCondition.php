@@ -24,7 +24,7 @@ class HasRecentlyReceivedTriggerCondition extends UserCondition
         $result = UserCondition::hydrateBase(new HasRecentlyReceivedTriggerCondition(), $arr);
         if (array_key_exists("withinMinutes", $arr))
         {
-            $result->withinMinutes = $arr["withinMinutes"];
+            $result->setinMinutes = $arr["withinMinutes"];
         }
         if (array_key_exists("id", $arr))
         {
@@ -40,27 +40,27 @@ class HasRecentlyReceivedTriggerCondition extends UserCondition
         }
         return $result;
     }
-    function withWithinMinutes(int $withinMinutes)
+    function setWithinMinutes(int $withinMinutes)
     {
-        $this->withinMinutes = $withinMinutes;
+        $this->setinMinutes = $withinMinutes;
         return $this;
     }
-    function withId(?string $id)
+    function setId(?string $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withGroup(string $group)
+    function setGroup(string $group)
     {
         $this->group = $group;
         return $this;
     }
-    function withType(?int $type)
+    function setType(?int $type)
     {
         $this->type = $type;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

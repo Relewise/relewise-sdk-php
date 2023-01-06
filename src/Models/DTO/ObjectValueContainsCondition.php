@@ -31,27 +31,27 @@ class ObjectValueContainsCondition extends ObjectValueCondition
         }
         return $result;
     }
-    function withValue(DataValue $value)
+    function setValue(DataValue $value)
     {
         $this->value = $value;
         return $this;
     }
-    function withMode(ObjectValueContainsConditionCompareMode $mode)
+    function setMode(ObjectValueContainsConditionCompareMode $mode)
     {
         $this->mode = $mode;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withObjectPath(string ... $objectPath)
+    function setObjectPath(string ... $objectPath)
     {
         $this->objectPath = $objectPath;
         return $this;

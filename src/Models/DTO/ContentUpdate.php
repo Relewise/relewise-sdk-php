@@ -29,12 +29,12 @@ class ContentUpdate extends Trackable
         }
         return $result;
     }
-    function withContent(Content $content)
+    function setContent(Content $content)
     {
         $this->content = $content;
         return $this;
     }
-    function withKind(ContentUpdateUpdateKind $kind)
+    function setKind(ContentUpdateUpdateKind $kind)
     {
         $this->kind = $kind;
         return $this;

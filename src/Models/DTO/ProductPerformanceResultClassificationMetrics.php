@@ -54,22 +54,22 @@ class ProductPerformanceResultClassificationMetrics
         $this->combination[$key] = $value;
         return $this;
     }
-    function withViews(ProductPerformanceResultViewsMetrics $views)
+    function setViews(ProductPerformanceResultViewsMetrics $views)
     {
         $this->views = $views;
         return $this;
     }
-    function withSales(ProductPerformanceResultSalesMetrics $sales)
+    function setSales(ProductPerformanceResultSalesMetrics $sales)
     {
         $this->sales = $sales;
         return $this;
     }
-    function withCarts(ProductPerformanceResultCartMetrics $carts)
+    function setCarts(ProductPerformanceResultCartMetrics $carts)
     {
         $this->carts = $carts;
         return $this;
     }
-    function withRank(ProductPerformanceResultRankMetrics $rank)
+    function setRank(ProductPerformanceResultRankMetrics $rank)
     {
         $this->rank = $rank;
         return $this;

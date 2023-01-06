@@ -23,7 +23,7 @@ class TrackProductCategoryAdministrativeActionRequest extends TrackingRequest
         }
         return $result;
     }
-    function withAdministrativeAction(ProductCategoryAdministrativeAction $administrativeAction)
+    function setAdministrativeAction(ProductCategoryAdministrativeAction $administrativeAction)
     {
         $this->administrativeAction = $administrativeAction;
         return $this;

@@ -28,12 +28,12 @@ class AndFilter extends Filter
         }
         return $result;
     }
-    function withFilters(Filter ... $filters)
+    function setFilters(Filter ... $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

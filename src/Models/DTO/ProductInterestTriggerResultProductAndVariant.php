@@ -31,17 +31,17 @@ class ProductInterestTriggerResultProductAndVariant
         }
         return $result;
     }
-    function withProduct(ProductResultDetails $product)
+    function setProduct(ProductResultDetails $product)
     {
         $this->product = $product;
         return $this;
     }
-    function withVariant(VariantResultDetails $variant)
+    function setVariant(VariantResultDetails $variant)
     {
         $this->variant = $variant;
         return $this;
     }
-    function withViews(int $views)
+    function setViews(int $views)
     {
         $this->views = $views;
         return $this;

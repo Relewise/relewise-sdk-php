@@ -27,12 +27,12 @@ class ContentIdFilter extends Filter
         }
         return $result;
     }
-    function withContentIds(string ... $contentIds)
+    function setContentIds(string ... $contentIds)
     {
         $this->contentIds = $contentIds;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

@@ -24,17 +24,17 @@ abstract class intValueFacetResult extends intintValueFacetResult
         $result = intintValueFacetResult::hydrateBase($result, $arr);
         return $result;
     }
-    function withSelected(int ... $selected)
+    function setSelected(int ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withAvailable(intAvailableFacetValue ... $available)
+    function setAvailable(intAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

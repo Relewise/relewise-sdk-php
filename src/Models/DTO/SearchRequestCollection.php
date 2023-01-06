@@ -27,47 +27,47 @@ class SearchRequestCollection extends SearchRequest
         }
         return $result;
     }
-    function withRequests(SearchRequest ... $requests)
+    function setRequests(SearchRequest ... $requests)
     {
         $this->requests = $requests;
         return $this;
     }
-    function withLanguage(?Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withCurrency(?Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
-    function withUser(?User $user)
+    function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
-    function withDisplayedAtLocation(?string $displayedAtLocation)
+    function setDisplayedAtLocation(?string $displayedAtLocation)
     {
         $this->displayedAtLocation = $displayedAtLocation;
         return $this;
     }
-    function withRelevanceModifiers(?RelevanceModifierCollection $relevanceModifiers)
+    function setRelevanceModifiers(?RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
-    function withFilters(?FilterCollection $filters)
+    function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withIndexSelector(?SearchIndexSelector $indexSelector)
+    function setIndexSelector(?SearchIndexSelector $indexSelector)
     {
         $this->indexSelector = $indexSelector;
         return $this;
     }
-    function withPostFilters(?FilterCollection $postFilters)
+    function setPostFilters(?FilterCollection $postFilters)
     {
         $this->postFilters = $postFilters;
         return $this;

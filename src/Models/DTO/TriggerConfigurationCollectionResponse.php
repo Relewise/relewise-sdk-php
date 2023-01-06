@@ -26,12 +26,12 @@ class TriggerConfigurationCollectionResponse extends TimedResponse
         }
         return $result;
     }
-    function withConfigurations(TriggerConfiguration ... $configurations)
+    function setConfigurations(TriggerConfiguration ... $configurations)
     {
         $this->configurations = $configurations;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

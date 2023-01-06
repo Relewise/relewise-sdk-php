@@ -56,37 +56,37 @@ class BrandQuery extends LicensedRequest
         }
         return $result;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withNumberOfResults(int $numberOfResults)
+    function setNumberOfResults(int $numberOfResults)
     {
         $this->numberOfResults = $numberOfResults;
         return $this;
     }
-    function withLanguage(Language $language)
+    function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withCurrency(Currency $currency)
+    function setCurrency(Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
-    function withSkipNumberOfResults(int $skipNumberOfResults)
+    function setSkipNumberOfResults(int $skipNumberOfResults)
     {
         $this->skipNumberOfResults = $skipNumberOfResults;
         return $this;
     }
-    function withReturnTotalNumberOfResults(bool $returnTotalNumberOfResults)
+    function setReturnTotalNumberOfResults(bool $returnTotalNumberOfResults)
     {
         $this->returnTotalNumberOfResults = $returnTotalNumberOfResults;
         return $this;
     }
-    function withIncludeDisabledBrands(bool $includeDisabledBrands)
+    function setIncludeDisabledBrands(bool $includeDisabledBrands)
     {
         $this->includeDisabledBrands = $includeDisabledBrands;
         return $this;

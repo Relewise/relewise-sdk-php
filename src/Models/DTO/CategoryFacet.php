@@ -23,22 +23,22 @@ class CategoryFacet extends stringValueFacet
         }
         return $result;
     }
-    function withCategorySelectionStrategy(CategorySelectionStrategy $categorySelectionStrategy)
+    function setCategorySelectionStrategy(CategorySelectionStrategy $categorySelectionStrategy)
     {
         $this->categorySelectionStrategy = $categorySelectionStrategy;
         return $this;
     }
-    function withSelected(string ... $selected)
+    function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
-    function withSettings(?FacetSettings $settings)
+    function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;
         return $this;

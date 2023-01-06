@@ -69,22 +69,22 @@ class Product
         }
         return $result;
     }
-    function withId(string $id)
+    function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withDisplayName(?Multilingual $displayName)
+    function setDisplayName(?Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    function withCategoryPaths(CategoryPath ... $categoryPaths)
+    function setCategoryPaths(CategoryPath ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
-    function withAssortments(int ... $assortments)
+    function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
@@ -98,17 +98,17 @@ class Product
         $this->data[$key] = $value;
         return $this;
     }
-    function withListPrice(?MultiCurrency $listPrice)
+    function setListPrice(?MultiCurrency $listPrice)
     {
         $this->listPrice = $listPrice;
         return $this;
     }
-    function withSalesPrice(?MultiCurrency $salesPrice)
+    function setSalesPrice(?MultiCurrency $salesPrice)
     {
         $this->salesPrice = $salesPrice;
         return $this;
     }
-    function withBrand(?Brand $brand)
+    function setBrand(?Brand $brand)
     {
         $this->brand = $brand;
         return $this;

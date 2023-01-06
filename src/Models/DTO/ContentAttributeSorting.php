@@ -30,22 +30,22 @@ class ContentAttributeSorting extends ContentSorting
         }
         return $result;
     }
-    function withAttribute(ContentAttributeSortingSortableAttribute $attribute)
+    function setAttribute(ContentAttributeSortingSortableAttribute $attribute)
     {
         $this->attribute = $attribute;
         return $this;
     }
-    function withMode(SortMode $mode)
+    function setMode(SortMode $mode)
     {
         $this->mode = $mode;
         return $this;
     }
-    function withOrder(SortOrder $order)
+    function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
-    function withThenBy(ContentSorting $thenBy)
+    function setThenBy(ContentSorting $thenBy)
     {
         $this->thenBy = $thenBy;
         return $this;

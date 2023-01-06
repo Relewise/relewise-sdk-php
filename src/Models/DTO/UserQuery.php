@@ -39,17 +39,17 @@ class UserQuery extends LicensedRequest
         }
         return $result;
     }
-    function withCriteria(UserQueryCriteria ... $criteria)
+    function setCriteria(UserQueryCriteria ... $criteria)
     {
         $this->criteria = $criteria;
         return $this;
     }
-    function withLanguage(Language $language)
+    function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withCurrency(Currency $currency)
+    function setCurrency(Currency $currency)
     {
         $this->currency = $currency;
         return $this;

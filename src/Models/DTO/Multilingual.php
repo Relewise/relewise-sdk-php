@@ -26,7 +26,7 @@ class Multilingual
         }
         return $result;
     }
-    function withValues(MultilingualValue ... $values)
+    function setValues(MultilingualValue ... $values)
     {
         $this->values = $values;
         return $this;

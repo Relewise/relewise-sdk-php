@@ -27,12 +27,12 @@ class ProductAndVariantIdFilter extends Filter
         }
         return $result;
     }
-    function withProductAndVariantIds(ProductAndVariantId ... $productAndVariantIds)
+    function setProductAndVariantIds(ProductAndVariantId ... $productAndVariantIds)
     {
         $this->productAndVariantIds = $productAndVariantIds;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

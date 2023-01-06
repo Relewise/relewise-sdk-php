@@ -17,7 +17,7 @@ class HasAuthenticatedIdCondition extends UserCondition
         $result = UserCondition::hydrateBase(new HasAuthenticatedIdCondition(), $arr);
         return $result;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

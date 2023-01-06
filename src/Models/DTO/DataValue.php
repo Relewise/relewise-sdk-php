@@ -26,12 +26,12 @@ class DataValue
         }
         return $result;
     }
-    function withType(DataValueDataValueTypes $type)
+    function setType(DataValueDataValueTypes $type)
     {
         $this->type = $type;
         return $this;
     }
-    function withValue(mixed $value)
+    function setValue(mixed $value)
     {
         $this->value = $value;
         return $this;

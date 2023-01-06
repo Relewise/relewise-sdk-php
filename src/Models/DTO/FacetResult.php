@@ -148,7 +148,7 @@ abstract class FacetResult
         }
         return $result;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

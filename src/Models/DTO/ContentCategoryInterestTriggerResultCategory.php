@@ -39,17 +39,17 @@ class ContentCategoryInterestTriggerResultCategory
         }
         return $result;
     }
-    function withLastPath(string ... $lastPath)
+    function setLastPath(string ... $lastPath)
     {
         $this->lastPath = $lastPath;
         return $this;
     }
-    function withViews(int $views)
+    function setViews(int $views)
     {
         $this->views = $views;
         return $this;
     }
-    function withViewedContents(ContentResultDetails ... $viewedContents)
+    function setViewedContents(ContentResultDetails ... $viewedContents)
     {
         $this->viewedContents = $viewedContents;
         return $this;

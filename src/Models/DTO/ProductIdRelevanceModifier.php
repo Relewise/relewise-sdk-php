@@ -38,22 +38,22 @@ class ProductIdRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    function withProductIds(string ... $productIds)
+    function setProductIds(string ... $productIds)
     {
         $this->productIds = $productIds;
         return $this;
     }
-    function withMultiplyWeightBy(float $multiplyWeightBy)
+    function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;

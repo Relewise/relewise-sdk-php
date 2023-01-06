@@ -33,12 +33,12 @@ class ContentRecommendationRequestCollection extends LicensedRequest
         }
         return $result;
     }
-    function withRequests(ContentRecommendationRequest ... $requests)
+    function setRequests(ContentRecommendationRequest ... $requests)
     {
         $this->requests = $requests;
         return $this;
     }
-    function withRequireDistinctContentAcrossResults(bool $requireDistinctContentAcrossResults)
+    function setRequireDistinctContentAcrossResults(bool $requireDistinctContentAcrossResults)
     {
         $this->requireDistinctContentAcrossResults = $requireDistinctContentAcrossResults;
         return $this;

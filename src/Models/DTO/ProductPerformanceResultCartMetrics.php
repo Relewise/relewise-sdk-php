@@ -21,7 +21,7 @@ class ProductPerformanceResultCartMetrics
         }
         return $result;
     }
-    function withOpened(int $opened)
+    function setOpened(int $opened)
     {
         $this->opened = $opened;
         return $this;

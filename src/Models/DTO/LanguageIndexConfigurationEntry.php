@@ -34,17 +34,17 @@ class LanguageIndexConfigurationEntry
         }
         return $result;
     }
-    function withLanguage(Language $language)
+    function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withIncluded(bool $included)
+    function setIncluded(bool $included)
     {
         $this->included = $included;
         return $this;
     }
-    function withISO639_1(string $iSO639_1)
+    function setISO639_1(string $iSO639_1)
     {
         $this->iSO639_1 = $iSO639_1;
         return $this;

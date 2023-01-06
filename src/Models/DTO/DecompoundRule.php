@@ -43,67 +43,67 @@ class DecompoundRule extends SearchRule
         }
         return $result;
     }
-    function withWord(string $word)
+    function setWord(string $word)
     {
         $this->word = $word;
         return $this;
     }
-    function withHead(?string $head)
+    function setHead(?string $head)
     {
         $this->head = $head;
         return $this;
     }
-    function withModifiers(string ... $modifiers)
+    function setModifiers(string ... $modifiers)
     {
         $this->modifiers = $modifiers;
         return $this;
     }
-    function withId(string $id)
+    function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withIndexes(?ApplicableIndexes $indexes)
+    function setIndexes(?ApplicableIndexes $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
-    function withLanguages(?ApplicableLanguages $languages)
+    function setLanguages(?ApplicableLanguages $languages)
     {
         $this->languages = $languages;
         return $this;
     }
-    function withCreated(DateTime $created)
+    function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
-    function withCreatedBy(string $createdBy)
+    function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
-    function withModified(DateTime $modified)
+    function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
-    function withModifiedBy(string $modifiedBy)
+    function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
-    function withApproved(?DateTime $approved)
+    function setApproved(?DateTime $approved)
     {
         $this->approved = $approved;
         return $this;
     }
-    function withApprovedBy(string $approvedBy)
+    function setApprovedBy(string $approvedBy)
     {
         $this->approvedBy = $approvedBy;
         return $this;
     }
-    function withIsApproved(bool $isApproved)
+    function setIsApproved(bool $isApproved)
     {
         $this->isApproved = $isApproved;
         return $this;

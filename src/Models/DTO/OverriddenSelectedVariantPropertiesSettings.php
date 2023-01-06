@@ -59,37 +59,37 @@ class OverriddenSelectedVariantPropertiesSettings
         }
         return $result;
     }
-    function withDisplayName(?bool $displayName)
+    function setDisplayName(?bool $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    function withPricing(?bool $pricing)
+    function setPricing(?bool $pricing)
     {
         $this->pricing = $pricing;
         return $this;
     }
-    function withAllSpecifications(?bool $allSpecifications)
+    function setAllSpecifications(?bool $allSpecifications)
     {
         $this->allSpecifications = $allSpecifications;
         return $this;
     }
-    function withAssortments(?bool $assortments)
+    function setAssortments(?bool $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
-    function withAllData(?bool $allData)
+    function setAllData(?bool $allData)
     {
         $this->allData = $allData;
         return $this;
     }
-    function withDataKeys(string ... $dataKeys)
+    function setDataKeys(string ... $dataKeys)
     {
         $this->dataKeys = $dataKeys;
         return $this;
     }
-    function withSpecificationKeys(string ... $specificationKeys)
+    function setSpecificationKeys(string ... $specificationKeys)
     {
         $this->specificationKeys = $specificationKeys;
         return $this;

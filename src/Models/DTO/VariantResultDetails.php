@@ -69,12 +69,12 @@ class VariantResultDetails
         }
         return $result;
     }
-    function withVariantId(string $variantId)
+    function setVariantId(string $variantId)
     {
         $this->variantId = $variantId;
         return $this;
     }
-    function withDisplayName(Multilingual $displayName)
+    function setDisplayName(Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
@@ -88,7 +88,7 @@ class VariantResultDetails
         $this->specification[$key] = $value;
         return $this;
     }
-    function withAssortments(int ... $assortments)
+    function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
@@ -102,17 +102,17 @@ class VariantResultDetails
         $this->data[$key] = $value;
         return $this;
     }
-    function withListPrice(MultiCurrency $listPrice)
+    function setListPrice(MultiCurrency $listPrice)
     {
         $this->listPrice = $listPrice;
         return $this;
     }
-    function withSalesPrice(MultiCurrency $salesPrice)
+    function setSalesPrice(MultiCurrency $salesPrice)
     {
         $this->salesPrice = $salesPrice;
         return $this;
     }
-    function withDisabled(bool $disabled)
+    function setDisabled(bool $disabled)
     {
         $this->disabled = $disabled;
         return $this;

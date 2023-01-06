@@ -34,17 +34,17 @@ class intAvailableFacetValue
         }
         return $result;
     }
-    function withValue(int $value)
+    function setValue(int $value)
     {
         $this->value = $value;
         return $this;
     }
-    function withHits(int $hits)
+    function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
-    function withSelected(bool $selected)
+    function setSelected(bool $selected)
     {
         $this->selected = $selected;
         return $this;

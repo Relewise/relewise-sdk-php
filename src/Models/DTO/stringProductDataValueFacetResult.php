@@ -25,32 +25,32 @@ abstract class stringProductDataValueFacetResult extends stringDataValueFacetRes
         }
         return $result;
     }
-    function withDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
+    function setDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
     {
         $this->dataSelectionStrategy = $dataSelectionStrategy;
         return $this;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withCollectionFilterType(?CollectionFilterType $collectionFilterType)
+    function setCollectionFilterType(?CollectionFilterType $collectionFilterType)
     {
         $this->collectionFilterType = $collectionFilterType;
         return $this;
     }
-    function withSelected(string ... $selected)
+    function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withAvailable(stringAvailableFacetValue ... $available)
+    function setAvailable(stringAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

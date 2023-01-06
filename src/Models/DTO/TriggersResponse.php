@@ -21,12 +21,12 @@ abstract class TriggersResponse extends TimedResponse
         }
         return $result;
     }
-    function withRemainingResults(int $remainingResults)
+    function setRemainingResults(int $remainingResults)
     {
         $this->remainingResults = $remainingResults;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

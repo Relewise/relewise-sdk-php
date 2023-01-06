@@ -40,7 +40,7 @@ abstract class SearchResponse extends TimedResponse
         $result = TimedResponse::hydrateBase($result, $arr);
         return $result;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

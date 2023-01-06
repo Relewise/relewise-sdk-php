@@ -41,27 +41,27 @@ class ProductCategoryIdRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    function withCategoryId(string $categoryId)
+    function setCategoryId(string $categoryId)
     {
         $this->categoryId = $categoryId;
         return $this;
     }
-    function withEvaluationScope(CategoryScope $evaluationScope)
+    function setEvaluationScope(CategoryScope $evaluationScope)
     {
         $this->evaluationScope = $evaluationScope;
         return $this;
     }
-    function withMultiplyWeightBy(float $multiplyWeightBy)
+    function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;

@@ -70,52 +70,52 @@ class SelectedProductPropertiesSettings
         }
         return $result;
     }
-    function withDisplayName(bool $displayName)
+    function setDisplayName(bool $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    function withCategoryPaths(bool $categoryPaths)
+    function setCategoryPaths(bool $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
-    function withAssortments(bool $assortments)
+    function setAssortments(bool $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
-    function withPricing(bool $pricing)
+    function setPricing(bool $pricing)
     {
         $this->pricing = $pricing;
         return $this;
     }
-    function withAllData(bool $allData)
+    function setAllData(bool $allData)
     {
         $this->allData = $allData;
         return $this;
     }
-    function withViewedByUserInfo(bool $viewedByUserInfo)
+    function setViewedByUserInfo(bool $viewedByUserInfo)
     {
         $this->viewedByUserInfo = $viewedByUserInfo;
         return $this;
     }
-    function withPurchasedByUserInfo(bool $purchasedByUserInfo)
+    function setPurchasedByUserInfo(bool $purchasedByUserInfo)
     {
         $this->purchasedByUserInfo = $purchasedByUserInfo;
         return $this;
     }
-    function withBrand(bool $brand)
+    function setBrand(bool $brand)
     {
         $this->brand = $brand;
         return $this;
     }
-    function withAllVariants(bool $allVariants)
+    function setAllVariants(bool $allVariants)
     {
         $this->allVariants = $allVariants;
         return $this;
     }
-    function withDataKeys(string ... $dataKeys)
+    function setDataKeys(string ... $dataKeys)
     {
         $this->dataKeys = $dataKeys;
         return $this;

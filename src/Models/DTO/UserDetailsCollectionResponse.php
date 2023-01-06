@@ -27,12 +27,12 @@ class UserDetailsCollectionResponse extends TimedResponse
         }
         return $result;
     }
-    function withResults(array ... $results)
+    function setResults(array ... $results)
     {
         $this->results = $results;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

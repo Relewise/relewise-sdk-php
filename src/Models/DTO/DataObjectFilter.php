@@ -35,17 +35,17 @@ class DataObjectFilter
         }
         return $result;
     }
-    function withConditions(ObjectValueCondition ... $conditions)
+    function setConditions(ObjectValueCondition ... $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
-    function withSkip(?int $skip)
+    function setSkip(?int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
-    function withTake(?int $take)
+    function setTake(?int $take)
     {
         $this->take = $take;
         return $this;

@@ -26,12 +26,12 @@ class ExpectedSearchTermResult
         }
         return $result;
     }
-    function withEstimatedHits(int $estimatedHits)
+    function setEstimatedHits(int $estimatedHits)
     {
         $this->estimatedHits = $estimatedHits;
         return $this;
     }
-    function withType(EntityType $type)
+    function setType(EntityType $type)
     {
         $this->type = $type;
         return $this;

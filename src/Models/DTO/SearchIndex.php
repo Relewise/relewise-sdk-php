@@ -64,47 +64,47 @@ class SearchIndex
         }
         return $result;
     }
-    function withId(string $id)
+    function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withDescription(string $description)
+    function setDescription(string $description)
     {
         $this->description = $description;
         return $this;
     }
-    function withEnabled(bool $enabled)
+    function setEnabled(bool $enabled)
     {
         $this->enabled = $enabled;
         return $this;
     }
-    function withIsDefault(bool $isDefault)
+    function setIsDefault(bool $isDefault)
     {
         $this->isDefault = $isDefault;
         return $this;
     }
-    function withCreated(DateTime $created)
+    function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
-    function withCreatedBy(string $createdBy)
+    function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
-    function withModified(DateTime $modified)
+    function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
-    function withModifiedBy(string $modifiedBy)
+    function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
-    function withConfiguration(IndexConfiguration $configuration)
+    function setConfiguration(IndexConfiguration $configuration)
     {
         $this->configuration = $configuration;
         return $this;

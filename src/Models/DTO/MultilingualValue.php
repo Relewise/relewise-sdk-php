@@ -28,12 +28,12 @@ class MultilingualValue
         }
         return $result;
     }
-    function withLanguage(Language $language)
+    function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withText(?string $text)
+    function setText(?string $text)
     {
         $this->text = $text;
         return $this;

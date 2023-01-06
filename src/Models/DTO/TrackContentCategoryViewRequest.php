@@ -23,7 +23,7 @@ class TrackContentCategoryViewRequest extends TrackingRequest
         }
         return $result;
     }
-    function withContentCategoryView(ContentCategoryView $contentCategoryView)
+    function setContentCategoryView(ContentCategoryView $contentCategoryView)
     {
         $this->contentCategoryView = $contentCategoryView;
         return $this;

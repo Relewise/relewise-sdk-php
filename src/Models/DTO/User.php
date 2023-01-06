@@ -70,17 +70,17 @@ class User
         }
         return $result;
     }
-    function withAuthenticatedId(?string $authenticatedId)
+    function setAuthenticatedId(?string $authenticatedId)
     {
         $this->authenticatedId = $authenticatedId;
         return $this;
     }
-    function withTemporaryId(?string $temporaryId)
+    function setTemporaryId(?string $temporaryId)
     {
         $this->temporaryId = $temporaryId;
         return $this;
     }
-    function withEmail(?string $email)
+    function setEmail(?string $email)
     {
         $this->email = $email;
         return $this;
@@ -112,7 +112,7 @@ class User
         $this->data[$key] = $value;
         return $this;
     }
-    function withFingerprint(?string $fingerprint)
+    function setFingerprint(?string $fingerprint)
     {
         $this->fingerprint = $fingerprint;
         return $this;

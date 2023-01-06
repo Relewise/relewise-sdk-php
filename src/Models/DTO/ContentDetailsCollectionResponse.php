@@ -33,17 +33,17 @@ class ContentDetailsCollectionResponse extends TimedResponse
         }
         return $result;
     }
-    function withContents(ContentResultDetails ... $contents)
+    function setContents(ContentResultDetails ... $contents)
     {
         $this->contents = $contents;
         return $this;
     }
-    function withTotalNumberOfResults(?int $totalNumberOfResults)
+    function setTotalNumberOfResults(?int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

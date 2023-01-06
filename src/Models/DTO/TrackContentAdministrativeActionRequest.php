@@ -23,7 +23,7 @@ class TrackContentAdministrativeActionRequest extends TrackingRequest
         }
         return $result;
     }
-    function withAdministrativeAction(ContentAdministrativeAction $administrativeAction)
+    function setAdministrativeAction(ContentAdministrativeAction $administrativeAction)
     {
         $this->administrativeAction = $administrativeAction;
         return $this;

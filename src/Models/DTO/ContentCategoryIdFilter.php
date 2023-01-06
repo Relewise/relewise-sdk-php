@@ -18,17 +18,17 @@ class ContentCategoryIdFilter extends CategoryIdFilter
         $result = CategoryIdFilter::hydrateBase(new ContentCategoryIdFilter(), $arr);
         return $result;
     }
-    function withCategoryIds(string ... $categoryIds)
+    function setCategoryIds(string ... $categoryIds)
     {
         $this->categoryIds = $categoryIds;
         return $this;
     }
-    function withEvaluationScope(CategoryScope $evaluationScope)
+    function setEvaluationScope(CategoryScope $evaluationScope)
     {
         $this->evaluationScope = $evaluationScope;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

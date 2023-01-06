@@ -32,17 +32,17 @@ class VariantAssortmentRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    function withAssortments(int ... $assortments)
+    function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
-    function withMultiplyWeightBy(float $multiplyWeightBy)
+    function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;

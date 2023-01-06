@@ -27,12 +27,12 @@ class ContentCategoryRecommendationResponseCollection extends TimedResponse
         }
         return $result;
     }
-    function withResponses(ContentCategoryRecommendationResponse ... $responses)
+    function setResponses(ContentCategoryRecommendationResponse ... $responses)
     {
         $this->responses = $responses;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

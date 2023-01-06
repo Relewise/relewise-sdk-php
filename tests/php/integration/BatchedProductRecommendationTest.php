@@ -26,14 +26,14 @@ class BatchedProductRecommendationTest extends BaseTest
                 "batched integration test",
                 UserFactory::byTemporaryId("t-Id"),
                 ProductAndVariantId::create("1")
-            )->withSettings(ProductRecommendationRequestSettings::create()->withNumberOfRecommendations(1)),
+            )->setSettings(ProductRecommendationRequestSettings::create()->setNumberOfRecommendations(1)),
             PurchasedWithProductRequest::create(
                 Language::create("en-US"),
                 Currency::create("USD"),
                 "batched integration test",
                 UserFactory::byTemporaryId("t-Id"),
                 ProductAndVariantId::create("1")
-            )->withSettings(ProductRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
+            )->setSettings(ProductRecommendationRequestSettings::create()->setNumberOfRecommendations(1))
         );
 
         $response = $recommender->batchProductRecommendation($productRecommendationRequestCollection);

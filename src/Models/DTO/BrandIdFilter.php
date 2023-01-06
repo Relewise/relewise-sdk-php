@@ -27,12 +27,12 @@ class BrandIdFilter extends Filter
         }
         return $result;
     }
-    function withBrandIds(string ... $brandIds)
+    function setBrandIds(string ... $brandIds)
     {
         $this->brandIds = $brandIds;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

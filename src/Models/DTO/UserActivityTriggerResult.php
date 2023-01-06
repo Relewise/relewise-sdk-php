@@ -21,7 +21,7 @@ class UserActivityTriggerResult
         }
         return $result;
     }
-    function withUser(UserResultDetails $user)
+    function setUser(UserResultDetails $user)
     {
         $this->user = $user;
         return $this;

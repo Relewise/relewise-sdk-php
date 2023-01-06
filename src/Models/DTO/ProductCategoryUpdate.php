@@ -24,12 +24,12 @@ class ProductCategoryUpdate extends CategoryUpdate
         }
         return $result;
     }
-    function withCategory(ProductCategory $category)
+    function setCategory(ProductCategory $category)
     {
         $this->category = $category;
         return $this;
     }
-    function withKind(CategoryUpdateUpdateKind $kind)
+    function setKind(CategoryUpdateUpdateKind $kind)
     {
         $this->kind = $kind;
         return $this;

@@ -24,9 +24,9 @@ class SearchTermPredictionTest extends BaseTest
             "integration test",
             "1",
             1
-        )->withSettings(
+        )->setSettings(
             SearchTermPredictionSettings::create()
-                ->withTargetEntityTypes(EntityType::Product, EntityType::Content)
+                ->setTargetEntityTypes(EntityType::Product, EntityType::Content)
         );
 
         $response = $searcher->searchTermPrediction($searchTermPrediction);

@@ -26,12 +26,12 @@ class SearchTermPredictionResponse extends SearchResponse
         }
         return $result;
     }
-    function withPredictions(SearchTermPredictionResult ... $predictions)
+    function setPredictions(SearchTermPredictionResult ... $predictions)
     {
         $this->predictions = $predictions;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

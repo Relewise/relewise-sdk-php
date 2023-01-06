@@ -28,12 +28,12 @@ class intRange
         }
         return $result;
     }
-    function withLowerBoundInclusive(?int $lowerBoundInclusive)
+    function setLowerBoundInclusive(?int $lowerBoundInclusive)
     {
         $this->lowerBoundInclusive = $lowerBoundInclusive;
         return $this;
     }
-    function withUpperBoundInclusive(?int $upperBoundInclusive)
+    function setUpperBoundInclusive(?int $upperBoundInclusive)
     {
         $this->upperBoundInclusive = $upperBoundInclusive;
         return $this;

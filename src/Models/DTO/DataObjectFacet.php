@@ -37,27 +37,27 @@ class DataObjectFacet extends Facet
         }
         return $result;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withItems(Facet ... $items)
+    function setItems(Facet ... $items)
     {
         $this->items = $items;
         return $this;
     }
-    function withFilter(DataObjectFilter $filter)
+    function setFilter(DataObjectFilter $filter)
     {
         $this->filter = $filter;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
-    function withSettings(?FacetSettings $settings)
+    function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;
         return $this;

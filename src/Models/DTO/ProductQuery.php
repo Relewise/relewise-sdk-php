@@ -66,47 +66,47 @@ class ProductQuery extends LicensedRequest
         }
         return $result;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withNumberOfResults(int $numberOfResults)
+    function setNumberOfResults(int $numberOfResults)
     {
         $this->numberOfResults = $numberOfResults;
         return $this;
     }
-    function withLanguage(Language $language)
+    function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withCurrency(Currency $currency)
+    function setCurrency(Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
-    function withSkipNumberOfResults(int $skipNumberOfResults)
+    function setSkipNumberOfResults(int $skipNumberOfResults)
     {
         $this->skipNumberOfResults = $skipNumberOfResults;
         return $this;
     }
-    function withReturnTotalNumberOfResults(bool $returnTotalNumberOfResults)
+    function setReturnTotalNumberOfResults(bool $returnTotalNumberOfResults)
     {
         $this->returnTotalNumberOfResults = $returnTotalNumberOfResults;
         return $this;
     }
-    function withIncludeDisabledProducts(bool $includeDisabledProducts)
+    function setIncludeDisabledProducts(bool $includeDisabledProducts)
     {
         $this->includeDisabledProducts = $includeDisabledProducts;
         return $this;
     }
-    function withIncludeDisabledVariants(bool $includeDisabledVariants)
+    function setIncludeDisabledVariants(bool $includeDisabledVariants)
     {
         $this->includeDisabledVariants = $includeDisabledVariants;
         return $this;
     }
-    function withExcludeProductsWithNoVariants(bool $excludeProductsWithNoVariants)
+    function setExcludeProductsWithNoVariants(bool $excludeProductsWithNoVariants)
     {
         $this->excludeProductsWithNoVariants = $excludeProductsWithNoVariants;
         return $this;

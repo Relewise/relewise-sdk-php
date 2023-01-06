@@ -32,9 +32,9 @@ class FacetsTest extends BaseTest
             Null,
             0,
             0
-        )->withFacets(
+        )->setFacets(
             ProductFacetQuery::create()
-                ->withItems(
+                ->setItems(
                     PriceRangeFacet::create(FacetingField::SalesPrice, PriceSelectionStrategy::Product, Null),
                 )
         );
@@ -61,11 +61,11 @@ class FacetsTest extends BaseTest
             Null,
             0,
             0
-        )->withFacets(
+        )->setFacets(
             ProductFacetQuery::create()
-                ->withItems(
+                ->setItems(
                     BrandFacet::create()
-                        ->withField(FacetingField::Brand)
+                        ->setField(FacetingField::Brand)
                 )
         );
 
@@ -91,13 +91,13 @@ class FacetsTest extends BaseTest
             Null,
             0,
             0
-        )->withFacets(
+        )->setFacets(
             ProductFacetQuery::create()
-                ->withItems(
+                ->setItems(
                     ProductDataStringValueFacet::create()
-                        ->withField(FacetingField::Data)
-                        ->withKey("ShortDescription")
-                        ->withDataSelectionStrategy(DataSelectionStrategy::Product)
+                        ->setField(FacetingField::Data)
+                        ->setKey("ShortDescription")
+                        ->setDataSelectionStrategy(DataSelectionStrategy::Product)
                 )
         );
 
@@ -126,11 +126,11 @@ class FacetsTest extends BaseTest
             Null,
             0,
             0
-        )->withFacets(
+        )->setFacets(
             ProductFacetQuery::create()
-                ->withItems(
+                ->setItems(
                     CategoryFacet::create(CategorySelectionStrategy::ImmediateParent)
-                        ->withField(FacetingField::Category)
+                        ->setField(FacetingField::Category)
                 )
         );
 

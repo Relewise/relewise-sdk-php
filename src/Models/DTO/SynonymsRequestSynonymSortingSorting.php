@@ -28,12 +28,12 @@ class SynonymsRequestSynonymSortingSorting
         }
         return $result;
     }
-    function withSortBy(SynonymsRequestSynonymSorting $sortBy)
+    function setSortBy(SynonymsRequestSynonymSorting $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
-    function withSortOrder(SortOrder $sortOrder)
+    function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;
         return $this;

@@ -21,7 +21,7 @@ class ProductSortBySpecification
         }
         return $result;
     }
-    function withValue(ProductSorting $value)
+    function setValue(ProductSorting $value)
     {
         $this->value = $value;
         return $this;

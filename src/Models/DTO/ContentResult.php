@@ -65,22 +65,22 @@ class ContentResult
         }
         return $result;
     }
-    function withContentId(string $contentId)
+    function setContentId(string $contentId)
     {
         $this->contentId = $contentId;
         return $this;
     }
-    function withDisplayName(string $displayName)
+    function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    function withRank(int $rank)
+    function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;
     }
-    function withAssortments(int ... $assortments)
+    function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
@@ -94,12 +94,12 @@ class ContentResult
         $this->data[$key] = $value;
         return $this;
     }
-    function withCategoryPaths(CategoryPathResult ... $categoryPaths)
+    function setCategoryPaths(CategoryPathResult ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
-    function withViewedByUser(ViewedByUserInfo $viewedByUser)
+    function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;

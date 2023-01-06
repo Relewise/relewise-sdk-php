@@ -25,7 +25,7 @@ class ValueConditionCollection
         }
         return $result;
     }
-    function withItems(ValueCondition ... $items)
+    function setItems(ValueCondition ... $items)
     {
         $this->items = $items;
         return $this;

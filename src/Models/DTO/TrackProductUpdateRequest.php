@@ -23,7 +23,7 @@ class TrackProductUpdateRequest extends TrackingRequest
         }
         return $result;
     }
-    function withProductUpdate(ProductUpdate $productUpdate)
+    function setProductUpdate(ProductUpdate $productUpdate)
     {
         $this->productUpdate = $productUpdate;
         return $this;

@@ -22,12 +22,12 @@ class GlobalTriggerConfigurationResponse extends TimedResponse
         }
         return $result;
     }
-    function withConfiguration(GlobalTriggerConfiguration $configuration)
+    function setConfiguration(GlobalTriggerConfiguration $configuration)
     {
         $this->configuration = $configuration;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

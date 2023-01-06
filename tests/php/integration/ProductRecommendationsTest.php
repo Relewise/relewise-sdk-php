@@ -66,28 +66,28 @@ class ProductRecommendationsTest extends BaseTest
             "integration test Conditions",
             UserFactory::anonymous(),
             ProductAndVariantId::create("1")
-        )->withFilters(
+        )->setFilters(
             FilterCollection::create(
                 ProductDataFilter::create()
-                    ->withKey("ShortDescription")
-                    ->withConditions(
+                    ->setKey("ShortDescription")
+                    ->setConditions(
                         ValueConditionCollection::create()
-                            ->withItems(
+                            ->setItems(
                                 ContainsCondition::create()
-                                    ->withValue(DataValueFactory::stringListDataValue("d"))
-                                    ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
+                                    ->setValue(DataValueFactory::stringListDataValue("d"))
+                                    ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->withValue(DataValueFactory::booleanListDataValue(true))
-                                    ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
+                                    ->setValue(DataValueFactory::booleanListDataValue(true))
+                                    ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->withValue(DataValueFactory::doubleListDataValue(1))
-                                    ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
+                                    ->setValue(DataValueFactory::doubleListDataValue(1))
+                                    ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->withValue(DataValueFactory::multilingualCollectionDataValueFromLanguageAndCollection(Language::create("en-US"), "d"))
-                                    ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
+                                    ->setValue(DataValueFactory::multilingualCollectionDataValueFromLanguageAndCollection(Language::create("en-US"), "d"))
+                                    ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->withValue(DataValueFactory::multiCurrencyDataValueFromSingleCurrency(Money::create(Currency::create("USD"), 1)))
-                                    ->withValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
+                                    ->setValue(DataValueFactory::multiCurrencyDataValueFromSingleCurrency(Money::create(Currency::create("USD"), 1)))
+                                    ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                             )
                     )
             )

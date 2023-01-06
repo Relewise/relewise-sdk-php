@@ -21,7 +21,7 @@ class ProductPerformanceResultViewsMetrics
         }
         return $result;
     }
-    function withTotal(int $total)
+    function setTotal(int $total)
     {
         $this->total = $total;
         return $this;

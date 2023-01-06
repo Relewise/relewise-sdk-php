@@ -25,7 +25,7 @@ class ProductFacetResult
         }
         return $result;
     }
-    function withItems(FacetResult ... $items)
+    function setItems(FacetResult ... $items)
     {
         $this->items = $items;
         return $this;

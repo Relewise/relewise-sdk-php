@@ -28,12 +28,12 @@ class Money
         }
         return $result;
     }
-    function withAmount(float $amount)
+    function setAmount(float $amount)
     {
         $this->amount = $amount;
         return $this;
     }
-    function withCurrency(Currency $currency)
+    function setCurrency(Currency $currency)
     {
         $this->currency = $currency;
         return $this;

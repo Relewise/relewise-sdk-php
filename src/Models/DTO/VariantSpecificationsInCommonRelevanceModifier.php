@@ -27,12 +27,12 @@ class VariantSpecificationsInCommonRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    function withSpecificationKeysAndMultipliers(KeyMultiplier ... $specificationKeysAndMultipliers)
+    function setSpecificationKeysAndMultipliers(KeyMultiplier ... $specificationKeysAndMultipliers)
     {
         $this->specificationKeysAndMultipliers = $specificationKeysAndMultipliers;
         return $this;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;

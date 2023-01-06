@@ -29,12 +29,12 @@ class DeleteSearchIndexRequest extends LicensedRequest
         }
         return $result;
     }
-    function withId(string $id)
+    function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withDeletedBy(string $deletedBy)
+    function setDeletedBy(string $deletedBy)
     {
         $this->deletedBy = $deletedBy;
         return $this;

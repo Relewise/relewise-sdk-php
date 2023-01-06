@@ -26,7 +26,7 @@ class TrimStringTransformer
         }
         return $result;
     }
-    function withValuesToTrim(string ... $valuesToTrim)
+    function setValuesToTrim(string ... $valuesToTrim)
     {
         $this->valuesToTrim = $valuesToTrim;
         return $this;

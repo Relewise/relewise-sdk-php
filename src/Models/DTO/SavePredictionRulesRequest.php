@@ -17,12 +17,12 @@ class SavePredictionRulesRequest extends PredictionRuleSaveSearchRulesRequest
         $result = PredictionRuleSaveSearchRulesRequest::hydrateBase(new SavePredictionRulesRequest(), $arr);
         return $result;
     }
-    function withRules(PredictionRule ... $rules)
+    function setRules(PredictionRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
-    function withModifiedBy(string $modifiedBy)
+    function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;

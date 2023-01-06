@@ -40,27 +40,27 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
         }
         return $result;
     }
-    function withResults(ProductCategoryResult ... $results)
+    function setResults(ProductCategoryResult ... $results)
     {
         $this->results = $results;
         return $this;
     }
-    function withFacets(ProductCategoryFacetResult $facets)
+    function setFacets(ProductCategoryFacetResult $facets)
     {
         $this->facets = $facets;
         return $this;
     }
-    function withRecommendations(ProductCategoryResult ... $recommendations)
+    function setRecommendations(ProductCategoryResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
-    function withHits(int $hits)
+    function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

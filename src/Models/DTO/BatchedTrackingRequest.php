@@ -27,7 +27,7 @@ class BatchedTrackingRequest extends TrackingRequest
         }
         return $result;
     }
-    function withItems(Trackable ... $items)
+    function setItems(Trackable ... $items)
     {
         $this->items = $items;
         return $this;

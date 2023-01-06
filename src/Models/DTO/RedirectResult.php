@@ -44,17 +44,17 @@ class RedirectResult
         }
         return $result;
     }
-    function withId(string $id)
+    function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withCondition(SearchTermCondition $condition)
+    function setCondition(SearchTermCondition $condition)
     {
         $this->condition = $condition;
         return $this;
     }
-    function withDestination(?string $destination)
+    function setDestination(?string $destination)
     {
         $this->destination = $destination;
         return $this;

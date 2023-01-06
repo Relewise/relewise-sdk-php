@@ -28,12 +28,12 @@ class TriggerConfigurationRequest extends LicensedRequest
         }
         return $result;
     }
-    function withId(string $id)
+    function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withType(?int $type)
+    function setType(?int $type)
     {
         $this->type = $type;
         return $this;

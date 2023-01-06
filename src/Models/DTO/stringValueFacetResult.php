@@ -36,17 +36,17 @@ abstract class stringValueFacetResult extends stringstringValueFacetResult
         $result = stringstringValueFacetResult::hydrateBase($result, $arr);
         return $result;
     }
-    function withSelected(string ... $selected)
+    function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withAvailable(stringAvailableFacetValue ... $available)
+    function setAvailable(stringAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

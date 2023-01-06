@@ -31,12 +31,12 @@ class CategoryPathResult
         }
         return $result;
     }
-    function withPathFromRoot(CategoryNameAndIdResult ... $pathFromRoot)
+    function setPathFromRoot(CategoryNameAndIdResult ... $pathFromRoot)
     {
         $this->pathFromRoot = $pathFromRoot;
         return $this;
     }
-    function withRank(int $rank)
+    function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;

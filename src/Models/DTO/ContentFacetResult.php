@@ -25,7 +25,7 @@ class ContentFacetResult
         }
         return $result;
     }
-    function withItems(FacetResult ... $items)
+    function setItems(FacetResult ... $items)
     {
         $this->items = $items;
         return $this;

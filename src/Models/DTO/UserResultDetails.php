@@ -106,17 +106,17 @@ class UserResultDetails
         }
         return $result;
     }
-    function withAuthenticatedId(string $authenticatedId)
+    function setAuthenticatedId(string $authenticatedId)
     {
         $this->authenticatedId = $authenticatedId;
         return $this;
     }
-    function withTemporaryId(string $temporaryId)
+    function setTemporaryId(string $temporaryId)
     {
         $this->temporaryId = $temporaryId;
         return $this;
     }
-    function withEmail(string $email)
+    function setEmail(string $email)
     {
         $this->email = $email;
         return $this;
@@ -130,17 +130,17 @@ class UserResultDetails
         $this->classifications[$key] = $value;
         return $this;
     }
-    function withLastCartUpdateUtc(?DateTime $lastCartUpdateUtc)
+    function setLastCartUpdateUtc(?DateTime $lastCartUpdateUtc)
     {
         $this->lastCartUpdateUtc = $lastCartUpdateUtc;
         return $this;
     }
-    function withLastActivityUtc(DateTime $lastActivityUtc)
+    function setLastActivityUtc(DateTime $lastActivityUtc)
     {
         $this->lastActivityUtc = $lastActivityUtc;
         return $this;
     }
-    function withLastOrderUtc(?DateTime $lastOrderUtc)
+    function setLastOrderUtc(?DateTime $lastOrderUtc)
     {
         $this->lastOrderUtc = $lastOrderUtc;
         return $this;
@@ -154,12 +154,12 @@ class UserResultDetails
         $this->carts[$key] = $value;
         return $this;
     }
-    function withLastActiveCartName(string $lastActiveCartName)
+    function setLastActiveCartName(string $lastActiveCartName)
     {
         $this->lastActiveCartName = $lastActiveCartName;
         return $this;
     }
-    function withTotalNumberOfOrders(int $totalNumberOfOrders)
+    function setTotalNumberOfOrders(int $totalNumberOfOrders)
     {
         $this->totalNumberOfOrders = $totalNumberOfOrders;
         return $this;
@@ -173,7 +173,7 @@ class UserResultDetails
         $this->identifiers[$key] = $value;
         return $this;
     }
-    function withKey(int $key)
+    function setKey(int $key)
     {
         $this->key = $key;
         return $this;
@@ -187,7 +187,7 @@ class UserResultDetails
         $this->data[$key] = $value;
         return $this;
     }
-    function withTemporaryIds(string ... $temporaryIds)
+    function setTemporaryIds(string ... $temporaryIds)
     {
         $this->temporaryIds = $temporaryIds;
         return $this;

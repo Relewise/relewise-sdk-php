@@ -27,12 +27,12 @@ class VariantIdFilter extends Filter
         }
         return $result;
     }
-    function withVariantIds(string ... $variantIds)
+    function setVariantIds(string ... $variantIds)
     {
         $this->variantIds = $variantIds;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

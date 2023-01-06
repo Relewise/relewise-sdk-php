@@ -33,12 +33,12 @@ class ProductRecommendationRequestCollection extends LicensedRequest
         }
         return $result;
     }
-    function withRequests(ProductRecommendationRequest ... $requests)
+    function setRequests(ProductRecommendationRequest ... $requests)
     {
         $this->requests = $requests;
         return $this;
     }
-    function withRequireDistinctProductsAcrossResults(bool $requireDistinctProductsAcrossResults)
+    function setRequireDistinctProductsAcrossResults(bool $requireDistinctProductsAcrossResults)
     {
         $this->requireDistinctProductsAcrossResults = $requireDistinctProductsAcrossResults;
         return $this;

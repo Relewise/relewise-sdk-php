@@ -26,7 +26,7 @@ class ApplicableLanguages
         }
         return $result;
     }
-    function withLanguages(Language ... $languages)
+    function setLanguages(Language ... $languages)
     {
         $this->languages = $languages;
         return $this;

@@ -17,32 +17,32 @@ class ProductDataIntegerValueFacetResult extends intProductDataValueFacetResult
         $result = intProductDataValueFacetResult::hydrateBase(new ProductDataIntegerValueFacetResult(), $arr);
         return $result;
     }
-    function withDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
+    function setDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
     {
         $this->dataSelectionStrategy = $dataSelectionStrategy;
         return $this;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withCollectionFilterType(?CollectionFilterType $collectionFilterType)
+    function setCollectionFilterType(?CollectionFilterType $collectionFilterType)
     {
         $this->collectionFilterType = $collectionFilterType;
         return $this;
     }
-    function withSelected(int ... $selected)
+    function setSelected(int ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withAvailable(intAvailableFacetValue ... $available)
+    function setAvailable(intAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

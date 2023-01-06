@@ -99,27 +99,27 @@ class ProductResult
         }
         return $result;
     }
-    function withProductId(string $productId)
+    function setProductId(string $productId)
     {
         $this->productId = $productId;
         return $this;
     }
-    function withDisplayName(string $displayName)
+    function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    function withVariant(VariantResult $variant)
+    function setVariant(VariantResult $variant)
     {
         $this->variant = $variant;
         return $this;
     }
-    function withRank(int $rank)
+    function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;
     }
-    function withAssortments(int ... $assortments)
+    function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
@@ -133,37 +133,37 @@ class ProductResult
         $this->data[$key] = $value;
         return $this;
     }
-    function withCategoryPaths(CategoryPathResult ... $categoryPaths)
+    function setCategoryPaths(CategoryPathResult ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
-    function withPurchasedByUser(PurchasedByUserInfo $purchasedByUser)
+    function setPurchasedByUser(PurchasedByUserInfo $purchasedByUser)
     {
         $this->purchasedByUser = $purchasedByUser;
         return $this;
     }
-    function withViewedByUser(ViewedByUserInfo $viewedByUser)
+    function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;
     }
-    function withListPrice(?float $listPrice)
+    function setListPrice(?float $listPrice)
     {
         $this->listPrice = $listPrice;
         return $this;
     }
-    function withSalesPrice(?float $salesPrice)
+    function setSalesPrice(?float $salesPrice)
     {
         $this->salesPrice = $salesPrice;
         return $this;
     }
-    function withBrand(BrandResult $brand)
+    function setBrand(BrandResult $brand)
     {
         $this->brand = $brand;
         return $this;
     }
-    function withAllVariants(VariantResult ... $allVariants)
+    function setAllVariants(VariantResult ... $allVariants)
     {
         $this->allVariants = $allVariants;
         return $this;

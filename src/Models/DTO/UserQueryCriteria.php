@@ -50,27 +50,27 @@ class UserQueryCriteria
         }
         return $result;
     }
-    function withAuthenticatedId(string $authenticatedId)
+    function setAuthenticatedId(string $authenticatedId)
     {
         $this->authenticatedId = $authenticatedId;
         return $this;
     }
-    function withTemporaryId(string $temporaryId)
+    function setTemporaryId(string $temporaryId)
     {
         $this->temporaryId = $temporaryId;
         return $this;
     }
-    function withEmail(string $email)
+    function setEmail(string $email)
     {
         $this->email = $email;
         return $this;
     }
-    function withLanguage(Language $language)
+    function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withCurrency(Currency $currency)
+    function setCurrency(Currency $currency)
     {
         $this->currency = $currency;
         return $this;

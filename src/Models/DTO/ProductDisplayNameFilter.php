@@ -35,22 +35,22 @@ class ProductDisplayNameFilter extends Filter
         }
         return $result;
     }
-    function withLanguage(?Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withConditions(?ValueConditionCollection $conditions)
+    function setConditions(?ValueConditionCollection $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
-    function withMustMatchAllConditions(bool $mustMatchAllConditions)
+    function setMustMatchAllConditions(bool $mustMatchAllConditions)
     {
         $this->mustMatchAllConditions = $mustMatchAllConditions;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

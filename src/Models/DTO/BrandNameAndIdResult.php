@@ -28,12 +28,12 @@ class BrandNameAndIdResult
         }
         return $result;
     }
-    function withId(string $id)
+    function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withDisplayName(string $displayName)
+    function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;
         return $this;

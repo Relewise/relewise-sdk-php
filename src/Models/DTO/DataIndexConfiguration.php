@@ -39,7 +39,7 @@ class DataIndexConfiguration
         $this->keys[$key] = $value;
         return $this;
     }
-    function withUnspecified(FieldIndexConfiguration $unspecified)
+    function setUnspecified(FieldIndexConfiguration $unspecified)
     {
         $this->unspecified = $unspecified;
         return $this;

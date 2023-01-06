@@ -25,7 +25,7 @@ class LanguageIndexConfiguration
         }
         return $result;
     }
-    function withLanguages(LanguageIndexConfigurationEntry ... $languages)
+    function setLanguages(LanguageIndexConfigurationEntry ... $languages)
     {
         $this->languages = $languages;
         return $this;

@@ -17,22 +17,22 @@ class ContentDataDoubleRangeFacetResult extends floatContentDataRangeFacetResult
         $result = floatContentDataRangeFacetResult::hydrateBase(new ContentDataDoubleRangeFacetResult(), $arr);
         return $result;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withSelected(?floatRange $selected)
+    function setSelected(?floatRange $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withAvailable(?floatRangeAvailableFacetValue $available)
+    function setAvailable(?floatRangeAvailableFacetValue $available)
     {
         $this->available = $available;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

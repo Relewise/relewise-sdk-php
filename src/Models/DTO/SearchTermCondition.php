@@ -46,22 +46,22 @@ class SearchTermCondition
         }
         return $result;
     }
-    function withKind(SearchTermConditionConditionKind $kind)
+    function setKind(SearchTermConditionConditionKind $kind)
     {
         $this->kind = $kind;
         return $this;
     }
-    function withValue(string $value)
+    function setValue(string $value)
     {
         $this->value = $value;
         return $this;
     }
-    function withAndConditions(SearchTermCondition ... $andConditions)
+    function setAndConditions(SearchTermCondition ... $andConditions)
     {
         $this->andConditions = $andConditions;
         return $this;
     }
-    function withOrConditions(SearchTermCondition ... $orConditions)
+    function setOrConditions(SearchTermCondition ... $orConditions)
     {
         $this->orConditions = $orConditions;
         return $this;

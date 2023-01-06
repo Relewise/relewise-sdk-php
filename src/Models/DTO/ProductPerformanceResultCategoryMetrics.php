@@ -31,17 +31,17 @@ class ProductPerformanceResultCategoryMetrics
         }
         return $result;
     }
-    function withCategory(CategoryNameAndIdResult $category)
+    function setCategory(CategoryNameAndIdResult $category)
     {
         $this->category = $category;
         return $this;
     }
-    function withImmediateParent(bool $immediateParent)
+    function setImmediateParent(bool $immediateParent)
     {
         $this->immediateParent = $immediateParent;
         return $this;
     }
-    function withRank(ProductPerformanceResultViewsAndSalesMetrics $rank)
+    function setRank(ProductPerformanceResultViewsAndSalesMetrics $rank)
     {
         $this->rank = $rank;
         return $this;

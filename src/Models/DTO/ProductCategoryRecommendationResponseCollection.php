@@ -27,12 +27,12 @@ class ProductCategoryRecommendationResponseCollection extends TimedResponse
         }
         return $result;
     }
-    function withResponses(ProductCategoryRecommendationResponse ... $responses)
+    function setResponses(ProductCategoryRecommendationResponse ... $responses)
     {
         $this->responses = $responses;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

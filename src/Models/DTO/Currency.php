@@ -22,7 +22,7 @@ class Currency
         }
         return $result;
     }
-    function withValue(string $value)
+    function setValue(string $value)
     {
         $this->value = $value;
         return $this;

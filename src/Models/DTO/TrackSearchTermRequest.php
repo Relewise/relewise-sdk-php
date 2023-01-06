@@ -23,7 +23,7 @@ class TrackSearchTermRequest extends TrackingRequest
         }
         return $result;
     }
-    function withSearchTerm(SearchTerm $searchTerm)
+    function setSearchTerm(SearchTerm $searchTerm)
     {
         $this->searchTerm = $searchTerm;
         return $this;

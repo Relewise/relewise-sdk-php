@@ -24,15 +24,15 @@ class BatchedContentRecommendationTest extends BaseTest
                 Currency::create("USD"),
                 "batched integration test",
                 UserFactory::byTemporaryId("t-Id")
-            )->withSettings(ContentRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
-            ->withSinceMinutesAgo(5000),
+            )->setSettings(ContentRecommendationRequestSettings::create()->setNumberOfRecommendations(1))
+            ->setSinceMinutesAgo(5000),
             ContentsViewedAfterViewingContentRequest::create(
                 Language::create("en-US"),
                 Currency::create("USD"),
                 "batched integration test",
                 UserFactory::byTemporaryId("t-Id"),
                 "1"
-            )->withSettings(ContentRecommendationRequestSettings::create()->withNumberOfRecommendations(1))
+            )->setSettings(ContentRecommendationRequestSettings::create()->setNumberOfRecommendations(1))
         );
 
         $response = $recommender->batchContentRecommendation($contentRecommendationRequestCollection);

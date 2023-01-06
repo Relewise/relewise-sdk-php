@@ -35,22 +35,22 @@ class BrandIdRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    function withBrandId(string $brandId)
+    function setBrandId(string $brandId)
     {
         $this->brandId = $brandId;
         return $this;
     }
-    function withIfProductIsBrandMultiplyWeightBy(float $ifProductIsBrandMultiplyWeightBy)
+    function setIfProductIsBrandMultiplyWeightBy(float $ifProductIsBrandMultiplyWeightBy)
     {
         $this->ifProductIsBrandMultiplyWeightBy = $ifProductIsBrandMultiplyWeightBy;
         return $this;
     }
-    function withIfProductIsNotBrandMultiplyWeightBy(float $ifProductIsNotBrandMultiplyWeightBy)
+    function setIfProductIsNotBrandMultiplyWeightBy(float $ifProductIsNotBrandMultiplyWeightBy)
     {
         $this->ifProductIsNotBrandMultiplyWeightBy = $ifProductIsNotBrandMultiplyWeightBy;
         return $this;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;

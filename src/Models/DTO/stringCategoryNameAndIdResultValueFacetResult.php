@@ -38,17 +38,17 @@ abstract class stringCategoryNameAndIdResultValueFacetResult extends FacetResult
         }
         return $result;
     }
-    function withSelected(string ... $selected)
+    function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withAvailable(CategoryNameAndIdResultAvailableFacetValue ... $available)
+    function setAvailable(CategoryNameAndIdResultAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

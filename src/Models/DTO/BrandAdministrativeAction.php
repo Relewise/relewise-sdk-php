@@ -41,22 +41,22 @@ class BrandAdministrativeAction extends Trackable
         }
         return $result;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withLanguage(Language $language)
+    function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withKind(BrandAdministrativeActionUpdateKind $kind)
+    function setKind(BrandAdministrativeActionUpdateKind $kind)
     {
         $this->kind = $kind;
         return $this;
     }
-    function withCurrency(Currency $currency)
+    function setCurrency(Currency $currency)
     {
         $this->currency = $currency;
         return $this;

@@ -26,12 +26,12 @@ class MerchandisingRuleCollectionResponse extends TimedResponse
         }
         return $result;
     }
-    function withRules(MerchandisingRule ... $rules)
+    function setRules(MerchandisingRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

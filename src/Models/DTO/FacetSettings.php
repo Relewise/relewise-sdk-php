@@ -21,7 +21,7 @@ class FacetSettings
         }
         return $result;
     }
-    function withAlwaysIncludeSelectedInAvailable(bool $alwaysIncludeSelectedInAvailable)
+    function setAlwaysIncludeSelectedInAvailable(bool $alwaysIncludeSelectedInAvailable)
     {
         $this->alwaysIncludeSelectedInAvailable = $alwaysIncludeSelectedInAvailable;
         return $this;

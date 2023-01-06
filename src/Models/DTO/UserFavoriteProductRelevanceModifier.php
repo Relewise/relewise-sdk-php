@@ -40,27 +40,27 @@ class UserFavoriteProductRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    function withSinceMinutesAgo(int $sinceMinutesAgo)
+    function setSinceMinutesAgo(int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
-    function withNumberOfPurchasesWeight(float $numberOfPurchasesWeight)
+    function setNumberOfPurchasesWeight(float $numberOfPurchasesWeight)
     {
         $this->numberOfPurchasesWeight = $numberOfPurchasesWeight;
         return $this;
     }
-    function withMostRecentPurchaseWeight(float $mostRecentPurchaseWeight)
+    function setMostRecentPurchaseWeight(float $mostRecentPurchaseWeight)
     {
         $this->mostRecentPurchaseWeight = $mostRecentPurchaseWeight;
         return $this;
     }
-    function withIfNotPurchasedBaseWeight(float $ifNotPurchasedBaseWeight)
+    function setIfNotPurchasedBaseWeight(float $ifNotPurchasedBaseWeight)
     {
         $this->ifNotPurchasedBaseWeight = $ifNotPurchasedBaseWeight;
         return $this;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;

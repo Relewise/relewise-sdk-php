@@ -20,27 +20,27 @@ abstract class boolContentDataValueFacet extends boolDataValueFacet
         $result = boolDataValueFacet::hydrateBase($result, $arr);
         return $result;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withCollectionFilterType(?CollectionFilterType $collectionFilterType)
+    function setCollectionFilterType(?CollectionFilterType $collectionFilterType)
     {
         $this->collectionFilterType = $collectionFilterType;
         return $this;
     }
-    function withSelected(bool ... $selected)
+    function setSelected(bool ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
-    function withSettings(?FacetSettings $settings)
+    function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;
         return $this;

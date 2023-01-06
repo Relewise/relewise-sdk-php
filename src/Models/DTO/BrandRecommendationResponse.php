@@ -27,12 +27,12 @@ class BrandRecommendationResponse extends RecommendationResponse
         }
         return $result;
     }
-    function withRecommendations(BrandResult ... $recommendations)
+    function setRecommendations(BrandResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

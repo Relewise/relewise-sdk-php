@@ -18,12 +18,12 @@ class ContentCategoryLevelFilter extends CategoryLevelFilter
         $result = CategoryLevelFilter::hydrateBase(new ContentCategoryLevelFilter(), $arr);
         return $result;
     }
-    function withLevels(int ... $levels)
+    function setLevels(int ... $levels)
     {
         $this->levels = $levels;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

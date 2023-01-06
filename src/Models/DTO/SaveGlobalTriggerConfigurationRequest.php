@@ -29,12 +29,12 @@ class SaveGlobalTriggerConfigurationRequest extends LicensedRequest
         }
         return $result;
     }
-    function withConfiguration(GlobalTriggerConfiguration $configuration)
+    function setConfiguration(GlobalTriggerConfiguration $configuration)
     {
         $this->configuration = $configuration;
         return $this;
     }
-    function withModifiedBy(string $modifiedBy)
+    function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;

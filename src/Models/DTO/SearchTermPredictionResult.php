@@ -49,27 +49,27 @@ class SearchTermPredictionResult
         }
         return $result;
     }
-    function withTerm(string $term)
+    function setTerm(string $term)
     {
         $this->term = $term;
         return $this;
     }
-    function withRank(int $rank)
+    function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;
     }
-    function withExpectedResultTypes(ExpectedSearchTermResult ... $expectedResultTypes)
+    function setExpectedResultTypes(ExpectedSearchTermResult ... $expectedResultTypes)
     {
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;
     }
-    function withType(SearchTermPredictionResultPredictionType $type)
+    function setType(SearchTermPredictionResultPredictionType $type)
     {
         $this->type = $type;
         return $this;
     }
-    function withCorrectedWordsMask(bool ... $correctedWordsMask)
+    function setCorrectedWordsMask(bool ... $correctedWordsMask)
     {
         $this->correctedWordsMask = $correctedWordsMask;
         return $this;

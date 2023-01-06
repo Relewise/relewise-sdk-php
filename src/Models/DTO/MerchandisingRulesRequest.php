@@ -22,7 +22,7 @@ class MerchandisingRulesRequest extends LicensedRequest
         }
         return $result;
     }
-    function withType(?int $type)
+    function setType(?int $type)
     {
         $this->type = $type;
         return $this;

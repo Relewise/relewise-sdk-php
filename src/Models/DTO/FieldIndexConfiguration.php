@@ -40,22 +40,22 @@ class FieldIndexConfiguration
         }
         return $result;
     }
-    function withIncluded(bool $included)
+    function setIncluded(bool $included)
     {
         $this->included = $included;
         return $this;
     }
-    function withWeight(int $weight)
+    function setWeight(int $weight)
     {
         $this->weight = $weight;
         return $this;
     }
-    function withPredictionSourceType(PredictionSourceType $predictionSourceType)
+    function setPredictionSourceType(PredictionSourceType $predictionSourceType)
     {
         $this->predictionSourceType = $predictionSourceType;
         return $this;
     }
-    function withParser(Parser $parser)
+    function setParser(Parser $parser)
     {
         $this->parser = $parser;
         return $this;

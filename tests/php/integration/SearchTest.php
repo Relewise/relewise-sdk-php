@@ -27,7 +27,7 @@ class SearchTest extends BaseTest
             "p-1",
             0,
             3
-        )->withRelevanceModifiers(
+        )->setRelevanceModifiers(
             RelevanceModifierCollection::create(
                 ProductDataRelevanceModifier::create(
                     "NoveltyBoostModifier",
@@ -55,7 +55,7 @@ class SearchTest extends BaseTest
             Null,
             0,
             3
-        )->withRelevanceModifiers(
+        )->setRelevanceModifiers(
             RelevanceModifierCollection::create(
                 ProductDataRelevanceModifier::create(
                     "NoveltyBoostModifier",

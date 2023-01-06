@@ -23,31 +23,31 @@ class ProductPerformanceResultRankMetrics
         }
         if (array_key_exists("withinCategories", $arr))
         {
-            $result->withinCategories = array();
+            $result->setinCategories = array();
             foreach($arr["withinCategories"] as &$value)
             {
-                array_push($result->withinCategories, ProductPerformanceResultCategoryMetrics::hydrate($value));
+                array_push($result->setinCategories, ProductPerformanceResultCategoryMetrics::hydrate($value));
             }
         }
         if (array_key_exists("withinBrand", $arr))
         {
-            $result->withinBrand = ProductPerformanceResultViewsAndSalesMetrics::hydrate($arr["withinBrand"]);
+            $result->setinBrand = ProductPerformanceResultViewsAndSalesMetrics::hydrate($arr["withinBrand"]);
         }
         return $result;
     }
-    function withOverall(ProductPerformanceResultViewsAndSalesMetrics $overall)
+    function setOverall(ProductPerformanceResultViewsAndSalesMetrics $overall)
     {
         $this->overall = $overall;
         return $this;
     }
-    function withWithinCategories(ProductPerformanceResultCategoryMetrics ... $withinCategories)
+    function setWithinCategories(ProductPerformanceResultCategoryMetrics ... $withinCategories)
     {
-        $this->withinCategories = $withinCategories;
+        $this->setinCategories = $withinCategories;
         return $this;
     }
-    function withWithinBrand(ProductPerformanceResultViewsAndSalesMetrics $withinBrand)
+    function setWithinBrand(ProductPerformanceResultViewsAndSalesMetrics $withinBrand)
     {
-        $this->withinBrand = $withinBrand;
+        $this->setinBrand = $withinBrand;
         return $this;
     }
 }

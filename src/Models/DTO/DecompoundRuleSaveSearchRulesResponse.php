@@ -29,12 +29,12 @@ abstract class DecompoundRuleSaveSearchRulesResponse extends TimedResponse
         }
         return $result;
     }
-    function withRules(DecompoundRule ... $rules)
+    function setRules(DecompoundRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

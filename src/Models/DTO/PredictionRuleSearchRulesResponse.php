@@ -34,17 +34,17 @@ abstract class PredictionRuleSearchRulesResponse extends TimedResponse
         }
         return $result;
     }
-    function withRules(PredictionRule ... $rules)
+    function setRules(PredictionRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
-    function withHits(int $hits)
+    function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

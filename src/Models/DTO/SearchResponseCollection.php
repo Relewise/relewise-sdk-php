@@ -26,12 +26,12 @@ class SearchResponseCollection extends SearchResponse
         }
         return $result;
     }
-    function withResponses(SearchResponse ... $responses)
+    function setResponses(SearchResponse ... $responses)
     {
         $this->responses = $responses;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

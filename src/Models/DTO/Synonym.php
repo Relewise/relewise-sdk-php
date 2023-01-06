@@ -107,77 +107,77 @@ class Synonym
         }
         return $result;
     }
-    function withId(string $id)
+    function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withType(SynonymType $type)
+    function setType(SynonymType $type)
     {
         $this->type = $type;
         return $this;
     }
-    function withIndexes(string ... $indexes)
+    function setIndexes(string ... $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
-    function withLanguages(Language ... $languages)
+    function setLanguages(Language ... $languages)
     {
         $this->languages = $languages;
         return $this;
     }
-    function withCreated(DateTime $created)
+    function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
-    function withCreatedBy(string $createdBy)
+    function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
-    function withModified(DateTime $modified)
+    function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
-    function withModifiedBy(string $modifiedBy)
+    function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
-    function withFrom(string ... $from)
+    function setFrom(string ... $from)
     {
         $this->from = $from;
         return $this;
     }
-    function withWords(string ... $words)
+    function setWords(string ... $words)
     {
         $this->words = $words;
         return $this;
     }
-    function withApproved(?DateTime $approved)
+    function setApproved(?DateTime $approved)
     {
         $this->approved = $approved;
         return $this;
     }
-    function withApprovedBy(string $approvedBy)
+    function setApprovedBy(string $approvedBy)
     {
         $this->approvedBy = $approvedBy;
         return $this;
     }
-    function withUsages(int $usages)
+    function setUsages(int $usages)
     {
         $this->usages = $usages;
         return $this;
     }
-    function withIsApproved(bool $isApproved)
+    function setIsApproved(bool $isApproved)
     {
         $this->isApproved = $isApproved;
         return $this;
     }
-    function withAllowInPredictions(bool $allowInPredictions)
+    function setAllowInPredictions(bool $allowInPredictions)
     {
         $this->allowInPredictions = $allowInPredictions;
         return $this;

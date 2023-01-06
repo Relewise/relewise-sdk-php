@@ -25,27 +25,27 @@ abstract class floatContentDataRangesFacetResult extends floatRangesFacetResult
         }
         return $result;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withExpandedRangeSize(?float $expandedRangeSize)
+    function setExpandedRangeSize(?float $expandedRangeSize)
     {
         $this->expandedRangeSize = $expandedRangeSize;
         return $this;
     }
-    function withSelected(?floatChainableRange ... $selected)
+    function setSelected(?floatChainableRange ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withAvailable(?floatChainableRangeAvailableFacetValue ... $available)
+    function setAvailable(?floatChainableRangeAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

@@ -23,7 +23,7 @@ class TrackBrandAdministrativeActionRequest extends TrackingRequest
         }
         return $result;
     }
-    function withAdministrativeAction(BrandAdministrativeAction $administrativeAction)
+    function setAdministrativeAction(BrandAdministrativeAction $administrativeAction)
     {
         $this->administrativeAction = $administrativeAction;
         return $this;

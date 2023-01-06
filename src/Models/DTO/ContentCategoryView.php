@@ -33,12 +33,12 @@ class ContentCategoryView extends Trackable
         }
         return $result;
     }
-    function withUser(?User $user)
+    function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
-    function withIdPath(string ... $idPath)
+    function setIdPath(string ... $idPath)
     {
         $this->idPath = $idPath;
         return $this;

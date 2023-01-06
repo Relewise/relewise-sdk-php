@@ -25,7 +25,7 @@ class ContextConditionConfiguration
         }
         return $result;
     }
-    function withFilters(RequestContextFilter ... $filters)
+    function setFilters(RequestContextFilter ... $filters)
     {
         $this->filters = $filters;
         return $this;

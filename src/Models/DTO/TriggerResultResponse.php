@@ -22,12 +22,12 @@ class TriggerResultResponse extends TimedResponse
         }
         return $result;
     }
-    function withResult(ITriggerResult $result)
+    function setResult(ITriggerResult $result)
     {
         $this->result = $result;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

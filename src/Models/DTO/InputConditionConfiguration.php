@@ -26,12 +26,12 @@ class InputConditionConfiguration
         }
         return $result;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withEvaluationMode(EvaluationMode $evaluationMode)
+    function setEvaluationMode(EvaluationMode $evaluationMode)
     {
         $this->evaluationMode = $evaluationMode;
         return $this;

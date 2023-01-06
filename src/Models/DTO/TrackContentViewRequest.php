@@ -23,7 +23,7 @@ class TrackContentViewRequest extends TrackingRequest
         }
         return $result;
     }
-    function withContentView(ContentView $contentView)
+    function setContentView(ContentView $contentView)
     {
         $this->contentView = $contentView;
         return $this;

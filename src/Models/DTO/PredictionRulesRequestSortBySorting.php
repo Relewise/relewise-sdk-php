@@ -28,12 +28,12 @@ class PredictionRulesRequestSortBySorting
         }
         return $result;
     }
-    function withSortBy(PredictionRulesRequestSortBy $sortBy)
+    function setSortBy(PredictionRulesRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
-    function withSortOrder(SortOrder $sortOrder)
+    function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;
         return $this;

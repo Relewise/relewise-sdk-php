@@ -23,7 +23,7 @@ class TrackCartRequest extends TrackingRequest
         }
         return $result;
     }
-    function withCart(Cart $cart)
+    function setCart(Cart $cart)
     {
         $this->cart = $cart;
         return $this;

@@ -46,12 +46,12 @@ abstract class DeleteSearchRulesRequest extends LicensedRequest
         }
         return $result;
     }
-    function withIds(string ... $ids)
+    function setIds(string ... $ids)
     {
         $this->ids = $ids;
         return $this;
     }
-    function withDeletedBy(string $deletedBy)
+    function setDeletedBy(string $deletedBy)
     {
         $this->deletedBy = $deletedBy;
         return $this;

@@ -26,7 +26,7 @@ class MultiCurrency
         }
         return $result;
     }
-    function withValues(Money ... $values)
+    function setValues(Money ... $values)
     {
         $this->values = $values;
         return $this;

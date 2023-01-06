@@ -34,22 +34,22 @@ class VariantSpecificationFilter extends Filter
         }
         return $result;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withFilterOutIfKeyIsNotFound(bool $filterOutIfKeyIsNotFound)
+    function setFilterOutIfKeyIsNotFound(bool $filterOutIfKeyIsNotFound)
     {
         $this->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
         return $this;
     }
-    function withEqualTo(string $equalTo)
+    function setEqualTo(string $equalTo)
     {
         $this->equalTo = $equalTo;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

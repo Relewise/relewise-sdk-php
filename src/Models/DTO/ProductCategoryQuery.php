@@ -19,47 +19,47 @@ class ProductCategoryQuery extends ProductCategoryIdFilterCategoryQuery
         $result = ProductCategoryIdFilterCategoryQuery::hydrateBase(new ProductCategoryQuery(), $arr);
         return $result;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withNumberOfResults(int $numberOfResults)
+    function setNumberOfResults(int $numberOfResults)
     {
         $this->numberOfResults = $numberOfResults;
         return $this;
     }
-    function withLanguage(Language $language)
+    function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withCurrency(Currency $currency)
+    function setCurrency(Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
-    function withSkipNumberOfResults(int $skipNumberOfResults)
+    function setSkipNumberOfResults(int $skipNumberOfResults)
     {
         $this->skipNumberOfResults = $skipNumberOfResults;
         return $this;
     }
-    function withReturnTotalNumberOfResults(bool $returnTotalNumberOfResults)
+    function setReturnTotalNumberOfResults(bool $returnTotalNumberOfResults)
     {
         $this->returnTotalNumberOfResults = $returnTotalNumberOfResults;
         return $this;
     }
-    function withIncludeDisabledCategories(bool $includeDisabledCategories)
+    function setIncludeDisabledCategories(bool $includeDisabledCategories)
     {
         $this->includeDisabledCategories = $includeDisabledCategories;
         return $this;
     }
-    function withIncludeChildCategoriesToDepth(int $includeChildCategoriesToDepth)
+    function setIncludeChildCategoriesToDepth(int $includeChildCategoriesToDepth)
     {
         $this->includeChildCategoriesToDepth = $includeChildCategoriesToDepth;
         return $this;
     }
-    function withIncludeParentCategoriesToDepth(int $includeParentCategoriesToDepth)
+    function setIncludeParentCategoriesToDepth(int $includeParentCategoriesToDepth)
     {
         $this->includeParentCategoriesToDepth = $includeParentCategoriesToDepth;
         return $this;

@@ -45,27 +45,27 @@ class ProductAdministrativeAction extends Trackable
         }
         return $result;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withLanguage(Language $language)
+    function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withProductUpdateKind(ProductAdministrativeActionUpdateKind $productUpdateKind)
+    function setProductUpdateKind(ProductAdministrativeActionUpdateKind $productUpdateKind)
     {
         $this->productUpdateKind = $productUpdateKind;
         return $this;
     }
-    function withVariantUpdateKind(ProductAdministrativeActionUpdateKind $variantUpdateKind)
+    function setVariantUpdateKind(ProductAdministrativeActionUpdateKind $variantUpdateKind)
     {
         $this->variantUpdateKind = $variantUpdateKind;
         return $this;
     }
-    function withCurrency(Currency $currency)
+    function setCurrency(Currency $currency)
     {
         $this->currency = $currency;
         return $this;

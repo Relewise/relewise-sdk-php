@@ -30,12 +30,12 @@ class ContentCategoryInterestTriggerResult
         }
         return $result;
     }
-    function withUser(UserResultDetails $user)
+    function setUser(UserResultDetails $user)
     {
         $this->user = $user;
         return $this;
     }
-    function withCategories(ContentCategoryInterestTriggerResultCategory ... $categories)
+    function setCategories(ContentCategoryInterestTriggerResultCategory ... $categories)
     {
         $this->categories = $categories;
         return $this;

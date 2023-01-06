@@ -29,12 +29,12 @@ abstract class RedirectRuleSaveSearchRulesResponse extends TimedResponse
         }
         return $result;
     }
-    function withRules(RedirectRule ... $rules)
+    function setRules(RedirectRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

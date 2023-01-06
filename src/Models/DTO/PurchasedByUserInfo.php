@@ -28,12 +28,12 @@ class PurchasedByUserInfo
         }
         return $result;
     }
-    function withMostRecentPurchasedUtc(DateTime $mostRecentPurchasedUtc)
+    function setMostRecentPurchasedUtc(DateTime $mostRecentPurchasedUtc)
     {
         $this->mostRecentPurchasedUtc = $mostRecentPurchasedUtc;
         return $this;
     }
-    function withTotalNumberOfTimesPurchased(int $totalNumberOfTimesPurchased)
+    function setTotalNumberOfTimesPurchased(int $totalNumberOfTimesPurchased)
     {
         $this->totalNumberOfTimesPurchased = $totalNumberOfTimesPurchased;
         return $this;

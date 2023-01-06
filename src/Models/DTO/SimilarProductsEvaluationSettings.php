@@ -75,57 +75,57 @@ class SimilarProductsEvaluationSettings
         }
         return $result;
     }
-    function withSignificanceOfSimilaritiesInDisplayName(float $significanceOfSimilaritiesInDisplayName)
+    function setSignificanceOfSimilaritiesInDisplayName(float $significanceOfSimilaritiesInDisplayName)
     {
         $this->significanceOfSimilaritiesInDisplayName = $significanceOfSimilaritiesInDisplayName;
         return $this;
     }
-    function withProductDisplayNameTransformer(?TrimStringTransformer $productDisplayNameTransformer)
+    function setProductDisplayNameTransformer(?TrimStringTransformer $productDisplayNameTransformer)
     {
         $this->productDisplayNameTransformer = $productDisplayNameTransformer;
         return $this;
     }
-    function withSignificanceOfSimilarListPrice(float $significanceOfSimilarListPrice)
+    function setSignificanceOfSimilarListPrice(float $significanceOfSimilarListPrice)
     {
         $this->significanceOfSimilarListPrice = $significanceOfSimilarListPrice;
         return $this;
     }
-    function withSignificanceOfCommonImmediateParentCategories(float $significanceOfCommonImmediateParentCategories)
+    function setSignificanceOfCommonImmediateParentCategories(float $significanceOfCommonImmediateParentCategories)
     {
         $this->significanceOfCommonImmediateParentCategories = $significanceOfCommonImmediateParentCategories;
         return $this;
     }
-    function withSignificanceOfCommonParentsParentCategories(float $significanceOfCommonParentsParentCategories)
+    function setSignificanceOfCommonParentsParentCategories(float $significanceOfCommonParentsParentCategories)
     {
         $this->significanceOfCommonParentsParentCategories = $significanceOfCommonParentsParentCategories;
         return $this;
     }
-    function withSignificanceOfCommonAncestorCategories(float $significanceOfCommonAncestorCategories)
+    function setSignificanceOfCommonAncestorCategories(float $significanceOfCommonAncestorCategories)
     {
         $this->significanceOfCommonAncestorCategories = $significanceOfCommonAncestorCategories;
         return $this;
     }
-    function withSignificanceOfCommonProductDataKeys(float $significanceOfCommonProductDataKeys)
+    function setSignificanceOfCommonProductDataKeys(float $significanceOfCommonProductDataKeys)
     {
         $this->significanceOfCommonProductDataKeys = $significanceOfCommonProductDataKeys;
         return $this;
     }
-    function withSignificanceOfIdenticalProductDataValues(float $significanceOfIdenticalProductDataValues)
+    function setSignificanceOfIdenticalProductDataValues(float $significanceOfIdenticalProductDataValues)
     {
         $this->significanceOfIdenticalProductDataValues = $significanceOfIdenticalProductDataValues;
         return $this;
     }
-    function withSignificantProductDataFields(SignificantDataValue ... $significantProductDataFields)
+    function setSignificantProductDataFields(SignificantDataValue ... $significantProductDataFields)
     {
         $this->significantProductDataFields = $significantProductDataFields;
         return $this;
     }
-    function withSignificanceOfSimilarSalesPrice(float $significanceOfSimilarSalesPrice)
+    function setSignificanceOfSimilarSalesPrice(float $significanceOfSimilarSalesPrice)
     {
         $this->significanceOfSimilarSalesPrice = $significanceOfSimilarSalesPrice;
         return $this;
     }
-    function withSignificanceOfSimilarBrand(float $significanceOfSimilarBrand)
+    function setSignificanceOfSimilarBrand(float $significanceOfSimilarBrand)
     {
         $this->significanceOfSimilarBrand = $significanceOfSimilarBrand;
         return $this;

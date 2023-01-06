@@ -17,17 +17,17 @@ class BrandFacetResult extends stringBrandNameAndIdResultValueFacetResult
         $result = stringBrandNameAndIdResultValueFacetResult::hydrateBase(new BrandFacetResult(), $arr);
         return $result;
     }
-    function withSelected(string ... $selected)
+    function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    function withAvailable(BrandNameAndIdResultAvailableFacetValue ... $available)
+    function setAvailable(BrandNameAndIdResultAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
-    function withField(FacetingField $field)
+    function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;

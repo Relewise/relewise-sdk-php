@@ -26,7 +26,7 @@ class RelevanceModifierCollection
         }
         return $result;
     }
-    function withItems(RelevanceModifier ... $items)
+    function setItems(RelevanceModifier ... $items)
     {
         $this->items = $items;
         return $this;

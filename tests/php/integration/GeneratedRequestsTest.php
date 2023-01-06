@@ -37,15 +37,15 @@ class GeneratedRequestsTest extends BaseTest
         $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
 
         $trackOrderRequest = (new TrackOrderRequest())
-            ->withOrder((new Order())
-                ->withUser(UserFactory::byTemporaryId("t-Id"))
-                ->withSubtotal((new Money())
-                    ->withAmount(100)
-                    ->withCurrency((new Currency())
-                        ->withValue("DKK")
+            ->setOrder((new Order())
+                ->setUser(UserFactory::byTemporaryId("t-Id"))
+                ->setSubtotal((new Money())
+                    ->setAmount(100)
+                    ->setCurrency((new Currency())
+                        ->setValue("DKK")
                     )
                 )
-                ->withOrderNumber("1"));
+                ->setOrderNumber("1"));
 
         $response = $tracker->request('TrackOrderRequest', $trackOrderRequest);
 

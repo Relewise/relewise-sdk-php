@@ -33,17 +33,17 @@ class SynonymsResponse extends TimedResponse
         }
         return $result;
     }
-    function withValues(Synonym ... $values)
+    function setValues(Synonym ... $values)
     {
         $this->values = $values;
         return $this;
     }
-    function withHits(int $hits)
+    function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

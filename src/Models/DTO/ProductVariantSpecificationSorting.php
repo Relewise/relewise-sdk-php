@@ -30,22 +30,22 @@ class ProductVariantSpecificationSorting extends ProductSorting
         }
         return $result;
     }
-    function withKey(string $key)
+    function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    function withMode(SortMode $mode)
+    function setMode(SortMode $mode)
     {
         $this->mode = $mode;
         return $this;
     }
-    function withOrder(SortOrder $order)
+    function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
-    function withThenBy(ProductSorting $thenBy)
+    function setThenBy(ProductSorting $thenBy)
     {
         $this->thenBy = $thenBy;
         return $this;

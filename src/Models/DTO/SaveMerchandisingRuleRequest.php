@@ -29,12 +29,12 @@ class SaveMerchandisingRuleRequest extends LicensedRequest
         }
         return $result;
     }
-    function withRule(MerchandisingRule $rule)
+    function setRule(MerchandisingRule $rule)
     {
         $this->rule = $rule;
         return $this;
     }
-    function withModifiedBy(string $modifiedBy)
+    function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;

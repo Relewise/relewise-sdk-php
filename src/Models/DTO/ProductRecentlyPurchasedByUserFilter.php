@@ -24,12 +24,12 @@ class ProductRecentlyPurchasedByUserFilter extends Filter
         }
         return $result;
     }
-    function withSinceUtc(DateTime $sinceUtc)
+    function setSinceUtc(DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

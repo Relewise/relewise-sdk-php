@@ -26,7 +26,7 @@ class SearchTermPredictionSettings extends SearchSettings
         }
         return $result;
     }
-    function withTargetEntityTypes(EntityType ... $targetEntityTypes)
+    function setTargetEntityTypes(EntityType ... $targetEntityTypes)
     {
         $this->targetEntityTypes = $targetEntityTypes;
         return $this;

@@ -17,22 +17,22 @@ class PredictionRulesRequest extends PredictionRulesRequestSortBySearchRulesRequ
         $result = PredictionRulesRequestSortBySearchRulesRequest::hydrateBase(new PredictionRulesRequest(), $arr);
         return $result;
     }
-    function withFilters(SearchRuleFilters $filters)
+    function setFilters(SearchRuleFilters $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withSorting(PredictionRulesRequestSortBySorting $sorting)
+    function setSorting(PredictionRulesRequestSortBySorting $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
-    function withSkip(int $skip)
+    function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
-    function withTake(int $take)
+    function setTake(int $take)
     {
         $this->take = $take;
         return $this;

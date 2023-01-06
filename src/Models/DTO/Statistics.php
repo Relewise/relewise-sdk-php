@@ -21,7 +21,7 @@ class Statistics
         }
         return $result;
     }
-    function withServerTimeInMs(float $serverTimeInMs)
+    function setServerTimeInMs(float $serverTimeInMs)
     {
         $this->serverTimeInMs = $serverTimeInMs;
         return $this;

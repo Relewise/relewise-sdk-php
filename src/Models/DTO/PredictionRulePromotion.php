@@ -32,12 +32,12 @@ class PredictionRulePromotion
         }
         return $result;
     }
-    function withTo(PromotionPosition $to)
+    function setTo(PromotionPosition $to)
     {
         $this->to = $to;
         return $this;
     }
-    function withValues(string ... $values)
+    function setValues(string ... $values)
     {
         $this->values = $values;
         return $this;

@@ -17,22 +17,22 @@ class DecompoundRulesRequest extends DecompoundRulesRequestSortBySearchRulesRequ
         $result = DecompoundRulesRequestSortBySearchRulesRequest::hydrateBase(new DecompoundRulesRequest(), $arr);
         return $result;
     }
-    function withFilters(SearchRuleFilters $filters)
+    function setFilters(SearchRuleFilters $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withSorting(DecompoundRulesRequestSortBySorting $sorting)
+    function setSorting(DecompoundRulesRequestSortBySorting $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
-    function withSkip(int $skip)
+    function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
-    function withTake(int $take)
+    function setTake(int $take)
     {
         $this->take = $take;
         return $this;

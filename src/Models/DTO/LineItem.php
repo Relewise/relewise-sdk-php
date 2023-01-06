@@ -40,22 +40,22 @@ class LineItem
         }
         return $result;
     }
-    function withProduct(Product $product)
+    function setProduct(Product $product)
     {
         $this->product = $product;
         return $this;
     }
-    function withVariant(?ProductVariant $variant)
+    function setVariant(?ProductVariant $variant)
     {
         $this->variant = $variant;
         return $this;
     }
-    function withQuantity(int $quantity)
+    function setQuantity(int $quantity)
     {
         $this->quantity = $quantity;
         return $this;
     }
-    function withLineTotal(float $lineTotal)
+    function setLineTotal(float $lineTotal)
     {
         $this->lineTotal = $lineTotal;
         return $this;

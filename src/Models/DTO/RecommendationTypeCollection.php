@@ -25,7 +25,7 @@ class RecommendationTypeCollection
         }
         return $result;
     }
-    function withUnionCodes(int ... $unionCodes)
+    function setUnionCodes(int ... $unionCodes)
     {
         $this->unionCodes = $unionCodes;
         return $this;

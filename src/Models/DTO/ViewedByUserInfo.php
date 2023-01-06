@@ -28,12 +28,12 @@ class ViewedByUserInfo
         }
         return $result;
     }
-    function withMostRecentlyViewedUtc(DateTime $mostRecentlyViewedUtc)
+    function setMostRecentlyViewedUtc(DateTime $mostRecentlyViewedUtc)
     {
         $this->mostRecentlyViewedUtc = $mostRecentlyViewedUtc;
         return $this;
     }
-    function withTotalNumberOfTimesViewed(int $totalNumberOfTimesViewed)
+    function setTotalNumberOfTimesViewed(int $totalNumberOfTimesViewed)
     {
         $this->totalNumberOfTimesViewed = $totalNumberOfTimesViewed;
         return $this;

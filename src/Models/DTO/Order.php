@@ -65,42 +65,42 @@ class Order extends Trackable
         }
         return $result;
     }
-    function withUser(User $user)
+    function setUser(User $user)
     {
         $this->user = $user;
         return $this;
     }
-    function withSubtotal(Money $subtotal)
+    function setSubtotal(Money $subtotal)
     {
         $this->subtotal = $subtotal;
         return $this;
     }
-    function withLineItems(LineItem ... $lineItems)
+    function setLineItems(LineItem ... $lineItems)
     {
         $this->lineItems = $lineItems;
         return $this;
     }
-    function withOrderNumber(string $orderNumber)
+    function setOrderNumber(string $orderNumber)
     {
         $this->orderNumber = $orderNumber;
         return $this;
     }
-    function withCartName(string $cartName)
+    function setCartName(string $cartName)
     {
         $this->cartName = $cartName;
         return $this;
     }
-    function withChannel(?string $channel)
+    function setChannel(?string $channel)
     {
         $this->channel = $channel;
         return $this;
     }
-    function withSubChannel(?string $subChannel)
+    function setSubChannel(?string $subChannel)
     {
         $this->subChannel = $subChannel;
         return $this;
     }
-    function withTrackingNumber(?string $trackingNumber)
+    function setTrackingNumber(?string $trackingNumber)
     {
         $this->trackingNumber = $trackingNumber;
         return $this;

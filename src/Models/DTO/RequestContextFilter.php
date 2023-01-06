@@ -53,27 +53,27 @@ class RequestContextFilter
         }
         return $result;
     }
-    function withRecommendations(RecommendationTypeCollection $recommendations)
+    function setRecommendations(RecommendationTypeCollection $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
-    function withSearches(SearchTypeCollection $searches)
+    function setSearches(SearchTypeCollection $searches)
     {
         $this->searches = $searches;
         return $this;
     }
-    function withLocations(string ... $locations)
+    function setLocations(string ... $locations)
     {
         $this->locations = $locations;
         return $this;
     }
-    function withLanguages(Language ... $languages)
+    function setLanguages(Language ... $languages)
     {
         $this->languages = $languages;
         return $this;
     }
-    function withCurrencies(Currency ... $currencies)
+    function setCurrencies(Currency ... $currencies)
     {
         $this->currencies = $currencies;
         return $this;

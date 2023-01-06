@@ -27,42 +27,42 @@ class ProductsViewedAfterViewingProductRequest extends ProductRecommendationRequ
         }
         return $result;
     }
-    function withProductAndVariantId(ProductAndVariantId $productAndVariantId)
+    function setProductAndVariantId(ProductAndVariantId $productAndVariantId)
     {
         $this->productAndVariantId = $productAndVariantId;
         return $this;
     }
-    function withSettings(ProductRecommendationRequestSettings $settings)
+    function setSettings(ProductRecommendationRequestSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
-    function withLanguage(?Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function withUser(User $user)
+    function setUser(User $user)
     {
         $this->user = $user;
         return $this;
     }
-    function withRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
+    function setRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
-    function withFilters(FilterCollection $filters)
+    function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    function withDisplayedAtLocationType(string $displayedAtLocationType)
+    function setDisplayedAtLocationType(string $displayedAtLocationType)
     {
         $this->displayedAtLocationType = $displayedAtLocationType;
         return $this;
     }
-    function withCurrency(?Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;

@@ -28,12 +28,12 @@ class CategoryNameAndId
         }
         return $result;
     }
-    function withId(string $id)
+    function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    function withDisplayName(?Multilingual $displayName)
+    function setDisplayName(?Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;

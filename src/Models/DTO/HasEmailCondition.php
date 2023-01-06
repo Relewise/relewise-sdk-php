@@ -17,7 +17,7 @@ class HasEmailCondition extends UserCondition
         $result = UserCondition::hydrateBase(new HasEmailCondition(), $arr);
         return $result;
     }
-    function withNegated(bool $negated)
+    function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;

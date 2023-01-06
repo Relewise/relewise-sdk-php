@@ -28,12 +28,12 @@ class StemmingRulesRequestSortBySorting
         }
         return $result;
     }
-    function withSortBy(StemmingRulesRequestSortBy $sortBy)
+    function setSortBy(StemmingRulesRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
-    function withSortOrder(SortOrder $sortOrder)
+    function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;
         return $this;

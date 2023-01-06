@@ -17,32 +17,32 @@ class ProductCategoryResult extends CategoryResult
         $result = CategoryResult::hydrateBase(new ProductCategoryResult(), $arr);
         return $result;
     }
-    function withCategoryId(string $categoryId)
+    function setCategoryId(string $categoryId)
     {
         $this->categoryId = $categoryId;
         return $this;
     }
-    function withDisplayName(string $displayName)
+    function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    function withRank(int $rank)
+    function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;
     }
-    function withViewedByUser(ViewedByUserInfo $viewedByUser)
+    function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;
     }
-    function withPaths(CategoryPathResult ... $paths)
+    function setPaths(CategoryPathResult ... $paths)
     {
         $this->paths = $paths;
         return $this;
     }
-    function withAssortments(int ... $assortments)
+    function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;

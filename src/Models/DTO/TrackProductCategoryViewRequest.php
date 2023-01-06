@@ -23,7 +23,7 @@ class TrackProductCategoryViewRequest extends TrackingRequest
         }
         return $result;
     }
-    function withProductCategoryView(ProductCategoryView $productCategoryView)
+    function setProductCategoryView(ProductCategoryView $productCategoryView)
     {
         $this->productCategoryView = $productCategoryView;
         return $this;

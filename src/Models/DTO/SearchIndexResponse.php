@@ -22,12 +22,12 @@ class SearchIndexResponse extends TimedResponse
         }
         return $result;
     }
-    function withIndex(SearchIndex $index)
+    function setIndex(SearchIndex $index)
     {
         $this->index = $index;
         return $this;
     }
-    function withStatistics(Statistics $statistics)
+    function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;
         return $this;

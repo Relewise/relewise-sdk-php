@@ -30,14 +30,14 @@ class DataObjectsTest extends BaseTest
             "1",
             0,
             0
-        )->withSettings(ProductSearchSettings::create()->withSelectedProductProperties(SelectedProductPropertiesSettings::create()->withAllData(true)))
-        ->withFilters(FilterCollection::create()
-            ->withItems(ProductDataFilter::create()
-                ->withKey("DataObject")
-                ->withConditions(ValueConditionCollection::create()
-                    ->withItems(
+        )->setSettings(ProductSearchSettings::create()->setSelectedProductProperties(SelectedProductPropertiesSettings::create()->setAllData(true)))
+        ->setFilters(FilterCollection::create()
+            ->setItems(ProductDataFilter::create()
+                ->setKey("DataObject")
+                ->setConditions(ValueConditionCollection::create()
+                    ->setItems(
                         ContainsCondition::create()
-                            ->withValue(DataValueFactory::objectDataValue(array("d" => DataValueFactory::stringDataValue("a"))))
+                            ->setValue(DataValueFactory::objectDataValue(array("d" => DataValueFactory::stringDataValue("a"))))
                     )
                 )
             )

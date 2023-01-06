@@ -61,47 +61,47 @@ class OverriddenProductRecommendationRequestSettings
         }
         return $result;
     }
-    function withNumberOfRecommendations(?int $numberOfRecommendations)
+    function setNumberOfRecommendations(?int $numberOfRecommendations)
     {
         $this->numberOfRecommendations = $numberOfRecommendations;
         return $this;
     }
-    function withAllowFillIfNecessaryToReachNumberOfRecommendations(?bool $allowFillIfNecessaryToReachNumberOfRecommendations)
+    function setAllowFillIfNecessaryToReachNumberOfRecommendations(?bool $allowFillIfNecessaryToReachNumberOfRecommendations)
     {
         $this->allowFillIfNecessaryToReachNumberOfRecommendations = $allowFillIfNecessaryToReachNumberOfRecommendations;
         return $this;
     }
-    function withAllowReplacingOfRecentlyShownRecommendations(?bool $allowReplacingOfRecentlyShownRecommendations)
+    function setAllowReplacingOfRecentlyShownRecommendations(?bool $allowReplacingOfRecentlyShownRecommendations)
     {
         $this->allowReplacingOfRecentlyShownRecommendations = $allowReplacingOfRecentlyShownRecommendations;
         return $this;
     }
-    function withRecommendVariant(?bool $recommendVariant)
+    function setRecommendVariant(?bool $recommendVariant)
     {
         $this->recommendVariant = $recommendVariant;
         return $this;
     }
-    function withSelectedProductProperties(OverriddenSelectedProductPropertiesSettings $selectedProductProperties)
+    function setSelectedProductProperties(OverriddenSelectedProductPropertiesSettings $selectedProductProperties)
     {
         $this->selectedProductProperties = $selectedProductProperties;
         return $this;
     }
-    function withSelectedVariantProperties(OverriddenSelectedVariantPropertiesSettings $selectedVariantProperties)
+    function setSelectedVariantProperties(OverriddenSelectedVariantPropertiesSettings $selectedVariantProperties)
     {
         $this->selectedVariantProperties = $selectedVariantProperties;
         return $this;
     }
-    function withPrioritizeDiversityBetweenRequests(?bool $prioritizeDiversityBetweenRequests)
+    function setPrioritizeDiversityBetweenRequests(?bool $prioritizeDiversityBetweenRequests)
     {
         $this->prioritizeDiversityBetweenRequests = $prioritizeDiversityBetweenRequests;
         return $this;
     }
-    function withAllowProductsCurrentlyInCart(?bool $allowProductsCurrentlyInCart)
+    function setAllowProductsCurrentlyInCart(?bool $allowProductsCurrentlyInCart)
     {
         $this->allowProductsCurrentlyInCart = $allowProductsCurrentlyInCart;
         return $this;
     }
-    function withSelectedBrandProperties(OverriddenSelectedBrandPropertiesSettings $selectedBrandProperties)
+    function setSelectedBrandProperties(OverriddenSelectedBrandPropertiesSettings $selectedBrandProperties)
     {
         $this->selectedBrandProperties = $selectedBrandProperties;
         return $this;

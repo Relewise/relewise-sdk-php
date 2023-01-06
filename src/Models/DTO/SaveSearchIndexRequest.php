@@ -29,12 +29,12 @@ class SaveSearchIndexRequest extends LicensedRequest
         }
         return $result;
     }
-    function withIndex(SearchIndex $index)
+    function setIndex(SearchIndex $index)
     {
         $this->index = $index;
         return $this;
     }
-    function withModifiedBy(string $modifiedBy)
+    function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
