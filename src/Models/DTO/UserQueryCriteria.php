@@ -75,7 +75,7 @@ class UserQueryCriteria
         $this->currency = $currency;
         return $this;
     }
-    function withIdentifiers(string $key, string $value)
+    function addIdentifiers(string $key, string $value)
     {
         if (!isset($this->identifiers))
         {

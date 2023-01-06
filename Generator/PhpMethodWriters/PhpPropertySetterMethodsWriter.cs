@@ -17,7 +17,7 @@ public class PhpPropertySetterMethodsWriter
         {
             if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(Dictionary<,>) && propertyType.GenericTypeArguments is [var keyType, var valueType])
             {
-                writer.WriteLine($"function with{propertyName}({phpWriter.PhpTypeName(keyType)} $key, {phpWriter.PhpTypeName(valueType)} $value)");
+                writer.WriteLine($"function add{propertyName}({phpWriter.PhpTypeName(keyType)} $key, {phpWriter.PhpTypeName(valueType)} $value)");
                 writer.WriteLine("{");
                 writer.Indent++;
                 writer.WriteLine($"if (!isset($this->{lowerCaseName}))");

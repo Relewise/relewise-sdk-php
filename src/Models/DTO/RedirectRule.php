@@ -53,7 +53,7 @@ class RedirectRule extends SearchRule
         $this->destination = $destination;
         return $this;
     }
-    function withData(string $key, string $value)
+    function addData(string $key, string $value)
     {
         if (!isset($this->data))
         {

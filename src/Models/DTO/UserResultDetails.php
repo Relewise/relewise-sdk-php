@@ -121,7 +121,7 @@ class UserResultDetails
         $this->email = $email;
         return $this;
     }
-    function withClassifications(string $key, string $value)
+    function addClassifications(string $key, string $value)
     {
         if (!isset($this->classifications))
         {
@@ -145,7 +145,7 @@ class UserResultDetails
         $this->lastOrderUtc = $lastOrderUtc;
         return $this;
     }
-    function withCarts(string $key, CartDetails $value)
+    function addCarts(string $key, CartDetails $value)
     {
         if (!isset($this->carts))
         {
@@ -164,7 +164,7 @@ class UserResultDetails
         $this->totalNumberOfOrders = $totalNumberOfOrders;
         return $this;
     }
-    function withIdentifiers(string $key, string $value)
+    function addIdentifiers(string $key, string $value)
     {
         if (!isset($this->identifiers))
         {
@@ -178,7 +178,7 @@ class UserResultDetails
         $this->key = $key;
         return $this;
     }
-    function withData(string $key, DataValue $value)
+    function addData(string $key, DataValue $value)
     {
         if (!isset($this->data))
         {

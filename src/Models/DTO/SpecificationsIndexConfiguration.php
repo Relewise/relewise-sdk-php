@@ -30,7 +30,7 @@ class SpecificationsIndexConfiguration
         }
         return $result;
     }
-    function withKeys(string $key, FieldIndexConfiguration $value)
+    function addKeys(string $key, FieldIndexConfiguration $value)
     {
         if (!isset($this->keys))
         {

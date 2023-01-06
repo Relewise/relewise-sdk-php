@@ -23,7 +23,7 @@ class UserFactory {
 
     public static function byIdentifier(string $key, string $value) {
         return (new User())
-            ->withIdentifiers($key, $value);
+            ->addIdentifiers($key, $value);
     }
 
     public static function byIdentifiers(array $identifiers) {

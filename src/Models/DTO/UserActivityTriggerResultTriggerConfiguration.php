@@ -70,7 +70,7 @@ abstract class UserActivityTriggerResultTriggerConfiguration extends TriggerConf
         $this->withinTimeSpanMinutes = $withinTimeSpanMinutes;
         return $this;
     }
-    function withSettings(string $key, string $value)
+    function addSettings(string $key, string $value)
     {
         if (!isset($this->settings))
         {

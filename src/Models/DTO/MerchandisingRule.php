@@ -160,7 +160,7 @@ abstract class MerchandisingRule
         $this->priority = $priority;
         return $this;
     }
-    function withSettings(string $key, string $value)
+    function addSettings(string $key, string $value)
     {
         if (!isset($this->settings))
         {

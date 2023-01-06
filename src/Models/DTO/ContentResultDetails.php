@@ -104,7 +104,7 @@ class ContentResultDetails
         $this->assortments = $assortments;
         return $this;
     }
-    function withData(string $key, DataValue $value)
+    function addData(string $key, DataValue $value)
     {
         if (!isset($this->data))
         {

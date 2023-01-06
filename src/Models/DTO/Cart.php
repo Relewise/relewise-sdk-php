@@ -72,7 +72,7 @@ class Cart extends Trackable
         $this->lineItems = $lineItems;
         return $this;
     }
-    function withData(string $key, DataValue $value)
+    function addData(string $key, DataValue $value)
     {
         if (!isset($this->data))
         {

@@ -78,7 +78,7 @@ class ProductVariant
         $this->assortments = $assortments;
         return $this;
     }
-    function withSpecification(string $key, string $value)
+    function addSpecification(string $key, string $value)
     {
         if (!isset($this->specification))
         {
@@ -87,7 +87,7 @@ class ProductVariant
         $this->specification[$key] = $value;
         return $this;
     }
-    function withData(string $key, DataValue $value)
+    function addData(string $key, DataValue $value)
     {
         if (!isset($this->data))
         {
