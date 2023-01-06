@@ -8,6 +8,10 @@ Install via composer.
 composer require relewise/client
 ```
 
+## Usage
+
+To see examples of how to use the package [checkout our PHP documentation](https://docs.relewise.com/docs/examples/php/)
+
 ## Contributing
 
 Pull requests are always welcome.  
