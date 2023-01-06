@@ -26,14 +26,11 @@ use Relewise\Models\DTO\TrackProductUpdateRequest;
 use Relewise\Models\DTO\TrackProductViewRequest;
 use Relewise\Models\DTO\ProductUpdateUpdateKind;
 
-class TrackerTest extends TestCase
+class TrackerTest extends BaseTest
 {
     public function testProductView(): void
     {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
-        $tracker = new Tracker($datasetId, $apiKey);
+        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
 
         $productViewRequest = TrackProductViewRequest::create(
             ProductView::create(
@@ -49,11 +46,8 @@ class TrackerTest extends TestCase
 
     public function testProductUpdateWithVariant(): void
     {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
         // Create Product by tracking it.
-        $tracker = new Tracker($datasetId, $apiKey);
+        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
 
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
@@ -89,7 +83,7 @@ class TrackerTest extends TestCase
         self::assertNull($tracking);
 
         // Validate that the product was created with search.
-        $searcher = new Searcher($datasetId, $apiKey);
+        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
 
         $productSearch = ProductSearchRequest::create(
             Language::create("da-dk"),

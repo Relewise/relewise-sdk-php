@@ -18,14 +18,11 @@ use Relewise\Models\DTO\ProductFacetQuery;
 use Relewise\Models\DTO\ProductSearchRequest;
 use Relewise\Searcher;
 
-class FacetsTest extends TestCase
+class FacetsTest extends BaseTest
 {
     public function testSalesPriceFacet(): void
     {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
-        $searcher = new Searcher($datasetId, $apiKey);
+        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
 
         $productSearch = ProductSearchRequest::create(
             Language::create("en-US"),
@@ -38,7 +35,7 @@ class FacetsTest extends TestCase
         )->withFacets(
             ProductFacetQuery::create()
                 ->withItems(
-                    PriceRangeFacet::create(FacetingField::SalesPrice, PriceSelectionStrategy::Product, Null)
+                    PriceRangeFacet::create(FacetingField::SalesPrice, PriceSelectionStrategy::Product, Null),
                 )
         );
 
@@ -54,10 +51,7 @@ class FacetsTest extends TestCase
 
     public function testBrandFacet(): void
     {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
-        $searcher = new Searcher($datasetId, $apiKey);
+        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
 
         $productSearch = ProductSearchRequest::create(
             Language::create("en-US"),
@@ -87,10 +81,7 @@ class FacetsTest extends TestCase
 
     public function testProductDataFacet(): void
     {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
-        $searcher = new Searcher($datasetId, $apiKey);
+        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
 
         $productSearch = ProductSearchRequest::create(
             Language::create("en-US"),

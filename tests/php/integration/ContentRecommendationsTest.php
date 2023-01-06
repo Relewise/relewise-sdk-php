@@ -10,14 +10,11 @@ use Relewise\Models\DTO\Language;
 use Relewise\Models\DTO\PopularContentsRequest;
 use Relewise\Recommender;
 
-class ContentRecommendationsTest extends TestCase
+class ContentRecommendationsTest extends BaseTest
 {
     public function testContentsViewedAfterViewing(): void
     {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
-        $recommender = new Recommender($datasetId, $apiKey);
+        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
 
         $contentsViewedAfterViewingContent = ContentsViewedAfterViewingContentRequest::create(
             Language::create("en-US"),
@@ -38,7 +35,7 @@ class ContentRecommendationsTest extends TestCase
         $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
         $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
 
-        $recommender = new Recommender($datasetId, $apiKey);
+        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
 
         $popularContents = PopularContentsRequest::create(
             Language::create("en-US"),

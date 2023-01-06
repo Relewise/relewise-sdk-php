@@ -10,14 +10,53 @@ use Relewise\Models\DTO\Currency;
 use Relewise\Models\DTO\Order;
 use Relewise\Models\DTO\TrackOrderRequest;
 
-class GeneratedRequestsTest extends TestCase
+class GeneratedRequestsTest extends BaseTest
 {
+    public function testTrackOrderRequestWithBuilderPatternAndCreatorMethod(): void
+    {
+        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+
+        $trackOrderRequest = TrackOrderRequest::create(
+            Order::create(
+                UserFactory::byTemporaryId("t-Id"),
+                Money::create(Currency::create("DKK"), 100),
+                "1",
+                "1"
+            )
+        );
+
+        $response = $tracker->request('TrackOrderRequest', $trackOrderRequest);
+
+        self::assertEquals(200, $response->code);
+        self::assertEquals(null, $response->body);
+    }
+
+    // This is a regression test to test that we can still new-up classes without the create method. Don't use this style in real scenarios.
+    public function testTrackOrderRequestWithBuilderPattern(): void
+    {
+        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+
+        $trackOrderRequest = (new TrackOrderRequest())
+            ->withOrder((new Order())
+                ->withUser(UserFactory::byTemporaryId("t-Id"))
+                ->withSubtotal((new Money())
+                    ->withAmount(100)
+                    ->withCurrency((new Currency())
+                        ->withValue("DKK")
+                    )
+                )
+                ->withOrderNumber("1"));
+
+        $response = $tracker->request('TrackOrderRequest', $trackOrderRequest);
+
+        self::assertEquals(200, $response->code);
+        self::assertEquals(null, $response->body);
+    }
+
+    // This is a regression test to test that we can still new-up classes without the create method. Don't use this style in real scenarios.
     public function testTrackOrderRequest(): void
     {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
-        $tracker = new Tracker($datasetId, $apiKey);
+        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
 
         $money = new Money();
         $money->amount = 100;
@@ -31,52 +70,6 @@ class GeneratedRequestsTest extends TestCase
 
         $trackOrderRequest = new TrackOrderRequest();
         $trackOrderRequest->order = $order;
-
-        $response = $tracker->request('TrackOrderRequest', $trackOrderRequest);
-
-        self::assertEquals(200, $response->code);
-        self::assertEquals(null, $response->body);
-    }
-
-    public function testTrackOrderRequestWithBuilderPattern(): void
-    {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
-        $tracker = new Tracker($datasetId, $apiKey);
-
-        $trackOrderRequest = (new TrackOrderRequest())
-            ->withOrder((new Order())
-                ->withUser(UserFactory::byTemporaryId("t-Id"))
-                ->withSubtotal((new Money())
-                        ->withAmount(100)
-                        ->withCurrency((new Currency())
-                                ->withValue("DKK")
-                        )
-                )
-                ->withOrderNumber("1"));
-
-        $response = $tracker->request('TrackOrderRequest', $trackOrderRequest);
-
-        self::assertEquals(200, $response->code);
-        self::assertEquals(null, $response->body);
-    }
-
-    public function testTrackOrderRequestWithBuilderPatternAndCreatorMethod(): void
-    {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
-        $tracker = new Tracker($datasetId, $apiKey);
-
-        $trackOrderRequest = TrackOrderRequest::create(
-            Order::create(
-                UserFactory::byTemporaryId("t-Id"),
-                Money::create(Currency::create("DKK"), 100),
-                "1",
-                "1"
-            )
-        );
 
         $response = $tracker->request('TrackOrderRequest', $trackOrderRequest);
 

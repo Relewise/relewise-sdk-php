@@ -16,14 +16,11 @@ use Relewise\Models\DTO\SelectedProductPropertiesSettings;
 use Relewise\Models\DTO\ValueConditionCollection;
 use Relewise\Searcher;
 
-class DataObjectsTest extends TestCase
+class DataObjectsTest extends BaseTest
 {
     public function testDataObjectsCanBeDeserialized(): void
     {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
-        $searcher = new Searcher($datasetId, $apiKey);
+        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
 
         $productSearch = ProductSearchRequest::create(
             Language::create("da-dk"),

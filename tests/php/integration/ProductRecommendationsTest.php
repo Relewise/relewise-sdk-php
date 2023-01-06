@@ -18,14 +18,11 @@ use Relewise\Models\DTO\PurchasedWithProductRequest;
 use Relewise\Models\DTO\ValueConditionCollection;
 use Relewise\Recommender;
 
-class ProductRecommendationsTest extends TestCase
+class ProductRecommendationsTest extends BaseTest
 {
     public function testPurchasedWithProduct(): void
     {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
-        $recommender = new Recommender($datasetId, $apiKey);
+        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
 
         $purchasedWtihProduct = PurchasedWithProductRequest::create(
             Language::create("en-US"),
@@ -43,10 +40,7 @@ class ProductRecommendationsTest extends TestCase
 
     public function testProductsViewedAfterViewingProduct(): void
     {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
-        $recommender = new Recommender($datasetId, $apiKey);
+        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
 
         $productsViewedAfterViewingProduct = ProductsViewedAfterViewingProductRequest::create(
             Language::create("en-US"),
@@ -64,10 +58,7 @@ class ProductRecommendationsTest extends TestCase
 
     public function testProductsViewedAfterViewingProductWithAllConditions(): void
     {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
-        $recommender = new Recommender($datasetId, $apiKey);
+        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
 
         $productsViewedAfterViewingProduct = ProductsViewedAfterViewingProductRequest::create(
             Language::create("en-US"),
@@ -103,8 +94,6 @@ class ProductRecommendationsTest extends TestCase
         );
 
         $response = $recommender->productsViewedAfterViewingProduct($productsViewedAfterViewingProduct);
-
-        fwrite(STDOUT, json_encode($response));
 
         self::assertNotNull($response);
         self::assertEmpty($response->recommendations);

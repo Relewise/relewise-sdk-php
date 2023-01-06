@@ -2,7 +2,6 @@
 
 namespace Relewise\Tests\Integration;
 
-use \PHPUnit\Framework\TestCase;
 use Relewise\Factory\UserFactory;
 use Relewise\Models\DTO\ContentRecommendationRequestCollection;
 use Relewise\Models\DTO\ContentRecommendationRequestSettings;
@@ -12,14 +11,11 @@ use Relewise\Models\DTO\Language;
 use Relewise\Models\DTO\PopularContentsRequest;
 use Relewise\Recommender;
 
-class BatchedContentRecommendationTest extends TestCase
+class BatchedContentRecommendationTest extends BaseTest
 {
     public function testBatchedContentRecommendations(): void
     {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
-        $recommender = new Recommender($datasetId, $apiKey);
+        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
 
         $contentRecommendationRequestCollection = ContentRecommendationRequestCollection::create(
             false,
