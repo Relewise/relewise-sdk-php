@@ -32,8 +32,7 @@ class DataObjectsTest extends BaseTest
             0
         )->setSettings(ProductSearchSettings::create()->setSelectedProductProperties(SelectedProductPropertiesSettings::create()->setAllData(true)))
         ->setFilters(FilterCollection::create()
-            ->setItems(ProductDataFilter::create()
-                ->setKey("DataObject")
+            ->setItems(ProductDataFilter::create("DataObject")
                 ->setConditions(ValueConditionCollection::create()
                     ->setItems(
                         ContainsCondition::create()

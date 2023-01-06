@@ -7,9 +7,13 @@ use DateTime;
 class ProductDataIntegerValueFacet extends intProductDataValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ProductDataIntegerValueFacet, Relewise.Client";
-    public static function create() : ProductDataIntegerValueFacet
+    public static function create(DataSelectionStrategy $dataSelectionStrategy, string $key, ?array $selected, ?CollectionFilterType $collectionFilterType) : ProductDataIntegerValueFacet
     {
         $result = new ProductDataIntegerValueFacet();
+        $result->dataSelectionStrategy = $dataSelectionStrategy;
+        $result->key = $key;
+        $result->selected = $selected;
+        $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
     public static function hydrate(array $arr) : ProductDataIntegerValueFacet

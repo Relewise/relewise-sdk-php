@@ -7,9 +7,12 @@ use DateTime;
 class ContentDataIntegerValueFacet extends intContentDataValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ContentDataIntegerValueFacet, Relewise.Client";
-    public static function create() : ContentDataIntegerValueFacet
+    public static function create(string $key, ?array $selected, ?CollectionFilterType $collectionFilterType) : ContentDataIntegerValueFacet
     {
         $result = new ContentDataIntegerValueFacet();
+        $result->key = $key;
+        $result->selected = $selected;
+        $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
     public static function hydrate(array $arr) : ContentDataIntegerValueFacet

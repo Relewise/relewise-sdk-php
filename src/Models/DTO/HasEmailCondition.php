@@ -7,9 +7,10 @@ use DateTime;
 class HasEmailCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasEmailCondition, Relewise.Client";
-    public static function create() : HasEmailCondition
+    public static function create(bool $negated) : HasEmailCondition
     {
         $result = new HasEmailCondition();
+        $result->negated = $negated;
         return $result;
     }
     public static function hydrate(array $arr) : HasEmailCondition

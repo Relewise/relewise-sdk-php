@@ -7,9 +7,12 @@ use DateTime;
 class ContentAssortmentFacetResult extends AssortmentFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ContentAssortmentFacetResult, Relewise.Client";
-    public static function create() : ContentAssortmentFacetResult
+    public static function create(AssortmentFilterType $assortmentFilterType, array $selected, intAvailableFacetValue ... $available) : ContentAssortmentFacetResult
     {
         $result = new ContentAssortmentFacetResult();
+        $result->assortmentFilterType = $assortmentFilterType;
+        $result->selected = $selected;
+        $result->available = $available;
         return $result;
     }
     public static function hydrate(array $arr) : ContentAssortmentFacetResult

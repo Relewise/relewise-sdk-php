@@ -7,9 +7,13 @@ use DateTime;
 class PredictionRulesRequest extends PredictionRulesRequestSortBySearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.PredictionRulesRequest, Relewise.Client";
-    public static function create() : PredictionRulesRequest
+    public static function create(SearchRuleFilters $filters, PredictionRulesRequestSortBySorting $sorting, int $skip, int $take) : PredictionRulesRequest
     {
         $result = new PredictionRulesRequest();
+        $result->filters = $filters;
+        $result->sorting = $sorting;
+        $result->skip = $skip;
+        $result->take = $take;
         return $result;
     }
     public static function hydrate(array $arr) : PredictionRulesRequest

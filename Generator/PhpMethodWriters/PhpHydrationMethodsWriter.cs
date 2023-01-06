@@ -129,6 +129,10 @@ public class PhpHydrationMethodsWriter
 
     private string HydrationExpression(Type type, string jsonValue)
     {
+        if (Nullable.GetUnderlyingType(type) is { } underlyingType)
+        {
+            return HydrationExpression(underlyingType, jsonValue);
+        }
         if (type.IsEnum)
         {
             return $"{phpWriter.PhpTypeName(type)}::from({jsonValue})";

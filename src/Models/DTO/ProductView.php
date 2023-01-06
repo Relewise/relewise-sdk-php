@@ -10,7 +10,7 @@ class ProductView extends Trackable
     public ?User $user;
     public Product $product;
     public ?ProductVariant $variant;
-    public static function create(?User $user, Product $product, ?ProductVariant $variant) : ProductView
+    public static function create(?User $user, Product $product, ?ProductVariant $variant = Null) : ProductView
     {
         $result = new ProductView();
         $result->user = $user;

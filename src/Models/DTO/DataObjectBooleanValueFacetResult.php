@@ -7,9 +7,13 @@ use DateTime;
 class DataObjectBooleanValueFacetResult extends boolDataObjectValueFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.DataObjectBooleanValueFacetResult, Relewise.Client";
-    public static function create() : DataObjectBooleanValueFacetResult
+    public static function create(string $key, array $selected, ?CollectionFilterType $collectionFilterType, boolAvailableFacetValue ... $available) : DataObjectBooleanValueFacetResult
     {
         $result = new DataObjectBooleanValueFacetResult();
+        $result->key = $key;
+        $result->selected = $selected;
+        $result->collectionFilterType = $collectionFilterType;
+        $result->available = $available;
         return $result;
     }
     public static function hydrate(array $arr) : DataObjectBooleanValueFacetResult

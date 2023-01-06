@@ -10,7 +10,7 @@ class ProductInterestTriggerConfiguration extends ProductInterestTriggerResultTr
     public ?intRange $productViews;
     public FilterCollection $filters;
     public ProductInterestTriggerResultResultSettings $resultSettings;
-    public static function create(string $name, string $description, ?intRange $productViews, FilterCollection $filters) : ProductInterestTriggerConfiguration
+    public static function create(string $name, string $description, ?intRange $productViews, FilterCollection $filters = Null) : ProductInterestTriggerConfiguration
     {
         $result = new ProductInterestTriggerConfiguration();
         $result->name = $name;

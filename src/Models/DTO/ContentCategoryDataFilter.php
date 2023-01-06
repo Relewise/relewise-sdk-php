@@ -7,9 +7,13 @@ use DateTime;
 class ContentCategoryDataFilter extends DataFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentCategoryDataFilter, Relewise.Client";
-    public static function create() : ContentCategoryDataFilter
+    public static function create(string $key, bool $filterOutIfKeyIsNotFound = true, ?Language $language = Null, ?Currency $currency = Null) : ContentCategoryDataFilter
     {
         $result = new ContentCategoryDataFilter();
+        $result->key = $key;
+        $result->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
+        $result->language = $language;
+        $result->currency = $currency;
         $result->filterOutIfKeyIsNotFound = true;
         $result->mustMatchAllConditions = true;
         return $result;

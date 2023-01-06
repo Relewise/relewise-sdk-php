@@ -7,9 +7,10 @@ use DateTime;
 class HasAuthenticatedIdCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasAuthenticatedIdCondition, Relewise.Client";
-    public static function create() : HasAuthenticatedIdCondition
+    public static function create(bool $negated) : HasAuthenticatedIdCondition
     {
         $result = new HasAuthenticatedIdCondition();
+        $result->negated = $negated;
         return $result;
     }
     public static function hydrate(array $arr) : HasAuthenticatedIdCondition

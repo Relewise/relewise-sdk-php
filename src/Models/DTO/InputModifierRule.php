@@ -7,9 +7,11 @@ use DateTime;
 class InputModifierRule extends MerchandisingRule
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Rules.InputModifierRule, Relewise.Client";
-    public static function create() : InputModifierRule
+    public static function create(string $name, string $description) : InputModifierRule
     {
         $result = new InputModifierRule();
+        $result->name = $name;
+        $result->description = $description;
         return $result;
     }
     public static function hydrate(array $arr) : InputModifierRule

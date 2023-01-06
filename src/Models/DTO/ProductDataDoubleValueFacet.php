@@ -7,9 +7,13 @@ use DateTime;
 class ProductDataDoubleValueFacet extends floatProductDataValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ProductDataDoubleValueFacet, Relewise.Client";
-    public static function create() : ProductDataDoubleValueFacet
+    public static function create(DataSelectionStrategy $dataSelectionStrategy, string $key, ?array $selected, ?CollectionFilterType $collectionFilterType) : ProductDataDoubleValueFacet
     {
         $result = new ProductDataDoubleValueFacet();
+        $result->dataSelectionStrategy = $dataSelectionStrategy;
+        $result->key = $key;
+        $result->selected = $selected;
+        $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
     public static function hydrate(array $arr) : ProductDataDoubleValueFacet

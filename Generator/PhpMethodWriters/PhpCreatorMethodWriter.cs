@@ -53,7 +53,7 @@ public class PhpCreatorMethodWriter
             )
             .ToArray();
         
-        if (coveringTypeMappableConstructorParameters is not null)
+        if (coveringTypeMappableConstructorParameters?.Length > 0)
         {
             writer.WriteLine($"public static function create({ParameterList(coveringTypeMappableConstructorParameters)}) : {typeName}");
             writer.WriteLine("{");
@@ -69,7 +69,7 @@ public class PhpCreatorMethodWriter
                 writer.WriteLine($"$result->{propertyName} = ${parameter.Name};");
             }
         }
-        else if (allConstructorParametersIntersectionWithMappableNamesAndTypes is not null)
+        else if (allConstructorParametersIntersectionWithMappableNamesAndTypes?.Length > 0)
         {
             writer.WriteLine($"public static function create({ParameterList(allConstructorParametersIntersectionWithMappableNamesAndTypes)}) : {typeName}");
             writer.WriteLine("{");
@@ -133,7 +133,7 @@ public class PhpCreatorMethodWriter
 
     private string DefaultValueSetter(ParameterInfo parameter)
     {
-        return parameter.ParameterType == typeof(string) && parameter.DefaultValue is null ? " = Null" : parameter.DefaultValue is { } defaultValue && (defaultValue.GetType().IsValueType) ? $" = {LiteralValueExpression(defaultValue)}" : "";
+        return parameter.HasDefaultValue && parameter.DefaultValue is null ? " = Null" : parameter.DefaultValue is { } defaultValue && (defaultValue.GetType().IsValueType) ? $" = {LiteralValueExpression(defaultValue)}" : "";
     }
 
     private string LiteralValueExpression(object obj)

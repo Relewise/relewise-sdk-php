@@ -7,9 +7,11 @@ use DateTime;
 class ContentCategoryQuery extends ContentCategoryIdFilterCategoryQuery
 {
     public string $typeDefinition = "Relewise.Client.Requests.Queries.ContentCategoryQuery, Relewise.Client";
-    public static function create() : ContentCategoryQuery
+    public static function create(Language $language = Null, Currency $currency = Null) : ContentCategoryQuery
     {
         $result = new ContentCategoryQuery();
+        $result->language = $language;
+        $result->currency = $currency;
         $result->skipNumberOfResults = 0;
         $result->returnTotalNumberOfResults = false;
         return $result;

@@ -7,9 +7,10 @@ use DateTime;
 class SaveStemmingRulesResponse extends StemmingRuleSaveSearchRulesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.SaveStemmingRulesResponse, Relewise.Client";
-    public static function create() : SaveStemmingRulesResponse
+    public static function create(StemmingRule ... $rules) : SaveStemmingRulesResponse
     {
         $result = new SaveStemmingRulesResponse();
+        $result->rules = $rules;
         return $result;
     }
     public static function hydrate(array $arr) : SaveStemmingRulesResponse

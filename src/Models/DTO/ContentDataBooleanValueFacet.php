@@ -7,9 +7,12 @@ use DateTime;
 class ContentDataBooleanValueFacet extends boolContentDataValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ContentDataBooleanValueFacet, Relewise.Client";
-    public static function create() : ContentDataBooleanValueFacet
+    public static function create(string $key, ?array $selected, ?CollectionFilterType $collectionFilterType) : ContentDataBooleanValueFacet
     {
         $result = new ContentDataBooleanValueFacet();
+        $result->key = $key;
+        $result->selected = $selected;
+        $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
     public static function hydrate(array $arr) : ContentDataBooleanValueFacet

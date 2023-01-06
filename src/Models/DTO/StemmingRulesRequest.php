@@ -7,9 +7,13 @@ use DateTime;
 class StemmingRulesRequest extends StemmingRulesRequestSortBySearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.StemmingRulesRequest, Relewise.Client";
-    public static function create() : StemmingRulesRequest
+    public static function create(SearchRuleFilters $filters, StemmingRulesRequestSortBySorting $sorting, int $skip, int $take) : StemmingRulesRequest
     {
         $result = new StemmingRulesRequest();
+        $result->filters = $filters;
+        $result->sorting = $sorting;
+        $result->skip = $skip;
+        $result->take = $take;
         return $result;
     }
     public static function hydrate(array $arr) : StemmingRulesRequest

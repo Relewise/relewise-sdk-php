@@ -11,7 +11,7 @@ class SimilarProductsRequest extends ProductRecommendationRequest
     public ?Product $productData;
     public bool $considerAlreadyKnownInformationAboutProduct;
     public ?SimilarProductsEvaluationSettings $evaluationSettings;
-    public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ?SimilarProductsEvaluationSettings $evaluationSettings) : SimilarProductsRequest
+    public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ?SimilarProductsEvaluationSettings $evaluationSettings = Null) : SimilarProductsRequest
     {
         $result = new SimilarProductsRequest();
         $result->language = $language;

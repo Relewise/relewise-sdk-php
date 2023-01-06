@@ -68,8 +68,7 @@ class ProductRecommendationsTest extends BaseTest
             ProductAndVariantId::create("1")
         )->setFilters(
             FilterCollection::create(
-                ProductDataFilter::create()
-                    ->setKey("ShortDescription")
+                ProductDataFilter::create("ShortDescription")
                     ->setConditions(
                         ValueConditionCollection::create()
                             ->setItems(

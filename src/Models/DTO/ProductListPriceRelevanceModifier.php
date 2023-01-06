@@ -11,7 +11,7 @@ class ProductListPriceRelevanceModifier extends RelevanceModifier
     public Currency $currency;
     public float $multiplyWeightBy;
     public bool $negated;
-    public static function create(?floatRange $range, float $multiplyWeightBy = 1, Currency $currency, bool $negated = false) : ProductListPriceRelevanceModifier
+    public static function create(?floatRange $range, float $multiplyWeightBy = 1, Currency $currency = Null, bool $negated = false) : ProductListPriceRelevanceModifier
     {
         $result = new ProductListPriceRelevanceModifier();
         $result->range = $range;

@@ -7,9 +7,10 @@ use DateTime;
 class ProductCategory extends Category
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductCategory, Relewise.Client";
-    public static function create() : ProductCategory
+    public static function create(string $id) : ProductCategory
     {
         $result = new ProductCategory();
+        $result->id = $id;
         return $result;
     }
     public static function hydrate(array $arr) : ProductCategory

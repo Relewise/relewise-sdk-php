@@ -14,7 +14,7 @@ class BrandQuery extends LicensedRequest
     public int $skipNumberOfResults;
     public bool $returnTotalNumberOfResults;
     public bool $includeDisabledBrands;
-    public static function create(Language $language, Currency $currency) : BrandQuery
+    public static function create(Language $language = Null, Currency $currency = Null) : BrandQuery
     {
         $result = new BrandQuery();
         $result->language = $language;

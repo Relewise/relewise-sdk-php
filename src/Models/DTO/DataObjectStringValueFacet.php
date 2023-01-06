@@ -7,9 +7,12 @@ use DateTime;
 class DataObjectStringValueFacet extends stringDataObjectValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.DataObjectStringValueFacet, Relewise.Client";
-    public static function create() : DataObjectStringValueFacet
+    public static function create(string $key, ?array $selected, ?CollectionFilterType $collectionFilterType) : DataObjectStringValueFacet
     {
         $result = new DataObjectStringValueFacet();
+        $result->key = $key;
+        $result->selected = $selected;
+        $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
     public static function hydrate(array $arr) : DataObjectStringValueFacet

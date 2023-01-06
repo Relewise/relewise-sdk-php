@@ -7,9 +7,11 @@ use DateTime;
 class UserActivityTriggerConfiguration extends UserActivityTriggerResultTriggerConfiguration
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.UserActivityTriggerConfiguration, Relewise.Client";
-    public static function create() : UserActivityTriggerConfiguration
+    public static function create(string $name, string $description) : UserActivityTriggerConfiguration
     {
         $result = new UserActivityTriggerConfiguration();
+        $result->name = $name;
+        $result->description = $description;
         return $result;
     }
     public static function hydrate(array $arr) : UserActivityTriggerConfiguration

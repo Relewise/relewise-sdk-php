@@ -7,9 +7,11 @@ use DateTime;
 class ProductCategoryDataDoubleRangeFacet extends floatProductCategoryDataRangeFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ProductCategoryDataDoubleRangeFacet, Relewise.Client";
-    public static function create() : ProductCategoryDataDoubleRangeFacet
+    public static function create(string $key, ?floatRange $selected) : ProductCategoryDataDoubleRangeFacet
     {
         $result = new ProductCategoryDataDoubleRangeFacet();
+        $result->key = $key;
+        $result->selected = $selected;
         return $result;
     }
     public static function hydrate(array $arr) : ProductCategoryDataDoubleRangeFacet

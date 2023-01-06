@@ -7,9 +7,10 @@ use DateTime;
 class ContentCategoryHasAncestorFilter extends HasAncestorCategoryFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentCategoryHasAncestorFilter, Relewise.Client";
-    public static function create() : ContentCategoryHasAncestorFilter
+    public static function create(bool $negated = false) : ContentCategoryHasAncestorFilter
     {
         $result = new ContentCategoryHasAncestorFilter();
+        $result->negated = $negated;
         $result->negated = false;
         return $result;
     }

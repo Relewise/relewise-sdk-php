@@ -8,7 +8,7 @@ class CategoryNameAndId
 {
     public string $id;
     public ?Multilingual $displayName;
-    public static function create(string $id, ?Multilingual $displayName) : CategoryNameAndId
+    public static function create(string $id, ?Multilingual $displayName = Null) : CategoryNameAndId
     {
         $result = new CategoryNameAndId();
         $result->id = $id;

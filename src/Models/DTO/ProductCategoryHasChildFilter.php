@@ -7,9 +7,10 @@ use DateTime;
 class ProductCategoryHasChildFilter extends HasChildCategoryFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductCategoryHasChildFilter, Relewise.Client";
-    public static function create() : ProductCategoryHasChildFilter
+    public static function create(bool $negated = false) : ProductCategoryHasChildFilter
     {
         $result = new ProductCategoryHasChildFilter();
+        $result->negated = $negated;
         $result->negated = false;
         return $result;
     }

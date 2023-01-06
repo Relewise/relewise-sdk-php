@@ -7,9 +7,13 @@ use DateTime;
 class ProductCategoryDataDoubleValueFacetResult extends floatProductCategoryDataValueFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ProductCategoryDataDoubleValueFacetResult, Relewise.Client";
-    public static function create() : ProductCategoryDataDoubleValueFacetResult
+    public static function create(string $key, array $selected, ?CollectionFilterType $collectionFilterType, floatAvailableFacetValue ... $available) : ProductCategoryDataDoubleValueFacetResult
     {
         $result = new ProductCategoryDataDoubleValueFacetResult();
+        $result->key = $key;
+        $result->selected = $selected;
+        $result->collectionFilterType = $collectionFilterType;
+        $result->available = $available;
         return $result;
     }
     public static function hydrate(array $arr) : ProductCategoryDataDoubleValueFacetResult

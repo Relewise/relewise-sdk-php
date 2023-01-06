@@ -7,9 +7,11 @@ use DateTime;
 class FilterRule extends MerchandisingRule
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Rules.FilterRule, Relewise.Client";
-    public static function create() : FilterRule
+    public static function create(string $name, string $description) : FilterRule
     {
         $result = new FilterRule();
+        $result->name = $name;
+        $result->description = $description;
         return $result;
     }
     public static function hydrate(array $arr) : FilterRule

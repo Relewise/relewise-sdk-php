@@ -7,9 +7,10 @@ use DateTime;
 class DeleteRedirectRulesRequest extends DeleteSearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.DeleteRedirectRulesRequest, Relewise.Client";
-    public static function create() : DeleteRedirectRulesRequest
+    public static function create(string $deletedBy) : DeleteRedirectRulesRequest
     {
         $result = new DeleteRedirectRulesRequest();
+        $result->deletedBy = $deletedBy;
         return $result;
     }
     public static function hydrate(array $arr) : DeleteRedirectRulesRequest

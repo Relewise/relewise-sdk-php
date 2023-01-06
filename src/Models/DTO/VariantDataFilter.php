@@ -7,9 +7,14 @@ use DateTime;
 class VariantDataFilter extends DataFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.VariantDataFilter, Relewise.Client";
-    public static function create() : VariantDataFilter
+    public static function create(string $key, bool $mustMatchAllConditions = true, bool $filterOutIfKeyIsNotFound = true, ?Language $language = Null, ?Currency $currency = Null) : VariantDataFilter
     {
         $result = new VariantDataFilter();
+        $result->key = $key;
+        $result->mustMatchAllConditions = $mustMatchAllConditions;
+        $result->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
+        $result->language = $language;
+        $result->currency = $currency;
         $result->mustMatchAllConditions = true;
         $result->filterOutIfKeyIsNotFound = true;
         return $result;

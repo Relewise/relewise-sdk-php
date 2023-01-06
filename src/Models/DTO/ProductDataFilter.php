@@ -7,9 +7,13 @@ use DateTime;
 class ProductDataFilter extends DataFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductDataFilter, Relewise.Client";
-    public static function create() : ProductDataFilter
+    public static function create(string $key, bool $filterOutIfKeyIsNotFound = true, ?Language $language = Null, ?Currency $currency = Null) : ProductDataFilter
     {
         $result = new ProductDataFilter();
+        $result->key = $key;
+        $result->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
+        $result->language = $language;
+        $result->currency = $currency;
         $result->filterOutIfKeyIsNotFound = true;
         $result->mustMatchAllConditions = true;
         return $result;

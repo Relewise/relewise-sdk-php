@@ -51,7 +51,7 @@ class ProductUpdate extends Trackable
         }
         if (array_key_exists("brandUpdateKind", $arr))
         {
-            $result->brandUpdateKind = $arr["brandUpdateKind"];
+            $result->brandUpdateKind = BrandUpdateUpdateKind::from($arr["brandUpdateKind"]);
         }
         return $result;
     }

@@ -7,9 +7,11 @@ use DateTime;
 class ProductCategoryQuery extends ProductCategoryIdFilterCategoryQuery
 {
     public string $typeDefinition = "Relewise.Client.Requests.Queries.ProductCategoryQuery, Relewise.Client";
-    public static function create() : ProductCategoryQuery
+    public static function create(Language $language = Null, Currency $currency = Null) : ProductCategoryQuery
     {
         $result = new ProductCategoryQuery();
+        $result->language = $language;
+        $result->currency = $currency;
         $result->skipNumberOfResults = 0;
         $result->returnTotalNumberOfResults = false;
         return $result;

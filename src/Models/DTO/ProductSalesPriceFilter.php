@@ -9,7 +9,7 @@ class ProductSalesPriceFilter extends Filter
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductSalesPriceFilter, Relewise.Client";
     public ?floatRange $range;
     public ?Currency $currency;
-    public static function create(?floatRange $range, ?Currency $currency, bool $negated = false) : ProductSalesPriceFilter
+    public static function create(?floatRange $range, ?Currency $currency = Null, bool $negated = false) : ProductSalesPriceFilter
     {
         $result = new ProductSalesPriceFilter();
         $result->range = $range;

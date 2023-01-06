@@ -7,9 +7,10 @@ use DateTime;
 class SavePredictionRulesRequest extends PredictionRuleSaveSearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SavePredictionRulesRequest, Relewise.Client";
-    public static function create() : SavePredictionRulesRequest
+    public static function create(string $modifiedBy) : SavePredictionRulesRequest
     {
         $result = new SavePredictionRulesRequest();
+        $result->modifiedBy = $modifiedBy;
         return $result;
     }
     public static function hydrate(array $arr) : SavePredictionRulesRequest

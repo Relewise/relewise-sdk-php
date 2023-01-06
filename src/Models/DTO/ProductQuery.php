@@ -16,7 +16,7 @@ class ProductQuery extends LicensedRequest
     public bool $includeDisabledProducts;
     public bool $includeDisabledVariants;
     public bool $excludeProductsWithNoVariants;
-    public static function create(Language $language, Currency $currency) : ProductQuery
+    public static function create(Language $language = Null, Currency $currency = Null) : ProductQuery
     {
         $result = new ProductQuery();
         $result->language = $language;

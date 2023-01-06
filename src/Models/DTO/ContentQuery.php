@@ -14,7 +14,7 @@ class ContentQuery extends LicensedRequest
     public int $skipNumberOfResults;
     public bool $returnTotalNumberOfResults;
     public bool $includeDisabledContents;
-    public static function create(Language $language, Currency $currency) : ContentQuery
+    public static function create(Language $language = Null, Currency $currency = Null) : ContentQuery
     {
         $result = new ContentQuery();
         $result->language = $language;

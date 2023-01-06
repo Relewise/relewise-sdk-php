@@ -7,9 +7,13 @@ use DateTime;
 class DecompoundRulesRequest extends DecompoundRulesRequestSortBySearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.DecompoundRulesRequest, Relewise.Client";
-    public static function create() : DecompoundRulesRequest
+    public static function create(SearchRuleFilters $filters, DecompoundRulesRequestSortBySorting $sorting, int $skip, int $take) : DecompoundRulesRequest
     {
         $result = new DecompoundRulesRequest();
+        $result->filters = $filters;
+        $result->sorting = $sorting;
+        $result->skip = $skip;
+        $result->take = $take;
         return $result;
     }
     public static function hydrate(array $arr) : DecompoundRulesRequest

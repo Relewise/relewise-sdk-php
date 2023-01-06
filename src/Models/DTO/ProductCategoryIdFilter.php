@@ -7,9 +7,11 @@ use DateTime;
 class ProductCategoryIdFilter extends CategoryIdFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductCategoryIdFilter, Relewise.Client";
-    public static function create() : ProductCategoryIdFilter
+    public static function create(CategoryScope $evaluationScope, bool $negated = false) : ProductCategoryIdFilter
     {
         $result = new ProductCategoryIdFilter();
+        $result->evaluationScope = $evaluationScope;
+        $result->negated = $negated;
         $result->negated = false;
         return $result;
     }

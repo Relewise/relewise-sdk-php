@@ -7,9 +7,12 @@ use DateTime;
 class ContentDataDoubleRangeFacetResult extends floatContentDataRangeFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ContentDataDoubleRangeFacetResult, Relewise.Client";
-    public static function create() : ContentDataDoubleRangeFacetResult
+    public static function create(string $key, ?floatRange $selected, ?floatRangeAvailableFacetValue $available) : ContentDataDoubleRangeFacetResult
     {
         $result = new ContentDataDoubleRangeFacetResult();
+        $result->key = $key;
+        $result->selected = $selected;
+        $result->available = $available;
         return $result;
     }
     public static function hydrate(array $arr) : ContentDataDoubleRangeFacetResult

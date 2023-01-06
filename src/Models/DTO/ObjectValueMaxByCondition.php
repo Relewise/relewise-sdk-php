@@ -7,9 +7,11 @@ use DateTime;
 class ObjectValueMaxByCondition extends ObjectValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueMaxByCondition, Relewise.Client";
-    public static function create() : ObjectValueMaxByCondition
+    public static function create(string $key, bool $negated = false) : ObjectValueMaxByCondition
     {
         $result = new ObjectValueMaxByCondition();
+        $result->key = $key;
+        $result->negated = $negated;
         $result->negated = false;
         return $result;
     }

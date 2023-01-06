@@ -7,9 +7,13 @@ use DateTime;
 class RecentlyViewedProductsRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.RecentlyViewedProductsRequest, Relewise.Client";
-    public static function create() : RecentlyViewedProductsRequest
+    public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user) : RecentlyViewedProductsRequest
     {
         $result = new RecentlyViewedProductsRequest();
+        $result->language = $language;
+        $result->currency = $currency;
+        $result->displayedAtLocationType = $displayedAtLocationType;
+        $result->user = $user;
         return $result;
     }
     public static function hydrate(array $arr) : RecentlyViewedProductsRequest

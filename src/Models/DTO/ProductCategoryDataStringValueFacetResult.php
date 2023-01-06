@@ -7,9 +7,13 @@ use DateTime;
 class ProductCategoryDataStringValueFacetResult extends stringProductCategoryDataValueFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ProductCategoryDataStringValueFacetResult, Relewise.Client";
-    public static function create() : ProductCategoryDataStringValueFacetResult
+    public static function create(string $key, array $selected, ?CollectionFilterType $collectionFilterType, stringAvailableFacetValue ... $available) : ProductCategoryDataStringValueFacetResult
     {
         $result = new ProductCategoryDataStringValueFacetResult();
+        $result->key = $key;
+        $result->selected = $selected;
+        $result->collectionFilterType = $collectionFilterType;
+        $result->available = $available;
         return $result;
     }
     public static function hydrate(array $arr) : ProductCategoryDataStringValueFacetResult

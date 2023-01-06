@@ -7,9 +7,10 @@ use DateTime;
 class SaveDecompoundRulesResponse extends DecompoundRuleSaveSearchRulesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.SaveDecompoundRulesResponse, Relewise.Client";
-    public static function create() : SaveDecompoundRulesResponse
+    public static function create(DecompoundRule ... $rules) : SaveDecompoundRulesResponse
     {
         $result = new SaveDecompoundRulesResponse();
+        $result->rules = $rules;
         return $result;
     }
     public static function hydrate(array $arr) : SaveDecompoundRulesResponse

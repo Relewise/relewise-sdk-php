@@ -7,9 +7,13 @@ use DateTime;
 class RedirectRulesRequest extends RedirectRulesRequestSortBySearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.RedirectRulesRequest, Relewise.Client";
-    public static function create() : RedirectRulesRequest
+    public static function create(SearchRuleFilters $filters, RedirectRulesRequestSortBySorting $sorting, int $skip, int $take) : RedirectRulesRequest
     {
         $result = new RedirectRulesRequest();
+        $result->filters = $filters;
+        $result->sorting = $sorting;
+        $result->skip = $skip;
+        $result->take = $take;
         return $result;
     }
     public static function hydrate(array $arr) : RedirectRulesRequest

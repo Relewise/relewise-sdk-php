@@ -7,9 +7,12 @@ use DateTime;
 class ContentCategoryAdministrativeAction extends CategoryAdministrativeAction
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentCategoryAdministrativeAction, Relewise.Client";
-    public static function create() : ContentCategoryAdministrativeAction
+    public static function create(Language $language, Currency $currency, CategoryAdministrativeActionUpdateKind $kind) : ContentCategoryAdministrativeAction
     {
         $result = new ContentCategoryAdministrativeAction();
+        $result->language = $language;
+        $result->currency = $currency;
+        $result->kind = $kind;
         return $result;
     }
     public static function hydrate(array $arr) : ContentCategoryAdministrativeAction

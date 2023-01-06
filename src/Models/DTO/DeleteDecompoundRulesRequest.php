@@ -7,9 +7,10 @@ use DateTime;
 class DeleteDecompoundRulesRequest extends DeleteSearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.DeleteDecompoundRulesRequest, Relewise.Client";
-    public static function create() : DeleteDecompoundRulesRequest
+    public static function create(string $deletedBy) : DeleteDecompoundRulesRequest
     {
         $result = new DeleteDecompoundRulesRequest();
+        $result->deletedBy = $deletedBy;
         return $result;
     }
     public static function hydrate(array $arr) : DeleteDecompoundRulesRequest

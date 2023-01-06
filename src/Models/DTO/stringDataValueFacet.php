@@ -38,7 +38,7 @@ abstract class stringDataValueFacet extends stringValueFacet
         }
         if (array_key_exists("collectionFilterType", $arr))
         {
-            $result->collectionFilterType = $arr["collectionFilterType"];
+            $result->collectionFilterType = CollectionFilterType::from($arr["collectionFilterType"]);
         }
         return $result;
     }

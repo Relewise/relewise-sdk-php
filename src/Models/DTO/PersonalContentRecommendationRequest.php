@@ -7,9 +7,13 @@ use DateTime;
 class PersonalContentRecommendationRequest extends ContentRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PersonalContentRecommendationRequest, Relewise.Client";
-    public static function create() : PersonalContentRecommendationRequest
+    public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user) : PersonalContentRecommendationRequest
     {
         $result = new PersonalContentRecommendationRequest();
+        $result->language = $language;
+        $result->currency = $currency;
+        $result->displayedAtLocationType = $displayedAtLocationType;
+        $result->user = $user;
         return $result;
     }
     public static function hydrate(array $arr) : PersonalContentRecommendationRequest

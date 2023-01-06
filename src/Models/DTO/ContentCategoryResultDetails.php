@@ -7,9 +7,10 @@ use DateTime;
 class ContentCategoryResultDetails extends ContentCategoryResultDetailsCategoryResultDetails
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentCategoryResultDetails, Relewise.Client";
-    public static function create() : ContentCategoryResultDetails
+    public static function create(string $categoryId) : ContentCategoryResultDetails
     {
         $result = new ContentCategoryResultDetails();
+        $result->categoryId = $categoryId;
         return $result;
     }
     public static function hydrate(array $arr) : ContentCategoryResultDetails

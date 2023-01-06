@@ -7,6 +7,7 @@ use Relewise\Factory\UserFactory;
 use Relewise\Models\DTO\BrandFacet;
 use Relewise\Models\DTO\CategoryFacet;
 use Relewise\Models\DTO\CategorySelectionStrategy;
+use Relewise\Models\DTO\CollectionFilterType;
 use Relewise\Models\DTO\Currency;
 use Relewise\Models\DTO\DataSelectionStrategy;
 use Relewise\Models\DTO\FacetingField;
@@ -94,10 +95,12 @@ class FacetsTest extends BaseTest
         )->setFacets(
             ProductFacetQuery::create()
                 ->setItems(
-                    ProductDataStringValueFacet::create()
-                        ->setField(FacetingField::Data)
-                        ->setKey("ShortDescription")
-                        ->setDataSelectionStrategy(DataSelectionStrategy::Product)
+                    ProductDataStringValueFacet::create(
+                        DataSelectionStrategy::Product,
+                        "ShortDescription",
+                        array("data_key_1"),
+                        CollectionFilterType::And
+                    )->setField(FacetingField::Data)
                 )
         );
 

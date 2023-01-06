@@ -7,9 +7,10 @@ use DateTime;
 class SaveRedirectRulesResponse extends RedirectRuleSaveSearchRulesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.SaveRedirectRulesResponse, Relewise.Client";
-    public static function create() : SaveRedirectRulesResponse
+    public static function create(RedirectRule ... $rules) : SaveRedirectRulesResponse
     {
         $result = new SaveRedirectRulesResponse();
+        $result->rules = $rules;
         return $result;
     }
     public static function hydrate(array $arr) : SaveRedirectRulesResponse

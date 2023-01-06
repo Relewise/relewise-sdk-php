@@ -7,9 +7,13 @@ use DateTime;
 class ContentDataIntegerValueFacetResult extends intContentDataValueFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ContentDataIntegerValueFacetResult, Relewise.Client";
-    public static function create() : ContentDataIntegerValueFacetResult
+    public static function create(string $key, array $selected, ?CollectionFilterType $collectionFilterType, intAvailableFacetValue ... $available) : ContentDataIntegerValueFacetResult
     {
         $result = new ContentDataIntegerValueFacetResult();
+        $result->key = $key;
+        $result->selected = $selected;
+        $result->collectionFilterType = $collectionFilterType;
+        $result->available = $available;
         return $result;
     }
     public static function hydrate(array $arr) : ContentDataIntegerValueFacetResult
