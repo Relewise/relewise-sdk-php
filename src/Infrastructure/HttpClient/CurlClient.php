@@ -6,9 +6,7 @@ use Relewise\Infrastructure\HttpClient\Response;
 class CurlClient implements Client
 {
     private const METHOD_GET = 'GET';
-    private const METHOD_PUT = 'PUT';
     private const METHOD_POST = 'POST';
-    private const METHOD_DELETE = 'DELETE';
 
     /**
      * @var string[]
@@ -61,6 +59,7 @@ class CurlClient implements Client
         $error = curl_errno($curl);
         $errmsg = curl_error($curl);
         $httpCode = curl_getinfo($curl, \CURLINFO_HTTP_CODE);
+        $contentType = curl_getinfo($curl, \CURLINFO_CONTENT_TYPE);
 
         curl_close($curl);
         if ($content === false) {
@@ -69,6 +68,6 @@ class CurlClient implements Client
 
         $body = json_decode($content, true);
 
-        return new Response($body, $httpCode);
+        return new Response($body, $httpCode, $contentType ? $contentType : null);
     }
 }

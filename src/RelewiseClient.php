@@ -7,6 +7,7 @@ use Relewise\Infrastructure\HttpClient\Client;
 use Relewise\Infrastructure\HttpClient\ClientException;
 use Relewise\Infrastructure\HttpClient\CurlClient;
 use Relewise\Infrastructure\HttpClient\InternalServerErrorException;
+use Relewise\Infrastructure\HttpClient\ProblemDetailsException;
 use Relewise\Infrastructure\HttpClient\Response;
 use Relewise\Infrastructure\HttpClient\ServiceUnavailableException;
 use Relewise\Infrastructure\HttpClient\UnauthorizedException;
@@ -53,7 +54,14 @@ abstract class RelewiseClient
         }
         if ($response->code == 400)
         {
-            throw new BadRequestException(json_encode($response->body), $response->code);
+            if ($response->contentType == "application/problem+json")
+            {
+                throw new ProblemDetailsException(json_encode($response->body), $response->code);
+            }
+            else
+            {
+                throw new BadRequestException(json_encode($response->body), $response->code);
+            }
         }
         throw new ClientException(json_encode($response->body), $response->code);
     }
