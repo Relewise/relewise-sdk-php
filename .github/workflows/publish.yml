@@ -1,8 +1,6 @@
 name: Publish to Packagist
 
-on:
-  release:
-    types: [published]
+on: [push]
 
 jobs:
   build-test:
@@ -32,9 +30,4 @@ jobs:
           API_KEY: ${{secrets.INTEGRATIONTESTS_API_KEY}}
 
       - name: Publish to Packagist
-        uses: mnavarrocarter/packagist-update@v1.0.0
-        with:
-          username: "relewise"
-          api_token: ${{ secrets.packagist_token }}
-          package_name: relewise/client 
-          domain: "packagist.org"
+        run: composer publish relewise ${{ secrets.packagist_token }}
