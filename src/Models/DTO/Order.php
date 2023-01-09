@@ -15,7 +15,7 @@ class Order extends Trackable
     public ?string $channel;
     public ?string $subChannel;
     public ?string $trackingNumber;
-    public static function create(User $user, Money $subtotal, string $orderNumber, string $cartName) : Order
+    public static function create(User $user, Money $subtotal, string $orderNumber, string $cartName = "default") : Order
     {
         $result = new Order();
         $result->user = $user;

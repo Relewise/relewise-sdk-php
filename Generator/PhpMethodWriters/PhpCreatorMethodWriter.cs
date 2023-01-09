@@ -133,7 +133,7 @@ public class PhpCreatorMethodWriter
 
     private string DefaultValueSetter(ParameterInfo parameter)
     {
-        return parameter.HasDefaultValue && parameter.DefaultValue is null ? " = Null" : parameter.DefaultValue is { } defaultValue && (defaultValue.GetType().IsValueType) ? $" = {LiteralValueExpression(defaultValue)}" : "";
+        return parameter.HasDefaultValue && parameter.DefaultValue is null ? " = Null" : parameter.DefaultValue is { } defaultValue && (defaultValue.GetType().IsValueType || defaultValue is string) ? $" = {LiteralValueExpression(defaultValue)}" : "";
     }
 
     private string LiteralValueExpression(object obj)
