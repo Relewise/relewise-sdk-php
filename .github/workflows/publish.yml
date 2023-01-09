@@ -1,6 +1,8 @@
 name: Publish to Packagist
 
-on: [push]
+on:
+  release:
+    types: [published]
 
 jobs:
   build-test:
@@ -30,7 +32,7 @@ jobs:
           API_KEY: ${{secrets.INTEGRATIONTESTS_API_KEY}}
 
       - name: Publish to Packagist
-        uses: mnavarrocarter/packagist-update@v1.0
+        uses: mnavarrocarter/packagist-update@v1.0.0
         with:
           username: "relewise"
           api_token: ${{ secrets.packagist_token }}
