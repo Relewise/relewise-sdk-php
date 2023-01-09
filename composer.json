@@ -15,7 +15,10 @@
             "php": "8.1"
         },
         "sort-packages": true,
-        "process-timeout": 7200
+        "process-timeout": 7200,
+        "allow-plugins": {
+            "fqqdk/packagist-publisher": true
+        }
     },
     "autoload": {
 		"psr-4": {
