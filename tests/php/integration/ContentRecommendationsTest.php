@@ -32,9 +32,6 @@ class ContentRecommendationsTest extends BaseTest
 
     public function testPopularContent(): void
     {
-        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
-        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
-
         $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
 
         $popularContents = PopularContentsRequest::create(
