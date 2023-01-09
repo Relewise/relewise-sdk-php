@@ -1,0 +1,38 @@
+name: Publish to Packagist
+
+on: [push]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: php-actions/composer@v5
+
+      - name: Setup .NET 7 preview
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Generate PHP classes
+        run: ./generate.sh
+
+      - name: PHPUnit Tests
+        uses: php-actions/phpunit@v2
+        with:
+          bootstrap: vendor/autoload.php
+          configuration: tests/phpunit.xml
+          args: --coverage-text
+        env:
+          DATASET_ID: ${{secrets.INTEGRATIONTESTS_DATASET_ID}}
+          API_KEY: ${{secrets.INTEGRATIONTESTS_API_KEY}}
+
+      - name: Publish to Packagist
+        uses: mnavarrocarter/packagist-update@v1.0
+        with:
+          username: "relewise"
+          api_token: ${{ secrets.packagist_token }}
+          package_name: relewise/client 
+          domain: "packagist.org"
