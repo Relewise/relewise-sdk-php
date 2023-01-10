@@ -55,7 +55,7 @@ class Synonym
         }
         if (array_key_exists("created", $arr))
         {
-            $result->created = $arr["created"];
+            $result->created = new DateTime($arr["created"]);
         }
         if (array_key_exists("createdBy", $arr))
         {
@@ -63,7 +63,7 @@ class Synonym
         }
         if (array_key_exists("modified", $arr))
         {
-            $result->modified = $arr["modified"];
+            $result->modified = new DateTime($arr["modified"]);
         }
         if (array_key_exists("modifiedBy", $arr))
         {
@@ -87,7 +87,7 @@ class Synonym
         }
         if (array_key_exists("approved", $arr))
         {
-            $result->approved = $arr["approved"];
+            $result->approved = new DateTime($arr["approved"]);
         }
         if (array_key_exists("approvedBy", $arr))
         {
