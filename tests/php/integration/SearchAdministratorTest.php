@@ -2,18 +2,18 @@
 
 namespace Relewise\Tests\Integration;
 
-use Relewise\Models\DTO\ClearTextParser;
-use Relewise\Models\DTO\DataIndexConfiguration;
-use Relewise\Models\DTO\FieldIndexConfiguration;
-use Relewise\Models\DTO\HtmlParser;
-use Relewise\Models\DTO\IndexConfiguration;
-use Relewise\Models\DTO\Language;
-use Relewise\Models\DTO\LanguageIndexConfiguration;
-use Relewise\Models\DTO\LanguageIndexConfigurationEntry;
-use Relewise\Models\DTO\PredictionSourceType;
-use Relewise\Models\DTO\ProductIndexConfiguration;
-use Relewise\Models\DTO\SaveSearchIndexRequest;
-use Relewise\Models\DTO\SearchIndex;
+use Relewise\Models\ClearTextParser;
+use Relewise\Models\DataIndexConfiguration;
+use Relewise\Models\FieldIndexConfiguration;
+use Relewise\Models\HtmlParser;
+use Relewise\Models\IndexConfiguration;
+use Relewise\Models\Language;
+use Relewise\Models\LanguageIndexConfiguration;
+use Relewise\Models\LanguageIndexConfigurationEntry;
+use Relewise\Models\PredictionSourceType;
+use Relewise\Models\ProductIndexConfiguration;
+use Relewise\Models\SaveSearchIndexRequest;
+use Relewise\Models\SearchIndex;
 use Relewise\SearchAdministrator;
 
 class SearchAdministratorTest extends BaseTest
