@@ -11,8 +11,8 @@ use Relewise\Infrastructure\HttpClient\ProblemDetailsException;
 use Relewise\Infrastructure\HttpClient\Response;
 use Relewise\Infrastructure\HttpClient\ServiceUnavailableException;
 use Relewise\Infrastructure\HttpClient\UnauthorizedException;
-use Relewise\Models\DTO\LicensedRequest;
-use Relewise\Models\DTO\TimedResponse;
+use Relewise\Models\LicensedRequest;
+use Relewise\Models\TimedResponse;
 
 abstract class RelewiseClient
 {

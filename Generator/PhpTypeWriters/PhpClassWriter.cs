@@ -18,10 +18,10 @@ public class PhpClassWriter : IPhpTypeWriter
 
     public void Write(IndentedTextWriter writer, Type type, string typeName)
     {
-        writer.WriteLine("""
+        writer.WriteLine($"""
 <?php declare(strict_types=1);
 
-namespace Relewise\Models\DTO;
+namespace {Constants.Namespace};
 
 use DateTime;
 

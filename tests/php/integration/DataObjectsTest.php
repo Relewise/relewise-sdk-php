@@ -5,15 +5,15 @@ namespace Relewise\Tests\Integration;
 use \PHPUnit\Framework\TestCase;
 use Relewise\Factory\DataValueFactory;
 use Relewise\Factory\UserFactory;
-use Relewise\Models\DTO\ContainsCondition;
-use Relewise\Models\DTO\Currency;
-use Relewise\Models\DTO\FilterCollection;
-use Relewise\Models\DTO\Language;
-use Relewise\Models\DTO\ProductDataFilter;
-use Relewise\Models\DTO\ProductSearchRequest;
-use Relewise\Models\DTO\ProductSearchSettings;
-use Relewise\Models\DTO\SelectedProductPropertiesSettings;
-use Relewise\Models\DTO\ValueConditionCollection;
+use Relewise\Models\ContainsCondition;
+use Relewise\Models\Currency;
+use Relewise\Models\FilterCollection;
+use Relewise\Models\Language;
+use Relewise\Models\ProductDataFilter;
+use Relewise\Models\ProductSearchRequest;
+use Relewise\Models\ProductSearchSettings;
+use Relewise\Models\SelectedProductPropertiesSettings;
+use Relewise\Models\ValueConditionCollection;
 use Relewise\Searcher;
 
 class DataObjectsTest extends BaseTest

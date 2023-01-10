@@ -5,17 +5,17 @@ namespace Relewise\Tests\Integration;
 use \PHPUnit\Framework\TestCase;
 use Relewise\Factory\DataValueFactory;
 use Relewise\Factory\UserFactory;
-use Relewise\Models\DTO\ContainsCondition;
-use Relewise\Models\DTO\Currency;
-use Relewise\Models\DTO\ContainsConditionCollectionArgumentEvaluationMode;
-use Relewise\Models\DTO\FilterCollection;
-use Relewise\Models\DTO\Language;
-use Relewise\Models\DTO\Money;
-use Relewise\Models\DTO\ProductAndVariantId;
-use Relewise\Models\DTO\ProductDataFilter;
-use Relewise\Models\DTO\ProductsViewedAfterViewingProductRequest;
-use Relewise\Models\DTO\PurchasedWithProductRequest;
-use Relewise\Models\DTO\ValueConditionCollection;
+use Relewise\Models\ContainsCondition;
+use Relewise\Models\Currency;
+use Relewise\Models\ContainsConditionCollectionArgumentEvaluationMode;
+use Relewise\Models\FilterCollection;
+use Relewise\Models\Language;
+use Relewise\Models\Money;
+use Relewise\Models\ProductAndVariantId;
+use Relewise\Models\ProductDataFilter;
+use Relewise\Models\ProductsViewedAfterViewingProductRequest;
+use Relewise\Models\PurchasedWithProductRequest;
+use Relewise\Models\ValueConditionCollection;
 use Relewise\Recommender;
 
 class ProductRecommendationsTest extends BaseTest

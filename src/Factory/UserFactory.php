@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 namespace Relewise\Factory;
-use Relewise\Models\DTO\User;
+use Relewise\Models\User;
 
 class UserFactory {
     public static function anonymous() {

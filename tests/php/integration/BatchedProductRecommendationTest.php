@@ -3,13 +3,13 @@
 namespace Relewise\Tests\Integration;
 
 use Relewise\Factory\UserFactory;
-use Relewise\Models\DTO\Currency;
-use Relewise\Models\DTO\Language;
-use Relewise\Models\DTO\ProductAndVariantId;
-use Relewise\Models\DTO\ProductRecommendationRequestCollection;
-use Relewise\Models\DTO\ProductRecommendationRequestSettings;
-use Relewise\Models\DTO\ProductsViewedAfterViewingProductRequest;
-use Relewise\Models\DTO\PurchasedWithProductRequest;
+use Relewise\Models\Currency;
+use Relewise\Models\Language;
+use Relewise\Models\ProductAndVariantId;
+use Relewise\Models\ProductRecommendationRequestCollection;
+use Relewise\Models\ProductRecommendationRequestSettings;
+use Relewise\Models\ProductsViewedAfterViewingProductRequest;
+use Relewise\Models\PurchasedWithProductRequest;
 use Relewise\Recommender;
 
 class BatchedProductRecommendationTest extends BaseTest

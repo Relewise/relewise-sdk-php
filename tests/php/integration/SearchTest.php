@@ -4,13 +4,13 @@ namespace Relewise\Tests\Integration;
 
 use \PHPUnit\Framework\TestCase;
 use Relewise\Factory\UserFactory;
-use Relewise\Models\DTO\Currency;
-use Relewise\Models\DTO\DataDoubleSelector;
-use Relewise\Models\DTO\Language;
-use Relewise\Models\DTO\ProductCategorySearchRequest;
-use Relewise\Models\DTO\ProductDataRelevanceModifier;
-use Relewise\Models\DTO\ProductSearchRequest;
-use Relewise\Models\DTO\RelevanceModifierCollection;
+use Relewise\Models\Currency;
+use Relewise\Models\DataDoubleSelector;
+use Relewise\Models\Language;
+use Relewise\Models\ProductCategorySearchRequest;
+use Relewise\Models\ProductDataRelevanceModifier;
+use Relewise\Models\ProductSearchRequest;
+use Relewise\Models\RelevanceModifierCollection;
 use Relewise\Searcher;
 
 class SearchTest extends BaseTest
