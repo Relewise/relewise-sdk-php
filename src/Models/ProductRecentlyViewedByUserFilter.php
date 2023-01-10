@@ -20,7 +20,7 @@ class ProductRecentlyViewedByUserFilter extends Filter
         $result = Filter::hydrateBase(new ProductRecentlyViewedByUserFilter(), $arr);
         if (array_key_exists("sinceUtc", $arr))
         {
-            $result->sinceUtc = $arr["sinceUtc"];
+            $result->sinceUtc = new DateTime($arr["sinceUtc"]);
         }
         return $result;
     }

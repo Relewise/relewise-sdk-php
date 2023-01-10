@@ -20,7 +20,7 @@ class ViewedByUserInfo
         $result = new ViewedByUserInfo();
         if (array_key_exists("mostRecentlyViewedUtc", $arr))
         {
-            $result->mostRecentlyViewedUtc = $arr["mostRecentlyViewedUtc"];
+            $result->mostRecentlyViewedUtc = new DateTime($arr["mostRecentlyViewedUtc"]);
         }
         if (array_key_exists("totalNumberOfTimesViewed", $arr))
         {

@@ -23,7 +23,7 @@ class ProductRecentlyPurchasedByUserRelevanceModifier extends RelevanceModifier
         $result = RelevanceModifier::hydrateBase(new ProductRecentlyPurchasedByUserRelevanceModifier(), $arr);
         if (array_key_exists("sinceUtc", $arr))
         {
-            $result->sinceUtc = $arr["sinceUtc"];
+            $result->sinceUtc = new DateTime($arr["sinceUtc"]);
         }
         if (array_key_exists("ifPreviouslyPurchasedByUserMultiplyWeightBy", $arr))
         {

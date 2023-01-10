@@ -67,7 +67,7 @@ abstract class TriggerConfiguration
         }
         if (array_key_exists("created", $arr))
         {
-            $result->created = $arr["created"];
+            $result->created = new DateTime($arr["created"]);
         }
         if (array_key_exists("createdBy", $arr))
         {
@@ -75,7 +75,7 @@ abstract class TriggerConfiguration
         }
         if (array_key_exists("modified", $arr))
         {
-            $result->modified = $arr["modified"];
+            $result->modified = new DateTime($arr["modified"]);
         }
         if (array_key_exists("modifiedBy", $arr))
         {

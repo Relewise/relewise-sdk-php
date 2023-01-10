@@ -30,7 +30,7 @@ class CartDetails
         }
         if (array_key_exists("modifiedUtc", $arr))
         {
-            $result->modifiedUtc = $arr["modifiedUtc"];
+            $result->modifiedUtc = new DateTime($arr["modifiedUtc"]);
         }
         if (array_key_exists("lineItems", $arr))
         {
