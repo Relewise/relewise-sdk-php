@@ -4,19 +4,19 @@ namespace Relewise\Tests\Integration;
 
 use \PHPUnit\Framework\TestCase;
 use Relewise\Factory\UserFactory;
-use Relewise\Models\DTO\BrandFacet;
-use Relewise\Models\DTO\CategoryFacet;
-use Relewise\Models\DTO\CategorySelectionStrategy;
-use Relewise\Models\DTO\CollectionFilterType;
-use Relewise\Models\DTO\Currency;
-use Relewise\Models\DTO\DataSelectionStrategy;
-use Relewise\Models\DTO\FacetingField;
-use Relewise\Models\DTO\Language;
-use Relewise\Models\DTO\PriceRangeFacet;
-use Relewise\Models\DTO\PriceSelectionStrategy;
-use Relewise\Models\DTO\ProductDataStringValueFacet;
-use Relewise\Models\DTO\ProductFacetQuery;
-use Relewise\Models\DTO\ProductSearchRequest;
+use Relewise\Models\BrandFacet;
+use Relewise\Models\CategoryFacet;
+use Relewise\Models\CategorySelectionStrategy;
+use Relewise\Models\CollectionFilterType;
+use Relewise\Models\Currency;
+use Relewise\Models\DataSelectionStrategy;
+use Relewise\Models\FacetingField;
+use Relewise\Models\Language;
+use Relewise\Models\PriceRangeFacet;
+use Relewise\Models\PriceSelectionStrategy;
+use Relewise\Models\ProductDataStringValueFacet;
+use Relewise\Models\ProductFacetQuery;
+use Relewise\Models\ProductSearchRequest;
 use Relewise\Searcher;
 
 class FacetsTest extends BaseTest
@@ -46,7 +46,7 @@ class FacetsTest extends BaseTest
         self::assertNotNull($response->facets);
         self::assertNotNull($response->facets->items);
         self::assertNotEmpty($response->facets->items);
-        self::assertEquals("Relewise\Models\DTO\PriceRangeFacetResult", get_class($response->facets->items[0]));
+        self::assertEquals("Relewise\Models\PriceRangeFacetResult", get_class($response->facets->items[0]));
         self::assertEquals(FacetingField::SalesPrice, $response->facets->items[0]->field);
     }
 
@@ -76,7 +76,7 @@ class FacetsTest extends BaseTest
         self::assertNotNull($response->facets);
         self::assertNotNull($response->facets->items);
         self::assertNotEmpty($response->facets->items);
-        self::assertEquals("Relewise\Models\DTO\BrandFacetResult", get_class($response->facets->items[0]));
+        self::assertEquals("Relewise\Models\BrandFacetResult", get_class($response->facets->items[0]));
         self::assertEquals(FacetingField::Brand, $response->facets->items[0]->field);
     }
 
@@ -110,7 +110,7 @@ class FacetsTest extends BaseTest
         self::assertNotNull($response->facets);
         self::assertNotNull($response->facets->items);
         self::assertNotEmpty($response->facets->items);
-        self::assertEquals("Relewise\Models\DTO\ProductDataStringValueFacetResult", get_class($response->facets->items[0]));
+        self::assertEquals("Relewise\Models\ProductDataStringValueFacetResult", get_class($response->facets->items[0]));
         self::assertEquals(FacetingField::Data, $response->facets->items[0]->field);
     }
 
@@ -143,7 +143,7 @@ class FacetsTest extends BaseTest
         self::assertNotNull($response->facets);
         self::assertNotNull($response->facets->items);
         self::assertNotEmpty($response->facets->items);
-        self::assertEquals("Relewise\Models\DTO\CategoryFacetResult", get_class($response->facets->items[0]));
+        self::assertEquals("Relewise\Models\CategoryFacetResult", get_class($response->facets->items[0]));
         self::assertEquals(FacetingField::Category, $response->facets->items[0]->field);
     }
 }

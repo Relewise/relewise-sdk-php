@@ -3,12 +3,12 @@
 namespace Relewise\Tests\Integration;
 
 use Relewise\Factory\UserFactory;
-use Relewise\Models\DTO\Currency;
-use Relewise\Models\DTO\Language;
-use Relewise\Models\DTO\ProductCategorySearchRequest;
-use Relewise\Models\DTO\ProductSearchRequest;
-use Relewise\Models\DTO\SearchRequestCollection;
-use Relewise\Models\DTO\SearchTermPredictionRequest;
+use Relewise\Models\Currency;
+use Relewise\Models\Language;
+use Relewise\Models\ProductCategorySearchRequest;
+use Relewise\Models\ProductSearchRequest;
+use Relewise\Models\SearchRequestCollection;
+use Relewise\Models\SearchTermPredictionRequest;
 use Relewise\Searcher;
 
 class BatchedSearchesTest extends BaseTest

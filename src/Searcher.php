@@ -3,18 +3,18 @@
 namespace Relewise;
 
 use Relewise\Infrastructure\HttpClient\Response;
-use Relewise\Models\DTO\ProductSearchRequest;
-use Relewise\Models\DTO\ContentSearchRequest;
-use Relewise\Models\DTO\ProductCategorySearchRequest;
-use Relewise\Models\DTO\ContentCategorySearchRequest;
-use Relewise\Models\DTO\SearchTermPredictionRequest;
-use Relewise\Models\DTO\SearchRequestCollection;
-use Relewise\Models\DTO\ProductSearchResponse;
-use Relewise\Models\DTO\ContentSearchResponse;
-use Relewise\Models\DTO\ProductCategorySearchResponse;
-use Relewise\Models\DTO\ContentCategorySearchResponse;
-use Relewise\Models\DTO\SearchTermPredictionResponse;
-use Relewise\Models\DTO\SearchResponseCollection;
+use Relewise\Models\ProductSearchRequest;
+use Relewise\Models\ContentSearchRequest;
+use Relewise\Models\ProductCategorySearchRequest;
+use Relewise\Models\ContentCategorySearchRequest;
+use Relewise\Models\SearchTermPredictionRequest;
+use Relewise\Models\SearchRequestCollection;
+use Relewise\Models\ProductSearchResponse;
+use Relewise\Models\ContentSearchResponse;
+use Relewise\Models\ProductCategorySearchResponse;
+use Relewise\Models\ContentCategorySearchResponse;
+use Relewise\Models\SearchTermPredictionResponse;
+use Relewise\Models\SearchResponseCollection;
 
 class Searcher extends RelewiseClient
 {

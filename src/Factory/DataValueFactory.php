@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 namespace Relewise\Factory;
 
-use Relewise\Models\DTO\DataValue;
-use Relewise\Models\DTO\Language;
-use Relewise\Models\DTO\Money;
-use Relewise\Models\DTO\DataValueDataValueTypes;
+use Relewise\Models\DataValue;
+use Relewise\Models\Language;
+use Relewise\Models\Money;
+use Relewise\Models\DataValueDataValueTypes;
 
 class DataValueFactory {
     public static function stringDataValue(string $value) : DataValue {

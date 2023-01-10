@@ -49,7 +49,7 @@ public class PhpWriter
                 continue;
             }
 
-            using var streamWriter = File.CreateText($"{BasePath}/Models/DTO/{typeName}.php");
+            using var streamWriter = File.CreateText($"{BasePath}/Models/{typeName}.php");
             using var writer = new IndentedTextWriter(streamWriter);
 
             var phpTypeWriter = phpTypeWriters.FirstOrDefault(writer => writer.CanWrite(type));

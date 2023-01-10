@@ -57,11 +57,11 @@ use Relewise\Infrastructure\HttpClient\Response;
 
         foreach (var method in clientMethods.DistinctBy(method => method.parameterType))
         {
-            writer.WriteLine($"use Relewise\\Models\\DTO\\{method.parameterType};");
+            writer.WriteLine($"use {Constants.Namespace}\\{method.parameterType};");
         }
         foreach (var method in clientMethods.DistinctBy(method => method.returnType).Where(method => method.returnType != typeof(void)))
         {
-            writer.WriteLine($"use Relewise\\Models\\DTO\\{phpWriter.PhpTypeName(method.returnType)};");
+            writer.WriteLine($"use {Constants.Namespace}\\{phpWriter.PhpTypeName(method.returnType)};");
         }
         writer.WriteLine($"");
 

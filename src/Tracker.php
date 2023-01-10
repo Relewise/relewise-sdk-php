@@ -3,27 +3,27 @@
 namespace Relewise;
 
 use Relewise\Infrastructure\HttpClient\Response;
-use Relewise\Models\DTO\BatchedTrackingRequest;
-use Relewise\Models\DTO\TrackBrandAdministrativeActionRequest;
-use Relewise\Models\DTO\TrackBrandUpdateRequest;
-use Relewise\Models\DTO\TrackBrandViewRequest;
-use Relewise\Models\DTO\TrackCartRequest;
-use Relewise\Models\DTO\TrackContentAdministrativeActionRequest;
-use Relewise\Models\DTO\TrackContentCategoryAdministrativeActionRequest;
-use Relewise\Models\DTO\TrackContentCategoryUpdateRequest;
-use Relewise\Models\DTO\TrackContentCategoryViewRequest;
-use Relewise\Models\DTO\TrackContentUpdateRequest;
-use Relewise\Models\DTO\TrackContentViewRequest;
-use Relewise\Models\DTO\TrackingRequest;
-use Relewise\Models\DTO\TrackOrderRequest;
-use Relewise\Models\DTO\TrackProductAdministrativeActionRequest;
-use Relewise\Models\DTO\TrackProductCategoryAdministrativeActionRequest;
-use Relewise\Models\DTO\TrackProductCategoryUpdateRequest;
-use Relewise\Models\DTO\TrackProductCategoryViewRequest;
-use Relewise\Models\DTO\TrackProductUpdateRequest;
-use Relewise\Models\DTO\TrackProductViewRequest;
-use Relewise\Models\DTO\TrackSearchTermRequest;
-use Relewise\Models\DTO\TrackUserUpdateRequest;
+use Relewise\Models\BatchedTrackingRequest;
+use Relewise\Models\TrackBrandAdministrativeActionRequest;
+use Relewise\Models\TrackBrandUpdateRequest;
+use Relewise\Models\TrackBrandViewRequest;
+use Relewise\Models\TrackCartRequest;
+use Relewise\Models\TrackContentAdministrativeActionRequest;
+use Relewise\Models\TrackContentCategoryAdministrativeActionRequest;
+use Relewise\Models\TrackContentCategoryUpdateRequest;
+use Relewise\Models\TrackContentCategoryViewRequest;
+use Relewise\Models\TrackContentUpdateRequest;
+use Relewise\Models\TrackContentViewRequest;
+use Relewise\Models\TrackingRequest;
+use Relewise\Models\TrackOrderRequest;
+use Relewise\Models\TrackProductAdministrativeActionRequest;
+use Relewise\Models\TrackProductCategoryAdministrativeActionRequest;
+use Relewise\Models\TrackProductCategoryUpdateRequest;
+use Relewise\Models\TrackProductCategoryViewRequest;
+use Relewise\Models\TrackProductUpdateRequest;
+use Relewise\Models\TrackProductViewRequest;
+use Relewise\Models\TrackSearchTermRequest;
+use Relewise\Models\TrackUserUpdateRequest;
 
 class Tracker extends RelewiseClient
 {

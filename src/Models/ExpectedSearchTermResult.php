@@ -1,0 +1,39 @@
+<?php declare(strict_types=1);
+
+namespace Relewise\Models;
+
+use DateTime;
+
+class ExpectedSearchTermResult
+{
+    public int $estimatedHits;
+    public EntityType $type;
+    public static function create() : ExpectedSearchTermResult
+    {
+        $result = new ExpectedSearchTermResult();
+        return $result;
+    }
+    public static function hydrate(array $arr) : ExpectedSearchTermResult
+    {
+        $result = new ExpectedSearchTermResult();
+        if (array_key_exists("estimatedHits", $arr))
+        {
+            $result->estimatedHits = $arr["estimatedHits"];
+        }
+        if (array_key_exists("type", $arr))
+        {
+            $result->type = EntityType::from($arr["type"]);
+        }
+        return $result;
+    }
+    function setEstimatedHits(int $estimatedHits)
+    {
+        $this->estimatedHits = $estimatedHits;
+        return $this;
+    }
+    function setType(EntityType $type)
+    {
+        $this->type = $type;
+        return $this;
+    }
+}

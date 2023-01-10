@@ -3,12 +3,12 @@
 namespace Relewise\Tests\Integration;
 
 use Relewise\Factory\UserFactory;
-use Relewise\Models\DTO\ContentRecommendationRequestCollection;
-use Relewise\Models\DTO\ContentRecommendationRequestSettings;
-use Relewise\Models\DTO\ContentsViewedAfterViewingContentRequest;
-use Relewise\Models\DTO\Currency;
-use Relewise\Models\DTO\Language;
-use Relewise\Models\DTO\PopularContentsRequest;
+use Relewise\Models\ContentRecommendationRequestCollection;
+use Relewise\Models\ContentRecommendationRequestSettings;
+use Relewise\Models\ContentsViewedAfterViewingContentRequest;
+use Relewise\Models\Currency;
+use Relewise\Models\Language;
+use Relewise\Models\PopularContentsRequest;
 use Relewise\Recommender;
 
 class BatchedContentRecommendationTest extends BaseTest
