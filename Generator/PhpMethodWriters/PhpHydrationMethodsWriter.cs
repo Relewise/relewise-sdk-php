@@ -137,13 +137,13 @@ public class PhpHydrationMethodsWriter
         {
             return $"{phpWriter.PhpTypeName(type)}::from({jsonValue})";
         }
-        if (type.IsValueType || type == typeof(string) || type == typeof(Guid) || type == typeof(object) || type.IsArray || (type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(List<>) || type.GetGenericTypeDefinition() == typeof(Dictionary<,>))))
-        {
-            return jsonValue;
-        }
         if (type == typeof(DateTimeOffset))
         {
             return $"new DateTime({jsonValue})";
+        }
+        if (type.IsValueType || type == typeof(string) || type == typeof(Guid) || type == typeof(object) || type.IsArray || (type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(List<>) || type.GetGenericTypeDefinition() == typeof(Dictionary<,>))))
+        {
+            return jsonValue;
         }
         return $"{phpWriter.PhpTypeName(type).Replace("?", "")}::hydrate({jsonValue})";
     }

@@ -23,7 +23,7 @@ class GlobalTriggerConfiguration
         $result = new GlobalTriggerConfiguration();
         if (array_key_exists("modified", $arr))
         {
-            $result->modified = $arr["modified"];
+            $result->modified = new DateTime($arr["modified"]);
         }
         if (array_key_exists("modifiedBy", $arr))
         {

@@ -57,11 +57,11 @@ class BrandResultDetails
         }
         if (array_key_exists("createdUtc", $arr))
         {
-            $result->createdUtc = $arr["createdUtc"];
+            $result->createdUtc = new DateTime($arr["createdUtc"]);
         }
         if (array_key_exists("lastViewedUtc", $arr))
         {
-            $result->lastViewedUtc = $arr["lastViewedUtc"];
+            $result->lastViewedUtc = new DateTime($arr["lastViewedUtc"]);
         }
         if (array_key_exists("viewedTotalNumberOfTimes", $arr))
         {

@@ -50,15 +50,15 @@ class UserResultDetails
         }
         if (array_key_exists("lastCartUpdateUtc", $arr))
         {
-            $result->lastCartUpdateUtc = $arr["lastCartUpdateUtc"];
+            $result->lastCartUpdateUtc = new DateTime($arr["lastCartUpdateUtc"]);
         }
         if (array_key_exists("lastActivityUtc", $arr))
         {
-            $result->lastActivityUtc = $arr["lastActivityUtc"];
+            $result->lastActivityUtc = new DateTime($arr["lastActivityUtc"]);
         }
         if (array_key_exists("lastOrderUtc", $arr))
         {
-            $result->lastOrderUtc = $arr["lastOrderUtc"];
+            $result->lastOrderUtc = new DateTime($arr["lastOrderUtc"]);
         }
         if (array_key_exists("carts", $arr))
         {

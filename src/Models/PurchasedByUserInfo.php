@@ -20,7 +20,7 @@ class PurchasedByUserInfo
         $result = new PurchasedByUserInfo();
         if (array_key_exists("mostRecentPurchasedUtc", $arr))
         {
-            $result->mostRecentPurchasedUtc = $arr["mostRecentPurchasedUtc"];
+            $result->mostRecentPurchasedUtc = new DateTime($arr["mostRecentPurchasedUtc"]);
         }
         if (array_key_exists("totalNumberOfTimesPurchased", $arr))
         {
