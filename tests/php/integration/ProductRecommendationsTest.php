@@ -75,22 +75,22 @@ class ProductRecommendationsTest extends BaseTest
                         ValueConditionCollection::create()
                             ->setItems(
                                 ContainsCondition::create()
-                                    ->setValue(DataValueFactory::stringListDataValue("d"))
+                                    ->setValue(DataValueFactory::stringList("d"))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->setValue(DataValueFactory::booleanListDataValue(true))
+                                    ->setValue(DataValueFactory::booleanList(true))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->setValue(DataValueFactory::doubleListDataValue(1))
+                                    ->setValue(DataValueFactory::doubleList(1))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->setValue(DataValueFactory::multilingualDataValue(Multilingual::create(MultilingualValue::create(Language::create("en-US"), "u"))))
+                                    ->setValue(DataValueFactory::multilingual(Multilingual::create(MultilingualValue::create(Language::create("en-US"), "u"))))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->setValue(DataValueFactory::multilingualCollectionDataValueFromLanguageAndCollection(Language::create("en-US"), "d"))
+                                    ->setValue(DataValueFactory::multilingualCollectionFromLanguageAndCollection(Language::create("en-US"), "d"))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->setValue(DataValueFactory::multiCurrencyDataValueFromSingleCurrency(Money::create(Currency::create("USD"), 1)))
+                                    ->setValue(DataValueFactory::multiCurrencyFromSingleCurrency(Money::create(Currency::create("USD"), 1)))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                             )
                     )
