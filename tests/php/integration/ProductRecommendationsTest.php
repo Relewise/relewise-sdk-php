@@ -11,6 +11,8 @@ use Relewise\Models\ContainsConditionCollectionArgumentEvaluationMode;
 use Relewise\Models\FilterCollection;
 use Relewise\Models\Language;
 use Relewise\Models\Money;
+use Relewise\Models\Multilingual;
+use Relewise\Models\MultilingualValue;
 use Relewise\Models\ProductAndVariantId;
 use Relewise\Models\ProductDataFilter;
 use Relewise\Models\ProductsViewedAfterViewingProductRequest;
@@ -80,6 +82,9 @@ class ProductRecommendationsTest extends BaseTest
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
                                     ->setValue(DataValueFactory::doubleListDataValue(1))
+                                    ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
+                                ContainsCondition::create()
+                                    ->setValue(DataValueFactory::multilingualDataValue(Multilingual::create(MultilingualValue::create(Language::create("en-US"), "u"))))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
                                     ->setValue(DataValueFactory::multilingualCollectionDataValueFromLanguageAndCollection(Language::create("en-US"), "d"))

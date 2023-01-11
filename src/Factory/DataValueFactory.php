@@ -5,6 +5,7 @@ use Relewise\Models\DataValue;
 use Relewise\Models\Language;
 use Relewise\Models\Money;
 use Relewise\Models\DataValueDataValueTypes;
+use Relewise\Models\Multilingual;
 
 class DataValueFactory {
     public static function stringDataValue(string $value) : DataValue {
@@ -76,6 +77,17 @@ class DataValueFactory {
                 array(
                     "\$type" => "System.Collections.Generic.List`1[[System.Boolean, System.Private.CoreLib]], System.Private.CoreLib",
                     "\$values" => $values
+                )
+            );
+    }
+
+    public static function multilingualDataValue(Multilingual $value) : DataValue {
+        return DataValue::create()
+            ->setType(DataValueDataValueTypes::Multilingual)
+            ->setValue(
+                array(
+                    "\$type" => "Relewise.Client.DataTypes.Multilingual, Relewise.Client",
+                    "Values" => $value->values
                 )
             );
     }
