@@ -81,13 +81,13 @@ class ProductRecommendationsTest extends BaseTest
                                     ->setValue(DataValueFactory::booleanList(true))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->setValue(DataValueFactory::doubleList(1))
+                                    ->setValue(DataValueFactory::floatList(1))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
                                     ->setValue(DataValueFactory::multilingual(Multilingual::create(MultilingualValue::create(Language::create("en-US"), "u"))))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->setValue(DataValueFactory::multilingualCollectionFromLanguageAndCollection(Language::create("en-US"), "d"))
+                                    ->setValue(DataValueFactory::multilingualCollectionWithSingleLanguage(Language::create("en-US"), "d"))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
                                     ->setValue(DataValueFactory::multiCurrencyFromSingleCurrency(Money::create(Currency::create("USD"), 1)))
