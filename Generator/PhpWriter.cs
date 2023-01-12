@@ -1,4 +1,4 @@
-﻿using Generator.PhpMethodWriters;
+﻿using Generator.PhpMemberWriters;
 using Generator.PhpTypeWriters;
 using System.CodeDom.Compiler;
 using System.Reflection;
@@ -16,6 +16,8 @@ public class PhpWriter
     public PhpHydrationMethodsWriter PhpHydrationMethodsWriter { get; }
     public PhpCreatorMethodWriter PhpCreatorMethodWriter { get; }
     public PhpPropertySetterMethodsWriter PhpPropertySetterMethodsWriter { get; }
+    public PhpStaticReadonlyPropertiesWriter PhpStaticReadonlyPropertiesWriter { get; }
+    public PhpSettablePropertiesWriter PhpSettablePropertiesWriter { get; }
 
     public PhpWriter(Assembly assembly, string basePath)
     {
@@ -26,6 +28,8 @@ public class PhpWriter
         PhpHydrationMethodsWriter = new PhpHydrationMethodsWriter(this);
         PhpCreatorMethodWriter = new PhpCreatorMethodWriter(this);
         PhpPropertySetterMethodsWriter = new PhpPropertySetterMethodsWriter(this);
+        PhpStaticReadonlyPropertiesWriter = new PhpStaticReadonlyPropertiesWriter(this);
+        PhpSettablePropertiesWriter = new PhpSettablePropertiesWriter(this);
     }
 
     public void WritePhpTypes(IEnumerable<Type> types)

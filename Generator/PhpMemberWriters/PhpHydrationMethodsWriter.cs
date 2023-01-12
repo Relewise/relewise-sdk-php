@@ -1,6 +1,7 @@
 ﻿using System.CodeDom.Compiler;
+using System.Reflection;
 
-namespace Generator.PhpMethodWriters;
+namespace Generator.PhpMemberWriters;
 
 public class PhpHydrationMethodsWriter
 {
@@ -11,7 +12,7 @@ public class PhpHydrationMethodsWriter
         this.phpWriter = phpWriter;
     }
 
-    public void Write(IndentedTextWriter writer, Type type, string typeName, (Type type, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations)
+    public void Write(IndentedTextWriter writer, Type type, string typeName, (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations)
     {
         if (type.IsAbstract || type.IsInterface)
         {
@@ -49,9 +50,9 @@ public class PhpHydrationMethodsWriter
             {
                 writer.WriteLine($"$result = {phpWriter.PhpTypeName(abstractBase).Replace("?", "")}::hydrateBase($result, $arr);");
             }
-            foreach (var (propertyType, _, propertyName, lowerCaseName) in propertyInformations)
+            foreach (var (info, _, _, lowerCaseName) in propertyInformations)
             {
-                WriteHydrationSetter(writer, propertyType, lowerCaseName);
+                WriteHydrationSetter(writer, info.PropertyType, lowerCaseName);
             }
             writer.WriteLine("return $result;");
             writer.Indent--;
@@ -70,9 +71,9 @@ public class PhpHydrationMethodsWriter
             {
                 writer.WriteLine($"$result = new {typeName}();");
             }
-            foreach (var (propertyType, _, _, lowerCaseName) in propertyInformations)
+            foreach (var (info, _, _, lowerCaseName) in propertyInformations)
             {
-                WriteHydrationSetter(writer, propertyType, lowerCaseName);
+                WriteHydrationSetter(writer, info.PropertyType, lowerCaseName);
             }
             writer.WriteLine($"return $result;");
             writer.Indent--;

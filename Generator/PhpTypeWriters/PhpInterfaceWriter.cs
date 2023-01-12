@@ -1,4 +1,5 @@
 ﻿using System.CodeDom.Compiler;
+using System.Reflection;
 
 namespace Generator.PhpTypeWriters;
 
@@ -27,7 +28,7 @@ use DateTime;
         writer.WriteLine($"abstract class {typeName}");
         writer.WriteLine("{");
         writer.Indent++;
-        phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, Array.Empty<(Type, string, string, string)>());
+        phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, Array.Empty<(PropertyInfo, string, string, string)>());
         writer.Indent--;
         writer.WriteLine("}");
     }

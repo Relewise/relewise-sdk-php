@@ -7,6 +7,7 @@ use DateTime;
 class ApplicableLanguages
 {
     public array $languages;
+    const ALL = Null;
     public static function create(Language ... $languages) : ApplicableLanguages
     {
         $result = new ApplicableLanguages();
