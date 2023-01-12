@@ -6,9 +6,9 @@ use DateTime;
 
 class floatRange
 {
-    public float $lowerBoundInclusive;
-    public float $upperBoundInclusive;
-    public static function create(float $lowerBoundInclusive, float $upperBoundInclusive) : floatRange
+    public ?float $lowerBoundInclusive;
+    public ?float $upperBoundInclusive;
+    public static function create(?float $lowerBoundInclusive, ?float $upperBoundInclusive) : floatRange
     {
         $result = new floatRange();
         $result->lowerBoundInclusive = $lowerBoundInclusive;
@@ -28,12 +28,12 @@ class floatRange
         }
         return $result;
     }
-    function setLowerBoundInclusive(float $lowerBoundInclusive)
+    function setLowerBoundInclusive(?float $lowerBoundInclusive)
     {
         $this->lowerBoundInclusive = $lowerBoundInclusive;
         return $this;
     }
-    function setUpperBoundInclusive(float $upperBoundInclusive)
+    function setUpperBoundInclusive(?float $upperBoundInclusive)
     {
         $this->upperBoundInclusive = $upperBoundInclusive;
         return $this;

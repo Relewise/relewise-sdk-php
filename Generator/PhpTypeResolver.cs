@@ -17,17 +17,10 @@ public class PhpTypeResolver
 
     public string ResolveType(Type type) => type.Name switch
     {
-        "String" => "string",
-        "Int32" => "int",
-        "Int64" => "int",
-        "UInt16" => "int",
-        "Single" => "int",
-        "float" => "float",
-        "Double" => "float",
-        "Decimal" => "float",
+        "String" or "Guid" => "string",
+        "Int32" or "Int64" or "UInt16" or "Single" or "Byte" => "int",
+        "Float" or "Double" or "Decimal" => "float",
         "Boolean" => "bool",
-        "Guid" => "string",
-        "Byte" => "int",
         "Object" => "mixed",
         "DateTimeOffset" => "DateTime",
         var value when value.StartsWith("Nullable") => $"?{ResolveType(type.GetGenericArguments()[0])}",
@@ -37,7 +30,7 @@ public class PhpTypeResolver
     };
 
     public bool IsWritten(string typeName) => GeneratedFileNames.Contains(typeName);
-    public void HasWritten(string typeName) => GeneratedFileNames.Contains(typeName);
+    public void HasWritten(string typeName) => GeneratedFileNames.Add(typeName);
 
     private string GetOrAddTypeDefinition(Type type)
     {

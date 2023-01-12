@@ -63,10 +63,10 @@ class TrackerTest extends BaseTest
                             ->setDisplayName("MyBrand1")
                     )
                     ->setCategoryPaths(CategoryPath::create(CategoryNameAndId::create("c-1", Multilingual::create(MultilingualValue::create(Language::create("da-dk"), "Category 1")))))
-                    ->addToData("SomeString", DataValueFactory::stringDataValue("SomeValue"))
-                    ->addToData("SomeObject", DataValueFactory::objectDataValue(array("SomeString" => DataValueFactory::stringDataValue("SomeValue"))))
-                    ->addToData("SomeStringList", DataValueFactory::stringListDataValue("FirstString", "SecondString"))
-                    ->addToData("SomeBooleanList", DataValueFactory::booleanListDataValue(true, true, false)),
+                    ->addToData("SomeString", DataValueFactory::string("SomeValue"))
+                    ->addToData("SomeObject", DataValueFactory::object(array("SomeString" => DataValueFactory::string("SomeValue"))))
+                    ->addToData("SomeStringList", DataValueFactory::stringList("FirstString", "SecondString"))
+                    ->addToData("SomeBooleanList", DataValueFactory::booleanList(true, true, false)),
                 ProductUpdateUpdateKind::ReplaceProvidedProperties
             )->setVariants(
                 ProductVariant::create()

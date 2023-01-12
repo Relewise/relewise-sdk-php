@@ -11,6 +11,8 @@ use Relewise\Models\ContainsConditionCollectionArgumentEvaluationMode;
 use Relewise\Models\FilterCollection;
 use Relewise\Models\Language;
 use Relewise\Models\Money;
+use Relewise\Models\Multilingual;
+use Relewise\Models\MultilingualValue;
 use Relewise\Models\ProductAndVariantId;
 use Relewise\Models\ProductDataFilter;
 use Relewise\Models\ProductsViewedAfterViewingProductRequest;
@@ -73,19 +75,22 @@ class ProductRecommendationsTest extends BaseTest
                         ValueConditionCollection::create()
                             ->setItems(
                                 ContainsCondition::create()
-                                    ->setValue(DataValueFactory::stringListDataValue("d"))
+                                    ->setValue(DataValueFactory::stringList("d"))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->setValue(DataValueFactory::booleanListDataValue(true))
+                                    ->setValue(DataValueFactory::booleanList(true))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->setValue(DataValueFactory::doubleListDataValue(1))
+                                    ->setValue(DataValueFactory::floatList(1))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->setValue(DataValueFactory::multilingualCollectionDataValueFromLanguageAndCollection(Language::create("en-US"), "d"))
+                                    ->setValue(DataValueFactory::multilingual(Multilingual::create(MultilingualValue::create(Language::create("en-US"), "u"))))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->setValue(DataValueFactory::multiCurrencyDataValueFromSingleCurrency(Money::create(Currency::create("USD"), 1)))
+                                    ->setValue(DataValueFactory::multilingualCollectionWithSingleLanguage(Language::create("en-US"), "d"))
+                                    ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
+                                ContainsCondition::create()
+                                    ->setValue(DataValueFactory::multiCurrencyFromSingleCurrency(Money::create(Currency::create("USD"), 1)))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                             )
                     )

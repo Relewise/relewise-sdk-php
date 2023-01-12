@@ -36,7 +36,7 @@ class DataObjectsTest extends BaseTest
                 ->setConditions(ValueConditionCollection::create()
                     ->setItems(
                         ContainsCondition::create()
-                            ->setValue(DataValueFactory::objectDataValue(array("d" => DataValueFactory::stringDataValue("a"))))
+                            ->setValue(DataValueFactory::object(array("d" => DataValueFactory::string("a"))))
                     )
                 )
             )
