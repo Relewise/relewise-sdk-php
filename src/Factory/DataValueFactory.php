@@ -9,28 +9,28 @@ use Relewise\Models\Multilingual;
 use Relewise\Models\MultilingualValue;
 
 class DataValueFactory {
-    /** You should parse a string to this method. */
+    /** This method takes a string. */
     public static function string(string $value) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::String)
             ->setValue($value);
     }
 
-    /** You should parse a double to this method. */
-    public static function double(float $value) : DataValue {
+    /** This method takes a float. */
+    public static function float(float $value) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::Double)
             ->setValue($value);
     }
     
-    /** You should parse a bool to this method. */
+    /** This method takes a bool. */
     public static function boolean(bool $value) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::Boolean)
             ->setValue($value);
     }
 
-    /** You should parse a Money object to this method. */
+    /** This method takes a Money object. */
     public static function multiCurrencyFromSingleCurrency(Money $money) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::MultiCurrency)
@@ -42,11 +42,11 @@ class DataValueFactory {
             );
     }
 
-    /** You should parse any number of Money objects to this method. */
+    /** This method takes any number of Money objects. */
     public static function multiCurrencyFromMultipleMoney(Money ... $moneyValues) : DataValue {
         return DataValueFactory::multiCurrencyFromMoneyArray($moneyValues);
     }
-    /** You should parse an array of Money objects to this method. */
+    /** This method takes an array of Money objects. */
     public static function multiCurrencyFromMoneyArray(array $moneyValues) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::MultiCurrency)
@@ -58,11 +58,11 @@ class DataValueFactory {
             );
     }
 
-    /** You should parse any number of strings to this method. */
+    /** This method takes any number of strings. */
     public static function stringList(string ... $values) : DataValue {
         return DataValueFactory::stringListFromArray($values);
     }
-    /** You should parse an array of strings to this method. */
+    /** This method takes an array of strings. */
     public static function stringListFromArray(array $values) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::StringList)
@@ -74,12 +74,12 @@ class DataValueFactory {
             );
     }
 
-    /** You should parse any number of floats to this method. */
-    public static function doubleList(float ... $values) : DataValue {
-        return DataValueFactory::doubleListFromArray($values);
+    /** This method takes any number of floats. */
+    public static function floatList(float ... $values) : DataValue {
+        return DataValueFactory::floatListFromArray($values);
     }
-    /** You should parse an array of floats to this method. */
-    public static function doubleListFromArray(array $values) : DataValue {
+    /** This method takes an array of floats. */
+    public static function floatListFromArray(array $values) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::DoubleList)
             ->setValue(
@@ -90,11 +90,11 @@ class DataValueFactory {
             );
     }
 
-    /** You should parse any number of bools to this method. */
+    /** This method takes any number of bools. */
     public static function booleanList(bool ... $values) : DataValue {
         return DataValueFactory::booleanListFromArray($values);
     }
-    /** You should parse an array of bools to this method. */
+    /** This method takes an array of bools. */
     public static function booleanListFromArray(array $values) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::BooleanList)
@@ -106,7 +106,7 @@ class DataValueFactory {
             );
     }
 
-    /** You should parse a Multilingual to this method. */
+    /** This method takes a Multilingual. */
     public static function multilingual(Multilingual $value) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::Multilingual)
@@ -118,12 +118,12 @@ class DataValueFactory {
             );
     }
 
-    /** You should parse a Language and any number of strings to this method. */
-    public static function multilingualCollectionFromLanguageAndCollection(Language $language, string ... $values) : DataValue {
-        return DataValueFactory::multilingualCollectionFromLanguageAndCollectionFromArray($language, $values);
+    /** This method takes a Language and any number of strings. */
+    public static function multilingualCollectionWithSingleLanguage(Language $language, string ... $values) : DataValue {
+        return DataValueFactory::multilingualCollectionWithSingleLanguageFromArray($language, $values);
     }
-    /** You should parse a Language and an array of strings to this method. */
-    public static function multilingualCollectionFromLanguageAndCollectionFromArray(Language $language, array $values) : DataValue {
+    /** This method takes a Language and an array of strings. */
+    public static function multilingualCollectionWithSingleLanguageFromArray(Language $language, array $values) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::MultilingualCollection)
             ->setValue(
@@ -138,8 +138,11 @@ class DataValueFactory {
                 ));
     }
 
-    /** You should parse an array with two keys "Language" being a Language and "Values" being an array of strings to this method. */
-    public static function multilingualCollectionFromMultilingualCollectionValues(array $values) : DataValue {
+    /** This method takes an array of arrays with two keys "Language" being a Language and "Values" being an array of strings.
+     * Example:
+     * array(array("Language" => "da", "Values" => array("Hallo")), array("Language" => "en", "Values" => array("Hello")))
+    */
+    public static function multilingualCollection(array $values) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::MultilingualCollection)
             ->setValue(
@@ -149,7 +152,7 @@ class DataValueFactory {
                 ));
     }
 
-    /** You should parse an array of key value pairs to this method. */
+    /** This method takes an array of key value pairs. */
     public static function object(mixed $data) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::Object)
@@ -160,11 +163,11 @@ class DataValueFactory {
                 ));
     }
 
-    /** You should parse multiple arrays in each with key value pairs to this method. */ 
+    /** This method takes multiple arrays within, each with key value pairs. */ 
     public static function objectList(mixed ... $objects) : DataValue {
         return DataValueFactory::objectListFromArray($objects);
     }
-    /** You should parse an arrray with multiple arrays in each with key value pairs to this method. */ 
+    /** This method takes an arrray with multiple arrays within, each with key value pairs. */ 
     public static function objectListFromArray(array $objects) : DataValue {
         $values = array();
         foreach ($objects as $object) {
