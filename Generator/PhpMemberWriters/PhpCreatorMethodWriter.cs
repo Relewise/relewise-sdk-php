@@ -3,7 +3,7 @@ using System.CodeDom.Compiler;
 using System.Globalization;
 using System.Reflection;
 
-namespace Generator.PhpMethodWriters;
+namespace Generator.PhpMemberWriters;
 
 public class PhpCreatorMethodWriter
 {
@@ -14,7 +14,7 @@ public class PhpCreatorMethodWriter
         this.phpWriter = phpWriter;
     }
 
-    public void Write(IndentedTextWriter writer, Type type, string typeName, (Type type, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations)
+    public void Write(IndentedTextWriter writer, Type type, string typeName, (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations)
     {
         if (type.IsAbstract || type.IsInterface) return;
 
@@ -25,8 +25,8 @@ public class PhpCreatorMethodWriter
                               && c.GetParameters()
                                     .All(parameter => propertyInformations
                                         .Any(property =>
-                                            property.type == parameter.ParameterType
-                                            || EqualCollectionElementType(property.type, parameter.ParameterType)
+                                            property.info.PropertyType == parameter.ParameterType
+                                            || EqualCollectionElementType(property.info.PropertyType, parameter.ParameterType)
                                         )
                                     ) // There is a property type that matches each parameter type.
             )
@@ -63,7 +63,7 @@ public class PhpCreatorMethodWriter
             foreach (var parameter in coveringTypeMappableConstructorParameters)
             {
                 var propertyName = propertyInformations
-                    .Single(property => property.type == parameter.ParameterType || EqualCollectionElementType(property.type, parameter.ParameterType))
+                    .Single(property => property.info.PropertyType == parameter.ParameterType || EqualCollectionElementType(property.info.PropertyType, parameter.ParameterType))
                     .lowerCaseName;
 
                 writer.WriteLine($"$result->{propertyName} = ${parameter.Name};");
