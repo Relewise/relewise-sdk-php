@@ -7,7 +7,7 @@ use DateTime;
 class ProductCategoryAdministrativeAction extends CategoryAdministrativeAction
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductCategoryAdministrativeAction, Relewise.Client";
-    public static function create(Language $language, Currency $currency, CategoryAdministrativeActionUpdateKind $kind) : ProductCategoryAdministrativeAction
+    public static function create(?Language $language, ?Currency $currency, CategoryAdministrativeActionUpdateKind $kind) : ProductCategoryAdministrativeAction
     {
         $result = new ProductCategoryAdministrativeAction();
         $result->language = $language;
@@ -25,7 +25,7 @@ class ProductCategoryAdministrativeAction extends CategoryAdministrativeAction
         $this->filters = $filters;
         return $this;
     }
-    function setLanguage(Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
@@ -35,7 +35,7 @@ class ProductCategoryAdministrativeAction extends CategoryAdministrativeAction
         $this->kind = $kind;
         return $this;
     }
-    function setCurrency(Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;

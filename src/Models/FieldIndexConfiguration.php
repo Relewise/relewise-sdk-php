@@ -9,7 +9,7 @@ class FieldIndexConfiguration
     public bool $included;
     public int $weight;
     public PredictionSourceType $predictionSourceType;
-    public Parser $parser;
+    public ?Parser $parser;
     public static function create(bool $included, int $weight, PredictionSourceType $predictionSourceType, Parser $parser) : FieldIndexConfiguration
     {
         $result = new FieldIndexConfiguration();
@@ -55,7 +55,7 @@ class FieldIndexConfiguration
         $this->predictionSourceType = $predictionSourceType;
         return $this;
     }
-    function setParser(Parser $parser)
+    function setParser(?Parser $parser)
     {
         $this->parser = $parser;
         return $this;

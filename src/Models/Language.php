@@ -7,6 +7,7 @@ use DateTime;
 class Language
 {
     public string $value;
+    const UNDEFINED = Null;
     public static function create(string $name) : Language
     {
         $result = new Language();

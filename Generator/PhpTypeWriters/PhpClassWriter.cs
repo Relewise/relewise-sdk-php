@@ -33,31 +33,37 @@ use DateTime;
         {
             writer.WriteLine($"public string $typeDefinition = \"{type.FullName}, {type.Assembly.FullName!.Split(",")[0]}\";");
         }
-
-        var settablePropertyInfo = type
+        
+        var gettablePropertyInfo = type
             .GetProperties()
             .Where(info => info.MemberType is MemberTypes.Property
                            && info.GetIndexParameters().Length is 0
-                           && info.SetMethod is { IsAbstract: false }
+                           && info.GetMethod is { IsAbstract: false }
                            && !Attribute.IsDefined(info, typeof(JsonIgnoreAttribute))
                            && info.GetAccessors(false).All(ax => !ax.IsAbstract && ax.IsPublic)
                            && info.Name != "Custom") // It is a special requirement that we should ignore the property Custom from all classes.
             .ToArray();
-
-        var settableProperties = settablePropertyInfo
-            .Select(info => (type: info.PropertyType, propertyTypeName: phpWriter.PhpTypeName(info), propertyName: info.Name, lowerCaseName: info.Name.ToCamelCase()))
+        var settablePropertyInfo = gettablePropertyInfo
+            .Where(info => info.SetMethod is { IsAbstract: false }) // It is a special requirement that we should ignore the property Custom from all classes.
             .ToArray();
 
+
+        var settableProperties = settablePropertyInfo
+            .Select(MapPropertyInfo)
+            .ToArray();
         var ownedProperties = settablePropertyInfo
             .Where(info => info.DeclaringType == type 
                         && info.DeclaringType?.IsAbstract == type.IsAbstract)
-            .Select(info => (type: info.PropertyType, propertyTypeName: phpWriter.PhpTypeName(info), propertyName: info.Name, lowerCaseName: info.Name.ToCamelCase()))
+            .Select(MapPropertyInfo)
+            .ToArray();
+        var staticGetterProperties = gettablePropertyInfo
+            .Where(info => info.GetAccessors(nonPublic: false).Any(x => x.IsStatic)
+                        && info.SetMethod is null)
+            .Select(MapPropertyInfo)
             .ToArray();
 
-        foreach (var (_, propertyTypeName, _, lowerCaseName) in ownedProperties)
-        {
-            writer.WriteLine($"public {propertyTypeName} ${lowerCaseName};");
-        }
+        phpWriter.PhpSettablePropertiesWriter.Write(writer, ownedProperties);
+        phpWriter.PhpStaticReadonlyPropertiesWriter.Write(writer, staticGetterProperties);
 
         phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, ownedProperties);
         phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, ownedProperties);
@@ -65,5 +71,10 @@ use DateTime;
 
         writer.Indent--;
         writer.WriteLine("}");
+    }
+
+    private (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName) MapPropertyInfo(PropertyInfo info)
+    {
+        return (info, propertyTypeName: phpWriter.PhpTypeName(info), propertyName: info.Name, lowerCaseName: info.Name.ToCamelCase());
     }
 }

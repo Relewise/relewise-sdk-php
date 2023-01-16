@@ -6,10 +6,10 @@ use DateTime;
 
 class floatRangeAvailableFacetValue
 {
-    public floatRange $value;
+    public ?floatRange $value;
     public int $hits;
     public bool $selected;
-    public static function create(floatRange $value, bool $selected, int $hits) : floatRangeAvailableFacetValue
+    public static function create(?floatRange $value, bool $selected, int $hits) : floatRangeAvailableFacetValue
     {
         $result = new floatRangeAvailableFacetValue();
         $result->value = $value;
@@ -34,7 +34,7 @@ class floatRangeAvailableFacetValue
         }
         return $result;
     }
-    function setValue(floatRange $value)
+    function setValue(?floatRange $value)
     {
         $this->value = $value;
         return $this;

@@ -6,7 +6,7 @@ use DateTime;
 
 class DataObjectFilter
 {
-    public array $conditions;
+    public ?array $conditions;
     public ?int $skip;
     public ?int $take;
     public static function create() : DataObjectFilter

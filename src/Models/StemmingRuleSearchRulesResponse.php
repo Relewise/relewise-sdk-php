@@ -6,7 +6,7 @@ use DateTime;
 
 abstract class StemmingRuleSearchRulesResponse extends TimedResponse
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.SearchRulesResponse`1[[Relewise.Client.DataTypes.Search.Configuration.SearchRules.StemmingRule, Relewise.Client, Version=1.56.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.SearchRulesResponse`1[[Relewise.Client.DataTypes.Search.Configuration.SearchRules.StemmingRule, Relewise.Client, Version=1.57.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public array $rules;
     public int $hits;
     public static function hydrate(array $arr)

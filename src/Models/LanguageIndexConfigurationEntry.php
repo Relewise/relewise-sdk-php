@@ -8,8 +8,8 @@ class LanguageIndexConfigurationEntry
 {
     public Language $language;
     public bool $included;
-    public string $iSO639_1;
-    public static function create(Language $language, bool $included, string $iso639_1 = Null) : LanguageIndexConfigurationEntry
+    public ?string $iSO639_1;
+    public static function create(Language $language, bool $included, ?string $iso639_1 = Null) : LanguageIndexConfigurationEntry
     {
         $result = new LanguageIndexConfigurationEntry();
         $result->language = $language;
@@ -44,7 +44,7 @@ class LanguageIndexConfigurationEntry
         $this->included = $included;
         return $this;
     }
-    function setISO639_1(string $iSO639_1)
+    function setISO639_1(?string $iSO639_1)
     {
         $this->iSO639_1 = $iSO639_1;
         return $this;

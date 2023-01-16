@@ -14,6 +14,10 @@ abstract class ProductSorting extends ProductSortingSorting
         {
             return ProductAttributeSorting::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.Search.Sorting.Product.ProductDataObjectSorting, Relewise.Client")
+        {
+            return ProductDataObjectSorting::hydrate($arr);
+        }
         if ($type=="Relewise.Client.DataTypes.Search.Sorting.Product.ProductDataSorting, Relewise.Client")
         {
             return ProductDataSorting::hydrate($arr);

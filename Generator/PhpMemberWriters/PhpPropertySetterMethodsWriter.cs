@@ -1,6 +1,7 @@
 ﻿using System.CodeDom.Compiler;
+using System.Reflection;
 
-namespace Generator.PhpMethodWriters;
+namespace Generator.PhpMemberWriters;
 
 public class PhpPropertySetterMethodsWriter
 {
@@ -11,10 +12,11 @@ public class PhpPropertySetterMethodsWriter
         this.phpWriter = phpWriter;
     }
 
-    public void Write(IndentedTextWriter writer, (Type type, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations)
+    public void Write(IndentedTextWriter writer, (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations)
     {
-        foreach (var (propertyType, propertyTypeName, propertyName, lowerCaseName) in propertyInformations)
+        foreach (var (info, propertyTypeName, propertyName, lowerCaseName) in propertyInformations)
         {
+            var propertyType = info.PropertyType;
             if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(Dictionary<,>) && propertyType.GenericTypeArguments is [var keyType, var valueType])
             {
                 writer.WriteLine($"function addTo{propertyName}({phpWriter.PhpTypeName(keyType)} $key, {phpWriter.PhpTypeName(valueType)} $value)");

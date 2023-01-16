@@ -8,10 +8,10 @@ class ContentAdministrativeAction extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentAdministrativeAction, Relewise.Client";
     public FilterCollection $filters;
-    public Language $language;
+    public ?Language $language;
     public ContentAdministrativeActionUpdateKind $kind;
-    public Currency $currency;
-    public static function create(Language $language, Currency $currency, FilterCollection $filters, ContentAdministrativeActionUpdateKind $kind) : ContentAdministrativeAction
+    public ?Currency $currency;
+    public static function create(?Language $language, ?Currency $currency, FilterCollection $filters, ContentAdministrativeActionUpdateKind $kind) : ContentAdministrativeAction
     {
         $result = new ContentAdministrativeAction();
         $result->language = $language;
@@ -46,7 +46,7 @@ class ContentAdministrativeAction extends Trackable
         $this->filters = $filters;
         return $this;
     }
-    function setLanguage(Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
@@ -56,7 +56,7 @@ class ContentAdministrativeAction extends Trackable
         $this->kind = $kind;
         return $this;
     }
-    function setCurrency(Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
