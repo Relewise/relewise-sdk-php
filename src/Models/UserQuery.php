@@ -8,9 +8,9 @@ class UserQuery extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Queries.UserQuery, Relewise.Client";
     public array $criteria;
-    public Language $language;
-    public Currency $currency;
-    public static function create(Language $language, Currency $currency, UserQueryCriteria ... $criteria) : UserQuery
+    public ?Language $language;
+    public ?Currency $currency;
+    public static function create(?Language $language, ?Currency $currency, UserQueryCriteria ... $criteria) : UserQuery
     {
         $result = new UserQuery();
         $result->language = $language;
@@ -53,12 +53,12 @@ class UserQuery extends LicensedRequest
         array_push($this->criteria, $criteria);
         return $this;
     }
-    function setLanguage(Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function setCurrency(Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;

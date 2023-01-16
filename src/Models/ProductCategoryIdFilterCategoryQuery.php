@@ -6,11 +6,11 @@ use DateTime;
 
 abstract class ProductCategoryIdFilterCategoryQuery extends LicensedRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Queries.CategoryQuery`1[[Relewise.Client.Requests.Filters.ProductCategoryIdFilter, Relewise.Client, Version=1.56.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.Requests.Queries.CategoryQuery`1[[Relewise.Client.Requests.Filters.ProductCategoryIdFilter, Relewise.Client, Version=1.57.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public FilterCollection $filters;
     public int $numberOfResults;
-    public Language $language;
-    public Currency $currency;
+    public ?Language $language;
+    public ?Currency $currency;
     public int $skipNumberOfResults;
     public bool $returnTotalNumberOfResults;
     public bool $includeDisabledCategories;
@@ -75,12 +75,12 @@ abstract class ProductCategoryIdFilterCategoryQuery extends LicensedRequest
         $this->numberOfResults = $numberOfResults;
         return $this;
     }
-    function setLanguage(Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function setCurrency(Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;

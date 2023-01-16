@@ -9,12 +9,12 @@ class ContentQuery extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Queries.ContentQuery, Relewise.Client";
     public FilterCollection $filters;
     public int $numberOfResults;
-    public Language $language;
-    public Currency $currency;
+    public ?Language $language;
+    public ?Currency $currency;
     public int $skipNumberOfResults;
     public bool $returnTotalNumberOfResults;
     public bool $includeDisabledContents;
-    public static function create(Language $language = Null, Currency $currency = Null) : ContentQuery
+    public static function create(?Language $language = Null, ?Currency $currency = Null) : ContentQuery
     {
         $result = new ContentQuery();
         $result->language = $language;
@@ -66,12 +66,12 @@ class ContentQuery extends LicensedRequest
         $this->numberOfResults = $numberOfResults;
         return $this;
     }
-    function setLanguage(Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function setCurrency(Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;

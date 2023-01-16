@@ -9,14 +9,14 @@ class ProductQuery extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Queries.ProductQuery, Relewise.Client";
     public FilterCollection $filters;
     public int $numberOfResults;
-    public Language $language;
-    public Currency $currency;
+    public ?Language $language;
+    public ?Currency $currency;
     public int $skipNumberOfResults;
     public bool $returnTotalNumberOfResults;
     public bool $includeDisabledProducts;
     public bool $includeDisabledVariants;
     public bool $excludeProductsWithNoVariants;
-    public static function create(Language $language = Null, Currency $currency = Null) : ProductQuery
+    public static function create(?Language $language = Null, ?Currency $currency = Null) : ProductQuery
     {
         $result = new ProductQuery();
         $result->language = $language;
@@ -76,12 +76,12 @@ class ProductQuery extends LicensedRequest
         $this->numberOfResults = $numberOfResults;
         return $this;
     }
-    function setLanguage(Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function setCurrency(Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
