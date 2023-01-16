@@ -30,17 +30,17 @@ class SearchAdministratorTest extends BaseTest
                     IndexConfiguration::create()
                         ->setLanguage(LanguageIndexConfiguration::create()
                             ->setLanguages(
-                                LanguageIndexConfigurationEntry::create(Language::create("da-dk"), true, "en"),
-                                LanguageIndexConfigurationEntry::create(Language::create("en-gb"), true, "en")
+                                LanguageIndexConfigurationEntry::create(Language::create("da-dk"), true),
+                                LanguageIndexConfigurationEntry::create(Language::create("en-gb"), true)
                             )
                         )
                         ->setProduct(ProductIndexConfiguration::create()
-                            ->setId(FieldIndexConfiguration::create(true, 1, PredictionSourceType::Disabled, ClearTextParser::create()))
-                            ->setDisplayName(FieldIndexConfiguration::create(true, 9, PredictionSourceType::PartialWordSequences, ClearTextParser::create()))
+                            ->setId(FieldIndexConfiguration::create(true, 1, PredictionSourceType::Disabled))
+                            ->setDisplayName(FieldIndexConfiguration::create(true, 9, PredictionSourceType::PartialWordSequences))
                             ->setData(
                                 DataIndexConfiguration::create()
-                                    ->addToKeys("Tags", FieldIndexConfiguration::create(true, 8, PredictionSourceType::IndividualWords, ClearTextParser::create()))
-                                    ->addToKeys("Description", FieldIndexConfiguration::create(true, 5, PredictionSourceType::PartialWordSequences, HtmlParser::create()))
+                                    ->addToKeys("Tags", FieldIndexConfiguration::create(true, 8, PredictionSourceType::IndividualWords))
+                                    ->addToKeys("Description", FieldIndexConfiguration::create(true, 5, PredictionSourceType::PartialWordSequences)->setParser(HtmlParser::create()))
                             )
                         )
                 ),

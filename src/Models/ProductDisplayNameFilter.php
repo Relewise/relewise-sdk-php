@@ -10,12 +10,11 @@ class ProductDisplayNameFilter extends Filter
     public ?Language $language;
     public ?ValueConditionCollection $conditions;
     public bool $mustMatchAllConditions;
-    public static function create(ValueConditionCollection $conditions, bool $mustMatchAllConditions = true, ?Language $language = Null) : ProductDisplayNameFilter
+    public static function create(?Language $language = Null) : ProductDisplayNameFilter
     {
         $result = new ProductDisplayNameFilter();
-        $result->conditions = $conditions;
-        $result->mustMatchAllConditions = $mustMatchAllConditions;
         $result->language = $language;
+        $result->mustMatchAllConditions = true;
         return $result;
     }
     public static function hydrate(array $arr) : ProductDisplayNameFilter
