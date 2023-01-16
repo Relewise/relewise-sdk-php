@@ -31,6 +31,10 @@ abstract class FacetResult
         {
             return CategoryFacetResult::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.Search.Facets.Result.ContentDataObjectFacetResult, Relewise.Client")
+        {
+            return ContentDataObjectFacetResult::hydrate($arr);
+        }
         if ($type=="Relewise.Client.DataTypes.Search.Facets.Result.ContentDataDoubleRangeFacetResult, Relewise.Client")
         {
             return ContentDataDoubleRangeFacetResult::hydrate($arr);
@@ -86,6 +90,10 @@ abstract class FacetResult
         if ($type=="Relewise.Client.DataTypes.Search.Facets.Result.PriceRangesFacetResult, Relewise.Client")
         {
             return PriceRangesFacetResult::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.Search.Facets.Result.ProductCategoryDataObjectFacetResult, Relewise.Client")
+        {
+            return ProductCategoryDataObjectFacetResult::hydrate($arr);
         }
         if ($type=="Relewise.Client.DataTypes.Search.Facets.Result.ProductCategoryDataDoubleRangeFacetResult, Relewise.Client")
         {

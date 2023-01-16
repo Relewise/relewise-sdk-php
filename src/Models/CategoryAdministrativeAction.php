@@ -8,9 +8,9 @@ abstract class CategoryAdministrativeAction extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.CategoryAdministrativeAction, Relewise.Client";
     public FilterCollection $filters;
-    public Language $language;
+    public ?Language $language;
     public CategoryAdministrativeActionUpdateKind $kind;
-    public Currency $currency;
+    public ?Currency $currency;
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -49,7 +49,7 @@ abstract class CategoryAdministrativeAction extends Trackable
         $this->filters = $filters;
         return $this;
     }
-    function setLanguage(Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
@@ -59,7 +59,7 @@ abstract class CategoryAdministrativeAction extends Trackable
         $this->kind = $kind;
         return $this;
     }
-    function setCurrency(Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;

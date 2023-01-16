@@ -9,12 +9,12 @@ class BrandQuery extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Queries.BrandQuery, Relewise.Client";
     public FilterCollection $filters;
     public int $numberOfResults;
-    public Language $language;
-    public Currency $currency;
+    public ?Language $language;
+    public ?Currency $currency;
     public int $skipNumberOfResults;
     public bool $returnTotalNumberOfResults;
     public bool $includeDisabledBrands;
-    public static function create(Language $language = Null, Currency $currency = Null) : BrandQuery
+    public static function create(?Language $language = Null, ?Currency $currency = Null) : BrandQuery
     {
         $result = new BrandQuery();
         $result->language = $language;
@@ -66,12 +66,12 @@ class BrandQuery extends LicensedRequest
         $this->numberOfResults = $numberOfResults;
         return $this;
     }
-    function setLanguage(Language $language)
+    function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    function setCurrency(Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;

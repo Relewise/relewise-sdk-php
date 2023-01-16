@@ -6,7 +6,7 @@ use DateTime;
 
 abstract class ProductSortingSorting
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Sorting`1[[Relewise.Client.DataTypes.Search.Sorting.Product.ProductSorting, Relewise.Client, Version=1.56.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Sorting`1[[Relewise.Client.DataTypes.Search.Sorting.Product.ProductSorting, Relewise.Client, Version=1.57.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public SortOrder $order;
     public ProductSorting $thenBy;
     public static function hydrate(array $arr)
@@ -15,6 +15,10 @@ abstract class ProductSortingSorting
         if ($type=="Relewise.Client.DataTypes.Search.Sorting.Product.ProductAttributeSorting, Relewise.Client")
         {
             return ProductAttributeSorting::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.Search.Sorting.Product.ProductDataObjectSorting, Relewise.Client")
+        {
+            return ProductDataObjectSorting::hydrate($arr);
         }
         if ($type=="Relewise.Client.DataTypes.Search.Sorting.Product.ProductDataSorting, Relewise.Client")
         {
