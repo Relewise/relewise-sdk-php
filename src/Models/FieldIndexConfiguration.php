@@ -10,13 +10,12 @@ class FieldIndexConfiguration
     public int $weight;
     public PredictionSourceType $predictionSourceType;
     public ?Parser $parser;
-    public static function create(bool $included, int $weight, PredictionSourceType $predictionSourceType, Parser $parser) : FieldIndexConfiguration
+    public static function create(bool $included, int $weight, PredictionSourceType $predictionSourceType) : FieldIndexConfiguration
     {
         $result = new FieldIndexConfiguration();
         $result->included = $included;
         $result->weight = $weight;
         $result->predictionSourceType = $predictionSourceType;
-        $result->parser = $parser;
         return $result;
     }
     public static function hydrate(array $arr) : FieldIndexConfiguration

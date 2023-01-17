@@ -25,8 +25,10 @@ public class PhpCreatorMethodWriter
                               && c.GetParameters()
                                     .All(parameter => propertyInformations
                                         .Any(property =>
-                                            property.info.PropertyType == parameter.ParameterType
-                                            || EqualCollectionElementType(property.info.PropertyType, parameter.ParameterType)
+                                            (property.info.PropertyType == parameter.ParameterType
+                                             && new NullabilityInfoContext().Create(property.info).WriteState is NullabilityState.Nullable 
+                                             == new NullabilityInfoContext().Create(parameter).WriteState is NullabilityState.Nullable) // If the type matches then the nullability annotation also has to.
+                                            || EqualCollectionElementType(property.info.PropertyType, parameter.ParameterType) // if they only match on their collection element type then we are more relaxed as method params can be empty.
                                         )
                                     ) // There is a property type that matches each parameter type.
             )
