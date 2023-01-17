@@ -39,7 +39,7 @@ class ContentRecommendationsTest extends BaseTest
             Currency::UNDEFINED,
             "integration test",
             UserFactory::byTemporaryId("t-Id")
-        )->setSinceMinutesAgo(5000);
+        )->setSinceMinutesAgo(500000);
 
         $response = $recommender->popularContents($popularContents);
 
