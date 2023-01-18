@@ -91,9 +91,9 @@ public class PhpCreatorMethodWriter
             writer.WriteLine($"$result = new {typeName}();");
         }
 
-        var coveredParameterNames = coveringTypeMappableConstructorParameters is not null
+        var coveredParameterNames = coveringTypeMappableConstructorParameters?.Length > 0
             ? coveringTypeMappableConstructorParameters.Select(parameter => parameter.Name)
-            : allConstructorParametersIntersectionWithMappableNamesAndTypes is not null
+            : allConstructorParametersIntersectionWithMappableNamesAndTypes?.Length > 0
                 ? allConstructorParametersIntersectionWithMappableNamesAndTypes.Select(parameter => parameter.Name)
                 : new List<string>();
 

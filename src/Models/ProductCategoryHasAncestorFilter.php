@@ -11,7 +11,6 @@ class ProductCategoryHasAncestorFilter extends HasAncestorCategoryFilter
     {
         $result = new ProductCategoryHasAncestorFilter();
         $result->negated = $negated;
-        $result->negated = false;
         return $result;
     }
     public static function hydrate(array $arr) : ProductCategoryHasAncestorFilter

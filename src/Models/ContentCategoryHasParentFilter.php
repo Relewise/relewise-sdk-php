@@ -11,7 +11,6 @@ class ContentCategoryHasParentFilter extends HasParentCategoryFilter
     {
         $result = new ContentCategoryHasParentFilter();
         $result->negated = $negated;
-        $result->negated = false;
         return $result;
     }
     public static function hydrate(array $arr) : ContentCategoryHasParentFilter

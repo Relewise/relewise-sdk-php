@@ -15,8 +15,6 @@ class VariantDataFilter extends DataFilter
         $result->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
         $result->language = $language;
         $result->currency = $currency;
-        $result->mustMatchAllConditions = true;
-        $result->filterOutIfKeyIsNotFound = true;
         return $result;
     }
     public static function hydrate(array $arr) : VariantDataFilter

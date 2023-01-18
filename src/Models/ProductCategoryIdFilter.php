@@ -12,7 +12,6 @@ class ProductCategoryIdFilter extends CategoryIdFilter
         $result = new ProductCategoryIdFilter();
         $result->evaluationScope = $evaluationScope;
         $result->negated = $negated;
-        $result->negated = false;
         return $result;
     }
     public static function hydrate(array $arr) : ProductCategoryIdFilter

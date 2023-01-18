@@ -12,7 +12,6 @@ class ObjectValueMinByCondition extends ObjectValueCondition
         $result = new ObjectValueMinByCondition();
         $result->key = $key;
         $result->negated = $negated;
-        $result->negated = false;
         return $result;
     }
     public static function hydrate(array $arr) : ObjectValueMinByCondition
