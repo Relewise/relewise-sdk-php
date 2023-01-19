@@ -16,7 +16,7 @@ use Relewise\Models\TimedResponse;
 
 abstract class RelewiseClient
 {
-    private string $serverUrl = "https://api.relewise.com";
+    public string $serverUrl = "https://api.relewise.com";
     private string $apiVersion = "v1";
     private Client $client;
 
