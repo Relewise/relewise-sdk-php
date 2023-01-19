@@ -25,8 +25,10 @@ public class PhpCreatorMethodWriter
                               && c.GetParameters()
                                     .All(parameter => propertyInformations
                                         .Any(property =>
-                                            property.info.PropertyType == parameter.ParameterType
-                                            || EqualCollectionElementType(property.info.PropertyType, parameter.ParameterType)
+                                            (property.info.PropertyType == parameter.ParameterType
+                                             && new NullabilityInfoContext().Create(property.info).WriteState is NullabilityState.Nullable 
+                                             == new NullabilityInfoContext().Create(parameter).WriteState is NullabilityState.Nullable) // If the type matches then the nullability annotation also has to.
+                                            || EqualCollectionElementType(property.info.PropertyType, parameter.ParameterType) // if they only match on their collection element type then we are more relaxed as method params can be empty.
                                         )
                                     ) // There is a property type that matches each parameter type.
             )
@@ -89,9 +91,9 @@ public class PhpCreatorMethodWriter
             writer.WriteLine($"$result = new {typeName}();");
         }
 
-        var coveredParameterNames = coveringTypeMappableConstructorParameters is not null
+        var coveredParameterNames = coveringTypeMappableConstructorParameters?.Length > 0
             ? coveringTypeMappableConstructorParameters.Select(parameter => parameter.Name)
-            : allConstructorParametersIntersectionWithMappableNamesAndTypes is not null
+            : allConstructorParametersIntersectionWithMappableNamesAndTypes?.Length > 0
                 ? allConstructorParametersIntersectionWithMappableNamesAndTypes.Select(parameter => parameter.Name)
                 : new List<string>();
 

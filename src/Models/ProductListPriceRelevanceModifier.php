@@ -8,10 +8,10 @@ class ProductListPriceRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductListPriceRelevanceModifier, Relewise.Client";
     public ?floatRange $range;
-    public Currency $currency;
+    public ?Currency $currency;
     public float $multiplyWeightBy;
     public bool $negated;
-    public static function create(?floatRange $range, float $multiplyWeightBy = 1, Currency $currency = Null, bool $negated = false) : ProductListPriceRelevanceModifier
+    public static function create(?floatRange $range, float $multiplyWeightBy = 1, ?Currency $currency = Null, bool $negated = false) : ProductListPriceRelevanceModifier
     {
         $result = new ProductListPriceRelevanceModifier();
         $result->range = $range;
@@ -46,7 +46,7 @@ class ProductListPriceRelevanceModifier extends RelevanceModifier
         $this->range = $range;
         return $this;
     }
-    function setCurrency(Currency $currency)
+    function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;

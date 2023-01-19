@@ -35,11 +35,11 @@ class ContentRecommendationsTest extends BaseTest
         $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
 
         $popularContents = PopularContentsRequest::create(
-            Language::UNDEFINED,
-            Currency::UNDEFINED,
+            Language::create("en-US"),
+            Currency::create("USD"),
             "integration test",
             UserFactory::byTemporaryId("t-Id")
-        )->setSinceMinutesAgo(5000);
+        )->setSinceMinutesAgo(500000);
 
         $response = $recommender->popularContents($popularContents);
 

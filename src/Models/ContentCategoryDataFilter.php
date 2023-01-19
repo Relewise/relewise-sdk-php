@@ -14,7 +14,6 @@ class ContentCategoryDataFilter extends DataFilter
         $result->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
         $result->language = $language;
         $result->currency = $currency;
-        $result->filterOutIfKeyIsNotFound = true;
         $result->mustMatchAllConditions = true;
         return $result;
     }

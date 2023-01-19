@@ -11,7 +11,6 @@ class ProductCategoryHasParentFilter extends HasParentCategoryFilter
     {
         $result = new ProductCategoryHasParentFilter();
         $result->negated = $negated;
-        $result->negated = false;
         return $result;
     }
     public static function hydrate(array $arr) : ProductCategoryHasParentFilter
