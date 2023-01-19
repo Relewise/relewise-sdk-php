@@ -2,6 +2,7 @@
 
 namespace Relewise;
 
+use MessagePack\MessagePack;
 use Relewise\Infrastructure\HttpClient\BadRequestException;
 use Relewise\Infrastructure\HttpClient\Client;
 use Relewise\Infrastructure\HttpClient\ClientException;
@@ -16,7 +17,7 @@ use Relewise\Models\TimedResponse;
 
 abstract class RelewiseClient
 {
-    private string $serverUrl = "https://api.relewise.com";
+    public string $serverUrl = "https://host.docker.internal:5000";
     private string $apiVersion = "v1";
     private Client $client;
 
@@ -29,9 +30,25 @@ abstract class RelewiseClient
     {
         return $this->client->post(
             $this->createRequestUrl($this->serverUrl, $this->datasetId, $this->apiVersion, $endpoint),
-            str_replace("\"typeDefinition\":", "\"\$type\":", json_encode($request)),
-            array("Authorization: ApiKey " . $this->apiKey, "Content-Type: application/json")
+            MessagePack::pack($this->object_to_array($request)),
+            array("Authorization: ApiKey " . $this->apiKey, "Content-Type: application/x-msgpack")
         );
+    }
+
+    private function object_to_array($obj) {
+        //only process if it's an object or array being passed to the function
+        if(is_object($obj) || is_array($obj)) {
+            $ret = (array) $obj;
+            foreach($ret as &$item) {
+                //recursively process EACH element regardless of type
+                $item = $this->object_to_array($item);
+            }
+            return $ret;
+        }
+        //otherwise (i.e. for scalar values) return without modification
+        else {
+            return $obj;
+        }
     }
 
     public function requestAndValidate(string $endpoint, LicensedRequest $request)
