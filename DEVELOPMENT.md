@@ -16,6 +16,12 @@ Requires dev containers in VS Code and Docker.
 
 Setup is created using https://blog.devsense.com/2022/develop-php-in-docker
 
+## Using local server for development
+
+You can change the server url that the client uses for each of the clients by setting the property `serverUrl`.
+
+If you run it in the dev container and wish to access a local port then replace `localhost` with `host.docker.internal` in the server url and remember to use `http` instead of `https`.
+
 ## Running tests
 
 The tests needs a `DATASET_ID` and a `API_KEY` which it loads from the environment.
