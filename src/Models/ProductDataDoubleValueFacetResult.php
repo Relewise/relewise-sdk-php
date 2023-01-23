@@ -42,6 +42,11 @@ class ProductDataDoubleValueFacetResult extends floatProductDataValueFacetResult
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(float $selected)
     {
         if (!isset($this->selected))
@@ -52,6 +57,11 @@ class ProductDataDoubleValueFacetResult extends floatProductDataValueFacetResult
         return $this;
     }
     function setAvailable(floatAvailableFacetValue ... $available)
+    {
+        $this->available = $available;
+        return $this;
+    }
+    function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;

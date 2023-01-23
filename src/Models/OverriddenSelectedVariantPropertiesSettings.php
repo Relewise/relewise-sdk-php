@@ -89,6 +89,11 @@ class OverriddenSelectedVariantPropertiesSettings
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    function setDataKeysFromArray(array $dataKeys)
+    {
+        $this->dataKeys = $dataKeys;
+        return $this;
+    }
     function addToDataKeys(string $dataKeys)
     {
         if (!isset($this->dataKeys))
@@ -99,6 +104,11 @@ class OverriddenSelectedVariantPropertiesSettings
         return $this;
     }
     function setSpecificationKeys(string ... $specificationKeys)
+    {
+        $this->specificationKeys = $specificationKeys;
+        return $this;
+    }
+    function setSpecificationKeysFromArray(array $specificationKeys)
     {
         $this->specificationKeys = $specificationKeys;
         return $this;

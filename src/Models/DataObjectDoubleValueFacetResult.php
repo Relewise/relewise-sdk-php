@@ -36,6 +36,11 @@ class DataObjectDoubleValueFacetResult extends floatDataObjectValueFacetResult
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(float $selected)
     {
         if (!isset($this->selected))
@@ -46,6 +51,11 @@ class DataObjectDoubleValueFacetResult extends floatDataObjectValueFacetResult
         return $this;
     }
     function setAvailable(floatAvailableFacetValue ... $available)
+    {
+        $this->available = $available;
+        return $this;
+    }
+    function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;

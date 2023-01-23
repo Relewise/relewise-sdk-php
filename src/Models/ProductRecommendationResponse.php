@@ -32,6 +32,11 @@ class ProductRecommendationResponse extends RecommendationResponse
         $this->recommendations = $recommendations;
         return $this;
     }
+    function setRecommendationsFromArray(array $recommendations)
+    {
+        $this->recommendations = $recommendations;
+        return $this;
+    }
     function addToRecommendations(ProductResult $recommendations)
     {
         if (!isset($this->recommendations))

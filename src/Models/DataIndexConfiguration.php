@@ -39,6 +39,11 @@ class DataIndexConfiguration
         $this->keys[$key] = $value;
         return $this;
     }
+    function setKeysFromAssociativeArray(array $keys)
+    {
+        $this->keys = $keys;
+        return $this;
+    }
     function setUnspecified(FieldIndexConfiguration $unspecified)
     {
         $this->unspecified = $unspecified;

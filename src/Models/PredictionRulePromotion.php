@@ -42,6 +42,11 @@ class PredictionRulePromotion
         $this->values = $values;
         return $this;
     }
+    function setValuesFromArray(array $values)
+    {
+        $this->values = $values;
+        return $this;
+    }
     function addToValues(string $values)
     {
         if (!isset($this->values))

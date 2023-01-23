@@ -30,6 +30,11 @@ class LanguageIndexConfiguration
         $this->languages = $languages;
         return $this;
     }
+    function setLanguagesFromArray(array $languages)
+    {
+        $this->languages = $languages;
+        return $this;
+    }
     function addToLanguages(LanguageIndexConfigurationEntry $languages)
     {
         if (!isset($this->languages))

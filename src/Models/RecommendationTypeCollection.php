@@ -30,6 +30,11 @@ class RecommendationTypeCollection
         $this->unionCodes = $unionCodes;
         return $this;
     }
+    function setUnionCodesFromArray(array $unionCodes)
+    {
+        $this->unionCodes = $unionCodes;
+        return $this;
+    }
     function addToUnionCodes(int $unionCodes)
     {
         if (!isset($this->unionCodes))

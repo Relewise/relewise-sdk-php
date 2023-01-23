@@ -32,6 +32,11 @@ class BatchedTrackingRequest extends TrackingRequest
         $this->items = $items;
         return $this;
     }
+    function setItemsFromArray(array $items)
+    {
+        $this->items = $items;
+        return $this;
+    }
     function addToItems(Trackable $items)
     {
         if (!isset($this->items))

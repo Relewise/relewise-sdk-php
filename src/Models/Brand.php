@@ -60,6 +60,11 @@ class Brand
         $this->assortments = $assortments;
         return $this;
     }
+    function setAssortmentsFromArray(array $assortments)
+    {
+        $this->assortments = $assortments;
+        return $this;
+    }
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -76,6 +81,11 @@ class Brand
             $this->data = array();
         }
         $this->data[$key] = $value;
+        return $this;
+    }
+    function setDataFromAssociativeArray(array $data)
+    {
+        $this->data = $data;
         return $this;
     }
 }

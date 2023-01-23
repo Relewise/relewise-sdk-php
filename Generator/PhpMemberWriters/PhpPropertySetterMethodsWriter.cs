@@ -32,6 +32,14 @@ public class PhpPropertySetterMethodsWriter
                 writer.WriteLine("return $this;");
                 writer.Indent--;
                 writer.WriteLine("}");
+
+                writer.WriteLine($"function set{propertyName}FromAssociativeArray(array ${lowerCaseName})");
+                writer.WriteLine("{");
+                writer.Indent++;
+                writer.WriteLine($"$this->{lowerCaseName} = ${lowerCaseName};");
+                writer.WriteLine("return $this;");
+                writer.Indent--;
+                writer.WriteLine("}");
             }
             else
             {
@@ -56,6 +64,14 @@ public class PhpPropertySetterMethodsWriter
             }
             if (elementType is not null)
             {
+                writer.WriteLine($"function set{propertyName}FromArray(array ${lowerCaseName})");
+                writer.WriteLine("{");
+                writer.Indent++;
+                writer.WriteLine($"$this->{lowerCaseName} = ${lowerCaseName};");
+                writer.WriteLine("return $this;");
+                writer.Indent--;
+                writer.WriteLine("}");
+
                 writer.WriteLine($"function addTo{propertyName}({phpWriter.PhpTypeName(elementType)} ${lowerCaseName})");
                 writer.WriteLine("{");
                 writer.Indent++;

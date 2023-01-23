@@ -44,6 +44,11 @@ class ProductCategoryInterestTriggerResultCategory
         $this->lastPath = $lastPath;
         return $this;
     }
+    function setLastPathFromArray(array $lastPath)
+    {
+        $this->lastPath = $lastPath;
+        return $this;
+    }
     function addToLastPath(string $lastPath)
     {
         if (!isset($this->lastPath))
@@ -59,6 +64,11 @@ class ProductCategoryInterestTriggerResultCategory
         return $this;
     }
     function setViewedProducts(CategoryProductAndVariant ... $viewedProducts)
+    {
+        $this->viewedProducts = $viewedProducts;
+        return $this;
+    }
+    function setViewedProductsFromArray(array $viewedProducts)
     {
         $this->viewedProducts = $viewedProducts;
         return $this;

@@ -24,6 +24,11 @@ class PredictionRulesResponse extends PredictionRuleSearchRulesResponse
         $this->rules = $rules;
         return $this;
     }
+    function setRulesFromArray(array $rules)
+    {
+        $this->rules = $rules;
+        return $this;
+    }
     function addToRules(PredictionRule $rules)
     {
         if (!isset($this->rules))

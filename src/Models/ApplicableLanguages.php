@@ -32,6 +32,11 @@ class ApplicableLanguages
         $this->languages = $languages;
         return $this;
     }
+    function setLanguagesFromArray(array $languages)
+    {
+        $this->languages = $languages;
+        return $this;
+    }
     function addToLanguages(Language $languages)
     {
         if (!isset($this->languages))

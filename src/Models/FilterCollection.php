@@ -31,6 +31,11 @@ class FilterCollection
         $this->items = $items;
         return $this;
     }
+    function setItemsFromArray(array $items)
+    {
+        $this->items = $items;
+        return $this;
+    }
     function addToItems(Filter $items)
     {
         if (!isset($this->items))

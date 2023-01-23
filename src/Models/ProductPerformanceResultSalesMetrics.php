@@ -55,6 +55,11 @@ class ProductPerformanceResultSalesMetrics
         $this->currencies = $currencies;
         return $this;
     }
+    function setCurrenciesFromArray(array $currencies)
+    {
+        $this->currencies = $currencies;
+        return $this;
+    }
     function addToCurrencies(ProductPerformanceResultSalesByCurrency $currencies)
     {
         if (!isset($this->currencies))

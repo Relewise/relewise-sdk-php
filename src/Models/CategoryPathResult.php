@@ -36,6 +36,11 @@ class CategoryPathResult
         $this->pathFromRoot = $pathFromRoot;
         return $this;
     }
+    function setPathFromRootFromArray(array $pathFromRoot)
+    {
+        $this->pathFromRoot = $pathFromRoot;
+        return $this;
+    }
     function addToPathFromRoot(CategoryNameAndIdResult $pathFromRoot)
     {
         if (!isset($this->pathFromRoot))

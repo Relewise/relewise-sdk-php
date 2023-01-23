@@ -44,6 +44,11 @@ class UserQuery extends LicensedRequest
         $this->criteria = $criteria;
         return $this;
     }
+    function setCriteriaFromArray(array $criteria)
+    {
+        $this->criteria = $criteria;
+        return $this;
+    }
     function addToCriteria(UserQueryCriteria $criteria)
     {
         if (!isset($this->criteria))

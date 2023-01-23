@@ -80,6 +80,11 @@ class Order extends Trackable
         $this->lineItems = $lineItems;
         return $this;
     }
+    function setLineItemsFromArray(array $lineItems)
+    {
+        $this->lineItems = $lineItems;
+        return $this;
+    }
     function addToLineItems(LineItem $lineItems)
     {
         if (!isset($this->lineItems))

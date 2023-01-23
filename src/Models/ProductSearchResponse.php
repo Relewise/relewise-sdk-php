@@ -54,6 +54,11 @@ class ProductSearchResponse extends PaginatedSearchResponse
         $this->results = $results;
         return $this;
     }
+    function setResultsFromArray(array $results)
+    {
+        $this->results = $results;
+        return $this;
+    }
     function addToResults(ProductResult $results)
     {
         if (!isset($this->results))
@@ -73,6 +78,11 @@ class ProductSearchResponse extends PaginatedSearchResponse
         $this->recommendations = $recommendations;
         return $this;
     }
+    function setRecommendationsFromArray(array $recommendations)
+    {
+        $this->recommendations = $recommendations;
+        return $this;
+    }
     function addToRecommendations(ProductResult $recommendations)
     {
         if (!isset($this->recommendations))
@@ -83,6 +93,11 @@ class ProductSearchResponse extends PaginatedSearchResponse
         return $this;
     }
     function setRedirects(RedirectResult ... $redirects)
+    {
+        $this->redirects = $redirects;
+        return $this;
+    }
+    function setRedirectsFromArray(array $redirects)
     {
         $this->redirects = $redirects;
         return $this;

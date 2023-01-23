@@ -45,6 +45,11 @@ class ProductPerformanceResultRankMetrics
         $this->withinCategories = $withinCategories;
         return $this;
     }
+    function setWithinCategoriesFromArray(array $withinCategories)
+    {
+        $this->withinCategories = $withinCategories;
+        return $this;
+    }
     function addToWithinCategories(ProductPerformanceResultCategoryMetrics $withinCategories)
     {
         if (!isset($this->withinCategories))

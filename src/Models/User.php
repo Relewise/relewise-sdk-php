@@ -94,6 +94,11 @@ class User
         $this->classifications[$key] = $value;
         return $this;
     }
+    function setClassificationsFromAssociativeArray(array $classifications)
+    {
+        $this->classifications = $classifications;
+        return $this;
+    }
     function addToIdentifiers(string $key, string $value)
     {
         if (!isset($this->identifiers))
@@ -103,6 +108,11 @@ class User
         $this->identifiers[$key] = $value;
         return $this;
     }
+    function setIdentifiersFromAssociativeArray(array $identifiers)
+    {
+        $this->identifiers = $identifiers;
+        return $this;
+    }
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -110,6 +120,11 @@ class User
             $this->data = array();
         }
         $this->data[$key] = $value;
+        return $this;
+    }
+    function setDataFromAssociativeArray(array $data)
+    {
+        $this->data = $data;
         return $this;
     }
     function setFingerprint(?string $fingerprint)

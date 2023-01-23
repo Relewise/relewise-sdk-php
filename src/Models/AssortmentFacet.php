@@ -43,6 +43,11 @@ abstract class AssortmentFacet extends intValueFacet
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(int $selected)
     {
         if (!isset($this->selected))

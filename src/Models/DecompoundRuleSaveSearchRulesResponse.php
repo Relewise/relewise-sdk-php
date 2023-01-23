@@ -34,6 +34,11 @@ abstract class DecompoundRuleSaveSearchRulesResponse extends TimedResponse
         $this->rules = $rules;
         return $this;
     }
+    function setRulesFromArray(array $rules)
+    {
+        $this->rules = $rules;
+        return $this;
+    }
     function addToRules(DecompoundRule $rules)
     {
         if (!isset($this->rules))

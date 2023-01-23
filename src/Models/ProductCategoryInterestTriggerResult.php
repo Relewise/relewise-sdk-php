@@ -40,6 +40,11 @@ class ProductCategoryInterestTriggerResult
         $this->categories = $categories;
         return $this;
     }
+    function setCategoriesFromArray(array $categories)
+    {
+        $this->categories = $categories;
+        return $this;
+    }
     function addToCategories(ProductCategoryInterestTriggerResultCategory $categories)
     {
         if (!isset($this->categories))

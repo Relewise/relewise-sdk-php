@@ -24,6 +24,11 @@ class BrandFacetResult extends stringBrandNameAndIdResultValueFacetResult
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -34,6 +39,11 @@ class BrandFacetResult extends stringBrandNameAndIdResultValueFacetResult
         return $this;
     }
     function setAvailable(BrandNameAndIdResultAvailableFacetValue ... $available)
+    {
+        $this->available = $available;
+        return $this;
+    }
+    function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;

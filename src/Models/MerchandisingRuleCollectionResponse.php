@@ -31,6 +31,11 @@ class MerchandisingRuleCollectionResponse extends TimedResponse
         $this->rules = $rules;
         return $this;
     }
+    function setRulesFromArray(array $rules)
+    {
+        $this->rules = $rules;
+        return $this;
+    }
     function addToRules(MerchandisingRule $rules)
     {
         if (!isset($this->rules))

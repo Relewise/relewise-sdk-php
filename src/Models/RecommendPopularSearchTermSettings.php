@@ -35,6 +35,11 @@ class RecommendPopularSearchTermSettings
         $this->targetEntityTypes = $targetEntityTypes;
         return $this;
     }
+    function setTargetEntityTypesFromArray(array $targetEntityTypes)
+    {
+        $this->targetEntityTypes = $targetEntityTypes;
+        return $this;
+    }
     function addToTargetEntityTypes(EntityType $targetEntityTypes)
     {
         if (!isset($this->targetEntityTypes))

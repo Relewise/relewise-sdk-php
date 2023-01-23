@@ -80,6 +80,11 @@ class ProductDataRelevanceModifier extends RelevanceModifier
         $this->conditions = $conditions;
         return $this;
     }
+    function setConditionsFromArray(array $conditions)
+    {
+        $this->conditions = $conditions;
+        return $this;
+    }
     function addToConditions(ValueCondition $conditions)
     {
         if (!isset($this->conditions))

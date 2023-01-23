@@ -35,6 +35,11 @@ abstract class boolProductCategoryDataValueFacet extends boolDataValueFacet
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(bool $selected)
     {
         if (!isset($this->selected))

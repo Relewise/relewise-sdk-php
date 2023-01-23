@@ -38,6 +38,11 @@ abstract class HasAncestorCategoryFilter extends Filter
         $this->categoryIds = $categoryIds;
         return $this;
     }
+    function setCategoryIdsFromArray(array $categoryIds)
+    {
+        $this->categoryIds = $categoryIds;
+        return $this;
+    }
     function addToCategoryIds(string $categoryIds)
     {
         if (!isset($this->categoryIds))

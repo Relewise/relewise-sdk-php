@@ -32,6 +32,11 @@ class VariantSpecificationsInCommonRelevanceModifier extends RelevanceModifier
         $this->specificationKeysAndMultipliers = $specificationKeysAndMultipliers;
         return $this;
     }
+    function setSpecificationKeysAndMultipliersFromArray(array $specificationKeysAndMultipliers)
+    {
+        $this->specificationKeysAndMultipliers = $specificationKeysAndMultipliers;
+        return $this;
+    }
     function addToSpecificationKeysAndMultipliers(KeyMultiplier $specificationKeysAndMultipliers)
     {
         if (!isset($this->specificationKeysAndMultipliers))

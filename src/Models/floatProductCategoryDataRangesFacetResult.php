@@ -40,6 +40,11 @@ abstract class floatProductCategoryDataRangesFacetResult extends floatRangesFace
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(?floatChainableRange $selected)
     {
         if (!isset($this->selected))
@@ -50,6 +55,11 @@ abstract class floatProductCategoryDataRangesFacetResult extends floatRangesFace
         return $this;
     }
     function setAvailable(?floatChainableRangeAvailableFacetValue ... $available)
+    {
+        $this->available = $available;
+        return $this;
+    }
+    function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;

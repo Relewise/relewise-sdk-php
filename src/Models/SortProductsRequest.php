@@ -35,6 +35,11 @@ class SortProductsRequest extends ProductRecommendationRequest
         $this->productIds = $productIds;
         return $this;
     }
+    function setProductIdsFromArray(array $productIds)
+    {
+        $this->productIds = $productIds;
+        return $this;
+    }
     function addToProductIds(string $productIds)
     {
         if (!isset($this->productIds))

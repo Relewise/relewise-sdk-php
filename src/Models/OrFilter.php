@@ -33,6 +33,11 @@ class OrFilter extends Filter
         $this->filters = $filters;
         return $this;
     }
+    function setFiltersFromArray(array $filters)
+    {
+        $this->filters = $filters;
+        return $this;
+    }
     function addToFilters(Filter $filters)
     {
         if (!isset($this->filters))

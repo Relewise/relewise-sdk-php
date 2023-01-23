@@ -32,6 +32,11 @@ class BrandIdFilter extends Filter
         $this->brandIds = $brandIds;
         return $this;
     }
+    function setBrandIdsFromArray(array $brandIds)
+    {
+        $this->brandIds = $brandIds;
+        return $this;
+    }
     function addToBrandIds(string $brandIds)
     {
         if (!isset($this->brandIds))

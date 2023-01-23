@@ -57,6 +57,11 @@ abstract class boolDataValueFacetResult extends boolValueFacetResult
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(bool $selected)
     {
         if (!isset($this->selected))
@@ -67,6 +72,11 @@ abstract class boolDataValueFacetResult extends boolValueFacetResult
         return $this;
     }
     function setAvailable(boolAvailableFacetValue ... $available)
+    {
+        $this->available = $available;
+        return $this;
+    }
+    function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;

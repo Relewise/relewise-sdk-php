@@ -43,6 +43,11 @@ class ProductCategoryView extends Trackable
         $this->idPath = $idPath;
         return $this;
     }
+    function setIdPathFromArray(array $idPath)
+    {
+        $this->idPath = $idPath;
+        return $this;
+    }
     function addToIdPath(string $idPath)
     {
         if (!isset($this->idPath))

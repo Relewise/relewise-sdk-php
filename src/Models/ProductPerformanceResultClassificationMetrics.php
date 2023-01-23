@@ -54,6 +54,11 @@ class ProductPerformanceResultClassificationMetrics
         $this->combination[$key] = $value;
         return $this;
     }
+    function setCombinationFromAssociativeArray(array $combination)
+    {
+        $this->combination = $combination;
+        return $this;
+    }
     function setViews(ProductPerformanceResultViewsMetrics $views)
     {
         $this->views = $views;

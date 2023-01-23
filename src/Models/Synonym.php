@@ -122,6 +122,11 @@ class Synonym
         $this->indexes = $indexes;
         return $this;
     }
+    function setIndexesFromArray(array $indexes)
+    {
+        $this->indexes = $indexes;
+        return $this;
+    }
     function addToIndexes(string $indexes)
     {
         if (!isset($this->indexes))
@@ -132,6 +137,11 @@ class Synonym
         return $this;
     }
     function setLanguages(Language ... $languages)
+    {
+        $this->languages = $languages;
+        return $this;
+    }
+    function setLanguagesFromArray(array $languages)
     {
         $this->languages = $languages;
         return $this;
@@ -170,6 +180,11 @@ class Synonym
         $this->from = $from;
         return $this;
     }
+    function setFromFromArray(array $from)
+    {
+        $this->from = $from;
+        return $this;
+    }
     function addToFrom(string $from)
     {
         if (!isset($this->from))
@@ -180,6 +195,11 @@ class Synonym
         return $this;
     }
     function setWords(string ... $words)
+    {
+        $this->words = $words;
+        return $this;
+    }
+    function setWordsFromArray(array $words)
     {
         $this->words = $words;
         return $this;

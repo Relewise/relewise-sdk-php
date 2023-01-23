@@ -40,6 +40,11 @@ class ProductPerformanceResult
         $this->classifications = $classifications;
         return $this;
     }
+    function setClassificationsFromArray(array $classifications)
+    {
+        $this->classifications = $classifications;
+        return $this;
+    }
     function addToClassifications(ProductPerformanceResultClassificationMetrics $classifications)
     {
         if (!isset($this->classifications))

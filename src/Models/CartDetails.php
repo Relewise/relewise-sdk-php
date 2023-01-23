@@ -69,6 +69,11 @@ class CartDetails
         $this->lineItems = $lineItems;
         return $this;
     }
+    function setLineItemsFromArray(array $lineItems)
+    {
+        $this->lineItems = $lineItems;
+        return $this;
+    }
     function addToLineItems(LineItem $lineItems)
     {
         if (!isset($this->lineItems))
@@ -90,6 +95,11 @@ class CartDetails
             $this->data = array();
         }
         $this->data[$key] = $value;
+        return $this;
+    }
+    function setDataFromAssociativeArray(array $data)
+    {
+        $this->data = $data;
         return $this;
     }
 }

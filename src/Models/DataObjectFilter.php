@@ -40,6 +40,11 @@ class DataObjectFilter
         $this->conditions = $conditions;
         return $this;
     }
+    function setConditionsFromArray(array $conditions)
+    {
+        $this->conditions = $conditions;
+        return $this;
+    }
     function addToConditions(ObjectValueCondition $conditions)
     {
         if (!isset($this->conditions))

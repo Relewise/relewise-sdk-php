@@ -32,6 +32,11 @@ class SaveSynonymsResponse extends TimedResponse
         $this->values = $values;
         return $this;
     }
+    function setValuesFromArray(array $values)
+    {
+        $this->values = $values;
+        return $this;
+    }
     function addToValues(Synonym $values)
     {
         if (!isset($this->values))

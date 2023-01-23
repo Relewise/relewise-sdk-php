@@ -38,6 +38,11 @@ class BrandDetailsCollectionResponse extends TimedResponse
         $this->brands = $brands;
         return $this;
     }
+    function setBrandsFromArray(array $brands)
+    {
+        $this->brands = $brands;
+        return $this;
+    }
     function addToBrands(BrandResultDetails $brands)
     {
         if (!isset($this->brands))
