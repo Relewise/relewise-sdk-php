@@ -27,9 +27,8 @@ class UserFactory {
     }
 
     public static function byIdentifiers(array $identifiers) {
-        $result = new User();
-        $result->identifiers = $identifiers;
-        return $result;
+        return (new User())
+            ->setIdentifiersFromAssociativeArray($identifiers);
     }
 
     public static function byEmail(string $email) {
