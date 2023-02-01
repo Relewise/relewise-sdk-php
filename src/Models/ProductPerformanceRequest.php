@@ -140,6 +140,11 @@ class ProductPerformanceRequest extends AnalyzerRequest
         $this->classifications = $classifications;
         return $this;
     }
+    function setClassificationsFromArray(array $classifications)
+    {
+        $this->classifications = $classifications;
+        return $this;
+    }
     function addToClassifications(stringstringKeyValuePair $classifications)
     {
         if (!isset($this->classifications))

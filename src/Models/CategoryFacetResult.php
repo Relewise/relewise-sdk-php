@@ -35,6 +35,11 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -45,6 +50,11 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         return $this;
     }
     function setAvailable(CategoryNameAndIdResultAvailableFacetValue ... $available)
+    {
+        $this->available = $available;
+        return $this;
+    }
+    function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;

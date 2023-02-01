@@ -44,6 +44,11 @@ class ContentCategoryResult extends CategoryResult
         $this->paths = $paths;
         return $this;
     }
+    function setPathsFromArray(array $paths)
+    {
+        $this->paths = $paths;
+        return $this;
+    }
     function addToPaths(CategoryPathResult $paths)
     {
         if (!isset($this->paths))
@@ -54,6 +59,11 @@ class ContentCategoryResult extends CategoryResult
         return $this;
     }
     function setAssortments(int ... $assortments)
+    {
+        $this->assortments = $assortments;
+        return $this;
+    }
+    function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
         return $this;
@@ -74,6 +84,11 @@ class ContentCategoryResult extends CategoryResult
             $this->data = array();
         }
         $this->data[$key] = $value;
+        return $this;
+    }
+    function setDataFromAssociativeArray(array $data)
+    {
+        $this->data = $data;
         return $this;
     }
 }

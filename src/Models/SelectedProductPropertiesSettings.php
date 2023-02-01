@@ -120,6 +120,11 @@ class SelectedProductPropertiesSettings
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    function setDataKeysFromArray(array $dataKeys)
+    {
+        $this->dataKeys = $dataKeys;
+        return $this;
+    }
     function addToDataKeys(string $dataKeys)
     {
         if (!isset($this->dataKeys))

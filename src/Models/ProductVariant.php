@@ -78,6 +78,11 @@ class ProductVariant
         $this->assortments = $assortments;
         return $this;
     }
+    function setAssortmentsFromArray(array $assortments)
+    {
+        $this->assortments = $assortments;
+        return $this;
+    }
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -96,6 +101,11 @@ class ProductVariant
         $this->specification[$key] = $value;
         return $this;
     }
+    function setSpecificationFromAssociativeArray(array $specification)
+    {
+        $this->specification = $specification;
+        return $this;
+    }
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -103,6 +113,11 @@ class ProductVariant
             $this->data = array();
         }
         $this->data[$key] = $value;
+        return $this;
+    }
+    function setDataFromAssociativeArray(array $data)
+    {
+        $this->data = $data;
         return $this;
     }
     function setListPrice(?MultiCurrency $listPrice)

@@ -32,6 +32,11 @@ class VariantIdFilter extends Filter
         $this->variantIds = $variantIds;
         return $this;
     }
+    function setVariantIdsFromArray(array $variantIds)
+    {
+        $this->variantIds = $variantIds;
+        return $this;
+    }
     function addToVariantIds(string $variantIds)
     {
         if (!isset($this->variantIds))

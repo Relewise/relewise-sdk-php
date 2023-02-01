@@ -79,6 +79,11 @@ abstract class AbandonedCartTriggerResultTriggerConfiguration extends TriggerCon
         $this->settings[$key] = $value;
         return $this;
     }
+    function setSettingsFromAssociativeArray(array $settings)
+    {
+        $this->settings = $settings;
+        return $this;
+    }
     function setUserConditions(UserConditionCollection $userConditions)
     {
         $this->userConditions = $userConditions;

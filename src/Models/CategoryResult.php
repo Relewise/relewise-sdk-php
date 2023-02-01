@@ -95,6 +95,11 @@ abstract class CategoryResult
         $this->paths = $paths;
         return $this;
     }
+    function setPathsFromArray(array $paths)
+    {
+        $this->paths = $paths;
+        return $this;
+    }
     function addToPaths(CategoryPathResult $paths)
     {
         if (!isset($this->paths))
@@ -105,6 +110,11 @@ abstract class CategoryResult
         return $this;
     }
     function setAssortments(int ... $assortments)
+    {
+        $this->assortments = $assortments;
+        return $this;
+    }
+    function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
         return $this;
@@ -125,6 +135,11 @@ abstract class CategoryResult
             $this->data = array();
         }
         $this->data[$key] = $value;
+        return $this;
+    }
+    function setDataFromAssociativeArray(array $data)
+    {
+        $this->data = $data;
         return $this;
     }
 }

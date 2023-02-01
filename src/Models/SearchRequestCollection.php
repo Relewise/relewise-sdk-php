@@ -32,6 +32,11 @@ class SearchRequestCollection extends SearchRequest
         $this->requests = $requests;
         return $this;
     }
+    function setRequestsFromArray(array $requests)
+    {
+        $this->requests = $requests;
+        return $this;
+    }
     function addToRequests(SearchRequest $requests)
     {
         if (!isset($this->requests))

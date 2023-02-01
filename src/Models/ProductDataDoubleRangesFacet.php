@@ -32,6 +32,11 @@ class ProductDataDoubleRangesFacet extends floatProductDataRangesFacet
         $this->predefinedRanges = $predefinedRanges;
         return $this;
     }
+    function setPredefinedRangesFromArray(array $predefinedRanges)
+    {
+        $this->predefinedRanges = $predefinedRanges;
+        return $this;
+    }
     function addToPredefinedRanges(?floatChainableRange $predefinedRanges)
     {
         if (!isset($this->predefinedRanges))
@@ -47,6 +52,11 @@ class ProductDataDoubleRangesFacet extends floatProductDataRangesFacet
         return $this;
     }
     function setSelected(?floatChainableRange ... $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
+    function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;

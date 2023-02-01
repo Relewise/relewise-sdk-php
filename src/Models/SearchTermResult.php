@@ -50,6 +50,11 @@ class SearchTermResult
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;
     }
+    function setExpectedResultTypesFromArray(array $expectedResultTypes)
+    {
+        $this->expectedResultTypes = $expectedResultTypes;
+        return $this;
+    }
     function addToExpectedResultTypes(ExpectedSearchTermResult $expectedResultTypes)
     {
         if (!isset($this->expectedResultTypes))

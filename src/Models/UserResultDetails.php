@@ -130,6 +130,11 @@ class UserResultDetails
         $this->classifications[$key] = $value;
         return $this;
     }
+    function setClassificationsFromAssociativeArray(array $classifications)
+    {
+        $this->classifications = $classifications;
+        return $this;
+    }
     function setLastCartUpdateUtc(?DateTime $lastCartUpdateUtc)
     {
         $this->lastCartUpdateUtc = $lastCartUpdateUtc;
@@ -154,6 +159,11 @@ class UserResultDetails
         $this->carts[$key] = $value;
         return $this;
     }
+    function setCartsFromAssociativeArray(array $carts)
+    {
+        $this->carts = $carts;
+        return $this;
+    }
     function setLastActiveCartName(string $lastActiveCartName)
     {
         $this->lastActiveCartName = $lastActiveCartName;
@@ -173,6 +183,11 @@ class UserResultDetails
         $this->identifiers[$key] = $value;
         return $this;
     }
+    function setIdentifiersFromAssociativeArray(array $identifiers)
+    {
+        $this->identifiers = $identifiers;
+        return $this;
+    }
     function setKey(int $key)
     {
         $this->key = $key;
@@ -187,7 +202,17 @@ class UserResultDetails
         $this->data[$key] = $value;
         return $this;
     }
+    function setDataFromAssociativeArray(array $data)
+    {
+        $this->data = $data;
+        return $this;
+    }
     function setTemporaryIds(string ... $temporaryIds)
+    {
+        $this->temporaryIds = $temporaryIds;
+        return $this;
+    }
+    function setTemporaryIdsFromArray(array $temporaryIds)
     {
         $this->temporaryIds = $temporaryIds;
         return $this;

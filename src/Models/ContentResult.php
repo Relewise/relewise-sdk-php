@@ -85,6 +85,11 @@ class ContentResult
         $this->assortments = $assortments;
         return $this;
     }
+    function setAssortmentsFromArray(array $assortments)
+    {
+        $this->assortments = $assortments;
+        return $this;
+    }
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -103,7 +108,17 @@ class ContentResult
         $this->data[$key] = $value;
         return $this;
     }
+    function setDataFromAssociativeArray(array $data)
+    {
+        $this->data = $data;
+        return $this;
+    }
     function setCategoryPaths(CategoryPathResult ... $categoryPaths)
+    {
+        $this->categoryPaths = $categoryPaths;
+        return $this;
+    }
+    function setCategoryPathsFromArray(array $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;

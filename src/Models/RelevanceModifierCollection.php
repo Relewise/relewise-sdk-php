@@ -31,6 +31,11 @@ class RelevanceModifierCollection
         $this->items = $items;
         return $this;
     }
+    function setItemsFromArray(array $items)
+    {
+        $this->items = $items;
+        return $this;
+    }
     function addToItems(RelevanceModifier $items)
     {
         if (!isset($this->items))

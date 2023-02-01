@@ -23,6 +23,11 @@ class DeleteDecompoundRulesRequest extends DeleteSearchRulesRequest
         $this->ids = $ids;
         return $this;
     }
+    function setIdsFromArray(array $ids)
+    {
+        $this->ids = $ids;
+        return $this;
+    }
     function addToIds(string $ids)
     {
         if (!isset($this->ids))

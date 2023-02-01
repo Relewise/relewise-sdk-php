@@ -36,6 +36,11 @@ class ProductCategoryDataBooleanValueFacetResult extends boolProductCategoryData
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(bool $selected)
     {
         if (!isset($this->selected))
@@ -46,6 +51,11 @@ class ProductCategoryDataBooleanValueFacetResult extends boolProductCategoryData
         return $this;
     }
     function setAvailable(boolAvailableFacetValue ... $available)
+    {
+        $this->available = $available;
+        return $this;
+    }
+    function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;

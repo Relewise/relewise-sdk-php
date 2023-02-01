@@ -88,7 +88,17 @@ class VariantResultDetails
         $this->specification[$key] = $value;
         return $this;
     }
+    function setSpecificationFromAssociativeArray(array $specification)
+    {
+        $this->specification = $specification;
+        return $this;
+    }
     function setAssortments(int ... $assortments)
+    {
+        $this->assortments = $assortments;
+        return $this;
+    }
+    function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
         return $this;
@@ -109,6 +119,11 @@ class VariantResultDetails
             $this->data = array();
         }
         $this->data[$key] = $value;
+        return $this;
+    }
+    function setDataFromAssociativeArray(array $data)
+    {
+        $this->data = $data;
         return $this;
     }
     function setListPrice(MultiCurrency $listPrice)

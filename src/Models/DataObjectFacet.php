@@ -47,6 +47,11 @@ class DataObjectFacet extends Facet
         $this->items = $items;
         return $this;
     }
+    function setItemsFromArray(array $items)
+    {
+        $this->items = $items;
+        return $this;
+    }
     function addToItems(Facet $items)
     {
         if (!isset($this->items))

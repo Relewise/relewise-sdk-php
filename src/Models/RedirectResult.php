@@ -68,4 +68,9 @@ class RedirectResult
         $this->data[$key] = $value;
         return $this;
     }
+    function setDataFromAssociativeArray(array $data)
+    {
+        $this->data = $data;
+        return $this;
+    }
 }

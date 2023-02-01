@@ -88,4 +88,9 @@ class FilterRule extends MerchandisingRule
         $this->settings[$key] = $value;
         return $this;
     }
+    function setSettingsFromAssociativeArray(array $settings)
+    {
+        $this->settings = $settings;
+        return $this;
+    }
 }

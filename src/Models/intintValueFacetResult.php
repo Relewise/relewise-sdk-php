@@ -59,6 +59,11 @@ abstract class intintValueFacetResult extends FacetResult
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(int $selected)
     {
         if (!isset($this->selected))
@@ -69,6 +74,11 @@ abstract class intintValueFacetResult extends FacetResult
         return $this;
     }
     function setAvailable(intAvailableFacetValue ... $available)
+    {
+        $this->available = $available;
+        return $this;
+    }
+    function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;

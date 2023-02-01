@@ -32,6 +32,11 @@ class ApplicableIndexes
         $this->indexes = $indexes;
         return $this;
     }
+    function setIndexesFromArray(array $indexes)
+    {
+        $this->indexes = $indexes;
+        return $this;
+    }
     function addToIndexes(string $indexes)
     {
         if (!isset($this->indexes))

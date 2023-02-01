@@ -30,6 +30,11 @@ class ContextConditionConfiguration
         $this->filters = $filters;
         return $this;
     }
+    function setFiltersFromArray(array $filters)
+    {
+        $this->filters = $filters;
+        return $this;
+    }
     function addToFilters(RequestContextFilter $filters)
     {
         if (!isset($this->filters))

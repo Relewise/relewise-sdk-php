@@ -41,6 +41,11 @@ class ProductAssortmentFacetResult extends AssortmentFacetResult
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(int $selected)
     {
         if (!isset($this->selected))
@@ -51,6 +56,11 @@ class ProductAssortmentFacetResult extends AssortmentFacetResult
         return $this;
     }
     function setAvailable(intAvailableFacetValue ... $available)
+    {
+        $this->available = $available;
+        return $this;
+    }
+    function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;

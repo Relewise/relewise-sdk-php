@@ -68,6 +68,11 @@ class RequestContextFilter
         $this->locations = $locations;
         return $this;
     }
+    function setLocationsFromArray(array $locations)
+    {
+        $this->locations = $locations;
+        return $this;
+    }
     function addToLocations(string $locations)
     {
         if (!isset($this->locations))
@@ -82,6 +87,11 @@ class RequestContextFilter
         $this->languages = $languages;
         return $this;
     }
+    function setLanguagesFromArray(array $languages)
+    {
+        $this->languages = $languages;
+        return $this;
+    }
     function addToLanguages(Language $languages)
     {
         if (!isset($this->languages))
@@ -92,6 +102,11 @@ class RequestContextFilter
         return $this;
     }
     function setCurrencies(Currency ... $currencies)
+    {
+        $this->currencies = $currencies;
+        return $this;
+    }
+    function setCurrenciesFromArray(array $currencies)
     {
         $this->currencies = $currencies;
         return $this;

@@ -41,6 +41,11 @@ class ProductPerformanceResponse extends TimedResponse
         $this->results = $results;
         return $this;
     }
+    function setResultsFromArray(array $results)
+    {
+        $this->results = $results;
+        return $this;
+    }
     function addToResults(ProductPerformanceResult $results)
     {
         if (!isset($this->results))

@@ -38,6 +38,11 @@ class ContentDetailsCollectionResponse extends TimedResponse
         $this->contents = $contents;
         return $this;
     }
+    function setContentsFromArray(array $contents)
+    {
+        $this->contents = $contents;
+        return $this;
+    }
     function addToContents(ContentResultDetails $contents)
     {
         if (!isset($this->contents))

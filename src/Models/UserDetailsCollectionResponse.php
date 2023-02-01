@@ -32,6 +32,11 @@ class UserDetailsCollectionResponse extends TimedResponse
         $this->results = $results;
         return $this;
     }
+    function setResultsFromArray(array $results)
+    {
+        $this->results = $results;
+        return $this;
+    }
     function addToResults(array $results)
     {
         if (!isset($this->results))

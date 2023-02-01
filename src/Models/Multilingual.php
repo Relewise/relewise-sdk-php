@@ -31,6 +31,11 @@ class Multilingual
         $this->values = $values;
         return $this;
     }
+    function setValuesFromArray(array $values)
+    {
+        $this->values = $values;
+        return $this;
+    }
     function addToValues(MultilingualValue $values)
     {
         if (!isset($this->values))

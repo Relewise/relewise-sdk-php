@@ -60,6 +60,11 @@ class PriceRangesFacetResult extends FacetResult
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(?floatChainableRange $selected)
     {
         if (!isset($this->selected))
@@ -70,6 +75,11 @@ class PriceRangesFacetResult extends FacetResult
         return $this;
     }
     function setAvailable(?floatChainableRangeAvailableFacetValue ... $available)
+    {
+        $this->available = $available;
+        return $this;
+    }
+    function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;

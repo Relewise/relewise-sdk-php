@@ -40,6 +40,11 @@ class ProductDataObjectFacetResult extends DataObjectFacetResult
         $this->items = $items;
         return $this;
     }
+    function setItemsFromArray(array $items)
+    {
+        $this->items = $items;
+        return $this;
+    }
     function addToItems(FacetResult $items)
     {
         if (!isset($this->items))

@@ -24,6 +24,11 @@ class RedirectRulesResponse extends RedirectRuleSearchRulesResponse
         $this->rules = $rules;
         return $this;
     }
+    function setRulesFromArray(array $rules)
+    {
+        $this->rules = $rules;
+        return $this;
+    }
     function addToRules(RedirectRule $rules)
     {
         if (!isset($this->rules))

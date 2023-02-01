@@ -24,6 +24,11 @@ class StemmingRulesResponse extends StemmingRuleSearchRulesResponse
         $this->rules = $rules;
         return $this;
     }
+    function setRulesFromArray(array $rules)
+    {
+        $this->rules = $rules;
+        return $this;
+    }
     function addToRules(StemmingRule $rules)
     {
         if (!isset($this->rules))

@@ -40,6 +40,11 @@ class ProductInterestTriggerResult
         $this->products = $products;
         return $this;
     }
+    function setProductsFromArray(array $products)
+    {
+        $this->products = $products;
+        return $this;
+    }
     function addToProducts(ProductInterestTriggerResultProductAndVariant $products)
     {
         if (!isset($this->products))

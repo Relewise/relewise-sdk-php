@@ -84,6 +84,11 @@ class Product
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    function setCategoryPathsFromArray(array $categoryPaths)
+    {
+        $this->categoryPaths = $categoryPaths;
+        return $this;
+    }
     function addToCategoryPaths(CategoryPath $categoryPaths)
     {
         if (!isset($this->categoryPaths))
@@ -94,6 +99,11 @@ class Product
         return $this;
     }
     function setAssortments(int ... $assortments)
+    {
+        $this->assortments = $assortments;
+        return $this;
+    }
+    function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
         return $this;
@@ -114,6 +124,11 @@ class Product
             $this->data = array();
         }
         $this->data[$key] = $value;
+        return $this;
+    }
+    function setDataFromAssociativeArray(array $data)
+    {
+        $this->data = $data;
         return $this;
     }
     function setListPrice(?MultiCurrency $listPrice)

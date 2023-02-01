@@ -35,6 +35,11 @@ class DataObjectDoubleValueFacet extends floatDataObjectValueFacet
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(float $selected)
     {
         if (!isset($this->selected))

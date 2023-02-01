@@ -57,6 +57,11 @@ class ProductDataFilter extends DataFilter
         $this->objectPath = $objectPath;
         return $this;
     }
+    function setObjectPathFromArray(array $objectPath)
+    {
+        $this->objectPath = $objectPath;
+        return $this;
+    }
     function addToObjectPath(string $objectPath)
     {
         if (!isset($this->objectPath))

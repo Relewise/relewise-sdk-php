@@ -38,6 +38,11 @@ class ContentCategoryRecommendationRequestCollection extends LicensedRequest
         $this->requests = $requests;
         return $this;
     }
+    function setRequestsFromArray(array $requests)
+    {
+        $this->requests = $requests;
+        return $this;
+    }
     function addToRequests(ContentCategoryRecommendationRequest $requests)
     {
         if (!isset($this->requests))

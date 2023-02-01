@@ -61,6 +61,11 @@ class SearchTermCondition
         $this->andConditions = $andConditions;
         return $this;
     }
+    function setAndConditionsFromArray(array $andConditions)
+    {
+        $this->andConditions = $andConditions;
+        return $this;
+    }
     function addToAndConditions(SearchTermCondition $andConditions)
     {
         if (!isset($this->andConditions))
@@ -71,6 +76,11 @@ class SearchTermCondition
         return $this;
     }
     function setOrConditions(SearchTermCondition ... $orConditions)
+    {
+        $this->orConditions = $orConditions;
+        return $this;
+    }
+    function setOrConditionsFromArray(array $orConditions)
     {
         $this->orConditions = $orConditions;
         return $this;

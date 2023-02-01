@@ -31,6 +31,11 @@ class SearchIndexCollectionResponse extends TimedResponse
         $this->indexes = $indexes;
         return $this;
     }
+    function setIndexesFromArray(array $indexes)
+    {
+        $this->indexes = $indexes;
+        return $this;
+    }
     function addToIndexes(SearchIndex $indexes)
     {
         if (!isset($this->indexes))

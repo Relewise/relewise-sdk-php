@@ -65,6 +65,11 @@ class ProductUpdate extends Trackable
         $this->variants = $variants;
         return $this;
     }
+    function setVariantsFromArray(array $variants)
+    {
+        $this->variants = $variants;
+        return $this;
+    }
     function addToVariants(ProductVariant $variants)
     {
         if (!isset($this->variants))

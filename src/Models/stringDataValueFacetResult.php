@@ -57,6 +57,11 @@ abstract class stringDataValueFacetResult extends stringValueFacetResult
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -67,6 +72,11 @@ abstract class stringDataValueFacetResult extends stringValueFacetResult
         return $this;
     }
     function setAvailable(stringAvailableFacetValue ... $available)
+    {
+        $this->available = $available;
+        return $this;
+    }
+    function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;

@@ -120,6 +120,11 @@ class SimilarProductsEvaluationSettings
         $this->significantProductDataFields = $significantProductDataFields;
         return $this;
     }
+    function setSignificantProductDataFieldsFromArray(array $significantProductDataFields)
+    {
+        $this->significantProductDataFields = $significantProductDataFields;
+        return $this;
+    }
     function addToSignificantProductDataFields(SignificantDataValue $significantProductDataFields)
     {
         if (!isset($this->significantProductDataFields))

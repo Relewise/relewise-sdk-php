@@ -110,6 +110,11 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         $this->assortments = $assortments;
         return $this;
     }
+    function setAssortmentsFromArray(array $assortments)
+    {
+        $this->assortments = $assortments;
+        return $this;
+    }
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -126,6 +131,11 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
             $this->data = array();
         }
         $this->data[$key] = $value;
+        return $this;
+    }
+    function setDataFromAssociativeArray(array $data)
+    {
+        $this->data = $data;
         return $this;
     }
     function setViewedByUser(ViewedByUserInfo $viewedByUser)
@@ -163,6 +173,11 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         $this->childCategories = $childCategories;
         return $this;
     }
+    function setChildCategoriesFromArray(array $childCategories)
+    {
+        $this->childCategories = $childCategories;
+        return $this;
+    }
     function addToChildCategories(ContentCategoryResultDetails $childCategories)
     {
         if (!isset($this->childCategories))
@@ -173,6 +188,11 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         return $this;
     }
     function setParentCategories(ContentCategoryResultDetails ... $parentCategories)
+    {
+        $this->parentCategories = $parentCategories;
+        return $this;
+    }
+    function setParentCategoriesFromArray(array $parentCategories)
     {
         $this->parentCategories = $parentCategories;
         return $this;

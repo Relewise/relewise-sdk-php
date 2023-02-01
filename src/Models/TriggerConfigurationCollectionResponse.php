@@ -31,6 +31,11 @@ class TriggerConfigurationCollectionResponse extends TimedResponse
         $this->configurations = $configurations;
         return $this;
     }
+    function setConfigurationsFromArray(array $configurations)
+    {
+        $this->configurations = $configurations;
+        return $this;
+    }
     function addToConfigurations(TriggerConfiguration $configurations)
     {
         if (!isset($this->configurations))

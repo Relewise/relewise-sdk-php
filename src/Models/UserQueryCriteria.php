@@ -84,4 +84,9 @@ class UserQueryCriteria
         $this->identifiers[$key] = $value;
         return $this;
     }
+    function setIdentifiersFromAssociativeArray(array $identifiers)
+    {
+        $this->identifiers = $identifiers;
+        return $this;
+    }
 }

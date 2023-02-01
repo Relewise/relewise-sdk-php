@@ -31,6 +31,11 @@ class TrimStringTransformer
         $this->valuesToTrim = $valuesToTrim;
         return $this;
     }
+    function setValuesToTrimFromArray(array $valuesToTrim)
+    {
+        $this->valuesToTrim = $valuesToTrim;
+        return $this;
+    }
     function addToValuesToTrim(string $valuesToTrim)
     {
         if (!isset($this->valuesToTrim))

@@ -64,6 +64,11 @@ class SearchTermPredictionResult
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;
     }
+    function setExpectedResultTypesFromArray(array $expectedResultTypes)
+    {
+        $this->expectedResultTypes = $expectedResultTypes;
+        return $this;
+    }
     function addToExpectedResultTypes(ExpectedSearchTermResult $expectedResultTypes)
     {
         if (!isset($this->expectedResultTypes))
@@ -79,6 +84,11 @@ class SearchTermPredictionResult
         return $this;
     }
     function setCorrectedWordsMask(bool ... $correctedWordsMask)
+    {
+        $this->correctedWordsMask = $correctedWordsMask;
+        return $this;
+    }
+    function setCorrectedWordsMaskFromArray(array $correctedWordsMask)
     {
         $this->correctedWordsMask = $correctedWordsMask;
         return $this;

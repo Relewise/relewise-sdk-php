@@ -45,6 +45,11 @@ class ContentSearchResponse extends PaginatedSearchResponse
         $this->results = $results;
         return $this;
     }
+    function setResultsFromArray(array $results)
+    {
+        $this->results = $results;
+        return $this;
+    }
     function addToResults(ContentResult $results)
     {
         if (!isset($this->results))
@@ -60,6 +65,11 @@ class ContentSearchResponse extends PaginatedSearchResponse
         return $this;
     }
     function setRecommendations(ContentResult ... $recommendations)
+    {
+        $this->recommendations = $recommendations;
+        return $this;
+    }
+    function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;

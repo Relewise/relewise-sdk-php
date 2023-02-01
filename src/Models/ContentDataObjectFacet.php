@@ -27,6 +27,11 @@ class ContentDataObjectFacet extends DataObjectFacet
         $this->items = $items;
         return $this;
     }
+    function setItemsFromArray(array $items)
+    {
+        $this->items = $items;
+        return $this;
+    }
     function addToItems(Facet $items)
     {
         if (!isset($this->items))

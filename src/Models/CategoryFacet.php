@@ -33,6 +33,11 @@ class CategoryFacet extends stringValueFacet
         $this->selected = $selected;
         return $this;
     }
+    function setSelectedFromArray(array $selected)
+    {
+        $this->selected = $selected;
+        return $this;
+    }
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))

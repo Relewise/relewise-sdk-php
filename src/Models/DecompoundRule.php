@@ -58,6 +58,11 @@ class DecompoundRule extends SearchRule
         $this->modifiers = $modifiers;
         return $this;
     }
+    function setModifiersFromArray(array $modifiers)
+    {
+        $this->modifiers = $modifiers;
+        return $this;
+    }
     function addToModifiers(string $modifiers)
     {
         if (!isset($this->modifiers))

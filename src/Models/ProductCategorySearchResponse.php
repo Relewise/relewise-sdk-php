@@ -45,6 +45,11 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
         $this->results = $results;
         return $this;
     }
+    function setResultsFromArray(array $results)
+    {
+        $this->results = $results;
+        return $this;
+    }
     function addToResults(ProductCategoryResult $results)
     {
         if (!isset($this->results))
@@ -60,6 +65,11 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
         return $this;
     }
     function setRecommendations(ProductCategoryResult ... $recommendations)
+    {
+        $this->recommendations = $recommendations;
+        return $this;
+    }
+    function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;

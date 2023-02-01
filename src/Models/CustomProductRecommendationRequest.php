@@ -50,6 +50,11 @@ class CustomProductRecommendationRequest extends ProductRecommendationRequest
         $this->parameters[$key] = $value;
         return $this;
     }
+    function setParametersFromAssociativeArray(array $parameters)
+    {
+        $this->parameters = $parameters;
+        return $this;
+    }
     function setSettings(ProductRecommendationRequestSettings $settings)
     {
         $this->settings = $settings;
