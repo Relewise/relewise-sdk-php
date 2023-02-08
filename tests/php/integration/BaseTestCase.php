@@ -3,7 +3,7 @@
 namespace Relewise\Tests\Integration;
 use PHPUnit\Framework\TestCase;
 
-abstract class BaseTestCase extends TestCase
+class BaseTestCase extends TestCase
 {
     public function DATASET_ID() : string
     {
