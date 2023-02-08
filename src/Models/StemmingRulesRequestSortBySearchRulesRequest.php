@@ -6,7 +6,7 @@ use DateTime;
 
 abstract class StemmingRulesRequestSortBySearchRulesRequest extends LicensedRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SearchRulesRequest`1[[Relewise.Client.Requests.Search.Rules.StemmingRulesRequest+SortBy, Relewise.Client, Version=1.57.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SearchRulesRequest`1[[Relewise.Client.Requests.Search.Rules.StemmingRulesRequest+SortBy, Relewise.Client, Version=1.61.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public SearchRuleFilters $filters;
     public StemmingRulesRequestSortBySorting $sorting;
     public int $skip;

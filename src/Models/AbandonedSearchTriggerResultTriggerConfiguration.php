@@ -4,15 +4,15 @@ namespace Relewise\Models;
 
 use DateTime;
 
-abstract class ProductCategoryInterestTriggerResultTriggerConfiguration extends TriggerConfiguration
+abstract class AbandonedSearchTriggerResultTriggerConfiguration extends TriggerConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.TriggerConfiguration`1[[Relewise.Client.Responses.Triggers.Results.ProductCategoryInterestTriggerResult, Relewise.Client, Version=1.61.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.TriggerConfiguration`1[[Relewise.Client.Responses.Triggers.Results.AbandonedSearchTriggerResult, Relewise.Client, Version=1.61.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
-        if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.ProductCategoryInterestTriggerConfiguration, Relewise.Client")
+        if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.AbandonedSearchTriggerConfiguration, Relewise.Client")
         {
-            return ProductCategoryInterestTriggerConfiguration::hydrate($arr);
+            return AbandonedSearchTriggerConfiguration::hydrate($arr);
         }
     }
     public static function hydrateBase(mixed $result, array $arr)

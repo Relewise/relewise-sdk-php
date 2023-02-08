@@ -6,15 +6,14 @@ use DateTime;
 
 class SearchTermCondition
 {
-    public SearchTermConditionConditionKind $kind;
-    public string $value;
+    public ?SearchTermConditionConditionKind $kind;
+    public ?string $value;
     public ?array $andConditions;
     public ?array $orConditions;
-    public static function create(SearchTermConditionConditionKind $kind, string $value) : SearchTermCondition
+    public ?int $minimumLength;
+    public static function create() : SearchTermCondition
     {
         $result = new SearchTermCondition();
-        $result->kind = $kind;
-        $result->value = $value;
         return $result;
     }
     public static function hydrate(array $arr) : SearchTermCondition
@@ -44,14 +43,18 @@ class SearchTermCondition
                 array_push($result->orConditions, SearchTermCondition::hydrate($value));
             }
         }
+        if (array_key_exists("minimumLength", $arr))
+        {
+            $result->minimumLength = $arr["minimumLength"];
+        }
         return $result;
     }
-    function setKind(SearchTermConditionConditionKind $kind)
+    function setKind(?SearchTermConditionConditionKind $kind)
     {
         $this->kind = $kind;
         return $this;
     }
-    function setValue(string $value)
+    function setValue(?string $value)
     {
         $this->value = $value;
         return $this;
@@ -92,6 +95,11 @@ class SearchTermCondition
             $this->orConditions = array();
         }
         array_push($this->orConditions, $orConditions);
+        return $this;
+    }
+    function setMinimumLength(?int $minimumLength)
+    {
+        $this->minimumLength = $minimumLength;
         return $this;
     }
 }
