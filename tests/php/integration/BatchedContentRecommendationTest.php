@@ -11,7 +11,7 @@ use Relewise\Models\Language;
 use Relewise\Models\PopularContentsRequest;
 use Relewise\Recommender;
 
-class BatchedContentRecommendationTest extends BaseTest
+class BatchedContentRecommendationTest extends BaseTestCase
 {
     public function testBatchedContentRecommendations(): void
     {

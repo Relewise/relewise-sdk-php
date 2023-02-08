@@ -15,12 +15,13 @@ class SearchIndex
     public DateTime $modified;
     public string $modifiedBy;
     public IndexConfiguration $configuration;
-    public static function create(string $id, string $description, bool $isDefault) : SearchIndex
+    public static function create(string $id, string $description, bool $isDefault, bool $enabled = true) : SearchIndex
     {
         $result = new SearchIndex();
         $result->id = $id;
         $result->description = $description;
         $result->isDefault = $isDefault;
+        $result->enabled = $enabled;
         return $result;
     }
     public static function hydrate(array $arr) : SearchIndex

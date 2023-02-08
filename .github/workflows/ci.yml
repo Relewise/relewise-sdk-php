@@ -25,7 +25,9 @@ jobs:
         with:
           bootstrap: vendor/autoload.php
           configuration: tests/phpunit.xml
-          args: --coverage-text
+          test_suffix: .php
+          testsuite: Unit
+          version: 9.5.28
         env:
           DATASET_ID: ${{secrets.INTEGRATIONTESTS_DATASET_ID}}
           API_KEY: ${{secrets.INTEGRATIONTESTS_API_KEY}}

@@ -26,6 +26,10 @@ abstract class TriggerConfiguration
         {
             return AbandonedCartTriggerConfiguration::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.AbandonedSearchTriggerConfiguration, Relewise.Client")
+        {
+            return AbandonedSearchTriggerConfiguration::hydrate($arr);
+        }
         if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.ContentCategoryInterestTriggerConfiguration, Relewise.Client")
         {
             return ContentCategoryInterestTriggerConfiguration::hydrate($arr);

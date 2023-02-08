@@ -2,7 +2,6 @@
 
 namespace Relewise\Tests\Integration;
 
-use Relewise\Models\ClearTextParser;
 use Relewise\Models\DataIndexConfiguration;
 use Relewise\Models\DeleteSearchIndexRequest;
 use Relewise\Models\FieldIndexConfiguration;
@@ -18,7 +17,7 @@ use Relewise\Models\SearchIndex;
 use Relewise\Models\SearchIndexRequest;
 use Relewise\SearchAdministrator;
 
-class SearchAdministratorTest extends BaseTest
+class SearchAdministratorTest extends BaseTestCase
 {
     public function testSaveSimpleSearchIndex(): void
     {

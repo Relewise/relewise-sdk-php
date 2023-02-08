@@ -19,7 +19,7 @@ use Relewise\Models\ProductFacetQuery;
 use Relewise\Models\ProductSearchRequest;
 use Relewise\Searcher;
 
-class FacetsTest extends BaseTest
+class FacetsTest extends BaseTestCase
 {
     public function testSalesPriceFacet(): void
     {

@@ -20,7 +20,7 @@ use Relewise\Models\PurchasedWithProductRequest;
 use Relewise\Models\ValueConditionCollection;
 use Relewise\Recommender;
 
-class ProductRecommendationsTest extends BaseTest
+class ProductRecommendationsTest extends BaseTestCase
 {
     public function testPurchasedWithProduct(): void
     {

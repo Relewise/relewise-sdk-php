@@ -10,7 +10,7 @@ use Relewise\Models\Language;
 use Relewise\Models\PopularContentsRequest;
 use Relewise\Recommender;
 
-class ContentRecommendationsTest extends BaseTest
+class ContentRecommendationsTest extends BaseTestCase
 {
     public function testContentsViewedAfterViewing(): void
     {

@@ -6,7 +6,7 @@ use DateTime;
 
 abstract class RedirectRuleSaveSearchRulesRequest extends LicensedRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SaveSearchRulesRequest`1[[Relewise.Client.DataTypes.Search.Configuration.SearchRules.RedirectRule, Relewise.Client, Version=1.57.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SaveSearchRulesRequest`1[[Relewise.Client.DataTypes.Search.Configuration.SearchRules.RedirectRule, Relewise.Client, Version=1.61.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public array $rules;
     public string $modifiedBy;
     public static function hydrate(array $arr)

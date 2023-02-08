@@ -98,7 +98,7 @@ src/Core/DevOps/Locust/**/__pycache__/
 src/Core/Framework/Test/Plugin/_fixture/SwagFashionTheme.zip
 ###> symfony/phpunit-bridge ###
 .phpunit
-.phpunit.result.cache
+.phpunit.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 

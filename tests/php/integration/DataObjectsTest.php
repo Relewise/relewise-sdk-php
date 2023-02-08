@@ -16,7 +16,7 @@ use Relewise\Models\SelectedProductPropertiesSettings;
 use Relewise\Models\ValueConditionCollection;
 use Relewise\Searcher;
 
-class DataObjectsTest extends BaseTest
+class DataObjectsTest extends BaseTestCase
 {
     public function testDataObjectsCanBeDeserialized(): void
     {

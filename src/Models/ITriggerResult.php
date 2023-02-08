@@ -14,6 +14,10 @@ abstract class ITriggerResult
         {
             return AbandonedCartTriggerResult::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Responses.Triggers.Results.AbandonedSearchTriggerResult, Relewise.Client")
+        {
+            return AbandonedSearchTriggerResult::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Responses.Triggers.Results.ContentCategoryInterestTriggerResult, Relewise.Client")
         {
             return ContentCategoryInterestTriggerResult::hydrate($arr);

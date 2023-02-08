@@ -11,7 +11,7 @@ use Relewise\Models\SearchRequestCollection;
 use Relewise\Models\SearchTermPredictionRequest;
 use Relewise\Searcher;
 
-class BatchedSearchesTest extends BaseTest
+class BatchedSearchesTest extends BaseTestCase
 {
     public function testBatchedSearch(): void
     {

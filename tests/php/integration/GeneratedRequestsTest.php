@@ -10,7 +10,7 @@ use Relewise\Models\Currency;
 use Relewise\Models\Order;
 use Relewise\Models\TrackOrderRequest;
 
-class GeneratedRequestsTest extends BaseTest
+class GeneratedRequestsTest extends BaseTestCase
 {
     public function testTrackOrderRequestWithBuilderPatternAndCreatorMethod(): void
     {
