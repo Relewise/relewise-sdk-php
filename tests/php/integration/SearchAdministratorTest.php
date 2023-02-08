@@ -2,7 +2,6 @@
 
 namespace Relewise\Tests\Integration;
 
-use Relewise\Models\ClearTextParser;
 use Relewise\Models\DataIndexConfiguration;
 use Relewise\Models\DeleteSearchIndexRequest;
 use Relewise\Models\FieldIndexConfiguration;
