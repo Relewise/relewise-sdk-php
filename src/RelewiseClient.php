@@ -17,6 +17,7 @@ use Relewise\Models\TimedResponse;
 abstract class RelewiseClient
 {
     public string $serverUrl = "https://api.relewise.com";
+    private int $httpVersion = CURL_HTTP_VERSION_NONE;
     private string $apiVersion = "v1";
     private Client $client;
 
@@ -30,7 +31,8 @@ abstract class RelewiseClient
         return $this->client->post(
             $this->createRequestUrl($this->serverUrl, $this->datasetId, $this->apiVersion, $endpoint),
             str_replace("\"typeDefinition\":", "\"\$type\":", json_encode($request)),
-            array("Authorization: ApiKey " . $this->apiKey, "Content-Type: application/json")
+            array("Authorization: ApiKey " . $this->apiKey, "Content-Type: application/json"),
+            $this->httpVersion
         );
     }
 
@@ -64,6 +66,16 @@ abstract class RelewiseClient
             }
         }
         throw new ClientException(json_encode($response->body), $response->code);
+    }
+
+    /**
+     * Set the HTTP Version for the requests made to the API.
+     * @param int $httpVersion should be either CURL_HTTP_VERSION_NONE, CURL_HTTP_VERSION_1_1, CURL_HTTP_VERSION_2_0, or CURL_HTTP_VERSION_2TLS
+     * @return void
+     */
+    public function setHttpVersion(int $httpVersion = CURL_HTTP_VERSION_NONE)
+    {
+        $this->httpVersion = $httpVersion;
     }
 
     private function createRequestUrl(string $baseUrl, ...$segments): string

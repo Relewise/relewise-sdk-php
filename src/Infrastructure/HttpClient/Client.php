@@ -10,5 +10,5 @@ interface Client
      *
      * @return Response
      */
-    public function post($url, $data = null, array $header = []): Response;
+    public function post($url, $data = null, array $header = [], int $httpVersion = CURL_HTTP_VERSION_NONE): Response;
 }
