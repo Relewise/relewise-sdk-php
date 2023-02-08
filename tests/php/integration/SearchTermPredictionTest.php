@@ -11,7 +11,7 @@ use Relewise\Models\EntityType;
 use Relewise\Models\Language;
 use Relewise\Searcher;
 
-class SearchTermPredictionTest extends BaseTest
+class SearchTermPredictionTest extends BaseTestCase
 {
     public function testSearchTermPrediction(): void
     {

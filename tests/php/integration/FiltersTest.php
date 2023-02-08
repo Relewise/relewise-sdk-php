@@ -12,7 +12,7 @@ use Relewise\Models\ProductIdFilter;
 use Relewise\Models\ProductSearchRequest;
 use Relewise\Searcher;
 
-class FiltersTest extends BaseTest
+class FiltersTest extends BaseTestCase
 {
     public function testProductAssortmentFilter(): void
     {

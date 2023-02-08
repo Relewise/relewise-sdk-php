@@ -12,7 +12,7 @@ use Relewise\Models\ProductsViewedAfterViewingProductRequest;
 use Relewise\Models\PurchasedWithProductRequest;
 use Relewise\Recommender;
 
-class BatchedProductRecommendationTest extends BaseTest
+class BatchedProductRecommendationTest extends BaseTestCase
 {
     public function testBatchedProductRecommendations(): void
     {

@@ -26,7 +26,7 @@ use Relewise\Models\TrackProductUpdateRequest;
 use Relewise\Models\TrackProductViewRequest;
 use Relewise\Models\ProductUpdateUpdateKind;
 
-class TrackerTest extends BaseTest
+class TrackerTest extends BaseTestCase
 {
     public function testProductView(): void
     {

@@ -13,7 +13,7 @@ use Relewise\Models\ProductSearchRequest;
 use Relewise\Models\RelevanceModifierCollection;
 use Relewise\Searcher;
 
-class SearchTest extends BaseTest
+class SearchTest extends BaseTestCase
 {
     public function testProductSearchWithNoConditions(): void
     {

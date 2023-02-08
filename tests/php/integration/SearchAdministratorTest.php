@@ -18,7 +18,7 @@ use Relewise\Models\SearchIndex;
 use Relewise\Models\SearchIndexRequest;
 use Relewise\SearchAdministrator;
 
-class SearchAdministratorTest extends BaseTest
+class SearchAdministratorTest extends BaseTestCase
 {
     public function testSaveSimpleSearchIndex(): void
     {
