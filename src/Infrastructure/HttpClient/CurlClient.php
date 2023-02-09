@@ -18,9 +18,9 @@ class CurlClient implements Client
     /**
      * {@inheritdoc}
      */
-    public function post($url, $data = null, array $header = []): Response
+    public function post($url, $data = null, array $header = [], int $httpVersion = CURL_HTTP_VERSION_NONE): Response
     {
-        return $this->call($url, self::METHOD_POST, $header, $data);
+        return $this->call($url, self::METHOD_POST, $header, $data, $httpVersion);
     }
 
     /**
@@ -33,7 +33,7 @@ class CurlClient implements Client
      *
      * @return Response
      */
-    private function call($url, $method = self::METHOD_GET, array $header = [], $data = null): Response
+    private function call($url, $method = self::METHOD_GET, array $header = [], $data = null, int $httpVersion = CURL_HTTP_VERSION_NONE): Response
     {
         if (!\function_exists('curl_init')) {
             throw new ClientException('curl not loaded');
@@ -53,6 +53,7 @@ class CurlClient implements Client
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);           
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($curl, CURLOPT_HTTP_VERSION, $httpVersion);
 
         $content = curl_exec($curl);
 

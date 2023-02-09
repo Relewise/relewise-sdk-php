@@ -2,6 +2,7 @@
 
 namespace Relewise;
 
+use InvalidArgumentException;
 use Relewise\Infrastructure\HttpClient\BadRequestException;
 use Relewise\Infrastructure\HttpClient\Client;
 use Relewise\Infrastructure\HttpClient\ClientException;
@@ -17,6 +18,7 @@ use Relewise\Models\TimedResponse;
 abstract class RelewiseClient
 {
     public string $serverUrl = "https://api.relewise.com";
+    private int $httpVersion = CURL_HTTP_VERSION_NONE;
     private string $apiVersion = "v1";
     private Client $client;
 
@@ -30,7 +32,8 @@ abstract class RelewiseClient
         return $this->client->post(
             $this->createRequestUrl($this->serverUrl, $this->datasetId, $this->apiVersion, $endpoint),
             str_replace("\"typeDefinition\":", "\"\$type\":", json_encode($request)),
-            array("Authorization: ApiKey " . $this->apiKey, "Content-Type: application/json")
+            array("Authorization: ApiKey " . $this->apiKey, "Content-Type: application/json"),
+            $this->httpVersion
         );
     }
 
@@ -64,6 +67,21 @@ abstract class RelewiseClient
             }
         }
         throw new ClientException(json_encode($response->body), $response->code);
+    }
+
+    /**
+     * Set the HTTP Version for the requests made to the API.
+     * @param int $httpVersion should be either CURL_HTTP_VERSION_NONE, CURL_HTTP_VERSION_1_1, CURL_HTTP_VERSION_2_0, or CURL_HTTP_VERSION_2TLS
+     * @return void
+     */
+    public function setHttpVersion(int $httpVersion)
+    {
+        if ($httpVersion == 0 || $httpVersion == 2 || $httpVersion == 3 || $httpVersion == 4) {
+            $this->httpVersion = $httpVersion;
+        }
+        else {
+            throw new InvalidArgumentException("The supplied httpVersion code was not among valid values. It as " + $httpVersion + " but the expected was 0, 2, 3, or 4.");
+        }
     }
 
     private function createRequestUrl(string $baseUrl, ...$segments): string
