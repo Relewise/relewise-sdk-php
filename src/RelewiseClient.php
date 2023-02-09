@@ -2,6 +2,7 @@
 
 namespace Relewise;
 
+use InvalidArgumentException;
 use Relewise\Infrastructure\HttpClient\BadRequestException;
 use Relewise\Infrastructure\HttpClient\Client;
 use Relewise\Infrastructure\HttpClient\ClientException;
@@ -73,9 +74,14 @@ abstract class RelewiseClient
      * @param int $httpVersion should be either CURL_HTTP_VERSION_NONE, CURL_HTTP_VERSION_1_1, CURL_HTTP_VERSION_2_0, or CURL_HTTP_VERSION_2TLS
      * @return void
      */
-    public function setHttpVersion(int $httpVersion = CURL_HTTP_VERSION_NONE)
+    public function setHttpVersion(int $httpVersion)
     {
-        $this->httpVersion = $httpVersion;
+        if ($httpVersion == 0 || $httpVersion == 2 || $httpVersion == 3 || $httpVersion == 4) {
+            $this->httpVersion = $httpVersion;
+        }
+        else {
+            throw new InvalidArgumentException("The supplied httpVersion code was not among valid values. It as " + $httpVersion + " but the expected was 0, 2, 3, or 4.");
+        }
     }
 
     private function createRequestUrl(string $baseUrl, ...$segments): string
