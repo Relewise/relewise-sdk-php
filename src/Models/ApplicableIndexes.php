@@ -6,6 +6,7 @@ use DateTime;
 
 class ApplicableIndexes
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.ApplicableIndexes, Relewise.Client";
     public array $indexes;
     const ALL = Null;
     public static function create(string ... $indexes) : ApplicableIndexes

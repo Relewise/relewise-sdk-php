@@ -6,6 +6,7 @@ use DateTime;
 
 class SelectedContentCategoryPropertiesSettings
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Shared.SelectedContentCategoryPropertiesSettings, Relewise.Client";
     public bool $displayName;
     public bool $paths;
     public bool $assortments;

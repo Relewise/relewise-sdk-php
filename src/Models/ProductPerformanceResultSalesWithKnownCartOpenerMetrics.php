@@ -6,6 +6,7 @@ use DateTime;
 
 class ProductPerformanceResultSalesWithKnownCartOpenerMetrics
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.ProductPerformanceResult+SalesWithKnownCartOpenerMetrics, Relewise.Client";
     public int $orders;
     public int $opened;
     public float $openedPercent;

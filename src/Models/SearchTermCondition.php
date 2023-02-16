@@ -6,6 +6,7 @@ use DateTime;
 
 class SearchTermCondition
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.SearchRules.SearchTermCondition, Relewise.Client";
     public ?SearchTermConditionConditionKind $kind;
     public ?string $value;
     public ?array $andConditions;

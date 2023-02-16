@@ -6,6 +6,7 @@ use DateTime;
 
 class VariantSearchSettings
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.VariantSearchSettings, Relewise.Client";
     public bool $excludeResultsWithoutVariant;
     public static function create() : VariantSearchSettings
     {

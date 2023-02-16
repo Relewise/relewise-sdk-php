@@ -6,6 +6,7 @@ use DateTime;
 
 class CategoryIndexConfigurationEntry
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.CategoryIndexConfigurationEntry, Relewise.Client";
     public FieldIndexConfiguration $id;
     public FieldIndexConfiguration $displayName;
     public DataIndexConfiguration $data;

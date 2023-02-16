@@ -6,6 +6,7 @@ use DateTime;
 
 class LanguageIndexConfigurationEntry
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.LanguageIndexConfigurationEntry, Relewise.Client";
     public Language $language;
     public bool $included;
     public ?string $iSO639_1;

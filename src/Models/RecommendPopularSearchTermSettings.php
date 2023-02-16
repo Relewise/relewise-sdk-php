@@ -6,6 +6,7 @@ use DateTime;
 
 class RecommendPopularSearchTermSettings
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Recommendations.RecommendPopularSearchTermSettings, Relewise.Client";
     public ?array $targetEntityTypes;
     public int $numberOfRecommendations;
     public static function create() : RecommendPopularSearchTermSettings

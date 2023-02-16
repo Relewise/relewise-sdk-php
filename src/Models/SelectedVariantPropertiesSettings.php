@@ -6,6 +6,7 @@ use DateTime;
 
 class SelectedVariantPropertiesSettings
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Shared.SelectedVariantPropertiesSettings, Relewise.Client";
     public bool $displayName;
     public bool $pricing;
     public bool $allSpecifications;

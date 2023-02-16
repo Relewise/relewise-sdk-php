@@ -6,6 +6,7 @@ use DateTime;
 
 class MultiCurrency
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.MultiCurrency, Relewise.Client";
     public ?array $values;
     public static function create(Money ... $amounts) : MultiCurrency
     {

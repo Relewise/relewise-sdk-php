@@ -6,6 +6,7 @@ use DateTime;
 
 class GlobalTriggerConfiguration
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.GlobalTriggerConfiguration, Relewise.Client";
     public DateTime $modified;
     public string $modifiedBy;
     public bool $enabled;

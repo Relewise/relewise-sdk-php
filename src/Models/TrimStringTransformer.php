@@ -6,6 +6,7 @@ use DateTime;
 
 class TrimStringTransformer
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Transformers.TrimStringTransformer, Relewise.Client";
     public array $valuesToTrim;
     public static function create(string ... $valuesToTrim) : TrimStringTransformer
     {

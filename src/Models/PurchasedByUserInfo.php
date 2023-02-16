@@ -6,6 +6,7 @@ use DateTime;
 
 class PurchasedByUserInfo
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.PurchasedByUserInfo, Relewise.Client";
     public DateTime $mostRecentPurchasedUtc;
     public int $totalNumberOfTimesPurchased;
     public static function create(DateTime $mostRecentPurchasedUtc, int $totalNumberOfTimesPurchased) : PurchasedByUserInfo

@@ -6,6 +6,7 @@ use DateTime;
 
 class ProductCategoryRecommendationRequestSettings
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ProductCategoryRecommendationRequestSettings, Relewise.Client";
     public int $numberOfRecommendations;
     public bool $allowFillIfNecessaryToReachNumberOfRecommendations;
     public bool $allowReplacingOfRecentlyShownRecommendations;

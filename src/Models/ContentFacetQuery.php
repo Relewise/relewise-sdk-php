@@ -6,6 +6,7 @@ use DateTime;
 
 class ContentFacetQuery
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ContentFacetQuery, Relewise.Client";
     public array $items;
     public static function create() : ContentFacetQuery
     {

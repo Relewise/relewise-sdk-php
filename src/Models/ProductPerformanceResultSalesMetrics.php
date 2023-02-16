@@ -6,6 +6,7 @@ use DateTime;
 
 class ProductPerformanceResultSalesMetrics
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.ProductPerformanceResult+SalesMetrics, Relewise.Client";
     public int $orders;
     public float $averageNoOfLineItems;
     public array $currencies;

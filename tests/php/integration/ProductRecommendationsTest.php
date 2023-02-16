@@ -90,7 +90,7 @@ class ProductRecommendationsTest extends BaseTestCase
                                     ->setValue(DataValueFactory::multilingualCollectionWithSingleLanguage(Language::create("en-US"), "d"))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                                 ContainsCondition::create()
-                                    ->setValue(DataValueFactory::multiCurrencyFromSingleCurrency(Money::create(Currency::create("USD"), 1)))
+                                    ->setValue(DataValueFactory::multiCurrencyFromMultipleMoney(Money::create(Currency::create("USD"), 1)))
                                     ->setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode::Any),
                             )
                     )

@@ -6,6 +6,7 @@ use DateTime;
 
 class SynonymsRequestSynonymSortingSorting
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Shared.Sorting`1[[Relewise.Client.Requests.Search.SynonymsRequest+SynonymSorting, Relewise.Client, Version=1.61.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public SynonymsRequestSynonymSorting $sortBy;
     public SortOrder $sortOrder;
     public static function create(SynonymsRequestSynonymSorting $sortBy, SortOrder $sortOrder) : SynonymsRequestSynonymSortingSorting

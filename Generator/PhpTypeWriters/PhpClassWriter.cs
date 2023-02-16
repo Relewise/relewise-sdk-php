@@ -29,11 +29,8 @@ use DateTime;
         writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {typeName}{(type.BaseType != typeof(object) && type.BaseType is { } baseType ? $" extends {phpWriter.PhpTypeName(baseType).Replace("?", "")}" : "")}");
         writer.WriteLine("{");
         writer.Indent++;
-        if (type.BaseType != typeof(object) && type.BaseType is { IsAbstract: true } || type.IsAbstract)
-        {
-            writer.WriteLine($"public string $typeDefinition = \"{type.FullName}, {type.Assembly.FullName!.Split(",")[0]}\";");
-        }
-        
+        writer.WriteLine($"public string $typeDefinition = \"{type.FullName}, {type.Assembly.FullName!.Split(",")[0]}\";");
+
         var gettablePropertyInfo = type
             .GetProperties()
             .Where(info => info.MemberType is MemberTypes.Property
@@ -52,7 +49,7 @@ use DateTime;
             .Select(MapPropertyInfo)
             .ToArray();
         var ownedProperties = settablePropertyInfo
-            .Where(info => info.DeclaringType == type 
+            .Where(info => info.DeclaringType == type
                         && info.DeclaringType?.IsAbstract == type.IsAbstract)
             .Select(MapPropertyInfo)
             .ToArray();

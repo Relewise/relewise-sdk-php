@@ -6,6 +6,7 @@ use DateTime;
 
 class RelevanceModifierCollection
 {
+    public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.RelevanceModifierCollection, Relewise.Client";
     public ?array $items;
     public static function create(RelevanceModifier ... $relevanceModifiers) : RelevanceModifierCollection
     {

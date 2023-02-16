@@ -6,6 +6,7 @@ use DateTime;
 
 class ProductCategoryInterestTriggerResult
 {
+    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.ProductCategoryInterestTriggerResult, Relewise.Client";
     public UserResultDetails $user;
     public array $categories;
     public static function create() : ProductCategoryInterestTriggerResult

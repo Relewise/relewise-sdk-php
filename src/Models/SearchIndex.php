@@ -6,6 +6,7 @@ use DateTime;
 
 class SearchIndex
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.SearchIndex, Relewise.Client";
     public string $id;
     public string $description;
     public bool $enabled;

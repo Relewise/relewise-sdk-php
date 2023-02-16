@@ -6,6 +6,7 @@ use DateTime;
 
 class RequestContextFilter
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.RequestContextFilter, Relewise.Client";
     public RecommendationTypeCollection $recommendations;
     public SearchTypeCollection $searches;
     public array $locations;

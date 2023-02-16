@@ -6,6 +6,7 @@ use DateTime;
 
 class KeyMultiplier
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.KeyMultiplier, Relewise.Client";
     public string $key;
     public float $multiplier;
     public static function create(string $key, float $multiplier) : KeyMultiplier

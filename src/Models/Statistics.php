@@ -6,6 +6,7 @@ use DateTime;
 
 class Statistics
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Statistics, Relewise.Client";
     public float $serverTimeInMs;
     public static function create() : Statistics
     {

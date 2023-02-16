@@ -6,6 +6,7 @@ use DateTime;
 
 class ApplicableLanguages
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.ApplicableLanguages, Relewise.Client";
     public array $languages;
     const ALL = Null;
     public static function create(Language ... $languages) : ApplicableLanguages

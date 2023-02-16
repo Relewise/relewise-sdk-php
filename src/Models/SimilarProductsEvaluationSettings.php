@@ -6,6 +6,7 @@ use DateTime;
 
 class SimilarProductsEvaluationSettings
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Recommendations.SimilarProductsEvaluationSettings, Relewise.Client";
     public float $significanceOfSimilaritiesInDisplayName;
     public ?TrimStringTransformer $productDisplayNameTransformer;
     public float $significanceOfSimilarListPrice;

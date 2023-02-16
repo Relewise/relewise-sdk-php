@@ -6,6 +6,7 @@ use DateTime;
 
 class UserConditionConfiguration
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Configurations.UserConditionConfiguration, Relewise.Client";
     public UserConditionCollection $conditions;
     public static function create() : UserConditionConfiguration
     {

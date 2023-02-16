@@ -6,6 +6,7 @@ use DateTime;
 
 class ProductInterestTriggerResultProductAndVariant
 {
+    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.ProductInterestTriggerResult+ProductAndVariant, Relewise.Client";
     public ProductResultDetails $product;
     public VariantResultDetails $variant;
     public int $views;

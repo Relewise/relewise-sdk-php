@@ -6,6 +6,7 @@ use DateTime;
 
 class Product
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Product, Relewise.Client";
     public string $id;
     public ?Multilingual $displayName;
     public ?array $categoryPaths;

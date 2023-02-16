@@ -6,6 +6,7 @@ use DateTime;
 
 class Synonym
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Synonyms.Synonym, Relewise.Client";
     public string $id;
     public SynonymType $type;
     public array $indexes;

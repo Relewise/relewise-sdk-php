@@ -6,6 +6,7 @@ use DateTime;
 
 class ProductPerformanceResultRankMetrics
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.ProductPerformanceResult+RankMetrics, Relewise.Client";
     public ProductPerformanceResultViewsAndSalesMetrics $overall;
     public array $withinCategories;
     public ProductPerformanceResultViewsAndSalesMetrics $withinBrand;

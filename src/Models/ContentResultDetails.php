@@ -6,6 +6,7 @@ use DateTime;
 
 class ContentResultDetails
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.ContentResultDetails, Relewise.Client";
     public string $contentId;
     public Multilingual $displayName;
     public array $assortments;

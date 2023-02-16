@@ -6,6 +6,7 @@ use DateTime;
 
 class SearchRuleFilters
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SearchRuleFilters, Relewise.Client";
     public ?string $term;
     public ?bool $approved;
     public ?string $id;

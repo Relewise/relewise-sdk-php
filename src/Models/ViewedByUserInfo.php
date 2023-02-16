@@ -6,6 +6,7 @@ use DateTime;
 
 class ViewedByUserInfo
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.ViewedByUserInfo, Relewise.Client";
     public DateTime $mostRecentlyViewedUtc;
     public int $totalNumberOfTimesViewed;
     public static function create(DateTime $mostRecentlyViewedUtc, int $totalNumberOfTimesViewed) : ViewedByUserInfo
