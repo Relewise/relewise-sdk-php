@@ -6,6 +6,7 @@ use DateTime;
 
 class BrandResultDetails
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.BrandResultDetails, Relewise.Client";
     public string $brandId;
     public string $displayName;
     public array $assortments;

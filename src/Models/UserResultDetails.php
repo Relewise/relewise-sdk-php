@@ -6,6 +6,7 @@ use DateTime;
 
 class UserResultDetails
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.UserResultDetails, Relewise.Client";
     public string $authenticatedId;
     public string $temporaryId;
     public string $email;

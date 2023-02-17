@@ -6,6 +6,7 @@ use DateTime;
 
 class SelectedProductCategoryPropertiesSettings
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Shared.SelectedProductCategoryPropertiesSettings, Relewise.Client";
     public bool $displayName;
     public bool $paths;
     public bool $assortments;

@@ -6,6 +6,7 @@ use DateTime;
 
 class CartDetails
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.CartDetails, Relewise.Client";
     public string $name;
     public DateTime $modifiedUtc;
     public array $lineItems;

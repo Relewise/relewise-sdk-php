@@ -6,6 +6,7 @@ use DateTime;
 
 class BrandRecommendationWeights
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Recommendations.BrandRecommendationWeights, Relewise.Client";
     public float $brandViews;
     public float $productViews;
     public float $productPurchases;

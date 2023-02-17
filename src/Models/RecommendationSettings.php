@@ -6,6 +6,7 @@ use DateTime;
 
 class RecommendationSettings
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.RecommendationSettings, Relewise.Client";
     public ?int $take;
     public ?int $onlyIncludeRecommendationsWhenLessResultsThan;
     public static function create() : RecommendationSettings

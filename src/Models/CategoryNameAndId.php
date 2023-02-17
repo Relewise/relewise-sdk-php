@@ -6,6 +6,7 @@ use DateTime;
 
 class CategoryNameAndId
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.CategoryNameAndId, Relewise.Client";
     public string $id;
     public ?Multilingual $displayName;
     public static function create(string $id, ?Multilingual $displayName = Null) : CategoryNameAndId

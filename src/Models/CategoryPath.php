@@ -6,6 +6,7 @@ use DateTime;
 
 class CategoryPath
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.CategoryPath, Relewise.Client";
     public array $breadcrumbPathStartingFromRoot;
     public static function create(CategoryNameAndId ... $breadcrumbPathStartingFromRoot) : CategoryPath
     {

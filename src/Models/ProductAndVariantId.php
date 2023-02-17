@@ -6,6 +6,7 @@ use DateTime;
 
 class ProductAndVariantId
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.ProductAndVariantId, Relewise.Client";
     public string $productId;
     public ?string $variantId;
     public static function create(string $productId, ?string $variantId = Null) : ProductAndVariantId

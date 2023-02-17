@@ -6,6 +6,7 @@ use DateTime;
 
 class ProductPerformanceResult
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.ProductPerformanceResult, Relewise.Client";
     public ProductResult $product;
     public array $classifications;
     public static function create() : ProductPerformanceResult

@@ -6,6 +6,7 @@ use DateTime;
 
 class FilterCollection
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Filters.FilterCollection, Relewise.Client";
     public ?array $items;
     public static function create(Filter ... $filters) : FilterCollection
     {

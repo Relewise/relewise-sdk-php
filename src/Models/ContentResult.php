@@ -6,6 +6,7 @@ use DateTime;
 
 class ContentResult
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.ContentResult, Relewise.Client";
     public string $contentId;
     public string $displayName;
     public int $rank;

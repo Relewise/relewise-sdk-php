@@ -6,6 +6,7 @@ use DateTime;
 
 class ProductPerformanceResultCartMetrics
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.ProductPerformanceResult+CartMetrics, Relewise.Client";
     public int $opened;
     public static function create() : ProductPerformanceResultCartMetrics
     {

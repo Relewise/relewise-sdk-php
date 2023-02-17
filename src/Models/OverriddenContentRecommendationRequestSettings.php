@@ -6,6 +6,7 @@ use DateTime;
 
 class OverriddenContentRecommendationRequestSettings
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Recommendations.OverriddenContentRecommendationRequestSettings, Relewise.Client";
     public ?int $numberOfRecommendations;
     public ?bool $allowFillIfNecessaryToReachNumberOfRecommendations;
     public ?bool $allowReplacingOfRecentlyShownRecommendations;

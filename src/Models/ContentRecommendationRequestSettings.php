@@ -6,6 +6,7 @@ use DateTime;
 
 class ContentRecommendationRequestSettings
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ContentRecommendationRequestSettings, Relewise.Client";
     public int $numberOfRecommendations;
     public bool $allowFillIfNecessaryToReachNumberOfRecommendations;
     public bool $allowReplacingOfRecentlyShownRecommendations;

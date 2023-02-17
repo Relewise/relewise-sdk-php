@@ -6,6 +6,7 @@ use DateTime;
 
 class boolAvailableFacetValue
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.AvailableFacetValue`1[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Relewise.Client";
     public bool $value;
     public int $hits;
     public bool $selected;

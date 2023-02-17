@@ -6,6 +6,7 @@ use DateTime;
 
 class CategoryPathResult
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.CategoryPathResult, Relewise.Client";
     public array $pathFromRoot;
     public int $rank;
     public static function create(CategoryNameAndIdResult ... $pathFromRoot) : CategoryPathResult

@@ -6,6 +6,7 @@ use DateTime;
 
 class ProductFacetResult
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ProductFacetResult, Relewise.Client";
     public array $items;
     public static function create() : ProductFacetResult
     {

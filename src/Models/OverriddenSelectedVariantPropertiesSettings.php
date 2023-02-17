@@ -6,6 +6,7 @@ use DateTime;
 
 class OverriddenSelectedVariantPropertiesSettings
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Shared.OverriddenSelectedVariantPropertiesSettings, Relewise.Client";
     public ?bool $displayName;
     public ?bool $pricing;
     public ?bool $allSpecifications;

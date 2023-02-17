@@ -6,6 +6,7 @@ use DateTime;
 
 class Language
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Language, Relewise.Client";
     public string $value;
     const UNDEFINED = Null;
     public static function create(string $name) : Language

@@ -6,6 +6,7 @@ use DateTime;
 
 class DataObjectFilter
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.DataObjectFilter, Relewise.Client";
     public ?array $conditions;
     public ?int $skip;
     public ?int $take;

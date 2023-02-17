@@ -6,6 +6,7 @@ use DateTime;
 
 class OverriddenSelectedProductPropertiesSettings
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Shared.OverriddenSelectedProductPropertiesSettings, Relewise.Client";
     public ?bool $displayName;
     public ?bool $categoryPaths;
     public ?bool $assortments;

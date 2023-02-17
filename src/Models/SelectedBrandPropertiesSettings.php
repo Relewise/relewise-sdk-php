@@ -6,6 +6,7 @@ use DateTime;
 
 class SelectedBrandPropertiesSettings
 {
+    public string $typeDefinition = "Relewise.Client.Requests.Shared.SelectedBrandPropertiesSettings, Relewise.Client";
     public bool $displayName;
     public bool $assortments;
     public bool $viewedByUserInfo;

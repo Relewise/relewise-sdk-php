@@ -6,6 +6,7 @@ use DateTime;
 
 class ContentDataObjectFacet extends DataObjectFacet
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ContentDataObjectFacet, Relewise.Client";
     public static function create(string $key) : ContentDataObjectFacet
     {
         $result = new ContentDataObjectFacet();

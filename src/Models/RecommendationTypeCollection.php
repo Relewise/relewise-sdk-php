@@ -6,6 +6,7 @@ use DateTime;
 
 class RecommendationTypeCollection
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.RecommendationTypeCollection, Relewise.Client";
     public array $unionCodes;
     public static function create() : RecommendationTypeCollection
     {

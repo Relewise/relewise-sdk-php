@@ -6,6 +6,7 @@ use DateTime;
 
 class ValueConditionCollection
 {
+    public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ValueConditionCollection, Relewise.Client";
     public ?array $items;
     public static function create() : ValueConditionCollection
     {

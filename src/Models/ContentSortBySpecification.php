@@ -6,6 +6,7 @@ use DateTime;
 
 class ContentSortBySpecification
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Content.ContentSortBySpecification, Relewise.Client";
     public ContentSorting $value;
     public static function create() : ContentSortBySpecification
     {

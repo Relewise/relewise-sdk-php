@@ -6,6 +6,7 @@ use DateTime;
 
 class TargetConditionConfiguration
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Configurations.TargetConditionConfiguration, Relewise.Client";
     public FilterCollection $filters;
     public static function create() : TargetConditionConfiguration
     {

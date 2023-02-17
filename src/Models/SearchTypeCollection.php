@@ -6,6 +6,7 @@ use DateTime;
 
 class SearchTypeCollection
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.SearchTypeCollection, Relewise.Client";
     public array $unionCodes;
     public static function create() : SearchTypeCollection
     {

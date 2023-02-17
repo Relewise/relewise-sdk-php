@@ -31,15 +31,10 @@ class DataValueFactory {
     }
 
     /** This method takes a Money object. */
-    public static function multiCurrencyFromSingleCurrency(Money $money) : DataValue {
+    public static function money(Money $value) : DataValue {
         return DataValue::create()
-            ->setType(DataValueDataValueTypes::MultiCurrency)
-            ->setValue(
-                array(
-                    "\$type" => "Relewise.Client.DataTypes.MultiCurrency, Relewise.Client",
-                    "Values" => array($money)
-                )
-            );
+            ->setType(DataValueDataValueTypes::Money)
+            ->setValue($value);
     }
 
     /** This method takes any number of Money objects. */

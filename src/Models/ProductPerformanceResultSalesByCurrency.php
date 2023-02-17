@@ -6,6 +6,7 @@ use DateTime;
 
 class ProductPerformanceResultSalesByCurrency
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.ProductPerformanceResult+SalesByCurrency, Relewise.Client";
     public Currency $currency;
     public int $orders;
     public float $averageSubtotal;

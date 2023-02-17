@@ -6,6 +6,7 @@ use DateTime;
 
 class LineItem
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.LineItem, Relewise.Client";
     public Product $product;
     public ?ProductVariant $variant;
     public int $quantity;

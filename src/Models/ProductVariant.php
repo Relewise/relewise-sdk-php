@@ -6,6 +6,7 @@ use DateTime;
 
 class ProductVariant
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.ProductVariant, Relewise.Client";
     public string $id;
     public ?Multilingual $displayName;
     public ?array $assortments;

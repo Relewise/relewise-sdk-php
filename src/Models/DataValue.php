@@ -6,6 +6,7 @@ use DateTime;
 
 class DataValue
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.DataValue, Relewise.Client";
     public DataValueDataValueTypes $type;
     public mixed $value;
     public static function create() : DataValue
