@@ -4,7 +4,9 @@ namespace Relewise\Models;
 
 use DateTime;
 
-class ProductCategoryFacetResult
+use Relewise\FacetResultExtractable\ProductCategoryFacetResultExtractable;
+
+class ProductCategoryFacetResult extends ProductCategoryFacetResultExtractable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ProductCategoryFacetResult, Relewise.Client";
     public array $items;

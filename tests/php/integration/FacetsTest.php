@@ -5,16 +5,21 @@ namespace Relewise\Tests\Integration;
 use \PHPUnit\Framework\TestCase;
 use Relewise\Factory\UserFactory;
 use Relewise\Models\BrandFacet;
+use Relewise\Models\BrandFacetResult;
 use Relewise\Models\CategoryFacet;
+use Relewise\Models\CategoryFacetResult;
 use Relewise\Models\CategorySelectionStrategy;
 use Relewise\Models\CollectionFilterType;
 use Relewise\Models\Currency;
 use Relewise\Models\DataSelectionStrategy;
 use Relewise\Models\FacetingField;
+use Relewise\Models\floatRange;
 use Relewise\Models\Language;
 use Relewise\Models\PriceRangeFacet;
+use Relewise\Models\PriceRangeFacetResult;
 use Relewise\Models\PriceSelectionStrategy;
 use Relewise\Models\ProductDataStringValueFacet;
+use Relewise\Models\ProductDataStringValueFacetResult;
 use Relewise\Models\ProductFacetQuery;
 use Relewise\Models\ProductSearchRequest;
 use Relewise\Searcher;
@@ -36,7 +41,7 @@ class FacetsTest extends BaseTestCase
         )->setFacets(
             ProductFacetQuery::create()
                 ->setItems(
-                    PriceRangeFacet::create(FacetingField::SalesPrice, PriceSelectionStrategy::Product, Null),
+                    PriceRangeFacet::create(FacetingField::SalesPrice, PriceSelectionStrategy::Product, floatRange::create(3, 7)),
                 )
         );
 
@@ -46,8 +51,17 @@ class FacetsTest extends BaseTestCase
         self::assertNotNull($response->facets);
         self::assertNotNull($response->facets->items);
         self::assertNotEmpty($response->facets->items);
-        self::assertEquals("Relewise\Models\PriceRangeFacetResult", get_class($response->facets->items[0]));
-        self::assertEquals(FacetingField::SalesPrice, $response->facets->items[0]->field);
+        // Manual loop through and check to find specific FacetResult.
+        self::assertTrue($response->facets->items[0] instanceof PriceRangeFacetResult);
+        self::assertTrue($response->facets->items[0] instanceof PriceRangeFacetResult && $response->facets->items[0]->selected->lowerBoundInclusive == 3);
+        self::assertTrue($response->facets->items[0] instanceof PriceRangeFacetResult && $response->facets->items[0]->selected->upperBoundInclusive == 7);
+        // Using helper method to find specific FacetResult.
+        $salesPriceFacetResult = $response->facets->salesPriceRange(PriceSelectionStrategy::Product);
+        self::assertNotNull($salesPriceFacetResult);
+        self::assertEquals(3, $salesPriceFacetResult->selected->lowerBoundInclusive);
+        self::assertEquals(7, $salesPriceFacetResult->selected->upperBoundInclusive);
+        // Validate that searching for a non-existing FacetResult returns Null when using the helper method.
+        self::assertNull($response->facets->dataBoolean(DataSelectionStrategy::Product, "dataKey"));
     }
 
     public function testBrandFacet(): void
@@ -76,8 +90,9 @@ class FacetsTest extends BaseTestCase
         self::assertNotNull($response->facets);
         self::assertNotNull($response->facets->items);
         self::assertNotEmpty($response->facets->items);
-        self::assertEquals("Relewise\Models\BrandFacetResult", get_class($response->facets->items[0]));
-        self::assertEquals(FacetingField::Brand, $response->facets->items[0]->field);
+        self::assertTrue($response->facets->items[0] instanceof BrandFacetResult);
+        self::assertEquals(FacetingField::Brand, $response->facets->brand()->field);
+        self::assertNull($response->facets->dataBoolean(DataSelectionStrategy::Product, "dataKey"));
     }
 
     public function testProductDataFacet(): void
@@ -110,8 +125,9 @@ class FacetsTest extends BaseTestCase
         self::assertNotNull($response->facets);
         self::assertNotNull($response->facets->items);
         self::assertNotEmpty($response->facets->items);
-        self::assertEquals("Relewise\Models\ProductDataStringValueFacetResult", get_class($response->facets->items[0]));
-        self::assertEquals(FacetingField::Data, $response->facets->items[0]->field);
+        self::assertTrue($response->facets->items[0] instanceof ProductDataStringValueFacetResult);
+        self::assertEquals(FacetingField::Data, $response->facets->dataString(DataSelectionStrategy::Product, "ShortDescription")->field);
+        self::assertNull($response->facets->dataBoolean(DataSelectionStrategy::Product, "dataKey"));
     }
 
     public function testCategoryFacet(): void
@@ -143,7 +159,8 @@ class FacetsTest extends BaseTestCase
         self::assertNotNull($response->facets);
         self::assertNotNull($response->facets->items);
         self::assertNotEmpty($response->facets->items);
-        self::assertEquals("Relewise\Models\CategoryFacetResult", get_class($response->facets->items[0]));
-        self::assertEquals(FacetingField::Category, $response->facets->items[0]->field);
+        self::assertTrue($response->facets->items[0] instanceof CategoryFacetResult);
+        self::assertEquals(FacetingField::Category, $response->facets->category(CategorySelectionStrategy::ImmediateParent)->field);
+        self::assertNull($response->facets->dataBoolean(DataSelectionStrategy::Product, "dataKey"));
     }
 }
