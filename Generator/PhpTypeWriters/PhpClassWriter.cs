@@ -1,5 +1,6 @@
 ﻿using Generator.Extensions;
 using Newtonsoft.Json;
+using Relewise.Client.DataTypes.Search.Facets.Result;
 using System.CodeDom.Compiler;
 using System.Reflection;
 
@@ -7,6 +8,8 @@ namespace Generator.PhpTypeWriters;
 
 public class PhpClassWriter : IPhpTypeWriter
 {
+    private static readonly Type[] ExtractableFacetResultTypes = { typeof(ProductFacetResult), typeof(ContentFacetResult), typeof(ProductCategoryFacetResult) };
+
     private readonly PhpWriter phpWriter;
 
     public PhpClassWriter(PhpWriter phpWriter)
@@ -26,7 +29,19 @@ namespace {Constants.Namespace};
 use DateTime;
 
 """);
-        writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {typeName}{(type.BaseType != typeof(object) && type.BaseType is { } baseType ? $" extends {phpWriter.PhpTypeName(baseType).Replace("?", "")}" : "")}");
+        string? baseTypeName = null;
+        if (type.BaseType != typeof(object) && type.BaseType is { } baseType)
+        {
+            baseTypeName = phpWriter.PhpTypeName(baseType).Replace("?", "");
+        }
+        else if (ExtractableFacetResultTypes.Contains(type))
+        {
+            writer.WriteLine($"use Relewise\\FacetResultExtractable\\{type.Name}Extractable;");
+            writer.WriteLine();
+            baseTypeName = $"{type.Name}Extractable";
+        }
+
+        writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {typeName}{(baseTypeName is not null ? $" extends {baseTypeName}" : "")}");
         writer.WriteLine("{");
         writer.Indent++;
         writer.WriteLine($"public string $typeDefinition = \"{type.FullName}, {type.Assembly.FullName!.Split(",")[0]}\";");
