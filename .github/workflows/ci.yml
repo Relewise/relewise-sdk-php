@@ -33,3 +33,4 @@ jobs:
         env:
           DATASET_ID: ${{secrets.INTEGRATIONTESTS_DATASET_ID}}
           API_KEY: ${{secrets.INTEGRATIONTESTS_API_KEY}}
+          XDEBUG_MODE: coverage
