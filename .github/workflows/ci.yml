@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: php-actions/composer@v5
+      - uses: php-actions/composer@v6
 
       - name: Setup .NET 7 preview
         uses: actions/setup-dotnet@v1
@@ -21,13 +21,13 @@ jobs:
         run: ./generate.sh
 
       - name: PHPUnit Tests
-        uses: php-actions/phpunit@v2
+        uses: php-actions/phpunit@v3
         with:
           bootstrap: vendor/autoload.php
           configuration: tests/phpunit.xml
           test_suffix: .php
           testsuite: Unit
-          version: 9.5.28
+          version: 10.0.19
         env:
           DATASET_ID: ${{secrets.INTEGRATIONTESTS_DATASET_ID}}
           API_KEY: ${{secrets.INTEGRATIONTESTS_API_KEY}}
