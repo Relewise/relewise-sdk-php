@@ -29,7 +29,6 @@ jobs:
           testsuite: Unit
           version: 10.0.19
           php_extensions: "xdebug"
-          coverage_html: report.html
         env:
           DATASET_ID: ${{secrets.INTEGRATIONTESTS_DATASET_ID}}
           API_KEY: ${{secrets.INTEGRATIONTESTS_API_KEY}}
