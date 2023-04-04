@@ -8,6 +8,8 @@ namespace Generator.PhpTypeWriters;
 
 public class PhpClassWriter : IPhpTypeWriter
 {
+    private static readonly Type[] ExtractableFacetResultTypes = { typeof(ProductFacetResult), typeof(ContentFacetResult), typeof(ProductCategoryFacetResult) };
+
     private readonly PhpWriter phpWriter;
 
     public PhpClassWriter(PhpWriter phpWriter)
@@ -32,23 +34,11 @@ use DateTime;
         {
             baseTypeName = phpWriter.PhpTypeName(baseType).Replace("?", "");
         }
-        else if (type == typeof(ProductFacetResult))
+        else if (ExtractableFacetResultTypes.Contains(type))
         {
-            writer.WriteLine("use Relewise\\FacetResultExtractable\\ProductFacetResultExtractable;");
+            writer.WriteLine($"use Relewise\\FacetResultExtractable\\{type.Name}Extractable;");
             writer.WriteLine();
-            baseTypeName = "ProductFacetResultExtractable";
-        }
-        else if (type == typeof(ContentFacetResult))
-        {
-            writer.WriteLine("use Relewise\\FacetResultExtractable\\ContentFacetResultExtractable;");
-            writer.WriteLine();
-            baseTypeName = "ContentFacetResultExtractable";
-        }
-        else if (type == typeof(ProductCategoryFacetResult))
-        {
-            writer.WriteLine("use Relewise\\FacetResultExtractable\\ProductCategoryFacetResultExtractable;");
-            writer.WriteLine();
-            baseTypeName = "ProductCategoryFacetResultExtractable";
+            baseTypeName = $"{type.Name}Extractable";
         }
 
         writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {typeName}{(baseTypeName is not null ? $" extends {baseTypeName}" : "")}");
