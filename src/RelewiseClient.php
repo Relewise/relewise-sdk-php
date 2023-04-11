@@ -13,17 +13,19 @@ use Relewise\Infrastructure\HttpClient\Response;
 use Relewise\Infrastructure\HttpClient\ServiceUnavailableException;
 use Relewise\Infrastructure\HttpClient\UnauthorizedException;
 use Relewise\Models\LicensedRequest;
-use Relewise\Models\TimedResponse;
 
 abstract class RelewiseClient
 {
     public string $serverUrl = "https://api.relewise.com";
     private int $httpVersion = CURL_HTTP_VERSION_NONE;
     private string $apiVersion = "v1";
+    private string $clientName = "RelewisePHPClient";
+    private string $clientVersion;
     private Client $client;
 
     public function __construct(private string $datasetId, private string $apiKey)
     {
+        $this->clientVersion = \Composer\InstalledVersions::getRootPackage()["version"];
         $this->client = new CurlClient();
     }
 
@@ -32,7 +34,11 @@ abstract class RelewiseClient
         return $this->client->post(
             $this->createRequestUrl($this->serverUrl, $this->datasetId, $this->apiVersion, $endpoint),
             str_replace("\"typeDefinition\":", "\"\$type\":", json_encode($request)),
-            array("Authorization: ApiKey " . $this->apiKey, "Content-Type: application/json"),
+            array(
+                "Authorization: ApiKey " . $this->apiKey,
+                "Content-Type: application/json",
+                "User-Agent: " . $this->clientName . "/" . $this->clientVersion
+            ),
             $this->httpVersion
         );
     }
