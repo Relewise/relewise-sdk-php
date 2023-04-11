@@ -25,7 +25,7 @@ abstract class RelewiseClient
 
     public function __construct(private string $datasetId, private string $apiKey)
     {
-        $this->clientVersion = \Composer\InstalledVersions::getRootPackage()['version'];
+        $this->clientVersion = \Composer\InstalledVersions::getRootPackage()["version"];
         $this->client = new CurlClient();
     }
 
