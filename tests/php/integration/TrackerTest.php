@@ -8,15 +8,27 @@ use Relewise\Factory\UserFactory;
 use Relewise\Models\Brand;
 use Relewise\Models\CategoryNameAndId;
 use Relewise\Models\CategoryPath;
+use Relewise\Models\CategoryScope;
+use Relewise\Models\CategoryUpdateUpdateKind;
 use Relewise\Models\Currency;
+use Relewise\Models\Filter;
+use Relewise\Models\FilterCollection;
 use Relewise\Models\Language;
 use Relewise\Models\Multilingual;
 use Relewise\Models\MultilingualValue;
+use Relewise\Models\ProductAdministrativeActionUpdateKind;
 use Relewise\Models\SelectedVariantPropertiesSettings;
 use Relewise\Models\ProductVariant;
 use Relewise\Searcher;
 use Relewise\Tracker;
 use Relewise\Models\Product;
+use Relewise\Models\ProductAdministrativeAction;
+use Relewise\Models\ProductCategory;
+use Relewise\Models\ProductCategoryIdFilter;
+use Relewise\Models\ProductCategorySearchRequest;
+use Relewise\Models\ProductCategorySearchSettings;
+use Relewise\Models\ProductCategoryUpdate;
+use Relewise\Models\ProductIdFilter;
 use Relewise\Models\ProductSearchRequest;
 use Relewise\Models\ProductSearchSettings;
 use Relewise\Models\ProductUpdate;
@@ -25,6 +37,10 @@ use Relewise\Models\SelectedProductPropertiesSettings;
 use Relewise\Models\TrackProductUpdateRequest;
 use Relewise\Models\TrackProductViewRequest;
 use Relewise\Models\ProductUpdateUpdateKind;
+use Relewise\Models\SelectedProductCategoryPropertiesSettings;
+use Relewise\Models\TrackProductAdministrativeActionRequest;
+use Relewise\Models\TrackProductCategoryUpdateRequest;
+use Relewise\Models\VariantIdFilter;
 
 class TrackerTest extends BaseTestCase
 {
@@ -62,7 +78,7 @@ class TrackerTest extends BaseTestCase
                         Brand::create("b-1")
                             ->setDisplayName("MyBrand1")
                     )
-                    ->setCategoryPaths(CategoryPath::create(CategoryNameAndId::create("c-1", Multilingual::create(MultilingualValue::create(Language::create("da-dk"), "Category 1")))))
+                    ->setCategoryPaths(CategoryPath::create(CategoryNameAndId::create("c-1", Multilingual::create(MultilingualValue::create(Language::create("da-dk"), "Category 1"))), CategoryNameAndId::create("c-2", Multilingual::create(MultilingualValue::create(Language::create("da-dk"), "Category 2")))))
                     ->addToData("SomeString", DataValueFactory::string("SomeValue"))
                     ->addToData("SomeObject", DataValueFactory::object(array("SomeString" => DataValueFactory::string("SomeValue"))))
                     ->addToData("SomeStringList", DataValueFactory::stringList("FirstString", "SecondString"))
@@ -90,7 +106,7 @@ class TrackerTest extends BaseTestCase
             Currency::create("DKK"),
             UserFactory::anonymous(),
             "integration test",
-            "p-1",
+            null,
             0,
             1
         )->setSettings(
@@ -103,7 +119,11 @@ class TrackerTest extends BaseTestCase
                     SelectedProductPropertiesSettings::create()
                         ->setDisplayName(true)
                 )
-        );
+                ->setExplodedVariants(1)
+        )->setFilters(FilterCollection::create(
+            ProductIdFilter::create()->setProductIds("p-1"),
+            VariantIdFilter::create()->setVariantIds("v-1")
+        ));
 
         $searchResult = $searcher->productSearch($productSearch);
 
@@ -113,5 +133,124 @@ class TrackerTest extends BaseTestCase
         self::assertEquals("MyProduct1", $searchResult->results[0]->displayName);
         self::assertEquals("v-1", $searchResult->results[0]->variant->variantId);
         self::assertEquals("MyVariant1", $searchResult->results[0]->variant->displayName);
+    }
+    
+    public function testDeleteAdministrativeAction(): void
+    {
+        // Create Product by tracking it.
+        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+
+        $productUpdate = TrackProductUpdateRequest::create(
+            ProductUpdate::create(
+                Product::create("unique_delete_test"),
+                ProductUpdateUpdateKind::ReplaceProvidedProperties
+            )
+        );
+
+        $tracking = $tracker->trackProductUpdate($productUpdate);
+        self::assertNull($tracking);
+
+        // Validate that the product was created with search.
+        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+
+        $productSearch = ProductSearchRequest::create(
+            Language::UNDEFINED,
+            Currency::UNDEFINED,
+            UserFactory::anonymous(),
+            "integration test",
+            null,
+            0,
+            1
+        )->setFilters(FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_delete_test")));
+
+        $searchResult = $searcher->productSearch($productSearch);
+
+        self::assertEquals(1, $searchResult->hits);
+
+        // Delete product
+        $administrativeActionRequest = TrackProductAdministrativeActionRequest::create(
+            ProductAdministrativeAction::create(
+                Language::UNDEFINED,
+                Currency::UNDEFINED,
+                ProductAdministrativeActionUpdateKind::Delete
+            )->setVariantUpdateKind(ProductAdministrativeActionUpdateKind::None)
+            ->setFilters(
+                FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_delete_test"))
+            )
+        );
+
+        $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
+        self::assertNull($tracking);
+
+        // Search again and don't see the product.
+        $searchResult = $searcher->productSearch($productSearch);
+
+        self::assertEquals(0, $searchResult->hits);
+    }
+    
+    public function testDisableAdministrativeAction(): void
+    {
+        // Create Product by tracking it.
+        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+
+        $productUpdate = TrackProductUpdateRequest::create(
+            ProductUpdate::create(
+                Product::create("unique_disable_test"),
+                ProductUpdateUpdateKind::ReplaceProvidedProperties
+            )
+        );
+
+        $tracking = $tracker->trackProductUpdate($productUpdate);
+        self::assertNull($tracking);
+
+        // Ensure that it is enabled
+        $administrativeActionRequest = TrackProductAdministrativeActionRequest::create(
+            ProductAdministrativeAction::create(
+                Language::UNDEFINED,
+                Currency::UNDEFINED,
+                ProductAdministrativeActionUpdateKind::Enable
+            )->setVariantUpdateKind(ProductAdministrativeActionUpdateKind::None)
+            ->setFilters(
+                FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_disable_test"))
+            )
+        );
+        $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
+
+        // Validate that the product was created with search.
+        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+
+        $productSearch = ProductSearchRequest::create(
+            Language::UNDEFINED,
+            Currency::UNDEFINED,
+            UserFactory::anonymous(),
+            "integration test",
+            null,
+            0,
+            1
+        )->setFilters(FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_disable_test")));
+
+        $searchResult = $searcher->productSearch($productSearch);
+
+        self::assertEquals(1, $searchResult->hits);
+
+        // Disable product
+        $administrativeActionRequest = TrackProductAdministrativeActionRequest::create(
+            ProductAdministrativeAction::create(
+                Language::UNDEFINED,
+                Currency::UNDEFINED,
+                ProductAdministrativeActionUpdateKind::Disable
+            )->setVariantUpdateKind(ProductAdministrativeActionUpdateKind::None)
+            ->setFilters(
+                FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_disable_test"))
+            )
+        );
+
+        $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
+        self::assertNull($tracking);
+
+        // Search again and don't see the product.
+        $searchResult = $searcher->productSearch($productSearch);
+
+        self::assertEquals(0, $searchResult->hits);
     }
 }
