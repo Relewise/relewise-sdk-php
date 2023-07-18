@@ -27,6 +27,10 @@ use Relewise\Models\TrackUserUpdateRequest;
 
 class Tracker extends RelewiseClient
 {
+    public function __construct(private string $datasetId, private string $apiKey, private int $timeout = 5)
+    {
+        parent::__construct($datasetId, $apiKey, $timeout);
+    }
     public function batchedTracking(BatchedTrackingRequest $trackingRequest)
     {
         return $this->requestAndValidate("BatchedTrackingRequest", $trackingRequest);

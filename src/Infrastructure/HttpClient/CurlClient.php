@@ -18,9 +18,9 @@ class CurlClient implements Client
     /**
      * {@inheritdoc}
      */
-    public function post($url, $data = null, array $header = [], int $httpVersion = CURL_HTTP_VERSION_NONE): Response
+    public function post($url, $data = null, array $header = [], int $timeout, int $httpVersion = CURL_HTTP_VERSION_NONE): Response
     {
-        return $this->call($url, self::METHOD_POST, $header, $data, $httpVersion);
+        return $this->call($url, self::METHOD_POST, $header, $data, $timeout, $httpVersion);
     }
 
     /**
@@ -33,7 +33,7 @@ class CurlClient implements Client
      *
      * @return Response
      */
-    private function call($url, $method = self::METHOD_GET, array $header = [], $data = null, int $httpVersion = CURL_HTTP_VERSION_NONE): Response
+    private function call($url, $method = self::METHOD_GET, array $header = [], $data = null, int $timeout, int $httpVersion = CURL_HTTP_VERSION_NONE): Response
     {
         if (!\function_exists('curl_init')) {
             throw new ClientException('curl not loaded');
@@ -53,6 +53,8 @@ class CurlClient implements Client
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);           
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $timeout); 
+        curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
         curl_setopt($curl, CURLOPT_HTTP_VERSION, $httpVersion);
 
         $content = curl_exec($curl);
@@ -63,6 +65,10 @@ class CurlClient implements Client
         $contentType = curl_getinfo($curl, \CURLINFO_CONTENT_TYPE);
 
         curl_close($curl);
+        if ($content === false && $error == 28) {
+            throw new RequestTimeoutException($errmsg, $error);
+        }
+
         if ($content === false) {
             throw new ClientException($errmsg, $error);
         }

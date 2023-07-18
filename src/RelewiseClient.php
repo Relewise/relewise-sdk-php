@@ -23,7 +23,7 @@ abstract class RelewiseClient
     private string $clientVersion;
     private Client $client;
 
-    public function __construct(private string $datasetId, private string $apiKey)
+    public function __construct(private string $datasetId, private string $apiKey, private int $timeout)
     {
         $this->clientVersion = \Composer\InstalledVersions::getRootPackage()["version"];
         $this->client = new CurlClient();
@@ -39,6 +39,7 @@ abstract class RelewiseClient
                 "Content-Type: application/json",
                 "User-Agent: " . $this->clientName . "/" . $this->clientVersion
             ),
+            $this->timeout,
             $this->httpVersion
         );
     }

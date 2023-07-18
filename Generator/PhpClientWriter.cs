@@ -18,6 +18,13 @@ public class PhpClientWriter
         using var streamWriter = File.CreateText($"{phpWriter.BasePath}/{clientType.Name}.php");
         using var writer = new IndentedTextWriter(streamWriter);
 
+        int timeout = 5;
+        if (clientType.GetConstructor(new[] { typeof(Guid), typeof(string), typeof(int) }) is {} constructor
+            && constructor.GetParameters().Last() is { HasDefaultValue: true } requestTimeoutInSecondsParameter)
+        {
+            timeout = (int)requestTimeoutInSecondsParameter.DefaultValue!;
+        }
+
         var clientMethods = clientType
             .GetMethods()
             .Where(info => info.DeclaringType == clientType
@@ -63,11 +70,19 @@ use Relewise\Infrastructure\HttpClient\Response;
         {
             writer.WriteLine($"use {Constants.Namespace}\\{phpWriter.PhpTypeName(method.returnType)};");
         }
-        writer.WriteLine($"");
+        writer.WriteLine("");
 
         writer.WriteLine($"class {clientType.Name} extends RelewiseClient");
         writer.WriteLine("{");
         writer.Indent++;
+
+        writer.WriteLine($"public function __construct(private string $datasetId, private string $apiKey, private int $timeout = {timeout})");
+        writer.WriteLine("{");
+        writer.Indent++;
+        writer.WriteLine("parent::__construct($datasetId, $apiKey, $timeout);");
+        writer.Indent--;
+        writer.WriteLine("}");
+
         foreach (var method in clientMethods.DistinctBy(method => method.parameterType))
         {
             var methodName = method.methodName.EndsWith("Request") ? method.methodName[..^7].ToCamelCase() : method.methodName.EndsWith("RequestCollection") ? $"batch{method.methodName[..^17]}" : method.methodName.ToCamelCase();

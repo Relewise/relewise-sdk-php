@@ -18,6 +18,10 @@ use Relewise\Models\SearchResponseCollection;
 
 class Searcher extends RelewiseClient
 {
+    public function __construct(private string $datasetId, private string $apiKey, private int $timeout = 3)
+    {
+        parent::__construct($datasetId, $apiKey, $timeout);
+    }
     public function productSearch(ProductSearchRequest $request) : ?ProductSearchResponse
     {
         $response = $this->requestAndValidate("ProductSearchRequest", $request);
