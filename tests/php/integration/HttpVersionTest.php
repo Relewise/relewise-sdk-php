@@ -5,12 +5,8 @@ namespace Relewise\Tests\Integration;
 use \PHPUnit\Framework\TestCase;
 use Relewise\Factory\UserFactory;
 use Relewise\Models\Currency;
-use Relewise\Models\DataDoubleSelector;
 use Relewise\Models\Language;
-use Relewise\Models\ProductCategorySearchRequest;
-use Relewise\Models\ProductDataRelevanceModifier;
 use Relewise\Models\ProductSearchRequest;
-use Relewise\Models\RelevanceModifierCollection;
 use Relewise\Searcher;
 
 class HttpVersionTest extends BaseTestCase

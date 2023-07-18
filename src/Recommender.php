@@ -46,6 +46,10 @@ use Relewise\Models\ContentRecommendationResponseCollection;
 
 class Recommender extends RelewiseClient
 {
+    public function __construct(private string $datasetId, private string $apiKey, private int $timeout = 3)
+    {
+        parent::__construct($datasetId, $apiKey, $timeout);
+    }
     public function purchasedWithProduct(PurchasedWithProductRequest $request) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("PurchasedWithProductRequest", $request);

@@ -33,6 +33,10 @@ use Relewise\Models\SaveStemmingRulesResponse;
 
 class SearchAdministrator extends RelewiseClient
 {
+    public function __construct(private string $datasetId, private string $apiKey, private int $timeout = 30)
+    {
+        parent::__construct($datasetId, $apiKey, $timeout);
+    }
     public function deleteSearchIndex(DeleteSearchIndexRequest $request)
     {
         return $this->requestAndValidate("DeleteSearchIndexRequest", $request);
