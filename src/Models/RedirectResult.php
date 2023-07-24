@@ -11,7 +11,7 @@ class RedirectResult
     public SearchTermCondition $condition;
     public ?string $destination;
     public ?array $data;
-    public static function create(string $id, SearchTermCondition $condition, ?string $destination, ... $data) : RedirectResult
+    public static function create(string $id, SearchTermCondition $condition, ?string $destination, ?array $data) : RedirectResult
     {
         $result = new RedirectResult();
         $result->id = $id;

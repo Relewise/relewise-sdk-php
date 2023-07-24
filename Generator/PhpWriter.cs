@@ -96,13 +96,29 @@ public class PhpWriter
 
     public string BetterTypedParameterTypeName(string parameterTypeName, Type propertyType)
     {
-        return parameterTypeName is "array" or "?array"
-            ? propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>) &&
-              propertyType.GenericTypeArguments is [var elementType]
-                ? PhpTypeName(elementType) + " ..."
-                : propertyType.IsArray
-                    ? PhpTypeName(propertyType.GetElementType()!) + " ..."
-                    : "..."
-            : parameterTypeName;
+        if (parameterTypeName is not "array" and not "?array")
+        {
+            return parameterTypeName;
+        }
+
+        if (propertyType.IsArray)
+        {
+            return PhpTypeName(propertyType.GetElementType()!) + " ...";
+        }
+
+        if (propertyType.IsGenericType
+            && propertyType.GetGenericTypeDefinition() == typeof(List<>)
+            && propertyType.GenericTypeArguments is [var elementType])
+        {
+            return PhpTypeName(elementType) + " ...";
+        }
+
+        if (propertyType.IsGenericType
+            && propertyType.GetGenericTypeDefinition() == typeof(Dictionary<,>))
+        {
+            return parameterTypeName;
+        }
+
+        return "...";
     }
 }
