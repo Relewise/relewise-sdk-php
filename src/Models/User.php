@@ -14,7 +14,7 @@ class User
     public ?array $identifiers;
     public ?array $data;
     public ?string $fingerprint;
-    public static function create(?string $authenticatedId, ?string $temporaryId, ?string $email, ?string $fingerprint, ?array $classifications, ?array $identifiers, ... $data) : User
+    public static function create(?string $authenticatedId, ?string $temporaryId, ?string $email, ?string $fingerprint, ?array $classifications, ?array $identifiers, ?array $data) : User
     {
         $result = new User();
         $result->authenticatedId = $authenticatedId;

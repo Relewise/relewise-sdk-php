@@ -12,7 +12,7 @@ class CartDetails
     public array $lineItems;
     public Money $subtotal;
     public array $data;
-    public static function create(string $name, DateTime $modifiedUtc, array $lineItems, Money $subtotal, ... $data) : CartDetails
+    public static function create(string $name, DateTime $modifiedUtc, array $lineItems, Money $subtotal, array $data) : CartDetails
     {
         $result = new CartDetails();
         $result->name = $name;
