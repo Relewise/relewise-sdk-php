@@ -7,9 +7,10 @@ use DateTime;
 class BrandFacet extends stringValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.BrandFacet, Relewise.Client";
-    public static function create() : BrandFacet
+    public static function create(string ... $selectedIds) : BrandFacet
     {
         $result = new BrandFacet();
+        $result->selected = $selectedIds;
         return $result;
     }
     public static function hydrate(array $arr) : BrandFacet

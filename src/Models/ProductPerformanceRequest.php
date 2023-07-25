@@ -19,12 +19,13 @@ class ProductPerformanceRequest extends AnalyzerRequest
     public ProductPerformanceRequestVariantDataOptions $variantData;
     public ?array $classifications;
     public ?SelectedBrandPropertiesSettings $selectedBrandProperties;
-    public static function create(?Language $language, ?Currency $currency, bool $byVariant, int $skipNumberOfResults = 0) : ProductPerformanceRequest
+    public static function create(?Language $language, ?Currency $currency, bool $byVariant, int $numberOfResultsPerRequest, int $skipNumberOfResults = 0) : ProductPerformanceRequest
     {
         $result = new ProductPerformanceRequest();
         $result->language = $language;
         $result->currency = $currency;
         $result->byVariant = $byVariant;
+        $result->numberOfResults = $numberOfResultsPerRequest;
         $result->skipNumberOfResults = $skipNumberOfResults;
         return $result;
     }

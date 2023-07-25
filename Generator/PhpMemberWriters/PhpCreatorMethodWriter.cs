@@ -20,17 +20,12 @@ public class PhpCreatorMethodWriter
 
         var coveringTypeMappableConstructorParameters = type
             .GetConstructors() // All 
-            .FirstOrDefault(c => c.GetParameters().Count()== c.GetParameters().DistinctBy(parameter => parameter.ParameterType).Count() // There are no parameters with the same type.
-                              && c.GetParameters().Count() == propertyInformations.Length // There are as many parameters as there are properties.
-                              && c.GetParameters()
-                                    .All(parameter => propertyInformations
-                                        .Any(property =>
-                                            (property.info.PropertyType == parameter.ParameterType
-                                             && new NullabilityInfoContext().Create(property.info).WriteState is NullabilityState.Nullable 
-                                             == new NullabilityInfoContext().Create(parameter).WriteState is NullabilityState.Nullable) // If the type matches then the nullability annotation also has to.
-                                            || EqualCollectionElementType(property.info.PropertyType, parameter.ParameterType) // if they only match on their collection element type then we are more relaxed as method params can be empty.
-                                        )
-                                    ) // There is a property type that matches each parameter type.
+            .FirstOrDefault(c => c.GetParameters().Length == c.GetParameters().DistinctBy(parameter => parameter.ParameterType).Count() // There are no parameters with the same type.
+                                 && c.GetParameters().Length == propertyInformations.Length // There are as many parameters as there are properties.
+                                 && c.GetParameters()
+                                     .All(parameter => propertyInformations
+                                         .Any(property => ParameterIsPersuadableIntoPropertyType(property.info, parameter))
+                                     ) // There is a property type that matches each parameter type.
             )
             ?.GetParameters()
             .ToArray();
@@ -47,11 +42,8 @@ public class PhpCreatorMethodWriter
                     cParameter.Name == parameter.Name
                     && cParameter.ParameterType == parameter.ParameterType))
                 && type.GetProperties().Any(property =>
-                    property.Name.ToCamelCase() == parameter.Name
-                    && (
-                        property.PropertyType == parameter.ParameterType
-                        || EqualCollectionElementType(property.PropertyType, parameter.ParameterType)
-                    ))
+                    ContainedWithinEitherOne(property.Name, parameter.Name)
+                    && ParameterIsPersuadableIntoPropertyType(property, parameter))
             )
             .ToArray();
         
@@ -65,7 +57,7 @@ public class PhpCreatorMethodWriter
             foreach (var parameter in coveringTypeMappableConstructorParameters)
             {
                 var propertyName = propertyInformations
-                    .Single(property => property.info.PropertyType == parameter.ParameterType || EqualCollectionElementType(property.info.PropertyType, parameter.ParameterType))
+                    .Single(property => ParameterIsPersuadableIntoPropertyType(property.info, parameter))
                     .lowerCaseName;
 
                 writer.WriteLine($"$result->{propertyName} = ${parameter.Name};");
@@ -80,7 +72,17 @@ public class PhpCreatorMethodWriter
 
             foreach (var parameter in allConstructorParametersIntersectionWithMappableNamesAndTypes)
             {
-                writer.WriteLine($"$result->{parameter.Name} = ${parameter.Name};");
+                var matchingProperties = type.GetProperties()
+                    .Where(property => ContainedWithinEitherOne(property.Name, parameter.Name)
+                                       && ParameterIsPersuadableIntoPropertyType(property, parameter))
+                    .ToArray();
+                
+                var propertyName = matchingProperties
+                    .FirstOrDefault(property => property.Name.Equals(parameter.Name, StringComparison.OrdinalIgnoreCase)) is { } perfectMatch
+                    ? perfectMatch.Name.ToCamelCase()
+                    : matchingProperties.First().Name.ToCamelCase();
+
+                writer.WriteLine($"$result->{propertyName} = ${parameter.Name};");
             }
         }
         else
@@ -166,11 +168,51 @@ public class PhpCreatorMethodWriter
             || ListTypeArgumentMatchesArrayElementType(type2, type1);
     }
 
+    private static bool ParameterIsPersuadableIntoPropertyType(PropertyInfo property, ParameterInfo parameter)
+    {
+        if (EqualCollectionElementType(property.PropertyType, parameter.ParameterType))
+        {
+            return true;
+        }
+
+        if (property.PropertyType != parameter.ParameterType)
+        {
+            return false;
+        }
+        
+        var propertyNullabilityContext = new NullabilityInfoContext().Create(property);
+        var parameterNullabilityContext = new NullabilityInfoContext().Create(parameter);
+
+        if (propertyNullabilityContext.WriteState is NullabilityState.Nullable)
+        {
+            return true;
+        }
+
+        if (propertyNullabilityContext.WriteState is NullabilityState.Nullable
+            == parameterNullabilityContext.WriteState is NullabilityState.Nullable)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     private static bool ListTypeArgumentMatchesArrayElementType(Type type1, Type type2)
     {
         return type1.IsGenericType
                && type1.GetGenericTypeDefinition() == typeof(List<>)
                && type2.IsArray
                && type1.GenericTypeArguments[0] == type2.GetElementType();
+    }
+
+    private static bool ContainedWithinEitherOne(string? first, string? second)
+    {
+        if (first is null || second is null)
+        {
+            return false;
+        }
+
+        return first.Contains(second, StringComparison.OrdinalIgnoreCase)
+            || second.Contains(first, StringComparison.OrdinalIgnoreCase);
     }
 }

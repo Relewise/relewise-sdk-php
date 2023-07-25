@@ -10,10 +10,11 @@ class VariantSpecificationFilter extends Filter
     public string $key;
     public bool $filterOutIfKeyIsNotFound;
     public string $equalTo;
-    public static function create(string $key, bool $filterOutIfKeyIsNotFound = true) : VariantSpecificationFilter
+    public static function create(string $key, string $equalToValue, bool $filterOutIfKeyIsNotFound = true) : VariantSpecificationFilter
     {
         $result = new VariantSpecificationFilter();
         $result->key = $key;
+        $result->equalTo = $equalToValue;
         $result->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
         return $result;
     }
