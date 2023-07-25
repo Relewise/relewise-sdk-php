@@ -46,6 +46,22 @@ class UserFactoryTest extends TestCase {
         self::assertEquals("DK", $user->classifications["Country"]);
     }
 
+    public function testAddToClassifications(): void 
+    {
+        $user = UserFactory::anonymous();
+        $user->addToClassifications("Country", "DK");
+
+        self::assertEquals("DK", $user->classifications["Country"]);
+    }
+
+    public function testSetClassifications(): void 
+    {
+        $user = UserFactory::anonymous();
+        $user->setClassificationsFromAssociativeArray(array("Country" => "DK"));
+
+        self::assertEquals("DK", $user->classifications["Country"]);
+    }
+
     public function testIdentifier(): void
     {
         $user = UserFactory::byIdentifier("idKey", "idValue");
