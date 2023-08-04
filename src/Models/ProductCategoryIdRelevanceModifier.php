@@ -4,12 +4,16 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** a <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> that can change the relevance of a Product depending on if the product is in a category that matches the given <see cref="P:Relewise.Client.Requests.RelevanceModifiers.ProductCategoryIdRelevanceModifier.CategoryId"> and <see cref="P:Relewise.Client.Requests.RelevanceModifiers.ProductCategoryIdRelevanceModifier.EvaluationScope">.            </see></see></see> */
 class ProductCategoryIdRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductCategoryIdRelevanceModifier, Relewise.Client";
+    /** The Id of the Category that this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> will multiply the weight for.            </see> */
     public string $categoryId;
+    /** The relative Category levels that this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> should match with.            </see> */
     public CategoryScope $evaluationScope;
     public float $multiplyWeightBy;
+    /** Determines whether this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> should apply to all the Products that don't match the specific <see cref="P:Relewise.Client.Requests.RelevanceModifiers.ProductCategoryIdRelevanceModifier.CategoryId"> instead.            </see></see> */
     public bool $negated;
     public static function create(string $categoryId, CategoryScope $evaluationScope, float $multiplyWeightBy = 1, bool $negated = false) : ProductCategoryIdRelevanceModifier
     {

@@ -4,12 +4,15 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** a <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> that can change the relevance of a Product depending on the sales price falling within a specific <see cref="P:Relewise.Client.Requests.RelevanceModifiers.ProductSalesPriceRelevanceModifier.Range">.            </see></see> */
 class ProductSalesPriceRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductSalesPriceRelevanceModifier, Relewise.Client";
+    /** The range of sales prices that this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> will distinguish on.            </see> */
     public ?floatRange $range;
     public ?Currency $currency;
     public float $multiplyWeightBy;
+    /** Determines whether this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> should apply to all the Products that aren't contained within the specific <see cref="P:Relewise.Client.Requests.RelevanceModifiers.ProductSalesPriceRelevanceModifier.Range"> instead.            </see></see> */
     public bool $negated;
     public static function create(?floatRange $range, float $multiplyWeightBy = 1, ?Currency $currency = Null, bool $negated = false) : ProductSalesPriceRelevanceModifier
     {

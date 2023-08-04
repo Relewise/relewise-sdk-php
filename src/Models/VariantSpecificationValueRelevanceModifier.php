@@ -4,13 +4,19 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** a <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> that can change the relevance of a Variant depending on whether a certain specification <see cref="P:Relewise.Client.Requests.RelevanceModifiers.VariantSpecificationValueRelevanceModifier.Key"> has a certain <see cref="P:Relewise.Client.Requests.RelevanceModifiers.VariantSpecificationValueRelevanceModifier.Value">.            </see></see></see> */
 class VariantSpecificationValueRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.VariantSpecificationValueRelevanceModifier, Relewise.Client";
+    /** The specification key that this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> will distinguish on.            </see> */
     public string $key;
+    /** The value that the key must be equal. */
     public string $value;
+    /** The weight that this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> will multiply relevant variants with.            </see> */
     public float $ifIdenticalMultiplyWeightBy;
+    /** The weight that this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> will multiply variants that are note relevant with.            </see> */
     public float $ifNotIdenticalMultiplyWeightBy;
+    /** Determines whether specification keys that are not found should count as the value not being equal i.e. multiplying by <see cref="P:Relewise.Client.Requests.RelevanceModifiers.VariantSpecificationValueRelevanceModifier.IfNotIdenticalMultiplyWeightBy">. Alternatively the rank will not be modified in any way by this modifier.            </see> */
     public bool $ifSpecificationKeyNotFoundApplyNotEqualMultiplier;
     public static function create(string $key, string $value, float $ifIdenticalMultiplyWeightBy = 1, float $ifNotIdenticalMultiplyWeightBy = 0, bool $ifSpecificationKeyNotFoundApplyNotEqualMultiplier = false) : VariantSpecificationValueRelevanceModifier
     {

@@ -4,6 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** Used to specify the full path of a product/lineitem, starting at the root &gt; subcategory &gt; subcategory2 etc. */
 class CategoryPath
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.CategoryPath, Relewise.Client";

@@ -4,11 +4,15 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** a <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> that can change the relevance of a Product depending on whether they have viewed this product within some timespan.            </see> */
 class ProductRecentlyViewedByUserRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyViewedByUserRelevanceModifier, Relewise.Client";
+    /** The start of the time period in which a product will be considered relevant to the user if viewed previously by them. */
     public DateTime $sinceUtc;
+    /** The weight that the Product will be multiplied with if it has been viewed in the past by the user (since <see cref="P:Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyViewedByUserRelevanceModifier.SinceUtc">).            </see> */
     public float $ifPreviouslyViewedByUserMultiplyWeightBy;
+    /** The weight that the Product will be multiplied with if it has not been viewed in the past by the user (since <see cref="P:Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyViewedByUserRelevanceModifier.SinceUtc">).            </see> */
     public float $ifNotPreviouslyViewedByUserMultiplyWeightBy;
     public static function create(DateTime $sinceUtc, float $ifPreviouslyViewedByUserMultiplyWeightBy = 1, float $ifNotPreviouslyViewedByUserMultiplyWeightBy = 1) : ProductRecentlyViewedByUserRelevanceModifier
     {

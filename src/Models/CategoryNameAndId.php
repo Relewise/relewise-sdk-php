@@ -4,6 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** A category segment, containing the id and display name(s) of an individual category */
 class CategoryNameAndId
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.CategoryNameAndId, Relewise.Client";

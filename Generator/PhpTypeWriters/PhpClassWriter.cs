@@ -41,6 +41,10 @@ use DateTime;
             baseTypeName = $"{type.Name}Extractable";
         }
 
+        if (phpWriter.XmlDocumentation.TryGetSummary(type, out string summary))
+        {
+            writer.WriteLine(summary);
+        }
         writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {typeName}{(baseTypeName is not null ? $" extends {baseTypeName}" : "")}");
         writer.WriteLine("{");
         writer.Indent++;
@@ -56,7 +60,7 @@ use DateTime;
                            && info.Name != "Custom") // It is a special requirement that we should ignore the property Custom from all classes.
             .ToArray();
         var settablePropertyInfo = gettablePropertyInfo
-            .Where(info => info.SetMethod is { IsAbstract: false }) // It is a special requirement that we should ignore the property Custom from all classes.
+            .Where(info => info.SetMethod is { IsAbstract: false })
             .ToArray();
 
 
@@ -74,7 +78,7 @@ use DateTime;
             .Select(MapPropertyInfo)
             .ToArray();
 
-        phpWriter.PhpSettablePropertiesWriter.Write(writer, ownedProperties);
+        phpWriter.PhpSettablePropertiesWriter.Write(writer, type, ownedProperties);
         phpWriter.PhpStaticReadonlyPropertiesWriter.Write(writer, staticGetterProperties);
 
         phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, ownedProperties);

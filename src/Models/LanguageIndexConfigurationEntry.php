@@ -9,6 +9,7 @@ class LanguageIndexConfigurationEntry
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.LanguageIndexConfigurationEntry, Relewise.Client";
     public Language $language;
     public bool $included;
+    /** The ISO639-1 code for the selected language, this is used for spelling correction, stemming, phonetic analysis etc.            This is optional if the specified "Language" already follows the official codes, e.g. "en" for English, "da" for Danish etc (case-insensitive).            https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes */
     public ?string $iSO639_1;
     public static function create(Language $language, bool $included, ?string $iso639_1 = Null) : LanguageIndexConfigurationEntry
     {
