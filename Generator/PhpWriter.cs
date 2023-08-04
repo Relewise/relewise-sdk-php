@@ -13,18 +13,20 @@ public class PhpWriter
     public HashSet<Type> MissingTypeDefinitions { get; set; } = new();
     public Assembly Assembly { get; }
     public string BasePath { get; }
+    public XmlDocumentation XmlDocumentation { get; }
     public PhpHydrationMethodsWriter PhpHydrationMethodsWriter { get; }
     public PhpCreatorMethodWriter PhpCreatorMethodWriter { get; }
     public PhpPropertySetterMethodsWriter PhpPropertySetterMethodsWriter { get; }
     public PhpStaticReadonlyPropertiesWriter PhpStaticReadonlyPropertiesWriter { get; }
     public PhpSettablePropertiesWriter PhpSettablePropertiesWriter { get; }
 
-    public PhpWriter(Assembly assembly, string basePath)
+    public PhpWriter(Assembly assembly, string basePath, XmlDocumentation xmlDocumentation)
     {
         phpTypeWriters = new List<IPhpTypeWriter>() { new PhpClassWriter(this), new PhpInterfaceWriter(this), new PhpEnumWriter(this), new PhpKeyValuePairWriter(this) };
         phpTypeResolver = new PhpTypeResolver(assembly);
         Assembly = assembly;
         BasePath = basePath;
+        XmlDocumentation = xmlDocumentation;
         PhpHydrationMethodsWriter = new PhpHydrationMethodsWriter(this);
         PhpCreatorMethodWriter = new PhpCreatorMethodWriter(this);
         PhpPropertySetterMethodsWriter = new PhpPropertySetterMethodsWriter(this);

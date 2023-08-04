@@ -4,9 +4,11 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** a collection that contains multiple <see cref="T:Relewise.Client.Requests.Conditions.ValueCondition">s in its inner list <see cref="P:Relewise.Client.Requests.RelevanceModifiers.ValueConditionCollection.Items">.            </see></see> */
 class ValueConditionCollection
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ValueConditionCollection, Relewise.Client";
+    /** The items that the this collection holds. */
     public ?array $items;
     public static function create() : ValueConditionCollection
     {

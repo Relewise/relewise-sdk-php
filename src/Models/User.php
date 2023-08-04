@@ -7,12 +7,19 @@ use DateTime;
 class User
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.User, Relewise.Client";
+    /** A persistent Id for current user, e.g. a database-id            This Id should never be expected to change in the future */
     public ?string $authenticatedId;
+    /** A TemporaryId, likely to change in the future, e.g. a CookieId in a web context */
     public ?string $temporaryId;
+    /** The email of the user */
     public ?string $email;
+    /** Segmentation data about the user, e.g. Country or other segmentation, useful for passing known information about the user from a CRM, CDP and other sources */
     public ?array $classifications;
+    /** A set of additional ids associated with the user, e.g. ERP customer id, Marketing id, CDP id etc. */
     public ?array $identifiers;
+    /** Data stored on the user */
     public ?array $data;
+    /** A fingerprint, highly likely to change in the future, e.g. between a users sessions */
     public ?string $fingerprint;
     public static function create(?string $authenticatedId, ?string $temporaryId, ?string $email, ?string $fingerprint, ?array $classifications, ?array $identifiers, ?array $data) : User
     {

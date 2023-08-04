@@ -13,10 +13,14 @@ public class PhpSettablePropertiesWriter
         this.phpWriter = phpWriter;
     }
 
-    public void Write(IndentedTextWriter writer, (PropertyInfo type, string propertyTypeName, string propertyName, string lowerCaseName)[] ownedProperties)
+    public void Write(IndentedTextWriter writer, Type classType, (PropertyInfo type, string propertyTypeName, string propertyName, string lowerCaseName)[] ownedProperties)
     {
-        foreach (var (_, propertyTypeName, _, lowerCaseName) in ownedProperties)
+        foreach (var (_, propertyTypeName, propertyName, lowerCaseName) in ownedProperties)
         {
+            if (phpWriter.XmlDocumentation.TryGetSummary(classType, propertyName, out string summary))
+            {
+                writer.WriteLine(summary);
+            }
             writer.WriteLine($"public {propertyTypeName} ${lowerCaseName};");
         }
     }

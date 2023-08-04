@@ -20,6 +20,7 @@ class UserResultDetails
     public array $identifiers;
     public int $key;
     public array $data;
+    /** All known temporary ids for the user */
     public array $temporaryIds;
     public static function create() : UserResultDetails
     {

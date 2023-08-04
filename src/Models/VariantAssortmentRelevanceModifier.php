@@ -4,10 +4,13 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** a <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> that can change the relevance of a Variant depending on whether the Assortments match <see cref="P:Relewise.Client.Requests.RelevanceModifiers.VariantAssortmentRelevanceModifier.Assortments">.            </see></see> */
 class VariantAssortmentRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.VariantAssortmentRelevanceModifier, Relewise.Client";
+    /** The assortments that this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> will multiply the weight for.            </see> */
     public array $assortments;
+    /** The weight that this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> will multiply relevant variants with.            </see> */
     public float $multiplyWeightBy;
     public static function create(float $multiplyWeightBy = 1) : VariantAssortmentRelevanceModifier
     {

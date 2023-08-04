@@ -4,12 +4,17 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** a <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> that can change the relevance of a Product depending on whether a product has been bought within some interval of minutes <see cref="P:Relewise.Client.Requests.RelevanceModifiers.UserFavoriteProductRelevanceModifier.SinceMinutesAgo">from now,            which can define complex modifiers depending on the number of purchases and how long time there has passed since the last purchase.            </see></see> */
 class UserFavoriteProductRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.UserFavoriteProductRelevanceModifier, Relewise.Client";
+    /** The timespan in minutes up till now that a product should be considered relevant if it has been bought by the user. */
     public int $sinceMinutesAgo;
+    /** The multiplier that decides how important the amount of times the product has been bought is. */
     public float $numberOfPurchasesWeight;
+    /** The multiplier that decides how important the amount of times the product has been bought is. */
     public float $mostRecentPurchaseWeight;
+    /** The multiplier that decides how important more recent purchases should */
     public float $ifNotPurchasedBaseWeight;
     public static function create(float $numberOfPurchasesWeight = 1, float $mostRecentPurchaseWeight = 1, float $ifNotPurchasedBaseWeight = 1) : UserFavoriteProductRelevanceModifier
     {

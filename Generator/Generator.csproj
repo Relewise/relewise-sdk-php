@@ -1,14 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Relewise.Client" Version="1.61.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AngleSharp.Xml" Version="1.0.0" />
+		<PackageReference Include="Relewise.Client" Version="1.61.0" />
+	</ItemGroup>
+
+	<Target Name="CopyXMLFromPackagesForBuild" AfterTargets="Build">
+		<ItemGroup>
+			<PackageReferenceFiles Condition="%(PackageReference.CopyToOutputDirectory) != ''" Include="$(NugetPackageRoot)$([MSBuild]::Escape('%(PackageReference.Identity)').ToLower())/%(PackageReference.Version)/%(PackageReference.CopyToOutputDirectory)" />
+		</ItemGroup>
+		<Copy SourceFiles="@(PackageReferenceFiles)" DestinationFolder="$(OutDir)" />
+	</Target>
 
 </Project>

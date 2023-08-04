@@ -4,11 +4,14 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** a <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> that can change the relevance of a Product depending on whether it is contained in a set of <see cref="P:Relewise.Client.Requests.RelevanceModifiers.ProductIdRelevanceModifier.ProductIds">.            </see></see> */
 class ProductIdRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductIdRelevanceModifier, Relewise.Client";
+    /** The Ids of the Products that this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> will distinguish on.            </see> */
     public array $productIds;
     public float $multiplyWeightBy;
+    /** Determines whether this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> should apply to all the Products that don't match one of the specified <see cref="P:Relewise.Client.Requests.RelevanceModifiers.ProductIdRelevanceModifier.ProductIds"> instead.            </see></see> */
     public bool $negated;
     public static function create(float $multiplyWeightBy = 1, bool $negated = false) : ProductIdRelevanceModifier
     {
