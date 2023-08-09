@@ -8,10 +8,11 @@ class CategoryFacet extends stringValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.CategoryFacet, Relewise.Client";
     public CategorySelectionStrategy $categorySelectionStrategy;
-    public static function create(CategorySelectionStrategy $categorySelectionStrategy) : CategoryFacet
+    public static function create(CategorySelectionStrategy $categorySelectionStrategy, string ... $selectedIds) : CategoryFacet
     {
         $result = new CategoryFacet();
         $result->categorySelectionStrategy = $categorySelectionStrategy;
+        $result->selected = $selectedIds;
         return $result;
     }
     public static function hydrate(array $arr) : CategoryFacet

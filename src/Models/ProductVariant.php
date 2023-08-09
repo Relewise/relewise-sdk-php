@@ -14,9 +14,10 @@ class ProductVariant
     public ?array $data;
     public ?MultiCurrency $listPrice;
     public ?MultiCurrency $salesPrice;
-    public static function create() : ProductVariant
+    public static function create(string $variantId) : ProductVariant
     {
         $result = new ProductVariant();
+        $result->id = $variantId;
         return $result;
     }
     public static function hydrate(array $arr) : ProductVariant

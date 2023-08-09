@@ -2,6 +2,7 @@
 
 namespace Relewise\Tests\Integration;
 
+use Relewise\Models\ClearTextParser;
 use Relewise\Models\DataIndexConfiguration;
 use Relewise\Models\DeleteSearchIndexRequest;
 use Relewise\Models\FieldIndexConfiguration;
@@ -34,12 +35,12 @@ class SearchAdministratorTest extends BaseTestCase
                             )
                         )
                         ->setProduct(ProductIndexConfiguration::create()
-                            ->setId(FieldIndexConfiguration::create(true, 1, PredictionSourceType::Disabled))
-                            ->setDisplayName(FieldIndexConfiguration::create(true, 9, PredictionSourceType::PartialWordSequences))
+                            ->setId(FieldIndexConfiguration::create(true, 1, PredictionSourceType::Disabled, ClearTextParser::create()))
+                            ->setDisplayName(FieldIndexConfiguration::create(true, 9, PredictionSourceType::PartialWordSequences, ClearTextParser::create()))
                             ->setData(
                                 DataIndexConfiguration::create()
-                                    ->addToKeys("Tags", FieldIndexConfiguration::create(true, 8, PredictionSourceType::IndividualWords))
-                                    ->addToKeys("Description", FieldIndexConfiguration::create(true, 5, PredictionSourceType::PartialWordSequences)->setParser(HtmlParser::create()))
+                                    ->addToKeys("Tags", FieldIndexConfiguration::create(true, 8, PredictionSourceType::IndividualWords, ClearTextParser::create()))
+                                    ->addToKeys("Description", FieldIndexConfiguration::create(true, 5, PredictionSourceType::PartialWordSequences, HtmlParser::create()))
                             )
                         )
                 ),

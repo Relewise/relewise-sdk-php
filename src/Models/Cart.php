@@ -12,11 +12,12 @@ class Cart extends Trackable
     public ?Money $subtotal;
     public ?array $lineItems;
     public ?array $data;
-    public static function create(?User $user, Money $subtotal) : Cart
+    public static function create(?User $user, Money $subtotal, string $cartName = "default") : Cart
     {
         $result = new Cart();
         $result->user = $user;
         $result->subtotal = $subtotal;
+        $result->name = $cartName;
         return $result;
     }
     public static function hydrate(array $arr) : Cart

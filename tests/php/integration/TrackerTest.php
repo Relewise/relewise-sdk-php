@@ -52,7 +52,7 @@ class TrackerTest extends BaseTestCase
             ProductView::create(
                 UserFactory::byTemporaryId("t-Id"),
                 Product::create("p-1"),
-                ProductVariant::create()->setId("v-1")
+                ProductVariant::create("v-1")
             )
         );
 
@@ -85,8 +85,7 @@ class TrackerTest extends BaseTestCase
                     ->addToData("SomeBooleanList", DataValueFactory::booleanList(true, true, false)),
                 ProductUpdateUpdateKind::ReplaceProvidedProperties
             )->setVariants(
-                ProductVariant::create()
-                    ->setId("v-1")
+                ProductVariant::create("v-1")
                     ->setDisplayName(
                         Multilingual::create(
                             MultilingualValue::create(Language::create("da-dk"), "MyVariant1")
