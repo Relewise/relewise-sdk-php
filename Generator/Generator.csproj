@@ -12,11 +12,4 @@
 		<PackageReference Include="Relewise.Client" Version="1.61.0" />
 	</ItemGroup>
 
-	<Target Name="CopyXMLFromPackagesForBuild" AfterTargets="Build">
-		<ItemGroup>
-			<PackageReferenceFiles Condition="%(PackageReference.CopyToOutputDirectory) != ''" Include="$(NugetPackageRoot)$([MSBuild]::Escape('%(PackageReference.Identity)').ToLower())/%(PackageReference.Version)/%(PackageReference.CopyToOutputDirectory)" />
-		</ItemGroup>
-		<Copy SourceFiles="@(PackageReferenceFiles)" DestinationFolder="$(OutDir)" />
-	</Target>
-
 </Project>
