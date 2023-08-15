@@ -26,16 +26,28 @@ class MerchandisingRuleCollectionResponse extends TimedResponse
         }
         return $result;
     }
+    /**
+     * Sets rules to a new value.
+     * @param MerchandisingRule[] $rules new value.
+     */
     function setRules(MerchandisingRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    /**
+     * Sets rules to a new value from an array.
+     * @param MerchandisingRule[] $rules new value.
+     */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    /**
+     * Adds a new element to rules.
+     * @param MerchandisingRule $rules new element.
+     */
     function addToRules(MerchandisingRule $rules)
     {
         if (!isset($this->rules))
@@ -45,6 +57,10 @@ class MerchandisingRuleCollectionResponse extends TimedResponse
         array_push($this->rules, $rules);
         return $this;
     }
+    /**
+     * Sets statistics to a new value.
+     * @param Statistics $statistics new value.
+     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

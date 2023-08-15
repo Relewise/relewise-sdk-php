@@ -36,26 +36,46 @@ class AbandonedSearchTriggerResult
         }
         return $result;
     }
+    /**
+     * Sets user to a new value.
+     * @param UserResultDetails $user new value.
+     */
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;
         return $this;
     }
+    /**
+     * Sets type to a new value.
+     * @param SearchType $type new value.
+     */
     function setType(SearchType $type)
     {
         $this->type = $type;
         return $this;
     }
+    /**
+     * Sets searches to a new value.
+     * @param AbandonedSearch[] $searches new value.
+     */
     function setSearches(AbandonedSearch ... $searches)
     {
         $this->searches = $searches;
         return $this;
     }
+    /**
+     * Sets searches to a new value from an array.
+     * @param AbandonedSearch[] $searches new value.
+     */
     function setSearchesFromArray(array $searches)
     {
         $this->searches = $searches;
         return $this;
     }
+    /**
+     * Adds a new element to searches.
+     * @param AbandonedSearch $searches new element.
+     */
     function addToSearches(AbandonedSearch $searches)
     {
         if (!isset($this->searches))

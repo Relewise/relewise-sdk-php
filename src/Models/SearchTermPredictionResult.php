@@ -50,26 +50,46 @@ class SearchTermPredictionResult
         }
         return $result;
     }
+    /**
+     * Sets term to a new value.
+     * @param string $term new value.
+     */
     function setTerm(string $term)
     {
         $this->term = $term;
         return $this;
     }
+    /**
+     * Sets rank to a new value.
+     * @param int $rank new value.
+     */
     function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;
     }
+    /**
+     * Sets expectedResultTypes to a new value.
+     * @param ExpectedSearchTermResult[] $expectedResultTypes new value.
+     */
     function setExpectedResultTypes(ExpectedSearchTermResult ... $expectedResultTypes)
     {
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;
     }
+    /**
+     * Sets expectedResultTypes to a new value from an array.
+     * @param ExpectedSearchTermResult[] $expectedResultTypes new value.
+     */
     function setExpectedResultTypesFromArray(array $expectedResultTypes)
     {
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;
     }
+    /**
+     * Adds a new element to expectedResultTypes.
+     * @param ExpectedSearchTermResult $expectedResultTypes new element.
+     */
     function addToExpectedResultTypes(ExpectedSearchTermResult $expectedResultTypes)
     {
         if (!isset($this->expectedResultTypes))
@@ -79,21 +99,37 @@ class SearchTermPredictionResult
         array_push($this->expectedResultTypes, $expectedResultTypes);
         return $this;
     }
+    /**
+     * Sets type to a new value.
+     * @param SearchTermPredictionResultPredictionType $type new value.
+     */
     function setType(SearchTermPredictionResultPredictionType $type)
     {
         $this->type = $type;
         return $this;
     }
+    /**
+     * Sets correctedWordsMask to a new value.
+     * @param bool[] $correctedWordsMask new value.
+     */
     function setCorrectedWordsMask(bool ... $correctedWordsMask)
     {
         $this->correctedWordsMask = $correctedWordsMask;
         return $this;
     }
+    /**
+     * Sets correctedWordsMask to a new value from an array.
+     * @param bool[] $correctedWordsMask new value.
+     */
     function setCorrectedWordsMaskFromArray(array $correctedWordsMask)
     {
         $this->correctedWordsMask = $correctedWordsMask;
         return $this;
     }
+    /**
+     * Adds a new element to correctedWordsMask.
+     * @param bool $correctedWordsMask new element.
+     */
     function addToCorrectedWordsMask(bool $correctedWordsMask)
     {
         if (!isset($this->correctedWordsMask))

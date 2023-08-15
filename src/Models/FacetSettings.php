@@ -22,6 +22,10 @@ class FacetSettings
         }
         return $result;
     }
+    /**
+     * Sets alwaysIncludeSelectedInAvailable to a new value.
+     * @param bool $alwaysIncludeSelectedInAvailable new value.
+     */
     function setAlwaysIncludeSelectedInAvailable(bool $alwaysIncludeSelectedInAvailable)
     {
         $this->alwaysIncludeSelectedInAvailable = $alwaysIncludeSelectedInAvailable;

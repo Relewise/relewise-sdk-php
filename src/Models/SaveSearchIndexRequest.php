@@ -29,11 +29,19 @@ class SaveSearchIndexRequest extends LicensedRequest
         }
         return $result;
     }
+    /**
+     * Sets index to a new value.
+     * @param SearchIndex $index new value.
+     */
     function setIndex(SearchIndex $index)
     {
         $this->index = $index;
         return $this;
     }
+    /**
+     * Sets modifiedBy to a new value.
+     * @param string $modifiedBy new value.
+     */
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

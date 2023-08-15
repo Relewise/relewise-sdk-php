@@ -39,16 +39,28 @@ class UserQuery extends LicensedRequest
         }
         return $result;
     }
+    /**
+     * Sets criteria to a new value.
+     * @param UserQueryCriteria[] $criteria new value.
+     */
     function setCriteria(UserQueryCriteria ... $criteria)
     {
         $this->criteria = $criteria;
         return $this;
     }
+    /**
+     * Sets criteria to a new value from an array.
+     * @param UserQueryCriteria[] $criteria new value.
+     */
     function setCriteriaFromArray(array $criteria)
     {
         $this->criteria = $criteria;
         return $this;
     }
+    /**
+     * Adds a new element to criteria.
+     * @param UserQueryCriteria $criteria new element.
+     */
     function addToCriteria(UserQueryCriteria $criteria)
     {
         if (!isset($this->criteria))
@@ -58,11 +70,19 @@ class UserQuery extends LicensedRequest
         array_push($this->criteria, $criteria);
         return $this;
     }
+    /**
+     * Sets language to a new value.
+     * @param ?Language $language new value.
+     */
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    /**
+     * Sets currency to a new value.
+     * @param ?Currency $currency new value.
+     */
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

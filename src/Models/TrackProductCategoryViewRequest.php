@@ -23,6 +23,10 @@ class TrackProductCategoryViewRequest extends TrackingRequest
         }
         return $result;
     }
+    /**
+     * Sets productCategoryView to a new value.
+     * @param ProductCategoryView $productCategoryView new value.
+     */
     function setProductCategoryView(ProductCategoryView $productCategoryView)
     {
         $this->productCategoryView = $productCategoryView;

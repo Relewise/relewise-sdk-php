@@ -10,6 +10,11 @@ class CategoryNameAndId
     public string $typeDefinition = "Relewise.Client.DataTypes.CategoryNameAndId, Relewise.Client";
     public string $id;
     public ?Multilingual $displayName;
+    /**
+     * The id and name of a category segment
+     * @param string $id The ID of the category (Which is generally very unlikely to change in the future)
+     * @param ?Multilingual $displayName The Display name of the category (More likely to change in the future)
+     */
     public static function create(string $id, ?Multilingual $displayName = Null) : CategoryNameAndId
     {
         $result = new CategoryNameAndId();
@@ -30,11 +35,19 @@ class CategoryNameAndId
         }
         return $result;
     }
+    /**
+     * Sets id to a new value.
+     * @param string $id new value.
+     */
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    /**
+     * Sets displayName to a new value.
+     * @param ?Multilingual $displayName new value.
+     */
     function setDisplayName(?Multilingual $displayName)
     {
         $this->displayName = $displayName;

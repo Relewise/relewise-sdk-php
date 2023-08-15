@@ -17,16 +17,28 @@ class AbandonedProductSearch extends ProductAndVariantIdAbandonedSearch
         $result = ProductAndVariantIdAbandonedSearch::hydrateBase(new AbandonedProductSearch(), $arr);
         return $result;
     }
+    /**
+     * Sets topResults to a new value.
+     * @param ProductAndVariantId[] $topResults new value.
+     */
     function setTopResults(ProductAndVariantId ... $topResults)
     {
         $this->topResults = $topResults;
         return $this;
     }
+    /**
+     * Sets topResults to a new value from an array.
+     * @param ProductAndVariantId[] $topResults new value.
+     */
     function setTopResultsFromArray(array $topResults)
     {
         $this->topResults = $topResults;
         return $this;
     }
+    /**
+     * Adds a new element to topResults.
+     * @param ProductAndVariantId $topResults new element.
+     */
     function addToTopResults(ProductAndVariantId $topResults)
     {
         if (!isset($this->topResults))
@@ -36,11 +48,19 @@ class AbandonedProductSearch extends ProductAndVariantIdAbandonedSearch
         array_push($this->topResults, $topResults);
         return $this;
     }
+    /**
+     * Sets loweredSearchTerm to a new value.
+     * @param string $loweredSearchTerm new value.
+     */
     function setLoweredSearchTerm(string $loweredSearchTerm)
     {
         $this->loweredSearchTerm = $loweredSearchTerm;
         return $this;
     }
+    /**
+     * Sets hits to a new value.
+     * @param int $hits new value.
+     */
     function setHits(int $hits)
     {
         $this->hits = $hits;

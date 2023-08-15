@@ -23,6 +23,10 @@ class TrackProductAdministrativeActionRequest extends TrackingRequest
         }
         return $result;
     }
+    /**
+     * Sets administrativeAction to a new value.
+     * @param ProductAdministrativeAction $administrativeAction new value.
+     */
     function setAdministrativeAction(ProductAdministrativeAction $administrativeAction)
     {
         $this->administrativeAction = $administrativeAction;

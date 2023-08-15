@@ -29,11 +29,19 @@ class BrandUpdate extends Trackable
         }
         return $result;
     }
+    /**
+     * Sets brand to a new value.
+     * @param Brand $brand new value.
+     */
     function setBrand(Brand $brand)
     {
         $this->brand = $brand;
         return $this;
     }
+    /**
+     * Sets kind to a new value.
+     * @param BrandUpdateUpdateKind $kind new value.
+     */
     function setKind(BrandUpdateUpdateKind $kind)
     {
         $this->kind = $kind;

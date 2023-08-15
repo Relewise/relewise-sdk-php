@@ -24,6 +24,10 @@ class Currency
         }
         return $result;
     }
+    /**
+     * Sets value to a new value.
+     * @param string $value new value.
+     */
     function setValue(string $value)
     {
         $this->value = $value;

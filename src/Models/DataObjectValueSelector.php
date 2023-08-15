@@ -38,21 +38,37 @@ class DataObjectValueSelector
         }
         return $result;
     }
+    /**
+     * Sets key to a new value.
+     * @param string $key new value.
+     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    /**
+     * Sets filter to a new value.
+     * @param ?DataObjectFilter $filter new value.
+     */
     function setFilter(?DataObjectFilter $filter)
     {
         $this->filter = $filter;
         return $this;
     }
+    /**
+     * Sets childSelector to a new value.
+     * @param ?DataObjectValueSelector $childSelector new value.
+     */
     function setChildSelector(?DataObjectValueSelector $childSelector)
     {
         $this->childSelector = $childSelector;
         return $this;
     }
+    /**
+     * Sets fallbackSelector to a new value.
+     * @param ?DataObjectValueSelector $fallbackSelector new value.
+     */
     function setFallbackSelector(?DataObjectValueSelector $fallbackSelector)
     {
         $this->fallbackSelector = $fallbackSelector;

@@ -47,31 +47,55 @@ class ProductSearchSettings extends SearchSettings
         }
         return $result;
     }
+    /**
+     * Sets selectedProductProperties to a new value.
+     * @param ?SelectedProductPropertiesSettings $selectedProductProperties new value.
+     */
     function setSelectedProductProperties(?SelectedProductPropertiesSettings $selectedProductProperties)
     {
         $this->selectedProductProperties = $selectedProductProperties;
         return $this;
     }
+    /**
+     * Sets selectedVariantProperties to a new value.
+     * @param ?SelectedVariantPropertiesSettings $selectedVariantProperties new value.
+     */
     function setSelectedVariantProperties(?SelectedVariantPropertiesSettings $selectedVariantProperties)
     {
         $this->selectedVariantProperties = $selectedVariantProperties;
         return $this;
     }
+    /**
+     * Sets explodedVariants to a new value.
+     * @param ?int $explodedVariants new value.
+     */
     function setExplodedVariants(?int $explodedVariants)
     {
         $this->explodedVariants = $explodedVariants;
         return $this;
     }
+    /**
+     * Sets recommendations to a new value.
+     * @param RecommendationSettings $recommendations new value.
+     */
     function setRecommendations(RecommendationSettings $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    /**
+     * Sets selectedBrandProperties to a new value.
+     * @param ?SelectedBrandPropertiesSettings $selectedBrandProperties new value.
+     */
     function setSelectedBrandProperties(?SelectedBrandPropertiesSettings $selectedBrandProperties)
     {
         $this->selectedBrandProperties = $selectedBrandProperties;
         return $this;
     }
+    /**
+     * Sets variantSettings to a new value.
+     * @param ?VariantSearchSettings $variantSettings new value.
+     */
     function setVariantSettings(?VariantSearchSettings $variantSettings)
     {
         $this->variantSettings = $variantSettings;

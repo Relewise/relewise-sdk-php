@@ -29,11 +29,19 @@ class ContentUpdate extends Trackable
         }
         return $result;
     }
+    /**
+     * Sets content to a new value.
+     * @param Content $content new value.
+     */
     function setContent(Content $content)
     {
         $this->content = $content;
         return $this;
     }
+    /**
+     * Sets kind to a new value.
+     * @param ContentUpdateUpdateKind $kind new value.
+     */
     function setKind(ContentUpdateUpdateKind $kind)
     {
         $this->kind = $kind;

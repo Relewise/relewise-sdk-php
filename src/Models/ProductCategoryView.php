@@ -33,21 +33,37 @@ class ProductCategoryView extends Trackable
         }
         return $result;
     }
+    /**
+     * Sets user to a new value.
+     * @param ?User $user new value.
+     */
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    /**
+     * Sets idPath to a new value.
+     * @param string[] $idPath new value.
+     */
     function setIdPath(string ... $idPath)
     {
         $this->idPath = $idPath;
         return $this;
     }
+    /**
+     * Sets idPath to a new value from an array.
+     * @param string[] $idPath new value.
+     */
     function setIdPathFromArray(array $idPath)
     {
         $this->idPath = $idPath;
         return $this;
     }
+    /**
+     * Adds a new element to idPath.
+     * @param string $idPath new element.
+     */
     function addToIdPath(string $idPath)
     {
         if (!isset($this->idPath))

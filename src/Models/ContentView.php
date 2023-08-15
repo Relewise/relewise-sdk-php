@@ -29,11 +29,19 @@ class ContentView extends Trackable
         }
         return $result;
     }
+    /**
+     * Sets user to a new value.
+     * @param ?User $user new value.
+     */
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    /**
+     * Sets content to a new value.
+     * @param Content $content new value.
+     */
     function setContent(Content $content)
     {
         $this->content = $content;

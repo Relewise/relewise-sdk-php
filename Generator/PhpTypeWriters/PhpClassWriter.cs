@@ -40,11 +40,9 @@ use DateTime;
             writer.WriteLine();
             baseTypeName = $"{type.Name}Extractable";
         }
+        
+        writer.WriteCommentBlock(phpWriter.XmlDocumentation.GetSummary(type));
 
-        if (phpWriter.XmlDocumentation.TryGetSummary(type, out string summary))
-        {
-            writer.WriteLine(summary);
-        }
         writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {typeName}{(baseTypeName is not null ? $" extends {baseTypeName}" : "")}");
         writer.WriteLine("{");
         writer.Indent++;

@@ -21,6 +21,7 @@ var assembly = Assembly.GetAssembly(typeof(ClientBase)) ?? throw new ArgumentExc
 var xmlDocumentation = await XMLDocsFetcher.Get("Relewise.Client", "1.91.0");
 
 Console.WriteLine($"Loaded {xmlDocumentation.Summaries.Count} documentation summaries.");
+Console.WriteLine($"Loaded {xmlDocumentation.Params.Count} documentation params.");
 
 var phpWriter = new PhpWriter(assembly, basePath, xmlDocumentation);
 
@@ -33,14 +34,7 @@ phpWriter.WritePhpTypes(assembly
     .Where(type => type.IsSubclassOf(typeof(TimedResponse))));
 
 Console.WriteLine($"Successfully used {xmlDocumentation.SuccessfulSummaryInsertions} documentation summaries.");
-if (xmlDocumentation.Summaries.Count is not 0)
-{
-    Console.WriteLine($"These {xmlDocumentation.Summaries.Count} summaries were not used:");
-    foreach (var keys in xmlDocumentation.Summaries.Keys)
-    {
-        Console.WriteLine($"- {keys}");
-    }
-}
+Console.WriteLine($"Successfully used {xmlDocumentation.SuccessfulParamsInsertions} documentation params.");
 
 var phpClientWriter = new PhpClientWriter(phpWriter);
 

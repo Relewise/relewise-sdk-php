@@ -29,11 +29,19 @@ class Money
         }
         return $result;
     }
+    /**
+     * Sets amount to a new value.
+     * @param float $amount new value.
+     */
     function setAmount(float $amount)
     {
         $this->amount = $amount;
         return $this;
     }
+    /**
+     * Sets currency to a new value.
+     * @param Currency $currency new value.
+     */
     function setCurrency(Currency $currency)
     {
         $this->currency = $currency;

@@ -55,21 +55,37 @@ class ProductUpdate extends Trackable
         }
         return $result;
     }
+    /**
+     * Sets product to a new value.
+     * @param Product $product new value.
+     */
     function setProduct(Product $product)
     {
         $this->product = $product;
         return $this;
     }
+    /**
+     * Sets variants to a new value.
+     * @param ProductVariant[] $variants new value.
+     */
     function setVariants(ProductVariant ... $variants)
     {
         $this->variants = $variants;
         return $this;
     }
+    /**
+     * Sets variants to a new value from an array.
+     * @param ProductVariant[] $variants new value.
+     */
     function setVariantsFromArray(array $variants)
     {
         $this->variants = $variants;
         return $this;
     }
+    /**
+     * Adds a new element to variants.
+     * @param ProductVariant $variants new element.
+     */
     function addToVariants(ProductVariant $variants)
     {
         if (!isset($this->variants))
@@ -79,21 +95,37 @@ class ProductUpdate extends Trackable
         array_push($this->variants, $variants);
         return $this;
     }
+    /**
+     * Sets productUpdateKind to a new value.
+     * @param ProductUpdateUpdateKind $productUpdateKind new value.
+     */
     function setProductUpdateKind(ProductUpdateUpdateKind $productUpdateKind)
     {
         $this->productUpdateKind = $productUpdateKind;
         return $this;
     }
+    /**
+     * Sets variantUpdateKind to a new value.
+     * @param ProductUpdateUpdateKind $variantUpdateKind new value.
+     */
     function setVariantUpdateKind(ProductUpdateUpdateKind $variantUpdateKind)
     {
         $this->variantUpdateKind = $variantUpdateKind;
         return $this;
     }
+    /**
+     * Sets replaceExistingVariants to a new value.
+     * @param bool $replaceExistingVariants new value.
+     */
     function setReplaceExistingVariants(bool $replaceExistingVariants)
     {
         $this->replaceExistingVariants = $replaceExistingVariants;
         return $this;
     }
+    /**
+     * Sets brandUpdateKind to a new value.
+     * @param ?BrandUpdateUpdateKind $brandUpdateKind new value.
+     */
     function setBrandUpdateKind(?BrandUpdateUpdateKind $brandUpdateKind)
     {
         $this->brandUpdateKind = $brandUpdateKind;

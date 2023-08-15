@@ -30,21 +30,37 @@ class ProductCategoryAttributeSorting extends ProductCategorySorting
         }
         return $result;
     }
+    /**
+     * Sets attribute to a new value.
+     * @param ProductCategoryAttributeSortingSortableAttribute $attribute new value.
+     */
     function setAttribute(ProductCategoryAttributeSortingSortableAttribute $attribute)
     {
         $this->attribute = $attribute;
         return $this;
     }
+    /**
+     * Sets mode to a new value.
+     * @param SortMode $mode new value.
+     */
     function setMode(SortMode $mode)
     {
         $this->mode = $mode;
         return $this;
     }
+    /**
+     * Sets order to a new value.
+     * @param SortOrder $order new value.
+     */
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    /**
+     * Sets thenBy to a new value.
+     * @param ProductCategorySorting $thenBy new value.
+     */
     function setThenBy(ProductCategorySorting $thenBy)
     {
         $this->thenBy = $thenBy;

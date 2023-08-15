@@ -27,16 +27,28 @@ class MultiCurrency
         }
         return $result;
     }
+    /**
+     * Sets values to a new value.
+     * @param ?Money[] $values new value.
+     */
     function setValues(Money ... $values)
     {
         $this->values = $values;
         return $this;
     }
+    /**
+     * Sets values to a new value from an array.
+     * @param ?Money[] $values new value.
+     */
     function setValuesFromArray(array $values)
     {
         $this->values = $values;
         return $this;
     }
+    /**
+     * Adds a new element to values.
+     * @param Money $values new element.
+     */
     function addToValues(Money $values)
     {
         if (!isset($this->values))

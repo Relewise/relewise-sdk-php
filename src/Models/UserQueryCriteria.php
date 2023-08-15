@@ -51,31 +51,56 @@ class UserQueryCriteria
         }
         return $result;
     }
+    /**
+     * Sets authenticatedId to a new value.
+     * @param ?string $authenticatedId new value.
+     */
     function setAuthenticatedId(?string $authenticatedId)
     {
         $this->authenticatedId = $authenticatedId;
         return $this;
     }
+    /**
+     * Sets temporaryId to a new value.
+     * @param ?string $temporaryId new value.
+     */
     function setTemporaryId(?string $temporaryId)
     {
         $this->temporaryId = $temporaryId;
         return $this;
     }
+    /**
+     * Sets email to a new value.
+     * @param ?string $email new value.
+     */
     function setEmail(?string $email)
     {
         $this->email = $email;
         return $this;
     }
+    /**
+     * Sets language to a new value.
+     * @param ?Language $language new value.
+     */
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    /**
+     * Sets currency to a new value.
+     * @param ?Currency $currency new value.
+     */
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    /**
+     * Sets the value of a specific key in identifiers.
+     * @param string $key index.
+     * @param string $value new value.
+     */
     function addToIdentifiers(string $key, string $value)
     {
         if (!isset($this->identifiers))
@@ -85,6 +110,10 @@ class UserQueryCriteria
         $this->identifiers[$key] = $value;
         return $this;
     }
+    /**
+     * Sets identifiers to a new value.
+     * @param ?array<string, string> $identifiers associative array.
+     */
     function setIdentifiersFromAssociativeArray(array $identifiers)
     {
         $this->identifiers = $identifiers;

@@ -27,16 +27,28 @@ class ProductAndVariantIdFilter extends Filter
         }
         return $result;
     }
+    /**
+     * Sets productAndVariantIds to a new value.
+     * @param ProductAndVariantId[] $productAndVariantIds new value.
+     */
     function setProductAndVariantIds(ProductAndVariantId ... $productAndVariantIds)
     {
         $this->productAndVariantIds = $productAndVariantIds;
         return $this;
     }
+    /**
+     * Sets productAndVariantIds to a new value from an array.
+     * @param ProductAndVariantId[] $productAndVariantIds new value.
+     */
     function setProductAndVariantIdsFromArray(array $productAndVariantIds)
     {
         $this->productAndVariantIds = $productAndVariantIds;
         return $this;
     }
+    /**
+     * Adds a new element to productAndVariantIds.
+     * @param ProductAndVariantId $productAndVariantIds new element.
+     */
     function addToProductAndVariantIds(ProductAndVariantId $productAndVariantIds)
     {
         if (!isset($this->productAndVariantIds))
@@ -46,6 +58,10 @@ class ProductAndVariantIdFilter extends Filter
         array_push($this->productAndVariantIds, $productAndVariantIds);
         return $this;
     }
+    /**
+     * Sets negated to a new value.
+     * @param bool $negated new value.
+     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

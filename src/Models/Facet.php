@@ -161,11 +161,19 @@ abstract class Facet
         }
         return $result;
     }
+    /**
+     * Sets field to a new value.
+     * @param FacetingField $field new value.
+     */
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    /**
+     * Sets settings to a new value.
+     * @param ?FacetSettings $settings new value.
+     */
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

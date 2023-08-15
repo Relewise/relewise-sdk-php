@@ -23,6 +23,10 @@ class TrackUserUpdateRequest extends TrackingRequest
         }
         return $result;
     }
+    /**
+     * Sets userUpdate to a new value.
+     * @param UserUpdate $userUpdate new value.
+     */
     function setUserUpdate(UserUpdate $userUpdate)
     {
         $this->userUpdate = $userUpdate;

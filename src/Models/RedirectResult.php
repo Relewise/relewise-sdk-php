@@ -45,21 +45,38 @@ class RedirectResult
         }
         return $result;
     }
+    /**
+     * Sets id to a new value.
+     * @param string $id new value.
+     */
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    /**
+     * Sets condition to a new value.
+     * @param SearchTermCondition $condition new value.
+     */
     function setCondition(SearchTermCondition $condition)
     {
         $this->condition = $condition;
         return $this;
     }
+    /**
+     * Sets destination to a new value.
+     * @param ?string $destination new value.
+     */
     function setDestination(?string $destination)
     {
         $this->destination = $destination;
         return $this;
     }
+    /**
+     * Sets the value of a specific key in data.
+     * @param string $key index.
+     * @param string $value new value.
+     */
     function addToData(string $key, string $value)
     {
         if (!isset($this->data))
@@ -69,6 +86,10 @@ class RedirectResult
         $this->data[$key] = $value;
         return $this;
     }
+    /**
+     * Sets data to a new value.
+     * @param ?array<string, string> $data associative array.
+     */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;

@@ -24,11 +24,19 @@ class EqualsCondition extends ValueCondition
         }
         return $result;
     }
+    /**
+     * Sets value to a new value.
+     * @param DataValue $value new value.
+     */
     function setValue(DataValue $value)
     {
         $this->value = $value;
         return $this;
     }
+    /**
+     * Sets negated to a new value.
+     * @param bool $negated new value.
+     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

@@ -12,11 +12,12 @@ class ProductAdministrativeAction extends Trackable
     public ProductAdministrativeActionUpdateKind $productUpdateKind;
     public ProductAdministrativeActionUpdateKind $variantUpdateKind;
     public ?Currency $currency;
-    public static function create(?Language $language, ?Currency $currency, ProductAdministrativeActionUpdateKind $productUpdateKind) : ProductAdministrativeAction
+    public static function create(?Language $language, ?Currency $currency, FilterCollection $filters, ProductAdministrativeActionUpdateKind $productUpdateKind) : ProductAdministrativeAction
     {
         $result = new ProductAdministrativeAction();
         $result->language = $language;
         $result->currency = $currency;
+        $result->filters = $filters;
         $result->productUpdateKind = $productUpdateKind;
         return $result;
     }
@@ -45,26 +46,46 @@ class ProductAdministrativeAction extends Trackable
         }
         return $result;
     }
+    /**
+     * Sets filters to a new value.
+     * @param FilterCollection $filters new value.
+     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    /**
+     * Sets language to a new value.
+     * @param ?Language $language new value.
+     */
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    /**
+     * Sets productUpdateKind to a new value.
+     * @param ProductAdministrativeActionUpdateKind $productUpdateKind new value.
+     */
     function setProductUpdateKind(ProductAdministrativeActionUpdateKind $productUpdateKind)
     {
         $this->productUpdateKind = $productUpdateKind;
         return $this;
     }
+    /**
+     * Sets variantUpdateKind to a new value.
+     * @param ProductAdministrativeActionUpdateKind $variantUpdateKind new value.
+     */
     function setVariantUpdateKind(ProductAdministrativeActionUpdateKind $variantUpdateKind)
     {
         $this->variantUpdateKind = $variantUpdateKind;
         return $this;
     }
+    /**
+     * Sets currency to a new value.
+     * @param ?Currency $currency new value.
+     */
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

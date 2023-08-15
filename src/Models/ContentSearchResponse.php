@@ -40,16 +40,28 @@ class ContentSearchResponse extends PaginatedSearchResponse
         }
         return $result;
     }
+    /**
+     * Sets results to a new value.
+     * @param ContentResult[] $results new value.
+     */
     function setResults(ContentResult ... $results)
     {
         $this->results = $results;
         return $this;
     }
+    /**
+     * Sets results to a new value from an array.
+     * @param ContentResult[] $results new value.
+     */
     function setResultsFromArray(array $results)
     {
         $this->results = $results;
         return $this;
     }
+    /**
+     * Adds a new element to results.
+     * @param ContentResult $results new element.
+     */
     function addToResults(ContentResult $results)
     {
         if (!isset($this->results))
@@ -59,21 +71,37 @@ class ContentSearchResponse extends PaginatedSearchResponse
         array_push($this->results, $results);
         return $this;
     }
+    /**
+     * Sets facets to a new value.
+     * @param ContentFacetResult $facets new value.
+     */
     function setFacets(ContentFacetResult $facets)
     {
         $this->facets = $facets;
         return $this;
     }
+    /**
+     * Sets recommendations to a new value.
+     * @param ContentResult[] $recommendations new value.
+     */
     function setRecommendations(ContentResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    /**
+     * Sets recommendations to a new value from an array.
+     * @param ContentResult[] $recommendations new value.
+     */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    /**
+     * Adds a new element to recommendations.
+     * @param ContentResult $recommendations new element.
+     */
     function addToRecommendations(ContentResult $recommendations)
     {
         if (!isset($this->recommendations))
@@ -83,11 +111,19 @@ class ContentSearchResponse extends PaginatedSearchResponse
         array_push($this->recommendations, $recommendations);
         return $this;
     }
+    /**
+     * Sets hits to a new value.
+     * @param int $hits new value.
+     */
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    /**
+     * Sets statistics to a new value.
+     * @param Statistics $statistics new value.
+     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

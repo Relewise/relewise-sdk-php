@@ -27,11 +27,19 @@ class RecommendationSettings
         }
         return $result;
     }
+    /**
+     * Sets take to a new value.
+     * @param ?int $take new value.
+     */
     function setTake(?int $take)
     {
         $this->take = $take;
         return $this;
     }
+    /**
+     * Sets onlyIncludeRecommendationsWhenLessResultsThan to a new value.
+     * @param ?int $onlyIncludeRecommendationsWhenLessResultsThan new value.
+     */
     function setOnlyIncludeRecommendationsWhenLessResultsThan(?int $onlyIncludeRecommendationsWhenLessResultsThan)
     {
         $this->onlyIncludeRecommendationsWhenLessResultsThan = $onlyIncludeRecommendationsWhenLessResultsThan;

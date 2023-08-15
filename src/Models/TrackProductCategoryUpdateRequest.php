@@ -23,6 +23,10 @@ class TrackProductCategoryUpdateRequest extends TrackingRequest
         }
         return $result;
     }
+    /**
+     * Sets productCategoryUpdate to a new value.
+     * @param ProductCategoryUpdate $productCategoryUpdate new value.
+     */
     function setProductCategoryUpdate(ProductCategoryUpdate $productCategoryUpdate)
     {
         $this->productCategoryUpdate = $productCategoryUpdate;

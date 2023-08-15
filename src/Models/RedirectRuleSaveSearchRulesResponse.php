@@ -29,16 +29,28 @@ abstract class RedirectRuleSaveSearchRulesResponse extends TimedResponse
         }
         return $result;
     }
+    /**
+     * Sets rules to a new value.
+     * @param RedirectRule[] $rules new value.
+     */
     function setRules(RedirectRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    /**
+     * Sets rules to a new value from an array.
+     * @param RedirectRule[] $rules new value.
+     */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    /**
+     * Adds a new element to rules.
+     * @param RedirectRule $rules new element.
+     */
     function addToRules(RedirectRule $rules)
     {
         if (!isset($this->rules))
@@ -48,6 +60,10 @@ abstract class RedirectRuleSaveSearchRulesResponse extends TimedResponse
         array_push($this->rules, $rules);
         return $this;
     }
+    /**
+     * Sets statistics to a new value.
+     * @param Statistics $statistics new value.
+     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

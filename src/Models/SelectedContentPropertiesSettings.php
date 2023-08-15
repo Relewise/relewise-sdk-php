@@ -51,41 +51,73 @@ class SelectedContentPropertiesSettings
         }
         return $result;
     }
+    /**
+     * Sets displayName to a new value.
+     * @param bool $displayName new value.
+     */
     function setDisplayName(bool $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    /**
+     * Sets categoryPaths to a new value.
+     * @param bool $categoryPaths new value.
+     */
     function setCategoryPaths(bool $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    /**
+     * Sets assortments to a new value.
+     * @param bool $assortments new value.
+     */
     function setAssortments(bool $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    /**
+     * Sets allData to a new value.
+     * @param bool $allData new value.
+     */
     function setAllData(bool $allData)
     {
         $this->allData = $allData;
         return $this;
     }
+    /**
+     * Sets viewedByUserInfo to a new value.
+     * @param bool $viewedByUserInfo new value.
+     */
     function setViewedByUserInfo(bool $viewedByUserInfo)
     {
         $this->viewedByUserInfo = $viewedByUserInfo;
         return $this;
     }
+    /**
+     * Sets dataKeys to a new value.
+     * @param ?string[] $dataKeys new value.
+     */
     function setDataKeys(string ... $dataKeys)
     {
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    /**
+     * Sets dataKeys to a new value from an array.
+     * @param ?string[] $dataKeys new value.
+     */
     function setDataKeysFromArray(array $dataKeys)
     {
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    /**
+     * Adds a new element to dataKeys.
+     * @param string $dataKeys new element.
+     */
     function addToDataKeys(string $dataKeys)
     {
         if (!isset($this->dataKeys))

@@ -27,11 +27,19 @@ class ProductInterestTriggerResultResultSettings
         }
         return $result;
     }
+    /**
+     * Sets selectedProductProperties to a new value.
+     * @param SelectedProductPropertiesSettings $selectedProductProperties new value.
+     */
     function setSelectedProductProperties(SelectedProductPropertiesSettings $selectedProductProperties)
     {
         $this->selectedProductProperties = $selectedProductProperties;
         return $this;
     }
+    /**
+     * Sets selectedVariantProperties to a new value.
+     * @param SelectedVariantPropertiesSettings $selectedVariantProperties new value.
+     */
     function setSelectedVariantProperties(SelectedVariantPropertiesSettings $selectedVariantProperties)
     {
         $this->selectedVariantProperties = $selectedVariantProperties;

@@ -31,6 +31,11 @@ class DataIndexConfiguration
         }
         return $result;
     }
+    /**
+     * Sets the value of a specific key in keys.
+     * @param string $key index.
+     * @param FieldIndexConfiguration $value new value.
+     */
     function addToKeys(string $key, FieldIndexConfiguration $value)
     {
         if (!isset($this->keys))
@@ -40,11 +45,19 @@ class DataIndexConfiguration
         $this->keys[$key] = $value;
         return $this;
     }
+    /**
+     * Sets keys to a new value.
+     * @param array<string, FieldIndexConfiguration> $keys associative array.
+     */
     function setKeysFromAssociativeArray(array $keys)
     {
         $this->keys = $keys;
         return $this;
     }
+    /**
+     * Sets unspecified to a new value.
+     * @param FieldIndexConfiguration $unspecified new value.
+     */
     function setUnspecified(FieldIndexConfiguration $unspecified)
     {
         $this->unspecified = $unspecified;

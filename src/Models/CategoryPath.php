@@ -4,11 +4,15 @@ namespace Relewise\Models;
 
 use DateTime;
 
-/** Used to specify the full path of a product/lineitem, starting at the root &gt; subcategory &gt; subcategory2 etc. */
+/** Used to specify the full path of a product/lineitem, starting at the root > subcategory > subcategory2 etc. */
 class CategoryPath
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.CategoryPath, Relewise.Client";
     public array $breadcrumbPathStartingFromRoot;
+    /**
+     * The full path of the products, starting at the root > subcategory > subcategory2 etc.            If you dont have a category id available, provide the Category name for both ID and Name, and the same if you have an ID, but not a Name.            Example: new CategoryPath(new CategoryNameAndId("515", "Soups"), new CategoryNameAndId("518", "Vegetable soups"))
+     * @param CategoryNameAndId[] $breadcrumbPathStartingFromRoot Example: new CategoryPath(new CategoryNameAndId("515", "Soups"), new CategoryNameAndId("518", "Vegetable soups"))
+     */
     public static function create(CategoryNameAndId ... $breadcrumbPathStartingFromRoot) : CategoryPath
     {
         $result = new CategoryPath();
@@ -28,16 +32,28 @@ class CategoryPath
         }
         return $result;
     }
+    /**
+     * Sets breadcrumbPathStartingFromRoot to a new value.
+     * @param CategoryNameAndId[] $breadcrumbPathStartingFromRoot new value.
+     */
     function setBreadcrumbPathStartingFromRoot(CategoryNameAndId ... $breadcrumbPathStartingFromRoot)
     {
         $this->breadcrumbPathStartingFromRoot = $breadcrumbPathStartingFromRoot;
         return $this;
     }
+    /**
+     * Sets breadcrumbPathStartingFromRoot to a new value from an array.
+     * @param CategoryNameAndId[] $breadcrumbPathStartingFromRoot new value.
+     */
     function setBreadcrumbPathStartingFromRootFromArray(array $breadcrumbPathStartingFromRoot)
     {
         $this->breadcrumbPathStartingFromRoot = $breadcrumbPathStartingFromRoot;
         return $this;
     }
+    /**
+     * Adds a new element to breadcrumbPathStartingFromRoot.
+     * @param CategoryNameAndId $breadcrumbPathStartingFromRoot new element.
+     */
     function addToBreadcrumbPathStartingFromRoot(CategoryNameAndId $breadcrumbPathStartingFromRoot)
     {
         if (!isset($this->breadcrumbPathStartingFromRoot))

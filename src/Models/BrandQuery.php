@@ -56,36 +56,64 @@ class BrandQuery extends LicensedRequest
         }
         return $result;
     }
+    /**
+     * Sets filters to a new value.
+     * @param FilterCollection $filters new value.
+     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    /**
+     * Sets numberOfResults to a new value.
+     * @param int $numberOfResults new value.
+     */
     function setNumberOfResults(int $numberOfResults)
     {
         $this->numberOfResults = $numberOfResults;
         return $this;
     }
+    /**
+     * Sets language to a new value.
+     * @param ?Language $language new value.
+     */
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    /**
+     * Sets currency to a new value.
+     * @param ?Currency $currency new value.
+     */
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    /**
+     * Sets skipNumberOfResults to a new value.
+     * @param int $skipNumberOfResults new value.
+     */
     function setSkipNumberOfResults(int $skipNumberOfResults)
     {
         $this->skipNumberOfResults = $skipNumberOfResults;
         return $this;
     }
+    /**
+     * Sets returnTotalNumberOfResults to a new value.
+     * @param bool $returnTotalNumberOfResults new value.
+     */
     function setReturnTotalNumberOfResults(bool $returnTotalNumberOfResults)
     {
         $this->returnTotalNumberOfResults = $returnTotalNumberOfResults;
         return $this;
     }
+    /**
+     * Sets includeDisabledBrands to a new value.
+     * @param bool $includeDisabledBrands new value.
+     */
     function setIncludeDisabledBrands(bool $includeDisabledBrands)
     {
         $this->includeDisabledBrands = $includeDisabledBrands;

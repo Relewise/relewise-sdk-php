@@ -29,11 +29,19 @@ class SynonymsRequestSynonymSortingSorting
         }
         return $result;
     }
+    /**
+     * Sets sortBy to a new value.
+     * @param SynonymsRequestSynonymSorting $sortBy new value.
+     */
     function setSortBy(SynonymsRequestSynonymSorting $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    /**
+     * Sets sortOrder to a new value.
+     * @param SortOrder $sortOrder new value.
+     */
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

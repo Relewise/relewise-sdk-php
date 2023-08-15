@@ -33,16 +33,28 @@ class ContentRecommendationRequestCollection extends LicensedRequest
         }
         return $result;
     }
+    /**
+     * Sets requests to a new value.
+     * @param ContentRecommendationRequest[] $requests new value.
+     */
     function setRequests(ContentRecommendationRequest ... $requests)
     {
         $this->requests = $requests;
         return $this;
     }
+    /**
+     * Sets requests to a new value from an array.
+     * @param ContentRecommendationRequest[] $requests new value.
+     */
     function setRequestsFromArray(array $requests)
     {
         $this->requests = $requests;
         return $this;
     }
+    /**
+     * Adds a new element to requests.
+     * @param ContentRecommendationRequest $requests new element.
+     */
     function addToRequests(ContentRecommendationRequest $requests)
     {
         if (!isset($this->requests))
@@ -52,6 +64,10 @@ class ContentRecommendationRequestCollection extends LicensedRequest
         array_push($this->requests, $requests);
         return $this;
     }
+    /**
+     * Sets requireDistinctContentAcrossResults to a new value.
+     * @param bool $requireDistinctContentAcrossResults new value.
+     */
     function setRequireDistinctContentAcrossResults(bool $requireDistinctContentAcrossResults)
     {
         $this->requireDistinctContentAcrossResults = $requireDistinctContentAcrossResults;

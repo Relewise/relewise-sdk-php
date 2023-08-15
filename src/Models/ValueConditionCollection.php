@@ -4,15 +4,17 @@ namespace Relewise\Models;
 
 use DateTime;
 
-/** a collection that contains multiple <see cref="T:Relewise.Client.Requests.Conditions.ValueCondition">s in its inner list <see cref="P:Relewise.Client.Requests.RelevanceModifiers.ValueConditionCollection.Items">.            </see></see> */
+/** a collection that contains multiple ValueConditions in its inner list Items. */
 class ValueConditionCollection
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ValueConditionCollection, Relewise.Client";
     /** The items that the this collection holds. */
     public ?array $items;
-    public static function create() : ValueConditionCollection
+    /** Creates <inheritdoc cref="T:Relewise.Client.Requests.RelevanceModifiers.ValueConditionCollection" path="/summary">            </inheritdoc> */
+    public static function create(... $conditions) : ValueConditionCollection
     {
         $result = new ValueConditionCollection();
+        $result->items = $conditions;
         return $result;
     }
     public static function hydrate(array $arr) : ValueConditionCollection
@@ -28,16 +30,28 @@ class ValueConditionCollection
         }
         return $result;
     }
+    /**
+     * Sets items to a new value.
+     * @param ?ValueCondition[] $items new value.
+     */
     function setItems(ValueCondition ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    /**
+     * Sets items to a new value from an array.
+     * @param ?ValueCondition[] $items new value.
+     */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    /**
+     * Adds a new element to items.
+     * @param ValueCondition $items new element.
+     */
     function addToItems(ValueCondition $items)
     {
         if (!isset($this->items))

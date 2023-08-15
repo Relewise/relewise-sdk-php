@@ -27,16 +27,28 @@ class UserConditionCollection
         }
         return $result;
     }
+    /**
+     * Sets items to a new value.
+     * @param UserCondition[] $items new value.
+     */
     function setItems(UserCondition ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    /**
+     * Sets items to a new value from an array.
+     * @param UserCondition[] $items new value.
+     */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    /**
+     * Adds a new element to items.
+     * @param UserCondition $items new element.
+     */
     function addToItems(UserCondition $items)
     {
         if (!isset($this->items))

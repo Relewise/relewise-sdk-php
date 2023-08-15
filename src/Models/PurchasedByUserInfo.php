@@ -29,11 +29,19 @@ class PurchasedByUserInfo
         }
         return $result;
     }
+    /**
+     * Sets mostRecentPurchasedUtc to a new value.
+     * @param DateTime $mostRecentPurchasedUtc new value.
+     */
     function setMostRecentPurchasedUtc(DateTime $mostRecentPurchasedUtc)
     {
         $this->mostRecentPurchasedUtc = $mostRecentPurchasedUtc;
         return $this;
     }
+    /**
+     * Sets totalNumberOfTimesPurchased to a new value.
+     * @param int $totalNumberOfTimesPurchased new value.
+     */
     function setTotalNumberOfTimesPurchased(int $totalNumberOfTimesPurchased)
     {
         $this->totalNumberOfTimesPurchased = $totalNumberOfTimesPurchased;

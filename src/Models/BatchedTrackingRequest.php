@@ -27,16 +27,28 @@ class BatchedTrackingRequest extends TrackingRequest
         }
         return $result;
     }
+    /**
+     * Sets items to a new value.
+     * @param Trackable[] $items new value.
+     */
     function setItems(Trackable ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    /**
+     * Sets items to a new value from an array.
+     * @param Trackable[] $items new value.
+     */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    /**
+     * Adds a new element to items.
+     * @param Trackable $items new element.
+     */
     function addToItems(Trackable $items)
     {
         if (!isset($this->items))

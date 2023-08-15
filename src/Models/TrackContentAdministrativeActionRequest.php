@@ -23,6 +23,10 @@ class TrackContentAdministrativeActionRequest extends TrackingRequest
         }
         return $result;
     }
+    /**
+     * Sets administrativeAction to a new value.
+     * @param ContentAdministrativeAction $administrativeAction new value.
+     */
     function setAdministrativeAction(ContentAdministrativeAction $administrativeAction)
     {
         $this->administrativeAction = $administrativeAction;

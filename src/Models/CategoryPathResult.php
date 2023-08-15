@@ -32,16 +32,28 @@ class CategoryPathResult
         }
         return $result;
     }
+    /**
+     * Sets pathFromRoot to a new value.
+     * @param CategoryNameAndIdResult[] $pathFromRoot new value.
+     */
     function setPathFromRoot(CategoryNameAndIdResult ... $pathFromRoot)
     {
         $this->pathFromRoot = $pathFromRoot;
         return $this;
     }
+    /**
+     * Sets pathFromRoot to a new value from an array.
+     * @param CategoryNameAndIdResult[] $pathFromRoot new value.
+     */
     function setPathFromRootFromArray(array $pathFromRoot)
     {
         $this->pathFromRoot = $pathFromRoot;
         return $this;
     }
+    /**
+     * Adds a new element to pathFromRoot.
+     * @param CategoryNameAndIdResult $pathFromRoot new element.
+     */
     function addToPathFromRoot(CategoryNameAndIdResult $pathFromRoot)
     {
         if (!isset($this->pathFromRoot))
@@ -51,6 +63,10 @@ class CategoryPathResult
         array_push($this->pathFromRoot, $pathFromRoot);
         return $this;
     }
+    /**
+     * Sets rank to a new value.
+     * @param int $rank new value.
+     */
     function setRank(int $rank)
     {
         $this->rank = $rank;

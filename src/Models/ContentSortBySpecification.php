@@ -22,6 +22,10 @@ class ContentSortBySpecification
         }
         return $result;
     }
+    /**
+     * Sets value to a new value.
+     * @param ContentSorting $value new value.
+     */
     function setValue(ContentSorting $value)
     {
         $this->value = $value;

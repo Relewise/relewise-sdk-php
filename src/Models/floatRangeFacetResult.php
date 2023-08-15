@@ -42,16 +42,28 @@ abstract class floatRangeFacetResult extends FacetResult
         }
         return $result;
     }
+    /**
+     * Sets selected to a new value.
+     * @param ?floatRange $selected new value.
+     */
     function setSelected(?floatRange $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    /**
+     * Sets available to a new value.
+     * @param ?floatRangeAvailableFacetValue $available new value.
+     */
     function setAvailable(?floatRangeAvailableFacetValue $available)
     {
         $this->available = $available;
         return $this;
     }
+    /**
+     * Sets field to a new value.
+     * @param FacetingField $field new value.
+     */
     function setField(FacetingField $field)
     {
         $this->field = $field;

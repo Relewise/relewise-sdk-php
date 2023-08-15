@@ -29,11 +29,19 @@ class SaveGlobalTriggerConfigurationRequest extends LicensedRequest
         }
         return $result;
     }
+    /**
+     * Sets configuration to a new value.
+     * @param GlobalTriggerConfiguration $configuration new value.
+     */
     function setConfiguration(GlobalTriggerConfiguration $configuration)
     {
         $this->configuration = $configuration;
         return $this;
     }
+    /**
+     * Sets modifiedBy to a new value.
+     * @param string $modifiedBy new value.
+     */
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

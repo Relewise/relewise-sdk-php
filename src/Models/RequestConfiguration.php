@@ -37,21 +37,37 @@ class RequestConfiguration
         }
         return $result;
     }
+    /**
+     * Sets filters to a new value.
+     * @param RequestConfigurationPrioritization $filters new value.
+     */
     function setFilters(RequestConfigurationPrioritization $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    /**
+     * Sets relevanceModifiers to a new value.
+     * @param RequestConfigurationPrioritization $relevanceModifiers new value.
+     */
     function setRelevanceModifiers(RequestConfigurationPrioritization $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
+    /**
+     * Sets overriddenProductRecommendationRequestSettings to a new value.
+     * @param OverriddenProductRecommendationRequestSettings $overriddenProductRecommendationRequestSettings new value.
+     */
     function setOverriddenProductRecommendationRequestSettings(OverriddenProductRecommendationRequestSettings $overriddenProductRecommendationRequestSettings)
     {
         $this->overriddenProductRecommendationRequestSettings = $overriddenProductRecommendationRequestSettings;
         return $this;
     }
+    /**
+     * Sets overriddenContentRecommendationRequestSettings to a new value.
+     * @param OverriddenContentRecommendationRequestSettings $overriddenContentRecommendationRequestSettings new value.
+     */
     function setOverriddenContentRecommendationRequestSettings(OverriddenContentRecommendationRequestSettings $overriddenContentRecommendationRequestSettings)
     {
         $this->overriddenContentRecommendationRequestSettings = $overriddenContentRecommendationRequestSettings;

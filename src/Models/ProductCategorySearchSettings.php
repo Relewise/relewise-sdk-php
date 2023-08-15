@@ -27,11 +27,19 @@ class ProductCategorySearchSettings extends SearchSettings
         }
         return $result;
     }
+    /**
+     * Sets selectedCategoryProperties to a new value.
+     * @param ?SelectedProductCategoryPropertiesSettings $selectedCategoryProperties new value.
+     */
     function setSelectedCategoryProperties(?SelectedProductCategoryPropertiesSettings $selectedCategoryProperties)
     {
         $this->selectedCategoryProperties = $selectedCategoryProperties;
         return $this;
     }
+    /**
+     * Sets recommendations to a new value.
+     * @param RecommendationSettings $recommendations new value.
+     */
     function setRecommendations(RecommendationSettings $recommendations)
     {
         $this->recommendations = $recommendations;

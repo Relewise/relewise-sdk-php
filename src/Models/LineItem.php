@@ -41,21 +41,37 @@ class LineItem
         }
         return $result;
     }
+    /**
+     * Sets product to a new value.
+     * @param Product $product new value.
+     */
     function setProduct(Product $product)
     {
         $this->product = $product;
         return $this;
     }
+    /**
+     * Sets variant to a new value.
+     * @param ?ProductVariant $variant new value.
+     */
     function setVariant(?ProductVariant $variant)
     {
         $this->variant = $variant;
         return $this;
     }
+    /**
+     * Sets quantity to a new value.
+     * @param int $quantity new value.
+     */
     function setQuantity(int $quantity)
     {
         $this->quantity = $quantity;
         return $this;
     }
+    /**
+     * Sets lineTotal to a new value.
+     * @param float $lineTotal new value.
+     */
     function setLineTotal(float $lineTotal)
     {
         $this->lineTotal = $lineTotal;

@@ -27,16 +27,28 @@ class BrandIdFilter extends Filter
         }
         return $result;
     }
+    /**
+     * Sets brandIds to a new value.
+     * @param string[] $brandIds new value.
+     */
     function setBrandIds(string ... $brandIds)
     {
         $this->brandIds = $brandIds;
         return $this;
     }
+    /**
+     * Sets brandIds to a new value from an array.
+     * @param string[] $brandIds new value.
+     */
     function setBrandIdsFromArray(array $brandIds)
     {
         $this->brandIds = $brandIds;
         return $this;
     }
+    /**
+     * Adds a new element to brandIds.
+     * @param string $brandIds new element.
+     */
     function addToBrandIds(string $brandIds)
     {
         if (!isset($this->brandIds))
@@ -46,6 +58,10 @@ class BrandIdFilter extends Filter
         array_push($this->brandIds, $brandIds);
         return $this;
     }
+    /**
+     * Sets negated to a new value.
+     * @param bool $negated new value.
+     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

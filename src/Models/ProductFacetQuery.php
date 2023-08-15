@@ -26,16 +26,28 @@ class ProductFacetQuery
         }
         return $result;
     }
+    /**
+     * Sets items to a new value.
+     * @param Facet[] $items new value.
+     */
     function setItems(Facet ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    /**
+     * Sets items to a new value from an array.
+     * @param Facet[] $items new value.
+     */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    /**
+     * Adds a new element to items.
+     * @param Facet $items new element.
+     */
     function addToItems(Facet $items)
     {
         if (!isset($this->items))

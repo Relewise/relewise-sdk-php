@@ -24,11 +24,19 @@ class GreaterThanCondition extends ValueCondition
         }
         return $result;
     }
+    /**
+     * Sets value to a new value.
+     * @param float $value new value.
+     */
     function setValue(float $value)
     {
         $this->value = $value;
         return $this;
     }
+    /**
+     * Sets negated to a new value.
+     * @param bool $negated new value.
+     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

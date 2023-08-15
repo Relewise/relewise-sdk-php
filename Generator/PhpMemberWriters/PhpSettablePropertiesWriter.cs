@@ -1,6 +1,7 @@
 ﻿using System.CodeDom.Compiler;
 using System.Globalization;
 using System.Reflection;
+using Generator.Extensions;
 
 namespace Generator.PhpMemberWriters;
 
@@ -17,10 +18,8 @@ public class PhpSettablePropertiesWriter
     {
         foreach (var (_, propertyTypeName, propertyName, lowerCaseName) in ownedProperties)
         {
-            if (phpWriter.XmlDocumentation.TryGetSummary(classType, propertyName, out string summary))
-            {
-                writer.WriteLine(summary);
-            }
+            writer.WriteCommentBlock(phpWriter.XmlDocumentation.GetSummary(classType, propertyName));
+
             writer.WriteLine($"public {propertyTypeName} ${lowerCaseName};");
         }
     }

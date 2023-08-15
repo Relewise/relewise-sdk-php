@@ -23,6 +23,10 @@ class TriggerResultRequest extends LicensedRequest
         }
         return $result;
     }
+    /**
+     * Sets configurationId to a new value.
+     * @param string $configurationId new value.
+     */
     function setConfigurationId(string $configurationId)
     {
         $this->configurationId = $configurationId;

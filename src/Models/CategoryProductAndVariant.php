@@ -27,11 +27,19 @@ class CategoryProductAndVariant
         }
         return $result;
     }
+    /**
+     * Sets product to a new value.
+     * @param ProductResultDetails $product new value.
+     */
     function setProduct(ProductResultDetails $product)
     {
         $this->product = $product;
         return $this;
     }
+    /**
+     * Sets variant to a new value.
+     * @param VariantResultDetails $variant new value.
+     */
     function setVariant(VariantResultDetails $variant)
     {
         $this->variant = $variant;

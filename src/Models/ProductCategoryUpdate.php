@@ -24,11 +24,19 @@ class ProductCategoryUpdate extends CategoryUpdate
         }
         return $result;
     }
+    /**
+     * Sets category to a new value.
+     * @param ProductCategory $category new value.
+     */
     function setCategory(ProductCategory $category)
     {
         $this->category = $category;
         return $this;
     }
+    /**
+     * Sets kind to a new value.
+     * @param CategoryUpdateUpdateKind $kind new value.
+     */
     function setKind(CategoryUpdateUpdateKind $kind)
     {
         $this->kind = $kind;

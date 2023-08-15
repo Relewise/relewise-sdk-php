@@ -26,16 +26,28 @@ class SearchResponseCollection extends SearchResponse
         }
         return $result;
     }
+    /**
+     * Sets responses to a new value.
+     * @param SearchResponse[] $responses new value.
+     */
     function setResponses(SearchResponse ... $responses)
     {
         $this->responses = $responses;
         return $this;
     }
+    /**
+     * Sets responses to a new value from an array.
+     * @param SearchResponse[] $responses new value.
+     */
     function setResponsesFromArray(array $responses)
     {
         $this->responses = $responses;
         return $this;
     }
+    /**
+     * Adds a new element to responses.
+     * @param SearchResponse $responses new element.
+     */
     function addToResponses(SearchResponse $responses)
     {
         if (!isset($this->responses))
@@ -45,6 +57,10 @@ class SearchResponseCollection extends SearchResponse
         array_push($this->responses, $responses);
         return $this;
     }
+    /**
+     * Sets statistics to a new value.
+     * @param Statistics $statistics new value.
+     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

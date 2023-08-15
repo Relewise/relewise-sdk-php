@@ -29,11 +29,19 @@ class BrandView extends Trackable
         }
         return $result;
     }
+    /**
+     * Sets user to a new value.
+     * @param ?User $user new value.
+     */
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    /**
+     * Sets brand to a new value.
+     * @param Brand $brand new value.
+     */
     function setBrand(Brand $brand)
     {
         $this->brand = $brand;

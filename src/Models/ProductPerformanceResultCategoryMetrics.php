@@ -32,16 +32,28 @@ class ProductPerformanceResultCategoryMetrics
         }
         return $result;
     }
+    /**
+     * Sets category to a new value.
+     * @param CategoryNameAndIdResult $category new value.
+     */
     function setCategory(CategoryNameAndIdResult $category)
     {
         $this->category = $category;
         return $this;
     }
+    /**
+     * Sets immediateParent to a new value.
+     * @param bool $immediateParent new value.
+     */
     function setImmediateParent(bool $immediateParent)
     {
         $this->immediateParent = $immediateParent;
         return $this;
     }
+    /**
+     * Sets rank to a new value.
+     * @param ProductPerformanceResultViewsAndSalesMetrics $rank new value.
+     */
     function setRank(ProductPerformanceResultViewsAndSalesMetrics $rank)
     {
         $this->rank = $rank;

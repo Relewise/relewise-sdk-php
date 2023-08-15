@@ -27,11 +27,19 @@ class DataValue
         }
         return $result;
     }
+    /**
+     * Sets type to a new value.
+     * @param DataValueDataValueTypes $type new value.
+     */
     function setType(DataValueDataValueTypes $type)
     {
         $this->type = $type;
         return $this;
     }
+    /**
+     * Sets value to a new value.
+     * @param mixed $value new value.
+     */
     function setValue(mixed $value)
     {
         $this->value = $value;

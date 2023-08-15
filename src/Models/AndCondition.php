@@ -24,11 +24,19 @@ class AndCondition extends UserCondition
         }
         return $result;
     }
+    /**
+     * Sets conditions to a new value.
+     * @param UserConditionCollection $conditions new value.
+     */
     function setConditions(UserConditionCollection $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
+    /**
+     * Sets negated to a new value.
+     * @param bool $negated new value.
+     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

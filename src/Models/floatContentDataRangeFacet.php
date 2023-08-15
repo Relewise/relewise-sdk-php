@@ -20,21 +20,37 @@ abstract class floatContentDataRangeFacet extends floatDataRangeFacet
         $result = floatDataRangeFacet::hydrateBase($result, $arr);
         return $result;
     }
+    /**
+     * Sets selected to a new value.
+     * @param ?floatRange $selected new value.
+     */
     function setSelected(?floatRange $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    /**
+     * Sets key to a new value.
+     * @param string $key new value.
+     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    /**
+     * Sets field to a new value.
+     * @param FacetingField $field new value.
+     */
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    /**
+     * Sets settings to a new value.
+     * @param ?FacetSettings $settings new value.
+     */
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

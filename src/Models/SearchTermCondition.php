@@ -50,26 +50,46 @@ class SearchTermCondition
         }
         return $result;
     }
+    /**
+     * Sets kind to a new value.
+     * @param ?SearchTermConditionConditionKind $kind new value.
+     */
     function setKind(?SearchTermConditionConditionKind $kind)
     {
         $this->kind = $kind;
         return $this;
     }
+    /**
+     * Sets value to a new value.
+     * @param ?string $value new value.
+     */
     function setValue(?string $value)
     {
         $this->value = $value;
         return $this;
     }
+    /**
+     * Sets andConditions to a new value.
+     * @param ?SearchTermCondition[] $andConditions new value.
+     */
     function setAndConditions(SearchTermCondition ... $andConditions)
     {
         $this->andConditions = $andConditions;
         return $this;
     }
+    /**
+     * Sets andConditions to a new value from an array.
+     * @param ?SearchTermCondition[] $andConditions new value.
+     */
     function setAndConditionsFromArray(array $andConditions)
     {
         $this->andConditions = $andConditions;
         return $this;
     }
+    /**
+     * Adds a new element to andConditions.
+     * @param SearchTermCondition $andConditions new element.
+     */
     function addToAndConditions(SearchTermCondition $andConditions)
     {
         if (!isset($this->andConditions))
@@ -79,16 +99,28 @@ class SearchTermCondition
         array_push($this->andConditions, $andConditions);
         return $this;
     }
+    /**
+     * Sets orConditions to a new value.
+     * @param ?SearchTermCondition[] $orConditions new value.
+     */
     function setOrConditions(SearchTermCondition ... $orConditions)
     {
         $this->orConditions = $orConditions;
         return $this;
     }
+    /**
+     * Sets orConditions to a new value from an array.
+     * @param ?SearchTermCondition[] $orConditions new value.
+     */
     function setOrConditionsFromArray(array $orConditions)
     {
         $this->orConditions = $orConditions;
         return $this;
     }
+    /**
+     * Adds a new element to orConditions.
+     * @param SearchTermCondition $orConditions new element.
+     */
     function addToOrConditions(SearchTermCondition $orConditions)
     {
         if (!isset($this->orConditions))
@@ -98,6 +130,10 @@ class SearchTermCondition
         array_push($this->orConditions, $orConditions);
         return $this;
     }
+    /**
+     * Sets minimumLength to a new value.
+     * @param ?int $minimumLength new value.
+     */
     function setMinimumLength(?int $minimumLength)
     {
         $this->minimumLength = $minimumLength;

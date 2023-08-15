@@ -28,16 +28,28 @@ class HasActivityCondition extends UserCondition
         }
         return $result;
     }
+    /**
+     * Sets withinMinutes to a new value.
+     * @param int $withinMinutes new value.
+     */
     function setWithinMinutes(int $withinMinutes)
     {
         $this->withinMinutes = $withinMinutes;
         return $this;
     }
+    /**
+     * Sets forAtLeastSeconds to a new value.
+     * @param int $forAtLeastSeconds new value.
+     */
     function setForAtLeastSeconds(int $forAtLeastSeconds)
     {
         $this->forAtLeastSeconds = $forAtLeastSeconds;
         return $this;
     }
+    /**
+     * Sets negated to a new value.
+     * @param bool $negated new value.
+     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

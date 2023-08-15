@@ -21,6 +21,16 @@ class User
     public ?array $data;
     /** A fingerprint, highly likely to change in the future, e.g. between a users sessions */
     public ?string $fingerprint;
+    /**
+     * User DTO
+     * @param ?string $authenticatedId A persistent Id for current user, e.g. a database-id
+     * @param ?string $temporaryId A TemporaryId, likely to change in the future, e.g. a CookieId in a web context
+     * @param ?string $email The email of the user
+     * @param ?string $fingerprint A fingerprint, highly likely to change in the future, e.g. between a users sessions
+     * @param ?array<string, string> $classifications Segmentation data about the user, e.g. Country or other segmentation, useful for passing known information about the user from a CRM, CDP and other sources
+     * @param ?array<string, string> $identifiers A set of additional ids associated with the user, e.g. ERP customer id, Marketing id, CDP id etc.
+     * @param ?array<string, DataValue> $data Data stored on the user
+     */
     public static function create(?string $authenticatedId, ?string $temporaryId, ?string $email, ?string $fingerprint, ?array $classifications, ?array $identifiers, ?array $data) : User
     {
         $result = new User();
@@ -78,21 +88,38 @@ class User
         }
         return $result;
     }
+    /**
+     * Sets authenticatedId to a new value.
+     * @param ?string $authenticatedId new value.
+     */
     function setAuthenticatedId(?string $authenticatedId)
     {
         $this->authenticatedId = $authenticatedId;
         return $this;
     }
+    /**
+     * Sets temporaryId to a new value.
+     * @param ?string $temporaryId new value.
+     */
     function setTemporaryId(?string $temporaryId)
     {
         $this->temporaryId = $temporaryId;
         return $this;
     }
+    /**
+     * Sets email to a new value.
+     * @param ?string $email new value.
+     */
     function setEmail(?string $email)
     {
         $this->email = $email;
         return $this;
     }
+    /**
+     * Sets the value of a specific key in classifications.
+     * @param string $key index.
+     * @param string $value new value.
+     */
     function addToClassifications(string $key, string $value)
     {
         if (!isset($this->classifications))
@@ -102,11 +129,20 @@ class User
         $this->classifications[$key] = $value;
         return $this;
     }
+    /**
+     * Sets classifications to a new value.
+     * @param ?array<string, string> $classifications associative array.
+     */
     function setClassificationsFromAssociativeArray(array $classifications)
     {
         $this->classifications = $classifications;
         return $this;
     }
+    /**
+     * Sets the value of a specific key in identifiers.
+     * @param string $key index.
+     * @param string $value new value.
+     */
     function addToIdentifiers(string $key, string $value)
     {
         if (!isset($this->identifiers))
@@ -116,11 +152,20 @@ class User
         $this->identifiers[$key] = $value;
         return $this;
     }
+    /**
+     * Sets identifiers to a new value.
+     * @param ?array<string, string> $identifiers associative array.
+     */
     function setIdentifiersFromAssociativeArray(array $identifiers)
     {
         $this->identifiers = $identifiers;
         return $this;
     }
+    /**
+     * Sets the value of a specific key in data.
+     * @param string $key index.
+     * @param DataValue $value new value.
+     */
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -130,11 +175,19 @@ class User
         $this->data[$key] = $value;
         return $this;
     }
+    /**
+     * Sets data to a new value.
+     * @param ?array<string, DataValue> $data associative array.
+     */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
         return $this;
     }
+    /**
+     * Sets fingerprint to a new value.
+     * @param ?string $fingerprint new value.
+     */
     function setFingerprint(?string $fingerprint)
     {
         $this->fingerprint = $fingerprint;

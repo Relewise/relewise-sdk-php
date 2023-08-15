@@ -29,11 +29,19 @@ class floatChainableRange
         }
         return $result;
     }
+    /**
+     * Sets lowerBoundInclusive to a new value.
+     * @param ?float $lowerBoundInclusive new value.
+     */
     function setLowerBoundInclusive(?float $lowerBoundInclusive)
     {
         $this->lowerBoundInclusive = $lowerBoundInclusive;
         return $this;
     }
+    /**
+     * Sets upperBoundExclusive to a new value.
+     * @param ?float $upperBoundExclusive new value.
+     */
     function setUpperBoundExclusive(?float $upperBoundExclusive)
     {
         $this->upperBoundExclusive = $upperBoundExclusive;

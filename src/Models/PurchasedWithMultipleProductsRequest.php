@@ -8,13 +8,14 @@ class PurchasedWithMultipleProductsRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PurchasedWithMultipleProductsRequest, Relewise.Client";
     public array $productAndVariantIds;
-    public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user) : PurchasedWithMultipleProductsRequest
+    public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ... $productAndVariantIds) : PurchasedWithMultipleProductsRequest
     {
         $result = new PurchasedWithMultipleProductsRequest();
         $result->language = $language;
         $result->currency = $currency;
         $result->displayedAtLocationType = $displayedAtLocationType;
         $result->user = $user;
+        $result->productAndVariantIds = $productAndVariantIds;
         return $result;
     }
     public static function hydrate(array $arr) : PurchasedWithMultipleProductsRequest
@@ -30,16 +31,28 @@ class PurchasedWithMultipleProductsRequest extends ProductRecommendationRequest
         }
         return $result;
     }
+    /**
+     * Sets productAndVariantIds to a new value.
+     * @param ProductAndVariantId[] $productAndVariantIds new value.
+     */
     function setProductAndVariantIds(ProductAndVariantId ... $productAndVariantIds)
     {
         $this->productAndVariantIds = $productAndVariantIds;
         return $this;
     }
+    /**
+     * Sets productAndVariantIds to a new value from an array.
+     * @param ProductAndVariantId[] $productAndVariantIds new value.
+     */
     function setProductAndVariantIdsFromArray(array $productAndVariantIds)
     {
         $this->productAndVariantIds = $productAndVariantIds;
         return $this;
     }
+    /**
+     * Adds a new element to productAndVariantIds.
+     * @param ProductAndVariantId $productAndVariantIds new element.
+     */
     function addToProductAndVariantIds(ProductAndVariantId $productAndVariantIds)
     {
         if (!isset($this->productAndVariantIds))
@@ -49,36 +62,64 @@ class PurchasedWithMultipleProductsRequest extends ProductRecommendationRequest
         array_push($this->productAndVariantIds, $productAndVariantIds);
         return $this;
     }
+    /**
+     * Sets settings to a new value.
+     * @param ProductRecommendationRequestSettings $settings new value.
+     */
     function setSettings(ProductRecommendationRequestSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
+    /**
+     * Sets language to a new value.
+     * @param ?Language $language new value.
+     */
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    /**
+     * Sets user to a new value.
+     * @param User $user new value.
+     */
     function setUser(User $user)
     {
         $this->user = $user;
         return $this;
     }
+    /**
+     * Sets relevanceModifiers to a new value.
+     * @param RelevanceModifierCollection $relevanceModifiers new value.
+     */
     function setRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
+    /**
+     * Sets filters to a new value.
+     * @param FilterCollection $filters new value.
+     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    /**
+     * Sets displayedAtLocationType to a new value.
+     * @param string $displayedAtLocationType new value.
+     */
     function setDisplayedAtLocationType(string $displayedAtLocationType)
     {
         $this->displayedAtLocationType = $displayedAtLocationType;
         return $this;
     }
+    /**
+     * Sets currency to a new value.
+     * @param ?Currency $currency new value.
+     */
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

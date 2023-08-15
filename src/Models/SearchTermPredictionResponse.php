@@ -26,16 +26,28 @@ class SearchTermPredictionResponse extends SearchResponse
         }
         return $result;
     }
+    /**
+     * Sets predictions to a new value.
+     * @param SearchTermPredictionResult[] $predictions new value.
+     */
     function setPredictions(SearchTermPredictionResult ... $predictions)
     {
         $this->predictions = $predictions;
         return $this;
     }
+    /**
+     * Sets predictions to a new value from an array.
+     * @param SearchTermPredictionResult[] $predictions new value.
+     */
     function setPredictionsFromArray(array $predictions)
     {
         $this->predictions = $predictions;
         return $this;
     }
+    /**
+     * Adds a new element to predictions.
+     * @param SearchTermPredictionResult $predictions new element.
+     */
     function addToPredictions(SearchTermPredictionResult $predictions)
     {
         if (!isset($this->predictions))
@@ -45,6 +57,10 @@ class SearchTermPredictionResponse extends SearchResponse
         array_push($this->predictions, $predictions);
         return $this;
     }
+    /**
+     * Sets statistics to a new value.
+     * @param Statistics $statistics new value.
+     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

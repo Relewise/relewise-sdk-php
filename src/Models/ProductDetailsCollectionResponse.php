@@ -33,16 +33,28 @@ class ProductDetailsCollectionResponse extends TimedResponse
         }
         return $result;
     }
+    /**
+     * Sets products to a new value.
+     * @param ProductResultDetails[] $products new value.
+     */
     function setProducts(ProductResultDetails ... $products)
     {
         $this->products = $products;
         return $this;
     }
+    /**
+     * Sets products to a new value from an array.
+     * @param ProductResultDetails[] $products new value.
+     */
     function setProductsFromArray(array $products)
     {
         $this->products = $products;
         return $this;
     }
+    /**
+     * Adds a new element to products.
+     * @param ProductResultDetails $products new element.
+     */
     function addToProducts(ProductResultDetails $products)
     {
         if (!isset($this->products))
@@ -52,11 +64,19 @@ class ProductDetailsCollectionResponse extends TimedResponse
         array_push($this->products, $products);
         return $this;
     }
+    /**
+     * Sets totalNumberOfResults to a new value.
+     * @param ?int $totalNumberOfResults new value.
+     */
     function setTotalNumberOfResults(?int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;
         return $this;
     }
+    /**
+     * Sets statistics to a new value.
+     * @param Statistics $statistics new value.
+     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

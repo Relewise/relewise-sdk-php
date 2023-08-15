@@ -27,16 +27,28 @@ class UserDetailsCollectionResponse extends TimedResponse
         }
         return $result;
     }
+    /**
+     * Sets results to a new value.
+     * @param array[] $results new value.
+     */
     function setResults(array ... $results)
     {
         $this->results = $results;
         return $this;
     }
+    /**
+     * Sets results to a new value from an array.
+     * @param array[] $results new value.
+     */
     function setResultsFromArray(array $results)
     {
         $this->results = $results;
         return $this;
     }
+    /**
+     * Adds a new element to results.
+     * @param UserResultDetails[] $results new element.
+     */
     function addToResults(array $results)
     {
         if (!isset($this->results))
@@ -46,6 +58,10 @@ class UserDetailsCollectionResponse extends TimedResponse
         array_push($this->results, $results);
         return $this;
     }
+    /**
+     * Sets statistics to a new value.
+     * @param Statistics $statistics new value.
+     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

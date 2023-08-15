@@ -23,6 +23,10 @@ class TrackSearchTermRequest extends TrackingRequest
         }
         return $result;
     }
+    /**
+     * Sets searchTerm to a new value.
+     * @param SearchTerm $searchTerm new value.
+     */
     function setSearchTerm(SearchTerm $searchTerm)
     {
         $this->searchTerm = $searchTerm;

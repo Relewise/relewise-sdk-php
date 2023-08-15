@@ -22,6 +22,10 @@ class CategoryIndexConfiguration
         }
         return $result;
     }
+    /**
+     * Sets unspecified to a new value.
+     * @param CategoryIndexConfigurationEntry $unspecified new value.
+     */
     function setUnspecified(CategoryIndexConfigurationEntry $unspecified)
     {
         $this->unspecified = $unspecified;

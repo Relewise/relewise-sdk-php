@@ -29,11 +29,19 @@ class SaveTriggerConfigurationRequest extends LicensedRequest
         }
         return $result;
     }
+    /**
+     * Sets configuration to a new value.
+     * @param TriggerConfiguration $configuration new value.
+     */
     function setConfiguration(TriggerConfiguration $configuration)
     {
         $this->configuration = $configuration;
         return $this;
     }
+    /**
+     * Sets modifiedBy to a new value.
+     * @param string $modifiedBy new value.
+     */
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

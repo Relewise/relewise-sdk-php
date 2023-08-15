@@ -31,21 +31,37 @@ class ProductCategoryInterestTriggerResult
         }
         return $result;
     }
+    /**
+     * Sets user to a new value.
+     * @param UserResultDetails $user new value.
+     */
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;
         return $this;
     }
+    /**
+     * Sets categories to a new value.
+     * @param ProductCategoryInterestTriggerResultCategory[] $categories new value.
+     */
     function setCategories(ProductCategoryInterestTriggerResultCategory ... $categories)
     {
         $this->categories = $categories;
         return $this;
     }
+    /**
+     * Sets categories to a new value from an array.
+     * @param ProductCategoryInterestTriggerResultCategory[] $categories new value.
+     */
     function setCategoriesFromArray(array $categories)
     {
         $this->categories = $categories;
         return $this;
     }
+    /**
+     * Adds a new element to categories.
+     * @param ProductCategoryInterestTriggerResultCategory $categories new element.
+     */
     function addToCategories(ProductCategoryInterestTriggerResultCategory $categories)
     {
         if (!isset($this->categories))

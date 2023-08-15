@@ -22,6 +22,10 @@ class ProductPerformanceResultViewsMetrics
         }
         return $result;
     }
+    /**
+     * Sets total to a new value.
+     * @param int $total new value.
+     */
     function setTotal(int $total)
     {
         $this->total = $total;

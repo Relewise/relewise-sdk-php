@@ -54,26 +54,46 @@ class RequestContextFilter
         }
         return $result;
     }
+    /**
+     * Sets recommendations to a new value.
+     * @param RecommendationTypeCollection $recommendations new value.
+     */
     function setRecommendations(RecommendationTypeCollection $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    /**
+     * Sets searches to a new value.
+     * @param SearchTypeCollection $searches new value.
+     */
     function setSearches(SearchTypeCollection $searches)
     {
         $this->searches = $searches;
         return $this;
     }
+    /**
+     * Sets locations to a new value.
+     * @param string[] $locations new value.
+     */
     function setLocations(string ... $locations)
     {
         $this->locations = $locations;
         return $this;
     }
+    /**
+     * Sets locations to a new value from an array.
+     * @param string[] $locations new value.
+     */
     function setLocationsFromArray(array $locations)
     {
         $this->locations = $locations;
         return $this;
     }
+    /**
+     * Adds a new element to locations.
+     * @param string $locations new element.
+     */
     function addToLocations(string $locations)
     {
         if (!isset($this->locations))
@@ -83,16 +103,28 @@ class RequestContextFilter
         array_push($this->locations, $locations);
         return $this;
     }
+    /**
+     * Sets languages to a new value.
+     * @param Language[] $languages new value.
+     */
     function setLanguages(Language ... $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    /**
+     * Sets languages to a new value from an array.
+     * @param Language[] $languages new value.
+     */
     function setLanguagesFromArray(array $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    /**
+     * Adds a new element to languages.
+     * @param Language $languages new element.
+     */
     function addToLanguages(Language $languages)
     {
         if (!isset($this->languages))
@@ -102,16 +134,28 @@ class RequestContextFilter
         array_push($this->languages, $languages);
         return $this;
     }
+    /**
+     * Sets currencies to a new value.
+     * @param Currency[] $currencies new value.
+     */
     function setCurrencies(Currency ... $currencies)
     {
         $this->currencies = $currencies;
         return $this;
     }
+    /**
+     * Sets currencies to a new value from an array.
+     * @param Currency[] $currencies new value.
+     */
     function setCurrenciesFromArray(array $currencies)
     {
         $this->currencies = $currencies;
         return $this;
     }
+    /**
+     * Adds a new element to currencies.
+     * @param Currency $currencies new element.
+     */
     function addToCurrencies(Currency $currencies)
     {
         if (!isset($this->currencies))

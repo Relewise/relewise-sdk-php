@@ -60,41 +60,73 @@ class OverriddenSelectedVariantPropertiesSettings
         }
         return $result;
     }
+    /**
+     * Sets displayName to a new value.
+     * @param ?bool $displayName new value.
+     */
     function setDisplayName(?bool $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    /**
+     * Sets pricing to a new value.
+     * @param ?bool $pricing new value.
+     */
     function setPricing(?bool $pricing)
     {
         $this->pricing = $pricing;
         return $this;
     }
+    /**
+     * Sets allSpecifications to a new value.
+     * @param ?bool $allSpecifications new value.
+     */
     function setAllSpecifications(?bool $allSpecifications)
     {
         $this->allSpecifications = $allSpecifications;
         return $this;
     }
+    /**
+     * Sets assortments to a new value.
+     * @param ?bool $assortments new value.
+     */
     function setAssortments(?bool $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    /**
+     * Sets allData to a new value.
+     * @param ?bool $allData new value.
+     */
     function setAllData(?bool $allData)
     {
         $this->allData = $allData;
         return $this;
     }
+    /**
+     * Sets dataKeys to a new value.
+     * @param string[] $dataKeys new value.
+     */
     function setDataKeys(string ... $dataKeys)
     {
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    /**
+     * Sets dataKeys to a new value from an array.
+     * @param string[] $dataKeys new value.
+     */
     function setDataKeysFromArray(array $dataKeys)
     {
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    /**
+     * Adds a new element to dataKeys.
+     * @param string $dataKeys new element.
+     */
     function addToDataKeys(string $dataKeys)
     {
         if (!isset($this->dataKeys))
@@ -104,16 +136,28 @@ class OverriddenSelectedVariantPropertiesSettings
         array_push($this->dataKeys, $dataKeys);
         return $this;
     }
+    /**
+     * Sets specificationKeys to a new value.
+     * @param string[] $specificationKeys new value.
+     */
     function setSpecificationKeys(string ... $specificationKeys)
     {
         $this->specificationKeys = $specificationKeys;
         return $this;
     }
+    /**
+     * Sets specificationKeys to a new value from an array.
+     * @param string[] $specificationKeys new value.
+     */
     function setSpecificationKeysFromArray(array $specificationKeys)
     {
         $this->specificationKeys = $specificationKeys;
         return $this;
     }
+    /**
+     * Adds a new element to specificationKeys.
+     * @param string $specificationKeys new element.
+     */
     function addToSpecificationKeys(string $specificationKeys)
     {
         if (!isset($this->specificationKeys))

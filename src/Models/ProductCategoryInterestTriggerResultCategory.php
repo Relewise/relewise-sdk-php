@@ -40,16 +40,28 @@ class ProductCategoryInterestTriggerResultCategory
         }
         return $result;
     }
+    /**
+     * Sets lastPath to a new value.
+     * @param string[] $lastPath new value.
+     */
     function setLastPath(string ... $lastPath)
     {
         $this->lastPath = $lastPath;
         return $this;
     }
+    /**
+     * Sets lastPath to a new value from an array.
+     * @param string[] $lastPath new value.
+     */
     function setLastPathFromArray(array $lastPath)
     {
         $this->lastPath = $lastPath;
         return $this;
     }
+    /**
+     * Adds a new element to lastPath.
+     * @param string $lastPath new element.
+     */
     function addToLastPath(string $lastPath)
     {
         if (!isset($this->lastPath))
@@ -59,21 +71,37 @@ class ProductCategoryInterestTriggerResultCategory
         array_push($this->lastPath, $lastPath);
         return $this;
     }
+    /**
+     * Sets views to a new value.
+     * @param int $views new value.
+     */
     function setViews(int $views)
     {
         $this->views = $views;
         return $this;
     }
+    /**
+     * Sets viewedProducts to a new value.
+     * @param CategoryProductAndVariant[] $viewedProducts new value.
+     */
     function setViewedProducts(CategoryProductAndVariant ... $viewedProducts)
     {
         $this->viewedProducts = $viewedProducts;
         return $this;
     }
+    /**
+     * Sets viewedProducts to a new value from an array.
+     * @param CategoryProductAndVariant[] $viewedProducts new value.
+     */
     function setViewedProductsFromArray(array $viewedProducts)
     {
         $this->viewedProducts = $viewedProducts;
         return $this;
     }
+    /**
+     * Adds a new element to viewedProducts.
+     * @param CategoryProductAndVariant $viewedProducts new element.
+     */
     function addToViewedProducts(CategoryProductAndVariant $viewedProducts)
     {
         if (!isset($this->viewedProducts))

@@ -4,15 +4,16 @@ namespace Relewise\Models;
 
 use DateTime;
 
-/** a <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> that can change the relevance of a Variant depending on the sales price falling within a specific <see cref="P:Relewise.Client.Requests.RelevanceModifiers.VariantSalesPriceRelevanceModifier.Range">.            </see></see> */
+/** a RelevanceModifier that can change the relevance of a Variant depending on the sales price falling within a specific Range. */
 class VariantSalesPriceRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.VariantSalesPriceRelevanceModifier, Relewise.Client";
     public ?floatRange $range;
     public ?Currency $currency;
     public float $multiplyWeightBy;
-    /** Determines whether this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> should apply to all the Products that aren't contained within the specific <see cref="P:Relewise.Client.Requests.RelevanceModifiers.VariantSalesPriceRelevanceModifier.Range"> instead.            </see></see> */
+    /** Determines whether this RelevanceModifier should apply to all the Products that aren't contained within the specific Range instead. */
     public bool $negated;
+    /** Creates <inheritdoc cref="T:Relewise.Client.Requests.RelevanceModifiers.VariantSalesPriceRelevanceModifier">            </inheritdoc> */
     public static function create(?floatRange $range, float $multiplyWeightBy = 1, ?Currency $currency = Null, bool $negated = false) : VariantSalesPriceRelevanceModifier
     {
         $result = new VariantSalesPriceRelevanceModifier();
@@ -43,26 +44,46 @@ class VariantSalesPriceRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    /**
+     * Sets range to a new value.
+     * @param ?floatRange $range new value.
+     */
     function setRange(?floatRange $range)
     {
         $this->range = $range;
         return $this;
     }
+    /**
+     * Sets currency to a new value.
+     * @param ?Currency $currency new value.
+     */
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    /**
+     * Sets multiplyWeightBy to a new value.
+     * @param float $multiplyWeightBy new value.
+     */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    /**
+     * Sets negated to a new value.
+     * @param bool $negated new value.
+     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    /**
+     * Sets filters to a new value.
+     * @param FilterCollection $filters new value.
+     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

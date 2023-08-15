@@ -27,16 +27,28 @@ class CategoryPathResultDetails
         }
         return $result;
     }
+    /**
+     * Sets breadcrumbPathStartingFromRoot to a new value.
+     * @param CategoryNameAndId[] $breadcrumbPathStartingFromRoot new value.
+     */
     function setBreadcrumbPathStartingFromRoot(CategoryNameAndId ... $breadcrumbPathStartingFromRoot)
     {
         $this->breadcrumbPathStartingFromRoot = $breadcrumbPathStartingFromRoot;
         return $this;
     }
+    /**
+     * Sets breadcrumbPathStartingFromRoot to a new value from an array.
+     * @param CategoryNameAndId[] $breadcrumbPathStartingFromRoot new value.
+     */
     function setBreadcrumbPathStartingFromRootFromArray(array $breadcrumbPathStartingFromRoot)
     {
         $this->breadcrumbPathStartingFromRoot = $breadcrumbPathStartingFromRoot;
         return $this;
     }
+    /**
+     * Adds a new element to breadcrumbPathStartingFromRoot.
+     * @param CategoryNameAndId $breadcrumbPathStartingFromRoot new element.
+     */
     function addToBreadcrumbPathStartingFromRoot(CategoryNameAndId $breadcrumbPathStartingFromRoot)
     {
         if (!isset($this->breadcrumbPathStartingFromRoot))

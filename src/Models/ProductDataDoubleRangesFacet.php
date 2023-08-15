@@ -22,21 +22,37 @@ class ProductDataDoubleRangesFacet extends floatProductDataRangesFacet
         $result = floatProductDataRangesFacet::hydrateBase(new ProductDataDoubleRangesFacet(), $arr);
         return $result;
     }
+    /**
+     * Sets dataSelectionStrategy to a new value.
+     * @param DataSelectionStrategy $dataSelectionStrategy new value.
+     */
     function setDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
     {
         $this->dataSelectionStrategy = $dataSelectionStrategy;
         return $this;
     }
+    /**
+     * Sets predefinedRanges to a new value.
+     * @param ??floatChainableRange[] $predefinedRanges new value.
+     */
     function setPredefinedRanges(?floatChainableRange ... $predefinedRanges)
     {
         $this->predefinedRanges = $predefinedRanges;
         return $this;
     }
+    /**
+     * Sets predefinedRanges to a new value from an array.
+     * @param ??floatChainableRange[] $predefinedRanges new value.
+     */
     function setPredefinedRangesFromArray(array $predefinedRanges)
     {
         $this->predefinedRanges = $predefinedRanges;
         return $this;
     }
+    /**
+     * Adds a new element to predefinedRanges.
+     * @param ?floatChainableRange $predefinedRanges new element.
+     */
     function addToPredefinedRanges(?floatChainableRange $predefinedRanges)
     {
         if (!isset($this->predefinedRanges))
@@ -46,21 +62,37 @@ class ProductDataDoubleRangesFacet extends floatProductDataRangesFacet
         array_push($this->predefinedRanges, $predefinedRanges);
         return $this;
     }
+    /**
+     * Sets expandedRangeSize to a new value.
+     * @param ?float $expandedRangeSize new value.
+     */
     function setExpandedRangeSize(?float $expandedRangeSize)
     {
         $this->expandedRangeSize = $expandedRangeSize;
         return $this;
     }
+    /**
+     * Sets selected to a new value.
+     * @param ??floatChainableRange[] $selected new value.
+     */
     function setSelected(?floatChainableRange ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    /**
+     * Sets selected to a new value from an array.
+     * @param ??floatChainableRange[] $selected new value.
+     */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    /**
+     * Adds a new element to selected.
+     * @param ?floatChainableRange $selected new element.
+     */
     function addToSelected(?floatChainableRange $selected)
     {
         if (!isset($this->selected))
@@ -70,16 +102,28 @@ class ProductDataDoubleRangesFacet extends floatProductDataRangesFacet
         array_push($this->selected, $selected);
         return $this;
     }
+    /**
+     * Sets key to a new value.
+     * @param string $key new value.
+     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    /**
+     * Sets field to a new value.
+     * @param FacetingField $field new value.
+     */
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    /**
+     * Sets settings to a new value.
+     * @param ?FacetSettings $settings new value.
+     */
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

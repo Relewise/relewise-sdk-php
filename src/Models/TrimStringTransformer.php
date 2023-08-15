@@ -27,16 +27,28 @@ class TrimStringTransformer
         }
         return $result;
     }
+    /**
+     * Sets valuesToTrim to a new value.
+     * @param string[] $valuesToTrim new value.
+     */
     function setValuesToTrim(string ... $valuesToTrim)
     {
         $this->valuesToTrim = $valuesToTrim;
         return $this;
     }
+    /**
+     * Sets valuesToTrim to a new value from an array.
+     * @param string[] $valuesToTrim new value.
+     */
     function setValuesToTrimFromArray(array $valuesToTrim)
     {
         $this->valuesToTrim = $valuesToTrim;
         return $this;
     }
+    /**
+     * Adds a new element to valuesToTrim.
+     * @param string $valuesToTrim new element.
+     */
     function addToValuesToTrim(string $valuesToTrim)
     {
         if (!isset($this->valuesToTrim))

@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
-/** a <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> that can change the relevance of a Product depending on whether a product has been bought within some interval of minutes <see cref="P:Relewise.Client.Requests.RelevanceModifiers.UserFavoriteProductRelevanceModifier.SinceMinutesAgo">from now,            which can define complex modifiers depending on the number of purchases and how long time there has passed since the last purchase.            </see></see> */
+/** a RelevanceModifier that can change the relevance of a Product depending on whether a product has been bought within some interval of minutes SinceMinutesAgofrom now,            which can define complex modifiers depending on the number of purchases and how long time there has passed since the last purchase. */
 class UserFavoriteProductRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.UserFavoriteProductRelevanceModifier, Relewise.Client";
@@ -16,9 +16,11 @@ class UserFavoriteProductRelevanceModifier extends RelevanceModifier
     public float $mostRecentPurchaseWeight;
     /** The multiplier that decides how important more recent purchases should */
     public float $ifNotPurchasedBaseWeight;
-    public static function create(float $numberOfPurchasesWeight = 1, float $mostRecentPurchaseWeight = 1, float $ifNotPurchasedBaseWeight = 1) : UserFavoriteProductRelevanceModifier
+    /** Creates <inheritdoc cref="T:Relewise.Client.Requests.RelevanceModifiers.UserFavoriteProductRelevanceModifier" path="/summary">            </inheritdoc> */
+    public static function create(int $sinceMinutesAgo, float $numberOfPurchasesWeight = 1, float $mostRecentPurchaseWeight = 1, float $ifNotPurchasedBaseWeight = 1) : UserFavoriteProductRelevanceModifier
     {
         $result = new UserFavoriteProductRelevanceModifier();
+        $result->sinceMinutesAgo = $sinceMinutesAgo;
         $result->numberOfPurchasesWeight = $numberOfPurchasesWeight;
         $result->mostRecentPurchaseWeight = $mostRecentPurchaseWeight;
         $result->ifNotPurchasedBaseWeight = $ifNotPurchasedBaseWeight;
@@ -45,26 +47,46 @@ class UserFavoriteProductRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    /**
+     * Sets sinceMinutesAgo to a new value.
+     * @param int $sinceMinutesAgo new value.
+     */
     function setSinceMinutesAgo(int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    /**
+     * Sets numberOfPurchasesWeight to a new value.
+     * @param float $numberOfPurchasesWeight new value.
+     */
     function setNumberOfPurchasesWeight(float $numberOfPurchasesWeight)
     {
         $this->numberOfPurchasesWeight = $numberOfPurchasesWeight;
         return $this;
     }
+    /**
+     * Sets mostRecentPurchaseWeight to a new value.
+     * @param float $mostRecentPurchaseWeight new value.
+     */
     function setMostRecentPurchaseWeight(float $mostRecentPurchaseWeight)
     {
         $this->mostRecentPurchaseWeight = $mostRecentPurchaseWeight;
         return $this;
     }
+    /**
+     * Sets ifNotPurchasedBaseWeight to a new value.
+     * @param float $ifNotPurchasedBaseWeight new value.
+     */
     function setIfNotPurchasedBaseWeight(float $ifNotPurchasedBaseWeight)
     {
         $this->ifNotPurchasedBaseWeight = $ifNotPurchasedBaseWeight;
         return $this;
     }
+    /**
+     * Sets filters to a new value.
+     * @param FilterCollection $filters new value.
+     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

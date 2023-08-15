@@ -35,16 +35,28 @@ class stringAvailableFacetValue
         }
         return $result;
     }
+    /**
+     * Sets value to a new value.
+     * @param string $value new value.
+     */
     function setValue(string $value)
     {
         $this->value = $value;
         return $this;
     }
+    /**
+     * Sets hits to a new value.
+     * @param int $hits new value.
+     */
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    /**
+     * Sets selected to a new value.
+     * @param bool $selected new value.
+     */
     function setSelected(bool $selected)
     {
         $this->selected = $selected;

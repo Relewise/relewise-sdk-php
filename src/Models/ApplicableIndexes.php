@@ -28,16 +28,28 @@ class ApplicableIndexes
         }
         return $result;
     }
+    /**
+     * Sets indexes to a new value.
+     * @param string[] $indexes new value.
+     */
     function setIndexes(string ... $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
+    /**
+     * Sets indexes to a new value from an array.
+     * @param string[] $indexes new value.
+     */
     function setIndexesFromArray(array $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
+    /**
+     * Adds a new element to indexes.
+     * @param string $indexes new element.
+     */
     function addToIndexes(string $indexes)
     {
         if (!isset($this->indexes))

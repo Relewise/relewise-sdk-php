@@ -42,26 +42,46 @@ class SynonymsRequest extends LicensedRequest
         }
         return $result;
     }
+    /**
+     * Sets sorting to a new value.
+     * @param SynonymsRequestSynonymSortingSorting $sorting new value.
+     */
     function setSorting(SynonymsRequestSynonymSortingSorting $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
+    /**
+     * Sets take to a new value.
+     * @param int $take new value.
+     */
     function setTake(int $take)
     {
         $this->take = $take;
         return $this;
     }
+    /**
+     * Sets skip to a new value.
+     * @param int $skip new value.
+     */
     function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
+    /**
+     * Sets term to a new value.
+     * @param string $term new value.
+     */
     function setTerm(string $term)
     {
         $this->term = $term;
         return $this;
     }
+    /**
+     * Sets isApproved to a new value.
+     * @param ?bool $isApproved new value.
+     */
     function setIsApproved(?bool $isApproved)
     {
         $this->isApproved = $isApproved;

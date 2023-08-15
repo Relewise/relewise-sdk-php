@@ -4,17 +4,18 @@ namespace Relewise\Models;
 
 use DateTime;
 
-/** a <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> that can change the relevance of a Product depending on if the product is in a category that matches the given <see cref="P:Relewise.Client.Requests.RelevanceModifiers.ProductCategoryIdRelevanceModifier.CategoryId"> and <see cref="P:Relewise.Client.Requests.RelevanceModifiers.ProductCategoryIdRelevanceModifier.EvaluationScope">.            </see></see></see> */
+/** a RelevanceModifier that can change the relevance of a Product depending on if the product is in a category that matches the given CategoryId and EvaluationScope. */
 class ProductCategoryIdRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductCategoryIdRelevanceModifier, Relewise.Client";
-    /** The Id of the Category that this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> will multiply the weight for.            </see> */
+    /** The Id of the Category that this RelevanceModifier will multiply the weight for. */
     public string $categoryId;
-    /** The relative Category levels that this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> should match with.            </see> */
+    /** The relative Category levels that this RelevanceModifier should match with. */
     public CategoryScope $evaluationScope;
     public float $multiplyWeightBy;
-    /** Determines whether this <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier"> should apply to all the Products that don't match the specific <see cref="P:Relewise.Client.Requests.RelevanceModifiers.ProductCategoryIdRelevanceModifier.CategoryId"> instead.            </see></see> */
+    /** Determines whether this RelevanceModifier should apply to all the Products that don't match the specific CategoryId instead. */
     public bool $negated;
+    /** Creates <inheritdoc cref="T:Relewise.Client.Requests.RelevanceModifiers.ProductCategoryIdRelevanceModifier">            </inheritdoc> */
     public static function create(string $categoryId, CategoryScope $evaluationScope, float $multiplyWeightBy = 1, bool $negated = false) : ProductCategoryIdRelevanceModifier
     {
         $result = new ProductCategoryIdRelevanceModifier();
@@ -45,26 +46,46 @@ class ProductCategoryIdRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    /**
+     * Sets categoryId to a new value.
+     * @param string $categoryId new value.
+     */
     function setCategoryId(string $categoryId)
     {
         $this->categoryId = $categoryId;
         return $this;
     }
+    /**
+     * Sets evaluationScope to a new value.
+     * @param CategoryScope $evaluationScope new value.
+     */
     function setEvaluationScope(CategoryScope $evaluationScope)
     {
         $this->evaluationScope = $evaluationScope;
         return $this;
     }
+    /**
+     * Sets multiplyWeightBy to a new value.
+     * @param float $multiplyWeightBy new value.
+     */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    /**
+     * Sets negated to a new value.
+     * @param bool $negated new value.
+     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    /**
+     * Sets filters to a new value.
+     * @param FilterCollection $filters new value.
+     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

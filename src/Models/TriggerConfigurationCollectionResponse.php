@@ -26,16 +26,28 @@ class TriggerConfigurationCollectionResponse extends TimedResponse
         }
         return $result;
     }
+    /**
+     * Sets configurations to a new value.
+     * @param TriggerConfiguration[] $configurations new value.
+     */
     function setConfigurations(TriggerConfiguration ... $configurations)
     {
         $this->configurations = $configurations;
         return $this;
     }
+    /**
+     * Sets configurations to a new value from an array.
+     * @param TriggerConfiguration[] $configurations new value.
+     */
     function setConfigurationsFromArray(array $configurations)
     {
         $this->configurations = $configurations;
         return $this;
     }
+    /**
+     * Adds a new element to configurations.
+     * @param TriggerConfiguration $configurations new element.
+     */
     function addToConfigurations(TriggerConfiguration $configurations)
     {
         if (!isset($this->configurations))
@@ -45,6 +57,10 @@ class TriggerConfigurationCollectionResponse extends TimedResponse
         array_push($this->configurations, $configurations);
         return $this;
     }
+    /**
+     * Sets statistics to a new value.
+     * @param Statistics $statistics new value.
+     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

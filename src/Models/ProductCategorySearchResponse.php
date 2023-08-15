@@ -40,16 +40,28 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
         }
         return $result;
     }
+    /**
+     * Sets results to a new value.
+     * @param ProductCategoryResult[] $results new value.
+     */
     function setResults(ProductCategoryResult ... $results)
     {
         $this->results = $results;
         return $this;
     }
+    /**
+     * Sets results to a new value from an array.
+     * @param ProductCategoryResult[] $results new value.
+     */
     function setResultsFromArray(array $results)
     {
         $this->results = $results;
         return $this;
     }
+    /**
+     * Adds a new element to results.
+     * @param ProductCategoryResult $results new element.
+     */
     function addToResults(ProductCategoryResult $results)
     {
         if (!isset($this->results))
@@ -59,21 +71,37 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
         array_push($this->results, $results);
         return $this;
     }
+    /**
+     * Sets facets to a new value.
+     * @param ProductCategoryFacetResult $facets new value.
+     */
     function setFacets(ProductCategoryFacetResult $facets)
     {
         $this->facets = $facets;
         return $this;
     }
+    /**
+     * Sets recommendations to a new value.
+     * @param ProductCategoryResult[] $recommendations new value.
+     */
     function setRecommendations(ProductCategoryResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    /**
+     * Sets recommendations to a new value from an array.
+     * @param ProductCategoryResult[] $recommendations new value.
+     */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    /**
+     * Adds a new element to recommendations.
+     * @param ProductCategoryResult $recommendations new element.
+     */
     function addToRecommendations(ProductCategoryResult $recommendations)
     {
         if (!isset($this->recommendations))
@@ -83,11 +111,19 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
         array_push($this->recommendations, $recommendations);
         return $this;
     }
+    /**
+     * Sets hits to a new value.
+     * @param int $hits new value.
+     */
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    /**
+     * Sets statistics to a new value.
+     * @param Statistics $statistics new value.
+     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

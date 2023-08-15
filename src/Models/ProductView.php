@@ -35,16 +35,28 @@ class ProductView extends Trackable
         }
         return $result;
     }
+    /**
+     * Sets user to a new value.
+     * @param ?User $user new value.
+     */
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    /**
+     * Sets product to a new value.
+     * @param Product $product new value.
+     */
     function setProduct(Product $product)
     {
         $this->product = $product;
         return $this;
     }
+    /**
+     * Sets variant to a new value.
+     * @param ?ProductVariant $variant new value.
+     */
     function setVariant(?ProductVariant $variant)
     {
         $this->variant = $variant;

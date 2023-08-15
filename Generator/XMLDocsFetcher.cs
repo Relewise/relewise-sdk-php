@@ -1,5 +1,6 @@
 ﻿using AngleSharp;
 using System.IO.Compression;
+using System.Web;
 
 namespace Generator;
 
@@ -19,19 +20,40 @@ public static class XMLDocsFetcher
         }
 
         await using var xmlDocsStream = xmlFile.Open();
+        using var reader = new StreamReader(xmlDocsStream);
+        var content = await reader.ReadToEndAsync();
 
         XmlDocumentation result = new ();
 
         IBrowsingContext context = BrowsingContext.New();
-        var document = await context.OpenAsync(req => req.Content(xmlDocsStream));
+        var document = await context.OpenAsync(req => req.Content(content.Replace("/>", "></SEE>")));
         foreach (var member in document.GetElementsByTagName("doc")[0].Children[1].Children)
         {
-            if (member.Children.FirstOrDefault(c => c.TagName is "SUMMARY") is { } summary)
+            foreach (var child in member.Children)
             {
-                result.Summaries.Add(member.GetAttribute("name")!, $"/** {summary.InnerHtml.Replace("\n", "").Trim()} */");
+                if (child.TagName is "SUMMARY" && child.InnerHtml.Trim().Length > 0)
+                {
+                    foreach (var seeReference in child.Children.Where(c => c.TagName == "SEE"))
+                    {
+                        seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? string.Empty;
+                    }
+
+                    result.Summaries.Add(member.GetAttribute("name")!, HttpUtility.HtmlDecode(child.InnerHtml.Replace("\n", "").Trim()));
+                }
+                else if (child.TagName is "PARAM" && child.NextSibling is { NodeValue: {} text } && (text.Trim().Length) > 0)
+                {
+                    foreach (var seeReference in child.Children.Where(c => c.TagName == "SEE"))
+                    {
+                        seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? string.Empty;
+                    }
+
+                    result.Params.Add($"{child.GetAttribute("name")}-{member.GetAttribute("name")!}", HttpUtility.HtmlDecode(text.Replace("\n", "").Trim()));
+                }
             }
         }
 
         return result;
     }
+
+
 }

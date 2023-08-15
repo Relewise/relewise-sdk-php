@@ -17,11 +17,19 @@ class ContentCategorySearchResponse extends PaginatedSearchResponse
         $result = PaginatedSearchResponse::hydrateBase(new ContentCategorySearchResponse(), $arr);
         return $result;
     }
+    /**
+     * Sets hits to a new value.
+     * @param int $hits new value.
+     */
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    /**
+     * Sets statistics to a new value.
+     * @param Statistics $statistics new value.
+     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

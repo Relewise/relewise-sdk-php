@@ -32,16 +32,28 @@ class SearchRuleFilters
         }
         return $result;
     }
+    /**
+     * Sets term to a new value.
+     * @param ?string $term new value.
+     */
     function setTerm(?string $term)
     {
         $this->term = $term;
         return $this;
     }
+    /**
+     * Sets approved to a new value.
+     * @param ?bool $approved new value.
+     */
     function setApproved(?bool $approved)
     {
         $this->approved = $approved;
         return $this;
     }
+    /**
+     * Sets id to a new value.
+     * @param ?string $id new value.
+     */
     function setId(?string $id)
     {
         $this->id = $id;

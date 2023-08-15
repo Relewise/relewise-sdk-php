@@ -32,6 +32,7 @@ public class PhpWriter
         PhpPropertySetterMethodsWriter = new PhpPropertySetterMethodsWriter(this);
         PhpStaticReadonlyPropertiesWriter = new PhpStaticReadonlyPropertiesWriter(this);
         PhpSettablePropertiesWriter = new PhpSettablePropertiesWriter(this);
+        xmlDocumentation.PhpWriter = this;
     }
 
     public void WritePhpTypes(IEnumerable<Type> types)
@@ -122,5 +123,28 @@ public class PhpWriter
         }
 
         return "...";
+    }
+
+    public string DocumentationParameterTypeName(string typeName, Type type)
+    {
+        if (!typeName.EndsWith("array"))
+        {
+            return typeName;
+        }
+
+        if (type.IsArray)
+        {
+            return typeName.Replace("array", $"{PhpTypeName(type.GetElementType()!)}[]");
+        }
+        if (type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(List<>) || type.GetGenericTypeDefinition() == typeof(IEnumerable<>)))
+        {
+            return typeName.Replace("array", $"{PhpTypeName(type.GetGenericArguments()[0])}[]");
+        }
+        if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Dictionary<,>))
+        {
+            return typeName.Replace("array", $"array<{PhpTypeName(type.GetGenericArguments()[0])}, {PhpTypeName(type.GetGenericArguments()[1])}>");
+        }
+
+        throw new NotSupportedException($"Haven't supported this type for PHPDoc: {type.Name}");
     }
 }

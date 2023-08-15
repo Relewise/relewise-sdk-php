@@ -33,16 +33,28 @@ class SaveSynonymsRequest extends LicensedRequest
         }
         return $result;
     }
+    /**
+     * Sets synonyms to a new value.
+     * @param Synonym[] $synonyms new value.
+     */
     function setSynonyms(Synonym ... $synonyms)
     {
         $this->synonyms = $synonyms;
         return $this;
     }
+    /**
+     * Sets synonyms to a new value from an array.
+     * @param Synonym[] $synonyms new value.
+     */
     function setSynonymsFromArray(array $synonyms)
     {
         $this->synonyms = $synonyms;
         return $this;
     }
+    /**
+     * Adds a new element to synonyms.
+     * @param Synonym $synonyms new element.
+     */
     function addToSynonyms(Synonym $synonyms)
     {
         if (!isset($this->synonyms))
@@ -52,6 +64,10 @@ class SaveSynonymsRequest extends LicensedRequest
         array_push($this->synonyms, $synonyms);
         return $this;
     }
+    /**
+     * Sets modifiedBy to a new value.
+     * @param string $modifiedBy new value.
+     */
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

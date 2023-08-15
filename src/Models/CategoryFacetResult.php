@@ -25,21 +25,37 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         }
         return $result;
     }
+    /**
+     * Sets categorySelectionStrategy to a new value.
+     * @param CategorySelectionStrategy $categorySelectionStrategy new value.
+     */
     function setCategorySelectionStrategy(CategorySelectionStrategy $categorySelectionStrategy)
     {
         $this->categorySelectionStrategy = $categorySelectionStrategy;
         return $this;
     }
+    /**
+     * Sets selected to a new value.
+     * @param string[] $selected new value.
+     */
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    /**
+     * Sets selected to a new value from an array.
+     * @param string[] $selected new value.
+     */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    /**
+     * Adds a new element to selected.
+     * @param string $selected new element.
+     */
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -49,16 +65,28 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         array_push($this->selected, $selected);
         return $this;
     }
+    /**
+     * Sets available to a new value.
+     * @param CategoryNameAndIdResultAvailableFacetValue[] $available new value.
+     */
     function setAvailable(CategoryNameAndIdResultAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
+    /**
+     * Sets available to a new value from an array.
+     * @param CategoryNameAndIdResultAvailableFacetValue[] $available new value.
+     */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;
     }
+    /**
+     * Adds a new element to available.
+     * @param CategoryNameAndIdResultAvailableFacetValue $available new element.
+     */
     function addToAvailable(CategoryNameAndIdResultAvailableFacetValue $available)
     {
         if (!isset($this->available))
@@ -68,6 +96,10 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         array_push($this->available, $available);
         return $this;
     }
+    /**
+     * Sets field to a new value.
+     * @param FacetingField $field new value.
+     */
     function setField(FacetingField $field)
     {
         $this->field = $field;

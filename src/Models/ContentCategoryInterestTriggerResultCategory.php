@@ -40,16 +40,28 @@ class ContentCategoryInterestTriggerResultCategory
         }
         return $result;
     }
+    /**
+     * Sets lastPath to a new value.
+     * @param string[] $lastPath new value.
+     */
     function setLastPath(string ... $lastPath)
     {
         $this->lastPath = $lastPath;
         return $this;
     }
+    /**
+     * Sets lastPath to a new value from an array.
+     * @param string[] $lastPath new value.
+     */
     function setLastPathFromArray(array $lastPath)
     {
         $this->lastPath = $lastPath;
         return $this;
     }
+    /**
+     * Adds a new element to lastPath.
+     * @param string $lastPath new element.
+     */
     function addToLastPath(string $lastPath)
     {
         if (!isset($this->lastPath))
@@ -59,21 +71,37 @@ class ContentCategoryInterestTriggerResultCategory
         array_push($this->lastPath, $lastPath);
         return $this;
     }
+    /**
+     * Sets views to a new value.
+     * @param int $views new value.
+     */
     function setViews(int $views)
     {
         $this->views = $views;
         return $this;
     }
+    /**
+     * Sets viewedContents to a new value.
+     * @param ContentResultDetails[] $viewedContents new value.
+     */
     function setViewedContents(ContentResultDetails ... $viewedContents)
     {
         $this->viewedContents = $viewedContents;
         return $this;
     }
+    /**
+     * Sets viewedContents to a new value from an array.
+     * @param ContentResultDetails[] $viewedContents new value.
+     */
     function setViewedContentsFromArray(array $viewedContents)
     {
         $this->viewedContents = $viewedContents;
         return $this;
     }
+    /**
+     * Adds a new element to viewedContents.
+     * @param ContentResultDetails $viewedContents new element.
+     */
     function addToViewedContents(ContentResultDetails $viewedContents)
     {
         if (!isset($this->viewedContents))

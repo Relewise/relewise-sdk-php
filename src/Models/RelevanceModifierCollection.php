@@ -4,12 +4,13 @@ namespace Relewise\Models;
 
 use DateTime;
 
-/** a collection that contains multiple <see cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier">s in its inner list <see cref="P:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifierCollection.Items">.            </see></see> */
+/** a collection that contains multiple RelevanceModifiers in its inner list Items. */
 class RelevanceModifierCollection
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.RelevanceModifierCollection, Relewise.Client";
     /** The items that the this collection holds. */
     public ?array $items;
+    /** Creates <inheritdoc cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifierCollection" path="/summary">            </inheritdoc> */
     public static function create(RelevanceModifier ... $relevanceModifiers) : RelevanceModifierCollection
     {
         $result = new RelevanceModifierCollection();
@@ -29,16 +30,28 @@ class RelevanceModifierCollection
         }
         return $result;
     }
+    /**
+     * Sets items to a new value.
+     * @param ?RelevanceModifier[] $items new value.
+     */
     function setItems(RelevanceModifier ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    /**
+     * Sets items to a new value from an array.
+     * @param ?RelevanceModifier[] $items new value.
+     */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    /**
+     * Adds a new element to items.
+     * @param RelevanceModifier $items new element.
+     */
     function addToItems(RelevanceModifier $items)
     {
         if (!isset($this->items))

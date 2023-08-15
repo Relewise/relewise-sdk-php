@@ -33,21 +33,37 @@ class PredictionRulePromotion
         }
         return $result;
     }
+    /**
+     * Sets to to a new value.
+     * @param PromotionPosition $to new value.
+     */
     function setTo(PromotionPosition $to)
     {
         $this->to = $to;
         return $this;
     }
+    /**
+     * Sets values to a new value.
+     * @param string[] $values new value.
+     */
     function setValues(string ... $values)
     {
         $this->values = $values;
         return $this;
     }
+    /**
+     * Sets values to a new value from an array.
+     * @param string[] $values new value.
+     */
     function setValuesFromArray(array $values)
     {
         $this->values = $values;
         return $this;
     }
+    /**
+     * Adds a new element to values.
+     * @param string $values new element.
+     */
     function addToValues(string $values)
     {
         if (!isset($this->values))

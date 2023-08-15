@@ -90,26 +90,46 @@ class ContentResultDetails
         }
         return $result;
     }
+    /**
+     * Sets contentId to a new value.
+     * @param string $contentId new value.
+     */
     function setContentId(string $contentId)
     {
         $this->contentId = $contentId;
         return $this;
     }
+    /**
+     * Sets displayName to a new value.
+     * @param Multilingual $displayName new value.
+     */
     function setDisplayName(Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    /**
+     * Sets assortments to a new value.
+     * @param int[] $assortments new value.
+     */
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    /**
+     * Sets assortments to a new value from an array.
+     * @param int[] $assortments new value.
+     */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    /**
+     * Adds a new element to assortments.
+     * @param int $assortments new element.
+     */
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -119,6 +139,11 @@ class ContentResultDetails
         array_push($this->assortments, $assortments);
         return $this;
     }
+    /**
+     * Sets the value of a specific key in data.
+     * @param string $key index.
+     * @param DataValue $value new value.
+     */
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -128,21 +153,37 @@ class ContentResultDetails
         $this->data[$key] = $value;
         return $this;
     }
+    /**
+     * Sets data to a new value.
+     * @param array<string, DataValue> $data associative array.
+     */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
         return $this;
     }
+    /**
+     * Sets categoryPaths to a new value.
+     * @param CategoryPathResultDetails[] $categoryPaths new value.
+     */
     function setCategoryPaths(CategoryPathResultDetails ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    /**
+     * Sets categoryPaths to a new value from an array.
+     * @param CategoryPathResultDetails[] $categoryPaths new value.
+     */
     function setCategoryPathsFromArray(array $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    /**
+     * Adds a new element to categoryPaths.
+     * @param CategoryPathResultDetails $categoryPaths new element.
+     */
     function addToCategoryPaths(CategoryPathResultDetails $categoryPaths)
     {
         if (!isset($this->categoryPaths))
@@ -152,36 +193,64 @@ class ContentResultDetails
         array_push($this->categoryPaths, $categoryPaths);
         return $this;
     }
+    /**
+     * Sets viewedByUser to a new value.
+     * @param ViewedByUserInfo $viewedByUser new value.
+     */
     function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;
     }
+    /**
+     * Sets createdUtc to a new value.
+     * @param DateTime $createdUtc new value.
+     */
     function setCreatedUtc(DateTime $createdUtc)
     {
         $this->createdUtc = $createdUtc;
         return $this;
     }
+    /**
+     * Sets lastViewedUtc to a new value.
+     * @param ?DateTime $lastViewedUtc new value.
+     */
     function setLastViewedUtc(?DateTime $lastViewedUtc)
     {
         $this->lastViewedUtc = $lastViewedUtc;
         return $this;
     }
+    /**
+     * Sets viewedTotalNumberOfTimes to a new value.
+     * @param int $viewedTotalNumberOfTimes new value.
+     */
     function setViewedTotalNumberOfTimes(int $viewedTotalNumberOfTimes)
     {
         $this->viewedTotalNumberOfTimes = $viewedTotalNumberOfTimes;
         return $this;
     }
+    /**
+     * Sets viewedByDifferentNumberOfUsers to a new value.
+     * @param int $viewedByDifferentNumberOfUsers new value.
+     */
     function setViewedByDifferentNumberOfUsers(int $viewedByDifferentNumberOfUsers)
     {
         $this->viewedByDifferentNumberOfUsers = $viewedByDifferentNumberOfUsers;
         return $this;
     }
+    /**
+     * Sets disabled to a new value.
+     * @param bool $disabled new value.
+     */
     function setDisabled(bool $disabled)
     {
         $this->disabled = $disabled;
         return $this;
     }
+    /**
+     * Sets deleted to a new value.
+     * @param bool $deleted new value.
+     */
     function setDeleted(bool $deleted)
     {
         $this->deleted = $deleted;

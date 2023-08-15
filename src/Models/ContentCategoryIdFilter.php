@@ -19,16 +19,28 @@ class ContentCategoryIdFilter extends CategoryIdFilter
         $result = CategoryIdFilter::hydrateBase(new ContentCategoryIdFilter(), $arr);
         return $result;
     }
+    /**
+     * Sets categoryIds to a new value.
+     * @param string[] $categoryIds new value.
+     */
     function setCategoryIds(string ... $categoryIds)
     {
         $this->categoryIds = $categoryIds;
         return $this;
     }
+    /**
+     * Sets categoryIds to a new value from an array.
+     * @param string[] $categoryIds new value.
+     */
     function setCategoryIdsFromArray(array $categoryIds)
     {
         $this->categoryIds = $categoryIds;
         return $this;
     }
+    /**
+     * Adds a new element to categoryIds.
+     * @param string $categoryIds new element.
+     */
     function addToCategoryIds(string $categoryIds)
     {
         if (!isset($this->categoryIds))
@@ -38,11 +50,19 @@ class ContentCategoryIdFilter extends CategoryIdFilter
         array_push($this->categoryIds, $categoryIds);
         return $this;
     }
+    /**
+     * Sets evaluationScope to a new value.
+     * @param CategoryScope $evaluationScope new value.
+     */
     function setEvaluationScope(CategoryScope $evaluationScope)
     {
         $this->evaluationScope = $evaluationScope;
         return $this;
     }
+    /**
+     * Sets negated to a new value.
+     * @param bool $negated new value.
+     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
