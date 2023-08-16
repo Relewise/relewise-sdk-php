@@ -171,11 +171,9 @@ class TrackerTest extends BaseTestCase
             ProductAdministrativeAction::create(
                 Language::UNDEFINED,
                 Currency::UNDEFINED,
+                FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_delete_test")),
                 ProductAdministrativeActionUpdateKind::Delete
             )->setVariantUpdateKind(ProductAdministrativeActionUpdateKind::None)
-            ->setFilters(
-                FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_delete_test"))
-            )
         );
 
         $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
@@ -207,11 +205,9 @@ class TrackerTest extends BaseTestCase
             ProductAdministrativeAction::create(
                 Language::UNDEFINED,
                 Currency::UNDEFINED,
+                FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_disable_test")),
                 ProductAdministrativeActionUpdateKind::Enable
             )->setVariantUpdateKind(ProductAdministrativeActionUpdateKind::None)
-            ->setFilters(
-                FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_disable_test"))
-            )
         );
         $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
 
@@ -237,11 +233,9 @@ class TrackerTest extends BaseTestCase
             ProductAdministrativeAction::create(
                 Language::UNDEFINED,
                 Currency::UNDEFINED,
+                FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_disable_test")),
                 ProductAdministrativeActionUpdateKind::Disable
             )->setVariantUpdateKind(ProductAdministrativeActionUpdateKind::None)
-            ->setFilters(
-                FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_disable_test"))
-            )
         );
 
         $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);

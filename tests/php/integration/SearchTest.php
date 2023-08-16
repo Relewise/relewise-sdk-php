@@ -6,6 +6,7 @@ use \PHPUnit\Framework\TestCase;
 use Relewise\Factory\UserFactory;
 use Relewise\Models\Currency;
 use Relewise\Models\DataDoubleSelector;
+use Relewise\Models\EqualsCondition;
 use Relewise\Models\Language;
 use Relewise\Models\ProductCategorySearchRequest;
 use Relewise\Models\ProductDataRelevanceModifier;
@@ -31,6 +32,7 @@ class SearchTest extends BaseTestCase
             RelevanceModifierCollection::create(
                 ProductDataRelevanceModifier::create(
                     "NoveltyBoostModifier",
+                    array(),
                     DataDoubleSelector::create("NoveltyBoostModifier")
                 )
             )
@@ -59,6 +61,7 @@ class SearchTest extends BaseTestCase
             RelevanceModifierCollection::create(
                 ProductDataRelevanceModifier::create(
                     "NoveltyBoostModifier",
+                    array(),
                     DataDoubleSelector::create("NoveltyBoostModifier")
                 )
             )
