@@ -2,7 +2,6 @@
 
 namespace Relewise\Tests\Integration;
 
-use GuzzleHttp\Promise\Create;
 use \PHPUnit\Framework\TestCase;
 use Relewise\Factory\DataValueFactory;
 use Relewise\Factory\UserFactory;
