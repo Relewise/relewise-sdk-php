@@ -14,6 +14,7 @@ class Order extends Trackable
     public string $cartName;
     public ?string $channel;
     public ?string $subChannel;
+    /** @deprecated Use OrderNumber instead. */
     public ?string $trackingNumber;
     public static function create(User $user, Money $subtotal, string $orderNumber, array $lineItems, string $cartName = "default") : Order
     {
@@ -153,6 +154,7 @@ class Order extends Trackable
     }
     /**
      * Sets trackingNumber to a new value.
+     * @deprecated Use OrderNumber instead.
      * @param ?string $trackingNumber new value.
      */
     function setTrackingNumber(?string $trackingNumber)

@@ -11,6 +11,7 @@ class VariantDataRelevanceModifier extends RelevanceModifier
     public string $key;
     /** Specifies whether variants that don't have the specific data Key should be considered a match () or not (). */
     public bool $considerAsMatchIfKeyIsNotFound;
+    /** @deprecated Use MultiplierSelector instead */
     public float $multiplyWeightBy;
     public bool $mustMatchAllConditions;
     /** The conditions that must hold for the specific data Key in order for the variant to be boosted. */
@@ -80,6 +81,7 @@ class VariantDataRelevanceModifier extends RelevanceModifier
     }
     /**
      * Sets multiplyWeightBy to a new value.
+     * @deprecated Use MultiplierSelector instead
      * @param float $multiplyWeightBy new value.
      */
     function setMultiplyWeightBy(float $multiplyWeightBy)

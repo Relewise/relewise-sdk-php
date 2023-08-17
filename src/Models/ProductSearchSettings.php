@@ -10,6 +10,7 @@ class ProductSearchSettings extends SearchSettings
     public ?SelectedProductPropertiesSettings $selectedProductProperties;
     public ?SelectedVariantPropertiesSettings $selectedVariantProperties;
     public ?int $explodedVariants;
+    /** @deprecated Not currently in use */
     public RecommendationSettings $recommendations;
     public ?SelectedBrandPropertiesSettings $selectedBrandProperties;
     public ?VariantSearchSettings $variantSettings;
@@ -76,6 +77,7 @@ class ProductSearchSettings extends SearchSettings
     }
     /**
      * Sets recommendations to a new value.
+     * @deprecated Not currently in use
      * @param RecommendationSettings $recommendations new value.
      */
     function setRecommendations(RecommendationSettings $recommendations)

@@ -16,9 +16,12 @@ public class PhpSettablePropertiesWriter
 
     public void Write(IndentedTextWriter writer, Type classType, (PropertyInfo type, string propertyTypeName, string propertyName, string lowerCaseName)[] ownedProperties)
     {
-        foreach (var (_, propertyTypeName, propertyName, lowerCaseName) in ownedProperties)
+        foreach (var (propertyInfo, propertyTypeName, propertyName, lowerCaseName) in ownedProperties)
         {
-            writer.WriteCommentBlock(phpWriter.XmlDocumentation.GetSummary(classType, propertyName));
+            writer.WriteCommentBlock(
+                phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
+                propertyInfo.GetCustomAttribute(typeof(ObsoleteAttribute)) is ObsoleteAttribute { } obsolete ? $"@deprecated {obsolete.Message}" : null
+                );
 
             writer.WriteLine($"public {propertyTypeName} ${lowerCaseName};");
         }

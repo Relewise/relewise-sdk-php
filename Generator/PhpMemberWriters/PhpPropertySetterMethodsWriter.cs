@@ -18,6 +18,7 @@ public class PhpPropertySetterMethodsWriter
     {
         foreach (var (info, propertyTypeName, propertyName, lowerCaseName) in propertyInformations)
         {
+            var deprecationComment = info.GetCustomAttribute(typeof(ObsoleteAttribute)) is ObsoleteAttribute { } obsolete ? $"@deprecated {obsolete.Message}" : null;
             var propertyType = info.PropertyType;
             if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(Dictionary<,>) && propertyType.GenericTypeArguments is [var keyType, var valueType])
             {
@@ -25,6 +26,7 @@ public class PhpPropertySetterMethodsWriter
                 var valueTypeName = phpWriter.PhpTypeName(valueType);
                 writer.WriteCommentBlock(
                     $"Sets the value of a specific key in {lowerCaseName}.",
+                    deprecationComment,
                     $"@param {phpWriter.DocumentationParameterTypeName(keyTypeName, keyType)} $key index.",
                     $"@param {phpWriter.DocumentationParameterTypeName(valueTypeName, valueType)} $value new value."
                 );
@@ -44,6 +46,7 @@ public class PhpPropertySetterMethodsWriter
 
                 writer.WriteCommentBlock(
                     $"Sets {lowerCaseName} to a new value.",
+                    deprecationComment,
                     $"@param {phpWriter.DocumentationParameterTypeName(phpWriter.PhpTypeName(info), propertyType)} ${lowerCaseName} associative array."
                 );
                 writer.WriteLine($"function set{propertyName}FromAssociativeArray(array ${lowerCaseName})");
@@ -58,6 +61,7 @@ public class PhpPropertySetterMethodsWriter
             {
                 writer.WriteCommentBlock(
                     $"Sets {lowerCaseName} to a new value.",
+                    deprecationComment,
                     $"@param {phpWriter.DocumentationParameterTypeName(phpWriter.PhpTypeName(info), propertyType)} ${lowerCaseName} new value."
                 );
                 var parameterType = phpWriter.BetterTypedParameterTypeName(propertyTypeName, propertyType);
@@ -83,6 +87,7 @@ public class PhpPropertySetterMethodsWriter
             {
                 writer.WriteCommentBlock(
                     $"Sets {lowerCaseName} to a new value from an array.",
+                    deprecationComment,
                     $"@param {phpWriter.DocumentationParameterTypeName(phpWriter.PhpTypeName(info), propertyType)} ${lowerCaseName} new value."
                 );
                 writer.WriteLine($"function set{propertyName}FromArray(array ${lowerCaseName})");
@@ -95,6 +100,7 @@ public class PhpPropertySetterMethodsWriter
 
                 writer.WriteCommentBlock(
                     $"Adds a new element to {lowerCaseName}.",
+                    deprecationComment,
                     $"@param {phpWriter.DocumentationParameterTypeName(phpWriter.PhpTypeName(elementType), elementType)} ${lowerCaseName} new element."
                 );
                 writer.WriteLine($"function addTo{propertyName}({phpWriter.PhpTypeName(elementType)} ${lowerCaseName})");

@@ -12,6 +12,7 @@ class ProductDataRelevanceModifier extends RelevanceModifier
     public string $key;
     /** Specifies whether products that don't have the specific data Key should be considered a match () or not (). */
     public bool $considerAsMatchIfKeyIsNotFound;
+    /** @deprecated Use MultiplierSelector instead */
     public float $multiplyWeightBy;
     /** Specifies whether all Conditions should parse their test on the specific data Key () or if only one is required (). */
     public bool $mustMatchAllConditions;
@@ -84,6 +85,7 @@ class ProductDataRelevanceModifier extends RelevanceModifier
     }
     /**
      * Sets multiplyWeightBy to a new value.
+     * @deprecated Use MultiplierSelector instead
      * @param float $multiplyWeightBy new value.
      */
     function setMultiplyWeightBy(float $multiplyWeightBy)
