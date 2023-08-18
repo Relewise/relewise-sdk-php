@@ -88,12 +88,7 @@ public class PhpPropertySetterMethodsWriter
                 writer.WriteLine("}");
 
                 var elementTypeName = phpWriter.PhpTypeName(elementType);
-
-                writer.WriteCommentBlock(
-                    $"Adds a new element to {lowerCaseName}.",
-                    deprecationComment,
-                    $"@param {phpWriter.DocumentationParameterTypeName(elementTypeName, elementType)} ${lowerCaseName} new element."
-                );
+                
                 writer.WriteLine($"function addTo{propertyName}({elementTypeName} ${lowerCaseName})");
                 writer.WriteLine("{");
                 writer.Indent++;
