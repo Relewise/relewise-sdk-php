@@ -50,10 +50,6 @@ class ProductPerformanceResult
         $this->classifications = $classifications;
         return $this;
     }
-    /**
-     * Adds a new element to classifications.
-     * @param ProductPerformanceResultClassificationMetrics $classifications new element.
-     */
     function addToClassifications(ProductPerformanceResultClassificationMetrics $classifications)
     {
         if (!isset($this->classifications))

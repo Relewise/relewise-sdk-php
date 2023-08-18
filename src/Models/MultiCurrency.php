@@ -41,10 +41,6 @@ class MultiCurrency
         $this->values = $values;
         return $this;
     }
-    /**
-     * Adds a new element to values.
-     * @param Money $values new element.
-     */
     function addToValues(Money $values)
     {
         if (!isset($this->values))

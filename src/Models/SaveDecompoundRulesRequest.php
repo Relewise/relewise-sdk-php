@@ -32,10 +32,6 @@ class SaveDecompoundRulesRequest extends DecompoundRuleSaveSearchRulesRequest
         $this->rules = $rules;
         return $this;
     }
-    /**
-     * Adds a new element to rules.
-     * @param DecompoundRule $rules new element.
-     */
     function addToRules(DecompoundRule $rules)
     {
         if (!isset($this->rules))

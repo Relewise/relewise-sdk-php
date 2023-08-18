@@ -40,10 +40,6 @@ class SearchTermPredictionResponse extends SearchResponse
         $this->predictions = $predictions;
         return $this;
     }
-    /**
-     * Adds a new element to predictions.
-     * @param SearchTermPredictionResult $predictions new element.
-     */
     function addToPredictions(SearchTermPredictionResult $predictions)
     {
         if (!isset($this->predictions))

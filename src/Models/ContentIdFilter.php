@@ -41,10 +41,6 @@ class ContentIdFilter extends Filter
         $this->contentIds = $contentIds;
         return $this;
     }
-    /**
-     * Adds a new element to contentIds.
-     * @param string $contentIds new element.
-     */
     function addToContentIds(string $contentIds)
     {
         if (!isset($this->contentIds))

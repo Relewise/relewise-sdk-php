@@ -44,10 +44,6 @@ class ContentDataBooleanValueFacet extends boolContentDataValueFacet
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Adds a new element to selected.
-     * @param bool $selected new element.
-     */
     function addToSelected(bool $selected)
     {
         if (!isset($this->selected))

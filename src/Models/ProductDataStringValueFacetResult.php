@@ -51,10 +51,6 @@ class ProductDataStringValueFacetResult extends stringProductDataValueFacetResul
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Adds a new element to selected.
-     * @param string $selected new element.
-     */
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -78,10 +74,6 @@ class ProductDataStringValueFacetResult extends stringProductDataValueFacetResul
         $this->available = $available;
         return $this;
     }
-    /**
-     * Adds a new element to available.
-     * @param stringAvailableFacetValue $available new element.
-     */
     function addToAvailable(stringAvailableFacetValue $available)
     {
         if (!isset($this->available))

@@ -47,10 +47,6 @@ class SynonymsResponse extends TimedResponse
         $this->values = $values;
         return $this;
     }
-    /**
-     * Adds a new element to values.
-     * @param Synonym $values new element.
-     */
     function addToValues(Synonym $values)
     {
         if (!isset($this->values))

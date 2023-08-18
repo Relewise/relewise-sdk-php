@@ -40,10 +40,6 @@ class SearchTermPredictionSettings extends SearchSettings
         $this->targetEntityTypes = $targetEntityTypes;
         return $this;
     }
-    /**
-     * Adds a new element to targetEntityTypes.
-     * @param EntityType $targetEntityTypes new element.
-     */
     function addToTargetEntityTypes(EntityType $targetEntityTypes)
     {
         if (!isset($this->targetEntityTypes))

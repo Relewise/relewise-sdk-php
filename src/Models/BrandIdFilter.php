@@ -41,10 +41,6 @@ class BrandIdFilter extends Filter
         $this->brandIds = $brandIds;
         return $this;
     }
-    /**
-     * Adds a new element to brandIds.
-     * @param string $brandIds new element.
-     */
     function addToBrandIds(string $brandIds)
     {
         if (!isset($this->brandIds))

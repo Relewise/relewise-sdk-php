@@ -74,10 +74,6 @@ class SearchTermPredictionResult
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;
     }
-    /**
-     * Adds a new element to expectedResultTypes.
-     * @param ExpectedSearchTermResult $expectedResultTypes new element.
-     */
     function addToExpectedResultTypes(ExpectedSearchTermResult $expectedResultTypes)
     {
         if (!isset($this->expectedResultTypes))
@@ -106,10 +102,6 @@ class SearchTermPredictionResult
         $this->correctedWordsMask = $correctedWordsMask;
         return $this;
     }
-    /**
-     * Adds a new element to correctedWordsMask.
-     * @param bool $correctedWordsMask new element.
-     */
     function addToCorrectedWordsMask(bool $correctedWordsMask)
     {
         if (!isset($this->correctedWordsMask))

@@ -41,10 +41,6 @@ class Multilingual
         $this->values = $values;
         return $this;
     }
-    /**
-     * Adds a new element to values.
-     * @param MultilingualValue $values new element.
-     */
     function addToValues(MultilingualValue $values)
     {
         if (!isset($this->values))

@@ -67,10 +67,6 @@ class DecompoundRule extends SearchRule
         $this->modifiers = $modifiers;
         return $this;
     }
-    /**
-     * Adds a new element to modifiers.
-     * @param string $modifiers new element.
-     */
     function addToModifiers(string $modifiers)
     {
         if (!isset($this->modifiers))

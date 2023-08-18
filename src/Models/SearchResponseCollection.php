@@ -40,10 +40,6 @@ class SearchResponseCollection extends SearchResponse
         $this->responses = $responses;
         return $this;
     }
-    /**
-     * Adds a new element to responses.
-     * @param SearchResponse $responses new element.
-     */
     function addToResponses(SearchResponse $responses)
     {
         if (!isset($this->responses))

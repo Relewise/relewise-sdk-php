@@ -40,10 +40,6 @@ class ContextConditionConfiguration
         $this->filters = $filters;
         return $this;
     }
-    /**
-     * Adds a new element to filters.
-     * @param RequestContextFilter $filters new element.
-     */
     function addToFilters(RequestContextFilter $filters)
     {
         if (!isset($this->filters))

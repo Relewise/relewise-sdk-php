@@ -64,10 +64,6 @@ abstract class boolboolValueFacetResult extends FacetResult
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Adds a new element to selected.
-     * @param bool $selected new element.
-     */
     function addToSelected(bool $selected)
     {
         if (!isset($this->selected))
@@ -91,10 +87,6 @@ abstract class boolboolValueFacetResult extends FacetResult
         $this->available = $available;
         return $this;
     }
-    /**
-     * Adds a new element to available.
-     * @param boolAvailableFacetValue $available new element.
-     */
     function addToAvailable(boolAvailableFacetValue $available)
     {
         if (!isset($this->available))

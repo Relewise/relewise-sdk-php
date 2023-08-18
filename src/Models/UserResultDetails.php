@@ -239,10 +239,6 @@ class UserResultDetails
         $this->temporaryIds = $temporaryIds;
         return $this;
     }
-    /**
-     * Adds a new element to temporaryIds.
-     * @param string $temporaryIds new element.
-     */
     function addToTemporaryIds(string $temporaryIds)
     {
         if (!isset($this->temporaryIds))

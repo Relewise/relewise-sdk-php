@@ -54,10 +54,6 @@ class ObjectValueInRangeCondition extends ObjectValueCondition
         $this->objectPath = $objectPath;
         return $this;
     }
-    /**
-     * Adds a new element to objectPath.
-     * @param string $objectPath new element.
-     */
     function addToObjectPath(string $objectPath)
     {
         if (!isset($this->objectPath))

@@ -51,10 +51,6 @@ class ProductDataDoubleRangesFacetResult extends floatProductDataRangesFacetResu
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Adds a new element to selected.
-     * @param ?floatChainableRange $selected new element.
-     */
     function addToSelected(?floatChainableRange $selected)
     {
         if (!isset($this->selected))
@@ -78,10 +74,6 @@ class ProductDataDoubleRangesFacetResult extends floatProductDataRangesFacetResu
         $this->available = $available;
         return $this;
     }
-    /**
-     * Adds a new element to available.
-     * @param ?floatChainableRangeAvailableFacetValue $available new element.
-     */
     function addToAvailable(?floatChainableRangeAvailableFacetValue $available)
     {
         if (!isset($this->available))

@@ -45,10 +45,6 @@ class ContentDataIntegerValueFacetResult extends intContentDataValueFacetResult
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Adds a new element to selected.
-     * @param int $selected new element.
-     */
     function addToSelected(int $selected)
     {
         if (!isset($this->selected))
@@ -72,10 +68,6 @@ class ContentDataIntegerValueFacetResult extends intContentDataValueFacetResult
         $this->available = $available;
         return $this;
     }
-    /**
-     * Adds a new element to available.
-     * @param intAvailableFacetValue $available new element.
-     */
     function addToAvailable(intAvailableFacetValue $available)
     {
         if (!isset($this->available))

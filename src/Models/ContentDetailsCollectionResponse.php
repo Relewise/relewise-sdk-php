@@ -47,10 +47,6 @@ class ContentDetailsCollectionResponse extends TimedResponse
         $this->contents = $contents;
         return $this;
     }
-    /**
-     * Adds a new element to contents.
-     * @param ContentResultDetails $contents new element.
-     */
     function addToContents(ContentResultDetails $contents)
     {
         if (!isset($this->contents))

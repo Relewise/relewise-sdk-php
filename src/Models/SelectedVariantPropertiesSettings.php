@@ -99,10 +99,6 @@ class SelectedVariantPropertiesSettings
         $this->dataKeys = $dataKeys;
         return $this;
     }
-    /**
-     * Adds a new element to dataKeys.
-     * @param string $dataKeys new element.
-     */
     function addToDataKeys(string $dataKeys)
     {
         if (!isset($this->dataKeys))
@@ -126,10 +122,6 @@ class SelectedVariantPropertiesSettings
         $this->specificationKeys = $specificationKeys;
         return $this;
     }
-    /**
-     * Adds a new element to specificationKeys.
-     * @param string $specificationKeys new element.
-     */
     function addToSpecificationKeys(string $specificationKeys)
     {
         if (!isset($this->specificationKeys))

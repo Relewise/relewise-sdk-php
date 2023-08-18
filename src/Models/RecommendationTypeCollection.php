@@ -40,10 +40,6 @@ class RecommendationTypeCollection
         $this->unionCodes = $unionCodes;
         return $this;
     }
-    /**
-     * Adds a new element to unionCodes.
-     * @param int $unionCodes new element.
-     */
     function addToUnionCodes(int $unionCodes)
     {
         if (!isset($this->unionCodes))

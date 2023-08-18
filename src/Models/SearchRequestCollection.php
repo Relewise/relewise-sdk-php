@@ -41,10 +41,6 @@ class SearchRequestCollection extends SearchRequest
         $this->requests = $requests;
         return $this;
     }
-    /**
-     * Adds a new element to requests.
-     * @param SearchRequest $requests new element.
-     */
     function addToRequests(SearchRequest $requests)
     {
         if (!isset($this->requests))

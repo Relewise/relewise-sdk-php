@@ -42,10 +42,6 @@ class ProductCategory extends Category
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
-    /**
-     * Adds a new element to categoryPaths.
-     * @param CategoryPath $categoryPaths new element.
-     */
     function addToCategoryPaths(CategoryPath $categoryPaths)
     {
         if (!isset($this->categoryPaths))
@@ -69,10 +65,6 @@ class ProductCategory extends Category
         $this->assortments = $assortments;
         return $this;
     }
-    /**
-     * Adds a new element to assortments.
-     * @param int $assortments new element.
-     */
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))

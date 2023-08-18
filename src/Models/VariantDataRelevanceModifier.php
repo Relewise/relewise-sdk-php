@@ -95,10 +95,6 @@ class VariantDataRelevanceModifier extends RelevanceModifier
         $this->conditions = $conditions;
         return $this;
     }
-    /**
-     * Adds a new element to conditions.
-     * @param ValueCondition $conditions new element.
-     */
     function addToConditions(ValueCondition $conditions)
     {
         if (!isset($this->conditions))

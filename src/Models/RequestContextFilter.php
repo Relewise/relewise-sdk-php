@@ -78,10 +78,6 @@ class RequestContextFilter
         $this->locations = $locations;
         return $this;
     }
-    /**
-     * Adds a new element to locations.
-     * @param string $locations new element.
-     */
     function addToLocations(string $locations)
     {
         if (!isset($this->locations))
@@ -105,10 +101,6 @@ class RequestContextFilter
         $this->languages = $languages;
         return $this;
     }
-    /**
-     * Adds a new element to languages.
-     * @param Language $languages new element.
-     */
     function addToLanguages(Language $languages)
     {
         if (!isset($this->languages))
@@ -132,10 +124,6 @@ class RequestContextFilter
         $this->currencies = $currencies;
         return $this;
     }
-    /**
-     * Adds a new element to currencies.
-     * @param Currency $currencies new element.
-     */
     function addToCurrencies(Currency $currencies)
     {
         if (!isset($this->currencies))

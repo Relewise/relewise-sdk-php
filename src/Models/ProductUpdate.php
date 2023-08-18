@@ -74,10 +74,6 @@ class ProductUpdate extends Trackable
         $this->variants = $variants;
         return $this;
     }
-    /**
-     * Adds a new element to variants.
-     * @param ProductVariant $variants new element.
-     */
     function addToVariants(ProductVariant $variants)
     {
         if (!isset($this->variants))

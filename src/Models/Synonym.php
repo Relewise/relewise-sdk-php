@@ -132,10 +132,6 @@ class Synonym
         $this->indexes = $indexes;
         return $this;
     }
-    /**
-     * Adds a new element to indexes.
-     * @param string $indexes new element.
-     */
     function addToIndexes(string $indexes)
     {
         if (!isset($this->indexes))
@@ -159,10 +155,6 @@ class Synonym
         $this->languages = $languages;
         return $this;
     }
-    /**
-     * Adds a new element to languages.
-     * @param Language $languages new element.
-     */
     function addToLanguages(Language $languages)
     {
         if (!isset($this->languages))
@@ -206,10 +198,6 @@ class Synonym
         $this->from = $from;
         return $this;
     }
-    /**
-     * Adds a new element to from.
-     * @param string $from new element.
-     */
     function addToFrom(string $from)
     {
         if (!isset($this->from))
@@ -233,10 +221,6 @@ class Synonym
         $this->words = $words;
         return $this;
     }
-    /**
-     * Adds a new element to words.
-     * @param string $words new element.
-     */
     function addToWords(string $words)
     {
         if (!isset($this->words))

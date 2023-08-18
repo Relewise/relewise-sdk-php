@@ -47,10 +47,6 @@ class ProductRecommendationRequestCollection extends LicensedRequest
         $this->requests = $requests;
         return $this;
     }
-    /**
-     * Adds a new element to requests.
-     * @param ProductRecommendationRequest $requests new element.
-     */
     function addToRequests(ProductRecommendationRequest $requests)
     {
         if (!isset($this->requests))

@@ -44,10 +44,6 @@ class VariantSpecificationFacetResult extends stringValueFacetResult
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Adds a new element to selected.
-     * @param string $selected new element.
-     */
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -71,10 +67,6 @@ class VariantSpecificationFacetResult extends stringValueFacetResult
         $this->available = $available;
         return $this;
     }
-    /**
-     * Adds a new element to available.
-     * @param stringAvailableFacetValue $available new element.
-     */
     function addToAvailable(stringAvailableFacetValue $available)
     {
         if (!isset($this->available))

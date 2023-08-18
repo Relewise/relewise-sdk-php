@@ -119,10 +119,6 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         $this->assortments = $assortments;
         return $this;
     }
-    /**
-     * Adds a new element to assortments.
-     * @param int $assortments new element.
-     */
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -194,10 +190,6 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         $this->childCategories = $childCategories;
         return $this;
     }
-    /**
-     * Adds a new element to childCategories.
-     * @param ContentCategoryResultDetails $childCategories new element.
-     */
     function addToChildCategories(ContentCategoryResultDetails $childCategories)
     {
         if (!isset($this->childCategories))
@@ -221,10 +213,6 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         $this->parentCategories = $parentCategories;
         return $this;
     }
-    /**
-     * Adds a new element to parentCategories.
-     * @param ContentCategoryResultDetails $parentCategories new element.
-     */
     function addToParentCategories(ContentCategoryResultDetails $parentCategories)
     {
         if (!isset($this->parentCategories))

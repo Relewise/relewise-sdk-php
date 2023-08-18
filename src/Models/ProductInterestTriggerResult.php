@@ -50,10 +50,6 @@ class ProductInterestTriggerResult
         $this->products = $products;
         return $this;
     }
-    /**
-     * Adds a new element to products.
-     * @param ProductInterestTriggerResultProductAndVariant $products new element.
-     */
     function addToProducts(ProductInterestTriggerResultProductAndVariant $products)
     {
         if (!isset($this->products))

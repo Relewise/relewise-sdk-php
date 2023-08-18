@@ -41,10 +41,6 @@ class ProductIdFilter extends Filter
         $this->productIds = $productIds;
         return $this;
     }
-    /**
-     * Adds a new element to productIds.
-     * @param string $productIds new element.
-     */
     function addToProductIds(string $productIds)
     {
         if (!isset($this->productIds))

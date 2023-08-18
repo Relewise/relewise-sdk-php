@@ -74,10 +74,6 @@ class SearchTermCondition
         $this->andConditions = $andConditions;
         return $this;
     }
-    /**
-     * Adds a new element to andConditions.
-     * @param SearchTermCondition $andConditions new element.
-     */
     function addToAndConditions(SearchTermCondition $andConditions)
     {
         if (!isset($this->andConditions))
@@ -101,10 +97,6 @@ class SearchTermCondition
         $this->orConditions = $orConditions;
         return $this;
     }
-    /**
-     * Adds a new element to orConditions.
-     * @param SearchTermCondition $orConditions new element.
-     */
     function addToOrConditions(SearchTermCondition $orConditions)
     {
         if (!isset($this->orConditions))

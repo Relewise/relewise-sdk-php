@@ -32,10 +32,6 @@ class ContentCategoryLevelFilter extends CategoryLevelFilter
         $this->levels = $levels;
         return $this;
     }
-    /**
-     * Adds a new element to levels.
-     * @param int $levels new element.
-     */
     function addToLevels(int $levels)
     {
         if (!isset($this->levels))

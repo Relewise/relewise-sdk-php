@@ -60,10 +60,6 @@ class SearchTermResult
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;
     }
-    /**
-     * Adds a new element to expectedResultTypes.
-     * @param ExpectedSearchTermResult $expectedResultTypes new element.
-     */
     function addToExpectedResultTypes(ExpectedSearchTermResult $expectedResultTypes)
     {
         if (!isset($this->expectedResultTypes))

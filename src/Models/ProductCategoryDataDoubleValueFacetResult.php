@@ -45,10 +45,6 @@ class ProductCategoryDataDoubleValueFacetResult extends floatProductCategoryData
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Adds a new element to selected.
-     * @param float $selected new element.
-     */
     function addToSelected(float $selected)
     {
         if (!isset($this->selected))
@@ -72,10 +68,6 @@ class ProductCategoryDataDoubleValueFacetResult extends floatProductCategoryData
         $this->available = $available;
         return $this;
     }
-    /**
-     * Adds a new element to available.
-     * @param floatAvailableFacetValue $available new element.
-     */
     function addToAvailable(floatAvailableFacetValue $available)
     {
         if (!isset($this->available))

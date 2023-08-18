@@ -40,10 +40,6 @@ class LanguageIndexConfiguration
         $this->languages = $languages;
         return $this;
     }
-    /**
-     * Adds a new element to languages.
-     * @param LanguageIndexConfigurationEntry $languages new element.
-     */
     function addToLanguages(LanguageIndexConfigurationEntry $languages)
     {
         if (!isset($this->languages))

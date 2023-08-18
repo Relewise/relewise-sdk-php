@@ -41,10 +41,6 @@ class BrandRecommendationResponse extends RecommendationResponse
         $this->recommendations = $recommendations;
         return $this;
     }
-    /**
-     * Adds a new element to recommendations.
-     * @param BrandResult $recommendations new element.
-     */
     function addToRecommendations(BrandResult $recommendations)
     {
         if (!isset($this->recommendations))

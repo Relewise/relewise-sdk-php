@@ -51,10 +51,6 @@ class StemmingRule extends SearchRule
         $this->words = $words;
         return $this;
     }
-    /**
-     * Adds a new element to words.
-     * @param string $words new element.
-     */
     function addToWords(string $words)
     {
         if (!isset($this->words))

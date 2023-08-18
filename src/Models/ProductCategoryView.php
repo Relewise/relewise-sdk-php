@@ -52,10 +52,6 @@ class ProductCategoryView extends Trackable
         $this->idPath = $idPath;
         return $this;
     }
-    /**
-     * Adds a new element to idPath.
-     * @param string $idPath new element.
-     */
     function addToIdPath(string $idPath)
     {
         if (!isset($this->idPath))

@@ -54,10 +54,6 @@ class ContentSearchResponse extends PaginatedSearchResponse
         $this->results = $results;
         return $this;
     }
-    /**
-     * Adds a new element to results.
-     * @param ContentResult $results new element.
-     */
     function addToResults(ContentResult $results)
     {
         if (!isset($this->results))
@@ -86,10 +82,6 @@ class ContentSearchResponse extends PaginatedSearchResponse
         $this->recommendations = $recommendations;
         return $this;
     }
-    /**
-     * Adds a new element to recommendations.
-     * @param ContentResult $recommendations new element.
-     */
     function addToRecommendations(ContentResult $recommendations)
     {
         if (!isset($this->recommendations))

@@ -47,10 +47,6 @@ class SaveSynonymsRequest extends LicensedRequest
         $this->synonyms = $synonyms;
         return $this;
     }
-    /**
-     * Adds a new element to synonyms.
-     * @param Synonym $synonyms new element.
-     */
     function addToSynonyms(Synonym $synonyms)
     {
         if (!isset($this->synonyms))

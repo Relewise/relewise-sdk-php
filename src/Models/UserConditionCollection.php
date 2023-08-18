@@ -41,10 +41,6 @@ class UserConditionCollection
         $this->items = $items;
         return $this;
     }
-    /**
-     * Adds a new element to items.
-     * @param UserCondition $items new element.
-     */
     function addToItems(UserCondition $items)
     {
         if (!isset($this->items))

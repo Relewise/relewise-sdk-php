@@ -42,10 +42,6 @@ class ApplicableIndexes
         $this->indexes = $indexes;
         return $this;
     }
-    /**
-     * Adds a new element to indexes.
-     * @param string $indexes new element.
-     */
     function addToIndexes(string $indexes)
     {
         if (!isset($this->indexes))

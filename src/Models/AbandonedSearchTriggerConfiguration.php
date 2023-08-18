@@ -49,10 +49,6 @@ class AbandonedSearchTriggerConfiguration extends AbandonedSearchTriggerResultTr
         $this->searchTypesInPrioritizedOrder = $searchTypesInPrioritizedOrder;
         return $this;
     }
-    /**
-     * Adds a new element to searchTypesInPrioritizedOrder.
-     * @param SearchType $searchTypesInPrioritizedOrder new element.
-     */
     function addToSearchTypesInPrioritizedOrder(SearchType $searchTypesInPrioritizedOrder)
     {
         if (!isset($this->searchTypesInPrioritizedOrder))

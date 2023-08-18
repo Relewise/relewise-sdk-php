@@ -83,10 +83,6 @@ class Cart extends Trackable
         $this->lineItems = $lineItems;
         return $this;
     }
-    /**
-     * Adds a new element to lineItems.
-     * @param LineItem $lineItems new element.
-     */
     function addToLineItems(LineItem $lineItems)
     {
         if (!isset($this->lineItems))

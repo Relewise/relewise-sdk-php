@@ -41,10 +41,6 @@ class UserDetailsCollectionResponse extends TimedResponse
         $this->results = $results;
         return $this;
     }
-    /**
-     * Adds a new element to results.
-     * @param UserResultDetails[] $results new element.
-     */
     function addToResults(array $results)
     {
         if (!isset($this->results))

@@ -50,10 +50,6 @@ class ProductCategoryInterestTriggerResult
         $this->categories = $categories;
         return $this;
     }
-    /**
-     * Adds a new element to categories.
-     * @param ProductCategoryInterestTriggerResultCategory $categories new element.
-     */
     function addToCategories(ProductCategoryInterestTriggerResultCategory $categories)
     {
         if (!isset($this->categories))

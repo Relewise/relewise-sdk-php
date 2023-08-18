@@ -40,10 +40,6 @@ class MerchandisingRuleCollectionResponse extends TimedResponse
         $this->rules = $rules;
         return $this;
     }
-    /**
-     * Adds a new element to rules.
-     * @param MerchandisingRule $rules new element.
-     */
     function addToRules(MerchandisingRule $rules)
     {
         if (!isset($this->rules))

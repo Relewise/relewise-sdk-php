@@ -40,10 +40,6 @@ class SearchIndexCollectionResponse extends TimedResponse
         $this->indexes = $indexes;
         return $this;
     }
-    /**
-     * Adds a new element to indexes.
-     * @param SearchIndex $indexes new element.
-     */
     function addToIndexes(SearchIndex $indexes)
     {
         if (!isset($this->indexes))

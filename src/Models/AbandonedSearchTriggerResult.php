@@ -60,10 +60,6 @@ class AbandonedSearchTriggerResult
         $this->searches = $searches;
         return $this;
     }
-    /**
-     * Adds a new element to searches.
-     * @param AbandonedSearch $searches new element.
-     */
     function addToSearches(AbandonedSearch $searches)
     {
         if (!isset($this->searches))

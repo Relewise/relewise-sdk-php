@@ -41,10 +41,6 @@ class CategoryPathResultDetails
         $this->breadcrumbPathStartingFromRoot = $breadcrumbPathStartingFromRoot;
         return $this;
     }
-    /**
-     * Adds a new element to breadcrumbPathStartingFromRoot.
-     * @param CategoryNameAndId $breadcrumbPathStartingFromRoot new element.
-     */
     function addToBreadcrumbPathStartingFromRoot(CategoryNameAndId $breadcrumbPathStartingFromRoot)
     {
         if (!isset($this->breadcrumbPathStartingFromRoot))

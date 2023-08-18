@@ -44,10 +44,6 @@ class RelevanceModifierCollection
         $this->items = $items;
         return $this;
     }
-    /**
-     * Adds a new element to items.
-     * @param RelevanceModifier $items new element.
-     */
     function addToItems(RelevanceModifier $items)
     {
         if (!isset($this->items))

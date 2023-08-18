@@ -41,10 +41,6 @@ class MixedRecommendationResponseCollection extends TimedResponse
         $this->responses = $responses;
         return $this;
     }
-    /**
-     * Adds a new element to responses.
-     * @param RecommendationResponse $responses new element.
-     */
     function addToResponses(RecommendationResponse $responses)
     {
         if (!isset($this->responses))

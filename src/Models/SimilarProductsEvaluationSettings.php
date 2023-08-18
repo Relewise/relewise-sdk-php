@@ -130,10 +130,6 @@ class SimilarProductsEvaluationSettings
         $this->significantProductDataFields = $significantProductDataFields;
         return $this;
     }
-    /**
-     * Adds a new element to significantProductDataFields.
-     * @param SignificantDataValue $significantProductDataFields new element.
-     */
     function addToSignificantProductDataFields(SignificantDataValue $significantProductDataFields)
     {
         if (!isset($this->significantProductDataFields))

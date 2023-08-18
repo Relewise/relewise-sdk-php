@@ -31,10 +31,6 @@ class AbandonedContentSearch extends stringAbandonedSearch
         $this->topResults = $topResults;
         return $this;
     }
-    /**
-     * Adds a new element to topResults.
-     * @param string $topResults new element.
-     */
     function addToTopResults(string $topResults)
     {
         if (!isset($this->topResults))

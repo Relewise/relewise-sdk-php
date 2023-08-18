@@ -53,10 +53,6 @@ class UserQuery extends LicensedRequest
         $this->criteria = $criteria;
         return $this;
     }
-    /**
-     * Adds a new element to criteria.
-     * @param UserQueryCriteria $criteria new element.
-     */
     function addToCriteria(UserQueryCriteria $criteria)
     {
         if (!isset($this->criteria))

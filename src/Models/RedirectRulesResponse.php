@@ -33,10 +33,6 @@ class RedirectRulesResponse extends RedirectRuleSearchRulesResponse
         $this->rules = $rules;
         return $this;
     }
-    /**
-     * Adds a new element to rules.
-     * @param RedirectRule $rules new element.
-     */
     function addToRules(RedirectRule $rules)
     {
         if (!isset($this->rules))

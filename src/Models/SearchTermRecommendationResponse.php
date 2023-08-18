@@ -40,10 +40,6 @@ class SearchTermRecommendationResponse extends RecommendationResponse
         $this->recommendations = $recommendations;
         return $this;
     }
-    /**
-     * Adds a new element to recommendations.
-     * @param SearchTermResult $recommendations new element.
-     */
     function addToRecommendations(SearchTermResult $recommendations)
     {
         if (!isset($this->recommendations))

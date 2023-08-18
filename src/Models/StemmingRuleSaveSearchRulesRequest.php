@@ -48,10 +48,6 @@ abstract class StemmingRuleSaveSearchRulesRequest extends LicensedRequest
         $this->rules = $rules;
         return $this;
     }
-    /**
-     * Adds a new element to rules.
-     * @param StemmingRule $rules new element.
-     */
     function addToRules(StemmingRule $rules)
     {
         if (!isset($this->rules))

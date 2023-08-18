@@ -47,10 +47,6 @@ class BrandDetailsCollectionResponse extends TimedResponse
         $this->brands = $brands;
         return $this;
     }
-    /**
-     * Adds a new element to brands.
-     * @param BrandResultDetails $brands new element.
-     */
     function addToBrands(BrandResultDetails $brands)
     {
         if (!isset($this->brands))

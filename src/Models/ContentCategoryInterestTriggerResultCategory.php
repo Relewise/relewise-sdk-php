@@ -54,10 +54,6 @@ class ContentCategoryInterestTriggerResultCategory
         $this->lastPath = $lastPath;
         return $this;
     }
-    /**
-     * Adds a new element to lastPath.
-     * @param string $lastPath new element.
-     */
     function addToLastPath(string $lastPath)
     {
         if (!isset($this->lastPath))
@@ -86,10 +82,6 @@ class ContentCategoryInterestTriggerResultCategory
         $this->viewedContents = $viewedContents;
         return $this;
     }
-    /**
-     * Adds a new element to viewedContents.
-     * @param ContentResultDetails $viewedContents new element.
-     */
     function addToViewedContents(ContentResultDetails $viewedContents)
     {
         if (!isset($this->viewedContents))

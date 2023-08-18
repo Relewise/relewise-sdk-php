@@ -41,10 +41,6 @@ class ContentRecommendationResponse extends RecommendationResponse
         $this->recommendations = $recommendations;
         return $this;
     }
-    /**
-     * Adds a new element to recommendations.
-     * @param ContentResult $recommendations new element.
-     */
     function addToRecommendations(ContentResult $recommendations)
     {
         if (!isset($this->recommendations))

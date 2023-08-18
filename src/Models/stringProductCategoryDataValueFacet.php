@@ -44,10 +44,6 @@ abstract class stringProductCategoryDataValueFacet extends stringDataValueFacet
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Adds a new element to selected.
-     * @param string $selected new element.
-     */
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))

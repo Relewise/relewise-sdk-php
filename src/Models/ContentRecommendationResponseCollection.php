@@ -41,10 +41,6 @@ class ContentRecommendationResponseCollection extends TimedResponse
         $this->responses = $responses;
         return $this;
     }
-    /**
-     * Adds a new element to responses.
-     * @param ContentRecommendationResponse $responses new element.
-     */
     function addToResponses(ContentRecommendationResponse $responses)
     {
         if (!isset($this->responses))

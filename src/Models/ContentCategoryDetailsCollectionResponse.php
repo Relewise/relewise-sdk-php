@@ -47,10 +47,6 @@ class ContentCategoryDetailsCollectionResponse extends TimedResponse
         $this->categories = $categories;
         return $this;
     }
-    /**
-     * Adds a new element to categories.
-     * @param ContentCategoryResultDetails $categories new element.
-     */
     function addToCategories(ContentCategoryResultDetails $categories)
     {
         if (!isset($this->categories))

@@ -42,10 +42,6 @@ class OrFilter extends Filter
         $this->filters = $filters;
         return $this;
     }
-    /**
-     * Adds a new element to filters.
-     * @param Filter $filters new element.
-     */
     function addToFilters(Filter $filters)
     {
         if (!isset($this->filters))

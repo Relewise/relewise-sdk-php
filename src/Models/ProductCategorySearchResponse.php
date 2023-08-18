@@ -54,10 +54,6 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
         $this->results = $results;
         return $this;
     }
-    /**
-     * Adds a new element to results.
-     * @param ProductCategoryResult $results new element.
-     */
     function addToResults(ProductCategoryResult $results)
     {
         if (!isset($this->results))
@@ -86,10 +82,6 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
         $this->recommendations = $recommendations;
         return $this;
     }
-    /**
-     * Adds a new element to recommendations.
-     * @param ProductCategoryResult $recommendations new element.
-     */
     function addToRecommendations(ProductCategoryResult $recommendations)
     {
         if (!isset($this->recommendations))

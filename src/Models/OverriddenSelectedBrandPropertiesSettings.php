@@ -80,10 +80,6 @@ class OverriddenSelectedBrandPropertiesSettings
         $this->dataKeys = $dataKeys;
         return $this;
     }
-    /**
-     * Adds a new element to dataKeys.
-     * @param string $dataKeys new element.
-     */
     function addToDataKeys(string $dataKeys)
     {
         if (!isset($this->dataKeys))

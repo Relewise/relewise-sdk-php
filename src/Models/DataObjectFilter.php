@@ -50,10 +50,6 @@ class DataObjectFilter
         $this->conditions = $conditions;
         return $this;
     }
-    /**
-     * Adds a new element to conditions.
-     * @param ObjectValueCondition $conditions new element.
-     */
     function addToConditions(ObjectValueCondition $conditions)
     {
         if (!isset($this->conditions))

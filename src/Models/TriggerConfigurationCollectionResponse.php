@@ -40,10 +40,6 @@ class TriggerConfigurationCollectionResponse extends TimedResponse
         $this->configurations = $configurations;
         return $this;
     }
-    /**
-     * Adds a new element to configurations.
-     * @param TriggerConfiguration $configurations new element.
-     */
     function addToConfigurations(TriggerConfiguration $configurations)
     {
         if (!isset($this->configurations))

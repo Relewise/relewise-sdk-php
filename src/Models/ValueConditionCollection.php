@@ -44,10 +44,6 @@ class ValueConditionCollection
         $this->items = $items;
         return $this;
     }
-    /**
-     * Adds a new element to items.
-     * @param ValueCondition $items new element.
-     */
     function addToItems(ValueCondition $items)
     {
         if (!isset($this->items))

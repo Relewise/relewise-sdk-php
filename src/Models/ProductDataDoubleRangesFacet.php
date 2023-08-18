@@ -41,10 +41,6 @@ class ProductDataDoubleRangesFacet extends floatProductDataRangesFacet
         $this->predefinedRanges = $predefinedRanges;
         return $this;
     }
-    /**
-     * Adds a new element to predefinedRanges.
-     * @param ?floatChainableRange $predefinedRanges new element.
-     */
     function addToPredefinedRanges(?floatChainableRange $predefinedRanges)
     {
         if (!isset($this->predefinedRanges))
@@ -73,10 +69,6 @@ class ProductDataDoubleRangesFacet extends floatProductDataRangesFacet
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Adds a new element to selected.
-     * @param ?floatChainableRange $selected new element.
-     */
     function addToSelected(?floatChainableRange $selected)
     {
         if (!isset($this->selected))

@@ -47,10 +47,6 @@ class ProductDetailsCollectionResponse extends TimedResponse
         $this->products = $products;
         return $this;
     }
-    /**
-     * Adds a new element to products.
-     * @param ProductResultDetails $products new element.
-     */
     function addToProducts(ProductResultDetails $products)
     {
         if (!isset($this->products))

@@ -60,10 +60,6 @@ abstract class DeleteSearchRulesRequest extends LicensedRequest
         $this->ids = $ids;
         return $this;
     }
-    /**
-     * Adds a new element to ids.
-     * @param string $ids new element.
-     */
     function addToIds(string $ids)
     {
         if (!isset($this->ids))

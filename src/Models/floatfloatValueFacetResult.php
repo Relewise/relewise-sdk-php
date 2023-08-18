@@ -64,10 +64,6 @@ abstract class floatfloatValueFacetResult extends FacetResult
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Adds a new element to selected.
-     * @param float $selected new element.
-     */
     function addToSelected(float $selected)
     {
         if (!isset($this->selected))
@@ -91,10 +87,6 @@ abstract class floatfloatValueFacetResult extends FacetResult
         $this->available = $available;
         return $this;
     }
-    /**
-     * Adds a new element to available.
-     * @param floatAvailableFacetValue $available new element.
-     */
     function addToAvailable(floatAvailableFacetValue $available)
     {
         if (!isset($this->available))

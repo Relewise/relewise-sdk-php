@@ -47,10 +47,6 @@ class ProductCategoryDetailsCollectionResponse extends TimedResponse
         $this->categories = $categories;
         return $this;
     }
-    /**
-     * Adds a new element to categories.
-     * @param ProductCategoryResultDetails $categories new element.
-     */
     function addToCategories(ProductCategoryResultDetails $categories)
     {
         if (!isset($this->categories))

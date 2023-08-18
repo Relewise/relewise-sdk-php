@@ -89,10 +89,6 @@ class ProductVariant
         $this->assortments = $assortments;
         return $this;
     }
-    /**
-     * Adds a new element to assortments.
-     * @param int $assortments new element.
-     */
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))

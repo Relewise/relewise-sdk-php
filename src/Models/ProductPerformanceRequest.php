@@ -150,10 +150,6 @@ class ProductPerformanceRequest extends AnalyzerRequest
         $this->classifications = $classifications;
         return $this;
     }
-    /**
-     * Adds a new element to classifications.
-     * @param stringstringKeyValuePair $classifications new element.
-     */
     function addToClassifications(stringstringKeyValuePair $classifications)
     {
         if (!isset($this->classifications))

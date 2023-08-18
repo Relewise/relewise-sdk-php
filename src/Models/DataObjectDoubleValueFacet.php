@@ -44,10 +44,6 @@ class DataObjectDoubleValueFacet extends floatDataObjectValueFacet
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Adds a new element to selected.
-     * @param float $selected new element.
-     */
     function addToSelected(float $selected)
     {
         if (!isset($this->selected))

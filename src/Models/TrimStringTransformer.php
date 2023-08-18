@@ -41,10 +41,6 @@ class TrimStringTransformer
         $this->valuesToTrim = $valuesToTrim;
         return $this;
     }
-    /**
-     * Adds a new element to valuesToTrim.
-     * @param string $valuesToTrim new element.
-     */
     function addToValuesToTrim(string $valuesToTrim)
     {
         if (!isset($this->valuesToTrim))

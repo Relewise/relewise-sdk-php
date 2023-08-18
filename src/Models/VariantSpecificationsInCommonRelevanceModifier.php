@@ -44,10 +44,6 @@ class VariantSpecificationsInCommonRelevanceModifier extends RelevanceModifier
         $this->specificationKeysAndMultipliers = $specificationKeysAndMultipliers;
         return $this;
     }
-    /**
-     * Adds a new element to specificationKeysAndMultipliers.
-     * @param KeyMultiplier $specificationKeysAndMultipliers new element.
-     */
     function addToSpecificationKeysAndMultipliers(KeyMultiplier $specificationKeysAndMultipliers)
     {
         if (!isset($this->specificationKeysAndMultipliers))

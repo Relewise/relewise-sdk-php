@@ -50,10 +50,6 @@ class ProductDataObjectFacetResult extends DataObjectFacetResult
         $this->items = $items;
         return $this;
     }
-    /**
-     * Adds a new element to items.
-     * @param FacetResult $items new element.
-     */
     function addToItems(FacetResult $items)
     {
         if (!isset($this->items))

@@ -43,10 +43,6 @@ abstract class DecompoundRuleSaveSearchRulesResponse extends TimedResponse
         $this->rules = $rules;
         return $this;
     }
-    /**
-     * Adds a new element to rules.
-     * @param DecompoundRule $rules new element.
-     */
     function addToRules(DecompoundRule $rules)
     {
         if (!isset($this->rules))

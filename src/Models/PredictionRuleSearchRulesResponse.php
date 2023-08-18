@@ -48,10 +48,6 @@ abstract class PredictionRuleSearchRulesResponse extends TimedResponse
         $this->rules = $rules;
         return $this;
     }
-    /**
-     * Adds a new element to rules.
-     * @param PredictionRule $rules new element.
-     */
     function addToRules(PredictionRule $rules)
     {
         if (!isset($this->rules))

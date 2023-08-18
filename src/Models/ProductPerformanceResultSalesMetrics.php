@@ -65,10 +65,6 @@ class ProductPerformanceResultSalesMetrics
         $this->currencies = $currencies;
         return $this;
     }
-    /**
-     * Adds a new element to currencies.
-     * @param ProductPerformanceResultSalesByCurrency $currencies new element.
-     */
     function addToCurrencies(ProductPerformanceResultSalesByCurrency $currencies)
     {
         if (!isset($this->currencies))

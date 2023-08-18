@@ -53,10 +53,6 @@ class ContentCategoryResult extends CategoryResult
         $this->paths = $paths;
         return $this;
     }
-    /**
-     * Adds a new element to paths.
-     * @param CategoryPathResult $paths new element.
-     */
     function addToPaths(CategoryPathResult $paths)
     {
         if (!isset($this->paths))
@@ -80,10 +76,6 @@ class ContentCategoryResult extends CategoryResult
         $this->assortments = $assortments;
         return $this;
     }
-    /**
-     * Adds a new element to assortments.
-     * @param int $assortments new element.
-     */
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))

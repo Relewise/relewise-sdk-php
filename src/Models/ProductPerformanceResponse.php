@@ -50,10 +50,6 @@ class ProductPerformanceResponse extends TimedResponse
         $this->results = $results;
         return $this;
     }
-    /**
-     * Adds a new element to results.
-     * @param ProductPerformanceResult $results new element.
-     */
     function addToResults(ProductPerformanceResult $results)
     {
         if (!isset($this->results))

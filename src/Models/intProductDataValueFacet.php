@@ -54,10 +54,6 @@ abstract class intProductDataValueFacet extends intDataValueFacet
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Adds a new element to selected.
-     * @param int $selected new element.
-     */
     function addToSelected(int $selected)
     {
         if (!isset($this->selected))

@@ -41,10 +41,6 @@ class VariantIdFilter extends Filter
         $this->variantIds = $variantIds;
         return $this;
     }
-    /**
-     * Adds a new element to variantIds.
-     * @param string $variantIds new element.
-     */
     function addToVariantIds(string $variantIds)
     {
         if (!isset($this->variantIds))

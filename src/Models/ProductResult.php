@@ -134,10 +134,6 @@ class ProductResult
         $this->assortments = $assortments;
         return $this;
     }
-    /**
-     * Adds a new element to assortments.
-     * @param int $assortments new element.
-     */
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -179,10 +175,6 @@ class ProductResult
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
-    /**
-     * Adds a new element to categoryPaths.
-     * @param CategoryPathResult $categoryPaths new element.
-     */
     function addToCategoryPaths(CategoryPathResult $categoryPaths)
     {
         if (!isset($this->categoryPaths))
@@ -231,10 +223,6 @@ class ProductResult
         $this->allVariants = $allVariants;
         return $this;
     }
-    /**
-     * Adds a new element to allVariants.
-     * @param VariantResult $allVariants new element.
-     */
     function addToAllVariants(VariantResult $allVariants)
     {
         if (!isset($this->allVariants))

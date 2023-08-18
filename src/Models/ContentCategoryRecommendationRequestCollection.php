@@ -47,10 +47,6 @@ class ContentCategoryRecommendationRequestCollection extends LicensedRequest
         $this->requests = $requests;
         return $this;
     }
-    /**
-     * Adds a new element to requests.
-     * @param ContentCategoryRecommendationRequest $requests new element.
-     */
     function addToRequests(ContentCategoryRecommendationRequest $requests)
     {
         if (!isset($this->requests))

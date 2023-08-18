@@ -62,10 +62,6 @@ class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryR
         $this->assortments = $assortments;
         return $this;
     }
-    /**
-     * Adds a new element to assortments.
-     * @param int $assortments new element.
-     */
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -137,10 +133,6 @@ class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryR
         $this->childCategories = $childCategories;
         return $this;
     }
-    /**
-     * Adds a new element to childCategories.
-     * @param ProductCategoryResultDetails $childCategories new element.
-     */
     function addToChildCategories(ProductCategoryResultDetails $childCategories)
     {
         if (!isset($this->childCategories))
@@ -164,10 +156,6 @@ class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryR
         $this->parentCategories = $parentCategories;
         return $this;
     }
-    /**
-     * Adds a new element to parentCategories.
-     * @param ProductCategoryResultDetails $parentCategories new element.
-     */
     function addToParentCategories(ProductCategoryResultDetails $parentCategories)
     {
         if (!isset($this->parentCategories))

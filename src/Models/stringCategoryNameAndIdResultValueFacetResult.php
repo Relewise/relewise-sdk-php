@@ -52,10 +52,6 @@ abstract class stringCategoryNameAndIdResultValueFacetResult extends FacetResult
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Adds a new element to selected.
-     * @param string $selected new element.
-     */
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -79,10 +75,6 @@ abstract class stringCategoryNameAndIdResultValueFacetResult extends FacetResult
         $this->available = $available;
         return $this;
     }
-    /**
-     * Adds a new element to available.
-     * @param CategoryNameAndIdResultAvailableFacetValue $available new element.
-     */
     function addToAvailable(CategoryNameAndIdResultAvailableFacetValue $available)
     {
         if (!isset($this->available))

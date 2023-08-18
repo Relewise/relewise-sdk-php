@@ -43,10 +43,6 @@ abstract class ProductAndVariantIdAbandonedSearch extends AbandonedSearch
         $this->topResults = $topResults;
         return $this;
     }
-    /**
-     * Adds a new element to topResults.
-     * @param ProductAndVariantId $topResults new element.
-     */
     function addToTopResults(ProductAndVariantId $topResults)
     {
         if (!isset($this->topResults))

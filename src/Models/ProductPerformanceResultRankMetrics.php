@@ -55,10 +55,6 @@ class ProductPerformanceResultRankMetrics
         $this->withinCategories = $withinCategories;
         return $this;
     }
-    /**
-     * Adds a new element to withinCategories.
-     * @param ProductPerformanceResultCategoryMetrics $withinCategories new element.
-     */
     function addToWithinCategories(ProductPerformanceResultCategoryMetrics $withinCategories)
     {
         if (!isset($this->withinCategories))

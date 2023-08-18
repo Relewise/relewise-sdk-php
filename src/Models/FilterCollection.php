@@ -41,10 +41,6 @@ class FilterCollection
         $this->items = $items;
         return $this;
     }
-    /**
-     * Adds a new element to items.
-     * @param Filter $items new element.
-     */
     function addToItems(Filter $items)
     {
         if (!isset($this->items))

@@ -42,10 +42,6 @@ class ApplicableLanguages
         $this->languages = $languages;
         return $this;
     }
-    /**
-     * Adds a new element to languages.
-     * @param Language $languages new element.
-     */
     function addToLanguages(Language $languages)
     {
         if (!isset($this->languages))

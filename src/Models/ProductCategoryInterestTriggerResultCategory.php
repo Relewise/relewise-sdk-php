@@ -54,10 +54,6 @@ class ProductCategoryInterestTriggerResultCategory
         $this->lastPath = $lastPath;
         return $this;
     }
-    /**
-     * Adds a new element to lastPath.
-     * @param string $lastPath new element.
-     */
     function addToLastPath(string $lastPath)
     {
         if (!isset($this->lastPath))
@@ -86,10 +82,6 @@ class ProductCategoryInterestTriggerResultCategory
         $this->viewedProducts = $viewedProducts;
         return $this;
     }
-    /**
-     * Adds a new element to viewedProducts.
-     * @param CategoryProductAndVariant $viewedProducts new element.
-     */
     function addToViewedProducts(CategoryProductAndVariant $viewedProducts)
     {
         if (!isset($this->viewedProducts))

@@ -45,10 +45,6 @@ class PurchasedWithMultipleProductsRequest extends ProductRecommendationRequest
         $this->productAndVariantIds = $productAndVariantIds;
         return $this;
     }
-    /**
-     * Adds a new element to productAndVariantIds.
-     * @param ProductAndVariantId $productAndVariantIds new element.
-     */
     function addToProductAndVariantIds(ProductAndVariantId $productAndVariantIds)
     {
         if (!isset($this->productAndVariantIds))

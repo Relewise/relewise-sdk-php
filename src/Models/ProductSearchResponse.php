@@ -63,10 +63,6 @@ class ProductSearchResponse extends PaginatedSearchResponse
         $this->results = $results;
         return $this;
     }
-    /**
-     * Adds a new element to results.
-     * @param ProductResult $results new element.
-     */
     function addToResults(ProductResult $results)
     {
         if (!isset($this->results))
@@ -95,10 +91,6 @@ class ProductSearchResponse extends PaginatedSearchResponse
         $this->recommendations = $recommendations;
         return $this;
     }
-    /**
-     * Adds a new element to recommendations.
-     * @param ProductResult $recommendations new element.
-     */
     function addToRecommendations(ProductResult $recommendations)
     {
         if (!isset($this->recommendations))
@@ -122,10 +114,6 @@ class ProductSearchResponse extends PaginatedSearchResponse
         $this->redirects = $redirects;
         return $this;
     }
-    /**
-     * Adds a new element to redirects.
-     * @param RedirectResult $redirects new element.
-     */
     function addToRedirects(RedirectResult $redirects)
     {
         if (!isset($this->redirects))

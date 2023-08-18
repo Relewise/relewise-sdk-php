@@ -52,10 +52,6 @@ class PredictionRuleSuppression
         $this->values = $values;
         return $this;
     }
-    /**
-     * Adds a new element to values.
-     * @param string $values new element.
-     */
     function addToValues(string $values)
     {
         if (!isset($this->values))

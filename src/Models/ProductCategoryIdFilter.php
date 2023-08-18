@@ -33,10 +33,6 @@ class ProductCategoryIdFilter extends CategoryIdFilter
         $this->categoryIds = $categoryIds;
         return $this;
     }
-    /**
-     * Adds a new element to categoryIds.
-     * @param string $categoryIds new element.
-     */
     function addToCategoryIds(string $categoryIds)
     {
         if (!isset($this->categoryIds))

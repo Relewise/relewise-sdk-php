@@ -46,10 +46,6 @@ class CategoryPathResult
         $this->pathFromRoot = $pathFromRoot;
         return $this;
     }
-    /**
-     * Adds a new element to pathFromRoot.
-     * @param CategoryNameAndIdResult $pathFromRoot new element.
-     */
     function addToPathFromRoot(CategoryNameAndIdResult $pathFromRoot)
     {
         if (!isset($this->pathFromRoot))

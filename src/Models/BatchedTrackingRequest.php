@@ -41,10 +41,6 @@ class BatchedTrackingRequest extends TrackingRequest
         $this->items = $items;
         return $this;
     }
-    /**
-     * Adds a new element to items.
-     * @param Trackable $items new element.
-     */
     function addToItems(Trackable $items)
     {
         if (!isset($this->items))
