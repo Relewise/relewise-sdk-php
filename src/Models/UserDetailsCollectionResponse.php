@@ -27,10 +27,6 @@ class UserDetailsCollectionResponse extends TimedResponse
         }
         return $result;
     }
-    /**
-     * Sets results to a new value.
-     * @param array[] $results new value.
-     */
     function setResults(array ... $results)
     {
         $this->results = $results;
@@ -58,10 +54,6 @@ class UserDetailsCollectionResponse extends TimedResponse
         array_push($this->results, $results);
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

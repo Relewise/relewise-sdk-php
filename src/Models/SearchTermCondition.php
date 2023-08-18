@@ -50,28 +50,16 @@ class SearchTermCondition
         }
         return $result;
     }
-    /**
-     * Sets kind to a new value.
-     * @param ?SearchTermConditionConditionKind $kind new value.
-     */
     function setKind(?SearchTermConditionConditionKind $kind)
     {
         $this->kind = $kind;
         return $this;
     }
-    /**
-     * Sets value to a new value.
-     * @param ?string $value new value.
-     */
     function setValue(?string $value)
     {
         $this->value = $value;
         return $this;
     }
-    /**
-     * Sets andConditions to a new value.
-     * @param ?SearchTermCondition[] $andConditions new value.
-     */
     function setAndConditions(SearchTermCondition ... $andConditions)
     {
         $this->andConditions = $andConditions;
@@ -99,10 +87,6 @@ class SearchTermCondition
         array_push($this->andConditions, $andConditions);
         return $this;
     }
-    /**
-     * Sets orConditions to a new value.
-     * @param ?SearchTermCondition[] $orConditions new value.
-     */
     function setOrConditions(SearchTermCondition ... $orConditions)
     {
         $this->orConditions = $orConditions;
@@ -130,10 +114,6 @@ class SearchTermCondition
         array_push($this->orConditions, $orConditions);
         return $this;
     }
-    /**
-     * Sets minimumLength to a new value.
-     * @param ?int $minimumLength new value.
-     */
     function setMinimumLength(?int $minimumLength)
     {
         $this->minimumLength = $minimumLength;

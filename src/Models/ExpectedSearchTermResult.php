@@ -27,19 +27,11 @@ class ExpectedSearchTermResult
         }
         return $result;
     }
-    /**
-     * Sets estimatedHits to a new value.
-     * @param int $estimatedHits new value.
-     */
     function setEstimatedHits(int $estimatedHits)
     {
         $this->estimatedHits = $estimatedHits;
         return $this;
     }
-    /**
-     * Sets type to a new value.
-     * @param EntityType $type new value.
-     */
     function setType(EntityType $type)
     {
         $this->type = $type;

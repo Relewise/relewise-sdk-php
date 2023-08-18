@@ -32,10 +32,6 @@ abstract class boolValueFacetResult extends boolboolValueFacetResult
         $result = boolboolValueFacetResult::hydrateBase($result, $arr);
         return $result;
     }
-    /**
-     * Sets selected to a new value.
-     * @param bool[] $selected new value.
-     */
     function setSelected(bool ... $selected)
     {
         $this->selected = $selected;
@@ -63,10 +59,6 @@ abstract class boolValueFacetResult extends boolboolValueFacetResult
         array_push($this->selected, $selected);
         return $this;
     }
-    /**
-     * Sets available to a new value.
-     * @param boolAvailableFacetValue[] $available new value.
-     */
     function setAvailable(boolAvailableFacetValue ... $available)
     {
         $this->available = $available;
@@ -94,10 +86,6 @@ abstract class boolValueFacetResult extends boolboolValueFacetResult
         array_push($this->available, $available);
         return $this;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;

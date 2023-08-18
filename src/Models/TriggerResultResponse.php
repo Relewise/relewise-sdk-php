@@ -22,19 +22,11 @@ class TriggerResultResponse extends TimedResponse
         }
         return $result;
     }
-    /**
-     * Sets result to a new value.
-     * @param ITriggerResult $result new value.
-     */
     function setResult(ITriggerResult $result)
     {
         $this->result = $result;
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

@@ -29,19 +29,11 @@ class ProductAndVariantId
         }
         return $result;
     }
-    /**
-     * Sets productId to a new value.
-     * @param string $productId new value.
-     */
     function setProductId(string $productId)
     {
         $this->productId = $productId;
         return $this;
     }
-    /**
-     * Sets variantId to a new value.
-     * @param ?string $variantId new value.
-     */
     function setVariantId(?string $variantId)
     {
         $this->variantId = $variantId;

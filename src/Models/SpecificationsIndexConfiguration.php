@@ -31,11 +31,6 @@ class SpecificationsIndexConfiguration
         }
         return $result;
     }
-    /**
-     * Sets the value of a specific key in keys.
-     * @param string $key index.
-     * @param FieldIndexConfiguration $value new value.
-     */
     function addToKeys(string $key, FieldIndexConfiguration $value)
     {
         if (!isset($this->keys))
@@ -54,10 +49,6 @@ class SpecificationsIndexConfiguration
         $this->keys = $keys;
         return $this;
     }
-    /**
-     * Sets unspecified to a new value.
-     * @param FieldIndexConfiguration $unspecified new value.
-     */
     function setUnspecified(FieldIndexConfiguration $unspecified)
     {
         $this->unspecified = $unspecified;

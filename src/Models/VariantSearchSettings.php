@@ -22,10 +22,6 @@ class VariantSearchSettings
         }
         return $result;
     }
-    /**
-     * Sets excludeResultsWithoutVariant to a new value.
-     * @param bool $excludeResultsWithoutVariant new value.
-     */
     function setExcludeResultsWithoutVariant(bool $excludeResultsWithoutVariant)
     {
         $this->excludeResultsWithoutVariant = $excludeResultsWithoutVariant;

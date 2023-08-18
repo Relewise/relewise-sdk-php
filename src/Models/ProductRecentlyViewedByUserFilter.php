@@ -24,19 +24,11 @@ class ProductRecentlyViewedByUserFilter extends Filter
         }
         return $result;
     }
-    /**
-     * Sets sinceUtc to a new value.
-     * @param DateTime $sinceUtc new value.
-     */
     function setSinceUtc(DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

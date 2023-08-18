@@ -27,10 +27,6 @@ class Multilingual
         }
         return $result;
     }
-    /**
-     * Sets values to a new value.
-     * @param ?MultilingualValue[] $values new value.
-     */
     function setValues(MultilingualValue ... $values)
     {
         $this->values = $values;

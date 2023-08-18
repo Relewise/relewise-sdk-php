@@ -30,10 +30,6 @@ class ValueConditionCollection
         }
         return $result;
     }
-    /**
-     * Sets items to a new value.
-     * @param ?ValueCondition[] $items new value.
-     */
     function setItems(ValueCondition ... $items)
     {
         $this->items = $items;

@@ -31,19 +31,11 @@ class ProductCategoryInterestTriggerResult
         }
         return $result;
     }
-    /**
-     * Sets user to a new value.
-     * @param UserResultDetails $user new value.
-     */
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;
         return $this;
     }
-    /**
-     * Sets categories to a new value.
-     * @param ProductCategoryInterestTriggerResultCategory[] $categories new value.
-     */
     function setCategories(ProductCategoryInterestTriggerResultCategory ... $categories)
     {
         $this->categories = $categories;

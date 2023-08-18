@@ -41,10 +41,6 @@ abstract class floatValueFacet extends Facet
         }
         return $result;
     }
-    /**
-     * Sets selected to a new value.
-     * @param ?float[] $selected new value.
-     */
     function setSelected(float ... $selected)
     {
         $this->selected = $selected;
@@ -72,19 +68,11 @@ abstract class floatValueFacet extends Facet
         array_push($this->selected, $selected);
         return $this;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
-    /**
-     * Sets settings to a new value.
-     * @param ?FacetSettings $settings new value.
-     */
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

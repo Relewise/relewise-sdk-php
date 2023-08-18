@@ -26,10 +26,6 @@ class SearchTermRecommendationResponse extends RecommendationResponse
         }
         return $result;
     }
-    /**
-     * Sets recommendations to a new value.
-     * @param SearchTermResult[] $recommendations new value.
-     */
     function setRecommendations(SearchTermResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
@@ -57,10 +53,6 @@ class SearchTermRecommendationResponse extends RecommendationResponse
         array_push($this->recommendations, $recommendations);
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

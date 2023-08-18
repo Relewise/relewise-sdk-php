@@ -23,10 +23,6 @@ class TrackOrderRequest extends TrackingRequest
         }
         return $result;
     }
-    /**
-     * Sets order to a new value.
-     * @param Order $order new value.
-     */
     function setOrder(Order $order)
     {
         $this->order = $order;

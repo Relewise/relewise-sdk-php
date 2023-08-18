@@ -40,10 +40,6 @@ class ContentCategoryInterestTriggerResultCategory
         }
         return $result;
     }
-    /**
-     * Sets lastPath to a new value.
-     * @param string[] $lastPath new value.
-     */
     function setLastPath(string ... $lastPath)
     {
         $this->lastPath = $lastPath;
@@ -71,19 +67,11 @@ class ContentCategoryInterestTriggerResultCategory
         array_push($this->lastPath, $lastPath);
         return $this;
     }
-    /**
-     * Sets views to a new value.
-     * @param int $views new value.
-     */
     function setViews(int $views)
     {
         $this->views = $views;
         return $this;
     }
-    /**
-     * Sets viewedContents to a new value.
-     * @param ContentResultDetails[] $viewedContents new value.
-     */
     function setViewedContents(ContentResultDetails ... $viewedContents)
     {
         $this->viewedContents = $viewedContents;

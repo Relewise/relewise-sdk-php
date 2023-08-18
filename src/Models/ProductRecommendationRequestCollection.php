@@ -33,10 +33,6 @@ class ProductRecommendationRequestCollection extends LicensedRequest
         }
         return $result;
     }
-    /**
-     * Sets requests to a new value.
-     * @param ProductRecommendationRequest[] $requests new value.
-     */
     function setRequests(ProductRecommendationRequest ... $requests)
     {
         $this->requests = $requests;
@@ -64,10 +60,6 @@ class ProductRecommendationRequestCollection extends LicensedRequest
         array_push($this->requests, $requests);
         return $this;
     }
-    /**
-     * Sets requireDistinctProductsAcrossResults to a new value.
-     * @param bool $requireDistinctProductsAcrossResults new value.
-     */
     function setRequireDistinctProductsAcrossResults(bool $requireDistinctProductsAcrossResults)
     {
         $this->requireDistinctProductsAcrossResults = $requireDistinctProductsAcrossResults;

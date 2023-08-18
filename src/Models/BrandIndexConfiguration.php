@@ -27,19 +27,11 @@ class BrandIndexConfiguration
         }
         return $result;
     }
-    /**
-     * Sets id to a new value.
-     * @param FieldIndexConfiguration $id new value.
-     */
     function setId(FieldIndexConfiguration $id)
     {
         $this->id = $id;
         return $this;
     }
-    /**
-     * Sets displayName to a new value.
-     * @param FieldIndexConfiguration $displayName new value.
-     */
     function setDisplayName(FieldIndexConfiguration $displayName)
     {
         $this->displayName = $displayName;

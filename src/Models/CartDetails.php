@@ -55,28 +55,16 @@ class CartDetails
         }
         return $result;
     }
-    /**
-     * Sets name to a new value.
-     * @param string $name new value.
-     */
     function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
-    /**
-     * Sets modifiedUtc to a new value.
-     * @param DateTime $modifiedUtc new value.
-     */
     function setModifiedUtc(DateTime $modifiedUtc)
     {
         $this->modifiedUtc = $modifiedUtc;
         return $this;
     }
-    /**
-     * Sets lineItems to a new value.
-     * @param LineItem[] $lineItems new value.
-     */
     function setLineItems(LineItem ... $lineItems)
     {
         $this->lineItems = $lineItems;
@@ -104,20 +92,11 @@ class CartDetails
         array_push($this->lineItems, $lineItems);
         return $this;
     }
-    /**
-     * Sets subtotal to a new value.
-     * @param Money $subtotal new value.
-     */
     function setSubtotal(Money $subtotal)
     {
         $this->subtotal = $subtotal;
         return $this;
     }
-    /**
-     * Sets the value of a specific key in data.
-     * @param string $key index.
-     * @param DataValue $value new value.
-     */
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))

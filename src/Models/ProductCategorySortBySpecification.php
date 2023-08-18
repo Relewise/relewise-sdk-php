@@ -22,10 +22,6 @@ class ProductCategorySortBySpecification
         }
         return $result;
     }
-    /**
-     * Sets value to a new value.
-     * @param ProductCategorySorting $value new value.
-     */
     function setValue(ProductCategorySorting $value)
     {
         $this->value = $value;

@@ -54,10 +54,6 @@ abstract class intintValueFacetResult extends FacetResult
         }
         return $result;
     }
-    /**
-     * Sets selected to a new value.
-     * @param int[] $selected new value.
-     */
     function setSelected(int ... $selected)
     {
         $this->selected = $selected;
@@ -85,10 +81,6 @@ abstract class intintValueFacetResult extends FacetResult
         array_push($this->selected, $selected);
         return $this;
     }
-    /**
-     * Sets available to a new value.
-     * @param intAvailableFacetValue[] $available new value.
-     */
     function setAvailable(intAvailableFacetValue ... $available)
     {
         $this->available = $available;
@@ -116,10 +108,6 @@ abstract class intintValueFacetResult extends FacetResult
         array_push($this->available, $available);
         return $this;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;

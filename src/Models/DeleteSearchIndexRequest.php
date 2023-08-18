@@ -29,19 +29,11 @@ class DeleteSearchIndexRequest extends LicensedRequest
         }
         return $result;
     }
-    /**
-     * Sets id to a new value.
-     * @param string $id new value.
-     */
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    /**
-     * Sets deletedBy to a new value.
-     * @param string $deletedBy new value.
-     */
     function setDeletedBy(string $deletedBy)
     {
         $this->deletedBy = $deletedBy;

@@ -26,10 +26,6 @@ class SearchTermPredictionSettings extends SearchSettings
         }
         return $result;
     }
-    /**
-     * Sets targetEntityTypes to a new value.
-     * @param ?EntityType[] $targetEntityTypes new value.
-     */
     function setTargetEntityTypes(EntityType ... $targetEntityTypes)
     {
         $this->targetEntityTypes = $targetEntityTypes;

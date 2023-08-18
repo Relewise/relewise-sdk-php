@@ -35,37 +35,21 @@ class ProductDisplayNameFilter extends Filter
         }
         return $result;
     }
-    /**
-     * Sets language to a new value.
-     * @param ?Language $language new value.
-     */
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    /**
-     * Sets conditions to a new value.
-     * @param ?ValueConditionCollection $conditions new value.
-     */
     function setConditions(?ValueConditionCollection $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
-    /**
-     * Sets mustMatchAllConditions to a new value.
-     * @param bool $mustMatchAllConditions new value.
-     */
     function setMustMatchAllConditions(bool $mustMatchAllConditions)
     {
         $this->mustMatchAllConditions = $mustMatchAllConditions;
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

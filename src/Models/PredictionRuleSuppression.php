@@ -33,19 +33,11 @@ class PredictionRuleSuppression
         }
         return $result;
     }
-    /**
-     * Sets condition to a new value.
-     * @param SuppressionConditionKind $condition new value.
-     */
     function setCondition(SuppressionConditionKind $condition)
     {
         $this->condition = $condition;
         return $this;
     }
-    /**
-     * Sets values to a new value.
-     * @param string[] $values new value.
-     */
     function setValues(string ... $values)
     {
         $this->values = $values;

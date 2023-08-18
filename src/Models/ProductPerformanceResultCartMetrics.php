@@ -22,10 +22,6 @@ class ProductPerformanceResultCartMetrics
         }
         return $result;
     }
-    /**
-     * Sets opened to a new value.
-     * @param int $opened new value.
-     */
     function setOpened(int $opened)
     {
         $this->opened = $opened;

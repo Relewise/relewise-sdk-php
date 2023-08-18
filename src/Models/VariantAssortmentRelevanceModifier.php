@@ -37,10 +37,6 @@ class VariantAssortmentRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    /**
-     * Sets assortments to a new value.
-     * @param int[] $assortments new value.
-     */
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
@@ -68,19 +64,11 @@ class VariantAssortmentRelevanceModifier extends RelevanceModifier
         array_push($this->assortments, $assortments);
         return $this;
     }
-    /**
-     * Sets multiplyWeightBy to a new value.
-     * @param float $multiplyWeightBy new value.
-     */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
-    /**
-     * Sets filters to a new value.
-     * @param FilterCollection $filters new value.
-     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

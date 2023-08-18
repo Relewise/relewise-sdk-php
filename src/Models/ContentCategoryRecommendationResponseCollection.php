@@ -27,10 +27,6 @@ class ContentCategoryRecommendationResponseCollection extends TimedResponse
         }
         return $result;
     }
-    /**
-     * Sets responses to a new value.
-     * @param ContentCategoryRecommendationResponse[] $responses new value.
-     */
     function setResponses(ContentCategoryRecommendationResponse ... $responses)
     {
         $this->responses = $responses;
@@ -58,10 +54,6 @@ class ContentCategoryRecommendationResponseCollection extends TimedResponse
         array_push($this->responses, $responses);
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

@@ -35,37 +35,21 @@ class VariantSpecificationFilter extends Filter
         }
         return $result;
     }
-    /**
-     * Sets key to a new value.
-     * @param string $key new value.
-     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    /**
-     * Sets filterOutIfKeyIsNotFound to a new value.
-     * @param bool $filterOutIfKeyIsNotFound new value.
-     */
     function setFilterOutIfKeyIsNotFound(bool $filterOutIfKeyIsNotFound)
     {
         $this->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
         return $this;
     }
-    /**
-     * Sets equalTo to a new value.
-     * @param string $equalTo new value.
-     */
     function setEqualTo(string $equalTo)
     {
         $this->equalTo = $equalTo;
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

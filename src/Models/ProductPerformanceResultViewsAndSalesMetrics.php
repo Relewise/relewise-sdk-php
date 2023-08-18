@@ -27,19 +27,11 @@ class ProductPerformanceResultViewsAndSalesMetrics
         }
         return $result;
     }
-    /**
-     * Sets byViews to a new value.
-     * @param float $byViews new value.
-     */
     function setByViews(float $byViews)
     {
         $this->byViews = $byViews;
         return $this;
     }
-    /**
-     * Sets bySales to a new value.
-     * @param float $bySales new value.
-     */
     function setBySales(float $bySales)
     {
         $this->bySales = $bySales;

@@ -23,10 +23,6 @@ class TrackBrandViewRequest extends TrackingRequest
         }
         return $result;
     }
-    /**
-     * Sets brandView to a new value.
-     * @param BrandView $brandView new value.
-     */
     function setBrandView(BrandView $brandView)
     {
         $this->brandView = $brandView;

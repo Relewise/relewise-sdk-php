@@ -29,19 +29,11 @@ class SaveMerchandisingRuleRequest extends LicensedRequest
         }
         return $result;
     }
-    /**
-     * Sets rule to a new value.
-     * @param MerchandisingRule $rule new value.
-     */
     function setRule(MerchandisingRule $rule)
     {
         $this->rule = $rule;
         return $this;
     }
-    /**
-     * Sets modifiedBy to a new value.
-     * @param string $modifiedBy new value.
-     */
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

@@ -27,19 +27,11 @@ class ContentSearchSettings extends SearchSettings
         }
         return $result;
     }
-    /**
-     * Sets selectedContentProperties to a new value.
-     * @param ?SelectedContentPropertiesSettings $selectedContentProperties new value.
-     */
     function setSelectedContentProperties(?SelectedContentPropertiesSettings $selectedContentProperties)
     {
         $this->selectedContentProperties = $selectedContentProperties;
         return $this;
     }
-    /**
-     * Sets recommendations to a new value.
-     * @param RecommendationSettings $recommendations new value.
-     */
     function setRecommendations(RecommendationSettings $recommendations)
     {
         $this->recommendations = $recommendations;

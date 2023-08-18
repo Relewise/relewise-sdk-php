@@ -41,28 +41,16 @@ class ProductPerformanceResultSalesMetrics
         }
         return $result;
     }
-    /**
-     * Sets orders to a new value.
-     * @param int $orders new value.
-     */
     function setOrders(int $orders)
     {
         $this->orders = $orders;
         return $this;
     }
-    /**
-     * Sets averageNoOfLineItems to a new value.
-     * @param float $averageNoOfLineItems new value.
-     */
     function setAverageNoOfLineItems(float $averageNoOfLineItems)
     {
         $this->averageNoOfLineItems = $averageNoOfLineItems;
         return $this;
     }
-    /**
-     * Sets currencies to a new value.
-     * @param ProductPerformanceResultSalesByCurrency[] $currencies new value.
-     */
     function setCurrencies(ProductPerformanceResultSalesByCurrency ... $currencies)
     {
         $this->currencies = $currencies;
@@ -90,10 +78,6 @@ class ProductPerformanceResultSalesMetrics
         array_push($this->currencies, $currencies);
         return $this;
     }
-    /**
-     * Sets withKnownCartOpener to a new value.
-     * @param ProductPerformanceResultSalesWithKnownCartOpenerMetrics $withKnownCartOpener new value.
-     */
     function setWithKnownCartOpener(ProductPerformanceResultSalesWithKnownCartOpenerMetrics $withKnownCartOpener)
     {
         $this->withKnownCartOpener = $withKnownCartOpener;

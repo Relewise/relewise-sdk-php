@@ -23,10 +23,6 @@ class TrackBrandUpdateRequest extends TrackingRequest
         }
         return $result;
     }
-    /**
-     * Sets brandUpdate to a new value.
-     * @param BrandUpdate $brandUpdate new value.
-     */
     function setBrandUpdate(BrandUpdate $brandUpdate)
     {
         $this->brandUpdate = $brandUpdate;

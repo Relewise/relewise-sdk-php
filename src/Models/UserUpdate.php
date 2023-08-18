@@ -29,19 +29,11 @@ class UserUpdate extends Trackable
         }
         return $result;
     }
-    /**
-     * Sets user to a new value.
-     * @param User $user new value.
-     */
     function setUser(User $user)
     {
         $this->user = $user;
         return $this;
     }
-    /**
-     * Sets kind to a new value.
-     * @param UserUpdateUpdateKind $kind new value.
-     */
     function setKind(UserUpdateUpdateKind $kind)
     {
         $this->kind = $kind;

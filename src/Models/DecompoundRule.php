@@ -43,28 +43,16 @@ class DecompoundRule extends SearchRule
         }
         return $result;
     }
-    /**
-     * Sets word to a new value.
-     * @param string $word new value.
-     */
     function setWord(string $word)
     {
         $this->word = $word;
         return $this;
     }
-    /**
-     * Sets head to a new value.
-     * @param ?string $head new value.
-     */
     function setHead(?string $head)
     {
         $this->head = $head;
         return $this;
     }
-    /**
-     * Sets modifiers to a new value.
-     * @param ?string[] $modifiers new value.
-     */
     function setModifiers(string ... $modifiers)
     {
         $this->modifiers = $modifiers;
@@ -92,91 +80,51 @@ class DecompoundRule extends SearchRule
         array_push($this->modifiers, $modifiers);
         return $this;
     }
-    /**
-     * Sets id to a new value.
-     * @param string $id new value.
-     */
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    /**
-     * Sets indexes to a new value.
-     * @param ?ApplicableIndexes $indexes new value.
-     */
     function setIndexes(?ApplicableIndexes $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
-    /**
-     * Sets languages to a new value.
-     * @param ?ApplicableLanguages $languages new value.
-     */
     function setLanguages(?ApplicableLanguages $languages)
     {
         $this->languages = $languages;
         return $this;
     }
-    /**
-     * Sets created to a new value.
-     * @param DateTime $created new value.
-     */
     function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
-    /**
-     * Sets createdBy to a new value.
-     * @param string $createdBy new value.
-     */
     function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
-    /**
-     * Sets modified to a new value.
-     * @param DateTime $modified new value.
-     */
     function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
-    /**
-     * Sets modifiedBy to a new value.
-     * @param string $modifiedBy new value.
-     */
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
-    /**
-     * Sets approved to a new value.
-     * @param ?DateTime $approved new value.
-     */
     function setApproved(?DateTime $approved)
     {
         $this->approved = $approved;
         return $this;
     }
-    /**
-     * Sets approvedBy to a new value.
-     * @param string $approvedBy new value.
-     */
     function setApprovedBy(string $approvedBy)
     {
         $this->approvedBy = $approvedBy;
         return $this;
     }
-    /**
-     * Sets isApproved to a new value.
-     * @param bool $isApproved new value.
-     */
     function setIsApproved(bool $isApproved)
     {
         $this->isApproved = $isApproved;

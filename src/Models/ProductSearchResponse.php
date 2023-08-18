@@ -49,10 +49,6 @@ class ProductSearchResponse extends PaginatedSearchResponse
         }
         return $result;
     }
-    /**
-     * Sets results to a new value.
-     * @param ProductResult[] $results new value.
-     */
     function setResults(ProductResult ... $results)
     {
         $this->results = $results;
@@ -80,19 +76,11 @@ class ProductSearchResponse extends PaginatedSearchResponse
         array_push($this->results, $results);
         return $this;
     }
-    /**
-     * Sets facets to a new value.
-     * @param ProductFacetResult $facets new value.
-     */
     function setFacets(ProductFacetResult $facets)
     {
         $this->facets = $facets;
         return $this;
     }
-    /**
-     * Sets recommendations to a new value.
-     * @param ProductResult[] $recommendations new value.
-     */
     function setRecommendations(ProductResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
@@ -120,10 +108,6 @@ class ProductSearchResponse extends PaginatedSearchResponse
         array_push($this->recommendations, $recommendations);
         return $this;
     }
-    /**
-     * Sets redirects to a new value.
-     * @param RedirectResult[] $redirects new value.
-     */
     function setRedirects(RedirectResult ... $redirects)
     {
         $this->redirects = $redirects;
@@ -151,19 +135,11 @@ class ProductSearchResponse extends PaginatedSearchResponse
         array_push($this->redirects, $redirects);
         return $this;
     }
-    /**
-     * Sets hits to a new value.
-     * @param int $hits new value.
-     */
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

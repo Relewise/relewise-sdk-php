@@ -18,10 +18,6 @@ class SavePredictionRulesRequest extends PredictionRuleSaveSearchRulesRequest
         $result = PredictionRuleSaveSearchRulesRequest::hydrateBase(new SavePredictionRulesRequest(), $arr);
         return $result;
     }
-    /**
-     * Sets rules to a new value.
-     * @param PredictionRule[] $rules new value.
-     */
     function setRules(PredictionRule ... $rules)
     {
         $this->rules = $rules;
@@ -49,10 +45,6 @@ class SavePredictionRulesRequest extends PredictionRuleSaveSearchRulesRequest
         array_push($this->rules, $rules);
         return $this;
     }
-    /**
-     * Sets modifiedBy to a new value.
-     * @param string $modifiedBy new value.
-     */
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

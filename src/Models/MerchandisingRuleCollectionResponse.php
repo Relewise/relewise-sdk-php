@@ -26,10 +26,6 @@ class MerchandisingRuleCollectionResponse extends TimedResponse
         }
         return $result;
     }
-    /**
-     * Sets rules to a new value.
-     * @param MerchandisingRule[] $rules new value.
-     */
     function setRules(MerchandisingRule ... $rules)
     {
         $this->rules = $rules;
@@ -57,10 +53,6 @@ class MerchandisingRuleCollectionResponse extends TimedResponse
         array_push($this->rules, $rules);
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

@@ -139,37 +139,21 @@ class ProductResultDetails
         }
         return $result;
     }
-    /**
-     * Sets productId to a new value.
-     * @param string $productId new value.
-     */
     function setProductId(string $productId)
     {
         $this->productId = $productId;
         return $this;
     }
-    /**
-     * Sets displayName to a new value.
-     * @param Multilingual $displayName new value.
-     */
     function setDisplayName(Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    /**
-     * Sets variant to a new value.
-     * @param VariantResult $variant new value.
-     */
     function setVariant(VariantResult $variant)
     {
         $this->variant = $variant;
         return $this;
     }
-    /**
-     * Sets assortments to a new value.
-     * @param int[] $assortments new value.
-     */
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
@@ -197,11 +181,6 @@ class ProductResultDetails
         array_push($this->assortments, $assortments);
         return $this;
     }
-    /**
-     * Sets the value of a specific key in data.
-     * @param string $key index.
-     * @param DataValue $value new value.
-     */
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -220,10 +199,6 @@ class ProductResultDetails
         $this->data = $data;
         return $this;
     }
-    /**
-     * Sets categoryPaths to a new value.
-     * @param CategoryPathResultDetails[] $categoryPaths new value.
-     */
     function setCategoryPaths(CategoryPathResultDetails ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
@@ -251,28 +226,16 @@ class ProductResultDetails
         array_push($this->categoryPaths, $categoryPaths);
         return $this;
     }
-    /**
-     * Sets purchasedByUser to a new value.
-     * @param PurchasedByUserInfo $purchasedByUser new value.
-     */
     function setPurchasedByUser(PurchasedByUserInfo $purchasedByUser)
     {
         $this->purchasedByUser = $purchasedByUser;
         return $this;
     }
-    /**
-     * Sets viewedByUser to a new value.
-     * @param ViewedByUserInfo $viewedByUser new value.
-     */
     function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;
     }
-    /**
-     * Sets allVariants to a new value.
-     * @param VariantResultDetails[] $allVariants new value.
-     */
     function setAllVariants(VariantResultDetails ... $allVariants)
     {
         $this->allVariants = $allVariants;
@@ -300,109 +263,61 @@ class ProductResultDetails
         array_push($this->allVariants, $allVariants);
         return $this;
     }
-    /**
-     * Sets createdUtc to a new value.
-     * @param DateTime $createdUtc new value.
-     */
     function setCreatedUtc(DateTime $createdUtc)
     {
         $this->createdUtc = $createdUtc;
         return $this;
     }
-    /**
-     * Sets lastPurchasedUtc to a new value.
-     * @param ?DateTime $lastPurchasedUtc new value.
-     */
     function setLastPurchasedUtc(?DateTime $lastPurchasedUtc)
     {
         $this->lastPurchasedUtc = $lastPurchasedUtc;
         return $this;
     }
-    /**
-     * Sets lastViewedUtc to a new value.
-     * @param ?DateTime $lastViewedUtc new value.
-     */
     function setLastViewedUtc(?DateTime $lastViewedUtc)
     {
         $this->lastViewedUtc = $lastViewedUtc;
         return $this;
     }
-    /**
-     * Sets containedInTotalNumberOfOrders to a new value.
-     * @param int $containedInTotalNumberOfOrders new value.
-     */
     function setContainedInTotalNumberOfOrders(int $containedInTotalNumberOfOrders)
     {
         $this->containedInTotalNumberOfOrders = $containedInTotalNumberOfOrders;
         return $this;
     }
-    /**
-     * Sets viewedTotalNumberOfTimes to a new value.
-     * @param int $viewedTotalNumberOfTimes new value.
-     */
     function setViewedTotalNumberOfTimes(int $viewedTotalNumberOfTimes)
     {
         $this->viewedTotalNumberOfTimes = $viewedTotalNumberOfTimes;
         return $this;
     }
-    /**
-     * Sets purchasedByDifferentNumberOfUsers to a new value.
-     * @param int $purchasedByDifferentNumberOfUsers new value.
-     */
     function setPurchasedByDifferentNumberOfUsers(int $purchasedByDifferentNumberOfUsers)
     {
         $this->purchasedByDifferentNumberOfUsers = $purchasedByDifferentNumberOfUsers;
         return $this;
     }
-    /**
-     * Sets viewedByDifferentNumberOfUsers to a new value.
-     * @param int $viewedByDifferentNumberOfUsers new value.
-     */
     function setViewedByDifferentNumberOfUsers(int $viewedByDifferentNumberOfUsers)
     {
         $this->viewedByDifferentNumberOfUsers = $viewedByDifferentNumberOfUsers;
         return $this;
     }
-    /**
-     * Sets disabled to a new value.
-     * @param bool $disabled new value.
-     */
     function setDisabled(bool $disabled)
     {
         $this->disabled = $disabled;
         return $this;
     }
-    /**
-     * Sets deleted to a new value.
-     * @param bool $deleted new value.
-     */
     function setDeleted(bool $deleted)
     {
         $this->deleted = $deleted;
         return $this;
     }
-    /**
-     * Sets listPrice to a new value.
-     * @param MultiCurrency $listPrice new value.
-     */
     function setListPrice(MultiCurrency $listPrice)
     {
         $this->listPrice = $listPrice;
         return $this;
     }
-    /**
-     * Sets salesPrice to a new value.
-     * @param MultiCurrency $salesPrice new value.
-     */
     function setSalesPrice(MultiCurrency $salesPrice)
     {
         $this->salesPrice = $salesPrice;
         return $this;
     }
-    /**
-     * Sets brand to a new value.
-     * @param BrandResultDetails $brand new value.
-     */
     function setBrand(BrandResultDetails $brand)
     {
         $this->brand = $brand;

@@ -35,19 +35,11 @@ class CategoryNameAndId
         }
         return $result;
     }
-    /**
-     * Sets id to a new value.
-     * @param string $id new value.
-     */
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    /**
-     * Sets displayName to a new value.
-     * @param ?Multilingual $displayName new value.
-     */
     function setDisplayName(?Multilingual $displayName)
     {
         $this->displayName = $displayName;

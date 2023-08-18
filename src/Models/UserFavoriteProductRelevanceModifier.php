@@ -47,46 +47,26 @@ class UserFavoriteProductRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    /**
-     * Sets sinceMinutesAgo to a new value.
-     * @param int $sinceMinutesAgo new value.
-     */
     function setSinceMinutesAgo(int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
-    /**
-     * Sets numberOfPurchasesWeight to a new value.
-     * @param float $numberOfPurchasesWeight new value.
-     */
     function setNumberOfPurchasesWeight(float $numberOfPurchasesWeight)
     {
         $this->numberOfPurchasesWeight = $numberOfPurchasesWeight;
         return $this;
     }
-    /**
-     * Sets mostRecentPurchaseWeight to a new value.
-     * @param float $mostRecentPurchaseWeight new value.
-     */
     function setMostRecentPurchaseWeight(float $mostRecentPurchaseWeight)
     {
         $this->mostRecentPurchaseWeight = $mostRecentPurchaseWeight;
         return $this;
     }
-    /**
-     * Sets ifNotPurchasedBaseWeight to a new value.
-     * @param float $ifNotPurchasedBaseWeight new value.
-     */
     function setIfNotPurchasedBaseWeight(float $ifNotPurchasedBaseWeight)
     {
         $this->ifNotPurchasedBaseWeight = $ifNotPurchasedBaseWeight;
         return $this;
     }
-    /**
-     * Sets filters to a new value.
-     * @param FilterCollection $filters new value.
-     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

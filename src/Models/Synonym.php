@@ -108,28 +108,16 @@ class Synonym
         }
         return $result;
     }
-    /**
-     * Sets id to a new value.
-     * @param string $id new value.
-     */
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    /**
-     * Sets type to a new value.
-     * @param SynonymType $type new value.
-     */
     function setType(SynonymType $type)
     {
         $this->type = $type;
         return $this;
     }
-    /**
-     * Sets indexes to a new value.
-     * @param string[] $indexes new value.
-     */
     function setIndexes(string ... $indexes)
     {
         $this->indexes = $indexes;
@@ -157,10 +145,6 @@ class Synonym
         array_push($this->indexes, $indexes);
         return $this;
     }
-    /**
-     * Sets languages to a new value.
-     * @param Language[] $languages new value.
-     */
     function setLanguages(Language ... $languages)
     {
         $this->languages = $languages;
@@ -188,46 +172,26 @@ class Synonym
         array_push($this->languages, $languages);
         return $this;
     }
-    /**
-     * Sets created to a new value.
-     * @param DateTime $created new value.
-     */
     function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
-    /**
-     * Sets createdBy to a new value.
-     * @param string $createdBy new value.
-     */
     function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
-    /**
-     * Sets modified to a new value.
-     * @param DateTime $modified new value.
-     */
     function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
-    /**
-     * Sets modifiedBy to a new value.
-     * @param string $modifiedBy new value.
-     */
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
-    /**
-     * Sets from to a new value.
-     * @param string[] $from new value.
-     */
     function setFrom(string ... $from)
     {
         $this->from = $from;
@@ -255,10 +219,6 @@ class Synonym
         array_push($this->from, $from);
         return $this;
     }
-    /**
-     * Sets words to a new value.
-     * @param string[] $words new value.
-     */
     function setWords(string ... $words)
     {
         $this->words = $words;
@@ -286,46 +246,26 @@ class Synonym
         array_push($this->words, $words);
         return $this;
     }
-    /**
-     * Sets approved to a new value.
-     * @param ?DateTime $approved new value.
-     */
     function setApproved(?DateTime $approved)
     {
         $this->approved = $approved;
         return $this;
     }
-    /**
-     * Sets approvedBy to a new value.
-     * @param string $approvedBy new value.
-     */
     function setApprovedBy(string $approvedBy)
     {
         $this->approvedBy = $approvedBy;
         return $this;
     }
-    /**
-     * Sets usages to a new value.
-     * @param int $usages new value.
-     */
     function setUsages(int $usages)
     {
         $this->usages = $usages;
         return $this;
     }
-    /**
-     * Sets isApproved to a new value.
-     * @param bool $isApproved new value.
-     */
     function setIsApproved(bool $isApproved)
     {
         $this->isApproved = $isApproved;
         return $this;
     }
-    /**
-     * Sets allowInPredictions to a new value.
-     * @param bool $allowInPredictions new value.
-     */
     function setAllowInPredictions(bool $allowInPredictions)
     {
         $this->allowInPredictions = $allowInPredictions;

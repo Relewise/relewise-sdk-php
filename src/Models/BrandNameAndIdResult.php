@@ -29,19 +29,11 @@ class BrandNameAndIdResult
         }
         return $result;
     }
-    /**
-     * Sets id to a new value.
-     * @param string $id new value.
-     */
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    /**
-     * Sets displayName to a new value.
-     * @param string $displayName new value.
-     */
     function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;

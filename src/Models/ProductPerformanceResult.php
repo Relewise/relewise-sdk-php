@@ -31,19 +31,11 @@ class ProductPerformanceResult
         }
         return $result;
     }
-    /**
-     * Sets product to a new value.
-     * @param ProductResult $product new value.
-     */
     function setProduct(ProductResult $product)
     {
         $this->product = $product;
         return $this;
     }
-    /**
-     * Sets classifications to a new value.
-     * @param ProductPerformanceResultClassificationMetrics[] $classifications new value.
-     */
     function setClassifications(ProductPerformanceResultClassificationMetrics ... $classifications)
     {
         $this->classifications = $classifications;

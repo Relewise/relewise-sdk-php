@@ -23,10 +23,6 @@ class TrackProductViewRequest extends TrackingRequest
         }
         return $result;
     }
-    /**
-     * Sets productView to a new value.
-     * @param ProductView $productView new value.
-     */
     function setProductView(ProductView $productView)
     {
         $this->productView = $productView;

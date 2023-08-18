@@ -27,10 +27,6 @@ class VariantIdFilter extends Filter
         }
         return $result;
     }
-    /**
-     * Sets variantIds to a new value.
-     * @param string[] $variantIds new value.
-     */
     function setVariantIds(string ... $variantIds)
     {
         $this->variantIds = $variantIds;
@@ -58,10 +54,6 @@ class VariantIdFilter extends Filter
         array_push($this->variantIds, $variantIds);
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

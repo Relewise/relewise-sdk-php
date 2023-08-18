@@ -60,10 +60,6 @@ abstract class floatDataRangesFacet extends Facet
         }
         return $result;
     }
-    /**
-     * Sets predefinedRanges to a new value.
-     * @param ??floatChainableRange[] $predefinedRanges new value.
-     */
     function setPredefinedRanges(?floatChainableRange ... $predefinedRanges)
     {
         $this->predefinedRanges = $predefinedRanges;
@@ -91,19 +87,11 @@ abstract class floatDataRangesFacet extends Facet
         array_push($this->predefinedRanges, $predefinedRanges);
         return $this;
     }
-    /**
-     * Sets expandedRangeSize to a new value.
-     * @param ?float $expandedRangeSize new value.
-     */
     function setExpandedRangeSize(?float $expandedRangeSize)
     {
         $this->expandedRangeSize = $expandedRangeSize;
         return $this;
     }
-    /**
-     * Sets selected to a new value.
-     * @param ??floatChainableRange[] $selected new value.
-     */
     function setSelected(?floatChainableRange ... $selected)
     {
         $this->selected = $selected;
@@ -131,28 +119,16 @@ abstract class floatDataRangesFacet extends Facet
         array_push($this->selected, $selected);
         return $this;
     }
-    /**
-     * Sets key to a new value.
-     * @param string $key new value.
-     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
-    /**
-     * Sets settings to a new value.
-     * @param ?FacetSettings $settings new value.
-     */
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

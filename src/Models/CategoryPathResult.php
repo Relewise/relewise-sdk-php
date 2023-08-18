@@ -32,10 +32,6 @@ class CategoryPathResult
         }
         return $result;
     }
-    /**
-     * Sets pathFromRoot to a new value.
-     * @param CategoryNameAndIdResult[] $pathFromRoot new value.
-     */
     function setPathFromRoot(CategoryNameAndIdResult ... $pathFromRoot)
     {
         $this->pathFromRoot = $pathFromRoot;
@@ -63,10 +59,6 @@ class CategoryPathResult
         array_push($this->pathFromRoot, $pathFromRoot);
         return $this;
     }
-    /**
-     * Sets rank to a new value.
-     * @param int $rank new value.
-     */
     function setRank(int $rank)
     {
         $this->rank = $rank;

@@ -18,10 +18,6 @@ class SaveDecompoundRulesResponse extends DecompoundRuleSaveSearchRulesResponse
         $result = DecompoundRuleSaveSearchRulesResponse::hydrateBase(new SaveDecompoundRulesResponse(), $arr);
         return $result;
     }
-    /**
-     * Sets rules to a new value.
-     * @param DecompoundRule[] $rules new value.
-     */
     function setRules(DecompoundRule ... $rules)
     {
         $this->rules = $rules;
@@ -49,10 +45,6 @@ class SaveDecompoundRulesResponse extends DecompoundRuleSaveSearchRulesResponse
         array_push($this->rules, $rules);
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

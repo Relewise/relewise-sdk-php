@@ -18,10 +18,6 @@ class ContentCategoryLevelFilter extends CategoryLevelFilter
         $result = CategoryLevelFilter::hydrateBase(new ContentCategoryLevelFilter(), $arr);
         return $result;
     }
-    /**
-     * Sets levels to a new value.
-     * @param int[] $levels new value.
-     */
     function setLevels(int ... $levels)
     {
         $this->levels = $levels;
@@ -49,10 +45,6 @@ class ContentCategoryLevelFilter extends CategoryLevelFilter
         array_push($this->levels, $levels);
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

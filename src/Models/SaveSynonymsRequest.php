@@ -33,10 +33,6 @@ class SaveSynonymsRequest extends LicensedRequest
         }
         return $result;
     }
-    /**
-     * Sets synonyms to a new value.
-     * @param Synonym[] $synonyms new value.
-     */
     function setSynonyms(Synonym ... $synonyms)
     {
         $this->synonyms = $synonyms;
@@ -64,10 +60,6 @@ class SaveSynonymsRequest extends LicensedRequest
         array_push($this->synonyms, $synonyms);
         return $this;
     }
-    /**
-     * Sets modifiedBy to a new value.
-     * @param string $modifiedBy new value.
-     */
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

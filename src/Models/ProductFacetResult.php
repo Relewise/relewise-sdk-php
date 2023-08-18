@@ -28,10 +28,6 @@ class ProductFacetResult extends ProductFacetResultExtractable
         }
         return $result;
     }
-    /**
-     * Sets items to a new value.
-     * @param FacetResult[] $items new value.
-     */
     function setItems(FacetResult ... $items)
     {
         $this->items = $items;

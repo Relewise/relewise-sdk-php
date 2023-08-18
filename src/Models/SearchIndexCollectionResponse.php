@@ -26,10 +26,6 @@ class SearchIndexCollectionResponse extends TimedResponse
         }
         return $result;
     }
-    /**
-     * Sets indexes to a new value.
-     * @param SearchIndex[] $indexes new value.
-     */
     function setIndexes(SearchIndex ... $indexes)
     {
         $this->indexes = $indexes;
@@ -57,10 +53,6 @@ class SearchIndexCollectionResponse extends TimedResponse
         array_push($this->indexes, $indexes);
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

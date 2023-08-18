@@ -86,28 +86,16 @@ class BrandResultDetails
         }
         return $result;
     }
-    /**
-     * Sets brandId to a new value.
-     * @param string $brandId new value.
-     */
     function setBrandId(string $brandId)
     {
         $this->brandId = $brandId;
         return $this;
     }
-    /**
-     * Sets displayName to a new value.
-     * @param string $displayName new value.
-     */
     function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    /**
-     * Sets assortments to a new value.
-     * @param int[] $assortments new value.
-     */
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
@@ -135,11 +123,6 @@ class BrandResultDetails
         array_push($this->assortments, $assortments);
         return $this;
     }
-    /**
-     * Sets the value of a specific key in data.
-     * @param string $key index.
-     * @param DataValue $value new value.
-     */
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -158,73 +141,41 @@ class BrandResultDetails
         $this->data = $data;
         return $this;
     }
-    /**
-     * Sets viewedByUser to a new value.
-     * @param ViewedByUserInfo $viewedByUser new value.
-     */
     function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;
     }
-    /**
-     * Sets createdUtc to a new value.
-     * @param DateTime $createdUtc new value.
-     */
     function setCreatedUtc(DateTime $createdUtc)
     {
         $this->createdUtc = $createdUtc;
         return $this;
     }
-    /**
-     * Sets lastViewedUtc to a new value.
-     * @param ?DateTime $lastViewedUtc new value.
-     */
     function setLastViewedUtc(?DateTime $lastViewedUtc)
     {
         $this->lastViewedUtc = $lastViewedUtc;
         return $this;
     }
-    /**
-     * Sets viewedTotalNumberOfTimes to a new value.
-     * @param int $viewedTotalNumberOfTimes new value.
-     */
     function setViewedTotalNumberOfTimes(int $viewedTotalNumberOfTimes)
     {
         $this->viewedTotalNumberOfTimes = $viewedTotalNumberOfTimes;
         return $this;
     }
-    /**
-     * Sets viewedByDifferentNumberOfUsers to a new value.
-     * @param int $viewedByDifferentNumberOfUsers new value.
-     */
     function setViewedByDifferentNumberOfUsers(int $viewedByDifferentNumberOfUsers)
     {
         $this->viewedByDifferentNumberOfUsers = $viewedByDifferentNumberOfUsers;
         return $this;
     }
-    /**
-     * Sets disabled to a new value.
-     * @param bool $disabled new value.
-     */
     function setDisabled(bool $disabled)
     {
         $this->disabled = $disabled;
         return $this;
     }
-    /**
-     * Sets purchasedFromByDifferentNumberOfUsers to a new value.
-     * @param int $purchasedFromByDifferentNumberOfUsers new value.
-     */
     function setPurchasedFromByDifferentNumberOfUsers(int $purchasedFromByDifferentNumberOfUsers)
     {
         $this->purchasedFromByDifferentNumberOfUsers = $purchasedFromByDifferentNumberOfUsers;
         return $this;
     }
-    /**
-     * Sets purchasedByUser to a new value.
-     * @param PurchasedByUserInfo $purchasedByUser new value.
-     */
     function setPurchasedByUser(PurchasedByUserInfo $purchasedByUser)
     {
         $this->purchasedByUser = $purchasedByUser;

@@ -35,28 +35,16 @@ class SearchTerm extends Trackable
         }
         return $result;
     }
-    /**
-     * Sets language to a new value.
-     * @param Language $language new value.
-     */
     function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    /**
-     * Sets user to a new value.
-     * @param User $user new value.
-     */
     function setUser(User $user)
     {
         $this->user = $user;
         return $this;
     }
-    /**
-     * Sets term to a new value.
-     * @param string $term new value.
-     */
     function setTerm(string $term)
     {
         $this->term = $term;

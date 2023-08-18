@@ -33,10 +33,6 @@ class BrandDetailsCollectionResponse extends TimedResponse
         }
         return $result;
     }
-    /**
-     * Sets brands to a new value.
-     * @param BrandResultDetails[] $brands new value.
-     */
     function setBrands(BrandResultDetails ... $brands)
     {
         $this->brands = $brands;
@@ -64,19 +60,11 @@ class BrandDetailsCollectionResponse extends TimedResponse
         array_push($this->brands, $brands);
         return $this;
     }
-    /**
-     * Sets totalNumberOfResults to a new value.
-     * @param ?int $totalNumberOfResults new value.
-     */
     function setTotalNumberOfResults(?int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

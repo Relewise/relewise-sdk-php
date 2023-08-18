@@ -67,28 +67,16 @@ class Order extends Trackable
         }
         return $result;
     }
-    /**
-     * Sets user to a new value.
-     * @param User $user new value.
-     */
     function setUser(User $user)
     {
         $this->user = $user;
         return $this;
     }
-    /**
-     * Sets subtotal to a new value.
-     * @param Money $subtotal new value.
-     */
     function setSubtotal(Money $subtotal)
     {
         $this->subtotal = $subtotal;
         return $this;
     }
-    /**
-     * Sets lineItems to a new value.
-     * @param LineItem[] $lineItems new value.
-     */
     function setLineItems(LineItem ... $lineItems)
     {
         $this->lineItems = $lineItems;
@@ -116,47 +104,26 @@ class Order extends Trackable
         array_push($this->lineItems, $lineItems);
         return $this;
     }
-    /**
-     * Sets orderNumber to a new value.
-     * @param string $orderNumber new value.
-     */
     function setOrderNumber(string $orderNumber)
     {
         $this->orderNumber = $orderNumber;
         return $this;
     }
-    /**
-     * Sets cartName to a new value.
-     * @param string $cartName new value.
-     */
     function setCartName(string $cartName)
     {
         $this->cartName = $cartName;
         return $this;
     }
-    /**
-     * Sets channel to a new value.
-     * @param ?string $channel new value.
-     */
     function setChannel(?string $channel)
     {
         $this->channel = $channel;
         return $this;
     }
-    /**
-     * Sets subChannel to a new value.
-     * @param ?string $subChannel new value.
-     */
     function setSubChannel(?string $subChannel)
     {
         $this->subChannel = $subChannel;
         return $this;
     }
-    /**
-     * Sets trackingNumber to a new value.
-     * @deprecated Use OrderNumber instead.
-     * @param ?string $trackingNumber new value.
-     */
     function setTrackingNumber(?string $trackingNumber)
     {
         $this->trackingNumber = $trackingNumber;

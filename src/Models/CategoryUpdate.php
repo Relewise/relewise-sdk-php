@@ -29,10 +29,6 @@ abstract class CategoryUpdate extends Trackable
         }
         return $result;
     }
-    /**
-     * Sets kind to a new value.
-     * @param CategoryUpdateUpdateKind $kind new value.
-     */
     function setKind(CategoryUpdateUpdateKind $kind)
     {
         $this->kind = $kind;

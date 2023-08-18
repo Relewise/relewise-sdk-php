@@ -29,19 +29,11 @@ class ViewedByUserInfo
         }
         return $result;
     }
-    /**
-     * Sets mostRecentlyViewedUtc to a new value.
-     * @param DateTime $mostRecentlyViewedUtc new value.
-     */
     function setMostRecentlyViewedUtc(DateTime $mostRecentlyViewedUtc)
     {
         $this->mostRecentlyViewedUtc = $mostRecentlyViewedUtc;
         return $this;
     }
-    /**
-     * Sets totalNumberOfTimesViewed to a new value.
-     * @param int $totalNumberOfTimesViewed new value.
-     */
     function setTotalNumberOfTimesViewed(int $totalNumberOfTimesViewed)
     {
         $this->totalNumberOfTimesViewed = $totalNumberOfTimesViewed;

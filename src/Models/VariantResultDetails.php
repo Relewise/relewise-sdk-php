@@ -70,29 +70,16 @@ class VariantResultDetails
         }
         return $result;
     }
-    /**
-     * Sets variantId to a new value.
-     * @param string $variantId new value.
-     */
     function setVariantId(string $variantId)
     {
         $this->variantId = $variantId;
         return $this;
     }
-    /**
-     * Sets displayName to a new value.
-     * @param Multilingual $displayName new value.
-     */
     function setDisplayName(Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    /**
-     * Sets the value of a specific key in specification.
-     * @param string $key index.
-     * @param string $value new value.
-     */
     function addToSpecification(string $key, string $value)
     {
         if (!isset($this->specification))
@@ -111,10 +98,6 @@ class VariantResultDetails
         $this->specification = $specification;
         return $this;
     }
-    /**
-     * Sets assortments to a new value.
-     * @param int[] $assortments new value.
-     */
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
@@ -142,11 +125,6 @@ class VariantResultDetails
         array_push($this->assortments, $assortments);
         return $this;
     }
-    /**
-     * Sets the value of a specific key in data.
-     * @param string $key index.
-     * @param DataValue $value new value.
-     */
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -165,28 +143,16 @@ class VariantResultDetails
         $this->data = $data;
         return $this;
     }
-    /**
-     * Sets listPrice to a new value.
-     * @param MultiCurrency $listPrice new value.
-     */
     function setListPrice(MultiCurrency $listPrice)
     {
         $this->listPrice = $listPrice;
         return $this;
     }
-    /**
-     * Sets salesPrice to a new value.
-     * @param MultiCurrency $salesPrice new value.
-     */
     function setSalesPrice(MultiCurrency $salesPrice)
     {
         $this->salesPrice = $salesPrice;
         return $this;
     }
-    /**
-     * Sets disabled to a new value.
-     * @param bool $disabled new value.
-     */
     function setDisabled(bool $disabled)
     {
         $this->disabled = $disabled;

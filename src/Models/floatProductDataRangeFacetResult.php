@@ -30,46 +30,26 @@ abstract class floatProductDataRangeFacetResult extends floatRangeFacetResult
         }
         return $result;
     }
-    /**
-     * Sets key to a new value.
-     * @param string $key new value.
-     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    /**
-     * Sets dataSelectionStrategy to a new value.
-     * @param DataSelectionStrategy $dataSelectionStrategy new value.
-     */
     function setDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
     {
         $this->dataSelectionStrategy = $dataSelectionStrategy;
         return $this;
     }
-    /**
-     * Sets selected to a new value.
-     * @param ?floatRange $selected new value.
-     */
     function setSelected(?floatRange $selected)
     {
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Sets available to a new value.
-     * @param ?floatRangeAvailableFacetValue $available new value.
-     */
     function setAvailable(?floatRangeAvailableFacetValue $available)
     {
         $this->available = $available;
         return $this;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;

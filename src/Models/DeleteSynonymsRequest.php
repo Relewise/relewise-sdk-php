@@ -33,10 +33,6 @@ class DeleteSynonymsRequest extends LicensedRequest
         }
         return $result;
     }
-    /**
-     * Sets ids to a new value.
-     * @param string[] $ids new value.
-     */
     function setIds(string ... $ids)
     {
         $this->ids = $ids;
@@ -64,10 +60,6 @@ class DeleteSynonymsRequest extends LicensedRequest
         array_push($this->ids, $ids);
         return $this;
     }
-    /**
-     * Sets deletedBy to a new value.
-     * @param string $deletedBy new value.
-     */
     function setDeletedBy(string $deletedBy)
     {
         $this->deletedBy = $deletedBy;

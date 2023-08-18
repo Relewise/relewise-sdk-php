@@ -18,10 +18,6 @@ class ProductCategoryHasAncestorFilter extends HasAncestorCategoryFilter
         $result = HasAncestorCategoryFilter::hydrateBase(new ProductCategoryHasAncestorFilter(), $arr);
         return $result;
     }
-    /**
-     * Sets categoryIds to a new value.
-     * @param string[] $categoryIds new value.
-     */
     function setCategoryIds(string ... $categoryIds)
     {
         $this->categoryIds = $categoryIds;
@@ -49,10 +45,6 @@ class ProductCategoryHasAncestorFilter extends HasAncestorCategoryFilter
         array_push($this->categoryIds, $categoryIds);
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

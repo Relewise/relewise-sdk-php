@@ -40,37 +40,21 @@ class ProductRecentlyPurchasedByUserRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    /**
-     * Sets sinceUtc to a new value.
-     * @param DateTime $sinceUtc new value.
-     */
     function setSinceUtc(DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
-    /**
-     * Sets ifPreviouslyPurchasedByUserMultiplyWeightBy to a new value.
-     * @param float $ifPreviouslyPurchasedByUserMultiplyWeightBy new value.
-     */
     function setIfPreviouslyPurchasedByUserMultiplyWeightBy(float $ifPreviouslyPurchasedByUserMultiplyWeightBy)
     {
         $this->ifPreviouslyPurchasedByUserMultiplyWeightBy = $ifPreviouslyPurchasedByUserMultiplyWeightBy;
         return $this;
     }
-    /**
-     * Sets ifNotPreviouslyPurchasedByUserMultiplyWeightBy to a new value.
-     * @param float $ifNotPreviouslyPurchasedByUserMultiplyWeightBy new value.
-     */
     function setIfNotPreviouslyPurchasedByUserMultiplyWeightBy(float $ifNotPreviouslyPurchasedByUserMultiplyWeightBy)
     {
         $this->ifNotPreviouslyPurchasedByUserMultiplyWeightBy = $ifNotPreviouslyPurchasedByUserMultiplyWeightBy;
         return $this;
     }
-    /**
-     * Sets filters to a new value.
-     * @param FilterCollection $filters new value.
-     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

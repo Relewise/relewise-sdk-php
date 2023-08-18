@@ -28,10 +28,6 @@ class AndFilter extends Filter
         }
         return $result;
     }
-    /**
-     * Sets filters to a new value.
-     * @param Filter[] $filters new value.
-     */
     function setFilters(Filter ... $filters)
     {
         $this->filters = $filters;
@@ -59,10 +55,6 @@ class AndFilter extends Filter
         array_push($this->filters, $filters);
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

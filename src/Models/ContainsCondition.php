@@ -33,37 +33,21 @@ class ContainsCondition extends ValueCondition
         }
         return $result;
     }
-    /**
-     * Sets value to a new value.
-     * @param ?DataValue $value new value.
-     */
     function setValue(?DataValue $value)
     {
         $this->value = $value;
         return $this;
     }
-    /**
-     * Sets valueCollectionEvaluationMode to a new value.
-     * @param ContainsConditionCollectionArgumentEvaluationMode $valueCollectionEvaluationMode new value.
-     */
     function setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode $valueCollectionEvaluationMode)
     {
         $this->valueCollectionEvaluationMode = $valueCollectionEvaluationMode;
         return $this;
     }
-    /**
-     * Sets objectFilter to a new value.
-     * @param ?DataObjectFilter $objectFilter new value.
-     */
     function setObjectFilter(?DataObjectFilter $objectFilter)
     {
         $this->objectFilter = $objectFilter;
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

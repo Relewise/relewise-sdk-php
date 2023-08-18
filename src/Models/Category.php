@@ -60,28 +60,16 @@ abstract class Category
         }
         return $result;
     }
-    /**
-     * Sets id to a new value.
-     * @param string $id new value.
-     */
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    /**
-     * Sets displayName to a new value.
-     * @param Multilingual $displayName new value.
-     */
     function setDisplayName(Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    /**
-     * Sets categoryPaths to a new value.
-     * @param CategoryPath[] $categoryPaths new value.
-     */
     function setCategoryPaths(CategoryPath ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
@@ -109,10 +97,6 @@ abstract class Category
         array_push($this->categoryPaths, $categoryPaths);
         return $this;
     }
-    /**
-     * Sets assortments to a new value.
-     * @param int[] $assortments new value.
-     */
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
@@ -140,11 +124,6 @@ abstract class Category
         array_push($this->assortments, $assortments);
         return $this;
     }
-    /**
-     * Sets the value of a specific key in data.
-     * @param string $key index.
-     * @param DataValue $value new value.
-     */
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))

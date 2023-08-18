@@ -22,19 +22,11 @@ class MerchandisingRuleResponse extends TimedResponse
         }
         return $result;
     }
-    /**
-     * Sets rule to a new value.
-     * @param MerchandisingRule $rule new value.
-     */
     function setRule(MerchandisingRule $rule)
     {
         $this->rule = $rule;
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

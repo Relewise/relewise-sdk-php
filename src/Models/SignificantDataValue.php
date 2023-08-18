@@ -41,37 +41,21 @@ class SignificantDataValue
         }
         return $result;
     }
-    /**
-     * Sets key to a new value.
-     * @param string $key new value.
-     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    /**
-     * Sets comparer to a new value.
-     * @param SignificantDataValueSignificantDataValueComparer $comparer new value.
-     */
     function setComparer(SignificantDataValueSignificantDataValueComparer $comparer)
     {
         $this->comparer = $comparer;
         return $this;
     }
-    /**
-     * Sets significance to a new value.
-     * @param float $significance new value.
-     */
     function setSignificance(float $significance)
     {
         $this->significance = $significance;
         return $this;
     }
-    /**
-     * Sets transformer to a new value.
-     * @param ?TrimStringTransformer $transformer new value.
-     */
     function setTransformer(?TrimStringTransformer $transformer)
     {
         $this->transformer = $transformer;

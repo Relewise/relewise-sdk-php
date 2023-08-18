@@ -30,37 +30,21 @@ class ProductVariantSpecificationSorting extends ProductSorting
         }
         return $result;
     }
-    /**
-     * Sets key to a new value.
-     * @param string $key new value.
-     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    /**
-     * Sets mode to a new value.
-     * @param SortMode $mode new value.
-     */
     function setMode(SortMode $mode)
     {
         $this->mode = $mode;
         return $this;
     }
-    /**
-     * Sets order to a new value.
-     * @param SortOrder $order new value.
-     */
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
-    /**
-     * Sets thenBy to a new value.
-     * @param ProductSorting $thenBy new value.
-     */
     function setThenBy(ProductSorting $thenBy)
     {
         $this->thenBy = $thenBy;

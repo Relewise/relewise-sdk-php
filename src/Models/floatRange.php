@@ -29,19 +29,11 @@ class floatRange
         }
         return $result;
     }
-    /**
-     * Sets lowerBoundInclusive to a new value.
-     * @param ?float $lowerBoundInclusive new value.
-     */
     function setLowerBoundInclusive(?float $lowerBoundInclusive)
     {
         $this->lowerBoundInclusive = $lowerBoundInclusive;
         return $this;
     }
-    /**
-     * Sets upperBoundInclusive to a new value.
-     * @param ?float $upperBoundInclusive new value.
-     */
     function setUpperBoundInclusive(?float $upperBoundInclusive)
     {
         $this->upperBoundInclusive = $upperBoundInclusive;

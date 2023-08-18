@@ -33,10 +33,6 @@ class ContentDetailsCollectionResponse extends TimedResponse
         }
         return $result;
     }
-    /**
-     * Sets contents to a new value.
-     * @param ContentResultDetails[] $contents new value.
-     */
     function setContents(ContentResultDetails ... $contents)
     {
         $this->contents = $contents;
@@ -64,19 +60,11 @@ class ContentDetailsCollectionResponse extends TimedResponse
         array_push($this->contents, $contents);
         return $this;
     }
-    /**
-     * Sets totalNumberOfResults to a new value.
-     * @param ?int $totalNumberOfResults new value.
-     */
     function setTotalNumberOfResults(?int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

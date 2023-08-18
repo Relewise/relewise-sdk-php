@@ -23,10 +23,6 @@ class FixedDoubleValueSelector extends ValueSelector
         }
         return $result;
     }
-    /**
-     * Sets value to a new value.
-     * @param float $value new value.
-     */
     function setValue(float $value)
     {
         $this->value = $value;

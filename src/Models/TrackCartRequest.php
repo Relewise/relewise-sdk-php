@@ -23,10 +23,6 @@ class TrackCartRequest extends TrackingRequest
         }
         return $result;
     }
-    /**
-     * Sets cart to a new value.
-     * @param Cart $cart new value.
-     */
     function setCart(Cart $cart)
     {
         $this->cart = $cart;

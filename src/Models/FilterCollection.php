@@ -27,10 +27,6 @@ class FilterCollection
         }
         return $result;
     }
-    /**
-     * Sets items to a new value.
-     * @param ?Filter[] $items new value.
-     */
     function setItems(Filter ... $items)
     {
         $this->items = $items;

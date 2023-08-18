@@ -51,55 +51,31 @@ class SelectedContentCategoryPropertiesSettings
         }
         return $result;
     }
-    /**
-     * Sets displayName to a new value.
-     * @param bool $displayName new value.
-     */
     function setDisplayName(bool $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    /**
-     * Sets paths to a new value.
-     * @param bool $paths new value.
-     */
     function setPaths(bool $paths)
     {
         $this->paths = $paths;
         return $this;
     }
-    /**
-     * Sets assortments to a new value.
-     * @param bool $assortments new value.
-     */
     function setAssortments(bool $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
-    /**
-     * Sets viewedByUserInfo to a new value.
-     * @param bool $viewedByUserInfo new value.
-     */
     function setViewedByUserInfo(bool $viewedByUserInfo)
     {
         $this->viewedByUserInfo = $viewedByUserInfo;
         return $this;
     }
-    /**
-     * Sets allData to a new value.
-     * @param bool $allData new value.
-     */
     function setAllData(bool $allData)
     {
         $this->allData = $allData;
         return $this;
     }
-    /**
-     * Sets dataKeys to a new value.
-     * @param string[] $dataKeys new value.
-     */
     function setDataKeys(string ... $dataKeys)
     {
         $this->dataKeys = $dataKeys;

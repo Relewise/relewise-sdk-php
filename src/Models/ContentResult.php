@@ -66,37 +66,21 @@ class ContentResult
         }
         return $result;
     }
-    /**
-     * Sets contentId to a new value.
-     * @param string $contentId new value.
-     */
     function setContentId(string $contentId)
     {
         $this->contentId = $contentId;
         return $this;
     }
-    /**
-     * Sets displayName to a new value.
-     * @param string $displayName new value.
-     */
     function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    /**
-     * Sets rank to a new value.
-     * @param int $rank new value.
-     */
     function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;
     }
-    /**
-     * Sets assortments to a new value.
-     * @param int[] $assortments new value.
-     */
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
@@ -124,11 +108,6 @@ class ContentResult
         array_push($this->assortments, $assortments);
         return $this;
     }
-    /**
-     * Sets the value of a specific key in data.
-     * @param string $key index.
-     * @param DataValue $value new value.
-     */
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -147,10 +126,6 @@ class ContentResult
         $this->data = $data;
         return $this;
     }
-    /**
-     * Sets categoryPaths to a new value.
-     * @param CategoryPathResult[] $categoryPaths new value.
-     */
     function setCategoryPaths(CategoryPathResult ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
@@ -178,10 +153,6 @@ class ContentResult
         array_push($this->categoryPaths, $categoryPaths);
         return $this;
     }
-    /**
-     * Sets viewedByUser to a new value.
-     * @param ViewedByUserInfo $viewedByUser new value.
-     */
     function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;

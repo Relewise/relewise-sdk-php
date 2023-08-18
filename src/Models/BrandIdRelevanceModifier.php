@@ -40,37 +40,21 @@ class BrandIdRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    /**
-     * Sets brandId to a new value.
-     * @param string $brandId new value.
-     */
     function setBrandId(string $brandId)
     {
         $this->brandId = $brandId;
         return $this;
     }
-    /**
-     * Sets ifProductIsBrandMultiplyWeightBy to a new value.
-     * @param float $ifProductIsBrandMultiplyWeightBy new value.
-     */
     function setIfProductIsBrandMultiplyWeightBy(float $ifProductIsBrandMultiplyWeightBy)
     {
         $this->ifProductIsBrandMultiplyWeightBy = $ifProductIsBrandMultiplyWeightBy;
         return $this;
     }
-    /**
-     * Sets ifProductIsNotBrandMultiplyWeightBy to a new value.
-     * @param float $ifProductIsNotBrandMultiplyWeightBy new value.
-     */
     function setIfProductIsNotBrandMultiplyWeightBy(float $ifProductIsNotBrandMultiplyWeightBy)
     {
         $this->ifProductIsNotBrandMultiplyWeightBy = $ifProductIsNotBrandMultiplyWeightBy;
         return $this;
     }
-    /**
-     * Sets filters to a new value.
-     * @param FilterCollection $filters new value.
-     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

@@ -22,10 +22,6 @@ class UserConditionConfiguration
         }
         return $result;
     }
-    /**
-     * Sets conditions to a new value.
-     * @param UserConditionCollection $conditions new value.
-     */
     function setConditions(UserConditionCollection $conditions)
     {
         $this->conditions = $conditions;

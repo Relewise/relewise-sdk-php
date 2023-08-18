@@ -54,28 +54,16 @@ class RequestContextFilter
         }
         return $result;
     }
-    /**
-     * Sets recommendations to a new value.
-     * @param RecommendationTypeCollection $recommendations new value.
-     */
     function setRecommendations(RecommendationTypeCollection $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
-    /**
-     * Sets searches to a new value.
-     * @param SearchTypeCollection $searches new value.
-     */
     function setSearches(SearchTypeCollection $searches)
     {
         $this->searches = $searches;
         return $this;
     }
-    /**
-     * Sets locations to a new value.
-     * @param string[] $locations new value.
-     */
     function setLocations(string ... $locations)
     {
         $this->locations = $locations;
@@ -103,10 +91,6 @@ class RequestContextFilter
         array_push($this->locations, $locations);
         return $this;
     }
-    /**
-     * Sets languages to a new value.
-     * @param Language[] $languages new value.
-     */
     function setLanguages(Language ... $languages)
     {
         $this->languages = $languages;
@@ -134,10 +118,6 @@ class RequestContextFilter
         array_push($this->languages, $languages);
         return $this;
     }
-    /**
-     * Sets currencies to a new value.
-     * @param Currency[] $currencies new value.
-     */
     function setCurrencies(Currency ... $currencies)
     {
         $this->currencies = $currencies;

@@ -18,10 +18,6 @@ class SaveStemmingRulesResponse extends StemmingRuleSaveSearchRulesResponse
         $result = StemmingRuleSaveSearchRulesResponse::hydrateBase(new SaveStemmingRulesResponse(), $arr);
         return $result;
     }
-    /**
-     * Sets rules to a new value.
-     * @param StemmingRule[] $rules new value.
-     */
     function setRules(StemmingRule ... $rules)
     {
         $this->rules = $rules;
@@ -49,10 +45,6 @@ class SaveStemmingRulesResponse extends StemmingRuleSaveSearchRulesResponse
         array_push($this->rules, $rules);
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

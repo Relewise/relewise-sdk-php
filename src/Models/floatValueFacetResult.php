@@ -32,10 +32,6 @@ abstract class floatValueFacetResult extends floatfloatValueFacetResult
         $result = floatfloatValueFacetResult::hydrateBase($result, $arr);
         return $result;
     }
-    /**
-     * Sets selected to a new value.
-     * @param float[] $selected new value.
-     */
     function setSelected(float ... $selected)
     {
         $this->selected = $selected;
@@ -63,10 +59,6 @@ abstract class floatValueFacetResult extends floatfloatValueFacetResult
         array_push($this->selected, $selected);
         return $this;
     }
-    /**
-     * Sets available to a new value.
-     * @param floatAvailableFacetValue[] $available new value.
-     */
     function setAvailable(floatAvailableFacetValue ... $available)
     {
         $this->available = $available;
@@ -94,10 +86,6 @@ abstract class floatValueFacetResult extends floatfloatValueFacetResult
         array_push($this->available, $available);
         return $this;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;

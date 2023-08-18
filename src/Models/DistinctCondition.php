@@ -23,19 +23,11 @@ class DistinctCondition extends ValueCondition
         }
         return $result;
     }
-    /**
-     * Sets numberOfOccurrencesAllowedWithTheSameValue to a new value.
-     * @param int $numberOfOccurrencesAllowedWithTheSameValue new value.
-     */
     function setNumberOfOccurrencesAllowedWithTheSameValue(int $numberOfOccurrencesAllowedWithTheSameValue)
     {
         $this->numberOfOccurrencesAllowedWithTheSameValue = $numberOfOccurrencesAllowedWithTheSameValue;
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

@@ -27,10 +27,6 @@ class ContentIdFilter extends Filter
         }
         return $result;
     }
-    /**
-     * Sets contentIds to a new value.
-     * @param string[] $contentIds new value.
-     */
     function setContentIds(string ... $contentIds)
     {
         $this->contentIds = $contentIds;
@@ -58,10 +54,6 @@ class ContentIdFilter extends Filter
         array_push($this->contentIds, $contentIds);
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

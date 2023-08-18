@@ -27,10 +27,6 @@ class VariantAssortmentFilter extends Filter
         }
         return $result;
     }
-    /**
-     * Sets assortments to a new value.
-     * @param int[] $assortments new value.
-     */
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
@@ -58,10 +54,6 @@ class VariantAssortmentFilter extends Filter
         array_push($this->assortments, $assortments);
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

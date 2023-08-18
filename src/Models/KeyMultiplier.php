@@ -29,19 +29,11 @@ class KeyMultiplier
         }
         return $result;
     }
-    /**
-     * Sets key to a new value.
-     * @param string $key new value.
-     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    /**
-     * Sets multiplier to a new value.
-     * @param float $multiplier new value.
-     */
     function setMultiplier(float $multiplier)
     {
         $this->multiplier = $multiplier;

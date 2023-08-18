@@ -27,10 +27,6 @@ class BatchedTrackingRequest extends TrackingRequest
         }
         return $result;
     }
-    /**
-     * Sets items to a new value.
-     * @param Trackable[] $items new value.
-     */
     function setItems(Trackable ... $items)
     {
         $this->items = $items;

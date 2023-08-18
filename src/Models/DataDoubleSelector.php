@@ -23,10 +23,6 @@ class DataDoubleSelector extends ValueSelector
         }
         return $result;
     }
-    /**
-     * Sets key to a new value.
-     * @param string $key new value.
-     */
     function setKey(string $key)
     {
         $this->key = $key;

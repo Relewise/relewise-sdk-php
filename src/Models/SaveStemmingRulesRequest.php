@@ -18,10 +18,6 @@ class SaveStemmingRulesRequest extends StemmingRuleSaveSearchRulesRequest
         $result = StemmingRuleSaveSearchRulesRequest::hydrateBase(new SaveStemmingRulesRequest(), $arr);
         return $result;
     }
-    /**
-     * Sets rules to a new value.
-     * @param StemmingRule[] $rules new value.
-     */
     function setRules(StemmingRule ... $rules)
     {
         $this->rules = $rules;
@@ -49,10 +45,6 @@ class SaveStemmingRulesRequest extends StemmingRuleSaveSearchRulesRequest
         array_push($this->rules, $rules);
         return $this;
     }
-    /**
-     * Sets modifiedBy to a new value.
-     * @param string $modifiedBy new value.
-     */
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

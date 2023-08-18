@@ -27,10 +27,6 @@ class ProductCategoryRecommendationResponse extends RecommendationResponse
         }
         return $result;
     }
-    /**
-     * Sets recommendations to a new value.
-     * @param ProductCategoryResult[] $recommendations new value.
-     */
     function setRecommendations(ProductCategoryResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
@@ -58,10 +54,6 @@ class ProductCategoryRecommendationResponse extends RecommendationResponse
         array_push($this->recommendations, $recommendations);
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

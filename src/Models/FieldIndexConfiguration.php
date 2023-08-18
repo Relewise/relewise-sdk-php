@@ -41,37 +41,21 @@ class FieldIndexConfiguration
         }
         return $result;
     }
-    /**
-     * Sets included to a new value.
-     * @param bool $included new value.
-     */
     function setIncluded(bool $included)
     {
         $this->included = $included;
         return $this;
     }
-    /**
-     * Sets weight to a new value.
-     * @param int $weight new value.
-     */
     function setWeight(int $weight)
     {
         $this->weight = $weight;
         return $this;
     }
-    /**
-     * Sets predictionSourceType to a new value.
-     * @param PredictionSourceType $predictionSourceType new value.
-     */
     function setPredictionSourceType(PredictionSourceType $predictionSourceType)
     {
         $this->predictionSourceType = $predictionSourceType;
         return $this;
     }
-    /**
-     * Sets parser to a new value.
-     * @param ?Parser $parser new value.
-     */
     function setParser(?Parser $parser)
     {
         $this->parser = $parser;

@@ -36,19 +36,11 @@ class ProductPerformanceResultRankMetrics
         }
         return $result;
     }
-    /**
-     * Sets overall to a new value.
-     * @param ProductPerformanceResultViewsAndSalesMetrics $overall new value.
-     */
     function setOverall(ProductPerformanceResultViewsAndSalesMetrics $overall)
     {
         $this->overall = $overall;
         return $this;
     }
-    /**
-     * Sets withinCategories to a new value.
-     * @param ProductPerformanceResultCategoryMetrics[] $withinCategories new value.
-     */
     function setWithinCategories(ProductPerformanceResultCategoryMetrics ... $withinCategories)
     {
         $this->withinCategories = $withinCategories;
@@ -76,10 +68,6 @@ class ProductPerformanceResultRankMetrics
         array_push($this->withinCategories, $withinCategories);
         return $this;
     }
-    /**
-     * Sets withinBrand to a new value.
-     * @param ProductPerformanceResultViewsAndSalesMetrics $withinBrand new value.
-     */
     function setWithinBrand(ProductPerformanceResultViewsAndSalesMetrics $withinBrand)
     {
         $this->withinBrand = $withinBrand;

@@ -24,19 +24,11 @@ class CategoryFacet extends stringValueFacet
         }
         return $result;
     }
-    /**
-     * Sets categorySelectionStrategy to a new value.
-     * @param CategorySelectionStrategy $categorySelectionStrategy new value.
-     */
     function setCategorySelectionStrategy(CategorySelectionStrategy $categorySelectionStrategy)
     {
         $this->categorySelectionStrategy = $categorySelectionStrategy;
         return $this;
     }
-    /**
-     * Sets selected to a new value.
-     * @param ?string[] $selected new value.
-     */
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
@@ -64,19 +56,11 @@ class CategoryFacet extends stringValueFacet
         array_push($this->selected, $selected);
         return $this;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
-    /**
-     * Sets settings to a new value.
-     * @param ?FacetSettings $settings new value.
-     */
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

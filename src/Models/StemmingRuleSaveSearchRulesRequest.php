@@ -34,10 +34,6 @@ abstract class StemmingRuleSaveSearchRulesRequest extends LicensedRequest
         }
         return $result;
     }
-    /**
-     * Sets rules to a new value.
-     * @param StemmingRule[] $rules new value.
-     */
     function setRules(StemmingRule ... $rules)
     {
         $this->rules = $rules;
@@ -65,10 +61,6 @@ abstract class StemmingRuleSaveSearchRulesRequest extends LicensedRequest
         array_push($this->rules, $rules);
         return $this;
     }
-    /**
-     * Sets modifiedBy to a new value.
-     * @param string $modifiedBy new value.
-     */
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

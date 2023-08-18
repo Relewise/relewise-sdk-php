@@ -70,28 +70,16 @@ class Product
         }
         return $result;
     }
-    /**
-     * Sets id to a new value.
-     * @param string $id new value.
-     */
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    /**
-     * Sets displayName to a new value.
-     * @param ?Multilingual $displayName new value.
-     */
     function setDisplayName(?Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    /**
-     * Sets categoryPaths to a new value.
-     * @param ?CategoryPath[] $categoryPaths new value.
-     */
     function setCategoryPaths(CategoryPath ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
@@ -119,10 +107,6 @@ class Product
         array_push($this->categoryPaths, $categoryPaths);
         return $this;
     }
-    /**
-     * Sets assortments to a new value.
-     * @param ?int[] $assortments new value.
-     */
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
@@ -150,11 +134,6 @@ class Product
         array_push($this->assortments, $assortments);
         return $this;
     }
-    /**
-     * Sets the value of a specific key in data.
-     * @param string $key index.
-     * @param DataValue $value new value.
-     */
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -173,28 +152,16 @@ class Product
         $this->data = $data;
         return $this;
     }
-    /**
-     * Sets listPrice to a new value.
-     * @param ?MultiCurrency $listPrice new value.
-     */
     function setListPrice(?MultiCurrency $listPrice)
     {
         $this->listPrice = $listPrice;
         return $this;
     }
-    /**
-     * Sets salesPrice to a new value.
-     * @param ?MultiCurrency $salesPrice new value.
-     */
     function setSalesPrice(?MultiCurrency $salesPrice)
     {
         $this->salesPrice = $salesPrice;
         return $this;
     }
-    /**
-     * Sets brand to a new value.
-     * @param ?Brand $brand new value.
-     */
     function setBrand(?Brand $brand)
     {
         $this->brand = $brand;

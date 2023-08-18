@@ -27,10 +27,6 @@ class BrandIdFilter extends Filter
         }
         return $result;
     }
-    /**
-     * Sets brandIds to a new value.
-     * @param string[] $brandIds new value.
-     */
     function setBrandIds(string ... $brandIds)
     {
         $this->brandIds = $brandIds;
@@ -58,10 +54,6 @@ class BrandIdFilter extends Filter
         array_push($this->brandIds, $brandIds);
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

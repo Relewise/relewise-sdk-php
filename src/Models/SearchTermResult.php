@@ -36,28 +36,16 @@ class SearchTermResult
         }
         return $result;
     }
-    /**
-     * Sets term to a new value.
-     * @param string $term new value.
-     */
     function setTerm(string $term)
     {
         $this->term = $term;
         return $this;
     }
-    /**
-     * Sets rank to a new value.
-     * @param int $rank new value.
-     */
     function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;
     }
-    /**
-     * Sets expectedResultTypes to a new value.
-     * @param ExpectedSearchTermResult[] $expectedResultTypes new value.
-     */
     function setExpectedResultTypes(ExpectedSearchTermResult ... $expectedResultTypes)
     {
         $this->expectedResultTypes = $expectedResultTypes;

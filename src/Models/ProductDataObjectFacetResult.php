@@ -26,28 +26,16 @@ class ProductDataObjectFacetResult extends DataObjectFacetResult
         }
         return $result;
     }
-    /**
-     * Sets dataSelectionStrategy to a new value.
-     * @param DataSelectionStrategy $dataSelectionStrategy new value.
-     */
     function setDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
     {
         $this->dataSelectionStrategy = $dataSelectionStrategy;
         return $this;
     }
-    /**
-     * Sets key to a new value.
-     * @param string $key new value.
-     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    /**
-     * Sets items to a new value.
-     * @param FacetResult[] $items new value.
-     */
     function setItems(FacetResult ... $items)
     {
         $this->items = $items;
@@ -75,19 +63,11 @@ class ProductDataObjectFacetResult extends DataObjectFacetResult
         array_push($this->items, $items);
         return $this;
     }
-    /**
-     * Sets filter to a new value.
-     * @param DataObjectFilter $filter new value.
-     */
     function setFilter(DataObjectFilter $filter)
     {
         $this->filter = $filter;
         return $this;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;

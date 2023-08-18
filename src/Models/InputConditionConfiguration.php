@@ -27,19 +27,11 @@ class InputConditionConfiguration
         }
         return $result;
     }
-    /**
-     * Sets filters to a new value.
-     * @param FilterCollection $filters new value.
-     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    /**
-     * Sets evaluationMode to a new value.
-     * @param EvaluationMode $evaluationMode new value.
-     */
     function setEvaluationMode(EvaluationMode $evaluationMode)
     {
         $this->evaluationMode = $evaluationMode;

@@ -30,19 +30,11 @@ abstract class AnalyzerRequest extends LicensedRequest
         }
         return $result;
     }
-    /**
-     * Sets language to a new value.
-     * @param ?Language $language new value.
-     */
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    /**
-     * Sets currency to a new value.
-     * @param ?Currency $currency new value.
-     */
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

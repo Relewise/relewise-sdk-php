@@ -156,10 +156,6 @@ abstract class FacetResult
         }
         return $result;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;

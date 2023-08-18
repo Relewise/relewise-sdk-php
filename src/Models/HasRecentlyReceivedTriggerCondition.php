@@ -40,46 +40,26 @@ class HasRecentlyReceivedTriggerCondition extends UserCondition
         }
         return $result;
     }
-    /**
-     * Sets withinMinutes to a new value.
-     * @param int $withinMinutes new value.
-     */
     function setWithinMinutes(int $withinMinutes)
     {
         $this->withinMinutes = $withinMinutes;
         return $this;
     }
-    /**
-     * Sets id to a new value.
-     * @param ?string $id new value.
-     */
     function setId(?string $id)
     {
         $this->id = $id;
         return $this;
     }
-    /**
-     * Sets group to a new value.
-     * @param string $group new value.
-     */
     function setGroup(string $group)
     {
         $this->group = $group;
         return $this;
     }
-    /**
-     * Sets type to a new value.
-     * @param ?int $type new value.
-     */
     function setType(?int $type)
     {
         $this->type = $type;
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

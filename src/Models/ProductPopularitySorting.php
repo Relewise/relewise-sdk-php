@@ -18,19 +18,11 @@ class ProductPopularitySorting extends ProductSorting
         $result = ProductSorting::hydrateBase(new ProductPopularitySorting(), $arr);
         return $result;
     }
-    /**
-     * Sets order to a new value.
-     * @param SortOrder $order new value.
-     */
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
-    /**
-     * Sets thenBy to a new value.
-     * @param ProductSorting $thenBy new value.
-     */
     function setThenBy(ProductSorting $thenBy)
     {
         $this->thenBy = $thenBy;

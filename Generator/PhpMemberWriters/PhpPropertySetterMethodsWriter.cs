@@ -24,12 +24,6 @@ public class PhpPropertySetterMethodsWriter
             {
                 var keyTypeName = phpWriter.PhpTypeName(keyType);
                 var valueTypeName = phpWriter.PhpTypeName(valueType);
-                writer.WriteCommentBlock(
-                    $"Sets the value of a specific key in {lowerCaseName}.",
-                    deprecationComment,
-                    $"@param {phpWriter.DocumentationParameterTypeName(keyTypeName, keyType)} $key index.",
-                    $"@param {phpWriter.DocumentationParameterTypeName(valueTypeName, valueType)} $value new value."
-                );
                 writer.WriteLine($"function addTo{propertyName}({keyTypeName} $key, {valueTypeName} $value)");
                 writer.WriteLine("{");
                 writer.Indent++;
@@ -59,11 +53,6 @@ public class PhpPropertySetterMethodsWriter
             }
             else
             {
-                writer.WriteCommentBlock(
-                    $"Sets {lowerCaseName} to a new value.",
-                    deprecationComment,
-                    $"@param {phpWriter.DocumentationParameterTypeName(phpWriter.PhpTypeName(info), propertyType)} ${lowerCaseName} new value."
-                );
                 var parameterType = phpWriter.BetterTypedParameterTypeName(propertyTypeName, propertyType);
                 writer.WriteLine($"function set{propertyName}({parameterType} ${lowerCaseName})");
                 writer.WriteLine("{");
@@ -88,7 +77,7 @@ public class PhpPropertySetterMethodsWriter
                 writer.WriteCommentBlock(
                     $"Sets {lowerCaseName} to a new value from an array.",
                     deprecationComment,
-                    $"@param {phpWriter.DocumentationParameterTypeName(phpWriter.PhpTypeName(info), propertyType)} ${lowerCaseName} new value."
+                    $"@param {phpWriter.DocumentationParameterTypeName(propertyTypeName, propertyType)} ${lowerCaseName} new value."
                 );
                 writer.WriteLine($"function set{propertyName}FromArray(array ${lowerCaseName})");
                 writer.WriteLine("{");
@@ -98,12 +87,14 @@ public class PhpPropertySetterMethodsWriter
                 writer.Indent--;
                 writer.WriteLine("}");
 
+                var elementTypeName = phpWriter.PhpTypeName(elementType);
+
                 writer.WriteCommentBlock(
                     $"Adds a new element to {lowerCaseName}.",
                     deprecationComment,
-                    $"@param {phpWriter.DocumentationParameterTypeName(phpWriter.PhpTypeName(elementType), elementType)} ${lowerCaseName} new element."
+                    $"@param {phpWriter.DocumentationParameterTypeName(elementTypeName, elementType)} ${lowerCaseName} new element."
                 );
-                writer.WriteLine($"function addTo{propertyName}({phpWriter.PhpTypeName(elementType)} ${lowerCaseName})");
+                writer.WriteLine($"function addTo{propertyName}({elementTypeName} ${lowerCaseName})");
                 writer.WriteLine("{");
                 writer.Indent++;
                 writer.WriteLine($"if (!isset($this->{lowerCaseName}))");

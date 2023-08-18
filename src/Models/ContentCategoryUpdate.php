@@ -24,19 +24,11 @@ class ContentCategoryUpdate extends CategoryUpdate
         }
         return $result;
     }
-    /**
-     * Sets category to a new value.
-     * @param ContentCategory $category new value.
-     */
     function setCategory(ContentCategory $category)
     {
         $this->category = $category;
         return $this;
     }
-    /**
-     * Sets kind to a new value.
-     * @param CategoryUpdateUpdateKind $kind new value.
-     */
     function setKind(CategoryUpdateUpdateKind $kind)
     {
         $this->kind = $kind;

@@ -28,10 +28,6 @@ class ApplicableLanguages
         }
         return $result;
     }
-    /**
-     * Sets languages to a new value.
-     * @param Language[] $languages new value.
-     */
     function setLanguages(Language ... $languages)
     {
         $this->languages = $languages;

@@ -22,19 +22,11 @@ class SearchIndexResponse extends TimedResponse
         }
         return $result;
     }
-    /**
-     * Sets index to a new value.
-     * @param SearchIndex $index new value.
-     */
     function setIndex(SearchIndex $index)
     {
         $this->index = $index;
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

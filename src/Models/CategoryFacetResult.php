@@ -25,19 +25,11 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         }
         return $result;
     }
-    /**
-     * Sets categorySelectionStrategy to a new value.
-     * @param CategorySelectionStrategy $categorySelectionStrategy new value.
-     */
     function setCategorySelectionStrategy(CategorySelectionStrategy $categorySelectionStrategy)
     {
         $this->categorySelectionStrategy = $categorySelectionStrategy;
         return $this;
     }
-    /**
-     * Sets selected to a new value.
-     * @param string[] $selected new value.
-     */
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
@@ -65,10 +57,6 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         array_push($this->selected, $selected);
         return $this;
     }
-    /**
-     * Sets available to a new value.
-     * @param CategoryNameAndIdResultAvailableFacetValue[] $available new value.
-     */
     function setAvailable(CategoryNameAndIdResultAvailableFacetValue ... $available)
     {
         $this->available = $available;
@@ -96,10 +84,6 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         array_push($this->available, $available);
         return $this;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;

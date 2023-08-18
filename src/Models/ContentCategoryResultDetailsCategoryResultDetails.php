@@ -95,28 +95,16 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         }
         return $result;
     }
-    /**
-     * Sets categoryId to a new value.
-     * @param string $categoryId new value.
-     */
     function setCategoryId(string $categoryId)
     {
         $this->categoryId = $categoryId;
         return $this;
     }
-    /**
-     * Sets displayName to a new value.
-     * @param Multilingual $displayName new value.
-     */
     function setDisplayName(Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
-    /**
-     * Sets assortments to a new value.
-     * @param int[] $assortments new value.
-     */
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
@@ -144,11 +132,6 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         array_push($this->assortments, $assortments);
         return $this;
     }
-    /**
-     * Sets the value of a specific key in data.
-     * @param string $key index.
-     * @param DataValue $value new value.
-     */
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -167,64 +150,36 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         $this->data = $data;
         return $this;
     }
-    /**
-     * Sets viewedByUser to a new value.
-     * @param ViewedByUserInfo $viewedByUser new value.
-     */
     function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;
     }
-    /**
-     * Sets createdUtc to a new value.
-     * @param DateTime $createdUtc new value.
-     */
     function setCreatedUtc(DateTime $createdUtc)
     {
         $this->createdUtc = $createdUtc;
         return $this;
     }
-    /**
-     * Sets lastViewedUtc to a new value.
-     * @param ?DateTime $lastViewedUtc new value.
-     */
     function setLastViewedUtc(?DateTime $lastViewedUtc)
     {
         $this->lastViewedUtc = $lastViewedUtc;
         return $this;
     }
-    /**
-     * Sets viewedTotalNumberOfTimes to a new value.
-     * @param int $viewedTotalNumberOfTimes new value.
-     */
     function setViewedTotalNumberOfTimes(int $viewedTotalNumberOfTimes)
     {
         $this->viewedTotalNumberOfTimes = $viewedTotalNumberOfTimes;
         return $this;
     }
-    /**
-     * Sets viewedByDifferentNumberOfUsers to a new value.
-     * @param int $viewedByDifferentNumberOfUsers new value.
-     */
     function setViewedByDifferentNumberOfUsers(int $viewedByDifferentNumberOfUsers)
     {
         $this->viewedByDifferentNumberOfUsers = $viewedByDifferentNumberOfUsers;
         return $this;
     }
-    /**
-     * Sets disabled to a new value.
-     * @param bool $disabled new value.
-     */
     function setDisabled(bool $disabled)
     {
         $this->disabled = $disabled;
         return $this;
     }
-    /**
-     * Sets childCategories to a new value.
-     * @param ContentCategoryResultDetails[] $childCategories new value.
-     */
     function setChildCategories(ContentCategoryResultDetails ... $childCategories)
     {
         $this->childCategories = $childCategories;
@@ -252,10 +207,6 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         array_push($this->childCategories, $childCategories);
         return $this;
     }
-    /**
-     * Sets parentCategories to a new value.
-     * @param ContentCategoryResultDetails[] $parentCategories new value.
-     */
     function setParentCategories(ContentCategoryResultDetails ... $parentCategories)
     {
         $this->parentCategories = $parentCategories;

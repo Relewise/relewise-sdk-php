@@ -28,10 +28,6 @@ class ApplicableIndexes
         }
         return $result;
     }
-    /**
-     * Sets indexes to a new value.
-     * @param string[] $indexes new value.
-     */
     function setIndexes(string ... $indexes)
     {
         $this->indexes = $indexes;

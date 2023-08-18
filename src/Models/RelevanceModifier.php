@@ -85,10 +85,6 @@ abstract class RelevanceModifier
         }
         return $result;
     }
-    /**
-     * Sets filters to a new value.
-     * @param FilterCollection $filters new value.
-     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

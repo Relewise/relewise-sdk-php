@@ -36,10 +36,6 @@ class DataObjectFilter
         }
         return $result;
     }
-    /**
-     * Sets conditions to a new value.
-     * @param ?ObjectValueCondition[] $conditions new value.
-     */
     function setConditions(ObjectValueCondition ... $conditions)
     {
         $this->conditions = $conditions;
@@ -67,19 +63,11 @@ class DataObjectFilter
         array_push($this->conditions, $conditions);
         return $this;
     }
-    /**
-     * Sets skip to a new value.
-     * @param ?int $skip new value.
-     */
     function setSkip(?int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
-    /**
-     * Sets take to a new value.
-     * @param ?int $take new value.
-     */
     function setTake(?int $take)
     {
         $this->take = $take;

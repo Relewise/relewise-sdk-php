@@ -19,10 +19,6 @@ class BrandFacetResult extends stringBrandNameAndIdResultValueFacetResult
         $result = stringBrandNameAndIdResultValueFacetResult::hydrateBase(new BrandFacetResult(), $arr);
         return $result;
     }
-    /**
-     * Sets selected to a new value.
-     * @param string[] $selected new value.
-     */
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
@@ -50,10 +46,6 @@ class BrandFacetResult extends stringBrandNameAndIdResultValueFacetResult
         array_push($this->selected, $selected);
         return $this;
     }
-    /**
-     * Sets available to a new value.
-     * @param BrandNameAndIdResultAvailableFacetValue[] $available new value.
-     */
     function setAvailable(BrandNameAndIdResultAvailableFacetValue ... $available)
     {
         $this->available = $available;
@@ -81,10 +73,6 @@ class BrandFacetResult extends stringBrandNameAndIdResultValueFacetResult
         array_push($this->available, $available);
         return $this;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;

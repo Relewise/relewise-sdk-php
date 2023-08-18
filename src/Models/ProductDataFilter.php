@@ -22,64 +22,36 @@ class ProductDataFilter extends DataFilter
         $result = DataFilter::hydrateBase(new ProductDataFilter(), $arr);
         return $result;
     }
-    /**
-     * Sets key to a new value.
-     * @param string $key new value.
-     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    /**
-     * Sets filterOutIfKeyIsNotFound to a new value.
-     * @param bool $filterOutIfKeyIsNotFound new value.
-     */
     function setFilterOutIfKeyIsNotFound(bool $filterOutIfKeyIsNotFound)
     {
         $this->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
         return $this;
     }
-    /**
-     * Sets mustMatchAllConditions to a new value.
-     * @param bool $mustMatchAllConditions new value.
-     */
     function setMustMatchAllConditions(bool $mustMatchAllConditions)
     {
         $this->mustMatchAllConditions = $mustMatchAllConditions;
         return $this;
     }
-    /**
-     * Sets conditions to a new value.
-     * @param ?ValueConditionCollection $conditions new value.
-     */
     function setConditions(?ValueConditionCollection $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
-    /**
-     * Sets language to a new value.
-     * @param ?Language $language new value.
-     */
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    /**
-     * Sets currency to a new value.
-     * @param ?Currency $currency new value.
-     */
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
-    /**
-     * Sets objectPath to a new value.
-     * @param ?string[] $objectPath new value.
-     */
     function setObjectPath(string ... $objectPath)
     {
         $this->objectPath = $objectPath;
@@ -107,10 +79,6 @@ class ProductDataFilter extends DataFilter
         array_push($this->objectPath, $objectPath);
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

@@ -29,19 +29,11 @@ class intRange
         }
         return $result;
     }
-    /**
-     * Sets lowerBoundInclusive to a new value.
-     * @param ?int $lowerBoundInclusive new value.
-     */
     function setLowerBoundInclusive(?int $lowerBoundInclusive)
     {
         $this->lowerBoundInclusive = $lowerBoundInclusive;
         return $this;
     }
-    /**
-     * Sets upperBoundInclusive to a new value.
-     * @param ?int $upperBoundInclusive new value.
-     */
     function setUpperBoundInclusive(?int $upperBoundInclusive)
     {
         $this->upperBoundInclusive = $upperBoundInclusive;

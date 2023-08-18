@@ -22,10 +22,6 @@ class UserActivityTriggerResult
         }
         return $result;
     }
-    /**
-     * Sets user to a new value.
-     * @param UserResultDetails $user new value.
-     */
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;

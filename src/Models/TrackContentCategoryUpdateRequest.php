@@ -23,10 +23,6 @@ class TrackContentCategoryUpdateRequest extends TrackingRequest
         }
         return $result;
     }
-    /**
-     * Sets contentCategoryUpdate to a new value.
-     * @param ContentCategoryUpdate $contentCategoryUpdate new value.
-     */
     function setContentCategoryUpdate(ContentCategoryUpdate $contentCategoryUpdate)
     {
         $this->contentCategoryUpdate = $contentCategoryUpdate;

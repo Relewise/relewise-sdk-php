@@ -26,10 +26,6 @@ class LanguageIndexConfiguration
         }
         return $result;
     }
-    /**
-     * Sets languages to a new value.
-     * @param LanguageIndexConfigurationEntry[] $languages new value.
-     */
     function setLanguages(LanguageIndexConfigurationEntry ... $languages)
     {
         $this->languages = $languages;

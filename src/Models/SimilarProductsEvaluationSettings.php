@@ -76,82 +76,46 @@ class SimilarProductsEvaluationSettings
         }
         return $result;
     }
-    /**
-     * Sets significanceOfSimilaritiesInDisplayName to a new value.
-     * @param float $significanceOfSimilaritiesInDisplayName new value.
-     */
     function setSignificanceOfSimilaritiesInDisplayName(float $significanceOfSimilaritiesInDisplayName)
     {
         $this->significanceOfSimilaritiesInDisplayName = $significanceOfSimilaritiesInDisplayName;
         return $this;
     }
-    /**
-     * Sets productDisplayNameTransformer to a new value.
-     * @param ?TrimStringTransformer $productDisplayNameTransformer new value.
-     */
     function setProductDisplayNameTransformer(?TrimStringTransformer $productDisplayNameTransformer)
     {
         $this->productDisplayNameTransformer = $productDisplayNameTransformer;
         return $this;
     }
-    /**
-     * Sets significanceOfSimilarListPrice to a new value.
-     * @param float $significanceOfSimilarListPrice new value.
-     */
     function setSignificanceOfSimilarListPrice(float $significanceOfSimilarListPrice)
     {
         $this->significanceOfSimilarListPrice = $significanceOfSimilarListPrice;
         return $this;
     }
-    /**
-     * Sets significanceOfCommonImmediateParentCategories to a new value.
-     * @param float $significanceOfCommonImmediateParentCategories new value.
-     */
     function setSignificanceOfCommonImmediateParentCategories(float $significanceOfCommonImmediateParentCategories)
     {
         $this->significanceOfCommonImmediateParentCategories = $significanceOfCommonImmediateParentCategories;
         return $this;
     }
-    /**
-     * Sets significanceOfCommonParentsParentCategories to a new value.
-     * @param float $significanceOfCommonParentsParentCategories new value.
-     */
     function setSignificanceOfCommonParentsParentCategories(float $significanceOfCommonParentsParentCategories)
     {
         $this->significanceOfCommonParentsParentCategories = $significanceOfCommonParentsParentCategories;
         return $this;
     }
-    /**
-     * Sets significanceOfCommonAncestorCategories to a new value.
-     * @param float $significanceOfCommonAncestorCategories new value.
-     */
     function setSignificanceOfCommonAncestorCategories(float $significanceOfCommonAncestorCategories)
     {
         $this->significanceOfCommonAncestorCategories = $significanceOfCommonAncestorCategories;
         return $this;
     }
-    /**
-     * Sets significanceOfCommonProductDataKeys to a new value.
-     * @param float $significanceOfCommonProductDataKeys new value.
-     */
     function setSignificanceOfCommonProductDataKeys(float $significanceOfCommonProductDataKeys)
     {
         $this->significanceOfCommonProductDataKeys = $significanceOfCommonProductDataKeys;
         return $this;
     }
-    /**
-     * Sets significanceOfIdenticalProductDataValues to a new value.
-     * @param float $significanceOfIdenticalProductDataValues new value.
-     */
     function setSignificanceOfIdenticalProductDataValues(float $significanceOfIdenticalProductDataValues)
     {
         $this->significanceOfIdenticalProductDataValues = $significanceOfIdenticalProductDataValues;
         return $this;
     }
-    /**
-     * Sets significantProductDataFields to a new value.
-     * @param ?SignificantDataValue[] $significantProductDataFields new value.
-     */
     function setSignificantProductDataFields(SignificantDataValue ... $significantProductDataFields)
     {
         $this->significantProductDataFields = $significantProductDataFields;
@@ -179,19 +143,11 @@ class SimilarProductsEvaluationSettings
         array_push($this->significantProductDataFields, $significantProductDataFields);
         return $this;
     }
-    /**
-     * Sets significanceOfSimilarSalesPrice to a new value.
-     * @param float $significanceOfSimilarSalesPrice new value.
-     */
     function setSignificanceOfSimilarSalesPrice(float $significanceOfSimilarSalesPrice)
     {
         $this->significanceOfSimilarSalesPrice = $significanceOfSimilarSalesPrice;
         return $this;
     }
-    /**
-     * Sets significanceOfSimilarBrand to a new value.
-     * @param float $significanceOfSimilarBrand new value.
-     */
     function setSignificanceOfSimilarBrand(float $significanceOfSimilarBrand)
     {
         $this->significanceOfSimilarBrand = $significanceOfSimilarBrand;

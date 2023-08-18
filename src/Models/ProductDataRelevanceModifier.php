@@ -65,47 +65,26 @@ class ProductDataRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    /**
-     * Sets key to a new value.
-     * @param string $key new value.
-     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    /**
-     * Sets considerAsMatchIfKeyIsNotFound to a new value.
-     * @param bool $considerAsMatchIfKeyIsNotFound new value.
-     */
     function setConsiderAsMatchIfKeyIsNotFound(bool $considerAsMatchIfKeyIsNotFound)
     {
         $this->considerAsMatchIfKeyIsNotFound = $considerAsMatchIfKeyIsNotFound;
         return $this;
     }
-    /**
-     * Sets multiplyWeightBy to a new value.
-     * @deprecated Use MultiplierSelector instead
-     * @param float $multiplyWeightBy new value.
-     */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
-    /**
-     * Sets mustMatchAllConditions to a new value.
-     * @param bool $mustMatchAllConditions new value.
-     */
     function setMustMatchAllConditions(bool $mustMatchAllConditions)
     {
         $this->mustMatchAllConditions = $mustMatchAllConditions;
         return $this;
     }
-    /**
-     * Sets conditions to a new value.
-     * @param ValueCondition[] $conditions new value.
-     */
     function setConditions(ValueCondition ... $conditions)
     {
         $this->conditions = $conditions;
@@ -133,19 +112,11 @@ class ProductDataRelevanceModifier extends RelevanceModifier
         array_push($this->conditions, $conditions);
         return $this;
     }
-    /**
-     * Sets multiplierSelector to a new value.
-     * @param ValueSelector $multiplierSelector new value.
-     */
     function setMultiplierSelector(ValueSelector $multiplierSelector)
     {
         $this->multiplierSelector = $multiplierSelector;
         return $this;
     }
-    /**
-     * Sets filters to a new value.
-     * @param FilterCollection $filters new value.
-     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

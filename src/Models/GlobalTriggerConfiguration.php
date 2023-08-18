@@ -56,65 +56,36 @@ class GlobalTriggerConfiguration
         }
         return $result;
     }
-    /**
-     * Sets modified to a new value.
-     * @param DateTime $modified new value.
-     */
     function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
-    /**
-     * Sets modifiedBy to a new value.
-     * @param string $modifiedBy new value.
-     */
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
-    /**
-     * Sets enabled to a new value.
-     * @param bool $enabled new value.
-     */
     function setEnabled(bool $enabled)
     {
         $this->enabled = $enabled;
         return $this;
     }
-    /**
-     * Sets minimumCooldownAnyTrigger to a new value.
-     * @param ?int $minimumCooldownAnyTrigger new value.
-     */
     function setMinimumCooldownAnyTrigger(?int $minimumCooldownAnyTrigger)
     {
         $this->minimumCooldownAnyTrigger = $minimumCooldownAnyTrigger;
         return $this;
     }
-    /**
-     * Sets minimumCooldownSameTrigger to a new value.
-     * @param ?int $minimumCooldownSameTrigger new value.
-     */
     function setMinimumCooldownSameTrigger(?int $minimumCooldownSameTrigger)
     {
         $this->minimumCooldownSameTrigger = $minimumCooldownSameTrigger;
         return $this;
     }
-    /**
-     * Sets minimumCooldownSameGroup to a new value.
-     * @param ?int $minimumCooldownSameGroup new value.
-     */
     function setMinimumCooldownSameGroup(?int $minimumCooldownSameGroup)
     {
         $this->minimumCooldownSameGroup = $minimumCooldownSameGroup;
         return $this;
     }
-    /**
-     * Sets the value of a specific key in settings.
-     * @param string $key index.
-     * @param string $value new value.
-     */
     function addToSettings(string $key, string $value)
     {
         if (!isset($this->settings))

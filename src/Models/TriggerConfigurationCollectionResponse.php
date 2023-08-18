@@ -26,10 +26,6 @@ class TriggerConfigurationCollectionResponse extends TimedResponse
         }
         return $result;
     }
-    /**
-     * Sets configurations to a new value.
-     * @param TriggerConfiguration[] $configurations new value.
-     */
     function setConfigurations(TriggerConfiguration ... $configurations)
     {
         $this->configurations = $configurations;
@@ -57,10 +53,6 @@ class TriggerConfigurationCollectionResponse extends TimedResponse
         array_push($this->configurations, $configurations);
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

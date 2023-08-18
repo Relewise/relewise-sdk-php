@@ -26,10 +26,6 @@ class ContentFacetQuery
         }
         return $result;
     }
-    /**
-     * Sets items to a new value.
-     * @param Facet[] $items new value.
-     */
     function setItems(Facet ... $items)
     {
         $this->items = $items;

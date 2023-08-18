@@ -29,19 +29,11 @@ class ContentCategoryRecommendationWeights
         }
         return $result;
     }
-    /**
-     * Sets categoryViews to a new value.
-     * @param float $categoryViews new value.
-     */
     function setCategoryViews(float $categoryViews)
     {
         $this->categoryViews = $categoryViews;
         return $this;
     }
-    /**
-     * Sets contentViews to a new value.
-     * @param float $contentViews new value.
-     */
     function setContentViews(float $contentViews)
     {
         $this->contentViews = $contentViews;

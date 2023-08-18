@@ -22,19 +22,11 @@ class TriggerConfigurationResponse extends TimedResponse
         }
         return $result;
     }
-    /**
-     * Sets configuration to a new value.
-     * @param TriggerConfiguration $configuration new value.
-     */
     function setConfiguration(TriggerConfiguration $configuration)
     {
         $this->configuration = $configuration;
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

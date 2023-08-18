@@ -22,10 +22,6 @@ class MerchandisingRulesRequest extends LicensedRequest
         }
         return $result;
     }
-    /**
-     * Sets type to a new value.
-     * @param ?int $type new value.
-     */
     function setType(?int $type)
     {
         $this->type = $type;

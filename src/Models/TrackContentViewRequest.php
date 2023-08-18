@@ -23,10 +23,6 @@ class TrackContentViewRequest extends TrackingRequest
         }
         return $result;
     }
-    /**
-     * Sets contentView to a new value.
-     * @param ContentView $contentView new value.
-     */
     function setContentView(ContentView $contentView)
     {
         $this->contentView = $contentView;

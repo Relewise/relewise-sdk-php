@@ -26,10 +26,6 @@ class SearchTermPredictionResponse extends SearchResponse
         }
         return $result;
     }
-    /**
-     * Sets predictions to a new value.
-     * @param SearchTermPredictionResult[] $predictions new value.
-     */
     function setPredictions(SearchTermPredictionResult ... $predictions)
     {
         $this->predictions = $predictions;
@@ -57,10 +53,6 @@ class SearchTermPredictionResponse extends SearchResponse
         array_push($this->predictions, $predictions);
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

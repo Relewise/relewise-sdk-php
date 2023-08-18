@@ -55,19 +55,11 @@ abstract class floatRangesFacetResult extends FacetResult
         }
         return $result;
     }
-    /**
-     * Sets expandedRangeSize to a new value.
-     * @param ?float $expandedRangeSize new value.
-     */
     function setExpandedRangeSize(?float $expandedRangeSize)
     {
         $this->expandedRangeSize = $expandedRangeSize;
         return $this;
     }
-    /**
-     * Sets selected to a new value.
-     * @param ?floatChainableRange[] $selected new value.
-     */
     function setSelected(?floatChainableRange ... $selected)
     {
         $this->selected = $selected;
@@ -95,10 +87,6 @@ abstract class floatRangesFacetResult extends FacetResult
         array_push($this->selected, $selected);
         return $this;
     }
-    /**
-     * Sets available to a new value.
-     * @param ?floatChainableRangeAvailableFacetValue[] $available new value.
-     */
     function setAvailable(?floatChainableRangeAvailableFacetValue ... $available)
     {
         $this->available = $available;
@@ -126,10 +114,6 @@ abstract class floatRangesFacetResult extends FacetResult
         array_push($this->available, $available);
         return $this;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;

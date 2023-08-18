@@ -28,19 +28,11 @@ class MerchandisingRuleRequest extends LicensedRequest
         }
         return $result;
     }
-    /**
-     * Sets id to a new value.
-     * @param string $id new value.
-     */
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
-    /**
-     * Sets type to a new value.
-     * @param ?int $type new value.
-     */
     function setType(?int $type)
     {
         $this->type = $type;

@@ -27,10 +27,6 @@ class SaveSynonymsResponse extends TimedResponse
         }
         return $result;
     }
-    /**
-     * Sets values to a new value.
-     * @param Synonym[] $values new value.
-     */
     function setValues(Synonym ... $values)
     {
         $this->values = $values;
@@ -58,10 +54,6 @@ class SaveSynonymsResponse extends TimedResponse
         array_push($this->values, $values);
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

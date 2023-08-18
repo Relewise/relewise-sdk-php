@@ -30,10 +30,6 @@ class VariantSpecificationsInCommonRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    /**
-     * Sets specificationKeysAndMultipliers to a new value.
-     * @param KeyMultiplier[] $specificationKeysAndMultipliers new value.
-     */
     function setSpecificationKeysAndMultipliers(KeyMultiplier ... $specificationKeysAndMultipliers)
     {
         $this->specificationKeysAndMultipliers = $specificationKeysAndMultipliers;
@@ -61,10 +57,6 @@ class VariantSpecificationsInCommonRelevanceModifier extends RelevanceModifier
         array_push($this->specificationKeysAndMultipliers, $specificationKeysAndMultipliers);
         return $this;
     }
-    /**
-     * Sets filters to a new value.
-     * @param FilterCollection $filters new value.
-     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

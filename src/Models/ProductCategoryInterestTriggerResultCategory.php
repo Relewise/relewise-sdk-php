@@ -40,10 +40,6 @@ class ProductCategoryInterestTriggerResultCategory
         }
         return $result;
     }
-    /**
-     * Sets lastPath to a new value.
-     * @param string[] $lastPath new value.
-     */
     function setLastPath(string ... $lastPath)
     {
         $this->lastPath = $lastPath;
@@ -71,19 +67,11 @@ class ProductCategoryInterestTriggerResultCategory
         array_push($this->lastPath, $lastPath);
         return $this;
     }
-    /**
-     * Sets views to a new value.
-     * @param int $views new value.
-     */
     function setViews(int $views)
     {
         $this->views = $views;
         return $this;
     }
-    /**
-     * Sets viewedProducts to a new value.
-     * @param CategoryProductAndVariant[] $viewedProducts new value.
-     */
     function setViewedProducts(CategoryProductAndVariant ... $viewedProducts)
     {
         $this->viewedProducts = $viewedProducts;

@@ -30,28 +30,16 @@ class ProductSalesPriceFilter extends Filter
         }
         return $result;
     }
-    /**
-     * Sets range to a new value.
-     * @param ?floatRange $range new value.
-     */
     function setRange(?floatRange $range)
     {
         $this->range = $range;
         return $this;
     }
-    /**
-     * Sets currency to a new value.
-     * @param ?Currency $currency new value.
-     */
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

@@ -26,28 +26,16 @@ class ProductAssortmentFacetResult extends AssortmentFacetResult
         }
         return $result;
     }
-    /**
-     * Sets assortmentSelectionStrategy to a new value.
-     * @param AssortmentSelectionStrategy $assortmentSelectionStrategy new value.
-     */
     function setAssortmentSelectionStrategy(AssortmentSelectionStrategy $assortmentSelectionStrategy)
     {
         $this->assortmentSelectionStrategy = $assortmentSelectionStrategy;
         return $this;
     }
-    /**
-     * Sets assortmentFilterType to a new value.
-     * @param AssortmentFilterType $assortmentFilterType new value.
-     */
     function setAssortmentFilterType(AssortmentFilterType $assortmentFilterType)
     {
         $this->assortmentFilterType = $assortmentFilterType;
         return $this;
     }
-    /**
-     * Sets selected to a new value.
-     * @param int[] $selected new value.
-     */
     function setSelected(int ... $selected)
     {
         $this->selected = $selected;
@@ -75,10 +63,6 @@ class ProductAssortmentFacetResult extends AssortmentFacetResult
         array_push($this->selected, $selected);
         return $this;
     }
-    /**
-     * Sets available to a new value.
-     * @param intAvailableFacetValue[] $available new value.
-     */
     function setAvailable(intAvailableFacetValue ... $available)
     {
         $this->available = $available;
@@ -106,10 +90,6 @@ class ProductAssortmentFacetResult extends AssortmentFacetResult
         array_push($this->available, $available);
         return $this;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;

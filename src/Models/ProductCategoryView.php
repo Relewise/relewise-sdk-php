@@ -33,19 +33,11 @@ class ProductCategoryView extends Trackable
         }
         return $result;
     }
-    /**
-     * Sets user to a new value.
-     * @param ?User $user new value.
-     */
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
-    /**
-     * Sets idPath to a new value.
-     * @param string[] $idPath new value.
-     */
     function setIdPath(string ... $idPath)
     {
         $this->idPath = $idPath;

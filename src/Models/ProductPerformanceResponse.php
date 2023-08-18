@@ -36,10 +36,6 @@ class ProductPerformanceResponse extends TimedResponse
         }
         return $result;
     }
-    /**
-     * Sets results to a new value.
-     * @param ProductPerformanceResult[] $results new value.
-     */
     function setResults(ProductPerformanceResult ... $results)
     {
         $this->results = $results;
@@ -67,28 +63,16 @@ class ProductPerformanceResponse extends TimedResponse
         array_push($this->results, $results);
         return $this;
     }
-    /**
-     * Sets totalNumberOfResults to a new value.
-     * @param int $totalNumberOfResults new value.
-     */
     function setTotalNumberOfResults(int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;
         return $this;
     }
-    /**
-     * Sets remainingNumberOfResults to a new value.
-     * @param int $remainingNumberOfResults new value.
-     */
     function setRemainingNumberOfResults(int $remainingNumberOfResults)
     {
         $this->remainingNumberOfResults = $remainingNumberOfResults;
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

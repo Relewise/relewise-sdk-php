@@ -54,55 +54,31 @@ class VariantSpecificationValueRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    /**
-     * Sets key to a new value.
-     * @param string $key new value.
-     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    /**
-     * Sets value to a new value.
-     * @param string $value new value.
-     */
     function setValue(string $value)
     {
         $this->value = $value;
         return $this;
     }
-    /**
-     * Sets ifIdenticalMultiplyWeightBy to a new value.
-     * @param float $ifIdenticalMultiplyWeightBy new value.
-     */
     function setIfIdenticalMultiplyWeightBy(float $ifIdenticalMultiplyWeightBy)
     {
         $this->ifIdenticalMultiplyWeightBy = $ifIdenticalMultiplyWeightBy;
         return $this;
     }
-    /**
-     * Sets ifNotIdenticalMultiplyWeightBy to a new value.
-     * @param float $ifNotIdenticalMultiplyWeightBy new value.
-     */
     function setIfNotIdenticalMultiplyWeightBy(float $ifNotIdenticalMultiplyWeightBy)
     {
         $this->ifNotIdenticalMultiplyWeightBy = $ifNotIdenticalMultiplyWeightBy;
         return $this;
     }
-    /**
-     * Sets ifSpecificationKeyNotFoundApplyNotEqualMultiplier to a new value.
-     * @param bool $ifSpecificationKeyNotFoundApplyNotEqualMultiplier new value.
-     */
     function setIfSpecificationKeyNotFoundApplyNotEqualMultiplier(bool $ifSpecificationKeyNotFoundApplyNotEqualMultiplier)
     {
         $this->ifSpecificationKeyNotFoundApplyNotEqualMultiplier = $ifSpecificationKeyNotFoundApplyNotEqualMultiplier;
         return $this;
     }
-    /**
-     * Sets filters to a new value.
-     * @param FilterCollection $filters new value.
-     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

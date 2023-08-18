@@ -62,28 +62,16 @@ abstract class ObjectValueCondition
         }
         return $result;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
-    /**
-     * Sets key to a new value.
-     * @param string $key new value.
-     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    /**
-     * Sets objectPath to a new value.
-     * @param ?string[] $objectPath new value.
-     */
     function setObjectPath(string ... $objectPath)
     {
         $this->objectPath = $objectPath;

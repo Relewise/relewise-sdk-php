@@ -36,28 +36,16 @@ class LanguageIndexConfigurationEntry
         }
         return $result;
     }
-    /**
-     * Sets language to a new value.
-     * @param Language $language new value.
-     */
     function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    /**
-     * Sets included to a new value.
-     * @param bool $included new value.
-     */
     function setIncluded(bool $included)
     {
         $this->included = $included;
         return $this;
     }
-    /**
-     * Sets iSO639_1 to a new value.
-     * @param ?string $iSO639_1 new value.
-     */
     function setISO639_1(?string $iSO639_1)
     {
         $this->iSO639_1 = $iSO639_1;

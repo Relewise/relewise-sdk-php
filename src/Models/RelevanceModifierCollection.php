@@ -30,10 +30,6 @@ class RelevanceModifierCollection
         }
         return $result;
     }
-    /**
-     * Sets items to a new value.
-     * @param ?RelevanceModifier[] $items new value.
-     */
     function setItems(RelevanceModifier ... $items)
     {
         $this->items = $items;

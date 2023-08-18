@@ -88,38 +88,21 @@ class User
         }
         return $result;
     }
-    /**
-     * Sets authenticatedId to a new value.
-     * @param ?string $authenticatedId new value.
-     */
     function setAuthenticatedId(?string $authenticatedId)
     {
         $this->authenticatedId = $authenticatedId;
         return $this;
     }
-    /**
-     * Sets temporaryId to a new value.
-     * @param ?string $temporaryId new value.
-     */
     function setTemporaryId(?string $temporaryId)
     {
         $this->temporaryId = $temporaryId;
         return $this;
     }
-    /**
-     * Sets email to a new value.
-     * @param ?string $email new value.
-     */
     function setEmail(?string $email)
     {
         $this->email = $email;
         return $this;
     }
-    /**
-     * Sets the value of a specific key in classifications.
-     * @param string $key index.
-     * @param string $value new value.
-     */
     function addToClassifications(string $key, string $value)
     {
         if (!isset($this->classifications))
@@ -138,11 +121,6 @@ class User
         $this->classifications = $classifications;
         return $this;
     }
-    /**
-     * Sets the value of a specific key in identifiers.
-     * @param string $key index.
-     * @param string $value new value.
-     */
     function addToIdentifiers(string $key, string $value)
     {
         if (!isset($this->identifiers))
@@ -161,11 +139,6 @@ class User
         $this->identifiers = $identifiers;
         return $this;
     }
-    /**
-     * Sets the value of a specific key in data.
-     * @param string $key index.
-     * @param DataValue $value new value.
-     */
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -184,10 +157,6 @@ class User
         $this->data = $data;
         return $this;
     }
-    /**
-     * Sets fingerprint to a new value.
-     * @param ?string $fingerprint new value.
-     */
     function setFingerprint(?string $fingerprint)
     {
         $this->fingerprint = $fingerprint;

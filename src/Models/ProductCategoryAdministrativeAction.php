@@ -20,37 +20,21 @@ class ProductCategoryAdministrativeAction extends CategoryAdministrativeAction
         $result = CategoryAdministrativeAction::hydrateBase(new ProductCategoryAdministrativeAction(), $arr);
         return $result;
     }
-    /**
-     * Sets filters to a new value.
-     * @param FilterCollection $filters new value.
-     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
-    /**
-     * Sets language to a new value.
-     * @param ?Language $language new value.
-     */
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
-    /**
-     * Sets kind to a new value.
-     * @param CategoryAdministrativeActionUpdateKind $kind new value.
-     */
     function setKind(CategoryAdministrativeActionUpdateKind $kind)
     {
         $this->kind = $kind;
         return $this;
     }
-    /**
-     * Sets currency to a new value.
-     * @param ?Currency $currency new value.
-     */
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

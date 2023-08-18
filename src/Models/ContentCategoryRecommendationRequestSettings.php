@@ -42,46 +42,26 @@ class ContentCategoryRecommendationRequestSettings
         }
         return $result;
     }
-    /**
-     * Sets numberOfRecommendations to a new value.
-     * @param int $numberOfRecommendations new value.
-     */
     function setNumberOfRecommendations(int $numberOfRecommendations)
     {
         $this->numberOfRecommendations = $numberOfRecommendations;
         return $this;
     }
-    /**
-     * Sets allowFillIfNecessaryToReachNumberOfRecommendations to a new value.
-     * @param bool $allowFillIfNecessaryToReachNumberOfRecommendations new value.
-     */
     function setAllowFillIfNecessaryToReachNumberOfRecommendations(bool $allowFillIfNecessaryToReachNumberOfRecommendations)
     {
         $this->allowFillIfNecessaryToReachNumberOfRecommendations = $allowFillIfNecessaryToReachNumberOfRecommendations;
         return $this;
     }
-    /**
-     * Sets allowReplacingOfRecentlyShownRecommendations to a new value.
-     * @param bool $allowReplacingOfRecentlyShownRecommendations new value.
-     */
     function setAllowReplacingOfRecentlyShownRecommendations(bool $allowReplacingOfRecentlyShownRecommendations)
     {
         $this->allowReplacingOfRecentlyShownRecommendations = $allowReplacingOfRecentlyShownRecommendations;
         return $this;
     }
-    /**
-     * Sets prioritizeDiversityBetweenRequests to a new value.
-     * @param bool $prioritizeDiversityBetweenRequests new value.
-     */
     function setPrioritizeDiversityBetweenRequests(bool $prioritizeDiversityBetweenRequests)
     {
         $this->prioritizeDiversityBetweenRequests = $prioritizeDiversityBetweenRequests;
         return $this;
     }
-    /**
-     * Sets selectedContentCategoryProperties to a new value.
-     * @param SelectedContentCategoryPropertiesSettings $selectedContentCategoryProperties new value.
-     */
     function setSelectedContentCategoryProperties(SelectedContentCategoryPropertiesSettings $selectedContentCategoryProperties)
     {
         $this->selectedContentCategoryProperties = $selectedContentCategoryProperties;

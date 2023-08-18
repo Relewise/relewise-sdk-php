@@ -32,28 +32,16 @@ class ProductPerformanceResultSalesWithKnownCartOpenerMetrics
         }
         return $result;
     }
-    /**
-     * Sets orders to a new value.
-     * @param int $orders new value.
-     */
     function setOrders(int $orders)
     {
         $this->orders = $orders;
         return $this;
     }
-    /**
-     * Sets opened to a new value.
-     * @param int $opened new value.
-     */
     function setOpened(int $opened)
     {
         $this->opened = $opened;
         return $this;
     }
-    /**
-     * Sets openedPercent to a new value.
-     * @param float $openedPercent new value.
-     */
     function setOpenedPercent(float $openedPercent)
     {
         $this->openedPercent = $openedPercent;

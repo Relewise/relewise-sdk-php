@@ -22,10 +22,6 @@ class Statistics
         }
         return $result;
     }
-    /**
-     * Sets serverTimeInMs to a new value.
-     * @param float $serverTimeInMs new value.
-     */
     function setServerTimeInMs(float $serverTimeInMs)
     {
         $this->serverTimeInMs = $serverTimeInMs;

@@ -17,10 +17,6 @@ class AbandonedProductCategorySearch extends stringAbandonedSearch
         $result = stringAbandonedSearch::hydrateBase(new AbandonedProductCategorySearch(), $arr);
         return $result;
     }
-    /**
-     * Sets topResults to a new value.
-     * @param string[] $topResults new value.
-     */
     function setTopResults(string ... $topResults)
     {
         $this->topResults = $topResults;
@@ -48,19 +44,11 @@ class AbandonedProductCategorySearch extends stringAbandonedSearch
         array_push($this->topResults, $topResults);
         return $this;
     }
-    /**
-     * Sets loweredSearchTerm to a new value.
-     * @param string $loweredSearchTerm new value.
-     */
     function setLoweredSearchTerm(string $loweredSearchTerm)
     {
         $this->loweredSearchTerm = $loweredSearchTerm;
         return $this;
     }
-    /**
-     * Sets hits to a new value.
-     * @param int $hits new value.
-     */
     function setHits(int $hits)
     {
         $this->hits = $hits;

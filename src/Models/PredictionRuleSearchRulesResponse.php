@@ -34,10 +34,6 @@ abstract class PredictionRuleSearchRulesResponse extends TimedResponse
         }
         return $result;
     }
-    /**
-     * Sets rules to a new value.
-     * @param PredictionRule[] $rules new value.
-     */
     function setRules(PredictionRule ... $rules)
     {
         $this->rules = $rules;
@@ -65,19 +61,11 @@ abstract class PredictionRuleSearchRulesResponse extends TimedResponse
         array_push($this->rules, $rules);
         return $this;
     }
-    /**
-     * Sets hits to a new value.
-     * @param int $hits new value.
-     */
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
-    /**
-     * Sets statistics to a new value.
-     * @param Statistics $statistics new value.
-     */
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

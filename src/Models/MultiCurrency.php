@@ -27,10 +27,6 @@ class MultiCurrency
         }
         return $result;
     }
-    /**
-     * Sets values to a new value.
-     * @param ?Money[] $values new value.
-     */
     function setValues(Money ... $values)
     {
         $this->values = $values;

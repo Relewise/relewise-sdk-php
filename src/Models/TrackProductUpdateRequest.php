@@ -23,10 +23,6 @@ class TrackProductUpdateRequest extends TrackingRequest
         }
         return $result;
     }
-    /**
-     * Sets productUpdate to a new value.
-     * @param ProductUpdate $productUpdate new value.
-     */
     function setProductUpdate(ProductUpdate $productUpdate)
     {
         $this->productUpdate = $productUpdate;

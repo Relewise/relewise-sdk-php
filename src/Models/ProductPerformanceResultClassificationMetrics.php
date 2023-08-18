@@ -46,11 +46,6 @@ class ProductPerformanceResultClassificationMetrics
         }
         return $result;
     }
-    /**
-     * Sets the value of a specific key in combination.
-     * @param string $key index.
-     * @param string $value new value.
-     */
     function addToCombination(string $key, string $value)
     {
         if (!isset($this->combination))
@@ -69,37 +64,21 @@ class ProductPerformanceResultClassificationMetrics
         $this->combination = $combination;
         return $this;
     }
-    /**
-     * Sets views to a new value.
-     * @param ProductPerformanceResultViewsMetrics $views new value.
-     */
     function setViews(ProductPerformanceResultViewsMetrics $views)
     {
         $this->views = $views;
         return $this;
     }
-    /**
-     * Sets sales to a new value.
-     * @param ProductPerformanceResultSalesMetrics $sales new value.
-     */
     function setSales(ProductPerformanceResultSalesMetrics $sales)
     {
         $this->sales = $sales;
         return $this;
     }
-    /**
-     * Sets carts to a new value.
-     * @param ProductPerformanceResultCartMetrics $carts new value.
-     */
     function setCarts(ProductPerformanceResultCartMetrics $carts)
     {
         $this->carts = $carts;
         return $this;
     }
-    /**
-     * Sets rank to a new value.
-     * @param ProductPerformanceResultRankMetrics $rank new value.
-     */
     function setRank(ProductPerformanceResultRankMetrics $rank)
     {
         $this->rank = $rank;

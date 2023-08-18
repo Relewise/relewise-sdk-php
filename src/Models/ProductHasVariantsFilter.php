@@ -24,19 +24,11 @@ class ProductHasVariantsFilter extends Filter
         }
         return $result;
     }
-    /**
-     * Sets numberOfVariants to a new value.
-     * @param ?intRange $numberOfVariants new value.
-     */
     function setNumberOfVariants(?intRange $numberOfVariants)
     {
         $this->numberOfVariants = $numberOfVariants;
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

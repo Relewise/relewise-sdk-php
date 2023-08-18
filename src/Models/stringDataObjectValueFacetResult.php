@@ -20,28 +20,16 @@ abstract class stringDataObjectValueFacetResult extends stringDataValueFacetResu
         $result = stringDataValueFacetResult::hydrateBase($result, $arr);
         return $result;
     }
-    /**
-     * Sets key to a new value.
-     * @param string $key new value.
-     */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
-    /**
-     * Sets collectionFilterType to a new value.
-     * @param ?CollectionFilterType $collectionFilterType new value.
-     */
     function setCollectionFilterType(?CollectionFilterType $collectionFilterType)
     {
         $this->collectionFilterType = $collectionFilterType;
         return $this;
     }
-    /**
-     * Sets selected to a new value.
-     * @param string[] $selected new value.
-     */
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
@@ -69,10 +57,6 @@ abstract class stringDataObjectValueFacetResult extends stringDataValueFacetResu
         array_push($this->selected, $selected);
         return $this;
     }
-    /**
-     * Sets available to a new value.
-     * @param stringAvailableFacetValue[] $available new value.
-     */
     function setAvailable(stringAvailableFacetValue ... $available)
     {
         $this->available = $available;
@@ -100,10 +84,6 @@ abstract class stringDataObjectValueFacetResult extends stringDataValueFacetResu
         array_push($this->available, $available);
         return $this;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;

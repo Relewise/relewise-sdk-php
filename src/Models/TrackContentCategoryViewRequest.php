@@ -23,10 +23,6 @@ class TrackContentCategoryViewRequest extends TrackingRequest
         }
         return $result;
     }
-    /**
-     * Sets contentCategoryView to a new value.
-     * @param ContentCategoryView $contentCategoryView new value.
-     */
     function setContentCategoryView(ContentCategoryView $contentCategoryView)
     {
         $this->contentCategoryView = $contentCategoryView;

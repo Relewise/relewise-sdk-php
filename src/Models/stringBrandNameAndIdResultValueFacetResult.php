@@ -38,10 +38,6 @@ abstract class stringBrandNameAndIdResultValueFacetResult extends FacetResult
         }
         return $result;
     }
-    /**
-     * Sets selected to a new value.
-     * @param string[] $selected new value.
-     */
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
@@ -69,10 +65,6 @@ abstract class stringBrandNameAndIdResultValueFacetResult extends FacetResult
         array_push($this->selected, $selected);
         return $this;
     }
-    /**
-     * Sets available to a new value.
-     * @param BrandNameAndIdResultAvailableFacetValue[] $available new value.
-     */
     function setAvailable(BrandNameAndIdResultAvailableFacetValue ... $available)
     {
         $this->available = $available;
@@ -100,10 +92,6 @@ abstract class stringBrandNameAndIdResultValueFacetResult extends FacetResult
         array_push($this->available, $available);
         return $this;
     }
-    /**
-     * Sets field to a new value.
-     * @param FacetingField $field new value.
-     */
     function setField(FacetingField $field)
     {
         $this->field = $field;

@@ -29,19 +29,11 @@ class StemmingRulesRequestSortBySorting
         }
         return $result;
     }
-    /**
-     * Sets sortBy to a new value.
-     * @param StemmingRulesRequestSortBy $sortBy new value.
-     */
     function setSortBy(StemmingRulesRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
-    /**
-     * Sets sortOrder to a new value.
-     * @param SortOrder $sortOrder new value.
-     */
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

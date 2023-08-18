@@ -46,46 +46,26 @@ class ProductCategoryIdRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
-    /**
-     * Sets categoryId to a new value.
-     * @param string $categoryId new value.
-     */
     function setCategoryId(string $categoryId)
     {
         $this->categoryId = $categoryId;
         return $this;
     }
-    /**
-     * Sets evaluationScope to a new value.
-     * @param CategoryScope $evaluationScope new value.
-     */
     function setEvaluationScope(CategoryScope $evaluationScope)
     {
         $this->evaluationScope = $evaluationScope;
         return $this;
     }
-    /**
-     * Sets multiplyWeightBy to a new value.
-     * @param float $multiplyWeightBy new value.
-     */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
-    /**
-     * Sets filters to a new value.
-     * @param FilterCollection $filters new value.
-     */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

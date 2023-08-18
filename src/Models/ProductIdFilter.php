@@ -27,10 +27,6 @@ class ProductIdFilter extends Filter
         }
         return $result;
     }
-    /**
-     * Sets productIds to a new value.
-     * @param string[] $productIds new value.
-     */
     function setProductIds(string ... $productIds)
     {
         $this->productIds = $productIds;
@@ -58,10 +54,6 @@ class ProductIdFilter extends Filter
         array_push($this->productIds, $productIds);
         return $this;
     }
-    /**
-     * Sets negated to a new value.
-     * @param bool $negated new value.
-     */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

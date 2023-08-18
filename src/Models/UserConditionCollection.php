@@ -27,10 +27,6 @@ class UserConditionCollection
         }
         return $result;
     }
-    /**
-     * Sets items to a new value.
-     * @param UserCondition[] $items new value.
-     */
     function setItems(UserCondition ... $items)
     {
         $this->items = $items;

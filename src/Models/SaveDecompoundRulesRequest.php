@@ -18,10 +18,6 @@ class SaveDecompoundRulesRequest extends DecompoundRuleSaveSearchRulesRequest
         $result = DecompoundRuleSaveSearchRulesRequest::hydrateBase(new SaveDecompoundRulesRequest(), $arr);
         return $result;
     }
-    /**
-     * Sets rules to a new value.
-     * @param DecompoundRule[] $rules new value.
-     */
     function setRules(DecompoundRule ... $rules)
     {
         $this->rules = $rules;
@@ -49,10 +45,6 @@ class SaveDecompoundRulesRequest extends DecompoundRuleSaveSearchRulesRequest
         array_push($this->rules, $rules);
         return $this;
     }
-    /**
-     * Sets modifiedBy to a new value.
-     * @param string $modifiedBy new value.
-     */
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

@@ -23,10 +23,6 @@ class TrackContentUpdateRequest extends TrackingRequest
         }
         return $result;
     }
-    /**
-     * Sets contentUpdate to a new value.
-     * @param ContentUpdate $contentUpdate new value.
-     */
     function setContentUpdate(ContentUpdate $contentUpdate)
     {
         $this->contentUpdate = $contentUpdate;
