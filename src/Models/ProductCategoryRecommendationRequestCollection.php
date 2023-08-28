@@ -8,11 +8,11 @@ class ProductCategoryRecommendationRequestCollection extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ProductCategoryRecommendationRequestCollection, Relewise.Client";
     public array $requests;
-    public bool $requireDistinctContentAcrossResults;
-    public static function create(bool $requireDistinctContentsAcrossResults, ProductCategoryRecommendationRequest ... $requests) : ProductCategoryRecommendationRequestCollection
+    public bool $requireDistinctCategoriesAcrossResults;
+    public static function create(bool $requireDistinctCategoriesesAcrossResults, ProductCategoryRecommendationRequest ... $requests) : ProductCategoryRecommendationRequestCollection
     {
         $result = new ProductCategoryRecommendationRequestCollection();
-        $result->requireDistinctContentAcrossResults = $requireDistinctContentsAcrossResults;
+        $result->requireDistinctCategoriesAcrossResults = $requireDistinctCategoriesesAcrossResults;
         $result->requests = $requests;
         return $result;
     }
@@ -27,9 +27,9 @@ class ProductCategoryRecommendationRequestCollection extends LicensedRequest
                 array_push($result->requests, ProductCategoryRecommendationRequest::hydrate($value));
             }
         }
-        if (array_key_exists("requireDistinctContentAcrossResults", $arr))
+        if (array_key_exists("requireDistinctCategoriesAcrossResults", $arr))
         {
-            $result->requireDistinctContentAcrossResults = $arr["requireDistinctContentAcrossResults"];
+            $result->requireDistinctCategoriesAcrossResults = $arr["requireDistinctCategoriesAcrossResults"];
         }
         return $result;
     }
@@ -52,9 +52,9 @@ class ProductCategoryRecommendationRequestCollection extends LicensedRequest
         array_push($this->requests, $requests);
         return $this;
     }
-    function setRequireDistinctContentAcrossResults(bool $requireDistinctContentAcrossResults)
+    function setRequireDistinctCategoriesAcrossResults(bool $requireDistinctCategoriesAcrossResults)
     {
-        $this->requireDistinctContentAcrossResults = $requireDistinctContentAcrossResults;
+        $this->requireDistinctCategoriesAcrossResults = $requireDistinctCategoriesAcrossResults;
         return $this;
     }
 }

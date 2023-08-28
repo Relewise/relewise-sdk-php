@@ -11,6 +11,7 @@ class SimilarProductsRequest extends ProductRecommendationRequest
     public ?Product $productData;
     public bool $considerAlreadyKnownInformationAboutProduct;
     public ?SimilarProductsEvaluationSettings $evaluationSettings;
+    public ?int $explodedVariants;
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ?SimilarProductsEvaluationSettings $evaluationSettings = Null) : SimilarProductsRequest
     {
         $result = new SimilarProductsRequest();
@@ -40,6 +41,10 @@ class SimilarProductsRequest extends ProductRecommendationRequest
         {
             $result->evaluationSettings = SimilarProductsEvaluationSettings::hydrate($arr["evaluationSettings"]);
         }
+        if (array_key_exists("explodedVariants", $arr))
+        {
+            $result->explodedVariants = $arr["explodedVariants"];
+        }
         return $result;
     }
     function setExistingProductId(?ProductAndVariantId $existingProductId)
@@ -62,6 +67,11 @@ class SimilarProductsRequest extends ProductRecommendationRequest
         $this->evaluationSettings = $evaluationSettings;
         return $this;
     }
+    function setExplodedVariants(?int $explodedVariants)
+    {
+        $this->explodedVariants = $explodedVariants;
+        return $this;
+    }
     function setSettings(ProductRecommendationRequestSettings $settings)
     {
         $this->settings = $settings;
@@ -72,7 +82,7 @@ class SimilarProductsRequest extends ProductRecommendationRequest
         $this->language = $language;
         return $this;
     }
-    function setUser(User $user)
+    function setUser(?User $user)
     {
         $this->user = $user;
         return $this;

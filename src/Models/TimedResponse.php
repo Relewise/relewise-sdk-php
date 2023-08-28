@@ -167,9 +167,25 @@ abstract class TimedResponse
         {
             return SaveRedirectRulesResponse::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Responses.Search.Rules.SaveSearchResultModifierRulesResponse, Relewise.Client")
+        {
+            return SaveSearchResultModifierRulesResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.Search.Rules.SaveSearchTermModifierRulesResponse, Relewise.Client")
+        {
+            return SaveSearchTermModifierRulesResponse::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Responses.Search.Rules.SaveStemmingRulesResponse, Relewise.Client")
         {
             return SaveStemmingRulesResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.Search.Rules.SearchResultModifierRulesResponse, Relewise.Client")
+        {
+            return SearchResultModifierRulesResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.Search.Rules.SearchTermModifierRulesResponse, Relewise.Client")
+        {
+            return SearchTermModifierRulesResponse::hydrate($arr);
         }
         if ($type=="Relewise.Client.Responses.Search.Rules.StemmingRulesResponse, Relewise.Client")
         {

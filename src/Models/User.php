@@ -14,6 +14,7 @@ class User
     public ?array $identifiers;
     public ?array $data;
     public ?string $fingerprint;
+    public ?Channel $channel;
     public static function create(?string $authenticatedId, ?string $temporaryId, ?string $email, ?string $fingerprint, ?array $classifications, ?array $identifiers, ?array $data) : User
     {
         $result = new User();
@@ -68,6 +69,10 @@ class User
         if (array_key_exists("fingerprint", $arr))
         {
             $result->fingerprint = $arr["fingerprint"];
+        }
+        if (array_key_exists("channel", $arr))
+        {
+            $result->channel = Channel::hydrate($arr["channel"]);
         }
         return $result;
     }
@@ -131,6 +136,11 @@ class User
     function setFingerprint(?string $fingerprint)
     {
         $this->fingerprint = $fingerprint;
+        return $this;
+    }
+    function setChannel(?Channel $channel)
+    {
+        $this->channel = $channel;
         return $this;
     }
 }

@@ -8,6 +8,7 @@ abstract class Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.Filter, Relewise.Client";
     public bool $negated;
+    public ?FilterSettings $settings;
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -31,6 +32,10 @@ abstract class Filter
         {
             return CartDataFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.ContentAssortmentFilter, Relewise.Client")
+        {
+            return ContentAssortmentFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.ContentCategoryAssortmentFilter, Relewise.Client")
         {
             return ContentCategoryAssortmentFilter::hydrate($arr);
@@ -46,6 +51,10 @@ abstract class Filter
         if ($type=="Relewise.Client.Requests.Filters.ContentCategoryHasChildFilter, Relewise.Client")
         {
             return ContentCategoryHasChildFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.ContentCategoryHasContentsFilter, Relewise.Client")
+        {
+            return ContentCategoryHasContentsFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.ContentCategoryHasParentFilter, Relewise.Client")
         {
@@ -98,6 +107,10 @@ abstract class Filter
         if ($type=="Relewise.Client.Requests.Filters.ProductCategoryHasParentFilter, Relewise.Client")
         {
             return ProductCategoryHasParentFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.ProductCategoryHasProductsFilter, Relewise.Client")
+        {
+            return ProductCategoryHasProductsFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.ProductCategoryIdFilter, Relewise.Client")
         {
@@ -170,11 +183,20 @@ abstract class Filter
         {
             $result->negated = $arr["negated"];
         }
+        if (array_key_exists("settings", $arr))
+        {
+            $result->settings = FilterSettings::hydrate($arr["settings"]);
+        }
         return $result;
     }
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
+        return $this;
+    }
+    function setSettings(?FilterSettings $settings)
+    {
+        $this->settings = $settings;
         return $this;
     }
 }

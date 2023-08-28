@@ -6,7 +6,7 @@ use DateTime;
 
 class PredictionRule extends SearchRule
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.SearchRules.PredictionRule, Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.PredictionRule, Relewise.Client";
     public SearchTermCondition $condition;
     public PredictionRulePromotion $promote;
     public PredictionRuleSuppression $suppress;

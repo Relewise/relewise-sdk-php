@@ -8,6 +8,7 @@ class FacetSettings
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.FacetSettings, Relewise.Client";
     public bool $alwaysIncludeSelectedInAvailable;
+    public bool $includeZeroHitsInAvailable;
     public static function create() : FacetSettings
     {
         $result = new FacetSettings();
@@ -20,11 +21,20 @@ class FacetSettings
         {
             $result->alwaysIncludeSelectedInAvailable = $arr["alwaysIncludeSelectedInAvailable"];
         }
+        if (array_key_exists("includeZeroHitsInAvailable", $arr))
+        {
+            $result->includeZeroHitsInAvailable = $arr["includeZeroHitsInAvailable"];
+        }
         return $result;
     }
     function setAlwaysIncludeSelectedInAvailable(bool $alwaysIncludeSelectedInAvailable)
     {
         $this->alwaysIncludeSelectedInAvailable = $alwaysIncludeSelectedInAvailable;
+        return $this;
+    }
+    function setIncludeZeroHitsInAvailable(bool $includeZeroHitsInAvailable)
+    {
+        $this->includeZeroHitsInAvailable = $includeZeroHitsInAvailable;
         return $this;
     }
 }

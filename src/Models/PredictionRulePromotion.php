@@ -6,7 +6,7 @@ use DateTime;
 
 class PredictionRulePromotion
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.SearchRules.PredictionRule+Promotion, Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.PredictionRule+Promotion, Relewise.Client";
     public PromotionPosition $to;
     public array $values;
     public static function create(PromotionPosition $toPosition, string ... $values) : PredictionRulePromotion

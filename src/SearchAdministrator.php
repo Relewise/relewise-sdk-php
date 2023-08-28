@@ -19,6 +19,12 @@ use Relewise\Models\DeleteDecompoundRulesRequest;
 use Relewise\Models\StemmingRulesRequest;
 use Relewise\Models\SaveStemmingRulesRequest;
 use Relewise\Models\DeleteStemmingRulesRequest;
+use Relewise\Models\SearchTermModifierRulesRequest;
+use Relewise\Models\SaveSearchTermModifierRulesRequest;
+use Relewise\Models\DeleteSearchTermModifierRulesRequest;
+use Relewise\Models\SearchResultModifierRulesRequest;
+use Relewise\Models\SaveSearchResultModifierRulesRequest;
+use Relewise\Models\DeleteSearchResultModifierRulesRequest;
 use Relewise\Models\SearchIndexResponse;
 use Relewise\Models\SearchIndexCollectionResponse;
 use Relewise\Models\SynonymsResponse;
@@ -30,6 +36,10 @@ use Relewise\Models\DecompoundRulesResponse;
 use Relewise\Models\SaveDecompoundRulesResponse;
 use Relewise\Models\StemmingRulesResponse;
 use Relewise\Models\SaveStemmingRulesResponse;
+use Relewise\Models\SearchTermModifierRulesResponse;
+use Relewise\Models\SaveSearchTermModifierRulesResponse;
+use Relewise\Models\SearchResultModifierRulesResponse;
+use Relewise\Models\SaveSearchResultModifierRulesResponse;
 
 class SearchAdministrator extends RelewiseClient
 {
@@ -170,6 +180,60 @@ class SearchAdministrator extends RelewiseClient
     public function deleteStemmingRules(DeleteStemmingRulesRequest $request) : ?DeleteSearchRulesResponse
     {
         $response = $this->requestAndValidate("DeleteStemmingRulesRequest", $request);
+        if ($response == Null)
+        {
+            return Null;
+        }
+        return DeleteSearchRulesResponse::hydrate($response);
+    }
+    public function searchTermModifierRules(SearchTermModifierRulesRequest $request) : ?SearchTermModifierRulesResponse
+    {
+        $response = $this->requestAndValidate("SearchTermModifierRulesRequest", $request);
+        if ($response == Null)
+        {
+            return Null;
+        }
+        return SearchTermModifierRulesResponse::hydrate($response);
+    }
+    public function saveSearchTermModifierRules(SaveSearchTermModifierRulesRequest $request) : ?SaveSearchTermModifierRulesResponse
+    {
+        $response = $this->requestAndValidate("SaveSearchTermModifierRulesRequest", $request);
+        if ($response == Null)
+        {
+            return Null;
+        }
+        return SaveSearchTermModifierRulesResponse::hydrate($response);
+    }
+    public function deleteSearchTermModifierRules(DeleteSearchTermModifierRulesRequest $request) : ?DeleteSearchRulesResponse
+    {
+        $response = $this->requestAndValidate("DeleteSearchTermModifierRulesRequest", $request);
+        if ($response == Null)
+        {
+            return Null;
+        }
+        return DeleteSearchRulesResponse::hydrate($response);
+    }
+    public function searchResultModifierRules(SearchResultModifierRulesRequest $request) : ?SearchResultModifierRulesResponse
+    {
+        $response = $this->requestAndValidate("SearchResultModifierRulesRequest", $request);
+        if ($response == Null)
+        {
+            return Null;
+        }
+        return SearchResultModifierRulesResponse::hydrate($response);
+    }
+    public function saveSearchResultModifierRules(SaveSearchResultModifierRulesRequest $request) : ?SaveSearchResultModifierRulesResponse
+    {
+        $response = $this->requestAndValidate("SaveSearchResultModifierRulesRequest", $request);
+        if ($response == Null)
+        {
+            return Null;
+        }
+        return SaveSearchResultModifierRulesResponse::hydrate($response);
+    }
+    public function deleteSearchResultModifierRules(DeleteSearchResultModifierRulesRequest $request) : ?DeleteSearchRulesResponse
+    {
+        $response = $this->requestAndValidate("DeleteSearchResultModifierRulesRequest", $request);
         if ($response == Null)
         {
             return Null;

@@ -9,6 +9,7 @@ namespace Generator.PhpTypeWriters;
 public class PhpClassWriter : IPhpTypeWriter
 {
     private static readonly Type[] ExtractableFacetResultTypes = { typeof(ProductFacetResult), typeof(ContentFacetResult), typeof(ProductCategoryFacetResult) };
+    private static readonly string[] IgnoredProperties = new[] { "Channel", "SubChannel", "TrackingNumber" };
 
     private readonly PhpWriter phpWriter;
 
@@ -53,7 +54,9 @@ use DateTime;
                            && info.GetMethod is { IsAbstract: false }
                            && !Attribute.IsDefined(info, typeof(JsonIgnoreAttribute))
                            && info.GetAccessors(false).All(ax => !ax.IsAbstract && ax.IsPublic)
-                           && info.Name != "Custom") // It is a special requirement that we should ignore the property Custom from all classes.
+                           && info.Name != "Custom" // It is a special requirement that we should ignore the property Custom from all classes.
+                           && !(Attribute.IsDefined(info, typeof(ObsoleteAttribute)) && IgnoredProperties.Contains(info.Name)) // Certain properties should not be generated if they are obsolete as they might have been obsoleted before the PHP SDK was first released or because they were added and obsoleted in between releases of the PHP SDK.
+            )
             .ToArray();
         var settablePropertyInfo = gettablePropertyInfo
             .Where(info => info.SetMethod is { IsAbstract: false }) // It is a special requirement that we should ignore the property Custom from all classes.
