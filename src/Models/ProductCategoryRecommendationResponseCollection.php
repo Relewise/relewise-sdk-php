@@ -32,10 +32,7 @@ class ProductCategoryRecommendationResponseCollection extends TimedResponse
         $this->responses = $responses;
         return $this;
     }
-    /**
-     * Sets responses to a new value from an array.
-     * @param ProductCategoryRecommendationResponse[] $responses new value.
-     */
+    /** @param ProductCategoryRecommendationResponse[] $responses new value. */
     function setResponsesFromArray(array $responses)
     {
         $this->responses = $responses;

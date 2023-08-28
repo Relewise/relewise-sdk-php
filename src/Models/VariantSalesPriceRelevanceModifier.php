@@ -59,6 +59,7 @@ class VariantSalesPriceRelevanceModifier extends RelevanceModifier
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    /** Determines whether this RelevanceModifier should apply to all the Products that aren't contained within the specific Range instead. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

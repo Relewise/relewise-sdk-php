@@ -40,16 +40,19 @@ class BrandIdRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    /** The Id of the Brand that this RelevanceModifier will distinguish on. */
     function setBrandId(string $brandId)
     {
         $this->brandId = $brandId;
         return $this;
     }
+    /** The weight that the Product will be multiplied with if it matches the specific BrandId. */
     function setIfProductIsBrandMultiplyWeightBy(float $ifProductIsBrandMultiplyWeightBy)
     {
         $this->ifProductIsBrandMultiplyWeightBy = $ifProductIsBrandMultiplyWeightBy;
         return $this;
     }
+    /** The weight that the Product will be multiplied with if it does not match the specific BrandId. */
     function setIfProductIsNotBrandMultiplyWeightBy(float $ifProductIsNotBrandMultiplyWeightBy)
     {
         $this->ifProductIsNotBrandMultiplyWeightBy = $ifProductIsNotBrandMultiplyWeightBy;

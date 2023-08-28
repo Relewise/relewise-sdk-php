@@ -30,7 +30,6 @@ public class XmlDocumentation
         if (Summaries.FirstOrDefault(kvp => kvp.Key.ToLower().EndsWith(endsWith.ToLower())) is
             { Key: {} matchingKey, Value: { Length: > 0 } matchingSummary })
         {
-            Summaries.Remove(matchingKey);
             SuccessfulSummaryInsertions++;
             return matchingSummary;
         }
@@ -47,7 +46,6 @@ public class XmlDocumentation
                 && parameters.All(p => kvp.Key.Contains(MinimalMatchableCSharpTypeName(p.ParameterType), StringComparison.OrdinalIgnoreCase))) is
             { Key: { } matchingKey, Value: { } matchingSummary })
         {
-            Summaries.Remove(matchingKey);
             SuccessfulSummaryInsertions++;
             return matchingSummary;
         }
@@ -64,7 +62,6 @@ public class XmlDocumentation
                 && parameters.All(p => kvp.Key.Contains(MinimalMatchableCSharpTypeName(p.ParameterType), StringComparison.OrdinalIgnoreCase))
                 && kvp.Key.Split("-")[0] == parameter.Name) is { Key: { } matchingKey, Value: { } matchingParam })
         {
-            Params.Remove(matchingKey);
             SuccessfulParamsInsertions++;
             return $"@param {PhpWriter.DocumentationParameterTypeName(PhpWriter.PhpTypeName(parameter), parameter.ParameterType)} ${parameter.Name} {matchingParam}";
         }

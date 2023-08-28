@@ -51,10 +51,7 @@ class AbandonedSearchTriggerResult
         $this->searches = $searches;
         return $this;
     }
-    /**
-     * Sets searches to a new value from an array.
-     * @param AbandonedSearch[] $searches new value.
-     */
+    /** @param AbandonedSearch[] $searches new value. */
     function setSearchesFromArray(array $searches)
     {
         $this->searches = $searches;

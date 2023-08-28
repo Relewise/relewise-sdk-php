@@ -23,10 +23,7 @@ class SaveDecompoundRulesRequest extends DecompoundRuleSaveSearchRulesRequest
         $this->rules = $rules;
         return $this;
     }
-    /**
-     * Sets rules to a new value from an array.
-     * @param DecompoundRule[] $rules new value.
-     */
+    /** @param DecompoundRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;

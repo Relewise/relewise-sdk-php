@@ -46,6 +46,7 @@ class LanguageIndexConfigurationEntry
         $this->included = $included;
         return $this;
     }
+    /** The ISO639-1 code for the selected language, this is used for spelling correction, stemming, phonetic analysis etc.            This is optional if the specified "Language" already follows the official codes, e.g. "en" for English, "da" for Danish etc (case-insensitive).            https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes */
     function setISO639_1(?string $iSO639_1)
     {
         $this->iSO639_1 = $iSO639_1;

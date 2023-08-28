@@ -70,10 +70,7 @@ class Content
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
-    /**
-     * Sets categoryPaths to a new value from an array.
-     * @param ?CategoryPath[] $categoryPaths new value.
-     */
+    /** @param ?CategoryPath[] $categoryPaths new value. */
     function setCategoryPathsFromArray(array $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
@@ -93,10 +90,7 @@ class Content
         $this->assortments = $assortments;
         return $this;
     }
-    /**
-     * Sets assortments to a new value from an array.
-     * @param ?int[] $assortments new value.
-     */
+    /** @param ?int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
@@ -120,10 +114,7 @@ class Content
         $this->data[$key] = $value;
         return $this;
     }
-    /**
-     * Sets data to a new value.
-     * @param ?array<string, DataValue> $data associative array.
-     */
+    /** @param ?array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;

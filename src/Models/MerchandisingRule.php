@@ -169,10 +169,7 @@ abstract class MerchandisingRule
         $this->settings[$key] = $value;
         return $this;
     }
-    /**
-     * Sets settings to a new value.
-     * @param array<string, string> $settings associative array.
-     */
+    /** @param array<string, string> $settings associative array. */
     function setSettingsFromAssociativeArray(array $settings)
     {
         $this->settings = $settings;

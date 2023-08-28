@@ -33,8 +33,8 @@ phpWriter.WritePhpTypes(assembly
     .GetTypes()
     .Where(type => type.IsSubclassOf(typeof(TimedResponse))));
 
-Console.WriteLine($"Successfully used {xmlDocumentation.SuccessfulSummaryInsertions} documentation summaries.");
-Console.WriteLine($"Successfully used {xmlDocumentation.SuccessfulParamsInsertions} documentation params.");
+Console.WriteLine($"Successfully inserted {xmlDocumentation.SuccessfulSummaryInsertions} documentation summaries.");
+Console.WriteLine($"Successfully inserted {xmlDocumentation.SuccessfulParamsInsertions} documentation params.");
 
 var phpClientWriter = new PhpClientWriter(phpWriter);
 

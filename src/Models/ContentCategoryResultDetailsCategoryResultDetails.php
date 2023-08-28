@@ -110,10 +110,7 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         $this->assortments = $assortments;
         return $this;
     }
-    /**
-     * Sets assortments to a new value from an array.
-     * @param int[] $assortments new value.
-     */
+    /** @param int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
@@ -137,10 +134,7 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         $this->data[$key] = $value;
         return $this;
     }
-    /**
-     * Sets data to a new value.
-     * @param array<string, DataValue> $data associative array.
-     */
+    /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
@@ -181,10 +175,7 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         $this->childCategories = $childCategories;
         return $this;
     }
-    /**
-     * Sets childCategories to a new value from an array.
-     * @param ContentCategoryResultDetails[] $childCategories new value.
-     */
+    /** @param ContentCategoryResultDetails[] $childCategories new value. */
     function setChildCategoriesFromArray(array $childCategories)
     {
         $this->childCategories = $childCategories;
@@ -204,10 +195,7 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails
         $this->parentCategories = $parentCategories;
         return $this;
     }
-    /**
-     * Sets parentCategories to a new value from an array.
-     * @param ContentCategoryResultDetails[] $parentCategories new value.
-     */
+    /** @param ContentCategoryResultDetails[] $parentCategories new value. */
     function setParentCategoriesFromArray(array $parentCategories)
     {
         $this->parentCategories = $parentCategories;

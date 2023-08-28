@@ -39,10 +39,7 @@ class ProductDataObjectFacet extends DataObjectFacet
         $this->items = $items;
         return $this;
     }
-    /**
-     * Sets items to a new value from an array.
-     * @param Facet[] $items new value.
-     */
+    /** @param Facet[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;

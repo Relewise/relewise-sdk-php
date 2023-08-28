@@ -46,11 +46,13 @@ class ProductCategoryIdRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    /** The Id of the Category that this RelevanceModifier will multiply the weight for. */
     function setCategoryId(string $categoryId)
     {
         $this->categoryId = $categoryId;
         return $this;
     }
+    /** The relative Category levels that this RelevanceModifier should match with. */
     function setEvaluationScope(CategoryScope $evaluationScope)
     {
         $this->evaluationScope = $evaluationScope;
@@ -61,6 +63,7 @@ class ProductCategoryIdRelevanceModifier extends RelevanceModifier
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    /** Determines whether this RelevanceModifier should apply to all the Products that don't match the specific CategoryId instead. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

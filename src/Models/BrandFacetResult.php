@@ -24,10 +24,7 @@ class BrandFacetResult extends stringBrandNameAndIdResultValueFacetResult
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Sets selected to a new value from an array.
-     * @param string[] $selected new value.
-     */
+    /** @param string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
@@ -47,10 +44,7 @@ class BrandFacetResult extends stringBrandNameAndIdResultValueFacetResult
         $this->available = $available;
         return $this;
     }
-    /**
-     * Sets available to a new value from an array.
-     * @param BrandNameAndIdResultAvailableFacetValue[] $available new value.
-     */
+    /** @param BrandNameAndIdResultAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;

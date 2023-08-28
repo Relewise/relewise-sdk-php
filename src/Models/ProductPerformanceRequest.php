@@ -141,10 +141,7 @@ class ProductPerformanceRequest extends AnalyzerRequest
         $this->classifications = $classifications;
         return $this;
     }
-    /**
-     * Sets classifications to a new value from an array.
-     * @param ?stringstringKeyValuePair[] $classifications new value.
-     */
+    /** @param ?stringstringKeyValuePair[] $classifications new value. */
     function setClassificationsFromArray(array $classifications)
     {
         $this->classifications = $classifications;

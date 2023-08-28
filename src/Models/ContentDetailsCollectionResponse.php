@@ -38,10 +38,7 @@ class ContentDetailsCollectionResponse extends TimedResponse
         $this->contents = $contents;
         return $this;
     }
-    /**
-     * Sets contents to a new value from an array.
-     * @param ContentResultDetails[] $contents new value.
-     */
+    /** @param ContentResultDetails[] $contents new value. */
     function setContentsFromArray(array $contents)
     {
         $this->contents = $contents;

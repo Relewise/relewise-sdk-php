@@ -30,13 +30,14 @@ class RelevanceModifierCollection
         }
         return $result;
     }
+    /** The items that the this collection holds. */
     function setItems(RelevanceModifier ... $items)
     {
         $this->items = $items;
         return $this;
     }
     /**
-     * Sets items to a new value from an array.
+     * The items that the this collection holds.
      * @param ?RelevanceModifier[] $items new value.
      */
     function setItemsFromArray(array $items)
@@ -44,6 +45,7 @@ class RelevanceModifierCollection
         $this->items = $items;
         return $this;
     }
+    /** The items that the this collection holds. */
     function addToItems(RelevanceModifier $items)
     {
         if (!isset($this->items))

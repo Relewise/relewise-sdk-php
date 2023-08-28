@@ -31,10 +31,7 @@ class SearchResponseCollection extends SearchResponse
         $this->responses = $responses;
         return $this;
     }
-    /**
-     * Sets responses to a new value from an array.
-     * @param SearchResponse[] $responses new value.
-     */
+    /** @param SearchResponse[] $responses new value. */
     function setResponsesFromArray(array $responses)
     {
         $this->responses = $responses;

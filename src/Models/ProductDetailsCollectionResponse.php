@@ -38,10 +38,7 @@ class ProductDetailsCollectionResponse extends TimedResponse
         $this->products = $products;
         return $this;
     }
-    /**
-     * Sets products to a new value from an array.
-     * @param ProductResultDetails[] $products new value.
-     */
+    /** @param ProductResultDetails[] $products new value. */
     function setProductsFromArray(array $products)
     {
         $this->products = $products;

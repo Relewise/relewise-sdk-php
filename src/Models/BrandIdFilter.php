@@ -32,10 +32,7 @@ class BrandIdFilter extends Filter
         $this->brandIds = $brandIds;
         return $this;
     }
-    /**
-     * Sets brandIds to a new value from an array.
-     * @param string[] $brandIds new value.
-     */
+    /** @param string[] $brandIds new value. */
     function setBrandIdsFromArray(array $brandIds)
     {
         $this->brandIds = $brandIds;

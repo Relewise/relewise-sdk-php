@@ -85,10 +85,7 @@ class UserQueryCriteria
         $this->identifiers[$key] = $value;
         return $this;
     }
-    /**
-     * Sets identifiers to a new value.
-     * @param ?array<string, string> $identifiers associative array.
-     */
+    /** @param ?array<string, string> $identifiers associative array. */
     function setIdentifiersFromAssociativeArray(array $identifiers)
     {
         $this->identifiers = $identifiers;

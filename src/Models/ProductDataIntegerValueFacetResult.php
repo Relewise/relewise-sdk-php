@@ -42,10 +42,7 @@ class ProductDataIntegerValueFacetResult extends intProductDataValueFacetResult
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Sets selected to a new value from an array.
-     * @param int[] $selected new value.
-     */
+    /** @param int[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
@@ -65,10 +62,7 @@ class ProductDataIntegerValueFacetResult extends intProductDataValueFacetResult
         $this->available = $available;
         return $this;
     }
-    /**
-     * Sets available to a new value from an array.
-     * @param intAvailableFacetValue[] $available new value.
-     */
+    /** @param intAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;

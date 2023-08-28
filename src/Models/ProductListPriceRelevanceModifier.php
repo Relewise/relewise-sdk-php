@@ -46,11 +46,13 @@ class ProductListPriceRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    /** The range of list prices that this RelevanceModifier will distinguish on. */
     function setRange(?floatRange $range)
     {
         $this->range = $range;
         return $this;
     }
+    /** The currency that is used to distinguish the price. */
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
@@ -61,6 +63,7 @@ class ProductListPriceRelevanceModifier extends RelevanceModifier
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    /** Determines whether this RelevanceModifier should apply to all the Products that aren't contained within the specific Range instead. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

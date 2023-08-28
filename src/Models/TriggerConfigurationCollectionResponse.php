@@ -31,10 +31,7 @@ class TriggerConfigurationCollectionResponse extends TimedResponse
         $this->configurations = $configurations;
         return $this;
     }
-    /**
-     * Sets configurations to a new value from an array.
-     * @param TriggerConfiguration[] $configurations new value.
-     */
+    /** @param TriggerConfiguration[] $configurations new value. */
     function setConfigurationsFromArray(array $configurations)
     {
         $this->configurations = $configurations;

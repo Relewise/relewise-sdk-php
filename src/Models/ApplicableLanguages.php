@@ -33,10 +33,7 @@ class ApplicableLanguages
         $this->languages = $languages;
         return $this;
     }
-    /**
-     * Sets languages to a new value from an array.
-     * @param Language[] $languages new value.
-     */
+    /** @param Language[] $languages new value. */
     function setLanguagesFromArray(array $languages)
     {
         $this->languages = $languages;

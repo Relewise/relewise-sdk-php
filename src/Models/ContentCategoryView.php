@@ -43,10 +43,7 @@ class ContentCategoryView extends Trackable
         $this->idPath = $idPath;
         return $this;
     }
-    /**
-     * Sets idPath to a new value from an array.
-     * @param string[] $idPath new value.
-     */
+    /** @param string[] $idPath new value. */
     function setIdPathFromArray(array $idPath)
     {
         $this->idPath = $idPath;

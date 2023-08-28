@@ -63,6 +63,7 @@ class ProductSearchSettings extends SearchSettings
         $this->explodedVariants = $explodedVariants;
         return $this;
     }
+    /** @deprecated Not currently in use */
     function setRecommendations(RecommendationSettings $recommendations)
     {
         $this->recommendations = $recommendations;

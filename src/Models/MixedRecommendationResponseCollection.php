@@ -32,10 +32,7 @@ class MixedRecommendationResponseCollection extends TimedResponse
         $this->responses = $responses;
         return $this;
     }
-    /**
-     * Sets responses to a new value from an array.
-     * @param RecommendationResponse[] $responses new value.
-     */
+    /** @param RecommendationResponse[] $responses new value. */
     function setResponsesFromArray(array $responses)
     {
         $this->responses = $responses;

@@ -65,33 +65,38 @@ class ProductDataRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    /** The data key that this RelevanceModifier will distinguish on. */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    /** Specifies whether products that don't have the specific data Key should be considered a match () or not (). */
     function setConsiderAsMatchIfKeyIsNotFound(bool $considerAsMatchIfKeyIsNotFound)
     {
         $this->considerAsMatchIfKeyIsNotFound = $considerAsMatchIfKeyIsNotFound;
         return $this;
     }
+    /** @deprecated Use MultiplierSelector instead */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    /** Specifies whether all Conditions should parse their test on the specific data Key () or if only one is required (). */
     function setMustMatchAllConditions(bool $mustMatchAllConditions)
     {
         $this->mustMatchAllConditions = $mustMatchAllConditions;
         return $this;
     }
+    /** The conditions that must hold for the specific data Key in order for the product to be boosted. */
     function setConditions(ValueCondition ... $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
     /**
-     * Sets conditions to a new value from an array.
+     * The conditions that must hold for the specific data Key in order for the product to be boosted.
      * @param ValueCondition[] $conditions new value.
      */
     function setConditionsFromArray(array $conditions)
@@ -99,6 +104,7 @@ class ProductDataRelevanceModifier extends RelevanceModifier
         $this->conditions = $conditions;
         return $this;
     }
+    /** The conditions that must hold for the specific data Key in order for the product to be boosted. */
     function addToConditions(ValueCondition $conditions)
     {
         if (!isset($this->conditions))
@@ -108,6 +114,7 @@ class ProductDataRelevanceModifier extends RelevanceModifier
         array_push($this->conditions, $conditions);
         return $this;
     }
+    /** The selector for the multiplier which the products parsing the Conditions will be have their rank multiplied by. It can either be a FixedDoubleValueSelector taking a fixed value or a DataDoubleSelector that can take the multiplier from a data key containing a double. */
     function setMultiplierSelector(ValueSelector $multiplierSelector)
     {
         $this->multiplierSelector = $multiplierSelector;

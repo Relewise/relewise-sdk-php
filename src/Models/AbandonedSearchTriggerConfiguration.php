@@ -40,10 +40,7 @@ class AbandonedSearchTriggerConfiguration extends AbandonedSearchTriggerResultTr
         $this->searchTypesInPrioritizedOrder = $searchTypesInPrioritizedOrder;
         return $this;
     }
-    /**
-     * Sets searchTypesInPrioritizedOrder to a new value from an array.
-     * @param SearchType[] $searchTypesInPrioritizedOrder new value.
-     */
+    /** @param SearchType[] $searchTypesInPrioritizedOrder new value. */
     function setSearchTypesInPrioritizedOrderFromArray(array $searchTypesInPrioritizedOrder)
     {
         $this->searchTypesInPrioritizedOrder = $searchTypesInPrioritizedOrder;
@@ -122,10 +119,7 @@ class AbandonedSearchTriggerConfiguration extends AbandonedSearchTriggerResultTr
         $this->settings[$key] = $value;
         return $this;
     }
-    /**
-     * Sets settings to a new value.
-     * @param array<string, string> $settings associative array.
-     */
+    /** @param array<string, string> $settings associative array. */
     function setSettingsFromAssociativeArray(array $settings)
     {
         $this->settings = $settings;

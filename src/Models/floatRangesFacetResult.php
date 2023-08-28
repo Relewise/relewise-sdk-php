@@ -65,10 +65,7 @@ abstract class floatRangesFacetResult extends FacetResult
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Sets selected to a new value from an array.
-     * @param ?floatChainableRange[] $selected new value.
-     */
+    /** @param ?floatChainableRange[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
@@ -88,10 +85,7 @@ abstract class floatRangesFacetResult extends FacetResult
         $this->available = $available;
         return $this;
     }
-    /**
-     * Sets available to a new value from an array.
-     * @param ?floatChainableRangeAvailableFacetValue[] $available new value.
-     */
+    /** @param ?floatChainableRangeAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;

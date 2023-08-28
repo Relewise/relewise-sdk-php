@@ -34,10 +34,7 @@ abstract class ProductAndVariantIdAbandonedSearch extends AbandonedSearch
         $this->topResults = $topResults;
         return $this;
     }
-    /**
-     * Sets topResults to a new value from an array.
-     * @param ProductAndVariantId[] $topResults new value.
-     */
+    /** @param ProductAndVariantId[] $topResults new value. */
     function setTopResultsFromArray(array $topResults)
     {
         $this->topResults = $topResults;

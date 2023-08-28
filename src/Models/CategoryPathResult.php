@@ -37,10 +37,7 @@ class CategoryPathResult
         $this->pathFromRoot = $pathFromRoot;
         return $this;
     }
-    /**
-     * Sets pathFromRoot to a new value from an array.
-     * @param CategoryNameAndIdResult[] $pathFromRoot new value.
-     */
+    /** @param CategoryNameAndIdResult[] $pathFromRoot new value. */
     function setPathFromRootFromArray(array $pathFromRoot)
     {
         $this->pathFromRoot = $pathFromRoot;

@@ -32,10 +32,7 @@ class ProductAndVariantIdFilter extends Filter
         $this->productAndVariantIds = $productAndVariantIds;
         return $this;
     }
-    /**
-     * Sets productAndVariantIds to a new value from an array.
-     * @param ProductAndVariantId[] $productAndVariantIds new value.
-     */
+    /** @param ProductAndVariantId[] $productAndVariantIds new value. */
     function setProductAndVariantIdsFromArray(array $productAndVariantIds)
     {
         $this->productAndVariantIds = $productAndVariantIds;

@@ -44,10 +44,7 @@ class UserQuery extends LicensedRequest
         $this->criteria = $criteria;
         return $this;
     }
-    /**
-     * Sets criteria to a new value from an array.
-     * @param UserQueryCriteria[] $criteria new value.
-     */
+    /** @param UserQueryCriteria[] $criteria new value. */
     function setCriteriaFromArray(array $criteria)
     {
         $this->criteria = $criteria;

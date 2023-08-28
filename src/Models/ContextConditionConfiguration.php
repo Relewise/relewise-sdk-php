@@ -31,10 +31,7 @@ class ContextConditionConfiguration
         $this->filters = $filters;
         return $this;
     }
-    /**
-     * Sets filters to a new value from an array.
-     * @param RequestContextFilter[] $filters new value.
-     */
+    /** @param RequestContextFilter[] $filters new value. */
     function setFiltersFromArray(array $filters)
     {
         $this->filters = $filters;

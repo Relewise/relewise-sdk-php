@@ -23,10 +23,7 @@ class SaveRedirectRulesRequest extends RedirectRuleSaveSearchRulesRequest
         $this->rules = $rules;
         return $this;
     }
-    /**
-     * Sets rules to a new value from an array.
-     * @param RedirectRule[] $rules new value.
-     */
+    /** @param RedirectRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;

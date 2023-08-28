@@ -58,10 +58,7 @@ class DecompoundRule extends SearchRule
         $this->modifiers = $modifiers;
         return $this;
     }
-    /**
-     * Sets modifiers to a new value from an array.
-     * @param ?string[] $modifiers new value.
-     */
+    /** @param ?string[] $modifiers new value. */
     function setModifiersFromArray(array $modifiers)
     {
         $this->modifiers = $modifiers;

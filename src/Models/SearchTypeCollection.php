@@ -31,10 +31,7 @@ class SearchTypeCollection
         $this->unionCodes = $unionCodes;
         return $this;
     }
-    /**
-     * Sets unionCodes to a new value from an array.
-     * @param int[] $unionCodes new value.
-     */
+    /** @param int[] $unionCodes new value. */
     function setUnionCodesFromArray(array $unionCodes)
     {
         $this->unionCodes = $unionCodes;

@@ -41,10 +41,7 @@ class ProductInterestTriggerResult
         $this->products = $products;
         return $this;
     }
-    /**
-     * Sets products to a new value from an array.
-     * @param ProductInterestTriggerResultProductAndVariant[] $products new value.
-     */
+    /** @param ProductInterestTriggerResultProductAndVariant[] $products new value. */
     function setProductsFromArray(array $products)
     {
         $this->products = $products;

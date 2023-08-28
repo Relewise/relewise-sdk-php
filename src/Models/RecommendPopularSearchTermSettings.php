@@ -36,10 +36,7 @@ class RecommendPopularSearchTermSettings
         $this->targetEntityTypes = $targetEntityTypes;
         return $this;
     }
-    /**
-     * Sets targetEntityTypes to a new value from an array.
-     * @param ?EntityType[] $targetEntityTypes new value.
-     */
+    /** @param ?EntityType[] $targetEntityTypes new value. */
     function setTargetEntityTypesFromArray(array $targetEntityTypes)
     {
         $this->targetEntityTypes = $targetEntityTypes;

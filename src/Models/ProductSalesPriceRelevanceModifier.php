@@ -45,6 +45,7 @@ class ProductSalesPriceRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    /** The range of sales prices that this RelevanceModifier will distinguish on. */
     function setRange(?floatRange $range)
     {
         $this->range = $range;
@@ -60,6 +61,7 @@ class ProductSalesPriceRelevanceModifier extends RelevanceModifier
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    /** Determines whether this RelevanceModifier should apply to all the Products that aren't contained within the specific Range instead. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

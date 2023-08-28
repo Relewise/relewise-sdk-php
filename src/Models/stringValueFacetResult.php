@@ -41,10 +41,7 @@ abstract class stringValueFacetResult extends stringstringValueFacetResult
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Sets selected to a new value from an array.
-     * @param string[] $selected new value.
-     */
+    /** @param string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
@@ -64,10 +61,7 @@ abstract class stringValueFacetResult extends stringstringValueFacetResult
         $this->available = $available;
         return $this;
     }
-    /**
-     * Sets available to a new value from an array.
-     * @param stringAvailableFacetValue[] $available new value.
-     */
+    /** @param stringAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;

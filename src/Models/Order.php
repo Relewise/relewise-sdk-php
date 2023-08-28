@@ -82,10 +82,7 @@ class Order extends Trackable
         $this->lineItems = $lineItems;
         return $this;
     }
-    /**
-     * Sets lineItems to a new value from an array.
-     * @param LineItem[] $lineItems new value.
-     */
+    /** @param LineItem[] $lineItems new value. */
     function setLineItemsFromArray(array $lineItems)
     {
         $this->lineItems = $lineItems;
@@ -120,6 +117,7 @@ class Order extends Trackable
         $this->subChannel = $subChannel;
         return $this;
     }
+    /** @deprecated Use OrderNumber instead. */
     function setTrackingNumber(?string $trackingNumber)
     {
         $this->trackingNumber = $trackingNumber;

@@ -24,10 +24,7 @@ class ContentCategoryIdFilter extends CategoryIdFilter
         $this->categoryIds = $categoryIds;
         return $this;
     }
-    /**
-     * Sets categoryIds to a new value from an array.
-     * @param string[] $categoryIds new value.
-     */
+    /** @param string[] $categoryIds new value. */
     function setCategoryIdsFromArray(array $categoryIds)
     {
         $this->categoryIds = $categoryIds;

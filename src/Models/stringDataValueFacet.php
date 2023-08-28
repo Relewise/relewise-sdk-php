@@ -57,10 +57,7 @@ abstract class stringDataValueFacet extends stringValueFacet
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Sets selected to a new value from an array.
-     * @param ?string[] $selected new value.
-     */
+    /** @param ?string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;

@@ -32,10 +32,7 @@ class MultiCurrency
         $this->values = $values;
         return $this;
     }
-    /**
-     * Sets values to a new value from an array.
-     * @param ?Money[] $values new value.
-     */
+    /** @param ?Money[] $values new value. */
     function setValuesFromArray(array $values)
     {
         $this->values = $values;

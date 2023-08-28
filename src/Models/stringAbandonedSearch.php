@@ -38,10 +38,7 @@ abstract class stringAbandonedSearch extends AbandonedSearch
         $this->topResults = $topResults;
         return $this;
     }
-    /**
-     * Sets topResults to a new value from an array.
-     * @param string[] $topResults new value.
-     */
+    /** @param string[] $topResults new value. */
     function setTopResultsFromArray(array $topResults)
     {
         $this->topResults = $topResults;

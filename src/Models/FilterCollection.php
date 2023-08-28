@@ -32,10 +32,7 @@ class FilterCollection
         $this->items = $items;
         return $this;
     }
-    /**
-     * Sets items to a new value from an array.
-     * @param ?Filter[] $items new value.
-     */
+    /** @param ?Filter[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;

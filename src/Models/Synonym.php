@@ -123,10 +123,7 @@ class Synonym
         $this->indexes = $indexes;
         return $this;
     }
-    /**
-     * Sets indexes to a new value from an array.
-     * @param string[] $indexes new value.
-     */
+    /** @param string[] $indexes new value. */
     function setIndexesFromArray(array $indexes)
     {
         $this->indexes = $indexes;
@@ -146,10 +143,7 @@ class Synonym
         $this->languages = $languages;
         return $this;
     }
-    /**
-     * Sets languages to a new value from an array.
-     * @param Language[] $languages new value.
-     */
+    /** @param Language[] $languages new value. */
     function setLanguagesFromArray(array $languages)
     {
         $this->languages = $languages;
@@ -189,10 +183,7 @@ class Synonym
         $this->from = $from;
         return $this;
     }
-    /**
-     * Sets from to a new value from an array.
-     * @param string[] $from new value.
-     */
+    /** @param string[] $from new value. */
     function setFromFromArray(array $from)
     {
         $this->from = $from;
@@ -212,10 +203,7 @@ class Synonym
         $this->words = $words;
         return $this;
     }
-    /**
-     * Sets words to a new value from an array.
-     * @param string[] $words new value.
-     */
+    /** @param string[] $words new value. */
     function setWordsFromArray(array $words)
     {
         $this->words = $words;

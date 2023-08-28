@@ -49,10 +49,7 @@ class DataObjectFacetResult extends FacetResult
         $this->items = $items;
         return $this;
     }
-    /**
-     * Sets items to a new value from an array.
-     * @param FacetResult[] $items new value.
-     */
+    /** @param FacetResult[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;

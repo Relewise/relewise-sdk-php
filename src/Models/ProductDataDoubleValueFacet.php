@@ -41,10 +41,7 @@ class ProductDataDoubleValueFacet extends floatProductDataValueFacet
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Sets selected to a new value from an array.
-     * @param ?float[] $selected new value.
-     */
+    /** @param ?float[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;

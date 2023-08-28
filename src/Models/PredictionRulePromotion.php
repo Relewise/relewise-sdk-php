@@ -43,10 +43,7 @@ class PredictionRulePromotion
         $this->values = $values;
         return $this;
     }
-    /**
-     * Sets values to a new value from an array.
-     * @param string[] $values new value.
-     */
+    /** @param string[] $values new value. */
     function setValuesFromArray(array $values)
     {
         $this->values = $values;

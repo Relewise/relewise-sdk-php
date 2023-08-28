@@ -32,10 +32,7 @@ class VariantIdFilter extends Filter
         $this->variantIds = $variantIds;
         return $this;
     }
-    /**
-     * Sets variantIds to a new value from an array.
-     * @param string[] $variantIds new value.
-     */
+    /** @param string[] $variantIds new value. */
     function setVariantIdsFromArray(array $variantIds)
     {
         $this->variantIds = $variantIds;

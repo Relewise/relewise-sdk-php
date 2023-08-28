@@ -62,10 +62,7 @@ class RedirectRule extends SearchRule
         $this->data[$key] = $value;
         return $this;
     }
-    /**
-     * Sets data to a new value.
-     * @param ?array<string, string> $data associative array.
-     */
+    /** @param ?array<string, string> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;

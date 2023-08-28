@@ -66,11 +66,13 @@ class VariantDataRelevanceModifier extends RelevanceModifier
         $this->key = $key;
         return $this;
     }
+    /** Specifies whether variants that don't have the specific data Key should be considered a match () or not (). */
     function setConsiderAsMatchIfKeyIsNotFound(bool $considerAsMatchIfKeyIsNotFound)
     {
         $this->considerAsMatchIfKeyIsNotFound = $considerAsMatchIfKeyIsNotFound;
         return $this;
     }
+    /** @deprecated Use MultiplierSelector instead */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
@@ -81,13 +83,14 @@ class VariantDataRelevanceModifier extends RelevanceModifier
         $this->mustMatchAllConditions = $mustMatchAllConditions;
         return $this;
     }
+    /** The conditions that must hold for the specific data Key in order for the variant to be boosted. */
     function setConditions(ValueCondition ... $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
     /**
-     * Sets conditions to a new value from an array.
+     * The conditions that must hold for the specific data Key in order for the variant to be boosted.
      * @param ValueCondition[] $conditions new value.
      */
     function setConditionsFromArray(array $conditions)
@@ -95,6 +98,7 @@ class VariantDataRelevanceModifier extends RelevanceModifier
         $this->conditions = $conditions;
         return $this;
     }
+    /** The conditions that must hold for the specific data Key in order for the variant to be boosted. */
     function addToConditions(ValueCondition $conditions)
     {
         if (!isset($this->conditions))
@@ -104,6 +108,7 @@ class VariantDataRelevanceModifier extends RelevanceModifier
         array_push($this->conditions, $conditions);
         return $this;
     }
+    /** The selector for the multiplier which the variants parsing the Conditions will be have their rank multiplied by. It can either be a FixedDoubleValueSelector taking a fixed value or a DataDoubleSelector that can take the multiplier from a data key containing a double. */
     function setMultiplierSelector(ValueSelector $multiplierSelector)
     {
         $this->multiplierSelector = $multiplierSelector;

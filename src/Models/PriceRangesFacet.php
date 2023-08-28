@@ -55,10 +55,7 @@ class PriceRangesFacet extends Facet
         $this->predefinedRanges = $predefinedRanges;
         return $this;
     }
-    /**
-     * Sets predefinedRanges to a new value from an array.
-     * @param ??floatChainableRange[] $predefinedRanges new value.
-     */
+    /** @param ??floatChainableRange[] $predefinedRanges new value. */
     function setPredefinedRangesFromArray(array $predefinedRanges)
     {
         $this->predefinedRanges = $predefinedRanges;
@@ -83,10 +80,7 @@ class PriceRangesFacet extends Facet
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Sets selected to a new value from an array.
-     * @param ??floatChainableRange[] $selected new value.
-     */
+    /** @param ??floatChainableRange[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;

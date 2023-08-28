@@ -32,10 +32,7 @@ class ProductAssortmentFilter extends Filter
         $this->assortments = $assortments;
         return $this;
     }
-    /**
-     * Sets assortments to a new value from an array.
-     * @param int[] $assortments new value.
-     */
+    /** @param int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;

@@ -31,10 +31,7 @@ class SearchTermPredictionResponse extends SearchResponse
         $this->predictions = $predictions;
         return $this;
     }
-    /**
-     * Sets predictions to a new value from an array.
-     * @param SearchTermPredictionResult[] $predictions new value.
-     */
+    /** @param SearchTermPredictionResult[] $predictions new value. */
     function setPredictionsFromArray(array $predictions)
     {
         $this->predictions = $predictions;

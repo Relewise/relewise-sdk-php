@@ -38,10 +38,7 @@ class DeleteSynonymsRequest extends LicensedRequest
         $this->ids = $ids;
         return $this;
     }
-    /**
-     * Sets ids to a new value from an array.
-     * @param string[] $ids new value.
-     */
+    /** @param string[] $ids new value. */
     function setIdsFromArray(array $ids)
     {
         $this->ids = $ids;

@@ -41,10 +41,7 @@ class ProductCategoryInterestTriggerResult
         $this->categories = $categories;
         return $this;
     }
-    /**
-     * Sets categories to a new value from an array.
-     * @param ProductCategoryInterestTriggerResultCategory[] $categories new value.
-     */
+    /** @param ProductCategoryInterestTriggerResultCategory[] $categories new value. */
     function setCategoriesFromArray(array $categories)
     {
         $this->categories = $categories;

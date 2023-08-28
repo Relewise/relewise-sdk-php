@@ -81,7 +81,7 @@ use DateTime;
 
         phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, ownedProperties);
         phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, ownedProperties);
-        phpWriter.PhpPropertySetterMethodsWriter.Write(writer, settableProperties);
+        phpWriter.PhpPropertySetterMethodsWriter.Write(writer, type, settableProperties);
 
         writer.Indent--;
         writer.WriteLine("}");

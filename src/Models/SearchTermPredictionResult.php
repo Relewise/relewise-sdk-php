@@ -65,10 +65,7 @@ class SearchTermPredictionResult
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;
     }
-    /**
-     * Sets expectedResultTypes to a new value from an array.
-     * @param ExpectedSearchTermResult[] $expectedResultTypes new value.
-     */
+    /** @param ExpectedSearchTermResult[] $expectedResultTypes new value. */
     function setExpectedResultTypesFromArray(array $expectedResultTypes)
     {
         $this->expectedResultTypes = $expectedResultTypes;
@@ -93,10 +90,7 @@ class SearchTermPredictionResult
         $this->correctedWordsMask = $correctedWordsMask;
         return $this;
     }
-    /**
-     * Sets correctedWordsMask to a new value from an array.
-     * @param bool[] $correctedWordsMask new value.
-     */
+    /** @param bool[] $correctedWordsMask new value. */
     function setCorrectedWordsMaskFromArray(array $correctedWordsMask)
     {
         $this->correctedWordsMask = $correctedWordsMask;

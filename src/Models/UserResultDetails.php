@@ -132,10 +132,7 @@ class UserResultDetails
         $this->classifications[$key] = $value;
         return $this;
     }
-    /**
-     * Sets classifications to a new value.
-     * @param array<string, string> $classifications associative array.
-     */
+    /** @param array<string, string> $classifications associative array. */
     function setClassificationsFromAssociativeArray(array $classifications)
     {
         $this->classifications = $classifications;
@@ -165,10 +162,7 @@ class UserResultDetails
         $this->carts[$key] = $value;
         return $this;
     }
-    /**
-     * Sets carts to a new value.
-     * @param array<string, CartDetails> $carts associative array.
-     */
+    /** @param array<string, CartDetails> $carts associative array. */
     function setCartsFromAssociativeArray(array $carts)
     {
         $this->carts = $carts;
@@ -193,10 +187,7 @@ class UserResultDetails
         $this->identifiers[$key] = $value;
         return $this;
     }
-    /**
-     * Sets identifiers to a new value.
-     * @param array<string, string> $identifiers associative array.
-     */
+    /** @param array<string, string> $identifiers associative array. */
     function setIdentifiersFromAssociativeArray(array $identifiers)
     {
         $this->identifiers = $identifiers;
@@ -216,22 +207,20 @@ class UserResultDetails
         $this->data[$key] = $value;
         return $this;
     }
-    /**
-     * Sets data to a new value.
-     * @param array<string, DataValue> $data associative array.
-     */
+    /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
         return $this;
     }
+    /** All known temporary ids for the user */
     function setTemporaryIds(string ... $temporaryIds)
     {
         $this->temporaryIds = $temporaryIds;
         return $this;
     }
     /**
-     * Sets temporaryIds to a new value from an array.
+     * All known temporary ids for the user
      * @param string[] $temporaryIds new value.
      */
     function setTemporaryIdsFromArray(array $temporaryIds)
@@ -239,6 +228,7 @@ class UserResultDetails
         $this->temporaryIds = $temporaryIds;
         return $this;
     }
+    /** All known temporary ids for the user */
     function addToTemporaryIds(string $temporaryIds)
     {
         if (!isset($this->temporaryIds))

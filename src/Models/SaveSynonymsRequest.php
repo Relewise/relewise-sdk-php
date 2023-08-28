@@ -38,10 +38,7 @@ class SaveSynonymsRequest extends LicensedRequest
         $this->synonyms = $synonyms;
         return $this;
     }
-    /**
-     * Sets synonyms to a new value from an array.
-     * @param Synonym[] $synonyms new value.
-     */
+    /** @param Synonym[] $synonyms new value. */
     function setSynonymsFromArray(array $synonyms)
     {
         $this->synonyms = $synonyms;

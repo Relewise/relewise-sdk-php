@@ -32,10 +32,7 @@ class TrimStringTransformer
         $this->valuesToTrim = $valuesToTrim;
         return $this;
     }
-    /**
-     * Sets valuesToTrim to a new value from an array.
-     * @param string[] $valuesToTrim new value.
-     */
+    /** @param string[] $valuesToTrim new value. */
     function setValuesToTrimFromArray(array $valuesToTrim)
     {
         $this->valuesToTrim = $valuesToTrim;

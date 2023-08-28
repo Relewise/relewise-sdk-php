@@ -45,10 +45,7 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
         $this->results = $results;
         return $this;
     }
-    /**
-     * Sets results to a new value from an array.
-     * @param ProductCategoryResult[] $results new value.
-     */
+    /** @param ProductCategoryResult[] $results new value. */
     function setResultsFromArray(array $results)
     {
         $this->results = $results;
@@ -73,10 +70,7 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
         $this->recommendations = $recommendations;
         return $this;
     }
-    /**
-     * Sets recommendations to a new value from an array.
-     * @param ProductCategoryResult[] $recommendations new value.
-     */
+    /** @param ProductCategoryResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;

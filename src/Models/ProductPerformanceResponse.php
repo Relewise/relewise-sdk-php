@@ -41,10 +41,7 @@ class ProductPerformanceResponse extends TimedResponse
         $this->results = $results;
         return $this;
     }
-    /**
-     * Sets results to a new value from an array.
-     * @param ProductPerformanceResult[] $results new value.
-     */
+    /** @param ProductPerformanceResult[] $results new value. */
     function setResultsFromArray(array $results)
     {
         $this->results = $results;

@@ -39,10 +39,7 @@ abstract class StemmingRuleSaveSearchRulesRequest extends LicensedRequest
         $this->rules = $rules;
         return $this;
     }
-    /**
-     * Sets rules to a new value from an array.
-     * @param StemmingRule[] $rules new value.
-     */
+    /** @param StemmingRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;

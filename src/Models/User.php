@@ -88,21 +88,25 @@ class User
         }
         return $result;
     }
+    /** A persistent Id for current user, e.g. a database-id            This Id should never be expected to change in the future */
     function setAuthenticatedId(?string $authenticatedId)
     {
         $this->authenticatedId = $authenticatedId;
         return $this;
     }
+    /** A TemporaryId, likely to change in the future, e.g. a CookieId in a web context */
     function setTemporaryId(?string $temporaryId)
     {
         $this->temporaryId = $temporaryId;
         return $this;
     }
+    /** The email of the user */
     function setEmail(?string $email)
     {
         $this->email = $email;
         return $this;
     }
+    /** Segmentation data about the user, e.g. Country or other segmentation, useful for passing known information about the user from a CRM, CDP and other sources */
     function addToClassifications(string $key, string $value)
     {
         if (!isset($this->classifications))
@@ -113,7 +117,7 @@ class User
         return $this;
     }
     /**
-     * Sets classifications to a new value.
+     * Segmentation data about the user, e.g. Country or other segmentation, useful for passing known information about the user from a CRM, CDP and other sources
      * @param ?array<string, string> $classifications associative array.
      */
     function setClassificationsFromAssociativeArray(array $classifications)
@@ -121,6 +125,7 @@ class User
         $this->classifications = $classifications;
         return $this;
     }
+    /** A set of additional ids associated with the user, e.g. ERP customer id, Marketing id, CDP id etc. */
     function addToIdentifiers(string $key, string $value)
     {
         if (!isset($this->identifiers))
@@ -131,7 +136,7 @@ class User
         return $this;
     }
     /**
-     * Sets identifiers to a new value.
+     * A set of additional ids associated with the user, e.g. ERP customer id, Marketing id, CDP id etc.
      * @param ?array<string, string> $identifiers associative array.
      */
     function setIdentifiersFromAssociativeArray(array $identifiers)
@@ -139,6 +144,7 @@ class User
         $this->identifiers = $identifiers;
         return $this;
     }
+    /** Data stored on the user */
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -149,7 +155,7 @@ class User
         return $this;
     }
     /**
-     * Sets data to a new value.
+     * Data stored on the user
      * @param ?array<string, DataValue> $data associative array.
      */
     function setDataFromAssociativeArray(array $data)
@@ -157,6 +163,7 @@ class User
         $this->data = $data;
         return $this;
     }
+    /** A fingerprint, highly likely to change in the future, e.g. between a users sessions */
     function setFingerprint(?string $fingerprint)
     {
         $this->fingerprint = $fingerprint;

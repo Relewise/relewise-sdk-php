@@ -38,10 +38,7 @@ class BrandDetailsCollectionResponse extends TimedResponse
         $this->brands = $brands;
         return $this;
     }
-    /**
-     * Sets brands to a new value from an array.
-     * @param BrandResultDetails[] $brands new value.
-     */
+    /** @param BrandResultDetails[] $brands new value. */
     function setBrandsFromArray(array $brands)
     {
         $this->brands = $brands;

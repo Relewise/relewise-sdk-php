@@ -56,10 +56,7 @@ class ObjectValueContainsCondition extends ObjectValueCondition
         $this->objectPath = $objectPath;
         return $this;
     }
-    /**
-     * Sets objectPath to a new value from an array.
-     * @param ?string[] $objectPath new value.
-     */
+    /** @param ?string[] $objectPath new value. */
     function setObjectPathFromArray(array $objectPath)
     {
         $this->objectPath = $objectPath;

@@ -41,10 +41,7 @@ class ProductDataBooleanValueFacet extends boolProductDataValueFacet
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Sets selected to a new value from an array.
-     * @param ?bool[] $selected new value.
-     */
+    /** @param ?bool[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;

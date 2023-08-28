@@ -45,10 +45,7 @@ abstract class intProductDataValueFacet extends intDataValueFacet
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Sets selected to a new value from an array.
-     * @param ?int[] $selected new value.
-     */
+    /** @param ?int[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;

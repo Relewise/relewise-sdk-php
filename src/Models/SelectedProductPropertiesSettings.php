@@ -121,10 +121,7 @@ class SelectedProductPropertiesSettings
         $this->dataKeys = $dataKeys;
         return $this;
     }
-    /**
-     * Sets dataKeys to a new value from an array.
-     * @param ?string[] $dataKeys new value.
-     */
+    /** @param ?string[] $dataKeys new value. */
     function setDataKeysFromArray(array $dataKeys)
     {
         $this->dataKeys = $dataKeys;

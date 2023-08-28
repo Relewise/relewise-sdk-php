@@ -36,10 +36,7 @@ class DataObjectStringValueFacetResult extends stringDataObjectValueFacetResult
         $this->selected = $selected;
         return $this;
     }
-    /**
-     * Sets selected to a new value from an array.
-     * @param string[] $selected new value.
-     */
+    /** @param string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
@@ -59,10 +56,7 @@ class DataObjectStringValueFacetResult extends stringDataObjectValueFacetResult
         $this->available = $available;
         return $this;
     }
-    /**
-     * Sets available to a new value from an array.
-     * @param stringAvailableFacetValue[] $available new value.
-     */
+    /** @param stringAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;

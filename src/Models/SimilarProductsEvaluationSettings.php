@@ -121,10 +121,7 @@ class SimilarProductsEvaluationSettings
         $this->significantProductDataFields = $significantProductDataFields;
         return $this;
     }
-    /**
-     * Sets significantProductDataFields to a new value from an array.
-     * @param ?SignificantDataValue[] $significantProductDataFields new value.
-     */
+    /** @param ?SignificantDataValue[] $significantProductDataFields new value. */
     function setSignificantProductDataFieldsFromArray(array $significantProductDataFields)
     {
         $this->significantProductDataFields = $significantProductDataFields;

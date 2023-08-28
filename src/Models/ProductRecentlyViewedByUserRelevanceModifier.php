@@ -40,16 +40,19 @@ class ProductRecentlyViewedByUserRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    /** The start of the time period in which a product will be considered relevant to the user if viewed previously by them. */
     function setSinceUtc(DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
+    /** The weight that the Product will be multiplied with if it has been viewed in the past by the user (since SinceUtc). */
     function setIfPreviouslyViewedByUserMultiplyWeightBy(float $ifPreviouslyViewedByUserMultiplyWeightBy)
     {
         $this->ifPreviouslyViewedByUserMultiplyWeightBy = $ifPreviouslyViewedByUserMultiplyWeightBy;
         return $this;
     }
+    /** The weight that the Product will be multiplied with if it has not been viewed in the past by the user (since SinceUtc). */
     function setIfNotPreviouslyViewedByUserMultiplyWeightBy(float $ifNotPreviouslyViewedByUserMultiplyWeightBy)
     {
         $this->ifNotPreviouslyViewedByUserMultiplyWeightBy = $ifNotPreviouslyViewedByUserMultiplyWeightBy;

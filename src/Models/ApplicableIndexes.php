@@ -33,10 +33,7 @@ class ApplicableIndexes
         $this->indexes = $indexes;
         return $this;
     }
-    /**
-     * Sets indexes to a new value from an array.
-     * @param string[] $indexes new value.
-     */
+    /** @param string[] $indexes new value. */
     function setIndexesFromArray(array $indexes)
     {
         $this->indexes = $indexes;

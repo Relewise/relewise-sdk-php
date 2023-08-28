@@ -14,7 +14,7 @@ public class PhpPropertySetterMethodsWriter
         this.phpWriter = phpWriter;
     }
 
-    public void Write(IndentedTextWriter writer, (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations)
+    public void Write(IndentedTextWriter writer, Type classType, (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations)
     {
         foreach (var (info, propertyTypeName, propertyName, lowerCaseName) in propertyInformations)
         {
@@ -24,6 +24,10 @@ public class PhpPropertySetterMethodsWriter
             {
                 var keyTypeName = phpWriter.PhpTypeName(keyType);
                 var valueTypeName = phpWriter.PhpTypeName(valueType);
+                writer.WriteCommentBlock(
+                    phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
+                    deprecationComment
+                );
                 writer.WriteLine($"function addTo{propertyName}({keyTypeName} $key, {valueTypeName} $value)");
                 writer.WriteLine("{");
                 writer.Indent++;
@@ -39,7 +43,7 @@ public class PhpPropertySetterMethodsWriter
                 writer.WriteLine("}");
 
                 writer.WriteCommentBlock(
-                    $"Sets {lowerCaseName} to a new value.",
+                    phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
                     deprecationComment,
                     $"@param {phpWriter.DocumentationParameterTypeName(phpWriter.PhpTypeName(info), propertyType)} ${lowerCaseName} associative array."
                 );
@@ -53,6 +57,10 @@ public class PhpPropertySetterMethodsWriter
             }
             else
             {
+                writer.WriteCommentBlock(
+                    phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
+                    deprecationComment
+                );
                 var parameterType = phpWriter.BetterTypedParameterTypeName(propertyTypeName, propertyType);
                 writer.WriteLine($"function set{propertyName}({parameterType} ${lowerCaseName})");
                 writer.WriteLine("{");
@@ -75,7 +83,7 @@ public class PhpPropertySetterMethodsWriter
             if (elementType is not null)
             {
                 writer.WriteCommentBlock(
-                    $"Sets {lowerCaseName} to a new value from an array.",
+                    phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
                     deprecationComment,
                     $"@param {phpWriter.DocumentationParameterTypeName(propertyTypeName, propertyType)} ${lowerCaseName} new value."
                 );
@@ -88,7 +96,11 @@ public class PhpPropertySetterMethodsWriter
                 writer.WriteLine("}");
 
                 var elementTypeName = phpWriter.PhpTypeName(elementType);
-                
+
+                writer.WriteCommentBlock(
+                    phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
+                    deprecationComment
+                );
                 writer.WriteLine($"function addTo{propertyName}({elementTypeName} ${lowerCaseName})");
                 writer.WriteLine("{");
                 writer.Indent++;
