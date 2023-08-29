@@ -14,8 +14,8 @@ class ProductAssortmentRelevanceModifier extends RelevanceModifier
     public float $multiplyWeightBy;
     /**
      * Creates             a RelevanceModifier that can change the relevance of a Product depending on whether the Assortments match Assortments.
-     * @param int[] $assortments The assortments that this  will multiply the weight for.
-     * @param float $multiplyWeightBy The weight that this  will multiply relevant products with.
+     * @param int[] $assortments The assortments that this RelevanceModifier will multiply the weight for.
+     * @param float $multiplyWeightBy The weight that this RelevanceModifier will multiply relevant products with.
      */
     public static function create(array $assortments, float $multiplyWeightBy = 1) : ProductAssortmentRelevanceModifier
     {

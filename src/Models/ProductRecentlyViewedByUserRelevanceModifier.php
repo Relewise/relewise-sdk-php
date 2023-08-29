@@ -17,8 +17,8 @@ class ProductRecentlyViewedByUserRelevanceModifier extends RelevanceModifier
     /**
      * Creates             a RelevanceModifier that can change the relevance of a Product depending on whether they have viewed this product within some timespan.
      * @param DateTime $sinceUtc The start of the time period in which a product will be considered relevant to the user if viewed previously by them.
-     * @param float $ifPreviouslyViewedByUserMultiplyWeightBy The weight that the Product will be multiplied with if it has been viewed in the past by the user (since ).
-     * @param float $ifNotPreviouslyViewedByUserMultiplyWeightBy The weight that the Product will be multiplied with if it has not been viewed in the past by the user (since ).
+     * @param float $ifPreviouslyViewedByUserMultiplyWeightBy The weight that the Product will be multiplied with if it has been viewed in the past by the user (since SinceUtc).
+     * @param float $ifNotPreviouslyViewedByUserMultiplyWeightBy The weight that the Product will be multiplied with if it has not been viewed in the past by the user (since SinceUtc).
      */
     public static function create(DateTime $sinceUtc, float $ifPreviouslyViewedByUserMultiplyWeightBy = 1, float $ifNotPreviouslyViewedByUserMultiplyWeightBy = 1) : ProductRecentlyViewedByUserRelevanceModifier
     {

@@ -1,6 +1,7 @@
 ﻿using AngleSharp;
 using System.IO.Compression;
 using System.Web;
+using AngleSharp.Dom;
 
 namespace Generator;
 
@@ -27,6 +28,11 @@ public static class XMLDocsFetcher
 
         IBrowsingContext context = BrowsingContext.New();
         var document = await context.OpenAsync(req => req.Content(content.Replace("/>", "></SEE>")));
+        foreach (var seeReference in document.QuerySelectorAll("see"))
+        {
+            seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? string.Empty;
+        }
+        
         foreach (var member in document.GetElementsByTagName("doc")[0].Children[1].Children)
         {
             foreach (var child in member.Children)
@@ -46,10 +52,6 @@ public static class XMLDocsFetcher
                 }
                 else if (child.TagName is "PARAM" && child.NextSibling?.TextContent is { Length: > 0 } text)
                 {
-                    foreach (var seeReference in child.Children.Where(c => c.TagName == "SEE"))
-                    {
-                        seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? string.Empty;
-                    }
 
                     result.Params.TryAdd($"{child.GetAttribute("name")}-{member.GetAttribute("name")!}", HttpUtility.HtmlDecode(text.Replace("\n", "").Trim()));
                 }

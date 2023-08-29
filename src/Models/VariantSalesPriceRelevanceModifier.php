@@ -18,10 +18,10 @@ class VariantSalesPriceRelevanceModifier extends RelevanceModifier
     public bool $negated;
     /**
      * Creates             a RelevanceModifier that can change the relevance of a Variant depending on the sales price falling within a specific Range.
-     * @param ?floatRange $range The range of sales prices that this  will distinguish on.
-     * @param float $multiplyWeightBy The weight that this  will multiply relevant products with.
+     * @param ?floatRange $range The range of sales prices that this RelevanceModifier will distinguish on.
+     * @param float $multiplyWeightBy The weight that this RelevanceModifier will multiply relevant products with.
      * @param ?Currency $currency The currency that is used to distinguish the price.
-     * @param bool $negated Determines whether this  should apply to all the Products that aren't contained within the specific  instead.
+     * @param bool $negated Determines whether this RelevanceModifier should apply to all the Products that aren't contained within the specific Range instead.
      */
     public static function create(?floatRange $range, float $multiplyWeightBy = 1, ?Currency $currency = Null, bool $negated = false) : VariantSalesPriceRelevanceModifier
     {
