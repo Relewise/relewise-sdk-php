@@ -24,6 +24,14 @@ abstract class DeleteSearchRulesRequest extends LicensedRequest
         {
             return DeleteRedirectRulesRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Search.Rules.DeleteSearchResultModifierRulesRequest, Relewise.Client")
+        {
+            return DeleteSearchResultModifierRulesRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Search.Rules.DeleteSearchTermModifierRulesRequest, Relewise.Client")
+        {
+            return DeleteSearchTermModifierRulesRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Search.Rules.DeleteStemmingRulesRequest, Relewise.Client")
         {
             return DeleteStemmingRulesRequest::hydrate($arr);

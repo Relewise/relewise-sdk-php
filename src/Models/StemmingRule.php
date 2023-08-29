@@ -6,7 +6,7 @@ use DateTime;
 
 class StemmingRule extends SearchRule
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.SearchRules.StemmingRule, Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.StemmingRule, Relewise.Client";
     public array $words;
     public ?string $stem;
     public static function create(string $id, ?ApplicableIndexes $indexes, ?ApplicableLanguages $languages, bool $isApproved, array $words, ?string $stem) : StemmingRule

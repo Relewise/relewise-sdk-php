@@ -4,15 +4,9 @@ namespace Relewise\Models;
 
 use DateTime;
 
-class SelectedContentCategoryPropertiesSettings
+class SelectedContentCategoryPropertiesSettings extends SelectedCategoryPropertiesSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Shared.SelectedContentCategoryPropertiesSettings, Relewise.Client";
-    public bool $displayName;
-    public bool $paths;
-    public bool $assortments;
-    public bool $viewedByUserInfo;
-    public bool $allData;
-    public array $dataKeys;
     public static function create() : SelectedContentCategoryPropertiesSettings
     {
         $result = new SelectedContentCategoryPropertiesSettings();
@@ -20,35 +14,7 @@ class SelectedContentCategoryPropertiesSettings
     }
     public static function hydrate(array $arr) : SelectedContentCategoryPropertiesSettings
     {
-        $result = new SelectedContentCategoryPropertiesSettings();
-        if (array_key_exists("displayName", $arr))
-        {
-            $result->displayName = $arr["displayName"];
-        }
-        if (array_key_exists("paths", $arr))
-        {
-            $result->paths = $arr["paths"];
-        }
-        if (array_key_exists("assortments", $arr))
-        {
-            $result->assortments = $arr["assortments"];
-        }
-        if (array_key_exists("viewedByUserInfo", $arr))
-        {
-            $result->viewedByUserInfo = $arr["viewedByUserInfo"];
-        }
-        if (array_key_exists("allData", $arr))
-        {
-            $result->allData = $arr["allData"];
-        }
-        if (array_key_exists("dataKeys", $arr))
-        {
-            $result->dataKeys = array();
-            foreach($arr["dataKeys"] as &$value)
-            {
-                array_push($result->dataKeys, $value);
-            }
-        }
+        $result = SelectedCategoryPropertiesSettings::hydrateBase(new SelectedContentCategoryPropertiesSettings(), $arr);
         return $result;
     }
     function setDisplayName(bool $displayName)

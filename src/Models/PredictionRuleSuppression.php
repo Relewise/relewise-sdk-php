@@ -6,7 +6,7 @@ use DateTime;
 
 class PredictionRuleSuppression
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.SearchRules.PredictionRule+Suppression, Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.PredictionRule+Suppression, Relewise.Client";
     public SuppressionConditionKind $condition;
     public array $values;
     public static function create(SuppressionConditionKind $condition, string ... $values) : PredictionRuleSuppression

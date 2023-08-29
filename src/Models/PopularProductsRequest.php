@@ -52,7 +52,7 @@ class PopularProductsRequest extends ProductRecommendationRequest
         $this->language = $language;
         return $this;
     }
-    function setUser(User $user)
+    function setUser(?User $user)
     {
         $this->user = $user;
         return $this;

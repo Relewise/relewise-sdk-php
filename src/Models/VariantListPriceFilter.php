@@ -45,4 +45,9 @@ class VariantListPriceFilter extends Filter
         $this->negated = $negated;
         return $this;
     }
+    function setSettings(?FilterSettings $settings)
+    {
+        $this->settings = $settings;
+        return $this;
+    }
 }

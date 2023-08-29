@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
-class ProductFacetQuery
+class ProductFacetQuery extends FacetQuery
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ProductFacetQuery, Relewise.Client";
     public array $items;
@@ -15,7 +15,7 @@ class ProductFacetQuery
     }
     public static function hydrate(array $arr) : ProductFacetQuery
     {
-        $result = new ProductFacetQuery();
+        $result = FacetQuery::hydrateBase(new ProductFacetQuery(), $arr);
         if (array_key_exists("items", $arr))
         {
             $result->items = array();
