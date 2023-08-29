@@ -12,10 +12,17 @@ class ProductListPriceRelevanceModifier extends RelevanceModifier
     public ?floatRange $range;
     /** The currency that is used to distinguish the price. */
     public ?Currency $currency;
+    /** The weight that this RelevanceModifier will multiply relevant products with. */
     public float $multiplyWeightBy;
     /** Determines whether this RelevanceModifier should apply to all the Products that aren't contained within the specific Range instead. */
     public bool $negated;
-    /** Creates <inheritdoc cref="T:Relewise.Client.Requests.RelevanceModifiers.ProductListPriceRelevanceModifier">            </inheritdoc> */
+    /**
+     * Creates             a RelevanceModifier that can change the relevance of a Product depending on the list price falling within a specific Range.
+     * @param ?floatRange $range The range of list prices that this  will distinguish on.
+     * @param float $multiplyWeightBy The weight that this  will multiply relevant products with.
+     * @param ?Currency $currency The currency that is used to distinguish the price.
+     * @param bool $negated Determines whether this  should apply to all the Products that aren't contained within the specific  instead.
+     */
     public static function create(?floatRange $range, float $multiplyWeightBy = 1, ?Currency $currency = Null, bool $negated = false) : ProductListPriceRelevanceModifier
     {
         $result = new ProductListPriceRelevanceModifier();
@@ -58,6 +65,7 @@ class ProductListPriceRelevanceModifier extends RelevanceModifier
         $this->currency = $currency;
         return $this;
     }
+    /** The weight that this RelevanceModifier will multiply relevant products with. */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;

@@ -10,7 +10,10 @@ class ValueConditionCollection
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ValueConditionCollection, Relewise.Client";
     /** The items that the this collection holds. */
     public ?array $items;
-    /** Creates <inheritdoc cref="T:Relewise.Client.Requests.RelevanceModifiers.ValueConditionCollection" path="/summary">            </inheritdoc> */
+    /**
+     * Creates a collection that contains multiple ValueConditions in its inner list Items.
+     * @param ValueCondition[] $conditions The items that the this collection holds.
+     */
     public static function create(... $conditions) : ValueConditionCollection
     {
         $result = new ValueConditionCollection();

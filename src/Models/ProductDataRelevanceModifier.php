@@ -20,7 +20,14 @@ class ProductDataRelevanceModifier extends RelevanceModifier
     public array $conditions;
     /** The selector for the multiplier which the products parsing the Conditions will be have their rank multiplied by. It can either be a FixedDoubleValueSelector taking a fixed value or a DataDoubleSelector that can take the multiplier from a data key containing a double. */
     public ValueSelector $multiplierSelector;
-    /** Creates <inheritdoc cref="T:Relewise.Client.Requests.RelevanceModifiers.ProductDataRelevanceModifier" path="/summary">            </inheritdoc> */
+    /**
+     * Creates a RelevanceModifier that can change the relevance of a Product depending on matching conditions on a certain key.
+     * @param string $key The data key that this  will distinguish on.
+     * @param ValueCondition[] $conditions The conditions that must hold for the specific data  in order for the product to be boosted.
+     * @param ValueSelector $multiplierSelector The selector for the multiplier which the products parsing the  will be have their rank multiplied by. It can either be a  taking a fixed value or a  that can take the multiplier from a data key containing a double.
+     * @param bool $mustMatchAllConditions Specifies whether all  should parse their test on the specific data  () or if only one is required ().
+     * @param bool $considerAsMatchIfKeyIsNotFound Specifies whether products that don't have the specific data  should be considered a match () or not ().
+     */
     public static function create(string $key, array $conditions, ValueSelector $multiplierSelector, bool $mustMatchAllConditions = true, bool $considerAsMatchIfKeyIsNotFound = false) : ProductDataRelevanceModifier
     {
         $result = new ProductDataRelevanceModifier();

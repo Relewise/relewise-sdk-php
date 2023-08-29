@@ -18,7 +18,7 @@ if (basePath.EndsWith("/"))
 
 var assembly = Assembly.GetAssembly(typeof(ClientBase)) ?? throw new ArgumentException("Could not load Relewise Client assembly.");
 
-var xmlDocumentation = await XMLDocsFetcher.Get("Relewise.Client", "1.91.0");
+var xmlDocumentation = await XMLDocsFetcher.Get("Relewise.Client", "1.96.0");
 
 Console.WriteLine($"Loaded {xmlDocumentation.Summaries.Count} documentation summaries.");
 Console.WriteLine($"Loaded {xmlDocumentation.Params.Count} documentation params.");

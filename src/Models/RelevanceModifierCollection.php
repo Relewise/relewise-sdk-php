@@ -10,7 +10,10 @@ class RelevanceModifierCollection
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.RelevanceModifierCollection, Relewise.Client";
     /** The items that the this collection holds. */
     public ?array $items;
-    /** Creates <inheritdoc cref="T:Relewise.Client.Requests.RelevanceModifiers.RelevanceModifierCollection" path="/summary">            </inheritdoc> */
+    /**
+     * Creates a collection that contains multiple RelevanceModifiers in its inner list Items.
+     * @param RelevanceModifier[] $relevanceModifiers The items that the this collection holds.
+     */
     public static function create(RelevanceModifier ... $relevanceModifiers) : RelevanceModifierCollection
     {
         $result = new RelevanceModifierCollection();

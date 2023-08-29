@@ -18,7 +18,14 @@ class VariantSpecificationValueRelevanceModifier extends RelevanceModifier
     public float $ifNotIdenticalMultiplyWeightBy;
     /** Determines whether specification keys that are not found should count as the value not being equal i.e. multiplying by IfNotIdenticalMultiplyWeightBy. Alternatively the rank will not be modified in any way by this modifier. */
     public bool $ifSpecificationKeyNotFoundApplyNotEqualMultiplier;
-    /** Creates <inheritdoc cref="T:Relewise.Client.Requests.RelevanceModifiers.VariantSpecificationValueRelevanceModifier" path="/summary">            </inheritdoc> */
+    /**
+     * Creates a RelevanceModifier that can change the relevance of a Variant depending on whether a certain specification Key has a certain Value.
+     * @param string $key The specification key that this  will distinguish on.
+     * @param string $value The value that the key must be equal.
+     * @param float $ifIdenticalMultiplyWeightBy The weight that this  will multiply relevant variants with.
+     * @param float $ifNotIdenticalMultiplyWeightBy The weight that this  will multiply variants that are note relevant with.
+     * @param bool $ifSpecificationKeyNotFoundApplyNotEqualMultiplier Determines whether specification keys that are not found should count as the value not being equal i.e. multiplying by . Alternatively the rank will not be modified in any way by this modifier.
+     */
     public static function create(string $key, string $value, float $ifIdenticalMultiplyWeightBy = 1, float $ifNotIdenticalMultiplyWeightBy = 0, bool $ifSpecificationKeyNotFoundApplyNotEqualMultiplier = false) : VariantSpecificationValueRelevanceModifier
     {
         $result = new VariantSpecificationValueRelevanceModifier();

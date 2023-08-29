@@ -33,21 +33,25 @@ public static class XMLDocsFetcher
             {
                 if (child.TagName is "SUMMARY" && child.InnerHtml.Trim().Length > 0)
                 {
+                    foreach (var summaryWrapper in child.Children.Where(c => c.TagName == "SUMMARY"))
+                    {
+                        summaryWrapper.OuterHtml = summaryWrapper.InnerHtml.Trim();
+                    }
                     foreach (var seeReference in child.Children.Where(c => c.TagName == "SEE"))
                     {
                         seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? string.Empty;
                     }
-
-                    result.Summaries.Add(member.GetAttribute("name")!, HttpUtility.HtmlDecode(child.InnerHtml.Replace("\n", "").Trim()));
+                    
+                    result.Summaries.TryAdd(member.GetAttribute("name")!, HttpUtility.HtmlDecode(child.InnerHtml.Replace("\n", "").Trim()));
                 }
-                else if (child.TagName is "PARAM" && child.NextSibling is { NodeValue: {} text } && (text.Trim().Length) > 0)
+                else if (child.TagName is "PARAM" && child.NextSibling?.TextContent is { Length: > 0 } text)
                 {
                     foreach (var seeReference in child.Children.Where(c => c.TagName == "SEE"))
                     {
                         seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? string.Empty;
                     }
 
-                    result.Params.Add($"{child.GetAttribute("name")}-{member.GetAttribute("name")!}", HttpUtility.HtmlDecode(text.Replace("\n", "").Trim()));
+                    result.Params.TryAdd($"{child.GetAttribute("name")}-{member.GetAttribute("name")!}", HttpUtility.HtmlDecode(text.Replace("\n", "").Trim()));
                 }
             }
         }

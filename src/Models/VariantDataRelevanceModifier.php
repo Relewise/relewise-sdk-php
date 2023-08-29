@@ -8,11 +8,13 @@ use DateTime;
 class VariantDataRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.VariantDataRelevanceModifier, Relewise.Client";
+    /** The data key that this RelevanceModifier will distinguish on. */
     public string $key;
     /** Specifies whether variants that don't have the specific data Key should be considered a match () or not (). */
     public bool $considerAsMatchIfKeyIsNotFound;
     /** @deprecated Use MultiplierSelector instead */
     public float $multiplyWeightBy;
+    /** Specifies whether all Conditions should parse their test on the specific data Key () or if only one is required (). */
     public bool $mustMatchAllConditions;
     /** The conditions that must hold for the specific data Key in order for the variant to be boosted. */
     public array $conditions;
@@ -61,6 +63,7 @@ class VariantDataRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    /** The data key that this RelevanceModifier will distinguish on. */
     function setKey(string $key)
     {
         $this->key = $key;
@@ -78,6 +81,7 @@ class VariantDataRelevanceModifier extends RelevanceModifier
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    /** Specifies whether all Conditions should parse their test on the specific data Key () or if only one is required (). */
     function setMustMatchAllConditions(bool $mustMatchAllConditions)
     {
         $this->mustMatchAllConditions = $mustMatchAllConditions;

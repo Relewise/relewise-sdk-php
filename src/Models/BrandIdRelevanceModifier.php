@@ -14,7 +14,12 @@ class BrandIdRelevanceModifier extends RelevanceModifier
     public float $ifProductIsBrandMultiplyWeightBy;
     /** The weight that the Product will be multiplied with if it does not match the specific BrandId. */
     public float $ifProductIsNotBrandMultiplyWeightBy;
-    /** Creates <inheritdoc cref="T:Relewise.Client.Requests.RelevanceModifiers.BrandIdRelevanceModifier">            </inheritdoc> */
+    /**
+     * Creates             a RelevanceModifier that can change the relevance of a Product depending on a BrandId.
+     * @param string $brandId The Id of the Brand that this  will distinguish on.
+     * @param float $ifProductIsBrandMultiplyWeightBy The weight that the Product will be multiplied with if it matches the specific .
+     * @param float $ifProductIsNotBrandMultiplyWeightBy The weight that the Product will be multiplied with if it does not match the specific .
+     */
     public static function create(string $brandId, float $ifProductIsBrandMultiplyWeightBy = 1, float $ifProductIsNotBrandMultiplyWeightBy = 1) : BrandIdRelevanceModifier
     {
         $result = new BrandIdRelevanceModifier();

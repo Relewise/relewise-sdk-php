@@ -10,10 +10,16 @@ class ProductIdRelevanceModifier extends RelevanceModifier
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductIdRelevanceModifier, Relewise.Client";
     /** The Ids of the Products that this RelevanceModifier will distinguish on. */
     public array $productIds;
+    /** The weight that this RelevanceModifier will multiply relevant products with. */
     public float $multiplyWeightBy;
     /** Determines whether this RelevanceModifier should apply to all the Products that don't match one of the specified ProductIds instead. */
     public bool $negated;
-    /** Creates <inheritdoc cref="T:Relewise.Client.Requests.RelevanceModifiers.ProductIdRelevanceModifier" path="/summary">            </inheritdoc> */
+    /**
+     * Creates a RelevanceModifier that can change the relevance of a Product depending on whether it is contained in a set of ProductIds.
+     * @param string[] $productIds The Ids of the Products that this  will distinguish on.
+     * @param float $multiplyWeightBy The weight that this  will multiply relevant products with.
+     * @param bool $negated Determines whether this  should apply to all the Products that don't match one of the specified  instead.
+     */
     public static function create(array $productIds, float $multiplyWeightBy = 1, bool $negated = false) : ProductIdRelevanceModifier
     {
         $result = new ProductIdRelevanceModifier();
@@ -68,6 +74,7 @@ class ProductIdRelevanceModifier extends RelevanceModifier
         array_push($this->productIds, $productIds);
         return $this;
     }
+    /** The weight that this RelevanceModifier will multiply relevant products with. */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;

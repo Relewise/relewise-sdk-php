@@ -12,10 +12,17 @@ class ProductCategoryIdRelevanceModifier extends RelevanceModifier
     public string $categoryId;
     /** The relative Category levels that this RelevanceModifier should match with. */
     public CategoryScope $evaluationScope;
+    /** The weight that this RelevanceModifier will multiply relevant products with. */
     public float $multiplyWeightBy;
     /** Determines whether this RelevanceModifier should apply to all the Products that don't match the specific CategoryId instead. */
     public bool $negated;
-    /** Creates <inheritdoc cref="T:Relewise.Client.Requests.RelevanceModifiers.ProductCategoryIdRelevanceModifier">            </inheritdoc> */
+    /**
+     * Creates             a RelevanceModifier that can change the relevance of a Product depending on if the product is in a category that matches the given CategoryId and EvaluationScope.
+     * @param string $categoryId The Id of the Category that this  will multiply the weight for.
+     * @param CategoryScope $evaluationScope The relative Category levels that this  should match with.
+     * @param float $multiplyWeightBy The weight that this  will multiply relevant products with.
+     * @param bool $negated Determines whether this  should apply to all the Products that don't match the specific  instead.
+     */
     public static function create(string $categoryId, CategoryScope $evaluationScope, float $multiplyWeightBy = 1, bool $negated = false) : ProductCategoryIdRelevanceModifier
     {
         $result = new ProductCategoryIdRelevanceModifier();
@@ -58,6 +65,7 @@ class ProductCategoryIdRelevanceModifier extends RelevanceModifier
         $this->evaluationScope = $evaluationScope;
         return $this;
     }
+    /** The weight that this RelevanceModifier will multiply relevant products with. */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
