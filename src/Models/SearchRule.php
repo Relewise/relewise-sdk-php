@@ -6,7 +6,7 @@ use DateTime;
 
 abstract class SearchRule
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.SearchRules.SearchRule, Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchRule, Relewise.Client";
     public string $id;
     public ?ApplicableIndexes $indexes;
     public ?ApplicableLanguages $languages;
@@ -20,19 +20,27 @@ abstract class SearchRule
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
-        if ($type=="Relewise.Client.DataTypes.Search.Configuration.SearchRules.DecompoundRule, Relewise.Client")
+        if ($type=="Relewise.Client.DataTypes.Search.Rules.DecompoundRule, Relewise.Client")
         {
             return DecompoundRule::hydrate($arr);
         }
-        if ($type=="Relewise.Client.DataTypes.Search.Configuration.SearchRules.PredictionRule, Relewise.Client")
+        if ($type=="Relewise.Client.DataTypes.Search.Rules.PredictionRule, Relewise.Client")
         {
             return PredictionRule::hydrate($arr);
         }
-        if ($type=="Relewise.Client.DataTypes.Search.Configuration.SearchRules.RedirectRule, Relewise.Client")
+        if ($type=="Relewise.Client.DataTypes.Search.Rules.RedirectRule, Relewise.Client")
         {
             return RedirectRule::hydrate($arr);
         }
-        if ($type=="Relewise.Client.DataTypes.Search.Configuration.SearchRules.StemmingRule, Relewise.Client")
+        if ($type=="Relewise.Client.DataTypes.Search.Rules.SearchResultModifierRule, Relewise.Client")
+        {
+            return SearchResultModifierRule::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.Search.Rules.SearchTermModifierRule, Relewise.Client")
+        {
+            return SearchTermModifierRule::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.Search.Rules.StemmingRule, Relewise.Client")
         {
             return StemmingRule::hydrate($arr);
         }

@@ -9,13 +9,16 @@ class AbandonedSearchTriggerConfiguration extends AbandonedSearchTriggerResultTr
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.AbandonedSearchTriggerConfiguration, Relewise.Client";
     public array $searchTypesInPrioritizedOrder;
     public ?SearchTermCondition $searchTermCondition;
-    public static function create(string $name, string $description, array $searchTypesInPrioritizedOrder, ?SearchTermCondition $searchTermCondition = Null) : AbandonedSearchTriggerConfiguration
+    public bool $suppressOnEntityFromSearchResultViewed;
+    public int $considerAbandonedAfterMinutes;
+    public static function create(string $name, string $description, array $searchTypesInPrioritizedOrder, ?SearchTermCondition $searchTermCondition = Null, bool $suppressOnEntityFromSearchResultViewed = true) : AbandonedSearchTriggerConfiguration
     {
         $result = new AbandonedSearchTriggerConfiguration();
         $result->name = $name;
         $result->description = $description;
         $result->searchTypesInPrioritizedOrder = $searchTypesInPrioritizedOrder;
         $result->searchTermCondition = $searchTermCondition;
+        $result->suppressOnEntityFromSearchResultViewed = $suppressOnEntityFromSearchResultViewed;
         return $result;
     }
     public static function hydrate(array $arr) : AbandonedSearchTriggerConfiguration
@@ -32,6 +35,14 @@ class AbandonedSearchTriggerConfiguration extends AbandonedSearchTriggerResultTr
         if (array_key_exists("searchTermCondition", $arr))
         {
             $result->searchTermCondition = SearchTermCondition::hydrate($arr["searchTermCondition"]);
+        }
+        if (array_key_exists("suppressOnEntityFromSearchResultViewed", $arr))
+        {
+            $result->suppressOnEntityFromSearchResultViewed = $arr["suppressOnEntityFromSearchResultViewed"];
+        }
+        if (array_key_exists("considerAbandonedAfterMinutes", $arr))
+        {
+            $result->considerAbandonedAfterMinutes = $arr["considerAbandonedAfterMinutes"];
         }
         return $result;
     }
@@ -58,6 +69,16 @@ class AbandonedSearchTriggerConfiguration extends AbandonedSearchTriggerResultTr
     function setSearchTermCondition(?SearchTermCondition $searchTermCondition)
     {
         $this->searchTermCondition = $searchTermCondition;
+        return $this;
+    }
+    function setSuppressOnEntityFromSearchResultViewed(bool $suppressOnEntityFromSearchResultViewed)
+    {
+        $this->suppressOnEntityFromSearchResultViewed = $suppressOnEntityFromSearchResultViewed;
+        return $this;
+    }
+    function setConsiderAbandonedAfterMinutes(int $considerAbandonedAfterMinutes)
+    {
+        $this->considerAbandonedAfterMinutes = $considerAbandonedAfterMinutes;
         return $this;
     }
     function setId(string $id)

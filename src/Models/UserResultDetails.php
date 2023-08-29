@@ -22,6 +22,7 @@ class UserResultDetails
     public array $data;
     /** All known temporary ids for the user */
     public array $temporaryIds;
+    public ?Channel $channel;
     public static function create() : UserResultDetails
     {
         $result = new UserResultDetails();
@@ -105,6 +106,10 @@ class UserResultDetails
             {
                 array_push($result->temporaryIds, $value);
             }
+        }
+        if (array_key_exists("channel", $arr))
+        {
+            $result->channel = Channel::hydrate($arr["channel"]);
         }
         return $result;
     }
@@ -236,6 +241,11 @@ class UserResultDetails
             $this->temporaryIds = array();
         }
         array_push($this->temporaryIds, $temporaryIds);
+        return $this;
+    }
+    function setChannel(?Channel $channel)
+    {
+        $this->channel = $channel;
         return $this;
     }
 }

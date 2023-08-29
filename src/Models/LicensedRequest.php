@@ -186,6 +186,14 @@ abstract class LicensedRequest
         {
             return DeleteRedirectRulesRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Search.Rules.DeleteSearchResultModifierRulesRequest, Relewise.Client")
+        {
+            return DeleteSearchResultModifierRulesRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Search.Rules.DeleteSearchTermModifierRulesRequest, Relewise.Client")
+        {
+            return DeleteSearchTermModifierRulesRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Search.Rules.DeleteStemmingRulesRequest, Relewise.Client")
         {
             return DeleteStemmingRulesRequest::hydrate($arr);
@@ -210,9 +218,25 @@ abstract class LicensedRequest
         {
             return SaveRedirectRulesRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Search.Rules.SaveSearchResultModifierRulesRequest, Relewise.Client")
+        {
+            return SaveSearchResultModifierRulesRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Search.Rules.SaveSearchTermModifierRulesRequest, Relewise.Client")
+        {
+            return SaveSearchTermModifierRulesRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Search.Rules.SaveStemmingRulesRequest, Relewise.Client")
         {
             return SaveStemmingRulesRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Search.Rules.SearchResultModifierRulesRequest, Relewise.Client")
+        {
+            return SearchResultModifierRulesRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Search.Rules.SearchTermModifierRulesRequest, Relewise.Client")
+        {
+            return SearchTermModifierRulesRequest::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Search.Rules.StemmingRulesRequest, Relewise.Client")
         {

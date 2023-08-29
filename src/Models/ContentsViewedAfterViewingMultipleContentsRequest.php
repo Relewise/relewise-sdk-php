@@ -61,7 +61,7 @@ class ContentsViewedAfterViewingMultipleContentsRequest extends ContentRecommend
         $this->language = $language;
         return $this;
     }
-    function setUser(User $user)
+    function setUser(?User $user)
     {
         $this->user = $user;
         return $this;

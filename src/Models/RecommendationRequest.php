@@ -8,7 +8,7 @@ abstract class RecommendationRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.RecommendationRequest, Relewise.Client";
     public ?Language $language;
-    public User $user;
+    public ?User $user;
     public RelevanceModifierCollection $relevanceModifiers;
     public FilterCollection $filters;
     public string $displayedAtLocationType;
@@ -155,7 +155,7 @@ abstract class RecommendationRequest extends LicensedRequest
         $this->language = $language;
         return $this;
     }
-    function setUser(User $user)
+    function setUser(?User $user)
     {
         $this->user = $user;
         return $this;

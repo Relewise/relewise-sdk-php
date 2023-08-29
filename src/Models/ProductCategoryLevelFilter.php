@@ -43,4 +43,9 @@ class ProductCategoryLevelFilter extends CategoryLevelFilter
         $this->negated = $negated;
         return $this;
     }
+    function setSettings(?FilterSettings $settings)
+    {
+        $this->settings = $settings;
+        return $this;
+    }
 }

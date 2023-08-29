@@ -21,6 +21,7 @@ class User
     public ?array $data;
     /** A fingerprint, highly likely to change in the future, e.g. between a users sessions */
     public ?string $fingerprint;
+    public ?Channel $channel;
     /**
      * User DTO
      * @param ?string $authenticatedId A persistent Id for current user, e.g. a database-id
@@ -85,6 +86,10 @@ class User
         if (array_key_exists("fingerprint", $arr))
         {
             $result->fingerprint = $arr["fingerprint"];
+        }
+        if (array_key_exists("channel", $arr))
+        {
+            $result->channel = Channel::hydrate($arr["channel"]);
         }
         return $result;
     }
@@ -167,6 +172,11 @@ class User
     function setFingerprint(?string $fingerprint)
     {
         $this->fingerprint = $fingerprint;
+        return $this;
+    }
+    function setChannel(?Channel $channel)
+    {
+        $this->channel = $channel;
         return $this;
     }
 }

@@ -6,7 +6,7 @@ use DateTime;
 
 abstract class AbandonedSearchTriggerResultTriggerConfiguration extends TriggerConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.TriggerConfiguration`1[[Relewise.Client.Responses.Triggers.Results.AbandonedSearchTriggerResult, Relewise.Client, Version=1.61.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.TriggerConfiguration`1[[Relewise.Client.Responses.Triggers.Results.AbandonedSearchTriggerResult, Relewise.Client, Version=1.96.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

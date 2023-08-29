@@ -6,7 +6,7 @@ use DateTime;
 
 class RedirectRule extends SearchRule
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.SearchRules.RedirectRule, Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.RedirectRule, Relewise.Client";
     public SearchTermCondition $condition;
     public ?string $destination;
     public ?array $data;

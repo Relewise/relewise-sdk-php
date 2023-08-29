@@ -18,6 +18,7 @@ class SimilarProductsEvaluationSettings
     public ?array $significantProductDataFields;
     public float $significanceOfSimilarSalesPrice;
     public float $significanceOfSimilarBrand;
+    public ?SimilarVariantEvaluationSettings $variantEvaluationSettings;
     public static function create() : SimilarProductsEvaluationSettings
     {
         $result = new SimilarProductsEvaluationSettings();
@@ -73,6 +74,10 @@ class SimilarProductsEvaluationSettings
         if (array_key_exists("significanceOfSimilarBrand", $arr))
         {
             $result->significanceOfSimilarBrand = $arr["significanceOfSimilarBrand"];
+        }
+        if (array_key_exists("variantEvaluationSettings", $arr))
+        {
+            $result->variantEvaluationSettings = SimilarVariantEvaluationSettings::hydrate($arr["variantEvaluationSettings"]);
         }
         return $result;
     }
@@ -144,6 +149,11 @@ class SimilarProductsEvaluationSettings
     function setSignificanceOfSimilarBrand(float $significanceOfSimilarBrand)
     {
         $this->significanceOfSimilarBrand = $significanceOfSimilarBrand;
+        return $this;
+    }
+    function setVariantEvaluationSettings(?SimilarVariantEvaluationSettings $variantEvaluationSettings)
+    {
+        $this->variantEvaluationSettings = $variantEvaluationSettings;
         return $this;
     }
 }

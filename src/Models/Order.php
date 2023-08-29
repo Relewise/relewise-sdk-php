@@ -7,15 +7,11 @@ use DateTime;
 class Order extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Order, Relewise.Client";
-    public User $user;
+    public ?User $user;
     public Money $subtotal;
     public array $lineItems;
     public string $orderNumber;
     public string $cartName;
-    public ?string $channel;
-    public ?string $subChannel;
-    /** @deprecated Use OrderNumber instead. */
-    public ?string $trackingNumber;
     public static function create(User $user, Money $subtotal, string $orderNumber, array $lineItems, string $cartName = "default") : Order
     {
         $result = new Order();
@@ -53,21 +49,9 @@ class Order extends Trackable
         {
             $result->cartName = $arr["cartName"];
         }
-        if (array_key_exists("channel", $arr))
-        {
-            $result->channel = $arr["channel"];
-        }
-        if (array_key_exists("subChannel", $arr))
-        {
-            $result->subChannel = $arr["subChannel"];
-        }
-        if (array_key_exists("trackingNumber", $arr))
-        {
-            $result->trackingNumber = $arr["trackingNumber"];
-        }
         return $result;
     }
-    function setUser(User $user)
+    function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
@@ -105,22 +89,6 @@ class Order extends Trackable
     function setCartName(string $cartName)
     {
         $this->cartName = $cartName;
-        return $this;
-    }
-    function setChannel(?string $channel)
-    {
-        $this->channel = $channel;
-        return $this;
-    }
-    function setSubChannel(?string $subChannel)
-    {
-        $this->subChannel = $subChannel;
-        return $this;
-    }
-    /** @deprecated Use OrderNumber instead. */
-    function setTrackingNumber(?string $trackingNumber)
-    {
-        $this->trackingNumber = $trackingNumber;
         return $this;
     }
 }

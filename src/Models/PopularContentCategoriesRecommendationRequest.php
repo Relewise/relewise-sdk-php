@@ -52,7 +52,7 @@ class PopularContentCategoriesRecommendationRequest extends ContentCategoryRecom
         $this->language = $language;
         return $this;
     }
-    function setUser(User $user)
+    function setUser(?User $user)
     {
         $this->user = $user;
         return $this;

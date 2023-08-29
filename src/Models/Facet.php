@@ -32,6 +32,10 @@ abstract class Facet
         {
             return CategoryFacet::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.Search.Facets.Queries.CategoryHierarchyFacet, Relewise.Client")
+        {
+            return CategoryHierarchyFacet::hydrate($arr);
+        }
         if ($type=="Relewise.Client.DataTypes.Search.Facets.Queries.ContentDataObjectFacet, Relewise.Client")
         {
             return ContentDataObjectFacet::hydrate($arr);

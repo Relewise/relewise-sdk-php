@@ -8,11 +8,11 @@ class ContentRecommendationRequestCollection extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ContentRecommendationRequestCollection, Relewise.Client";
     public array $requests;
-    public bool $requireDistinctContentAcrossResults;
+    public bool $requireDistinctContentsAcrossResults;
     public static function create(bool $requireDistinctContentsAcrossResults, ContentRecommendationRequest ... $requests) : ContentRecommendationRequestCollection
     {
         $result = new ContentRecommendationRequestCollection();
-        $result->requireDistinctContentAcrossResults = $requireDistinctContentsAcrossResults;
+        $result->requireDistinctContentsAcrossResults = $requireDistinctContentsAcrossResults;
         $result->requests = $requests;
         return $result;
     }
@@ -27,9 +27,9 @@ class ContentRecommendationRequestCollection extends LicensedRequest
                 array_push($result->requests, ContentRecommendationRequest::hydrate($value));
             }
         }
-        if (array_key_exists("requireDistinctContentAcrossResults", $arr))
+        if (array_key_exists("requireDistinctContentsAcrossResults", $arr))
         {
-            $result->requireDistinctContentAcrossResults = $arr["requireDistinctContentAcrossResults"];
+            $result->requireDistinctContentsAcrossResults = $arr["requireDistinctContentsAcrossResults"];
         }
         return $result;
     }
@@ -53,9 +53,9 @@ class ContentRecommendationRequestCollection extends LicensedRequest
         array_push($this->requests, $requests);
         return $this;
     }
-    function setRequireDistinctContentAcrossResults(bool $requireDistinctContentAcrossResults)
+    function setRequireDistinctContentsAcrossResults(bool $requireDistinctContentsAcrossResults)
     {
-        $this->requireDistinctContentAcrossResults = $requireDistinctContentAcrossResults;
+        $this->requireDistinctContentsAcrossResults = $requireDistinctContentsAcrossResults;
         return $this;
     }
 }

@@ -6,7 +6,7 @@ use DateTime;
 
 class DecompoundRule extends SearchRule
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.SearchRules.DecompoundRule, Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.DecompoundRule, Relewise.Client";
     public string $word;
     public ?string $head;
     public ?array $modifiers;
