@@ -15,7 +15,7 @@ class ProductRecentlyPurchasedByUserRelevanceModifier extends RelevanceModifier
     /** The weight that the Product will be multiplied with if it has not been bought in the past by the user (since SinceUtc). */
     public float $ifNotPreviouslyPurchasedByUserMultiplyWeightBy;
     /**
-     * Creates             a RelevanceModifier that can change the relevance of a Product depending on whether they have bought this product within some timespan.
+     * Creates a RelevanceModifier that can change the relevance of a Product depending on whether they have bought this product within some timespan.
      * @param DateTime $sinceUtc The start of the time period in which a product will be considered relevant to the user if bought previously by them.
      * @param float $ifPreviouslyPurchasedByUserMultiplyWeightBy The weight that the Product will be multiplied with if it has been bought in the past by the user (since SinceUtc).
      * @param float $ifNotPreviouslyPurchasedByUserMultiplyWeightBy The weight that the Product will be multiplied with if it has not been bought in the past by the user (since SinceUtc).

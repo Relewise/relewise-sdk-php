@@ -15,7 +15,7 @@ class ProductRecentlyViewedByUserRelevanceModifier extends RelevanceModifier
     /** The weight that the Product will be multiplied with if it has not been viewed in the past by the user (since SinceUtc). */
     public float $ifNotPreviouslyViewedByUserMultiplyWeightBy;
     /**
-     * Creates             a RelevanceModifier that can change the relevance of a Product depending on whether they have viewed this product within some timespan.
+     * Creates a RelevanceModifier that can change the relevance of a Product depending on whether they have viewed this product within some timespan.
      * @param DateTime $sinceUtc The start of the time period in which a product will be considered relevant to the user if viewed previously by them.
      * @param float $ifPreviouslyViewedByUserMultiplyWeightBy The weight that the Product will be multiplied with if it has been viewed in the past by the user (since SinceUtc).
      * @param float $ifNotPreviouslyViewedByUserMultiplyWeightBy The weight that the Product will be multiplied with if it has not been viewed in the past by the user (since SinceUtc).

@@ -48,12 +48,12 @@ public static class XMLDocsFetcher
                         seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? string.Empty;
                     }
                     
-                    result.Summaries.TryAdd(member.GetAttribute("name")!, HttpUtility.HtmlDecode(child.InnerHtml.Replace("\n", "").Trim()));
+                    result.Summaries.TryAdd(member.GetAttribute("name")!, HttpUtility.HtmlDecode(JoinInOneLine(child.InnerHtml)));
                 }
                 else if (child.TagName is "PARAM" && child.NextSibling?.TextContent is { Length: > 0 } text)
                 {
 
-                    result.Params.TryAdd($"{child.GetAttribute("name")}-{member.GetAttribute("name")!}", HttpUtility.HtmlDecode(text.Replace("\n", "").Trim()));
+                    result.Params.TryAdd($"{child.GetAttribute("name")}-{member.GetAttribute("name")!}", HttpUtility.HtmlDecode(JoinInOneLine(text)));
                 }
             }
         }
@@ -61,5 +61,5 @@ public static class XMLDocsFetcher
         return result;
     }
 
-
+    private static string JoinInOneLine(string text) => string.Join(" ", text.Split("\n").Select(line => line.Trim())).Trim();
 }

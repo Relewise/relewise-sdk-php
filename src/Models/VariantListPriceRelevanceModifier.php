@@ -17,7 +17,7 @@ class VariantListPriceRelevanceModifier extends RelevanceModifier
     /** Determines whether this RelevanceModifier should apply to all the Variants that aren't contained within the specific Range instead. */
     public bool $negated;
     /**
-     * Creates             a RelevanceModifier that can change the relevance of a Variant depending on the list price falling within a specific Range.
+     * Creates a RelevanceModifier that can change the relevance of a Variant depending on the list price falling within a specific Range.
      * @param ?floatRange $range The range of list prices that this RelevanceModifier will distinguish on.
      * @param float $multiplyWeightBy The weight that this RelevanceModifier will multiply relevant products with.
      * @param ?Currency $currency The currency that is used to distinguish the price.
