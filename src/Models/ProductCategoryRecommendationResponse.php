@@ -32,6 +32,7 @@ class ProductCategoryRecommendationResponse extends RecommendationResponse
         $this->recommendations = $recommendations;
         return $this;
     }
+    /** @param ProductCategoryResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;

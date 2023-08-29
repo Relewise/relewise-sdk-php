@@ -4,10 +4,16 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** a collection that contains multiple RelevanceModifiers in its inner list Items. */
 class RelevanceModifierCollection
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.RelevanceModifierCollection, Relewise.Client";
+    /** The items that the this collection holds. */
     public ?array $items;
+    /**
+     * Creates a collection that contains multiple RelevanceModifiers in its inner list Items.
+     * @param RelevanceModifier[] $relevanceModifiers The items that the this collection holds.
+     */
     public static function create(RelevanceModifier ... $relevanceModifiers) : RelevanceModifierCollection
     {
         $result = new RelevanceModifierCollection();
@@ -27,16 +33,22 @@ class RelevanceModifierCollection
         }
         return $result;
     }
+    /** The items that the this collection holds. */
     function setItems(RelevanceModifier ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    /**
+     * The items that the this collection holds.
+     * @param ?RelevanceModifier[] $items new value.
+     */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    /** The items that the this collection holds. */
     function addToItems(RelevanceModifier $items)
     {
         if (!isset($this->items))

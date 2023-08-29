@@ -24,6 +24,7 @@ class SearchTermModifierRulesResponse extends SearchTermModifierRuleSearchRulesR
         $this->rules = $rules;
         return $this;
     }
+    /** @param SearchTermModifierRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;

@@ -71,6 +71,7 @@ class CategoryHierarchyFacetResultCategoryNode
         $this->children = $children;
         return $this;
     }
+    /** @param ?CategoryHierarchyFacetResultCategoryNode[] $children new value. */
     function setChildrenFromArray(array $children)
     {
         $this->children = $children;

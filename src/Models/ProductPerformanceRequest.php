@@ -141,6 +141,7 @@ class ProductPerformanceRequest extends AnalyzerRequest
         $this->classifications = $classifications;
         return $this;
     }
+    /** @param ?stringstringKeyValuePair[] $classifications new value. */
     function setClassificationsFromArray(array $classifications)
     {
         $this->classifications = $classifications;

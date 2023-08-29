@@ -45,6 +45,7 @@ class ContentSearchResponse extends PaginatedSearchResponse
         $this->results = $results;
         return $this;
     }
+    /** @param ContentResult[] $results new value. */
     function setResultsFromArray(array $results)
     {
         $this->results = $results;
@@ -69,6 +70,7 @@ class ContentSearchResponse extends PaginatedSearchResponse
         $this->recommendations = $recommendations;
         return $this;
     }
+    /** @param ContentResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;

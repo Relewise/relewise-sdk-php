@@ -50,6 +50,7 @@ class CustomProductRecommendationRequest extends ProductRecommendationRequest
         $this->parameters[$key] = $value;
         return $this;
     }
+    /** @param ?array<string, string> $parameters associative array. */
     function setParametersFromAssociativeArray(array $parameters)
     {
         $this->parameters = $parameters;

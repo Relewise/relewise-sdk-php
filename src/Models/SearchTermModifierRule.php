@@ -47,6 +47,7 @@ class SearchTermModifierRule extends SearchRule
         $this->actions = $actions;
         return $this;
     }
+    /** @param SearchTermModifierRuleRuleAction[] $actions new value. */
     function setActionsFromArray(array $actions)
     {
         $this->actions = $actions;

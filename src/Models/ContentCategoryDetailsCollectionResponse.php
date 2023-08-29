@@ -38,6 +38,7 @@ class ContentCategoryDetailsCollectionResponse extends TimedResponse
         $this->categories = $categories;
         return $this;
     }
+    /** @param ContentCategoryResultDetails[] $categories new value. */
     function setCategoriesFromArray(array $categories)
     {
         $this->categories = $categories;

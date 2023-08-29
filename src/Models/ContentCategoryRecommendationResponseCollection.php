@@ -32,6 +32,7 @@ class ContentCategoryRecommendationResponseCollection extends TimedResponse
         $this->responses = $responses;
         return $this;
     }
+    /** @param ContentCategoryRecommendationResponse[] $responses new value. */
     function setResponsesFromArray(array $responses)
     {
         $this->responses = $responses;

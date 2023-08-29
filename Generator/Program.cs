@@ -16,13 +16,14 @@ if (basePath.EndsWith("/"))
     basePath = basePath[..^1];
 }
 
-var assembly = Assembly.GetAssembly(typeof(ClientBase));
-if (assembly is null)
-{
-    throw new ArgumentException("Could not load Relewise Client assembly.");
-}
+var assembly = Assembly.GetAssembly(typeof(ClientBase)) ?? throw new ArgumentException("Could not load Relewise Client assembly.");
 
-var phpWriter = new PhpWriter(assembly, basePath);
+var xmlDocumentation = await XMLDocsFetcher.Get("Relewise.Client", "1.96.0");
+
+Console.WriteLine($"Loaded {xmlDocumentation.Summaries.Count} documentation summaries.");
+Console.WriteLine($"Loaded {xmlDocumentation.Params.Count} documentation params.");
+
+var phpWriter = new PhpWriter(assembly, basePath, xmlDocumentation);
 
 phpWriter.WritePhpTypes(assembly
     .GetTypes()
@@ -31,6 +32,9 @@ phpWriter.WritePhpTypes(assembly
 phpWriter.WritePhpTypes(assembly
     .GetTypes()
     .Where(type => type.IsSubclassOf(typeof(TimedResponse))));
+
+Console.WriteLine($"Successfully inserted {xmlDocumentation.SuccessfulSummaryInsertions} documentation summaries.");
+Console.WriteLine($"Successfully inserted {xmlDocumentation.SuccessfulParamsInsertions} documentation params.");
 
 var phpClientWriter = new PhpClientWriter(phpWriter);
 

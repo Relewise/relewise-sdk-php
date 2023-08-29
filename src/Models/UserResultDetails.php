@@ -20,6 +20,7 @@ class UserResultDetails
     public array $identifiers;
     public int $key;
     public array $data;
+    /** All known temporary ids for the user */
     public array $temporaryIds;
     public ?Channel $channel;
     public static function create() : UserResultDetails
@@ -136,6 +137,7 @@ class UserResultDetails
         $this->classifications[$key] = $value;
         return $this;
     }
+    /** @param array<string, string> $classifications associative array. */
     function setClassificationsFromAssociativeArray(array $classifications)
     {
         $this->classifications = $classifications;
@@ -165,6 +167,7 @@ class UserResultDetails
         $this->carts[$key] = $value;
         return $this;
     }
+    /** @param array<string, CartDetails> $carts associative array. */
     function setCartsFromAssociativeArray(array $carts)
     {
         $this->carts = $carts;
@@ -189,6 +192,7 @@ class UserResultDetails
         $this->identifiers[$key] = $value;
         return $this;
     }
+    /** @param array<string, string> $identifiers associative array. */
     function setIdentifiersFromAssociativeArray(array $identifiers)
     {
         $this->identifiers = $identifiers;
@@ -208,21 +212,28 @@ class UserResultDetails
         $this->data[$key] = $value;
         return $this;
     }
+    /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
         return $this;
     }
+    /** All known temporary ids for the user */
     function setTemporaryIds(string ... $temporaryIds)
     {
         $this->temporaryIds = $temporaryIds;
         return $this;
     }
+    /**
+     * All known temporary ids for the user
+     * @param string[] $temporaryIds new value.
+     */
     function setTemporaryIdsFromArray(array $temporaryIds)
     {
         $this->temporaryIds = $temporaryIds;
         return $this;
     }
+    /** All known temporary ids for the user */
     function addToTemporaryIds(string $temporaryIds)
     {
         if (!isset($this->temporaryIds))

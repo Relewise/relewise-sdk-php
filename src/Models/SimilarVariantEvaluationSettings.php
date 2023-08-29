@@ -81,6 +81,7 @@ class SimilarVariantEvaluationSettings
         $this->significantDataFields = $significantDataFields;
         return $this;
     }
+    /** @param ?SignificantDataValue[] $significantDataFields new value. */
     function setSignificantDataFieldsFromArray(array $significantDataFields)
     {
         $this->significantDataFields = $significantDataFields;

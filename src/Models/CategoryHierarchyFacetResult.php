@@ -43,6 +43,7 @@ class CategoryHierarchyFacetResult extends FacetResult
         $this->nodes = $nodes;
         return $this;
     }
+    /** @param CategoryHierarchyFacetResultCategoryNode[] $nodes new value. */
     function setNodesFromArray(array $nodes)
     {
         $this->nodes = $nodes;

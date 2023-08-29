@@ -95,6 +95,7 @@ abstract class CategoryResult
         $this->paths = $paths;
         return $this;
     }
+    /** @param CategoryPathResult[] $paths new value. */
     function setPathsFromArray(array $paths)
     {
         $this->paths = $paths;
@@ -114,6 +115,7 @@ abstract class CategoryResult
         $this->assortments = $assortments;
         return $this;
     }
+    /** @param int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
@@ -137,6 +139,7 @@ abstract class CategoryResult
         $this->data[$key] = $value;
         return $this;
     }
+    /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;

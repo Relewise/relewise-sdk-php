@@ -65,6 +65,7 @@ class SearchTermCondition
         $this->andConditions = $andConditions;
         return $this;
     }
+    /** @param ?SearchTermCondition[] $andConditions new value. */
     function setAndConditionsFromArray(array $andConditions)
     {
         $this->andConditions = $andConditions;
@@ -84,6 +85,7 @@ class SearchTermCondition
         $this->orConditions = $orConditions;
         return $this;
     }
+    /** @param ?SearchTermCondition[] $orConditions new value. */
     function setOrConditionsFromArray(array $orConditions)
     {
         $this->orConditions = $orConditions;

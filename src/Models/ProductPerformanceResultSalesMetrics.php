@@ -56,6 +56,7 @@ class ProductPerformanceResultSalesMetrics
         $this->currencies = $currencies;
         return $this;
     }
+    /** @param ProductPerformanceResultSalesByCurrency[] $currencies new value. */
     function setCurrenciesFromArray(array $currencies)
     {
         $this->currencies = $currencies;

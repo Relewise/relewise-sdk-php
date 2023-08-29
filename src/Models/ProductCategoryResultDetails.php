@@ -53,6 +53,7 @@ class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryR
         $this->assortments = $assortments;
         return $this;
     }
+    /** @param int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
@@ -76,6 +77,7 @@ class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryR
         $this->data[$key] = $value;
         return $this;
     }
+    /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
@@ -116,6 +118,7 @@ class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryR
         $this->childCategories = $childCategories;
         return $this;
     }
+    /** @param ProductCategoryResultDetails[] $childCategories new value. */
     function setChildCategoriesFromArray(array $childCategories)
     {
         $this->childCategories = $childCategories;
@@ -135,6 +138,7 @@ class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryR
         $this->parentCategories = $parentCategories;
         return $this;
     }
+    /** @param ProductCategoryResultDetails[] $parentCategories new value. */
     function setParentCategoriesFromArray(array $parentCategories)
     {
         $this->parentCategories = $parentCategories;

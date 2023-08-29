@@ -65,6 +65,7 @@ class ProductUpdate extends Trackable
         $this->variants = $variants;
         return $this;
     }
+    /** @param ProductVariant[] $variants new value. */
     function setVariantsFromArray(array $variants)
     {
         $this->variants = $variants;

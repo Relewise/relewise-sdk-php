@@ -54,6 +54,7 @@ class ProductSearchResponse extends PaginatedSearchResponse
         $this->results = $results;
         return $this;
     }
+    /** @param ProductResult[] $results new value. */
     function setResultsFromArray(array $results)
     {
         $this->results = $results;
@@ -78,6 +79,7 @@ class ProductSearchResponse extends PaginatedSearchResponse
         $this->recommendations = $recommendations;
         return $this;
     }
+    /** @param ProductResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;
@@ -97,6 +99,7 @@ class ProductSearchResponse extends PaginatedSearchResponse
         $this->redirects = $redirects;
         return $this;
     }
+    /** @param RedirectResult[] $redirects new value. */
     function setRedirectsFromArray(array $redirects)
     {
         $this->redirects = $redirects;

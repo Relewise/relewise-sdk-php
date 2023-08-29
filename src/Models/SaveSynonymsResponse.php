@@ -32,6 +32,7 @@ class SaveSynonymsResponse extends TimedResponse
         $this->values = $values;
         return $this;
     }
+    /** @param Synonym[] $values new value. */
     function setValuesFromArray(array $values)
     {
         $this->values = $values;

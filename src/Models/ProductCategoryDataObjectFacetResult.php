@@ -30,6 +30,7 @@ class ProductCategoryDataObjectFacetResult extends DataObjectFacetResult
         $this->items = $items;
         return $this;
     }
+    /** @param FacetResult[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;

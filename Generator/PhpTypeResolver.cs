@@ -24,7 +24,7 @@ public class PhpTypeResolver
         "Object" => "mixed",
         "DateTimeOffset" => "DateTime",
         var value when value.StartsWith("Nullable") => $"?{ResolveType(type.GetGenericArguments()[0])}",
-        var value when value.StartsWith("List") || value.StartsWith("Dictionary") || value.EndsWith("[]") => AddCollectionTypeDefinition(type),
+        var value when value.StartsWith("List") || value.StartsWith("Dictionary") || value.EndsWith("[]") || value.StartsWith("IEnumerable") => AddCollectionTypeDefinition(type),
         _ when type.IsGenericType => GetGenericTypeDefinition(type),
         _ => GetOrAddTypeDefinition(type)
     };
@@ -64,7 +64,7 @@ public class PhpTypeResolver
         }
         else if (type.IsGenericType)
         {
-            if (type.GetGenericTypeDefinition() == typeof(List<>))
+            if (type.GetGenericTypeDefinition() == typeof(List<>) || type.GetGenericTypeDefinition() == typeof(IEnumerable<>))
             {
                 ResolveType(type.GetGenericArguments()[0]);
             }

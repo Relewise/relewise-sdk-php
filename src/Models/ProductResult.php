@@ -125,6 +125,7 @@ class ProductResult
         $this->assortments = $assortments;
         return $this;
     }
+    /** @param int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
@@ -148,6 +149,7 @@ class ProductResult
         $this->data[$key] = $value;
         return $this;
     }
+    /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
@@ -158,6 +160,7 @@ class ProductResult
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    /** @param CategoryPathResult[] $categoryPaths new value. */
     function setCategoryPathsFromArray(array $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
@@ -202,6 +205,7 @@ class ProductResult
         $this->allVariants = $allVariants;
         return $this;
     }
+    /** @param VariantResult[] $allVariants new value. */
     function setAllVariantsFromArray(array $allVariants)
     {
         $this->allVariants = $allVariants;

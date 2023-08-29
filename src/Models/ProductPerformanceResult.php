@@ -41,6 +41,7 @@ class ProductPerformanceResult
         $this->classifications = $classifications;
         return $this;
     }
+    /** @param ProductPerformanceResultClassificationMetrics[] $classifications new value. */
     function setClassificationsFromArray(array $classifications)
     {
         $this->classifications = $classifications;

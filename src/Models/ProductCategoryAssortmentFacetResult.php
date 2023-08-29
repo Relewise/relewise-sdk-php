@@ -30,6 +30,7 @@ class ProductCategoryAssortmentFacetResult extends AssortmentFacetResult
         $this->selected = $selected;
         return $this;
     }
+    /** @param int[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
@@ -49,6 +50,7 @@ class ProductCategoryAssortmentFacetResult extends AssortmentFacetResult
         $this->available = $available;
         return $this;
     }
+    /** @param intAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;

@@ -58,6 +58,7 @@ abstract class stringValueFacet extends Facet
         $this->selected = $selected;
         return $this;
     }
+    /** @param ?string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;

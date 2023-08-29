@@ -32,6 +32,7 @@ class ContentRecommendationResponse extends RecommendationResponse
         $this->recommendations = $recommendations;
         return $this;
     }
+    /** @param ContentResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;

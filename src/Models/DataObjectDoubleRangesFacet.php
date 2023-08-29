@@ -26,6 +26,7 @@ class DataObjectDoubleRangesFacet extends floatDataObjectRangesFacet
         $this->predefinedRanges = $predefinedRanges;
         return $this;
     }
+    /** @param ??floatChainableRange[] $predefinedRanges new value. */
     function setPredefinedRangesFromArray(array $predefinedRanges)
     {
         $this->predefinedRanges = $predefinedRanges;
@@ -50,6 +51,7 @@ class DataObjectDoubleRangesFacet extends floatDataObjectRangesFacet
         $this->selected = $selected;
         return $this;
     }
+    /** @param ??floatChainableRange[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;

@@ -35,6 +35,7 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         $this->selected = $selected;
         return $this;
     }
+    /** @param string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
@@ -54,6 +55,7 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         $this->available = $available;
         return $this;
     }
+    /** @param CategoryNameAndIdResultAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;

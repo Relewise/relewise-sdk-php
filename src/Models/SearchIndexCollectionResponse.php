@@ -31,6 +31,7 @@ class SearchIndexCollectionResponse extends TimedResponse
         $this->indexes = $indexes;
         return $this;
     }
+    /** @param SearchIndex[] $indexes new value. */
     function setIndexesFromArray(array $indexes)
     {
         $this->indexes = $indexes;

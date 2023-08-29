@@ -33,6 +33,7 @@ class ProductCategory extends Category
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    /** @param CategoryPath[] $categoryPaths new value. */
     function setCategoryPathsFromArray(array $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
@@ -52,6 +53,7 @@ class ProductCategory extends Category
         $this->assortments = $assortments;
         return $this;
     }
+    /** @param int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
@@ -75,6 +77,7 @@ class ProductCategory extends Category
         $this->data[$key] = $value;
         return $this;
     }
+    /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;

@@ -90,6 +90,7 @@ class SelectedVariantPropertiesSettings
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    /** @param ?string[] $dataKeys new value. */
     function setDataKeysFromArray(array $dataKeys)
     {
         $this->dataKeys = $dataKeys;
@@ -109,6 +110,7 @@ class SelectedVariantPropertiesSettings
         $this->specificationKeys = $specificationKeys;
         return $this;
     }
+    /** @param ?string[] $specificationKeys new value. */
     function setSpecificationKeysFromArray(array $specificationKeys)
     {
         $this->specificationKeys = $specificationKeys;

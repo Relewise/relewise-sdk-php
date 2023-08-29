@@ -7,6 +7,7 @@ use DateTime;
 abstract class RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.RelevanceModifier, Relewise.Client";
+    /** Filters which entities this relevance modifier can apply to. */
     public FilterCollection $filters;
     public static function hydrate(array $arr)
     {
@@ -84,6 +85,7 @@ abstract class RelevanceModifier
         }
         return $result;
     }
+    /** Filters which entities this relevance modifier can apply to. */
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

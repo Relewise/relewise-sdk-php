@@ -70,6 +70,7 @@ class CartDetails
         $this->lineItems = $lineItems;
         return $this;
     }
+    /** @param LineItem[] $lineItems new value. */
     function setLineItemsFromArray(array $lineItems)
     {
         $this->lineItems = $lineItems;
@@ -98,6 +99,7 @@ class CartDetails
         $this->data[$key] = $value;
         return $this;
     }
+    /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;

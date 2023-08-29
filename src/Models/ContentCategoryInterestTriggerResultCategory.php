@@ -45,6 +45,7 @@ class ContentCategoryInterestTriggerResultCategory
         $this->lastPath = $lastPath;
         return $this;
     }
+    /** @param string[] $lastPath new value. */
     function setLastPathFromArray(array $lastPath)
     {
         $this->lastPath = $lastPath;
@@ -69,6 +70,7 @@ class ContentCategoryInterestTriggerResultCategory
         $this->viewedContents = $viewedContents;
         return $this;
     }
+    /** @param ContentResultDetails[] $viewedContents new value. */
     function setViewedContentsFromArray(array $viewedContents)
     {
         $this->viewedContents = $viewedContents;

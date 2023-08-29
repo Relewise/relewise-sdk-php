@@ -31,6 +31,7 @@ class LanguageIndexConfiguration
         $this->languages = $languages;
         return $this;
     }
+    /** @param LanguageIndexConfigurationEntry[] $languages new value. */
     function setLanguagesFromArray(array $languages)
     {
         $this->languages = $languages;

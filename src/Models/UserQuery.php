@@ -44,6 +44,7 @@ class UserQuery extends LicensedRequest
         $this->criteria = $criteria;
         return $this;
     }
+    /** @param UserQueryCriteria[] $criteria new value. */
     function setCriteriaFromArray(array $criteria)
     {
         $this->criteria = $criteria;

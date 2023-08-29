@@ -51,6 +51,7 @@ class SearchTermResult
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;
     }
+    /** @param ExpectedSearchTermResult[] $expectedResultTypes new value. */
     function setExpectedResultTypesFromArray(array $expectedResultTypes)
     {
         $this->expectedResultTypes = $expectedResultTypes;

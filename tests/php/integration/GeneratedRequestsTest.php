@@ -8,7 +8,9 @@ use Relewise\Factory\UserFactory;
 use Relewise\Tracker;
 use Relewise\Models\Money;
 use Relewise\Models\Currency;
+use Relewise\Models\LineItem;
 use Relewise\Models\Order;
+use Relewise\Models\Product;
 use Relewise\Models\TrackOrderRequest;
 use Relewise\Models\User;
 
@@ -23,6 +25,7 @@ class GeneratedRequestsTest extends BaseTestCase
                 UserFactory::byTemporaryId("t-Id"),
                 Money::create(Currency::create("DKK"), 100),
                 "1",
+                array(LineItem::create(Product::create("p-1"), null, 1, 100)),
                 "1"
             )
         );

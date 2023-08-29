@@ -22,6 +22,7 @@ class AbandonedProductSearch extends ProductAndVariantIdAbandonedSearch
         $this->topResults = $topResults;
         return $this;
     }
+    /** @param ProductAndVariantId[] $topResults new value. */
     function setTopResultsFromArray(array $topResults)
     {
         $this->topResults = $topResults;

@@ -23,6 +23,7 @@ class DeleteRedirectRulesRequest extends DeleteSearchRulesRequest
         $this->ids = $ids;
         return $this;
     }
+    /** @param string[] $ids new value. */
     function setIdsFromArray(array $ids)
     {
         $this->ids = $ids;

@@ -42,6 +42,7 @@ class StemmingRule extends SearchRule
         $this->words = $words;
         return $this;
     }
+    /** @param string[] $words new value. */
     function setWordsFromArray(array $words)
     {
         $this->words = $words;

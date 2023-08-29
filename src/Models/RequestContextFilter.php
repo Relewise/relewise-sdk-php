@@ -69,6 +69,7 @@ class RequestContextFilter
         $this->locations = $locations;
         return $this;
     }
+    /** @param string[] $locations new value. */
     function setLocationsFromArray(array $locations)
     {
         $this->locations = $locations;
@@ -88,6 +89,7 @@ class RequestContextFilter
         $this->languages = $languages;
         return $this;
     }
+    /** @param Language[] $languages new value. */
     function setLanguagesFromArray(array $languages)
     {
         $this->languages = $languages;
@@ -107,6 +109,7 @@ class RequestContextFilter
         $this->currencies = $currencies;
         return $this;
     }
+    /** @param Currency[] $currencies new value. */
     function setCurrenciesFromArray(array $currencies)
     {
         $this->currencies = $currencies;

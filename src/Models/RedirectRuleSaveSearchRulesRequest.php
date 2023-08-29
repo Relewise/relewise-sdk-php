@@ -39,6 +39,7 @@ abstract class RedirectRuleSaveSearchRulesRequest extends LicensedRequest
         $this->rules = $rules;
         return $this;
     }
+    /** @param RedirectRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;

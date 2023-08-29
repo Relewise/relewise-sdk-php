@@ -38,6 +38,7 @@ class ContentDetailsCollectionResponse extends TimedResponse
         $this->contents = $contents;
         return $this;
     }
+    /** @param ContentResultDetails[] $contents new value. */
     function setContentsFromArray(array $contents)
     {
         $this->contents = $contents;

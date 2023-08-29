@@ -33,6 +33,7 @@ class AndFilter extends Filter
         $this->filters = $filters;
         return $this;
     }
+    /** @param Filter[] $filters new value. */
     function setFiltersFromArray(array $filters)
     {
         $this->filters = $filters;

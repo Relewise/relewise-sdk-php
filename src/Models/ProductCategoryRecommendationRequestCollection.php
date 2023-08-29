@@ -38,6 +38,7 @@ class ProductCategoryRecommendationRequestCollection extends LicensedRequest
         $this->requests = $requests;
         return $this;
     }
+    /** @param ProductCategoryRecommendationRequest[] $requests new value. */
     function setRequestsFromArray(array $requests)
     {
         $this->requests = $requests;

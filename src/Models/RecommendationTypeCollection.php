@@ -31,6 +31,7 @@ class RecommendationTypeCollection
         $this->unionCodes = $unionCodes;
         return $this;
     }
+    /** @param int[] $unionCodes new value. */
     function setUnionCodesFromArray(array $unionCodes)
     {
         $this->unionCodes = $unionCodes;

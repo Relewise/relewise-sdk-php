@@ -126,6 +126,7 @@ class SimilarProductsEvaluationSettings
         $this->significantProductDataFields = $significantProductDataFields;
         return $this;
     }
+    /** @param ?SignificantDataValue[] $significantProductDataFields new value. */
     function setSignificantProductDataFieldsFromArray(array $significantProductDataFields)
     {
         $this->significantProductDataFields = $significantProductDataFields;

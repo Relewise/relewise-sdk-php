@@ -57,6 +57,7 @@ abstract class boolDataValueFacet extends boolValueFacet
         $this->selected = $selected;
         return $this;
     }
+    /** @param ?bool[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;

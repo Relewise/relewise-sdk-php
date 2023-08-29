@@ -23,6 +23,7 @@ class ContentCategoryHasParentFilter extends HasParentCategoryFilter
         $this->categoryIds = $categoryIds;
         return $this;
     }
+    /** @param string[] $categoryIds new value. */
     function setCategoryIdsFromArray(array $categoryIds)
     {
         $this->categoryIds = $categoryIds;

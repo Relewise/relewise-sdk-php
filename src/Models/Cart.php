@@ -12,11 +12,12 @@ class Cart extends Trackable
     public ?Money $subtotal;
     public ?array $lineItems;
     public ?array $data;
-    public static function create(?User $user, Money $subtotal, string $cartName = "default") : Cart
+    public static function create(?User $user, Money $subtotal, ?array $lineItems, string $cartName = "default") : Cart
     {
         $result = new Cart();
         $result->user = $user;
         $result->subtotal = $subtotal;
+        $result->lineItems = $lineItems;
         $result->name = $cartName;
         return $result;
     }
@@ -73,6 +74,7 @@ class Cart extends Trackable
         $this->lineItems = $lineItems;
         return $this;
     }
+    /** @param ?LineItem[] $lineItems new value. */
     function setLineItemsFromArray(array $lineItems)
     {
         $this->lineItems = $lineItems;
@@ -96,6 +98,7 @@ class Cart extends Trackable
         $this->data[$key] = $value;
         return $this;
     }
+    /** @param ?array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;

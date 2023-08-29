@@ -31,6 +31,7 @@ class SearchTermRecommendationResponse extends RecommendationResponse
         $this->recommendations = $recommendations;
         return $this;
     }
+    /** @param SearchTermResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;

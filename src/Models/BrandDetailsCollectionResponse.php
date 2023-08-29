@@ -38,6 +38,7 @@ class BrandDetailsCollectionResponse extends TimedResponse
         $this->brands = $brands;
         return $this;
     }
+    /** @param BrandResultDetails[] $brands new value. */
     function setBrandsFromArray(array $brands)
     {
         $this->brands = $brands;

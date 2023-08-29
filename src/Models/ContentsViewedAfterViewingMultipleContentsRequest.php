@@ -36,6 +36,7 @@ class ContentsViewedAfterViewingMultipleContentsRequest extends ContentRecommend
         $this->contentIds = $contentIds;
         return $this;
     }
+    /** @param string[] $contentIds new value. */
     function setContentIdsFromArray(array $contentIds)
     {
         $this->contentIds = $contentIds;

@@ -12,13 +12,13 @@ class Order extends Trackable
     public array $lineItems;
     public string $orderNumber;
     public string $cartName;
-    public ?string $subChannel;
-    public static function create(User $user, Money $subtotal, string $orderNumber, string $cartName = "default") : Order
+    public static function create(User $user, Money $subtotal, string $orderNumber, array $lineItems, string $cartName = "default") : Order
     {
         $result = new Order();
         $result->user = $user;
         $result->subtotal = $subtotal;
         $result->orderNumber = $orderNumber;
+        $result->lineItems = $lineItems;
         $result->cartName = $cartName;
         return $result;
     }
@@ -49,10 +49,6 @@ class Order extends Trackable
         {
             $result->cartName = $arr["cartName"];
         }
-        if (array_key_exists("subChannel", $arr))
-        {
-            $result->subChannel = $arr["subChannel"];
-        }
         return $result;
     }
     function setUser(?User $user)
@@ -70,6 +66,7 @@ class Order extends Trackable
         $this->lineItems = $lineItems;
         return $this;
     }
+    /** @param LineItem[] $lineItems new value. */
     function setLineItemsFromArray(array $lineItems)
     {
         $this->lineItems = $lineItems;
@@ -92,11 +89,6 @@ class Order extends Trackable
     function setCartName(string $cartName)
     {
         $this->cartName = $cartName;
-        return $this;
-    }
-    function setSubChannel(?string $subChannel)
-    {
-        $this->subChannel = $subChannel;
         return $this;
     }
 }

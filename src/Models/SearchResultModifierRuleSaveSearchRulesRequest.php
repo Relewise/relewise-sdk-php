@@ -39,6 +39,7 @@ abstract class SearchResultModifierRuleSaveSearchRulesRequest extends LicensedRe
         $this->rules = $rules;
         return $this;
     }
+    /** @param SearchResultModifierRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;

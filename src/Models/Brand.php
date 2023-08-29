@@ -61,6 +61,7 @@ class Brand
         $this->assortments = $assortments;
         return $this;
     }
+    /** @param ?int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
@@ -84,6 +85,7 @@ class Brand
         $this->data[$key] = $value;
         return $this;
     }
+    /** @param ?array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;

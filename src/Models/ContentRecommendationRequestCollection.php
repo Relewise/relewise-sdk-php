@@ -38,6 +38,7 @@ class ContentRecommendationRequestCollection extends LicensedRequest
         $this->requests = $requests;
         return $this;
     }
+    /** @param ContentRecommendationRequest[] $requests new value. */
     function setRequestsFromArray(array $requests)
     {
         $this->requests = $requests;

@@ -32,6 +32,7 @@ class CategoryPathResultDetails
         $this->breadcrumbPathStartingFromRoot = $breadcrumbPathStartingFromRoot;
         return $this;
     }
+    /** @param CategoryNameAndId[] $breadcrumbPathStartingFromRoot new value. */
     function setBreadcrumbPathStartingFromRootFromArray(array $breadcrumbPathStartingFromRoot)
     {
         $this->breadcrumbPathStartingFromRoot = $breadcrumbPathStartingFromRoot;

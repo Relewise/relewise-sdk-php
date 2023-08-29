@@ -32,6 +32,7 @@ class ContentIdFilter extends Filter
         $this->contentIds = $contentIds;
         return $this;
     }
+    /** @param string[] $contentIds new value. */
     function setContentIdsFromArray(array $contentIds)
     {
         $this->contentIds = $contentIds;

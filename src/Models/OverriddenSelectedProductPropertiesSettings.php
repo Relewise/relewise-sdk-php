@@ -121,6 +121,7 @@ class OverriddenSelectedProductPropertiesSettings
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    /** @param string[] $dataKeys new value. */
     function setDataKeysFromArray(array $dataKeys)
     {
         $this->dataKeys = $dataKeys;

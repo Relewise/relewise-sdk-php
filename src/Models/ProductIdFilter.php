@@ -32,6 +32,7 @@ class ProductIdFilter extends Filter
         $this->productIds = $productIds;
         return $this;
     }
+    /** @param string[] $productIds new value. */
     function setProductIdsFromArray(array $productIds)
     {
         $this->productIds = $productIds;

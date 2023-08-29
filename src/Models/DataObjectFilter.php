@@ -41,6 +41,7 @@ class DataObjectFilter
         $this->conditions = $conditions;
         return $this;
     }
+    /** @param ?ObjectValueCondition[] $conditions new value. */
     function setConditionsFromArray(array $conditions)
     {
         $this->conditions = $conditions;

@@ -32,6 +32,7 @@ class BrandRecommendationResponse extends RecommendationResponse
         $this->recommendations = $recommendations;
         return $this;
     }
+    /** @param BrandResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;

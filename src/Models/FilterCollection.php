@@ -32,6 +32,7 @@ class FilterCollection
         $this->items = $items;
         return $this;
     }
+    /** @param ?Filter[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;

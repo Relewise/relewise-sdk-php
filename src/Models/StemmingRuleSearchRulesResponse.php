@@ -39,6 +39,7 @@ abstract class StemmingRuleSearchRulesResponse extends TimedResponse
         $this->rules = $rules;
         return $this;
     }
+    /** @param StemmingRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;

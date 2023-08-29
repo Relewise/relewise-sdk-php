@@ -42,6 +42,7 @@ class ProductDataBooleanValueFacetResult extends boolProductDataValueFacetResult
         $this->selected = $selected;
         return $this;
     }
+    /** @param bool[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
@@ -61,6 +62,7 @@ class ProductDataBooleanValueFacetResult extends boolProductDataValueFacetResult
         $this->available = $available;
         return $this;
     }
+    /** @param boolAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;

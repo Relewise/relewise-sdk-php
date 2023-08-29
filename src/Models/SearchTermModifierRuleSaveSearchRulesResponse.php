@@ -34,6 +34,7 @@ abstract class SearchTermModifierRuleSaveSearchRulesResponse extends TimedRespon
         $this->rules = $rules;
         return $this;
     }
+    /** @param SearchTermModifierRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;

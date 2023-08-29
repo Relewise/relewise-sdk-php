@@ -4,11 +4,17 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** A category segment, containing the id and display name(s) of an individual category */
 class CategoryNameAndId
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.CategoryNameAndId, Relewise.Client";
     public string $id;
     public ?Multilingual $displayName;
+    /**
+     * The id and name of a category segment
+     * @param string $id The ID of the category (Which is generally very unlikely to change in the future)
+     * @param ?Multilingual $displayName The Display name of the category (More likely to change in the future)
+     */
     public static function create(string $id, ?Multilingual $displayName = Null) : CategoryNameAndId
     {
         $result = new CategoryNameAndId();

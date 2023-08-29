@@ -32,6 +32,7 @@ class Multilingual
         $this->values = $values;
         return $this;
     }
+    /** @param ?MultilingualValue[] $values new value. */
     function setValuesFromArray(array $values)
     {
         $this->values = $values;

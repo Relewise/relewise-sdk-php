@@ -46,6 +46,7 @@ class ProductPerformanceResultRankMetrics
         $this->withinCategories = $withinCategories;
         return $this;
     }
+    /** @param ProductPerformanceResultCategoryMetrics[] $withinCategories new value. */
     function setWithinCategoriesFromArray(array $withinCategories)
     {
         $this->withinCategories = $withinCategories;

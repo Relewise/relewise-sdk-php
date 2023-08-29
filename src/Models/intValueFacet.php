@@ -50,6 +50,7 @@ abstract class intValueFacet extends Facet
         $this->selected = $selected;
         return $this;
     }
+    /** @param ?int[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;

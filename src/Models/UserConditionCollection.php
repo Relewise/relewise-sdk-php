@@ -32,6 +32,7 @@ class UserConditionCollection
         $this->items = $items;
         return $this;
     }
+    /** @param UserCondition[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;

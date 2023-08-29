@@ -37,6 +37,7 @@ class CategoryPathResult
         $this->pathFromRoot = $pathFromRoot;
         return $this;
     }
+    /** @param CategoryNameAndIdResult[] $pathFromRoot new value. */
     function setPathFromRootFromArray(array $pathFromRoot)
     {
         $this->pathFromRoot = $pathFromRoot;

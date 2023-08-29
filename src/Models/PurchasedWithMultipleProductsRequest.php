@@ -8,13 +8,14 @@ class PurchasedWithMultipleProductsRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PurchasedWithMultipleProductsRequest, Relewise.Client";
     public array $productAndVariantIds;
-    public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user) : PurchasedWithMultipleProductsRequest
+    public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ... $productAndVariantIds) : PurchasedWithMultipleProductsRequest
     {
         $result = new PurchasedWithMultipleProductsRequest();
         $result->language = $language;
         $result->currency = $currency;
         $result->displayedAtLocationType = $displayedAtLocationType;
         $result->user = $user;
+        $result->productAndVariantIds = $productAndVariantIds;
         return $result;
     }
     public static function hydrate(array $arr) : PurchasedWithMultipleProductsRequest
@@ -35,6 +36,7 @@ class PurchasedWithMultipleProductsRequest extends ProductRecommendationRequest
         $this->productAndVariantIds = $productAndVariantIds;
         return $this;
     }
+    /** @param ProductAndVariantId[] $productAndVariantIds new value. */
     function setProductAndVariantIdsFromArray(array $productAndVariantIds)
     {
         $this->productAndVariantIds = $productAndVariantIds;

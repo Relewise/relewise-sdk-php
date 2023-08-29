@@ -36,6 +36,7 @@ class ContentDataStringValueFacetResult extends stringContentDataValueFacetResul
         $this->selected = $selected;
         return $this;
     }
+    /** @param string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
@@ -55,6 +56,7 @@ class ContentDataStringValueFacetResult extends stringContentDataValueFacetResul
         $this->available = $available;
         return $this;
     }
+    /** @param stringAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;

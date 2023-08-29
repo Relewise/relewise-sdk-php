@@ -46,6 +46,7 @@ abstract class floatValueFacet extends Facet
         $this->selected = $selected;
         return $this;
     }
+    /** @param ?float[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;

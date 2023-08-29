@@ -41,6 +41,7 @@ class ProductInterestTriggerResult
         $this->products = $products;
         return $this;
     }
+    /** @param ProductInterestTriggerResultProductAndVariant[] $products new value. */
     function setProductsFromArray(array $products)
     {
         $this->products = $products;

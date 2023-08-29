@@ -22,6 +22,7 @@ class AbandonedProductCategorySearch extends stringAbandonedSearch
         $this->topResults = $topResults;
         return $this;
     }
+    /** @param string[] $topResults new value. */
     function setTopResultsFromArray(array $topResults)
     {
         $this->topResults = $topResults;

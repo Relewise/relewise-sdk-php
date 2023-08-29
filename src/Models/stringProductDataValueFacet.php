@@ -45,6 +45,7 @@ abstract class stringProductDataValueFacet extends stringDataValueFacet
         $this->selected = $selected;
         return $this;
     }
+    /** @param ?string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;

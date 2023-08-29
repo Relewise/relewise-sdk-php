@@ -35,6 +35,7 @@ abstract class floatProductCategoryDataValueFacetResult extends floatDataValueFa
         $this->selected = $selected;
         return $this;
     }
+    /** @param float[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
@@ -54,6 +55,7 @@ abstract class floatProductCategoryDataValueFacetResult extends floatDataValueFa
         $this->available = $available;
         return $this;
     }
+    /** @param floatAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;

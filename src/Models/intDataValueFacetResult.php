@@ -49,6 +49,7 @@ abstract class intDataValueFacetResult extends intValueFacetResult
         $this->selected = $selected;
         return $this;
     }
+    /** @param int[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
@@ -68,6 +69,7 @@ abstract class intDataValueFacetResult extends intValueFacetResult
         $this->available = $available;
         return $this;
     }
+    /** @param intAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;

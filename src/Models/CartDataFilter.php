@@ -13,10 +13,11 @@ class CartDataFilter extends Filter
     public ?ValueConditionCollection $conditions;
     public ?Language $language;
     public ?Currency $currency;
-    public static function create(string $key, bool $mustMatchAllConditions = true, bool $filterOutIfKeyIsNotFound = true, ?Language $language = Null, ?Currency $currency = Null) : CartDataFilter
+    public static function create(string $key, ?ValueConditionCollection $conditions = Null, bool $mustMatchAllConditions = true, bool $filterOutIfKeyIsNotFound = true, ?Language $language = Null, ?Currency $currency = Null) : CartDataFilter
     {
         $result = new CartDataFilter();
         $result->key = $key;
+        $result->conditions = $conditions;
         $result->mustMatchAllConditions = $mustMatchAllConditions;
         $result->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
         $result->language = $language;

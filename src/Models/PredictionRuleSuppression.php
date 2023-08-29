@@ -43,6 +43,7 @@ class PredictionRuleSuppression
         $this->values = $values;
         return $this;
     }
+    /** @param string[] $values new value. */
     function setValuesFromArray(array $values)
     {
         $this->values = $values;

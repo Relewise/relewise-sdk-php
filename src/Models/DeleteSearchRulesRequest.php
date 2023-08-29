@@ -59,6 +59,7 @@ abstract class DeleteSearchRulesRequest extends LicensedRequest
         $this->ids = $ids;
         return $this;
     }
+    /** @param string[] $ids new value. */
     function setIdsFromArray(array $ids)
     {
         $this->ids = $ids;

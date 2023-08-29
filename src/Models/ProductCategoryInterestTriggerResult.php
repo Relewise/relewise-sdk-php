@@ -41,6 +41,7 @@ class ProductCategoryInterestTriggerResult
         $this->categories = $categories;
         return $this;
     }
+    /** @param ProductCategoryInterestTriggerResultCategory[] $categories new value. */
     function setCategoriesFromArray(array $categories)
     {
         $this->categories = $categories;

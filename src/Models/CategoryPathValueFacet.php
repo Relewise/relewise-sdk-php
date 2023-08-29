@@ -34,6 +34,7 @@ abstract class CategoryPathValueFacet extends Facet
         $this->selected = $selected;
         return $this;
     }
+    /** @param ?CategoryPath[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;

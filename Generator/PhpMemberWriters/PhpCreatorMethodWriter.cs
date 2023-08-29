@@ -18,7 +18,7 @@ public class PhpCreatorMethodWriter
     {
         if (type.IsAbstract || type.IsInterface) return;
 
-        var coveringTypeMappableConstructorParameters = type
+        var coveringUniqueTypeMappableConstructorParameters = type
             .GetConstructors() // All 
             .FirstOrDefault(c => c.GetParameters().Length == c.GetParameters().DistinctBy(parameter => parameter.ParameterType).Count() // There are no parameters with the same type.
                                  && c.GetParameters().Length == propertyInformations.Length // There are as many parameters as there are properties.
@@ -26,6 +26,18 @@ public class PhpCreatorMethodWriter
                                      .All(parameter => propertyInformations
                                          .Any(property => ParameterIsPersuadableIntoPropertyType(property.info, parameter))
                                      ) // There is a property type that matches each parameter type.
+            )
+            ?.GetParameters()
+            .ToArray();
+
+        var coveringTypeAndNameMappableConstructorParameters = type
+            .GetConstructors() // All 
+            .FirstOrDefault(c => c.GetParameters()
+                                     .All(parameter => propertyInformations
+                                         .Count(property =>
+                                             ContainedWithinEitherOne(property.propertyName, parameter.Name)
+                                             && ParameterIsPersuadableIntoPropertyType(property.info, parameter)) == 1
+                                     ) // There is exactly 1 property type that matches each parameter type and name
             )
             ?.GetParameters()
             .ToArray();
@@ -38,7 +50,7 @@ public class PhpCreatorMethodWriter
             .Where(parameter => type
                 .GetConstructors()
                 .Where(c => c.GetParameters().Length > 0)
-                .All(c => c.GetParameters().Any(cParameter => 
+                .All(c => c.GetParameters().Any(cParameter =>
                     cParameter.Name == parameter.Name
                     && cParameter.ParameterType == parameter.ParameterType))
                 && type.GetProperties().Any(property =>
@@ -46,18 +58,46 @@ public class PhpCreatorMethodWriter
                     && ParameterIsPersuadableIntoPropertyType(property, parameter))
             )
             .ToArray();
-        
-        if (coveringTypeMappableConstructorParameters?.Length > 0)
+
+        if (coveringUniqueTypeMappableConstructorParameters?.Length > 0)
         {
-            writer.WriteLine($"public static function create({ParameterList(coveringTypeMappableConstructorParameters)}) : {typeName}");
+            writer.WriteCommentBlock(
+                coveringUniqueTypeMappableConstructorParameters.Select(p => phpWriter.XmlDocumentation.GetConstructorParam(typeName, coveringUniqueTypeMappableConstructorParameters, p))
+                    .Prepend(phpWriter.XmlDocumentation.GetConstructorSummary(typeName, coveringUniqueTypeMappableConstructorParameters))
+                    .ToArray()
+            );
+
+            writer.WriteLine($"public static function create({ParameterList(coveringUniqueTypeMappableConstructorParameters)}) : {typeName}");
             writer.WriteLine("{");
             writer.Indent++;
             writer.WriteLine($"$result = new {typeName}();");
 
-            foreach (var parameter in coveringTypeMappableConstructorParameters)
+            foreach (var parameter in coveringUniqueTypeMappableConstructorParameters)
             {
                 var propertyName = propertyInformations
                     .Single(property => ParameterIsPersuadableIntoPropertyType(property.info, parameter))
+                    .lowerCaseName;
+
+                writer.WriteLine($"$result->{propertyName} = ${parameter.Name};");
+            }
+        }
+        else if (coveringTypeAndNameMappableConstructorParameters?.Length > 0)
+        {
+            writer.WriteCommentBlock(
+                coveringTypeAndNameMappableConstructorParameters.Select(p => phpWriter.XmlDocumentation.GetConstructorParam(typeName, coveringTypeAndNameMappableConstructorParameters, p))
+                    .Prepend(phpWriter.XmlDocumentation.GetConstructorSummary(typeName, coveringTypeAndNameMappableConstructorParameters))
+                    .ToArray()
+            );
+
+            writer.WriteLine($"public static function create({ParameterList(coveringTypeAndNameMappableConstructorParameters)}) : {typeName}");
+            writer.WriteLine("{");
+            writer.Indent++;
+            writer.WriteLine($"$result = new {typeName}();");
+
+            foreach (var parameter in coveringTypeAndNameMappableConstructorParameters)
+            {
+                var propertyName = propertyInformations
+                    .Single(property => ContainedWithinEitherOne(property.propertyName, parameter.Name) && ParameterIsPersuadableIntoPropertyType(property.info, parameter))
                     .lowerCaseName;
 
                 writer.WriteLine($"$result->{propertyName} = ${parameter.Name};");
@@ -76,7 +116,7 @@ public class PhpCreatorMethodWriter
                     .Where(property => ContainedWithinEitherOne(property.Name, parameter.Name)
                                        && ParameterIsPersuadableIntoPropertyType(property, parameter))
                     .ToArray();
-                
+
                 var propertyName = matchingProperties
                     .FirstOrDefault(property => property.Name.Equals(parameter.Name, StringComparison.OrdinalIgnoreCase)) is { } perfectMatch
                     ? perfectMatch.Name.ToCamelCase()
@@ -93,8 +133,8 @@ public class PhpCreatorMethodWriter
             writer.WriteLine($"$result = new {typeName}();");
         }
 
-        var coveredParameterNames = coveringTypeMappableConstructorParameters?.Length > 0
-            ? coveringTypeMappableConstructorParameters.Select(parameter => parameter.Name)
+        var coveredParameterNames = coveringUniqueTypeMappableConstructorParameters?.Length > 0
+            ? coveringUniqueTypeMappableConstructorParameters.Select(parameter => parameter.Name)
             : allConstructorParametersIntersectionWithMappableNamesAndTypes?.Length > 0
                 ? allConstructorParametersIntersectionWithMappableNamesAndTypes.Select(parameter => parameter.Name)
                 : new List<string>();
@@ -164,8 +204,9 @@ public class PhpCreatorMethodWriter
 
     private static bool EqualCollectionElementType(Type type1, Type type2)
     {
-        return ListTypeArgumentMatchesArrayElementType(type1, type2)
-            || ListTypeArgumentMatchesArrayElementType(type2, type1);
+        return EnumerableTypeArgumentMatchesArrayElementType(type1, type2)
+            || EnumerableTypeArgumentMatchesArrayElementType(type2, type1)
+            || EnumerableTypeArgumentMatchesSecondEnumerableType(type1, type2);
     }
 
     private static bool ParameterIsPersuadableIntoPropertyType(PropertyInfo property, ParameterInfo parameter)
@@ -179,7 +220,7 @@ public class PhpCreatorMethodWriter
         {
             return false;
         }
-        
+
         var propertyNullabilityContext = new NullabilityInfoContext().Create(property);
         var parameterNullabilityContext = new NullabilityInfoContext().Create(parameter);
 
@@ -197,12 +238,21 @@ public class PhpCreatorMethodWriter
         return false;
     }
 
-    private static bool ListTypeArgumentMatchesArrayElementType(Type type1, Type type2)
+    private static bool EnumerableTypeArgumentMatchesArrayElementType(Type type1, Type type2)
     {
         return type1.IsGenericType
-               && type1.GetGenericTypeDefinition() == typeof(List<>)
+               && (type1.GetGenericTypeDefinition() == typeof(List<>) || type1.GetGenericTypeDefinition() == typeof(IEnumerable<>))
                && type2.IsArray
                && type1.GenericTypeArguments[0] == type2.GetElementType();
+    }
+
+    private static bool EnumerableTypeArgumentMatchesSecondEnumerableType(Type type1, Type type2)
+    {
+        return type1.IsGenericType
+               && (type1.GetGenericTypeDefinition() == typeof(List<>) || type1.GetGenericTypeDefinition() == typeof(IEnumerable<>))
+               && type2.IsGenericType
+               && (type2.GetGenericTypeDefinition() == typeof(List<>) || type2.GetGenericTypeDefinition() == typeof(IEnumerable<>))
+               && type1.GenericTypeArguments[0] == type2.GenericTypeArguments[0];
     }
 
     private static bool ContainedWithinEitherOne(string? first, string? second)

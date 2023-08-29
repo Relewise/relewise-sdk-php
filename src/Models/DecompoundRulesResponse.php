@@ -24,6 +24,7 @@ class DecompoundRulesResponse extends DecompoundRuleSearchRulesResponse
         $this->rules = $rules;
         return $this;
     }
+    /** @param DecompoundRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;

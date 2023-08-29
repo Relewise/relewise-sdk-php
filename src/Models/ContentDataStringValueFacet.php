@@ -35,6 +35,7 @@ class ContentDataStringValueFacet extends stringContentDataValueFacet
         $this->selected = $selected;
         return $this;
     }
+    /** @param ?string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;

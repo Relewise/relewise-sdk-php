@@ -4,15 +4,26 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** a RelevanceModifier that can change the relevance of a Product depending on whether it is contained in a set of ProductIds. */
 class ProductIdRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductIdRelevanceModifier, Relewise.Client";
+    /** The Ids of the Products that this RelevanceModifier will distinguish on. */
     public array $productIds;
+    /** The weight that this RelevanceModifier will multiply relevant products with. */
     public float $multiplyWeightBy;
+    /** Determines whether this RelevanceModifier should apply to all the Products that don't match one of the specified ProductIds instead. */
     public bool $negated;
-    public static function create(float $multiplyWeightBy = 1, bool $negated = false) : ProductIdRelevanceModifier
+    /**
+     * Creates a RelevanceModifier that can change the relevance of a Product depending on whether it is contained in a set of ProductIds.
+     * @param string[] $productIds The Ids of the Products that this RelevanceModifier will distinguish on.
+     * @param float $multiplyWeightBy The weight that this RelevanceModifier will multiply relevant products with.
+     * @param bool $negated Determines whether this RelevanceModifier should apply to all the Products that don't match one of the specified ProductIds instead.
+     */
+    public static function create(array $productIds, float $multiplyWeightBy = 1, bool $negated = false) : ProductIdRelevanceModifier
     {
         $result = new ProductIdRelevanceModifier();
+        $result->productIds = $productIds;
         $result->multiplyWeightBy = $multiplyWeightBy;
         $result->negated = $negated;
         return $result;
@@ -38,16 +49,22 @@ class ProductIdRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    /** The Ids of the Products that this RelevanceModifier will distinguish on. */
     function setProductIds(string ... $productIds)
     {
         $this->productIds = $productIds;
         return $this;
     }
+    /**
+     * The Ids of the Products that this RelevanceModifier will distinguish on.
+     * @param string[] $productIds new value.
+     */
     function setProductIdsFromArray(array $productIds)
     {
         $this->productIds = $productIds;
         return $this;
     }
+    /** The Ids of the Products that this RelevanceModifier will distinguish on. */
     function addToProductIds(string $productIds)
     {
         if (!isset($this->productIds))
@@ -57,11 +74,13 @@ class ProductIdRelevanceModifier extends RelevanceModifier
         array_push($this->productIds, $productIds);
         return $this;
     }
+    /** The weight that this RelevanceModifier will multiply relevant products with. */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    /** Determines whether this RelevanceModifier should apply to all the Products that don't match one of the specified ProductIds instead. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

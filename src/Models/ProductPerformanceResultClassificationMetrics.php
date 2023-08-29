@@ -55,6 +55,7 @@ class ProductPerformanceResultClassificationMetrics
         $this->combination[$key] = $value;
         return $this;
     }
+    /** @param array<string, string> $combination associative array. */
     function setCombinationFromAssociativeArray(array $combination)
     {
         $this->combination = $combination;

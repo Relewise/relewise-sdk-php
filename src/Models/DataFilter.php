@@ -114,6 +114,7 @@ abstract class DataFilter extends Filter
         $this->objectPath = $objectPath;
         return $this;
     }
+    /** @param ?string[] $objectPath new value. */
     function setObjectPathFromArray(array $objectPath)
     {
         $this->objectPath = $objectPath;

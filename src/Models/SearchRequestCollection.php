@@ -32,6 +32,7 @@ class SearchRequestCollection extends SearchRequest
         $this->requests = $requests;
         return $this;
     }
+    /** @param SearchRequest[] $requests new value. */
     function setRequestsFromArray(array $requests)
     {
         $this->requests = $requests;

@@ -31,6 +31,7 @@ class SearchResponseCollection extends SearchResponse
         $this->responses = $responses;
         return $this;
     }
+    /** @param SearchResponse[] $responses new value. */
     function setResponsesFromArray(array $responses)
     {
         $this->responses = $responses;

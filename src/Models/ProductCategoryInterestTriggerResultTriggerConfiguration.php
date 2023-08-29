@@ -79,6 +79,7 @@ abstract class ProductCategoryInterestTriggerResultTriggerConfiguration extends 
         $this->settings[$key] = $value;
         return $this;
     }
+    /** @param array<string, string> $settings associative array. */
     function setSettingsFromAssociativeArray(array $settings)
     {
         $this->settings = $settings;

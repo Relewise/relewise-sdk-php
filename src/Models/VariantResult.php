@@ -90,6 +90,7 @@ class VariantResult
         $this->specification[$key] = $value;
         return $this;
     }
+    /** @param array<string, string> $specification associative array. */
     function setSpecificationFromAssociativeArray(array $specification)
     {
         $this->specification = $specification;
@@ -100,6 +101,7 @@ class VariantResult
         $this->assortments = $assortments;
         return $this;
     }
+    /** @param int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
@@ -123,6 +125,7 @@ class VariantResult
         $this->data[$key] = $value;
         return $this;
     }
+    /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;

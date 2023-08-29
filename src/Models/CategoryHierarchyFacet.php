@@ -44,6 +44,7 @@ class CategoryHierarchyFacet extends CategoryPathValueFacet
         $this->selected = $selected;
         return $this;
     }
+    /** @param ?CategoryPath[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;

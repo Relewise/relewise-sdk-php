@@ -36,6 +36,7 @@ class ContentDataDoubleValueFacetResult extends floatContentDataValueFacetResult
         $this->selected = $selected;
         return $this;
     }
+    /** @param float[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
@@ -55,6 +56,7 @@ class ContentDataDoubleValueFacetResult extends floatContentDataValueFacetResult
         $this->available = $available;
         return $this;
     }
+    /** @param floatAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;

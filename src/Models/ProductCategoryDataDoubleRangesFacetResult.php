@@ -36,6 +36,7 @@ class ProductCategoryDataDoubleRangesFacetResult extends floatProductCategoryDat
         $this->selected = $selected;
         return $this;
     }
+    /** @param ?floatChainableRange[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
@@ -55,6 +56,7 @@ class ProductCategoryDataDoubleRangesFacetResult extends floatProductCategoryDat
         $this->available = $available;
         return $this;
     }
+    /** @param ?floatChainableRangeAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;

@@ -40,6 +40,7 @@ class DataIndexConfiguration
         $this->keys[$key] = $value;
         return $this;
     }
+    /** @param array<string, FieldIndexConfiguration> $keys associative array. */
     function setKeysFromAssociativeArray(array $keys)
     {
         $this->keys = $keys;

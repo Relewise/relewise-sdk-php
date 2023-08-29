@@ -1,5 +1,7 @@
 ﻿using System.CodeDom.Compiler;
 using System.Reflection;
+using System.Reflection.Metadata;
+using Generator.Extensions;
 
 namespace Generator.PhpMemberWriters;
 
@@ -12,14 +14,21 @@ public class PhpPropertySetterMethodsWriter
         this.phpWriter = phpWriter;
     }
 
-    public void Write(IndentedTextWriter writer, (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations)
+    public void Write(IndentedTextWriter writer, Type classType, (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations)
     {
         foreach (var (info, propertyTypeName, propertyName, lowerCaseName) in propertyInformations)
         {
+            var deprecationComment = info.GetCustomAttribute(typeof(ObsoleteAttribute)) is ObsoleteAttribute { } obsolete ? $"@deprecated {obsolete.Message}" : null;
             var propertyType = info.PropertyType;
             if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(Dictionary<,>) && propertyType.GenericTypeArguments is [var keyType, var valueType])
             {
-                writer.WriteLine($"function addTo{propertyName}({phpWriter.PhpTypeName(keyType)} $key, {phpWriter.PhpTypeName(valueType)} $value)");
+                var keyTypeName = phpWriter.PhpTypeName(keyType);
+                var valueTypeName = phpWriter.PhpTypeName(valueType);
+                writer.WriteCommentBlock(
+                    phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
+                    deprecationComment
+                );
+                writer.WriteLine($"function addTo{propertyName}({keyTypeName} $key, {valueTypeName} $value)");
                 writer.WriteLine("{");
                 writer.Indent++;
                 writer.WriteLine($"if (!isset($this->{lowerCaseName}))");
@@ -33,6 +42,11 @@ public class PhpPropertySetterMethodsWriter
                 writer.Indent--;
                 writer.WriteLine("}");
 
+                writer.WriteCommentBlock(
+                    phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
+                    deprecationComment,
+                    $"@param {phpWriter.DocumentationParameterTypeName(phpWriter.PhpTypeName(info), propertyType)} ${lowerCaseName} associative array."
+                );
                 writer.WriteLine($"function set{propertyName}FromAssociativeArray(array ${lowerCaseName})");
                 writer.WriteLine("{");
                 writer.Indent++;
@@ -43,6 +57,10 @@ public class PhpPropertySetterMethodsWriter
             }
             else
             {
+                writer.WriteCommentBlock(
+                    phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
+                    deprecationComment
+                );
                 var parameterType = phpWriter.BetterTypedParameterTypeName(propertyTypeName, propertyType);
                 writer.WriteLine($"function set{propertyName}({parameterType} ${lowerCaseName})");
                 writer.WriteLine("{");
@@ -64,6 +82,11 @@ public class PhpPropertySetterMethodsWriter
             }
             if (elementType is not null)
             {
+                writer.WriteCommentBlock(
+                    phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
+                    deprecationComment,
+                    $"@param {phpWriter.DocumentationParameterTypeName(propertyTypeName, propertyType)} ${lowerCaseName} new value."
+                );
                 writer.WriteLine($"function set{propertyName}FromArray(array ${lowerCaseName})");
                 writer.WriteLine("{");
                 writer.Indent++;
@@ -72,7 +95,13 @@ public class PhpPropertySetterMethodsWriter
                 writer.Indent--;
                 writer.WriteLine("}");
 
-                writer.WriteLine($"function addTo{propertyName}({phpWriter.PhpTypeName(elementType)} ${lowerCaseName})");
+                var elementTypeName = phpWriter.PhpTypeName(elementType);
+
+                writer.WriteCommentBlock(
+                    phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
+                    deprecationComment
+                );
+                writer.WriteLine($"function addTo{propertyName}({elementTypeName} ${lowerCaseName})");
                 writer.WriteLine("{");
                 writer.Indent++;
                 writer.WriteLine($"if (!isset($this->{lowerCaseName}))");

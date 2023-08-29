@@ -43,6 +43,7 @@ abstract class CategoryIdFilter extends Filter
         $this->categoryIds = $categoryIds;
         return $this;
     }
+    /** @param string[] $categoryIds new value. */
     function setCategoryIdsFromArray(array $categoryIds)
     {
         $this->categoryIds = $categoryIds;

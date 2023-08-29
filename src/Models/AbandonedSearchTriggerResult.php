@@ -51,6 +51,7 @@ class AbandonedSearchTriggerResult
         $this->searches = $searches;
         return $this;
     }
+    /** @param AbandonedSearch[] $searches new value. */
     function setSearchesFromArray(array $searches)
     {
         $this->searches = $searches;

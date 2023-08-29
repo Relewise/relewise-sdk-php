@@ -4,13 +4,25 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** a RelevanceModifier that can change the relevance of a Product depending on the list price falling within a specific Range. */
 class ProductListPriceRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductListPriceRelevanceModifier, Relewise.Client";
+    /** The range of list prices that this RelevanceModifier will distinguish on. */
     public ?floatRange $range;
+    /** The currency that is used to distinguish the price. */
     public ?Currency $currency;
+    /** The weight that this RelevanceModifier will multiply relevant products with. */
     public float $multiplyWeightBy;
+    /** Determines whether this RelevanceModifier should apply to all the Products that aren't contained within the specific Range instead. */
     public bool $negated;
+    /**
+     * Creates a RelevanceModifier that can change the relevance of a Product depending on the list price falling within a specific Range.
+     * @param ?floatRange $range The range of list prices that this RelevanceModifier will distinguish on.
+     * @param float $multiplyWeightBy The weight that this RelevanceModifier will multiply relevant products with.
+     * @param ?Currency $currency The currency that is used to distinguish the price.
+     * @param bool $negated Determines whether this RelevanceModifier should apply to all the Products that aren't contained within the specific Range instead.
+     */
     public static function create(?floatRange $range, float $multiplyWeightBy = 1, ?Currency $currency = Null, bool $negated = false) : ProductListPriceRelevanceModifier
     {
         $result = new ProductListPriceRelevanceModifier();
@@ -41,21 +53,25 @@ class ProductListPriceRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    /** The range of list prices that this RelevanceModifier will distinguish on. */
     function setRange(?floatRange $range)
     {
         $this->range = $range;
         return $this;
     }
+    /** The currency that is used to distinguish the price. */
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    /** The weight that this RelevanceModifier will multiply relevant products with. */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    /** Determines whether this RelevanceModifier should apply to all the Products that aren't contained within the specific Range instead. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

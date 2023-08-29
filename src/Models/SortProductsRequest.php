@@ -8,13 +8,14 @@ class SortProductsRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.SortProductsRequest, Relewise.Client";
     public array $productIds;
-    public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user) : SortProductsRequest
+    public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ... $productIds) : SortProductsRequest
     {
         $result = new SortProductsRequest();
         $result->language = $language;
         $result->currency = $currency;
         $result->displayedAtLocationType = $displayedAtLocationType;
         $result->user = $user;
+        $result->productIds = $productIds;
         return $result;
     }
     public static function hydrate(array $arr) : SortProductsRequest
@@ -35,6 +36,7 @@ class SortProductsRequest extends ProductRecommendationRequest
         $this->productIds = $productIds;
         return $this;
     }
+    /** @param string[] $productIds new value. */
     function setProductIdsFromArray(array $productIds)
     {
         $this->productIds = $productIds;

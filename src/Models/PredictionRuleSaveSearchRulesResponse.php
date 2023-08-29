@@ -34,6 +34,7 @@ abstract class PredictionRuleSaveSearchRulesResponse extends TimedResponse
         $this->rules = $rules;
         return $this;
     }
+    /** @param PredictionRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;

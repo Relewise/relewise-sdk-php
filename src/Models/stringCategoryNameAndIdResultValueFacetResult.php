@@ -43,6 +43,7 @@ abstract class stringCategoryNameAndIdResultValueFacetResult extends FacetResult
         $this->selected = $selected;
         return $this;
     }
+    /** @param string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
@@ -62,6 +63,7 @@ abstract class stringCategoryNameAndIdResultValueFacetResult extends FacetResult
         $this->available = $available;
         return $this;
     }
+    /** @param CategoryNameAndIdResultAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;
