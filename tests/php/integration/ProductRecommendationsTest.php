@@ -5,6 +5,7 @@ namespace Relewise\Tests\Integration;
 use \PHPUnit\Framework\TestCase;
 use Relewise\Factory\DataValueFactory;
 use Relewise\Factory\UserFactory;
+use Relewise\Models\CategoryScope;
 use Relewise\Models\ContainsCondition;
 use Relewise\Models\Currency;
 use Relewise\Models\ContainsConditionCollectionArgumentEvaluationMode;
@@ -13,7 +14,10 @@ use Relewise\Models\Language;
 use Relewise\Models\Money;
 use Relewise\Models\Multilingual;
 use Relewise\Models\MultilingualValue;
+use Relewise\Models\PopularityTypes;
+use Relewise\Models\PopularProductsRequest;
 use Relewise\Models\ProductAndVariantId;
+use Relewise\Models\ProductCategoryIdFilter;
 use Relewise\Models\ProductDataFilter;
 use Relewise\Models\ProductsViewedAfterViewingProductRequest;
 use Relewise\Models\PurchasedWithProductRequest;
@@ -40,6 +44,29 @@ class ProductRecommendationsTest extends BaseTestCase
         self::assertNotEmpty($response->recommendations);
     }
 
+    public function testPopularProductsWithFilter(): void
+    {
+        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
+
+        $purchasedWtihProduct = PopularProductsRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            "integration test",
+            UserFactory::byTemporaryId("t-Id"),
+            PopularityTypes::MostPurchased
+        )->setFilters(
+            FilterCollection::create(
+                ProductCategoryIdFilter::create(CategoryScope::Ancestor)
+                    ->setCategoryIds("c-1")
+            )
+        );
+
+        $response = $recommender->popularProducts($purchasedWtihProduct);
+
+        self::assertNotNull($response);
+        self::assertNotEmpty($response->recommendations);
+    }
+    
     public function testProductsViewedAfterViewingProduct(): void
     {
         $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
