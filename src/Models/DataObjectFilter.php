@@ -10,9 +10,10 @@ class DataObjectFilter
     public ?array $conditions;
     public ?int $skip;
     public ?int $take;
-    public static function create() : DataObjectFilter
+    public static function create(ObjectValueCondition ... $conditions) : DataObjectFilter
     {
         $result = new DataObjectFilter();
+        $result->conditions = $conditions;
         return $result;
     }
     public static function hydrate(array $arr) : DataObjectFilter

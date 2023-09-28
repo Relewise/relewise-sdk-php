@@ -11,10 +11,12 @@ class DataObjectValueSelector
     public ?DataObjectFilter $filter;
     public ?DataObjectValueSelector $childSelector;
     public ?DataObjectValueSelector $fallbackSelector;
-    public static function create(string $key) : DataObjectValueSelector
+    public static function create(string $key, ?DataObjectFilter $filter, ?DataObjectValueSelector $childSelector) : DataObjectValueSelector
     {
         $result = new DataObjectValueSelector();
         $result->key = $key;
+        $result->filter = $filter;
+        $result->childSelector = $childSelector;
         return $result;
     }
     public static function hydrate(array $arr) : DataObjectValueSelector
