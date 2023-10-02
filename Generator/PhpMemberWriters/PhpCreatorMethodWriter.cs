@@ -18,8 +18,11 @@ public class PhpCreatorMethodWriter
     {
         if (type.IsAbstract || type.IsInterface) return;
 
-        var coveringUniqueTypeMappableConstructorParameters = type
-            .GetConstructors() // All 
+        var allConstructors = type // We only want to generate constructors that aren't obsoleted.
+            .GetConstructors()
+            .Where(c => !Attribute.IsDefined(c, typeof(ObsoleteAttribute)));
+
+        var coveringUniqueTypeMappableConstructorParameters = allConstructors
             .FirstOrDefault(c => c.GetParameters().Length == c.GetParameters().DistinctBy(parameter => parameter.ParameterType).Count() // There are no parameters with the same type.
                                  && c.GetParameters().Length == propertyInformations.Length // There are as many parameters as there are properties.
                                  && c.GetParameters()
@@ -30,20 +33,19 @@ public class PhpCreatorMethodWriter
             ?.GetParameters()
             .ToArray();
 
-        var coveringTypeAndNameMappableConstructorParameters = type
-            .GetConstructors() // All 
-            .FirstOrDefault(c => c.GetParameters()
+        var coveringTypeAndNameMappableConstructorParameters = allConstructors
+            .Where(c => c.GetParameters()
                                      .All(parameter => propertyInformations
                                          .Count(property =>
                                              ContainedWithinEitherOne(property.propertyName, parameter.Name)
                                              && ParameterIsPersuadableIntoPropertyType(property.info, parameter)) == 1
                                      ) // There is exactly 1 property type that matches each parameter type and name
             )
+            .MaxBy(c => c.GetParameters().Length) // We take the largest constructor to be more deterministic.
             ?.GetParameters()
             .ToArray();
 
-        var allConstructorParametersIntersectionWithMappableNamesAndTypes = type
-            .GetConstructors()
+        var allConstructorParametersIntersectionWithMappableNamesAndTypes = allConstructors
             .Where(c => c.GetParameters().Length > 0)
             .MinBy(c => c.GetParameters().Length)
             ?.GetParameters()

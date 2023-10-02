@@ -10,9 +10,11 @@ class SearchRuleFilters
     public ?string $term;
     public ?bool $approved;
     public ?string $id;
-    public static function create() : SearchRuleFilters
+    public static function create(?string $term, ?bool $approved) : SearchRuleFilters
     {
         $result = new SearchRuleFilters();
+        $result->term = $term;
+        $result->approved = $approved;
         return $result;
     }
     public static function hydrate(array $arr) : SearchRuleFilters

@@ -35,6 +35,7 @@ class TimeoutTest extends BaseTestCase
                 $trackables,
                 ProductUpdate::create(
                     Product::create("p-many-" . $i)->setDataFromAssociativeArray($data),
+                    array(),
                     ProductUpdateUpdateKind::ReplaceProvidedProperties
                 )
             );

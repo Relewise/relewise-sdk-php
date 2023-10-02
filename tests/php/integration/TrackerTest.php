@@ -83,14 +83,15 @@ class TrackerTest extends BaseTestCase
                     ->addToData("SomeObject", DataValueFactory::object(array("SomeString" => DataValueFactory::string("SomeValue"))))
                     ->addToData("SomeStringList", DataValueFactory::stringList("FirstString", "SecondString"))
                     ->addToData("SomeBooleanList", DataValueFactory::booleanList(true, true, false)),
-                ProductUpdateUpdateKind::ReplaceProvidedProperties
-            )->setVariants(
-                ProductVariant::create("v-1")
-                    ->setDisplayName(
-                        Multilingual::create(
-                            MultilingualValue::create(Language::create("da-dk"), "MyVariant1")
+                array(
+                    ProductVariant::create("v-1")
+                        ->setDisplayName(
+                            Multilingual::create(
+                                MultilingualValue::create(Language::create("da-dk"), "MyVariant1")
+                            )
                         )
-                    )
+                ),
+                ProductUpdateUpdateKind::ReplaceProvidedProperties
             )
         );
 
@@ -142,6 +143,7 @@ class TrackerTest extends BaseTestCase
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
                 Product::create("unique_delete_test"),
+                array(),
                 ProductUpdateUpdateKind::ReplaceProvidedProperties
             )
         );
@@ -172,8 +174,9 @@ class TrackerTest extends BaseTestCase
                 Language::UNDEFINED,
                 Currency::UNDEFINED,
                 FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_delete_test")),
-                ProductAdministrativeActionUpdateKind::Delete
-            )->setVariantUpdateKind(ProductAdministrativeActionUpdateKind::None)
+                ProductAdministrativeActionUpdateKind::Delete,
+                ProductAdministrativeActionUpdateKind::None
+            )
         );
 
         $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
@@ -193,6 +196,7 @@ class TrackerTest extends BaseTestCase
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
                 Product::create("unique_disable_test"),
+                array(),
                 ProductUpdateUpdateKind::ReplaceProvidedProperties
             )
         );
@@ -206,8 +210,9 @@ class TrackerTest extends BaseTestCase
                 Language::UNDEFINED,
                 Currency::UNDEFINED,
                 FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_disable_test")),
-                ProductAdministrativeActionUpdateKind::Enable
-            )->setVariantUpdateKind(ProductAdministrativeActionUpdateKind::None)
+                ProductAdministrativeActionUpdateKind::Enable,
+                ProductAdministrativeActionUpdateKind::None
+            )
         );
         $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
 
@@ -234,8 +239,9 @@ class TrackerTest extends BaseTestCase
                 Language::UNDEFINED,
                 Currency::UNDEFINED,
                 FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_disable_test")),
-                ProductAdministrativeActionUpdateKind::Disable
-            )->setVariantUpdateKind(ProductAdministrativeActionUpdateKind::None)
+                ProductAdministrativeActionUpdateKind::Disable,
+                ProductAdministrativeActionUpdateKind::None
+            )
         );
 
         $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);

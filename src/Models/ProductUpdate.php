@@ -13,11 +13,14 @@ class ProductUpdate extends Trackable
     public ProductUpdateUpdateKind $variantUpdateKind;
     public bool $replaceExistingVariants;
     public ?BrandUpdateUpdateKind $brandUpdateKind;
-    public static function create(Product $product, ProductUpdateUpdateKind $productUpdateKind = ProductUpdateUpdateKind::UpdateAndAppend) : ProductUpdate
+    public static function create(Product $product, array $variants, ProductUpdateUpdateKind $productUpdateKind = ProductUpdateUpdateKind::UpdateAndAppend, ProductUpdateUpdateKind $variantUpdateKind = ProductUpdateUpdateKind::UpdateAndAppend, bool $replaceExistingVariants = false) : ProductUpdate
     {
         $result = new ProductUpdate();
         $result->product = $product;
+        $result->variants = $variants;
         $result->productUpdateKind = $productUpdateKind;
+        $result->variantUpdateKind = $variantUpdateKind;
+        $result->replaceExistingVariants = $replaceExistingVariants;
         $result->variantUpdateKind = ProductUpdateUpdateKind::UpdateAndAppend;
         $result->replaceExistingVariants = false;
         return $result;
