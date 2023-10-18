@@ -20,7 +20,8 @@ public class PhpCreatorMethodWriter
 
         var allConstructors = type // We only want to generate constructors that aren't obsoleted.
             .GetConstructors()
-            .Where(c => !Attribute.IsDefined(c, typeof(ObsoleteAttribute)));
+            .Where(c => !Attribute.IsDefined(c, typeof(ObsoleteAttribute)))
+            .ToArray();
 
         var coveringUniqueTypeMappableConstructorParameters = allConstructors
             .FirstOrDefault(c => c.GetParameters().Length == c.GetParameters().DistinctBy(parameter => parameter.ParameterType).Count() // There are no parameters with the same type.
@@ -135,13 +136,25 @@ public class PhpCreatorMethodWriter
             writer.WriteLine($"$result = new {typeName}();");
         }
 
-        var coveredParameterNames = coveringUniqueTypeMappableConstructorParameters?.Length > 0
-            ? coveringUniqueTypeMappableConstructorParameters.Select(parameter => parameter.Name)
-            : allConstructorParametersIntersectionWithMappableNamesAndTypes?.Length > 0
-                ? allConstructorParametersIntersectionWithMappableNamesAndTypes.Select(parameter => parameter.Name)
-                : new List<string>();
+        IEnumerable<string?> coveredParameterNames;
+        if (coveringUniqueTypeMappableConstructorParameters?.Length > 0)
+        {
+            coveredParameterNames = coveringUniqueTypeMappableConstructorParameters.Select(parameter => parameter.Name);
+        }
+        else if (coveringTypeAndNameMappableConstructorParameters?.Length > 0)
+        {
+            coveredParameterNames = coveringTypeAndNameMappableConstructorParameters.Select(parameter => parameter.Name);
+        }
+        else if (allConstructorParametersIntersectionWithMappableNamesAndTypes?.Length > 0)
+        {
+            coveredParameterNames = allConstructorParametersIntersectionWithMappableNamesAndTypes.Select(parameter => parameter.Name);
+        }
+        else
+        {
+            coveredParameterNames = Array.Empty<string>();
+        }
 
-        var extraDefaultSetParameters = type.GetConstructors()
+        var extraDefaultSetParameters = allConstructors
             .SelectMany(constructor => constructor.GetParameters())
             .Where(parameter => !coveredParameterNames.Contains(parameter.Name)
                                 && parameter.DefaultValue is { } defaultValue && (defaultValue.GetType().IsValueType)
