@@ -56,7 +56,7 @@ class ProductRecommendationsTest extends BaseTestCase
             PopularityTypes::MostPurchased
         )->setFilters(
             FilterCollection::create(
-                ProductCategoryIdFilter::create(CategoryScope::Ancestor)
+                ProductCategoryIdFilter::create(CategoryScope::Ancestor, negated: true)
                     ->setCategoryIds("c-1")
             )
         );
