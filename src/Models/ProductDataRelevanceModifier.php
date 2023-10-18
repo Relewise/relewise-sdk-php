@@ -36,7 +36,6 @@ class ProductDataRelevanceModifier extends RelevanceModifier
         $result->multiplierSelector = $multiplierSelector;
         $result->mustMatchAllConditions = $mustMatchAllConditions;
         $result->considerAsMatchIfKeyIsNotFound = $considerAsMatchIfKeyIsNotFound;
-        $result->mustMatchAllConditions = true;
         return $result;
     }
     public static function hydrate(array $arr) : ProductDataRelevanceModifier

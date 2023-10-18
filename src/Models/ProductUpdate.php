@@ -21,8 +21,6 @@ class ProductUpdate extends Trackable
         $result->productUpdateKind = $productUpdateKind;
         $result->variantUpdateKind = $variantUpdateKind;
         $result->replaceExistingVariants = $replaceExistingVariants;
-        $result->variantUpdateKind = ProductUpdateUpdateKind::UpdateAndAppend;
-        $result->replaceExistingVariants = false;
         return $result;
     }
     public static function hydrate(array $arr) : ProductUpdate
