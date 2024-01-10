@@ -38,7 +38,7 @@ class ContentRecommendationsTest extends BaseTestCase
             Language::create("en-US"),
             Currency::create("USD"),
             "integration test",
-            UserFactory::byTemporaryId("t-Id")
+            UserFactory::byTemporaryId("t-Id-1")
         )->setSinceMinutesAgo(500000);
 
         $response = $recommender->popularContents($popularContents);
