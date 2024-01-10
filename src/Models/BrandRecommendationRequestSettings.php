@@ -12,6 +12,7 @@ class BrandRecommendationRequestSettings
     public bool $allowReplacingOfRecentlyShownRecommendations;
     public bool $prioritizeDiversityBetweenRequests;
     public ?SelectedBrandPropertiesSettings $selectedBrandProperties;
+    public ?int $prioritizeResultsNotRecommendedWithinSeconds;
     public static function create() : BrandRecommendationRequestSettings
     {
         $result = new BrandRecommendationRequestSettings();
@@ -40,6 +41,10 @@ class BrandRecommendationRequestSettings
         {
             $result->selectedBrandProperties = SelectedBrandPropertiesSettings::hydrate($arr["selectedBrandProperties"]);
         }
+        if (array_key_exists("prioritizeResultsNotRecommendedWithinSeconds", $arr))
+        {
+            $result->prioritizeResultsNotRecommendedWithinSeconds = $arr["prioritizeResultsNotRecommendedWithinSeconds"];
+        }
         return $result;
     }
     function setNumberOfRecommendations(int $numberOfRecommendations)
@@ -65,6 +70,11 @@ class BrandRecommendationRequestSettings
     function setSelectedBrandProperties(?SelectedBrandPropertiesSettings $selectedBrandProperties)
     {
         $this->selectedBrandProperties = $selectedBrandProperties;
+        return $this;
+    }
+    function setPrioritizeResultsNotRecommendedWithinSeconds(?int $prioritizeResultsNotRecommendedWithinSeconds)
+    {
+        $this->prioritizeResultsNotRecommendedWithinSeconds = $prioritizeResultsNotRecommendedWithinSeconds;
         return $this;
     }
 }

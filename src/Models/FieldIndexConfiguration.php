@@ -11,13 +11,15 @@ class FieldIndexConfiguration
     public int $weight;
     public PredictionSourceType $predictionSourceType;
     public ?Parser $parser;
-    public static function create(bool $included, int $weight, PredictionSourceType $predictionSourceType, Parser $parser) : FieldIndexConfiguration
+    public ?MatchTypeSettings $matchTypeSettings;
+    public static function create(bool $included, int $weight, PredictionSourceType $predictionSourceType, Parser $parser, ?MatchTypeSettings $matchTypeSettings = Null) : FieldIndexConfiguration
     {
         $result = new FieldIndexConfiguration();
         $result->included = $included;
         $result->weight = $weight;
         $result->predictionSourceType = $predictionSourceType;
         $result->parser = $parser;
+        $result->matchTypeSettings = $matchTypeSettings;
         return $result;
     }
     public static function hydrate(array $arr) : FieldIndexConfiguration
@@ -39,6 +41,10 @@ class FieldIndexConfiguration
         {
             $result->parser = Parser::hydrate($arr["parser"]);
         }
+        if (array_key_exists("matchTypeSettings", $arr))
+        {
+            $result->matchTypeSettings = MatchTypeSettings::hydrate($arr["matchTypeSettings"]);
+        }
         return $result;
     }
     function setIncluded(bool $included)
@@ -59,6 +65,11 @@ class FieldIndexConfiguration
     function setParser(?Parser $parser)
     {
         $this->parser = $parser;
+        return $this;
+    }
+    function setMatchTypeSettings(?MatchTypeSettings $matchTypeSettings)
+    {
+        $this->matchTypeSettings = $matchTypeSettings;
         return $this;
     }
 }

@@ -30,6 +30,14 @@ abstract class TrackingRequest extends LicensedRequest
         {
             return TrackCartRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Tracking.TrackCompanyAdministrativeActionRequest, Relewise.Client")
+        {
+            return TrackCompanyAdministrativeActionRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Tracking.TrackCompanyUpdateRequest, Relewise.Client")
+        {
+            return TrackCompanyUpdateRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Tracking.TrackContentAdministrativeActionRequest, Relewise.Client")
         {
             return TrackContentAdministrativeActionRequest::hydrate($arr);

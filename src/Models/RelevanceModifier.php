@@ -60,6 +60,10 @@ abstract class RelevanceModifier
         {
             return VariantDataRelevanceModifier::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.RelevanceModifiers.VariantIdRelevanceModifier, Relewise.Client")
+        {
+            return VariantIdRelevanceModifier::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.RelevanceModifiers.VariantListPriceRelevanceModifier, Relewise.Client")
         {
             return VariantListPriceRelevanceModifier::hydrate($arr);

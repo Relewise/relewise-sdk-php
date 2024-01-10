@@ -12,6 +12,7 @@ class ContentCategoryRecommendationRequestSettings
     public bool $allowReplacingOfRecentlyShownRecommendations;
     public bool $prioritizeDiversityBetweenRequests;
     public SelectedContentCategoryPropertiesSettings $selectedContentCategoryProperties;
+    public ?int $prioritizeResultsNotRecommendedWithinSeconds;
     public static function create() : ContentCategoryRecommendationRequestSettings
     {
         $result = new ContentCategoryRecommendationRequestSettings();
@@ -40,6 +41,10 @@ class ContentCategoryRecommendationRequestSettings
         {
             $result->selectedContentCategoryProperties = SelectedContentCategoryPropertiesSettings::hydrate($arr["selectedContentCategoryProperties"]);
         }
+        if (array_key_exists("prioritizeResultsNotRecommendedWithinSeconds", $arr))
+        {
+            $result->prioritizeResultsNotRecommendedWithinSeconds = $arr["prioritizeResultsNotRecommendedWithinSeconds"];
+        }
         return $result;
     }
     function setNumberOfRecommendations(int $numberOfRecommendations)
@@ -65,6 +70,11 @@ class ContentCategoryRecommendationRequestSettings
     function setSelectedContentCategoryProperties(SelectedContentCategoryPropertiesSettings $selectedContentCategoryProperties)
     {
         $this->selectedContentCategoryProperties = $selectedContentCategoryProperties;
+        return $this;
+    }
+    function setPrioritizeResultsNotRecommendedWithinSeconds(?int $prioritizeResultsNotRecommendedWithinSeconds)
+    {
+        $this->prioritizeResultsNotRecommendedWithinSeconds = $prioritizeResultsNotRecommendedWithinSeconds;
         return $this;
     }
 }

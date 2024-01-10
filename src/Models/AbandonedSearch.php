@@ -9,6 +9,7 @@ abstract class AbandonedSearch
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.AbandonedSearch, Relewise.Client";
     public string $loweredSearchTerm;
     public int $hits;
+    public ?Language $language;
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -35,6 +36,10 @@ abstract class AbandonedSearch
         {
             $result->hits = $arr["hits"];
         }
+        if (array_key_exists("language", $arr))
+        {
+            $result->language = Language::hydrate($arr["language"]);
+        }
         return $result;
     }
     function setLoweredSearchTerm(string $loweredSearchTerm)
@@ -45,6 +50,11 @@ abstract class AbandonedSearch
     function setHits(int $hits)
     {
         $this->hits = $hits;
+        return $this;
+    }
+    function setLanguage(?Language $language)
+    {
+        $this->language = $language;
         return $this;
     }
 }

@@ -47,4 +47,9 @@ class AbandonedProductSearch extends ProductAndVariantIdAbandonedSearch
         $this->hits = $hits;
         return $this;
     }
+    function setLanguage(?Language $language)
+    {
+        $this->language = $language;
+        return $this;
+    }
 }

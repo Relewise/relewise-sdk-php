@@ -16,6 +16,7 @@ class OverriddenProductRecommendationRequestSettings
     public ?bool $prioritizeDiversityBetweenRequests;
     public ?bool $allowProductsCurrentlyInCart;
     public OverriddenSelectedBrandPropertiesSettings $selectedBrandProperties;
+    public ?int $prioritizeResultsNotRecommendedWithinSeconds;
     public static function create() : OverriddenProductRecommendationRequestSettings
     {
         $result = new OverriddenProductRecommendationRequestSettings();
@@ -59,6 +60,10 @@ class OverriddenProductRecommendationRequestSettings
         if (array_key_exists("selectedBrandProperties", $arr))
         {
             $result->selectedBrandProperties = OverriddenSelectedBrandPropertiesSettings::hydrate($arr["selectedBrandProperties"]);
+        }
+        if (array_key_exists("prioritizeResultsNotRecommendedWithinSeconds", $arr))
+        {
+            $result->prioritizeResultsNotRecommendedWithinSeconds = $arr["prioritizeResultsNotRecommendedWithinSeconds"];
         }
         return $result;
     }
@@ -105,6 +110,11 @@ class OverriddenProductRecommendationRequestSettings
     function setSelectedBrandProperties(OverriddenSelectedBrandPropertiesSettings $selectedBrandProperties)
     {
         $this->selectedBrandProperties = $selectedBrandProperties;
+        return $this;
+    }
+    function setPrioritizeResultsNotRecommendedWithinSeconds(?int $prioritizeResultsNotRecommendedWithinSeconds)
+    {
+        $this->prioritizeResultsNotRecommendedWithinSeconds = $prioritizeResultsNotRecommendedWithinSeconds;
         return $this;
     }
 }

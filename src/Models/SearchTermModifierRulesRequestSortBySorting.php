@@ -6,7 +6,7 @@ use DateTime;
 
 class SearchTermModifierRulesRequestSortBySorting
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Shared.Sorting`1[[Relewise.Client.Requests.Search.Rules.SearchTermModifierRulesRequest+SortBy, Relewise.Client, Version=1.96.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.Requests.Shared.Sorting`1[[Relewise.Client.Requests.Search.Rules.SearchTermModifierRulesRequest+SortBy, Relewise.Client, Version=1.130.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public SearchTermModifierRulesRequestSortBy $sortBy;
     public SortOrder $sortOrder;
     public static function create(SearchTermModifierRulesRequestSortBy $sortBy, SortOrder $sortOrder) : SearchTermModifierRulesRequestSortBySorting

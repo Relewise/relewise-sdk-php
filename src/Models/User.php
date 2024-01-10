@@ -19,9 +19,11 @@ class User
     public ?array $identifiers;
     /** Data stored on the user */
     public ?array $data;
-    /** A fingerprint, highly likely to change in the future, e.g. between a users sessions */
+    /** A fingerprint, highly likely to change in the future, e.g. between sessions */
     public ?string $fingerprint;
     public ?Channel $channel;
+    /** Company the user is associated with in the current context (Note: Companies themselves can be associated with a parent company, if the current user is acting on the behalf of a hierarchical chain of up to 2 companies) */
+    public ?Company $company;
     /**
      * User DTO
      * @param ?string $authenticatedId A persistent Id for current user, e.g. a database-id
@@ -90,6 +92,10 @@ class User
         if (array_key_exists("channel", $arr))
         {
             $result->channel = Channel::hydrate($arr["channel"]);
+        }
+        if (array_key_exists("company", $arr))
+        {
+            $result->company = Company::hydrate($arr["company"]);
         }
         return $result;
     }
@@ -168,7 +174,7 @@ class User
         $this->data = $data;
         return $this;
     }
-    /** A fingerprint, highly likely to change in the future, e.g. between a users sessions */
+    /** A fingerprint, highly likely to change in the future, e.g. between sessions */
     function setFingerprint(?string $fingerprint)
     {
         $this->fingerprint = $fingerprint;
@@ -177,6 +183,12 @@ class User
     function setChannel(?Channel $channel)
     {
         $this->channel = $channel;
+        return $this;
+    }
+    /** Company the user is associated with in the current context (Note: Companies themselves can be associated with a parent company, if the current user is acting on the behalf of a hierarchical chain of up to 2 companies) */
+    function setCompany(?Company $company)
+    {
+        $this->company = $company;
         return $this;
     }
 }

@@ -12,6 +12,7 @@ class ProductCategoryRecommendationRequestSettings
     public bool $allowReplacingOfRecentlyShownRecommendations;
     public bool $prioritizeDiversityBetweenRequests;
     public SelectedProductCategoryPropertiesSettings $selectedProductCategoryProperties;
+    public ?int $prioritizeResultsNotRecommendedWithinSeconds;
     public static function create() : ProductCategoryRecommendationRequestSettings
     {
         $result = new ProductCategoryRecommendationRequestSettings();
@@ -40,6 +41,10 @@ class ProductCategoryRecommendationRequestSettings
         {
             $result->selectedProductCategoryProperties = SelectedProductCategoryPropertiesSettings::hydrate($arr["selectedProductCategoryProperties"]);
         }
+        if (array_key_exists("prioritizeResultsNotRecommendedWithinSeconds", $arr))
+        {
+            $result->prioritizeResultsNotRecommendedWithinSeconds = $arr["prioritizeResultsNotRecommendedWithinSeconds"];
+        }
         return $result;
     }
     function setNumberOfRecommendations(int $numberOfRecommendations)
@@ -65,6 +70,11 @@ class ProductCategoryRecommendationRequestSettings
     function setSelectedProductCategoryProperties(SelectedProductCategoryPropertiesSettings $selectedProductCategoryProperties)
     {
         $this->selectedProductCategoryProperties = $selectedProductCategoryProperties;
+        return $this;
+    }
+    function setPrioritizeResultsNotRecommendedWithinSeconds(?int $prioritizeResultsNotRecommendedWithinSeconds)
+    {
+        $this->prioritizeResultsNotRecommendedWithinSeconds = $prioritizeResultsNotRecommendedWithinSeconds;
         return $this;
     }
 }
