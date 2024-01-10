@@ -9,11 +9,10 @@ class Channel
     public string $typeDefinition = "Relewise.Client.Requests.Channel, Relewise.Client";
     public string $name;
     public ?Channel $subChannel;
-    public static function create(string $name, Channel $subChannel) : Channel
+    public static function create(string $name) : Channel
     {
         $result = new Channel();
         $result->name = $name;
-        $result->subChannel = $subChannel;
         return $result;
     }
     public static function hydrate(array $arr) : Channel

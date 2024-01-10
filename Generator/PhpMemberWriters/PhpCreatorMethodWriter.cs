@@ -2,11 +2,17 @@
 using System.CodeDom.Compiler;
 using System.Globalization;
 using System.Reflection;
+using Relewise.Client.Requests;
 
 namespace Generator.PhpMemberWriters;
 
 public class PhpCreatorMethodWriter
 {
+    private readonly Dictionary<Type, ConstructorInfo> overrideDefaultConstructors = new()
+    {
+        [typeof(Channel)] = typeof(Channel).GetConstructor(new[] { typeof(string) })! // We override any matching logic and choose the constructor with one string parameter.
+    };
+
     private readonly PhpWriter phpWriter;
 
     public PhpCreatorMethodWriter(PhpWriter phpWriter)
@@ -62,7 +68,31 @@ public class PhpCreatorMethodWriter
             )
             .ToArray();
 
-        if (coveringUniqueTypeMappableConstructorParameters?.Length > 0)
+        if (overrideDefaultConstructors.TryGetValue(type, out ConstructorInfo? defaultConstructor))
+        {
+            var parameters = defaultConstructor.GetParameters();
+
+            writer.WriteCommentBlock(
+                parameters.Select(p => phpWriter.XmlDocumentation.GetConstructorParam(typeName, parameters, p))
+                    .Prepend(phpWriter.XmlDocumentation.GetConstructorSummary(typeName, parameters))
+                    .ToArray()
+            );
+
+            writer.WriteLine($"public static function create({ParameterList(parameters)}) : {typeName}");
+            writer.WriteLine("{");
+            writer.Indent++;
+            writer.WriteLine($"$result = new {typeName}();");
+
+            foreach (var parameter in parameters)
+            {
+                var propertyName = propertyInformations
+                    .Single(property => ContainedWithinEitherOne(property.propertyName, parameter.Name) && ParameterIsPersuadableIntoPropertyType(property.info, parameter))
+                    .lowerCaseName;
+
+                writer.WriteLine($"$result->{propertyName} = ${parameter.Name};");
+            }
+        }
+        else if (coveringUniqueTypeMappableConstructorParameters?.Length > 0)
         {
             writer.WriteCommentBlock(
                 coveringUniqueTypeMappableConstructorParameters.Select(p => phpWriter.XmlDocumentation.GetConstructorParam(typeName, coveringUniqueTypeMappableConstructorParameters, p))
