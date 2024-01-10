@@ -10,6 +10,7 @@ use Relewise\Models\CategoryNameAndId;
 use Relewise\Models\CategoryPath;
 use Relewise\Models\CategoryScope;
 use Relewise\Models\CategoryUpdateUpdateKind;
+use Relewise\Models\Channel;
 use Relewise\Models\Currency;
 use Relewise\Models\Filter;
 use Relewise\Models\FilterCollection;
@@ -48,9 +49,12 @@ class TrackerTest extends BaseTestCase
     {
         $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
 
+        $user = UserFactory::byTemporaryId("t-Id")
+            ->setChannel(Channel::create("Channel-1"));
+
         $productViewRequest = TrackProductViewRequest::create(
             ProductView::create(
-                UserFactory::byTemporaryId("t-Id"),
+                $user,
                 Product::create("p-1"),
                 ProductVariant::create("v-1")
             )
