@@ -12,6 +12,7 @@ class OverriddenContentRecommendationRequestSettings
     public ?bool $allowReplacingOfRecentlyShownRecommendations;
     public OverriddenSelectedContentPropertiesSettings $selectedContentProperties;
     public ?bool $prioritizeDiversityBetweenRequests;
+    public ?int $prioritizeResultsNotRecommendedWithinSeconds;
     public static function create() : OverriddenContentRecommendationRequestSettings
     {
         $result = new OverriddenContentRecommendationRequestSettings();
@@ -40,6 +41,10 @@ class OverriddenContentRecommendationRequestSettings
         {
             $result->prioritizeDiversityBetweenRequests = $arr["prioritizeDiversityBetweenRequests"];
         }
+        if (array_key_exists("prioritizeResultsNotRecommendedWithinSeconds", $arr))
+        {
+            $result->prioritizeResultsNotRecommendedWithinSeconds = $arr["prioritizeResultsNotRecommendedWithinSeconds"];
+        }
         return $result;
     }
     function setNumberOfRecommendations(?int $numberOfRecommendations)
@@ -65,6 +70,11 @@ class OverriddenContentRecommendationRequestSettings
     function setPrioritizeDiversityBetweenRequests(?bool $prioritizeDiversityBetweenRequests)
     {
         $this->prioritizeDiversityBetweenRequests = $prioritizeDiversityBetweenRequests;
+        return $this;
+    }
+    function setPrioritizeResultsNotRecommendedWithinSeconds(?int $prioritizeResultsNotRecommendedWithinSeconds)
+    {
+        $this->prioritizeResultsNotRecommendedWithinSeconds = $prioritizeResultsNotRecommendedWithinSeconds;
         return $this;
     }
 }

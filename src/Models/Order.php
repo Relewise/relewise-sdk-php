@@ -12,6 +12,7 @@ class Order extends Trackable
     public array $lineItems;
     public string $orderNumber;
     public string $cartName;
+    public ?array $data;
     public static function create(User $user, Money $subtotal, string $orderNumber, array $lineItems, string $cartName = "default") : Order
     {
         $result = new Order();
@@ -48,6 +49,14 @@ class Order extends Trackable
         if (array_key_exists("cartName", $arr))
         {
             $result->cartName = $arr["cartName"];
+        }
+        if (array_key_exists("data", $arr))
+        {
+            $result->data = array();
+            foreach($arr["data"] as $key => $value)
+            {
+                $result->data[$key] = DataValue::hydrate($value);
+            }
         }
         return $result;
     }
@@ -89,6 +98,21 @@ class Order extends Trackable
     function setCartName(string $cartName)
     {
         $this->cartName = $cartName;
+        return $this;
+    }
+    function addToData(string $key, DataValue $value)
+    {
+        if (!isset($this->data))
+        {
+            $this->data = array();
+        }
+        $this->data[$key] = $value;
+        return $this;
+    }
+    /** @param ?array<string, DataValue> $data associative array. */
+    function setDataFromAssociativeArray(array $data)
+    {
+        $this->data = $data;
         return $this;
     }
 }

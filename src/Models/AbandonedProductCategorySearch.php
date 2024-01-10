@@ -47,4 +47,9 @@ class AbandonedProductCategorySearch extends stringAbandonedSearch
         $this->hits = $hits;
         return $this;
     }
+    function setLanguage(?Language $language)
+    {
+        $this->language = $language;
+        return $this;
+    }
 }

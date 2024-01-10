@@ -21,6 +21,10 @@ abstract class DataFilter extends Filter
         {
             return BrandDataFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.CompanyDataFilter, Relewise.Client")
+        {
+            return CompanyDataFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.ContentCategoryDataFilter, Relewise.Client")
         {
             return ContentCategoryDataFilter::hydrate($arr);

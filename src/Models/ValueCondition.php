@@ -31,6 +31,10 @@ abstract class ValueCondition
         {
             return LessThanCondition::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Conditions.RelativeDateTimeCondition, Relewise.Client")
+        {
+            return RelativeDateTimeCondition::hydrate($arr);
+        }
     }
     public static function hydrateBase(mixed $result, array $arr)
     {

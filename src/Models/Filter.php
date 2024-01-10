@@ -4,9 +4,11 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** a Filter that can be used to define which entities to include in queries. */
 abstract class Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.Filter, Relewise.Client";
+    /** Defines whether the Filter should be exclude the matching entities instead og including the matching entities. */
     public bool $negated;
     public ?FilterSettings $settings;
     public static function hydrate(array $arr)
@@ -31,6 +33,14 @@ abstract class Filter
         if ($type=="Relewise.Client.Requests.Filters.CartDataFilter, Relewise.Client")
         {
             return CartDataFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.CompanyDataFilter, Relewise.Client")
+        {
+            return CompanyDataFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.CompanyIdFilter, Relewise.Client")
+        {
+            return CompanyIdFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.ContentAssortmentFilter, Relewise.Client")
         {
@@ -140,9 +150,25 @@ abstract class Filter
         {
             return ProductListPriceFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.ProductRecentlyPurchasedByCompanyFilter, Relewise.Client")
+        {
+            return ProductRecentlyPurchasedByCompanyFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.ProductRecentlyPurchasedByUserCompanyFilter, Relewise.Client")
+        {
+            return ProductRecentlyPurchasedByUserCompanyFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.ProductRecentlyPurchasedByUserFilter, Relewise.Client")
         {
             return ProductRecentlyPurchasedByUserFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.ProductRecentlyViewedByCompanyFilter, Relewise.Client")
+        {
+            return ProductRecentlyViewedByCompanyFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.ProductRecentlyViewedByUserCompanyFilter, Relewise.Client")
+        {
+            return ProductRecentlyViewedByUserCompanyFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.ProductRecentlyViewedByUserFilter, Relewise.Client")
         {
@@ -189,6 +215,7 @@ abstract class Filter
         }
         return $result;
     }
+    /** Defines whether the Filter should be exclude the matching entities instead og including the matching entities. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

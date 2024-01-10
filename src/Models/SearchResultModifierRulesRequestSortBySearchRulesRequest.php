@@ -6,7 +6,7 @@ use DateTime;
 
 abstract class SearchResultModifierRulesRequestSortBySearchRulesRequest extends LicensedRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SearchRulesRequest`1[[Relewise.Client.Requests.Search.Rules.SearchResultModifierRulesRequest+SortBy, Relewise.Client, Version=1.96.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SearchRulesRequest`1[[Relewise.Client.Requests.Search.Rules.SearchResultModifierRulesRequest+SortBy, Relewise.Client, Version=1.130.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public SearchRuleFilters $filters;
     public SearchResultModifierRulesRequestSortBySorting $sorting;
     public int $skip;

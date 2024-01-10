@@ -26,6 +26,14 @@ abstract class Trackable
         {
             return Cart::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.CompanyAdministrativeAction, Relewise.Client")
+        {
+            return CompanyAdministrativeAction::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.CompanyUpdate, Relewise.Client")
+        {
+            return CompanyUpdate::hydrate($arr);
+        }
         if ($type=="Relewise.Client.DataTypes.ContentAdministrativeAction, Relewise.Client")
         {
             return ContentAdministrativeAction::hydrate($arr);

@@ -8,6 +8,8 @@ use Relewise\Models\TrackBrandAdministrativeActionRequest;
 use Relewise\Models\TrackBrandUpdateRequest;
 use Relewise\Models\TrackBrandViewRequest;
 use Relewise\Models\TrackCartRequest;
+use Relewise\Models\TrackCompanyAdministrativeActionRequest;
+use Relewise\Models\TrackCompanyUpdateRequest;
 use Relewise\Models\TrackContentAdministrativeActionRequest;
 use Relewise\Models\TrackContentCategoryAdministrativeActionRequest;
 use Relewise\Models\TrackContentCategoryUpdateRequest;
@@ -50,6 +52,14 @@ class Tracker extends RelewiseClient
     public function trackCart(TrackCartRequest $trackingRequest)
     {
         return $this->requestAndValidate("TrackCartRequest", $trackingRequest);
+    }
+    public function trackCompanyAdministrativeAction(TrackCompanyAdministrativeActionRequest $trackingRequest)
+    {
+        return $this->requestAndValidate("TrackCompanyAdministrativeActionRequest", $trackingRequest);
+    }
+    public function trackCompanyUpdate(TrackCompanyUpdateRequest $trackingRequest)
+    {
+        return $this->requestAndValidate("TrackCompanyUpdateRequest", $trackingRequest);
     }
     public function trackContentAdministrativeAction(TrackContentAdministrativeActionRequest $trackingRequest)
     {

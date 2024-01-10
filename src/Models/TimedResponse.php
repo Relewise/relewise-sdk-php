@@ -191,13 +191,13 @@ abstract class TimedResponse
         {
             return StemmingRulesResponse::hydrate($arr);
         }
-        if ($type=="Relewise.Client.Responses.Merchandising.MerchandisingRuleResponse, Relewise.Client")
-        {
-            return MerchandisingRuleResponse::hydrate($arr);
-        }
         if ($type=="Relewise.Client.Responses.Merchandising.MerchandisingRuleCollectionResponse, Relewise.Client")
         {
             return MerchandisingRuleCollectionResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.Merchandising.MerchandisingRuleResponse, Relewise.Client")
+        {
+            return MerchandisingRuleResponse::hydrate($arr);
         }
         if ($type=="Relewise.Client.Responses.Analyzers.ProductPerformanceResponse, Relewise.Client")
         {

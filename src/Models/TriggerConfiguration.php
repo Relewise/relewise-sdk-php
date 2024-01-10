@@ -34,6 +34,10 @@ abstract class TriggerConfiguration
         {
             return ContentCategoryInterestTriggerConfiguration::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.EntityPropertyChangedTriggerConfiguration, Relewise.Client")
+        {
+            return EntityPropertyChangedTriggerConfiguration::hydrate($arr);
+        }
         if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.ProductCategoryInterestTriggerConfiguration, Relewise.Client")
         {
             return ProductCategoryInterestTriggerConfiguration::hydrate($arr);

@@ -30,6 +30,10 @@ abstract class ITriggerResult
         {
             return ProductInterestTriggerResult::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Responses.Triggers.Results.ProductPropertyChangedTriggerResult, Relewise.Client")
+        {
+            return ProductPropertyChangedTriggerResult::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Responses.Triggers.Results.UserActivityTriggerResult, Relewise.Client")
         {
             return UserActivityTriggerResult::hydrate($arr);

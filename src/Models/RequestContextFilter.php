@@ -12,6 +12,7 @@ class RequestContextFilter
     public array $locations;
     public array $languages;
     public array $currencies;
+    public RequestFilterCriteria $filters;
     public static function create() : RequestContextFilter
     {
         $result = new RequestContextFilter();
@@ -51,6 +52,10 @@ class RequestContextFilter
             {
                 array_push($result->currencies, Currency::hydrate($value));
             }
+        }
+        if (array_key_exists("filters", $arr))
+        {
+            $result->filters = RequestFilterCriteria::hydrate($arr["filters"]);
         }
         return $result;
     }
@@ -122,6 +127,11 @@ class RequestContextFilter
             $this->currencies = array();
         }
         array_push($this->currencies, $currencies);
+        return $this;
+    }
+    function setFilters(RequestFilterCriteria $filters)
+    {
+        $this->filters = $filters;
         return $this;
     }
 }
