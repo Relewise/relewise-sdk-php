@@ -135,7 +135,7 @@ class DataValueFactory {
 
     /** This method takes an array of arrays with two keys "Language" being a Language and "Values" being an array of strings.
      * Example:
-     * array(array("Language" => "da", "Values" => array("Hallo")), array("Language" => "en", "Values" => array("Hello")))
+     * array(array("Language" => Language::create("da"), "Values" => array("Hallo")), array("Language" => Language::create("en"), "Values" => array("Hello")))
     */
     public static function multilingualCollection(array $values) : DataValue {
         return DataValue::create()
