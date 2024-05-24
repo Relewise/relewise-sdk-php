@@ -51,6 +51,10 @@ public static class XMLDocsFetcher
                     {
                         paraWrapper.OuterHtml = paraWrapper.InnerHtml.Trim();
                     }
+                    foreach (var cWrapper in child.Children.Where(c => c.TagName == "C"))
+                    {
+                        cWrapper.OuterHtml = cWrapper.InnerHtml.Trim();
+                    }
 
                     result.Summaries.TryAdd(member.GetAttribute("name")!, HttpUtility.HtmlDecode(JoinInOneLine(child.InnerHtml)));
                 }
