@@ -24,7 +24,9 @@ public class PhpCreatorMethodWriter
         this.phpWriter = phpWriter;
     }
 
-    public void Write(IndentedTextWriter writer, Type type, string typeName, (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations)
+    public void Write(IndentedTextWriter writer, Type type, string typeName,
+        (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName)[] settablePropertyInformations,
+        (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName)[] ownedPropertyInformations)
     {
         if (type.IsAbstract || type.IsInterface) return;
 
@@ -35,9 +37,9 @@ public class PhpCreatorMethodWriter
 
         var coveringUniqueTypeMappableConstructorParameters = allConstructors
             .FirstOrDefault(c => c.GetParameters().Length == c.GetParameters().DistinctBy(parameter => parameter.ParameterType).Count() // There are no parameters with the same type.
-                                 && c.GetParameters().Length == propertyInformations.Length // There are as many parameters as there are properties.
+                                 && c.GetParameters().Length == ownedPropertyInformations.Length // There are as many parameters as there are properties.
                                  && c.GetParameters()
-                                     .All(parameter => propertyInformations
+                                     .All(parameter => ownedPropertyInformations
                                          .Any(property => ParameterIsPersuadableIntoPropertyType(property.info, parameter))
                                      ) // There is a property type that matches each parameter type.
             )
@@ -46,7 +48,7 @@ public class PhpCreatorMethodWriter
 
         var coveringTypeAndNameMappableConstructorParameters = allConstructors
             .Where(c => c.GetParameters()
-                                     .All(parameter => propertyInformations
+                                     .All(parameter => ownedPropertyInformations
                                          .Count(property =>
                                              ContainedWithinEitherOne(property.propertyName, parameter.Name)
                                              && ParameterIsPersuadableIntoPropertyType(property.info, parameter)) == 1
@@ -89,7 +91,8 @@ public class PhpCreatorMethodWriter
 
             foreach (var parameter in parameters)
             {
-                var propertyName = propertyInformations
+                // We use settablePropertyInformations here as the only place as it was an error originally that we didn't use it, but it would create too many breaking changes if we corrected in all places.
+                var propertyName = settablePropertyInformations
                     .Single(property => ContainedWithinEitherOne(property.propertyName, parameter.Name) && ParameterIsPersuadableIntoPropertyType(property.info, parameter))
                     .lowerCaseName;
 
@@ -111,7 +114,7 @@ public class PhpCreatorMethodWriter
 
             foreach (var parameter in coveringUniqueTypeMappableConstructorParameters)
             {
-                var propertyName = propertyInformations
+                var propertyName = ownedPropertyInformations
                     .Single(property => ParameterIsPersuadableIntoPropertyType(property.info, parameter))
                     .lowerCaseName;
 
@@ -133,7 +136,7 @@ public class PhpCreatorMethodWriter
 
             foreach (var parameter in coveringTypeAndNameMappableConstructorParameters)
             {
-                var propertyName = propertyInformations
+                var propertyName = ownedPropertyInformations
                     .Single(property => ContainedWithinEitherOne(property.propertyName, parameter.Name) && ParameterIsPersuadableIntoPropertyType(property.info, parameter))
                     .lowerCaseName;
 
