@@ -47,7 +47,11 @@ public static class XMLDocsFetcher
                     {
                         seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? string.Empty;
                     }
-                    
+                    foreach (var paraWrapper in child.Children.Where(c => c.TagName == "PARA"))
+                    {
+                        paraWrapper.OuterHtml = paraWrapper.InnerHtml.Trim();
+                    }
+
                     result.Summaries.TryAdd(member.GetAttribute("name")!, HttpUtility.HtmlDecode(JoinInOneLine(child.InnerHtml)));
                 }
                 else if (child.TagName is "PARAM" && child.NextSibling?.TextContent is { Length: > 0 } text)

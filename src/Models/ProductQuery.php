@@ -18,7 +18,7 @@ class ProductQuery extends LicensedRequest
     public bool $includeDisabledProducts;
     public bool $includeDisabledVariants;
     public bool $excludeProductsWithNoVariants;
-    /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. <para>Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests.</para> */
+    /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests. */
     public ?string $nextPageToken;
     /** The size of the page requested. */
     public ?int $pageSize;
@@ -127,7 +127,7 @@ class ProductQuery extends LicensedRequest
         $this->excludeProductsWithNoVariants = $excludeProductsWithNoVariants;
         return $this;
     }
-    /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. <para>Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests.</para> */
+    /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests. */
     function setNextPageToken(?string $nextPageToken)
     {
         $this->nextPageToken = $nextPageToken;
