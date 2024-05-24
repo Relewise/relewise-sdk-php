@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Generator;
 
@@ -48,7 +49,7 @@ public class PhpTypeResolver
 
     private static string GetTypeName(Type type)
     {
-        var name = type.Name.Replace("`1", "").Replace("`2", "").Replace("`3", "");
+        var name = Regex.Replace(type.Name, @"`\d+", "");
 
         if (type.IsNested)
         {
