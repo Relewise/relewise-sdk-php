@@ -9,13 +9,14 @@ class ProductRecentlyPurchasedByCompanyFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductRecentlyPurchasedByCompanyFilter, Relewise.Client";
     /** The time from which a Product should have been bought by any of the companies to be included by the filter. */
-    public DateTime $sinceUtc;
+    public ?DateTime $sinceUtc;
     /** The companies that should be evaluated in this filter. */
     public array $companyIds;
-    public static function create(DateTime $sinceUtc, bool $negated = false) : ProductRecentlyPurchasedByCompanyFilter
+    /** The time in minutes from which a Product should have been viewed by any of the companies to be included by the filter. */
+    public ?int $sinceMinutesAgo;
+    public static function create(bool $negated = false) : ProductRecentlyPurchasedByCompanyFilter
     {
         $result = new ProductRecentlyPurchasedByCompanyFilter();
-        $result->sinceUtc = $sinceUtc;
         $result->negated = $negated;
         return $result;
     }
@@ -34,10 +35,14 @@ class ProductRecentlyPurchasedByCompanyFilter extends Filter
                 array_push($result->companyIds, $value);
             }
         }
+        if (array_key_exists("sinceMinutesAgo", $arr))
+        {
+            $result->sinceMinutesAgo = $arr["sinceMinutesAgo"];
+        }
         return $result;
     }
     /** The time from which a Product should have been bought by any of the companies to be included by the filter. */
-    function setSinceUtc(DateTime $sinceUtc)
+    function setSinceUtc(?DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
@@ -65,6 +70,12 @@ class ProductRecentlyPurchasedByCompanyFilter extends Filter
             $this->companyIds = array();
         }
         array_push($this->companyIds, $companyIds);
+        return $this;
+    }
+    /** The time in minutes from which a Product should have been viewed by any of the companies to be included by the filter. */
+    function setSinceMinutesAgo(?int $sinceMinutesAgo)
+    {
+        $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
     function setNegated(bool $negated)

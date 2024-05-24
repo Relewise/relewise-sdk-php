@@ -8,14 +8,20 @@ class ProductQuery extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Queries.ProductQuery, Relewise.Client";
     public FilterCollection $filters;
+    /** @deprecated For better paging support, please use NextPageToken and PageSize */
     public int $numberOfResults;
     public ?Language $language;
     public ?Currency $currency;
+    /** @deprecated For better paging support, please use NextPageToken and PageSize */
     public int $skipNumberOfResults;
     public bool $returnTotalNumberOfResults;
     public bool $includeDisabledProducts;
     public bool $includeDisabledVariants;
     public bool $excludeProductsWithNoVariants;
+    /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. <para>Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests.</para> */
+    public ?string $nextPageToken;
+    /** The size of the page requested. */
+    public ?int $pageSize;
     public static function create(?Language $language = Null, ?Currency $currency = Null) : ProductQuery
     {
         $result = new ProductQuery();
@@ -64,6 +70,14 @@ class ProductQuery extends LicensedRequest
         {
             $result->excludeProductsWithNoVariants = $arr["excludeProductsWithNoVariants"];
         }
+        if (array_key_exists("nextPageToken", $arr))
+        {
+            $result->nextPageToken = $arr["nextPageToken"];
+        }
+        if (array_key_exists("pageSize", $arr))
+        {
+            $result->pageSize = $arr["pageSize"];
+        }
         return $result;
     }
     function setFilters(FilterCollection $filters)
@@ -71,6 +85,7 @@ class ProductQuery extends LicensedRequest
         $this->filters = $filters;
         return $this;
     }
+    /** @deprecated For better paging support, please use NextPageToken and PageSize */
     function setNumberOfResults(int $numberOfResults)
     {
         $this->numberOfResults = $numberOfResults;
@@ -86,6 +101,7 @@ class ProductQuery extends LicensedRequest
         $this->currency = $currency;
         return $this;
     }
+    /** @deprecated For better paging support, please use NextPageToken and PageSize */
     function setSkipNumberOfResults(int $skipNumberOfResults)
     {
         $this->skipNumberOfResults = $skipNumberOfResults;
@@ -109,6 +125,18 @@ class ProductQuery extends LicensedRequest
     function setExcludeProductsWithNoVariants(bool $excludeProductsWithNoVariants)
     {
         $this->excludeProductsWithNoVariants = $excludeProductsWithNoVariants;
+        return $this;
+    }
+    /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. <para>Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests.</para> */
+    function setNextPageToken(?string $nextPageToken)
+    {
+        $this->nextPageToken = $nextPageToken;
+        return $this;
+    }
+    /** The size of the page requested. */
+    function setPageSize(?int $pageSize)
+    {
+        $this->pageSize = $pageSize;
         return $this;
     }
 }

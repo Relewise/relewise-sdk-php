@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
-class ObservableProductAttributeSelector
+class ObservableProductAttributeSelector extends ProductPropertySelector
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.EntityPropertySelectors.ObservableProductAttributeSelector, Relewise.Client";
     public ObservableProductAttribute $attribute;
@@ -16,7 +16,7 @@ class ObservableProductAttributeSelector
     }
     public static function hydrate(array $arr) : ObservableProductAttributeSelector
     {
-        $result = new ObservableProductAttributeSelector();
+        $result = ProductPropertySelector::hydrateBase(new ObservableProductAttributeSelector(), $arr);
         if (array_key_exists("attribute", $arr))
         {
             $result->attribute = ObservableProductAttribute::from($arr["attribute"]);

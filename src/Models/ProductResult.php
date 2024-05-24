@@ -20,6 +20,9 @@ class ProductResult
     public ?float $salesPrice;
     public BrandResult $brand;
     public array $allVariants;
+    public PurchasedByUserCompanyInfo $purchasedByUserCompany;
+    public ViewedByUserCompanyInfo $viewedByUserCompany;
+    public array $filteredVariants;
     public static function create(string $productId, int $rank) : ProductResult
     {
         $result = new ProductResult();
@@ -96,6 +99,22 @@ class ProductResult
             foreach($arr["allVariants"] as &$value)
             {
                 array_push($result->allVariants, VariantResult::hydrate($value));
+            }
+        }
+        if (array_key_exists("purchasedByUserCompany", $arr))
+        {
+            $result->purchasedByUserCompany = PurchasedByUserCompanyInfo::hydrate($arr["purchasedByUserCompany"]);
+        }
+        if (array_key_exists("viewedByUserCompany", $arr))
+        {
+            $result->viewedByUserCompany = ViewedByUserCompanyInfo::hydrate($arr["viewedByUserCompany"]);
+        }
+        if (array_key_exists("filteredVariants", $arr))
+        {
+            $result->filteredVariants = array();
+            foreach($arr["filteredVariants"] as &$value)
+            {
+                array_push($result->filteredVariants, VariantResult::hydrate($value));
             }
         }
         return $result;
@@ -218,6 +237,36 @@ class ProductResult
             $this->allVariants = array();
         }
         array_push($this->allVariants, $allVariants);
+        return $this;
+    }
+    function setPurchasedByUserCompany(PurchasedByUserCompanyInfo $purchasedByUserCompany)
+    {
+        $this->purchasedByUserCompany = $purchasedByUserCompany;
+        return $this;
+    }
+    function setViewedByUserCompany(ViewedByUserCompanyInfo $viewedByUserCompany)
+    {
+        $this->viewedByUserCompany = $viewedByUserCompany;
+        return $this;
+    }
+    function setFilteredVariants(VariantResult ... $filteredVariants)
+    {
+        $this->filteredVariants = $filteredVariants;
+        return $this;
+    }
+    /** @param VariantResult[] $filteredVariants new value. */
+    function setFilteredVariantsFromArray(array $filteredVariants)
+    {
+        $this->filteredVariants = $filteredVariants;
+        return $this;
+    }
+    function addToFilteredVariants(VariantResult $filteredVariants)
+    {
+        if (!isset($this->filteredVariants))
+        {
+            $this->filteredVariants = array();
+        }
+        array_push($this->filteredVariants, $filteredVariants);
         return $this;
     }
 }

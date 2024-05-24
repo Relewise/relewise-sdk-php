@@ -7,8 +7,11 @@ use DateTime;
 abstract class ObjectValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueCondition, Relewise.Client";
+    /** Whether the condition should be negated / inverted */
     public bool $negated;
+    /** The key of the object that the condition will compare against. */
     public string $key;
+    /** An optional path to some nested object defined under the selected Key. */
     public ?array $objectPath;
     public static function hydrate(array $arr)
     {
@@ -41,6 +44,10 @@ abstract class ObjectValueCondition
         {
             return ObjectValueMinByCondition::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueRelativeDateTimeCondition, Relewise.Client")
+        {
+            return ObjectValueRelativeDateTimeCondition::hydrate($arr);
+        }
     }
     public static function hydrateBase(mixed $result, array $arr)
     {
@@ -62,27 +69,34 @@ abstract class ObjectValueCondition
         }
         return $result;
     }
+    /** Whether the condition should be negated / inverted */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    /** The key of the object that the condition will compare against. */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    /** An optional path to some nested object defined under the selected Key. */
     function setObjectPath(string ... $objectPath)
     {
         $this->objectPath = $objectPath;
         return $this;
     }
-    /** @param ?string[] $objectPath new value. */
+    /**
+     * An optional path to some nested object defined under the selected Key.
+     * @param ?string[] $objectPath new value.
+     */
     function setObjectPathFromArray(array $objectPath)
     {
         $this->objectPath = $objectPath;
         return $this;
     }
+    /** An optional path to some nested object defined under the selected Key. */
     function addToObjectPath(string $objectPath)
     {
         if (!isset($this->objectPath))

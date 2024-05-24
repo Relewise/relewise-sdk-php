@@ -8,11 +8,11 @@ use DateTime;
 class ValueConditionCollection
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ValueConditionCollection, Relewise.Client";
-    /** The items that the this collection holds. */
+    /** The items that this collection holds. */
     public ?array $items;
     /**
      * Creates a collection that contains multiple ValueConditions in its inner list Items.
-     * @param ValueCondition[] $conditions The items that the this collection holds.
+     * @param ValueCondition[] $conditions The items that this collection holds.
      */
     public static function create(... $conditions) : ValueConditionCollection
     {
@@ -33,14 +33,14 @@ class ValueConditionCollection
         }
         return $result;
     }
-    /** The items that the this collection holds. */
+    /** The items that this collection holds. */
     function setItems(ValueCondition ... $items)
     {
         $this->items = $items;
         return $this;
     }
     /**
-     * The items that the this collection holds.
+     * The items that this collection holds.
      * @param ?ValueCondition[] $items new value.
      */
     function setItemsFromArray(array $items)
@@ -48,7 +48,7 @@ class ValueConditionCollection
         $this->items = $items;
         return $this;
     }
-    /** The items that the this collection holds. */
+    /** The items that this collection holds. */
     function addToItems(ValueCondition $items)
     {
         if (!isset($this->items))

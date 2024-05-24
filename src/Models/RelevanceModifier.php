@@ -16,13 +16,37 @@ abstract class RelevanceModifier
         {
             return BrandIdRelevanceModifier::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.RelevanceModifiers.ContentCategoryDataRelevanceModifier, Relewise.Client")
+        {
+            return ContentCategoryDataRelevanceModifier::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RelevanceModifiers.ContentCategoryRecentlyViewedByUserRelevanceModifier, Relewise.Client")
+        {
+            return ContentCategoryRecentlyViewedByUserRelevanceModifier::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RelevanceModifiers.ContentDataRelevanceModifier, Relewise.Client")
+        {
+            return ContentDataRelevanceModifier::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RelevanceModifiers.ContentRecentlyViewedByUserRelevanceModifier, Relewise.Client")
+        {
+            return ContentRecentlyViewedByUserRelevanceModifier::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.RelevanceModifiers.ProductAssortmentRelevanceModifier, Relewise.Client")
         {
             return ProductAssortmentRelevanceModifier::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.RelevanceModifiers.ProductCategoryDataRelevanceModifier, Relewise.Client")
+        {
+            return ProductCategoryDataRelevanceModifier::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.RelevanceModifiers.ProductCategoryIdRelevanceModifier, Relewise.Client")
         {
             return ProductCategoryIdRelevanceModifier::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RelevanceModifiers.ProductCategoryRecentlyViewedByUserRelevanceModifier, Relewise.Client")
+        {
+            return ProductCategoryRecentlyViewedByUserRelevanceModifier::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.RelevanceModifiers.ProductDataRelevanceModifier, Relewise.Client")
         {
@@ -36,9 +60,25 @@ abstract class RelevanceModifier
         {
             return ProductListPriceRelevanceModifier::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyPurchasedByCompanyRelevanceModifier, Relewise.Client")
+        {
+            return ProductRecentlyPurchasedByCompanyRelevanceModifier::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyPurchasedByUserCompanyRelevanceModifier, Relewise.Client")
+        {
+            return ProductRecentlyPurchasedByUserCompanyRelevanceModifier::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyPurchasedByUserRelevanceModifier, Relewise.Client")
         {
             return ProductRecentlyPurchasedByUserRelevanceModifier::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyViewedByCompanyRelevanceModifier, Relewise.Client")
+        {
+            return ProductRecentlyViewedByCompanyRelevanceModifier::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyViewedByUserCompanyRelevanceModifier, Relewise.Client")
+        {
+            return ProductRecentlyViewedByUserCompanyRelevanceModifier::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyViewedByUserRelevanceModifier, Relewise.Client")
         {

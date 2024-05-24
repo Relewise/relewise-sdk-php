@@ -34,13 +34,13 @@ abstract class TriggerConfiguration
         {
             return ContentCategoryInterestTriggerConfiguration::hydrate($arr);
         }
-        if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.EntityPropertyChangedTriggerConfiguration, Relewise.Client")
-        {
-            return EntityPropertyChangedTriggerConfiguration::hydrate($arr);
-        }
         if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.ProductCategoryInterestTriggerConfiguration, Relewise.Client")
         {
             return ProductCategoryInterestTriggerConfiguration::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.ProductChangeTriggerConfiguration, Relewise.Client")
+        {
+            return ProductChangeTriggerConfiguration::hydrate($arr);
         }
         if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.ProductInterestTriggerConfiguration, Relewise.Client")
         {
@@ -49,6 +49,10 @@ abstract class TriggerConfiguration
         if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.UserActivityTriggerConfiguration, Relewise.Client")
         {
             return UserActivityTriggerConfiguration::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.VariantChangeTriggerConfiguration, Relewise.Client")
+        {
+            return VariantChangeTriggerConfiguration::hydrate($arr);
         }
     }
     public static function hydrateBase(mixed $result, array $arr)

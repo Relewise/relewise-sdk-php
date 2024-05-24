@@ -6,7 +6,7 @@ use DateTime;
 
 class CategoryNameAndIdResultAvailableFacetValue
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.AvailableFacetValue`1[[Relewise.Client.DataTypes.CategoryNameAndIdResult, Relewise.Client, Version=1.130.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.AvailableFacetValue`1[[Relewise.Client.DataTypes.CategoryNameAndIdResult, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public CategoryNameAndIdResult $value;
     public int $hits;
     public bool $selected;

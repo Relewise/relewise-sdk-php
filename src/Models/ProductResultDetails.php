@@ -28,6 +28,7 @@ class ProductResultDetails
     public MultiCurrency $listPrice;
     public MultiCurrency $salesPrice;
     public BrandResultDetails $brand;
+    public array $filteredVariants;
     public static function create(string $productId) : ProductResultDetails
     {
         $result = new ProductResultDetails();
@@ -136,6 +137,14 @@ class ProductResultDetails
         if (array_key_exists("brand", $arr))
         {
             $result->brand = BrandResultDetails::hydrate($arr["brand"]);
+        }
+        if (array_key_exists("filteredVariants", $arr))
+        {
+            $result->filteredVariants = array();
+            foreach($arr["filteredVariants"] as &$value)
+            {
+                array_push($result->filteredVariants, VariantResultDetails::hydrate($value));
+            }
         }
         return $result;
     }
@@ -297,6 +306,26 @@ class ProductResultDetails
     function setBrand(BrandResultDetails $brand)
     {
         $this->brand = $brand;
+        return $this;
+    }
+    function setFilteredVariants(VariantResultDetails ... $filteredVariants)
+    {
+        $this->filteredVariants = $filteredVariants;
+        return $this;
+    }
+    /** @param VariantResultDetails[] $filteredVariants new value. */
+    function setFilteredVariantsFromArray(array $filteredVariants)
+    {
+        $this->filteredVariants = $filteredVariants;
+        return $this;
+    }
+    function addToFilteredVariants(VariantResultDetails $filteredVariants)
+    {
+        if (!isset($this->filteredVariants))
+        {
+            $this->filteredVariants = array();
+        }
+        array_push($this->filteredVariants, $filteredVariants);
         return $this;
     }
 }
