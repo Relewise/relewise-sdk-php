@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
-class VariantChangeTriggerConfiguration extends EntityChangeTriggerConfiguration`3
+class VariantChangeTriggerConfiguration extends EntityChangeTriggerConfiguration
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.VariantChangeTriggerConfiguration, Relewise.Client";
     public static function create(string $name, string $description, VariantPropertySelector $entityPropertySelector, IChange $change, VariantChangeTriggerResultSettings $resultSettings) : VariantChangeTriggerConfiguration
@@ -19,7 +19,7 @@ class VariantChangeTriggerConfiguration extends EntityChangeTriggerConfiguration
     }
     public static function hydrate(array $arr) : VariantChangeTriggerConfiguration
     {
-        $result = EntityChangeTriggerConfiguration`3::hydrateBase(new VariantChangeTriggerConfiguration(), $arr);
+        $result = EntityChangeTriggerConfiguration::hydrateBase(new VariantChangeTriggerConfiguration(), $arr);
         return $result;
     }
     function setEntityPropertySelector(?VariantPropertySelector $entityPropertySelector)

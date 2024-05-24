@@ -78,6 +78,8 @@ class SearchTest extends BaseTestCase
 
     public function testProductSearchWithCategoryFilter(): void
     {
+        echo $this->DATASET_ID();
+        
         $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
 
         $productSearch = ProductSearchRequest::create(

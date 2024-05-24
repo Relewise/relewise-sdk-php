@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
-abstract class EntityChangeTriggerConfiguration`3 extends ProductChangeTriggerResultTriggerConfiguration
+abstract class EntityChangeTriggerConfiguration extends ProductChangeTriggerResultTriggerConfiguration
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.EntityChangeTriggerConfiguration`3[[Relewise.Client.Responses.Triggers.Results.ProductChangeTriggerResult, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null],[Relewise.Client.Responses.Triggers.ResultSettings.ProductChangeTriggerResultSettings, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null],[Relewise.Client.DataTypes.EntityPropertySelectors.ProductPropertySelector, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     /** The selector used for choosing which property of the entity the trigger should look for change in. */

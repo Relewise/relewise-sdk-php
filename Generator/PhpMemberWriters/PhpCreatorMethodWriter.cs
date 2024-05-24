@@ -3,6 +3,9 @@ using System.CodeDom.Compiler;
 using System.Globalization;
 using System.Reflection;
 using Relewise.Client.Requests;
+using Relewise.Client.Requests.RelevanceModifiers;
+using Relewise.Client.Requests.Conditions;
+using Relewise.Client.Requests.ValueSelectors;
 
 namespace Generator.PhpMemberWriters;
 
@@ -10,7 +13,8 @@ public class PhpCreatorMethodWriter
 {
     private readonly Dictionary<Type, ConstructorInfo> overrideDefaultConstructors = new()
     {
-        [typeof(Channel)] = typeof(Channel).GetConstructor(new[] { typeof(string) })! // We override any matching logic and choose the constructor with one string parameter.
+        [typeof(Channel)] = typeof(Channel).GetConstructor(new[] { typeof(string) })!, // We override any matching logic and choose the constructor with one string parameter.
+        [typeof(ProductDataRelevanceModifier)] = typeof(ProductDataRelevanceModifier).GetConstructor(new[] { typeof(string), typeof(List<ValueCondition>), typeof(ValueSelector), typeof(bool), typeof(bool) })!
     };
 
     private readonly PhpWriter phpWriter;

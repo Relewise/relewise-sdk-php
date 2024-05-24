@@ -48,12 +48,14 @@ public class PhpTypeResolver
 
     private static string GetTypeName(Type type)
     {
+        var name = type.Name.Replace("`1", "").Replace("`2", "").Replace("`3", "");
+
         if (type.IsNested)
         {
-            return type.DeclaringType!.Name + type.Name.Replace("`1", "").Replace("`2", "");
+            return type.DeclaringType!.Name + name;
         }
 
-        return type.Name.Replace("`1", "").Replace("`2", "");
+        return name;
     }
 
     private string AddCollectionTypeDefinition(Type type)
