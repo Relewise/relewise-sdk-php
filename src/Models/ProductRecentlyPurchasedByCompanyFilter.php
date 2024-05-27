@@ -14,9 +14,10 @@ class ProductRecentlyPurchasedByCompanyFilter extends Filter
     public array $companyIds;
     /** The time in minutes from which a Product should have been viewed by any of the companies to be included by the filter. */
     public ?int $sinceMinutesAgo;
-    public static function create(bool $negated = false) : ProductRecentlyPurchasedByCompanyFilter
+    public static function create(DateTime $sinceUtc, bool $negated = false) : ProductRecentlyPurchasedByCompanyFilter
     {
         $result = new ProductRecentlyPurchasedByCompanyFilter();
+        $result->sinceUtc = $sinceUtc;
         $result->negated = $negated;
         return $result;
     }

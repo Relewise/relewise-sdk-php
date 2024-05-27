@@ -6,6 +6,7 @@ using Relewise.Client.Requests;
 using Relewise.Client.Requests.RelevanceModifiers;
 using Relewise.Client.Requests.Conditions;
 using Relewise.Client.Requests.ValueSelectors;
+using Relewise.Client.Requests.Filters;
 
 namespace Generator.PhpMemberWriters;
 
@@ -13,8 +14,20 @@ public class PhpCreatorMethodWriter
 {
     private readonly Dictionary<Type, ConstructorInfo> overrideDefaultConstructors = new()
     {
-        [typeof(Channel)] = typeof(Channel).GetConstructor(new[] { typeof(string) })!, // We override any matching logic and choose the constructor with one string parameter.
-        [typeof(ProductDataRelevanceModifier)] = typeof(ProductDataRelevanceModifier).GetConstructor(new[] { typeof(string), typeof(List<ValueCondition>), typeof(ValueSelector), typeof(bool), typeof(bool) })!
+        // We override any matching logic and choose the constructor with one string parameter.
+        [typeof(Channel)] = typeof(Channel).GetConstructor(new[] { typeof(string) })!,
+        // For backwards compatibility remove in next major release.
+        [typeof(ProductDataRelevanceModifier)] = typeof(ProductDataRelevanceModifier).GetConstructor(new[] { typeof(string), typeof(List<ValueCondition>), typeof(ValueSelector), typeof(bool), typeof(bool) })!,
+    };
+
+    /// <summary>
+    /// We sometimes change the types that own specific properties so that the optimistic parameter matcher can no longer find the properties in the same way as previously.
+    /// In this case we can define manual mappings that select which parameters should be mapped to keep the generated code from breaking.
+    /// </summary>
+    private readonly Dictionary<Type, (ConstructorInfo constructor, string[] parameters)> overrideDefaultConstructorsWithSelectedParameters = new()
+    {
+        // For backwards compatibility remove in next major release.
+        [typeof(ProductRecentlyPurchasedByCompanyFilter)] = (typeof(ProductRecentlyPurchasedByCompanyFilter).GetConstructor(new[] { typeof(DateTimeOffset), typeof(string), typeof(bool) })!, new []{ "sinceUtc", "negated" }),
     };
 
     private readonly PhpWriter phpWriter;
@@ -94,6 +107,31 @@ public class PhpCreatorMethodWriter
                 // We use settablePropertyInformations here as the only place as it was an error originally that we didn't use it, but it would create too many breaking changes if we corrected in all places.
                 var propertyName = settablePropertyInformations
                     .Single(property => ContainedWithinEitherOne(property.propertyName, parameter.Name) && ParameterIsPersuadableIntoPropertyType(property.info, parameter))
+                    .lowerCaseName;
+
+                writer.WriteLine($"$result->{propertyName} = ${parameter.Name};");
+            }
+        }
+        else if (overrideDefaultConstructorsWithSelectedParameters.TryGetValue(type, out (ConstructorInfo defaultConstructor, string[] parameters) overriden))
+        {
+            var parameters = overriden.defaultConstructor.GetParameters().Where(p => overriden.parameters.Contains(p.Name)).ToArray();
+
+            writer.WriteCommentBlock(
+                parameters.Select(p => phpWriter.XmlDocumentation.GetConstructorParam(typeName, parameters, p))
+                    .Prepend(phpWriter.XmlDocumentation.GetConstructorSummary(typeName, parameters))
+                    .ToArray()
+            );
+
+            writer.WriteLine($"public static function create({ParameterList(parameters)}) : {typeName}");
+            writer.WriteLine("{");
+            writer.Indent++;
+            writer.WriteLine($"$result = new {typeName}();");
+
+            foreach (var parameter in parameters)
+            {
+                // We use settablePropertyInformations here as the only place as it was an error originally that we didn't use it, but it would create too many breaking changes if we corrected in all places.
+                var propertyName = settablePropertyInformations
+                    .Single(property => ContainedWithinEitherOne(property.propertyName, parameter.Name) && ParameterIsPersuadableIntoPropertyType(property.info, parameter, supportNullableValueTypes: true))
                     .lowerCaseName;
 
                 writer.WriteLine($"$result->{propertyName} = ${parameter.Name};");
@@ -260,29 +298,35 @@ public class PhpCreatorMethodWriter
             || EnumerableTypeArgumentMatchesArrayElementType(type2, type1)
             || EnumerableTypeArgumentMatchesSecondEnumerableType(type1, type2);
     }
-
-    private static bool ParameterIsPersuadableIntoPropertyType(PropertyInfo property, ParameterInfo parameter)
+    
+    /// <param name="supportNullableValueTypes">This is introduced as we previously did not support matching on nullable value types. So setting this to <see langword="true"/> would be breaking for most places.</param>
+    private static bool ParameterIsPersuadableIntoPropertyType(PropertyInfo property, ParameterInfo parameter, bool supportNullableValueTypes = false)
     {
         if (EqualCollectionElementType(property.PropertyType, parameter.ParameterType))
         {
             return true;
         }
 
-        if (property.PropertyType != parameter.ParameterType)
-        {
-            return false;
-        }
+        Type propertyType = supportNullableValueTypes && property.PropertyType.IsConstructedGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) ? property.PropertyType.GetGenericArguments()[0] : property.PropertyType;
+        Type parameterType = supportNullableValueTypes && parameter.ParameterType.IsConstructedGenericType && parameter.ParameterType.GetGenericTypeDefinition() == typeof(Nullable<>) ? parameter.ParameterType.GetGenericArguments()[0] : parameter.ParameterType;
 
         var propertyNullabilityContext = new NullabilityInfoContext().Create(property);
         var parameterNullabilityContext = new NullabilityInfoContext().Create(parameter);
 
-        if (propertyNullabilityContext.WriteState is NullabilityState.Nullable)
+        bool propertyIsNullable = property.PropertyType != propertyType || propertyNullabilityContext.WriteState is NullabilityState.Nullable;
+        bool parameterIsNullable = parameter.ParameterType != parameterType || parameterNullabilityContext.WriteState is NullabilityState.Nullable;
+        
+        if (propertyType != parameterType)
+        {
+            return false;
+        }
+
+        if (propertyIsNullable)
         {
             return true;
         }
 
-        if (propertyNullabilityContext.WriteState is NullabilityState.Nullable
-            == parameterNullabilityContext.WriteState is NullabilityState.Nullable)
+        if (!propertyIsNullable && !parameterIsNullable)
         {
             return true;
         }
