@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
-enum RelativeDateTimeConditionTimeUnit : string
+enum TimeUnit : string
 {
     case UnixMilliseconds = 'UnixMilliseconds';
     case UnixSeconds = 'UnixSeconds';

@@ -4,43 +4,43 @@ namespace Relewise\Models;
 
 use DateTime;
 
-abstract class stringEntityPropertyChangedTriggerResult extends EntityPropertyChangedTriggerResult
+abstract class VariantChangeTriggerResultVariantChangeResultDetailsEntityChangeTriggerResult extends EntityChangeTriggerResult
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.EntityPropertyChangedTriggerResult`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.EntityChangeTriggerResult`1[[Relewise.Client.Responses.Triggers.Results.VariantChangeTriggerResult+VariantChangeResultDetails, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public array $entitiesWithChanges;
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
-        if ($type=="Relewise.Client.Responses.Triggers.Results.ProductPropertyChangedTriggerResult, Relewise.Client")
+        if ($type=="Relewise.Client.Responses.Triggers.Results.VariantChangeTriggerResult, Relewise.Client")
         {
-            return ProductPropertyChangedTriggerResult::hydrate($arr);
+            return VariantChangeTriggerResult::hydrate($arr);
         }
     }
     public static function hydrateBase(mixed $result, array $arr)
     {
-        $result = EntityPropertyChangedTriggerResult::hydrateBase($result, $arr);
+        $result = EntityChangeTriggerResult::hydrateBase($result, $arr);
         if (array_key_exists("entitiesWithChanges", $arr))
         {
             $result->entitiesWithChanges = array();
             foreach($arr["entitiesWithChanges"] as &$value)
             {
-                array_push($result->entitiesWithChanges, $value);
+                array_push($result->entitiesWithChanges, VariantChangeTriggerResultVariantChangeResultDetails::hydrate($value));
             }
         }
         return $result;
     }
-    function setEntitiesWithChanges(string ... $entitiesWithChanges)
+    function setEntitiesWithChanges(VariantChangeTriggerResultVariantChangeResultDetails ... $entitiesWithChanges)
     {
         $this->entitiesWithChanges = $entitiesWithChanges;
         return $this;
     }
-    /** @param string[] $entitiesWithChanges new value. */
+    /** @param VariantChangeTriggerResultVariantChangeResultDetails[] $entitiesWithChanges new value. */
     function setEntitiesWithChangesFromArray(array $entitiesWithChanges)
     {
         $this->entitiesWithChanges = $entitiesWithChanges;
         return $this;
     }
-    function addToEntitiesWithChanges(string $entitiesWithChanges)
+    function addToEntitiesWithChanges(VariantChangeTriggerResultVariantChangeResultDetails $entitiesWithChanges)
     {
         if (!isset($this->entitiesWithChanges))
         {

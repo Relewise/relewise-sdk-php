@@ -6,7 +6,7 @@ use DateTime;
 
 abstract class intContentDataValueFacet extends intDataValueFacet
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ContentDataValueFacet`1[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ContentDataValueFacet`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Relewise.Client";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

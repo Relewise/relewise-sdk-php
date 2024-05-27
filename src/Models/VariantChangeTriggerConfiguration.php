@@ -4,21 +4,48 @@ namespace Relewise\Models;
 
 use DateTime;
 
-abstract class EntityPropertyChangedTriggerResultTriggerConfiguration extends TriggerConfiguration
+class VariantChangeTriggerConfiguration extends EntityChangeTriggerConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.TriggerConfiguration`1[[Relewise.Client.Responses.Triggers.Results.EntityPropertyChangedTriggerResult, Relewise.Client, Version=1.130.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
-    public static function hydrate(array $arr)
+    public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.VariantChangeTriggerConfiguration, Relewise.Client";
+    public static function create(string $name, string $description, VariantPropertySelector $entityPropertySelector, IChange $change, VariantChangeTriggerResultSettings $resultSettings) : VariantChangeTriggerConfiguration
     {
-        $type = $arr["\$type"];
-        if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.EntityPropertyChangedTriggerConfiguration, Relewise.Client")
-        {
-            return EntityPropertyChangedTriggerConfiguration::hydrate($arr);
-        }
-    }
-    public static function hydrateBase(mixed $result, array $arr)
-    {
-        $result = TriggerConfiguration::hydrateBase($result, $arr);
+        $result = new VariantChangeTriggerConfiguration();
+        $result->name = $name;
+        $result->description = $description;
+        $result->entityPropertySelector = $entityPropertySelector;
+        $result->change = $change;
+        $result->resultSettings = $resultSettings;
         return $result;
+    }
+    public static function hydrate(array $arr) : VariantChangeTriggerConfiguration
+    {
+        $result = EntityChangeTriggerConfiguration::hydrateBase(new VariantChangeTriggerConfiguration(), $arr);
+        return $result;
+    }
+    function setEntityPropertySelector(?VariantPropertySelector $entityPropertySelector)
+    {
+        $this->entityPropertySelector = $entityPropertySelector;
+        return $this;
+    }
+    function setBeforeChangeFilters(FilterCollection $beforeChangeFilters)
+    {
+        $this->beforeChangeFilters = $beforeChangeFilters;
+        return $this;
+    }
+    function setAfterChangeFilters(FilterCollection $afterChangeFilters)
+    {
+        $this->afterChangeFilters = $afterChangeFilters;
+        return $this;
+    }
+    function setChange(IChange $change)
+    {
+        $this->change = $change;
+        return $this;
+    }
+    function setResultSettings(?VariantChangeTriggerResultSettings $resultSettings)
+    {
+        $this->resultSettings = $resultSettings;
+        return $this;
     }
     function setId(string $id)
     {

@@ -4,9 +4,9 @@ namespace Relewise\Models;
 
 use DateTime;
 
-// This is actually an interface.
-abstract class IEntityPropertySelector
+abstract class ProductPropertySelector
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.EntityPropertySelectors.ProductPropertySelector, Relewise.Client";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

@@ -6,7 +6,7 @@ use DateTime;
 
 abstract class DecompoundRuleSaveSearchRulesResponse extends TimedResponse
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.SaveSearchRulesResponse`1[[Relewise.Client.DataTypes.Search.Rules.DecompoundRule, Relewise.Client, Version=1.130.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.SaveSearchRulesResponse`1[[Relewise.Client.DataTypes.Search.Rules.DecompoundRule, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public array $rules;
     public static function hydrate(array $arr)
     {

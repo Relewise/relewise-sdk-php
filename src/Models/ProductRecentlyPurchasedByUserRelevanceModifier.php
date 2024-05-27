@@ -9,11 +9,13 @@ class ProductRecentlyPurchasedByUserRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyPurchasedByUserRelevanceModifier, Relewise.Client";
     /** The start of the time period in which a product will be considered relevant to the user if bought previously by them. */
-    public DateTime $sinceUtc;
+    public ?DateTime $sinceUtc;
     /** The weight that the Product will be multiplied with if it has been bought in the past by the user (since SinceUtc). */
     public float $ifPreviouslyPurchasedByUserMultiplyWeightBy;
     /** The weight that the Product will be multiplied with if it has not been bought in the past by the user (since SinceUtc). */
     public float $ifNotPreviouslyPurchasedByUserMultiplyWeightBy;
+    /** The minutes since in which a product will be considered relevant to the user if bought previously by them. */
+    public ?int $sinceMinutesAgo;
     /**
      * Creates a RelevanceModifier that can change the relevance of a Product depending on whether they have bought this product within some timespan.
      * @param DateTime $sinceUtc The start of the time period in which a product will be considered relevant to the user if bought previously by them.
@@ -43,10 +45,14 @@ class ProductRecentlyPurchasedByUserRelevanceModifier extends RelevanceModifier
         {
             $result->ifNotPreviouslyPurchasedByUserMultiplyWeightBy = $arr["ifNotPreviouslyPurchasedByUserMultiplyWeightBy"];
         }
+        if (array_key_exists("sinceMinutesAgo", $arr))
+        {
+            $result->sinceMinutesAgo = $arr["sinceMinutesAgo"];
+        }
         return $result;
     }
     /** The start of the time period in which a product will be considered relevant to the user if bought previously by them. */
-    function setSinceUtc(DateTime $sinceUtc)
+    function setSinceUtc(?DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
@@ -61,6 +67,12 @@ class ProductRecentlyPurchasedByUserRelevanceModifier extends RelevanceModifier
     function setIfNotPreviouslyPurchasedByUserMultiplyWeightBy(float $ifNotPreviouslyPurchasedByUserMultiplyWeightBy)
     {
         $this->ifNotPreviouslyPurchasedByUserMultiplyWeightBy = $ifNotPreviouslyPurchasedByUserMultiplyWeightBy;
+        return $this;
+    }
+    /** The minutes since in which a product will be considered relevant to the user if bought previously by them. */
+    function setSinceMinutesAgo(?int $sinceMinutesAgo)
+    {
+        $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
     function setFilters(FilterCollection $filters)

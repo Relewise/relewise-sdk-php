@@ -8,7 +8,7 @@ use DateTime;
 abstract class Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.Filter, Relewise.Client";
-    /** Defines whether the Filter should be exclude the matching entities instead og including the matching entities. */
+    /** Defines whether the Filter should exclude the matching entities instead of including the matching entities. */
     public bool $negated;
     public ?FilterSettings $settings;
     public static function hydrate(array $arr)
@@ -26,6 +26,10 @@ abstract class Filter
         {
             return BrandDataFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.BrandDisabledFilter, Relewise.Client")
+        {
+            return BrandDisabledFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.BrandIdFilter, Relewise.Client")
         {
             return BrandIdFilter::hydrate($arr);
@@ -37,6 +41,10 @@ abstract class Filter
         if ($type=="Relewise.Client.Requests.Filters.CompanyDataFilter, Relewise.Client")
         {
             return CompanyDataFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.CompanyDisabledFilter, Relewise.Client")
+        {
+            return CompanyDisabledFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.CompanyIdFilter, Relewise.Client")
         {
@@ -53,6 +61,10 @@ abstract class Filter
         if ($type=="Relewise.Client.Requests.Filters.ContentCategoryDataFilter, Relewise.Client")
         {
             return ContentCategoryDataFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.ContentCategoryDisabledFilter, Relewise.Client")
+        {
+            return ContentCategoryDisabledFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.ContentCategoryHasAncestorFilter, Relewise.Client")
         {
@@ -78,13 +90,25 @@ abstract class Filter
         {
             return ContentCategoryLevelFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.ContentCategoryRecentlyViewedByUserFilter, Relewise.Client")
+        {
+            return ContentCategoryRecentlyViewedByUserFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.ContentDataFilter, Relewise.Client")
         {
             return ContentDataFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.ContentDisabledFilter, Relewise.Client")
+        {
+            return ContentDisabledFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.ContentIdFilter, Relewise.Client")
         {
             return ContentIdFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.ContentRecentlyViewedByUserFilter, Relewise.Client")
+        {
+            return ContentRecentlyViewedByUserFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.OrFilter, Relewise.Client")
         {
@@ -105,6 +129,10 @@ abstract class Filter
         if ($type=="Relewise.Client.Requests.Filters.ProductCategoryDataFilter, Relewise.Client")
         {
             return ProductCategoryDataFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.ProductCategoryDisabledFilter, Relewise.Client")
+        {
+            return ProductCategoryDisabledFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.ProductCategoryHasAncestorFilter, Relewise.Client")
         {
@@ -130,9 +158,17 @@ abstract class Filter
         {
             return ProductCategoryLevelFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.ProductCategoryRecentlyViewedByUserFilter, Relewise.Client")
+        {
+            return ProductCategoryRecentlyViewedByUserFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.ProductDataFilter, Relewise.Client")
         {
             return ProductDataFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.ProductDisabledFilter, Relewise.Client")
+        {
+            return ProductDisabledFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.ProductDisplayNameFilter, Relewise.Client")
         {
@@ -162,6 +198,10 @@ abstract class Filter
         {
             return ProductRecentlyPurchasedByUserFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.ProductRecentlyPurchasedByUserParentCompanyFilter, Relewise.Client")
+        {
+            return ProductRecentlyPurchasedByUserParentCompanyFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.ProductRecentlyViewedByCompanyFilter, Relewise.Client")
         {
             return ProductRecentlyViewedByCompanyFilter::hydrate($arr);
@@ -174,6 +214,10 @@ abstract class Filter
         {
             return ProductRecentlyViewedByUserFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.ProductRecentlyViewedByUserParentCompanyFilter, Relewise.Client")
+        {
+            return ProductRecentlyViewedByUserParentCompanyFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.ProductSalesPriceFilter, Relewise.Client")
         {
             return ProductSalesPriceFilter::hydrate($arr);
@@ -185,6 +229,10 @@ abstract class Filter
         if ($type=="Relewise.Client.Requests.Filters.VariantDataFilter, Relewise.Client")
         {
             return VariantDataFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.VariantDisabledFilter, Relewise.Client")
+        {
+            return VariantDisabledFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.VariantIdFilter, Relewise.Client")
         {
@@ -215,7 +263,7 @@ abstract class Filter
         }
         return $result;
     }
-    /** Defines whether the Filter should be exclude the matching entities instead og including the matching entities. */
+    /** Defines whether the Filter should exclude the matching entities instead of including the matching entities. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

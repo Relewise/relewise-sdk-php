@@ -7,7 +7,8 @@ use DateTime;
 class ProductRecentlyViewedByUserFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductRecentlyViewedByUserFilter, Relewise.Client";
-    public DateTime $sinceUtc;
+    public ?DateTime $sinceUtc;
+    public ?int $sinceMinutesAgo;
     public static function create(DateTime $sinceUtc, bool $negated = false) : ProductRecentlyViewedByUserFilter
     {
         $result = new ProductRecentlyViewedByUserFilter();
@@ -22,11 +23,20 @@ class ProductRecentlyViewedByUserFilter extends Filter
         {
             $result->sinceUtc = new DateTime($arr["sinceUtc"]);
         }
+        if (array_key_exists("sinceMinutesAgo", $arr))
+        {
+            $result->sinceMinutesAgo = $arr["sinceMinutesAgo"];
+        }
         return $result;
     }
-    function setSinceUtc(DateTime $sinceUtc)
+    function setSinceUtc(?DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
+        return $this;
+    }
+    function setSinceMinutesAgo(?int $sinceMinutesAgo)
+    {
+        $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
     function setNegated(bool $negated)

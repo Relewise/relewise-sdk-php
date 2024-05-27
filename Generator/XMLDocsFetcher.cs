@@ -30,7 +30,7 @@ public static class XMLDocsFetcher
         var document = await context.OpenAsync(req => req.Content(content.Replace("/>", "></SEE>")));
         foreach (var seeReference in document.QuerySelectorAll("see"))
         {
-            seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? string.Empty;
+            seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? seeReference.GetAttribute("langword")?.Split(".").Last() ?? string.Empty;
         }
         
         foreach (var member in document.GetElementsByTagName("doc")[0].Children[1].Children)
@@ -43,11 +43,19 @@ public static class XMLDocsFetcher
                     {
                         summaryWrapper.OuterHtml = summaryWrapper.InnerHtml.Trim();
                     }
-                    foreach (var seeReference in child.Children.Where(c => c.TagName == "SEE"))
+                    foreach (var paraWrapper in child.Children.Where(c => c.TagName == "PARA"))
                     {
-                        seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? string.Empty;
+                        paraWrapper.OuterHtml = paraWrapper.InnerHtml.Trim();
                     }
-                    
+                    foreach (var cWrapper in child.Children.Where(c => c.TagName == "C"))
+                    {
+                        cWrapper.OuterHtml = cWrapper.InnerHtml.Trim();
+                    }
+                    foreach (var exampleWrapper in child.Children.Where(c => c.TagName == "EXAMPLE"))
+                    {
+                        exampleWrapper.OuterHtml = exampleWrapper.InnerHtml.Trim();
+                    }
+
                     result.Summaries.TryAdd(member.GetAttribute("name")!, HttpUtility.HtmlDecode(JoinInOneLine(child.InnerHtml)));
                 }
                 else if (child.TagName is "PARAM" && child.NextSibling?.TextContent is { Length: > 0 } text)

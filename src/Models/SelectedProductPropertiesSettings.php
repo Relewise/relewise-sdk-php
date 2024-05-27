@@ -17,6 +17,9 @@ class SelectedProductPropertiesSettings
     public bool $brand;
     public bool $allVariants;
     public ?array $dataKeys;
+    public bool $viewedByUserCompanyInfo;
+    public bool $purchasedByUserCompanyInfo;
+    public ?FilteredVariantsSettings $filteredVariants;
     public static function create() : SelectedProductPropertiesSettings
     {
         $result = new SelectedProductPropertiesSettings();
@@ -68,6 +71,18 @@ class SelectedProductPropertiesSettings
             {
                 array_push($result->dataKeys, $value);
             }
+        }
+        if (array_key_exists("viewedByUserCompanyInfo", $arr))
+        {
+            $result->viewedByUserCompanyInfo = $arr["viewedByUserCompanyInfo"];
+        }
+        if (array_key_exists("purchasedByUserCompanyInfo", $arr))
+        {
+            $result->purchasedByUserCompanyInfo = $arr["purchasedByUserCompanyInfo"];
+        }
+        if (array_key_exists("filteredVariants", $arr))
+        {
+            $result->filteredVariants = FilteredVariantsSettings::hydrate($arr["filteredVariants"]);
         }
         return $result;
     }
@@ -134,6 +149,21 @@ class SelectedProductPropertiesSettings
             $this->dataKeys = array();
         }
         array_push($this->dataKeys, $dataKeys);
+        return $this;
+    }
+    function setViewedByUserCompanyInfo(bool $viewedByUserCompanyInfo)
+    {
+        $this->viewedByUserCompanyInfo = $viewedByUserCompanyInfo;
+        return $this;
+    }
+    function setPurchasedByUserCompanyInfo(bool $purchasedByUserCompanyInfo)
+    {
+        $this->purchasedByUserCompanyInfo = $purchasedByUserCompanyInfo;
+        return $this;
+    }
+    function setFilteredVariants(?FilteredVariantsSettings $filteredVariants)
+    {
+        $this->filteredVariants = $filteredVariants;
         return $this;
     }
 }

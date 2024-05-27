@@ -7,6 +7,7 @@ use DateTime;
 abstract class ValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Conditions.ValueCondition, Relewise.Client";
+    /** Whether the condition should be negated / inverted */
     public bool $negated;
     public static function hydrate(array $arr)
     {
@@ -44,6 +45,7 @@ abstract class ValueCondition
         }
         return $result;
     }
+    /** Whether the condition should be negated / inverted */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

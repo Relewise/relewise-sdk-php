@@ -26,17 +26,21 @@ abstract class ITriggerResult
         {
             return ProductCategoryInterestTriggerResult::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Responses.Triggers.Results.ProductChangeTriggerResult, Relewise.Client")
+        {
+            return ProductChangeTriggerResult::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Responses.Triggers.Results.ProductInterestTriggerResult, Relewise.Client")
         {
             return ProductInterestTriggerResult::hydrate($arr);
         }
-        if ($type=="Relewise.Client.Responses.Triggers.Results.ProductPropertyChangedTriggerResult, Relewise.Client")
-        {
-            return ProductPropertyChangedTriggerResult::hydrate($arr);
-        }
         if ($type=="Relewise.Client.Responses.Triggers.Results.UserActivityTriggerResult, Relewise.Client")
         {
             return UserActivityTriggerResult::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.Triggers.Results.VariantChangeTriggerResult, Relewise.Client")
+        {
+            return VariantChangeTriggerResult::hydrate($arr);
         }
     }
     public static function hydrateBase(mixed $result, array $arr)

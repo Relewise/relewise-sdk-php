@@ -6,7 +6,7 @@ use DateTime;
 
 abstract class ContentCategoryResultDetailsCategoryResultDetails
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.CategoryResultDetails`1[[Relewise.Client.DataTypes.ContentCategoryResultDetails, Relewise.Client, Version=1.130.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.DataTypes.CategoryResultDetails`1[[Relewise.Client.DataTypes.ContentCategoryResultDetails, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public string $categoryId;
     public Multilingual $displayName;
     public array $assortments;

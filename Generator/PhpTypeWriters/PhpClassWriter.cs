@@ -82,7 +82,7 @@ use DateTime;
         phpWriter.PhpSettablePropertiesWriter.Write(writer, type, ownedProperties);
         phpWriter.PhpStaticReadonlyPropertiesWriter.Write(writer, staticGetterProperties);
 
-        phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, ownedProperties);
+        phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, settableProperties, ownedProperties);
         phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, ownedProperties);
         phpWriter.PhpPropertySetterMethodsWriter.Write(writer, type, settableProperties);
 

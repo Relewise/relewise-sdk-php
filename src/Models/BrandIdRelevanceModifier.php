@@ -4,21 +4,21 @@ namespace Relewise\Models;
 
 use DateTime;
 
-/** a RelevanceModifier that can change the relevance of a Product depending on a BrandId. */
+/** a RelevanceModifier that can change the relevance of an entity depending on a BrandId. */
 class BrandIdRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.BrandIdRelevanceModifier, Relewise.Client";
     /** The Id of the Brand that this RelevanceModifier will distinguish on. */
     public string $brandId;
-    /** The weight that the Product will be multiplied with if it matches the specific BrandId. */
+    /** The weight that the entity will be multiplied with if it matches the specific BrandId. */
     public float $ifProductIsBrandMultiplyWeightBy;
-    /** The weight that the Product will be multiplied with if it does not match the specific BrandId. */
+    /** The weight that the entity will be multiplied with if it does not match the specific BrandId. */
     public float $ifProductIsNotBrandMultiplyWeightBy;
     /**
-     * Creates a RelevanceModifier that can change the relevance of a Product depending on a BrandId.
+     * Creates a RelevanceModifier that can change the relevance of an entity depending on a BrandId.
      * @param string $brandId The Id of the Brand that this RelevanceModifier will distinguish on.
-     * @param float $ifProductIsBrandMultiplyWeightBy The weight that the Product will be multiplied with if it matches the specific BrandId.
-     * @param float $ifProductIsNotBrandMultiplyWeightBy The weight that the Product will be multiplied with if it does not match the specific BrandId.
+     * @param float $ifProductIsBrandMultiplyWeightBy The weight that the entity will be multiplied with if it matches the specific BrandId.
+     * @param float $ifProductIsNotBrandMultiplyWeightBy The weight that the entity will be multiplied with if it does not match the specific BrandId.
      */
     public static function create(string $brandId, float $ifProductIsBrandMultiplyWeightBy = 1, float $ifProductIsNotBrandMultiplyWeightBy = 1) : BrandIdRelevanceModifier
     {
@@ -51,13 +51,13 @@ class BrandIdRelevanceModifier extends RelevanceModifier
         $this->brandId = $brandId;
         return $this;
     }
-    /** The weight that the Product will be multiplied with if it matches the specific BrandId. */
+    /** The weight that the entity will be multiplied with if it matches the specific BrandId. */
     function setIfProductIsBrandMultiplyWeightBy(float $ifProductIsBrandMultiplyWeightBy)
     {
         $this->ifProductIsBrandMultiplyWeightBy = $ifProductIsBrandMultiplyWeightBy;
         return $this;
     }
-    /** The weight that the Product will be multiplied with if it does not match the specific BrandId. */
+    /** The weight that the entity will be multiplied with if it does not match the specific BrandId. */
     function setIfProductIsNotBrandMultiplyWeightBy(float $ifProductIsNotBrandMultiplyWeightBy)
     {
         $this->ifProductIsNotBrandMultiplyWeightBy = $ifProductIsNotBrandMultiplyWeightBy;
