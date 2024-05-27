@@ -9,11 +9,11 @@ abstract class DataRelevanceModifier extends RelevanceModifier
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.DataRelevanceModifier, Relewise.Client";
     /** The data key that this RelevanceModifier will distinguish on. */
     public string $key;
-    /** Specifies whether entities that don't have the specific data Key should be considered a match () or not (). */
+    /** Specifies whether entities that don't have the specific data Key should be considered a match (true) or not (false). */
     public bool $considerAsMatchIfKeyIsNotFound;
     /** @deprecated Use MultiplierSelector instead */
     public float $multiplyWeightBy;
-    /** Specifies whether all Conditions should parse their test on the specific data Key () or if only one is required (). */
+    /** Specifies whether all Conditions should parse their test on the specific data Key (true) or if only one is required (false). */
     public bool $mustMatchAllConditions;
     /** The conditions that must hold for the specific data Key in order for the entity to be boosted. */
     public array $conditions;
@@ -82,7 +82,7 @@ abstract class DataRelevanceModifier extends RelevanceModifier
         $this->key = $key;
         return $this;
     }
-    /** Specifies whether entities that don't have the specific data Key should be considered a match () or not (). */
+    /** Specifies whether entities that don't have the specific data Key should be considered a match (true) or not (false). */
     function setConsiderAsMatchIfKeyIsNotFound(bool $considerAsMatchIfKeyIsNotFound)
     {
         $this->considerAsMatchIfKeyIsNotFound = $considerAsMatchIfKeyIsNotFound;
@@ -94,7 +94,7 @@ abstract class DataRelevanceModifier extends RelevanceModifier
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
-    /** Specifies whether all Conditions should parse their test on the specific data Key () or if only one is required (). */
+    /** Specifies whether all Conditions should parse their test on the specific data Key (true) or if only one is required (false). */
     function setMustMatchAllConditions(bool $mustMatchAllConditions)
     {
         $this->mustMatchAllConditions = $mustMatchAllConditions;

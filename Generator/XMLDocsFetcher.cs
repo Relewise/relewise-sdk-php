@@ -30,7 +30,7 @@ public static class XMLDocsFetcher
         var document = await context.OpenAsync(req => req.Content(content.Replace("/>", "></SEE>")));
         foreach (var seeReference in document.QuerySelectorAll("see"))
         {
-            seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? string.Empty;
+            seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? seeReference.GetAttribute("langword")?.Split(".").Last() ?? string.Empty;
         }
         
         foreach (var member in document.GetElementsByTagName("doc")[0].Children[1].Children)
@@ -42,10 +42,6 @@ public static class XMLDocsFetcher
                     foreach (var summaryWrapper in child.Children.Where(c => c.TagName == "SUMMARY"))
                     {
                         summaryWrapper.OuterHtml = summaryWrapper.InnerHtml.Trim();
-                    }
-                    foreach (var seeReference in child.Children.Where(c => c.TagName == "SEE"))
-                    {
-                        seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? string.Empty;
                     }
                     foreach (var paraWrapper in child.Children.Where(c => c.TagName == "PARA"))
                     {
