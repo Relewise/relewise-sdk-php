@@ -18,6 +18,8 @@ public class PhpCreatorMethodWriter
         [typeof(Channel)] = typeof(Channel).GetConstructor(new[] { typeof(string) })!,
         // For backwards compatibility remove in next major release.
         [typeof(ProductDataRelevanceModifier)] = typeof(ProductDataRelevanceModifier).GetConstructor(new[] { typeof(string), typeof(List<ValueCondition>), typeof(ValueSelector), typeof(bool), typeof(bool) })!,
+        // For backwards compatibility remove in next major release.
+        [typeof(ProductRecentlyViewedByUserFilter)] = typeof(ProductRecentlyViewedByUserFilter).GetConstructor(new[] { typeof(DateTimeOffset), typeof(bool) })!,
     };
 
     /// <summary>
@@ -114,7 +116,7 @@ public class PhpCreatorMethodWriter
             {
                 // We use settablePropertyInformations here as the only place as it was an error originally that we didn't use it, but it would create too many breaking changes if we corrected in all places.
                 var propertyName = settablePropertyInformations
-                    .Single(property => ContainedWithinEitherOne(property.propertyName, parameter.Name) && ParameterIsPersuadableIntoPropertyType(property.info, parameter))
+                    .Single(property => ContainedWithinEitherOne(property.propertyName, parameter.Name) && ParameterIsPersuadableIntoPropertyType(property.info, parameter, supportNullableValueTypes: true))
                     .lowerCaseName;
 
                 writer.WriteLine($"$result->{propertyName} = ${parameter.Name};");
