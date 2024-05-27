@@ -9,9 +9,10 @@ class ProductRecentlyPurchasedByUserFilter extends Filter
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductRecentlyPurchasedByUserFilter, Relewise.Client";
     public ?DateTime $sinceUtc;
     public ?int $sinceMinutesAgo;
-    public static function create(bool $negated = false) : ProductRecentlyPurchasedByUserFilter
+    public static function create(DateTime $sinceUtc, bool $negated = false) : ProductRecentlyPurchasedByUserFilter
     {
         $result = new ProductRecentlyPurchasedByUserFilter();
+        $result->sinceUtc = $sinceUtc;
         $result->negated = $negated;
         return $result;
     }
