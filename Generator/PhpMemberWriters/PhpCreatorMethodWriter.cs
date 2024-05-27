@@ -28,6 +28,8 @@ public class PhpCreatorMethodWriter
     {
         // For backwards compatibility remove in next major release.
         [typeof(ProductRecentlyPurchasedByCompanyFilter)] = (typeof(ProductRecentlyPurchasedByCompanyFilter).GetConstructor(new[] { typeof(DateTimeOffset), typeof(string), typeof(bool) })!, new []{ "sinceUtc", "negated" }),
+        // For backwards compatibility remove in next major release.
+        [typeof(ProductRecentlyPurchasedByUserCompanyFilter)] = (typeof(ProductRecentlyPurchasedByUserCompanyFilter).GetConstructor(new[] { typeof(DateTimeOffset), typeof(bool) })!, new[] { "sinceUtc", "negated" }),
     };
 
     private readonly PhpWriter phpWriter;
