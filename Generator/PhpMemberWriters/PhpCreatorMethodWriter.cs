@@ -312,7 +312,10 @@ public class PhpCreatorMethodWriter
             || EnumerableTypeArgumentMatchesArrayElementType(type2, type1)
             || EnumerableTypeArgumentMatchesSecondEnumerableType(type1, type2);
     }
-    
+
+    /// <remarks>
+    /// On next major release <paramref name="supportNullableValueTypes"/> should be removed and this should be rewritten to have it always apply.
+    /// </remarks>
     /// <param name="supportNullableValueTypes">This is introduced as we previously did not support matching on nullable value types. So setting this to <see langword="true"/> would be breaking for most places.</param>
     private static bool ParameterIsPersuadableIntoPropertyType(PropertyInfo property, ParameterInfo parameter, bool supportNullableValueTypes = false)
     {
