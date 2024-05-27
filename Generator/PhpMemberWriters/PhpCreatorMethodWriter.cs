@@ -22,6 +22,8 @@ public class PhpCreatorMethodWriter
         [typeof(ProductRecentlyViewedByUserFilter)] = typeof(ProductRecentlyViewedByUserFilter).GetConstructor(new[] { typeof(DateTimeOffset), typeof(bool) })!,
         // For backwards compatibility remove in next major release.
         [typeof(ProductRecentlyViewedByUserRelevanceModifier)] = typeof(ProductRecentlyViewedByUserRelevanceModifier).GetConstructor(new[] { typeof(DateTimeOffset), typeof(double), typeof(double) })!,
+        // For backwards compatibility remove in next major release.
+        [typeof(VariantDataRelevanceModifier)] = typeof(VariantDataRelevanceModifier).GetConstructor(new[] { typeof(string), typeof(List<ValueCondition>), typeof(ValueSelector), typeof(bool), typeof(bool) })!,
     };
 
     /// <summary>
