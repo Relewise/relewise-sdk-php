@@ -32,6 +32,8 @@ public class PhpCreatorMethodWriter
         [typeof(ProductRecentlyPurchasedByUserCompanyFilter)] = (typeof(ProductRecentlyPurchasedByUserCompanyFilter).GetConstructor(new[] { typeof(DateTimeOffset), typeof(bool) })!, new[] { "sinceUtc", "negated" }),
         // For backwards compatibility remove in next major release.
         [typeof(ProductRecentlyPurchasedByUserFilter)] = (typeof(ProductRecentlyPurchasedByUserFilter).GetConstructor(new[] { typeof(DateTimeOffset), typeof(bool) })!, new[] { "sinceUtc", "negated" }),
+        // For backwards compatibility remove in next major release.
+        [typeof(ProductRecentlyPurchasedByUserRelevanceModifier)] = (typeof(ProductRecentlyPurchasedByUserRelevanceModifier).GetConstructor(new[] { typeof(DateTimeOffset), typeof(double), typeof(double) })!, new[] { "sinceUtc", "ifPreviouslyPurchasedByUserMultiplyWeightBy", "ifNotPreviouslyPurchasedByUserMultiplyWeightBy" }),
     };
 
     private readonly PhpWriter phpWriter;
