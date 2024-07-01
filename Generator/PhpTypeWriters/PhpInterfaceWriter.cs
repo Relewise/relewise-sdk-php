@@ -1,4 +1,5 @@
-﻿using System.CodeDom.Compiler;
+﻿using Generator.Extensions;
+using System.CodeDom.Compiler;
 using System.Reflection;
 
 namespace Generator.PhpTypeWriters;
@@ -24,7 +25,14 @@ namespace {Constants.Namespace};
 use DateTime;
 
 """);
-        writer.WriteLine("// This is actually an interface.");
+        var deprecationComment = type.GetCustomAttribute(typeof(ObsoleteAttribute)) is ObsoleteAttribute { } obsolete ? $"@deprecated {obsolete.Message}" : null;
+
+        writer.WriteCommentBlock(
+            phpWriter.XmlDocumentation.GetSummary(type),
+            "This is actually an interface.",
+            deprecationComment
+        );
+
         writer.WriteLine($"abstract class {typeName}");
         writer.WriteLine("{");
         writer.Indent++;

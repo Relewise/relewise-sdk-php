@@ -4,6 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** @deprecated Use ProductDataDoubleValueFacet instead */
 class ProductDataIntegerValueFacet extends intProductDataValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ProductDataIntegerValueFacet, Relewise.Client";

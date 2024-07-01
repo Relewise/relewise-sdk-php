@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
-// This is actually an interface.
+/** This is actually an interface. */
 abstract class ITriggerResult
 {
     public static function hydrate(array $arr)
