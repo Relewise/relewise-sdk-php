@@ -7,9 +7,9 @@ use DateTime;
 class PredictionRuleSuppression
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.PredictionRule+Suppression, Relewise.Client";
-    public SuppressionConditionKind $condition;
+    public PredictionRuleSuppressionConditionKind $condition;
     public array $values;
-    public static function create(SuppressionConditionKind $condition, string ... $values) : PredictionRuleSuppression
+    public static function create(PredictionRuleSuppressionConditionKind $condition, string ... $values) : PredictionRuleSuppression
     {
         $result = new PredictionRuleSuppression();
         $result->condition = $condition;
@@ -21,7 +21,7 @@ class PredictionRuleSuppression
         $result = new PredictionRuleSuppression();
         if (array_key_exists("condition", $arr))
         {
-            $result->condition = SuppressionConditionKind::from($arr["condition"]);
+            $result->condition = PredictionRuleSuppressionConditionKind::from($arr["condition"]);
         }
         if (array_key_exists("values", $arr))
         {
@@ -33,7 +33,7 @@ class PredictionRuleSuppression
         }
         return $result;
     }
-    function setCondition(SuppressionConditionKind $condition)
+    function setCondition(PredictionRuleSuppressionConditionKind $condition)
     {
         $this->condition = $condition;
         return $this;

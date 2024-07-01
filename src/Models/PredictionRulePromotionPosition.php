@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
-enum PromotionPosition : string
+enum PredictionRulePromotionPosition : string
 {
     case Top = 'Top';
     case Bottom = 'Bottom';

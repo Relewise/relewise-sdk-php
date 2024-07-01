@@ -7,9 +7,9 @@ use DateTime;
 class PredictionRulePromotion
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.PredictionRule+Promotion, Relewise.Client";
-    public PromotionPosition $to;
+    public PredictionRulePromotionPosition $to;
     public array $values;
-    public static function create(PromotionPosition $toPosition, string ... $values) : PredictionRulePromotion
+    public static function create(PredictionRulePromotionPosition $toPosition, string ... $values) : PredictionRulePromotion
     {
         $result = new PredictionRulePromotion();
         $result->to = $toPosition;
@@ -21,7 +21,7 @@ class PredictionRulePromotion
         $result = new PredictionRulePromotion();
         if (array_key_exists("to", $arr))
         {
-            $result->to = PromotionPosition::from($arr["to"]);
+            $result->to = PredictionRulePromotionPosition::from($arr["to"]);
         }
         if (array_key_exists("values", $arr))
         {
@@ -33,7 +33,7 @@ class PredictionRulePromotion
         }
         return $result;
     }
-    function setTo(PromotionPosition $to)
+    function setTo(PredictionRulePromotionPosition $to)
     {
         $this->to = $to;
         return $this;

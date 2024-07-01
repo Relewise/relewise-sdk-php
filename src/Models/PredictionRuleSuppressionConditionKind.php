@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
-enum SuppressionConditionKind : string
+enum PredictionRuleSuppressionConditionKind : string
 {
     case Contains = 'Contains';
 }

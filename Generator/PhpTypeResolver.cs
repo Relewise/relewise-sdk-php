@@ -49,14 +49,17 @@ public class PhpTypeResolver
 
     private static string GetTypeName(Type type)
     {
-        var name = Regex.Replace(type.Name, @"`\d+", "");
+        var name = type.Name;
 
-        if (type.IsNested)
+        Type? typeToPrependToName = type.DeclaringType;
+        while (typeToPrependToName is not null)
         {
-            return type.DeclaringType!.Name + name;
+            name = typeToPrependToName.Name + name;
+            
+            typeToPrependToName = typeToPrependToName.DeclaringType;
         }
 
-        return name;
+        return Regex.Replace(name, @"`\d+", "");
     }
 
     private string AddCollectionTypeDefinition(Type type)
