@@ -1,4 +1,5 @@
 ﻿using System.CodeDom.Compiler;
+using System.Reflection;
 using Generator.Extensions;
 
 namespace Generator.PhpTypeWriters;
@@ -24,7 +25,13 @@ namespace {Constants.Namespace};
 use DateTime;
 
 """);
-        writer.WriteCommentBlock(phpWriter.XmlDocumentation.GetSummary(type));
+
+        var deprecationComment = type.GetCustomAttribute(typeof(ObsoleteAttribute)) is ObsoleteAttribute { } obsolete ? $"@deprecated {obsolete.Message}" : null;
+
+        writer.WriteCommentBlock(
+            phpWriter.XmlDocumentation.GetSummary(type),
+            deprecationComment
+        );
 
         writer.WriteLine($"enum {typeName} : string");
         writer.WriteLine("{");

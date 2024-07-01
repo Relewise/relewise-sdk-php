@@ -15,7 +15,7 @@ public static class XMLDocsFetcher
 
         using var archive = new ZipArchive(stream, ZipArchiveMode.Read, true);
 
-        if (archive.GetEntry("lib/netstandard2.0/Relewise.Client.xml") is not { } xmlFile)
+        if (archive.GetEntry($"lib/netstandard2.0/{package}.xml") is not { } xmlFile)
         {
             return new();
         }

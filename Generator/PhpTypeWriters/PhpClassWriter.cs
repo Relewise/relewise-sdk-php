@@ -41,8 +41,13 @@ use DateTime;
             writer.WriteLine();
             baseTypeName = $"{type.Name}Extractable";
         }
-        
-        writer.WriteCommentBlock(phpWriter.XmlDocumentation.GetSummary(type));
+
+        var deprecationComment = type.GetCustomAttribute(typeof(ObsoleteAttribute)) is ObsoleteAttribute { } obsolete ? $"@deprecated {obsolete.Message}" : null;
+
+        writer.WriteCommentBlock(
+            phpWriter.XmlDocumentation.GetSummary(type),
+            deprecationComment
+        );
 
         writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {typeName}{(baseTypeName is not null ? $" extends {baseTypeName}" : "")}");
         writer.WriteLine("{");
