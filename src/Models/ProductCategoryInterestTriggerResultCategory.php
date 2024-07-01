@@ -35,7 +35,7 @@ class ProductCategoryInterestTriggerResultCategory
             $result->viewedProducts = array();
             foreach($arr["viewedProducts"] as &$value)
             {
-                array_push($result->viewedProducts, CategoryProductAndVariant::hydrate($value));
+                array_push($result->viewedProducts, ProductCategoryInterestTriggerResultCategoryProductAndVariant::hydrate($value));
             }
         }
         return $result;
@@ -65,18 +65,18 @@ class ProductCategoryInterestTriggerResultCategory
         $this->views = $views;
         return $this;
     }
-    function setViewedProducts(CategoryProductAndVariant ... $viewedProducts)
+    function setViewedProducts(ProductCategoryInterestTriggerResultCategoryProductAndVariant ... $viewedProducts)
     {
         $this->viewedProducts = $viewedProducts;
         return $this;
     }
-    /** @param CategoryProductAndVariant[] $viewedProducts new value. */
+    /** @param ProductCategoryInterestTriggerResultCategoryProductAndVariant[] $viewedProducts new value. */
     function setViewedProductsFromArray(array $viewedProducts)
     {
         $this->viewedProducts = $viewedProducts;
         return $this;
     }
-    function addToViewedProducts(CategoryProductAndVariant $viewedProducts)
+    function addToViewedProducts(ProductCategoryInterestTriggerResultCategoryProductAndVariant $viewedProducts)
     {
         if (!isset($this->viewedProducts))
         {

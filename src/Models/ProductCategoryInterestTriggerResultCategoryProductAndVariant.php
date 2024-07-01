@@ -4,19 +4,19 @@ namespace Relewise\Models;
 
 use DateTime;
 
-class CategoryProductAndVariant
+class ProductCategoryInterestTriggerResultCategoryProductAndVariant
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.ProductCategoryInterestTriggerResult+Category+ProductAndVariant, Relewise.Client";
     public ProductResultDetails $product;
     public VariantResultDetails $variant;
-    public static function create() : CategoryProductAndVariant
+    public static function create() : ProductCategoryInterestTriggerResultCategoryProductAndVariant
     {
-        $result = new CategoryProductAndVariant();
+        $result = new ProductCategoryInterestTriggerResultCategoryProductAndVariant();
         return $result;
     }
-    public static function hydrate(array $arr) : CategoryProductAndVariant
+    public static function hydrate(array $arr) : ProductCategoryInterestTriggerResultCategoryProductAndVariant
     {
-        $result = new CategoryProductAndVariant();
+        $result = new ProductCategoryInterestTriggerResultCategoryProductAndVariant();
         if (array_key_exists("product", $arr))
         {
             $result->product = ProductResultDetails::hydrate($arr["product"]);
