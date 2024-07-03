@@ -22,38 +22,6 @@ public class PhpClassWriter : IPhpTypeWriter
 
     public void Write(IndentedTextWriter writer, Type type, string typeName)
     {
-        writer.WriteLine($"""
-<?php declare(strict_types=1);
-
-namespace {Constants.Namespace};
-
-use DateTime;
-
-""");
-        string? baseTypeName = null;
-        if (type.BaseType != typeof(object) && type.BaseType is { } baseType)
-        {
-            baseTypeName = phpWriter.PhpTypeName(baseType).Replace("?", "");
-        }
-        else if (ExtractableFacetResultTypes.Contains(type))
-        {
-            writer.WriteLine($"use Relewise\\FacetResultExtractable\\{type.Name}Extractable;");
-            writer.WriteLine();
-            baseTypeName = $"{type.Name}Extractable";
-        }
-
-        var deprecationComment = type.GetCustomAttribute(typeof(ObsoleteAttribute)) is ObsoleteAttribute { } obsolete ? $"@deprecated {obsolete.Message}" : null;
-
-        writer.WriteCommentBlock(
-            phpWriter.XmlDocumentation.GetSummary(type),
-            deprecationComment
-        );
-
-        writer.WriteLine($"{(type.IsAbstract ? "abstract " : "")}class {typeName}{(baseTypeName is not null ? $" extends {baseTypeName}" : "")}");
-        writer.WriteLine("{");
-        writer.Indent++;
-        writer.WriteLine($"public string $typeDefinition = \"{type.FullName}, {type.Assembly.FullName!.Split(",")[0]}\";");
-
         var gettablePropertyInfo = type
             .GetProperties()
             .Where(info => info.MemberType is MemberTypes.Property
@@ -75,14 +43,65 @@ use DateTime;
             .ToArray();
         var ownedProperties = settablePropertyInfo
             .Where(info => info.DeclaringType == type
-                        && info.DeclaringType?.IsAbstract == type.IsAbstract)
+                           && info.DeclaringType?.IsAbstract == type.IsAbstract)
             .Select(MapPropertyInfo)
             .ToArray();
         var staticGetterProperties = gettablePropertyInfo
             .Where(info => info.GetAccessors(nonPublic: false).Any(x => x.IsStatic)
-                        && info.SetMethod is null)
+                           && info.SetMethod is null)
             .Select(MapPropertyInfo)
             .ToArray();
+
+        writer.WriteLine("<?php declare(strict_types=1);");
+        writer.WriteLine();
+        writer.WriteLine($"namespace {Constants.Namespace};");
+        writer.WriteLine();
+
+        bool hasDateTimeOrDateTimeOffsetProperty = settableProperties.Any(p => p.propertyTypeName is "DateTime" or "?DateTime");
+        if (hasDateTimeOrDateTimeOffsetProperty)
+        {
+            writer.WriteLine("use DateTime;");
+            writer.WriteLine("use JsonSerializable;");
+            writer.WriteLine();
+        }
+
+        string? baseTypeName = null;
+        if (type.BaseType != typeof(object) && type.BaseType is { } baseType)
+        {
+            baseTypeName = phpWriter.PhpTypeName(baseType).Replace("?", "");
+        }
+        else if (ExtractableFacetResultTypes.Contains(type))
+        {
+            writer.WriteLine($"use Relewise\\FacetResultExtractable\\{type.Name}Extractable;");
+            writer.WriteLine();
+            baseTypeName = $"{type.Name}Extractable";
+        }
+
+        var deprecationComment = type.GetCustomAttribute(typeof(ObsoleteAttribute)) is ObsoleteAttribute { } obsolete ? $"@deprecated {obsolete.Message}" : null;
+
+        writer.WriteCommentBlock(
+            phpWriter.XmlDocumentation.GetSummary(type),
+            deprecationComment
+        );
+
+        if (type.IsAbstract)
+        {
+            writer.Write("abstract ");
+        }
+        writer.Write($"class {typeName}");
+        if (baseTypeName is not null)
+        {
+            writer.Write($" extends {baseTypeName}");
+        }
+        if (hasDateTimeOrDateTimeOffsetProperty)
+        {
+            writer.Write(" implements JsonSerializable");
+        }
+        writer.WriteLine();
+
+        writer.WriteLine("{");
+        writer.Indent++;
+        writer.WriteLine($"public string $typeDefinition = \"{type.FullName}, {type.Assembly.FullName!.Split(",")[0]}\";");
 
         phpWriter.PhpSettablePropertiesWriter.Write(writer, type, ownedProperties);
         phpWriter.PhpStaticReadonlyPropertiesWriter.Write(writer, staticGetterProperties);
@@ -90,6 +109,11 @@ use DateTime;
         phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, settableProperties, ownedProperties);
         phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, ownedProperties);
         phpWriter.PhpPropertySetterMethodsWriter.Write(writer, type, settableProperties);
+
+        if (hasDateTimeOrDateTimeOffsetProperty)
+        {
+            phpWriter.PhpJsonSerializerMethodWriter.Write(writer, type, settableProperties);
+        }
 
         writer.Indent--;
         writer.WriteLine("}");

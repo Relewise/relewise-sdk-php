@@ -23,7 +23,7 @@ public class PhpTypeResolver
         "Float" or "Double" or "Decimal" => "float",
         "Boolean" => "bool",
         "Object" => "mixed",
-        "DateTimeOffset" => "DateTime",
+        "DateTimeOffset" or "DateTime" => "DateTime",
         var value when value.StartsWith("Nullable") => $"?{ResolveType(type.GetGenericArguments()[0])}",
         var value when value.StartsWith("List") || value.StartsWith("Dictionary") || value.EndsWith("[]") || value.StartsWith("IEnumerable") => AddCollectionTypeDefinition(type),
         _ when type.IsGenericType => GetGenericTypeDefinition(type),

@@ -19,6 +19,7 @@ public class PhpWriter
     public PhpPropertySetterMethodsWriter PhpPropertySetterMethodsWriter { get; }
     public PhpStaticReadonlyPropertiesWriter PhpStaticReadonlyPropertiesWriter { get; }
     public PhpSettablePropertiesWriter PhpSettablePropertiesWriter { get; }
+    public PhpJsonSerializerMethodWriter PhpJsonSerializerMethodWriter { get; }
 
     public PhpWriter(Assembly assembly, string basePath, XmlDocumentation xmlDocumentation)
     {
@@ -32,6 +33,7 @@ public class PhpWriter
         PhpPropertySetterMethodsWriter = new PhpPropertySetterMethodsWriter(this);
         PhpStaticReadonlyPropertiesWriter = new PhpStaticReadonlyPropertiesWriter(this);
         PhpSettablePropertiesWriter = new PhpSettablePropertiesWriter(this);
+        PhpJsonSerializerMethodWriter = new PhpJsonSerializerMethodWriter(this);
         xmlDocumentation.PhpWriter = this;
     }
 
