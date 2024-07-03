@@ -7,7 +7,6 @@ use JsonSerializable;
 
 class VariantChangeTriggerResultVariantChangeResultDetails implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.VariantChangeTriggerResult+VariantChangeResultDetails, Relewise.Client";
     public DateTime $changeTime;
     public DataValue $oldValue;
     public DataValue $newValue;
@@ -76,7 +75,6 @@ class VariantChangeTriggerResultVariantChangeResultDetails implements JsonSerial
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->changeTime))
         {
             $result["changeTime"] = $this->changeTime->format(DATE_ATOM);

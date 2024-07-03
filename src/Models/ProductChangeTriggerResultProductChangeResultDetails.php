@@ -7,7 +7,6 @@ use JsonSerializable;
 
 class ProductChangeTriggerResultProductChangeResultDetails implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.ProductChangeTriggerResult+ProductChangeResultDetails, Relewise.Client";
     public DateTime $changeTimeUtc;
     public DataValue $oldValue;
     public DataValue $newValue;
@@ -65,7 +64,6 @@ class ProductChangeTriggerResultProductChangeResultDetails implements JsonSerial
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->changeTimeUtc))
         {
             $result["changeTimeUtc"] = $this->changeTimeUtc->format(DATE_ATOM);

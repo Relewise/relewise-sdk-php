@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class AbandonedSearchTriggerResult
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.AbandonedSearchTriggerResult, Relewise.Client";
     public UserResultDetails $user;
     public SearchType $type;
     public array $searches;

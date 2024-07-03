@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class HasParentCategoryFilter extends Filter
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Filters.HasParentCategoryFilter, Relewise.Client";
+    public string $typeDefinition = "";
     public array $categoryIds;
     public static function hydrate(array $arr)
     {

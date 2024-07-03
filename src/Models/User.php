@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class User
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.User, Relewise.Client";
     /** A persistent Id for current user, e.g. a database-id This Id should never be expected to change in the future */
     public ?string $authenticatedId;
     /** A TemporaryId, likely to change in the future, e.g. a CookieId in a web context */

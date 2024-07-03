@@ -5,7 +5,6 @@ namespace Relewise\Models;
 /** a collection that contains multiple RelevanceModifiers in its inner list Items. */
 class RelevanceModifierCollection
 {
-    public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.RelevanceModifierCollection, Relewise.Client";
     /** The items that the collection holds. */
     public ?array $items;
     /**

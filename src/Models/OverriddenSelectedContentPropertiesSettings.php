@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class OverriddenSelectedContentPropertiesSettings
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Shared.OverriddenSelectedContentPropertiesSettings, Relewise.Client";
     public ?bool $displayName;
     public ?bool $categoryPaths;
     public ?bool $assortments;

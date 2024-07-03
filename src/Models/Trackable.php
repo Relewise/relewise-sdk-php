@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class Trackable
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Trackable, Relewise.Client";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

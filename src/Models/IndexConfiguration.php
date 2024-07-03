@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class IndexConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.IndexConfiguration, Relewise.Client";
     public LanguageIndexConfiguration $language;
     public ProductIndexConfiguration $product;
     public ContentIndexConfiguration $content;

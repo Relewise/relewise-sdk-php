@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class intRange
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Range`1[[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Relewise.Client";
     public ?int $lowerBoundInclusive;
     public ?int $upperBoundInclusive;
     public static function create(?int $lowerBoundInclusive, ?int $upperBoundInclusive) : intRange

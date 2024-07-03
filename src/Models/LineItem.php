@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class LineItem
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.LineItem, Relewise.Client";
     public Product $product;
     public ?ProductVariant $variant;
     public int $quantity;

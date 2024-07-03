@@ -7,7 +7,6 @@ use JsonSerializable;
 
 class UserResultDetails implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.UserResultDetails, Relewise.Client";
     public string $authenticatedId;
     public string $temporaryId;
     public string $email;
@@ -262,7 +261,6 @@ class UserResultDetails implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->authenticatedId))
         {
             $result["authenticatedId"] = $this->authenticatedId;

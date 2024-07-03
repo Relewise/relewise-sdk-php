@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class Money
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Money, Relewise.Client";
     public float $amount;
     public Currency $currency;
     public static function create(Currency $currency, float $amount) : Money

@@ -7,7 +7,6 @@ use JsonSerializable;
 
 class ContentResultDetails implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.ContentResultDetails, Relewise.Client";
     public string $contentId;
     public Multilingual $displayName;
     public array $assortments;
@@ -194,7 +193,6 @@ class ContentResultDetails implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->contentId))
         {
             $result["contentId"] = $this->contentId;

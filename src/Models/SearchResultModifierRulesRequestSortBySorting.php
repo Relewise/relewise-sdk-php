@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class SearchResultModifierRulesRequestSortBySorting
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Shared.Sorting`1[[Relewise.Client.Requests.Search.Rules.SearchResultModifierRulesRequest+SortBy, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public SearchResultModifierRulesRequestSortBy $sortBy;
     public SortOrder $sortOrder;
     public static function create(SearchResultModifierRulesRequestSortBy $sortBy, SortOrder $sortOrder) : SearchResultModifierRulesRequestSortBySorting

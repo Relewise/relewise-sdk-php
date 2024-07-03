@@ -7,7 +7,7 @@ use JsonSerializable;
 
 abstract class EntityChangeTriggerConfiguration extends ProductChangeTriggerResultTriggerConfiguration implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.EntityChangeTriggerConfiguration`3[[Relewise.Client.Responses.Triggers.Results.ProductChangeTriggerResult, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null],[Relewise.Client.Responses.Triggers.ResultSettings.ProductChangeTriggerResultSettings, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null],[Relewise.Client.DataTypes.EntityPropertySelectors.ProductPropertySelector, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "";
     /** The selector used for choosing which property of the entity the trigger should look for change in. */
     public ?ProductPropertySelector $entityPropertySelector;
     /** The filter that specifies which entities the trigger should track changes for. */
@@ -154,7 +154,6 @@ abstract class EntityChangeTriggerConfiguration extends ProductChangeTriggerResu
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->entityPropertySelector))
         {
             $result["entityPropertySelector"] = $this->entityPropertySelector;

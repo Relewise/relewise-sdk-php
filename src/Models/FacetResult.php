@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class FacetResult
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.FacetResult, Relewise.Client";
+    public string $typeDefinition = "";
     public FacetingField $field;
     public static function hydrate(array $arr)
     {

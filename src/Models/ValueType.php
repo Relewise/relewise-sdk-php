@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class ValueType
 {
-    public string $typeDefinition = "System.ValueType, System.Private.CoreLib";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

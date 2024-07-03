@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class FacetQuery
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.FacetQuery, Relewise.Client";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

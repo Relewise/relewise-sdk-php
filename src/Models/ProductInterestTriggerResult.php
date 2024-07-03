@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class ProductInterestTriggerResult
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.ProductInterestTriggerResult, Relewise.Client";
     public UserResultDetails $user;
     public array $products;
     public static function create() : ProductInterestTriggerResult

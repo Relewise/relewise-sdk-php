@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class ContentCategoryInterestTriggerResultCategory
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.ContentCategoryInterestTriggerResult+Category, Relewise.Client";
     public array $lastPath;
     public int $views;
     public array $viewedContents;

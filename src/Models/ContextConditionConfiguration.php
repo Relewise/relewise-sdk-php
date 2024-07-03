@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class ContextConditionConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Configurations.ContextConditionConfiguration, Relewise.Client";
     public array $filters;
     public static function create() : ContextConditionConfiguration
     {

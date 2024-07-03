@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class PredictionRuleSuppression
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.PredictionRule+Suppression, Relewise.Client";
     public PredictionRuleSuppressionConditionKind $condition;
     public array $values;
     public static function create(PredictionRuleSuppressionConditionKind $condition, string ... $values) : PredictionRuleSuppression

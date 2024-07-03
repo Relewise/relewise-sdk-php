@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class CategoryLevelFilter extends Filter
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Filters.CategoryLevelFilter, Relewise.Client";
+    public string $typeDefinition = "";
     public array $levels;
     public static function hydrate(array $arr)
     {

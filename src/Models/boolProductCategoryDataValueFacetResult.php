@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class boolProductCategoryDataValueFacetResult extends boolDataValueFacetResult
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ProductCategoryDataValueFacetResult`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Relewise.Client";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

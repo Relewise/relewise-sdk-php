@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class ProductSortBySpecification
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Product.ProductSortBySpecification, Relewise.Client";
     public ProductSorting $value;
     public static function create() : ProductSortBySpecification
     {

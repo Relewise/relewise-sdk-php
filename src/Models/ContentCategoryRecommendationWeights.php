@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class ContentCategoryRecommendationWeights
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ContentCategoryRecommendationWeights, Relewise.Client";
     public float $categoryViews;
     public float $contentViews;
     public static function create(float $categoryViews = 1, float $contentViews = 1) : ContentCategoryRecommendationWeights

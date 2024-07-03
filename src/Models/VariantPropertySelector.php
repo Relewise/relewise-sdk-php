@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class VariantPropertySelector
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.EntityPropertySelectors.VariantPropertySelector, Relewise.Client";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

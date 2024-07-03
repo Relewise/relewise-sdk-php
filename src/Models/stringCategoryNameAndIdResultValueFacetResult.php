@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class stringCategoryNameAndIdResultValueFacetResult extends FacetResult
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ValueFacetResult`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Relewise.Client.DataTypes.CategoryNameAndIdResult, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "";
     public array $selected;
     public array $available;
     public static function hydrate(array $arr)

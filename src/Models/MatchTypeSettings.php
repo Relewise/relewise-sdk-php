@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class MatchTypeSettings
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.MatchTypeSettings, Relewise.Client";
     public bool $compound;
     public bool $exact;
     public bool $startsWith;

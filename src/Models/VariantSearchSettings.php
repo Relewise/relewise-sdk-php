@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class VariantSearchSettings
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.VariantSearchSettings, Relewise.Client";
     /** @deprecated Use ProductSearchSettings.ResultConstraint instead */
     public bool $excludeResultsWithoutVariant;
     public static function create() : VariantSearchSettings

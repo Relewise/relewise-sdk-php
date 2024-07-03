@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class SignificantDataValue
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.SignificantDataValue, Relewise.Client";
     public string $key;
     public SignificantDataValueSignificantDataValueComparer $comparer;
     public float $significance;

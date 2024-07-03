@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class SearchIndexSelector
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.SearchIndexSelector, Relewise.Client";
     public string $id;
     const DEFAULT = Null;
     public static function create(string $id) : SearchIndexSelector

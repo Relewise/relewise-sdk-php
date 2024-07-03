@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class ProductPerformanceResultViewsMetrics
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.ProductPerformanceResult+ViewsMetrics, Relewise.Client";
     public int $total;
     public static function create() : ProductPerformanceResultViewsMetrics
     {

@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class CategoryUpdate extends Trackable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.CategoryUpdate, Relewise.Client";
+    public string $typeDefinition = "";
     public CategoryUpdateUpdateKind $kind;
     public static function hydrate(array $arr)
     {

@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class VariantIndexConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.VariantIndexConfiguration, Relewise.Client";
     public FieldIndexConfiguration $id;
     public FieldIndexConfiguration $displayName;
     public SpecificationsIndexConfiguration $specifications;

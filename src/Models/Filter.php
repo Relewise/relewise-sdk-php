@@ -5,7 +5,7 @@ namespace Relewise\Models;
 /** a Filter that can be used to define which entities to include in queries. */
 abstract class Filter
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Filters.Filter, Relewise.Client";
+    public string $typeDefinition = "";
     /** Defines whether the Filter should exclude the matching entities instead of including the matching entities. */
     public bool $negated;
     public ?FilterSettings $settings;

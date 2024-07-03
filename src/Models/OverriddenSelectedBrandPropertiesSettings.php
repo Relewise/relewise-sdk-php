@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class OverriddenSelectedBrandPropertiesSettings
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Shared.OverriddenSelectedBrandPropertiesSettings, Relewise.Client";
     public ?bool $displayName;
     public ?bool $assortments;
     public ?bool $viewedByUserInfo;

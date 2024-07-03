@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class CategoryIdFilter extends Filter
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Filters.CategoryIdFilter, Relewise.Client";
+    public string $typeDefinition = "";
     public array $categoryIds;
     public CategoryScope $evaluationScope;
     public static function hydrate(array $arr)

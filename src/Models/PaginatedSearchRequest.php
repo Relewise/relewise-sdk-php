@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class PaginatedSearchRequest extends SearchRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Search.PaginatedSearchRequest, Relewise.Client";
+    public string $typeDefinition = "";
     public int $skip;
     public int $take;
     public static function hydrate(array $arr)

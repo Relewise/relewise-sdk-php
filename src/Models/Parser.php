@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class Parser
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.Parsers.Parser, Relewise.Client";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

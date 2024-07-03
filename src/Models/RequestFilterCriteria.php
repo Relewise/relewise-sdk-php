@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class RequestFilterCriteria
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.RequestFilterCriteria, Relewise.Client";
     public FilterCollection $includes;
     public FilterCollection $excludes;
     public ?intRange $count;

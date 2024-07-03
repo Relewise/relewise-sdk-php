@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class UserCondition
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.UserCondition, Relewise.Client";
+    public string $typeDefinition = "";
     public bool $negated;
     public static function hydrate(array $arr)
     {

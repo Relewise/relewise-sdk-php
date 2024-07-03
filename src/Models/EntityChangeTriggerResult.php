@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class EntityChangeTriggerResult
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.EntityChangeTriggerResult, Relewise.Client";
+    public string $typeDefinition = "";
     public UserResultDetails $user;
     public static function hydrate(array $arr)
     {

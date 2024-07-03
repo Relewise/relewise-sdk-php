@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class LanguageIndexConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.LanguageIndexConfiguration, Relewise.Client";
     public array $languages;
     public static function create() : LanguageIndexConfiguration
     {

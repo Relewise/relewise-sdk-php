@@ -101,7 +101,16 @@ public class PhpClassWriter : IPhpTypeWriter
 
         writer.WriteLine("{");
         writer.Indent++;
-        writer.WriteLine($"public string $typeDefinition = \"{type.FullName}, {type.Assembly.FullName!.Split(",")[0]}\";");
+
+        if (type.HasBaseTypeAndIsNotAbstract())
+        {
+            writer.WriteLine($"public string $typeDefinition = \"{type.FullName}, {type.Assembly.FullName!.Split(",")[0]}\";");
+        }
+        else if (type.IsAbstract)
+        {
+            // This is here so that it can be overriden by a concrete implementation in the JSON serialization.
+            writer.WriteLine($"public string $typeDefinition = \"\";");
+        }
 
         phpWriter.PhpSettablePropertiesWriter.Write(writer, type, ownedProperties);
         phpWriter.PhpStaticReadonlyPropertiesWriter.Write(writer, staticGetterProperties);

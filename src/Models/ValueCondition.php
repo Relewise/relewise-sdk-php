@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class ValueCondition
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Conditions.ValueCondition, Relewise.Client";
+    public string $typeDefinition = "";
     /** Whether the condition should be negated / inverted */
     public bool $negated;
     public static function hydrate(array $arr)

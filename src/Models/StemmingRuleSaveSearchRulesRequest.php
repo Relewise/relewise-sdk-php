@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class StemmingRuleSaveSearchRulesRequest extends LicensedRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SaveSearchRulesRequest`1[[Relewise.Client.DataTypes.Search.Rules.StemmingRule, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "";
     public array $rules;
     public string $modifiedBy;
     public static function hydrate(array $arr)

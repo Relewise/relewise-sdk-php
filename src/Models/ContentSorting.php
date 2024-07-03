@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class ContentSorting extends ContentSortingSorting
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Content.ContentSorting, Relewise.Client";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

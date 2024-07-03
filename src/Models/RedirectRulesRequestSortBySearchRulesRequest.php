@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class RedirectRulesRequestSortBySearchRulesRequest extends LicensedRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SearchRulesRequest`1[[Relewise.Client.Requests.Search.Rules.RedirectRulesRequest+SortBy, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "";
     public SearchRuleFilters $filters;
     public RedirectRulesRequestSortBySorting $sorting;
     public int $skip;

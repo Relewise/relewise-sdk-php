@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class ConditionConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Configurations.ConditionConfiguration, Relewise.Client";
     public UserConditionConfiguration $user;
     public InputConditionConfiguration $input;
     public TargetConditionConfiguration $target;

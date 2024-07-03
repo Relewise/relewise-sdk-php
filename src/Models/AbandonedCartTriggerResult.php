@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class AbandonedCartTriggerResult
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.AbandonedCartTriggerResult, Relewise.Client";
     public UserResultDetails $user;
     public static function create() : AbandonedCartTriggerResult
     {

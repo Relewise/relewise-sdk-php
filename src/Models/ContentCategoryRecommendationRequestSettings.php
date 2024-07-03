@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class ContentCategoryRecommendationRequestSettings
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ContentCategoryRecommendationRequestSettings, Relewise.Client";
     public int $numberOfRecommendations;
     public bool $allowFillIfNecessaryToReachNumberOfRecommendations;
     public bool $allowReplacingOfRecentlyShownRecommendations;

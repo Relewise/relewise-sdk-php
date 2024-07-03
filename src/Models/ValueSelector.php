@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class ValueSelector
 {
-    public string $typeDefinition = "Relewise.Client.Requests.ValueSelectors.ValueSelector, Relewise.Client";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

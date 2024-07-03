@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class PredictionRulesRequestSortBySearchRulesRequest extends LicensedRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SearchRulesRequest`1[[Relewise.Client.Requests.Search.Rules.PredictionRulesRequest+SortBy, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "";
     public SearchRuleFilters $filters;
     public PredictionRulesRequestSortBySorting $sorting;
     public int $skip;

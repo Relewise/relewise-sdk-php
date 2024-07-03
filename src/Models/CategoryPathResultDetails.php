@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class CategoryPathResultDetails
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.CategoryPathResultDetails, Relewise.Client";
     public array $breadcrumbPathStartingFromRoot;
     public static function create(CategoryNameAndId ... $breadcrumbPathStartingFromRoot) : CategoryPathResultDetails
     {

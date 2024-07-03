@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class ProductPropertySelector
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.EntityPropertySelectors.ProductPropertySelector, Relewise.Client";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

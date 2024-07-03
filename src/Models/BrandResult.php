@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class BrandResult
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.BrandResult, Relewise.Client";
     public string $id;
     public string $displayName;
     public int $rank;

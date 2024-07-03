@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class Currency
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Currency, Relewise.Client";
     public string $value;
     const UNDEFINED = Null;
     public static function create(string $name) : Currency

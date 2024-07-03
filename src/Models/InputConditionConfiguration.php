@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class InputConditionConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Configurations.InputConditionConfiguration, Relewise.Client";
     public FilterCollection $filters;
     public EvaluationMode $evaluationMode;
     public static function create() : InputConditionConfiguration

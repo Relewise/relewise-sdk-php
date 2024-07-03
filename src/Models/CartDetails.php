@@ -7,7 +7,6 @@ use JsonSerializable;
 
 class CartDetails implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.CartDetails, Relewise.Client";
     public string $name;
     public DateTime $modifiedUtc;
     public array $lineItems;
@@ -109,7 +108,6 @@ class CartDetails implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->name))
         {
             $result["name"] = $this->name;

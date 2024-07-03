@@ -7,7 +7,7 @@ use JsonSerializable;
 
 abstract class TriggerConfiguration implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.TriggerConfiguration, Relewise.Client";
+    public string $typeDefinition = "";
     public string $id;
     public string $name;
     public string $description;
@@ -185,7 +185,6 @@ abstract class TriggerConfiguration implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->id))
         {
             $result["id"] = $this->id;

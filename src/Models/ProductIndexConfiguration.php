@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class ProductIndexConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.ProductIndexConfiguration, Relewise.Client";
     public FieldIndexConfiguration $id;
     public FieldIndexConfiguration $displayName;
     public CategoryIndexConfiguration $category;

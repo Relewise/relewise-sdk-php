@@ -5,7 +5,6 @@ namespace Relewise\Models;
 /** Indicates that some property should change by having a new value which is still of the same type. */
 class Change
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Changes.Change, Relewise.Client";
     public static function create() : Change
     {
         $result = new Change();

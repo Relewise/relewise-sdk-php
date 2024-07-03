@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class PredictionRuleSearchRulesResponse extends TimedResponse
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.SearchRulesResponse`1[[Relewise.Client.DataTypes.Search.Rules.PredictionRule, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "";
     public array $rules;
     public int $hits;
     public static function hydrate(array $arr)

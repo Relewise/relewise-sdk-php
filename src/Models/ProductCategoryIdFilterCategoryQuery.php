@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class ProductCategoryIdFilterCategoryQuery extends LicensedRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Queries.CategoryQuery`1[[Relewise.Client.Requests.Filters.ProductCategoryIdFilter, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "";
     public FilterCollection $filters;
     public int $numberOfResults;
     public ?Language $language;

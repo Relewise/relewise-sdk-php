@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class RedirectResult
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.RedirectResult, Relewise.Client";
     public string $id;
     public SearchTermCondition $condition;
     public ?string $destination;

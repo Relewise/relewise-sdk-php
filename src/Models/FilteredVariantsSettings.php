@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class FilteredVariantsSettings
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Shared.FilteredVariantsSettings, Relewise.Client";
     public ?FilterCollection $filters;
     public ?bool $inheritFiltersFromRequest;
     public static function create() : FilteredVariantsSettings

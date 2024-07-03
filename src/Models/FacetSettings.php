@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class FacetSettings
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.FacetSettings, Relewise.Client";
     public bool $alwaysIncludeSelectedInAvailable;
     public bool $includeZeroHitsInAvailable;
     public static function create() : FacetSettings

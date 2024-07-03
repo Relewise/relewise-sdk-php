@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class Company
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Company, Relewise.Client";
     public string $id;
     public ?Company $parent;
     public ?array $data;

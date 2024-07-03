@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class BrandNameAndIdResultAvailableFacetValue
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.AvailableFacetValue`1[[Relewise.Client.DataTypes.BrandNameAndIdResult, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public BrandNameAndIdResult $value;
     public int $hits;
     public bool $selected;

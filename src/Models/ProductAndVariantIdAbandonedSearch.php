@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class ProductAndVariantIdAbandonedSearch extends AbandonedSearch
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.AbandonedSearch`1[[Relewise.Client.DataTypes.ProductAndVariantId, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "";
     public array $topResults;
     public static function hydrate(array $arr)
     {

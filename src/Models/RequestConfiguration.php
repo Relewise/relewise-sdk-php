@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class RequestConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Configurations.RequestConfiguration, Relewise.Client";
     public RequestConfigurationPrioritization $filters;
     public RequestConfigurationPrioritization $relevanceModifiers;
     public OverriddenProductRecommendationRequestSettings $overriddenProductRecommendationRequestSettings;

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 /** a collection that contains multiple ValueConditions in its inner list Items. */
 class ValueConditionCollection
 {
-    public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ValueConditionCollection, Relewise.Client";
     /** The items that this collection holds. */
     public ?array $items;
     /**
