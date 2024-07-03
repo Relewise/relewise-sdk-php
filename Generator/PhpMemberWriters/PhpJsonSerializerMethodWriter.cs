@@ -1,5 +1,6 @@
 ﻿using System.CodeDom.Compiler;
 using System.Reflection;
+using Generator.Extensions;
 
 namespace Generator.PhpMemberWriters;
 
@@ -19,7 +20,12 @@ public class PhpJsonSerializerMethodWriter
         writer.Indent++;
 
         writer.WriteLine("$result = array();");
-        writer.WriteLine("$result[\"typeDefinition\"] = $this->typeDefinition;");
+
+        if (classType.HasBaseTypeAndIsNotAbstract())
+        {
+            writer.WriteLine("$result[\"typeDefinition\"] = $this->typeDefinition;");
+        }
+        
         foreach (var (info, propertyTypeName, propertyName, lowerCaseName) in propertyInformations)
         {
             writer.WriteLine($"if (isset($this->{lowerCaseName}))");
