@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class DataObjectValueSelector
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.DataObjectValueSelector, Relewise.Client";
     public string $key;
     public ?DataObjectFilter $filter;
     public ?DataObjectValueSelector $childSelector;

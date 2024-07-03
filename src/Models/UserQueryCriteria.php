@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class UserQueryCriteria
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.UserQueryCriteria, Relewise.Client";
     public ?string $authenticatedId;
     public ?string $temporaryId;
     public ?string $email;

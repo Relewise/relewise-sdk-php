@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class SimilarVariantEvaluationSettings
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Recommendations.SimilarVariantEvaluationSettings, Relewise.Client";
     public ?float $significanceOfSimilaritiesInDisplayName;
     public ?float $significanceOfSimilarListPrice;
     public ?float $significanceOfSimilarSalesPrice;

@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class FilterScopeSettings
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Filters.Settings.FilterScopeSettings, Relewise.Client";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

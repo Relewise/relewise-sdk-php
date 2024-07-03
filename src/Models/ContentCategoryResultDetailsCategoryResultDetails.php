@@ -7,7 +7,7 @@ use JsonSerializable;
 
 abstract class ContentCategoryResultDetailsCategoryResultDetails implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.CategoryResultDetails`1[[Relewise.Client.DataTypes.ContentCategoryResultDetails, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "";
     public string $categoryId;
     public Multilingual $displayName;
     public array $assortments;
@@ -214,7 +214,6 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails implements Json
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->categoryId))
         {
             $result["categoryId"] = $this->categoryId;

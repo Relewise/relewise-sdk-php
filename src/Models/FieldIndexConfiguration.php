@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class FieldIndexConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.FieldIndexConfiguration, Relewise.Client";
     public bool $included;
     public int $weight;
     public PredictionSourceType $predictionSourceType;

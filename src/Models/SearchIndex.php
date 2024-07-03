@@ -7,7 +7,6 @@ use JsonSerializable;
 
 class SearchIndex implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.SearchIndex, Relewise.Client";
     public string $id;
     public string $description;
     public bool $enabled;
@@ -115,7 +114,6 @@ class SearchIndex implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->id))
         {
             $result["id"] = $this->id;

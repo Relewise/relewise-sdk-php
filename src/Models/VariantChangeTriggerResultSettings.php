@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class VariantChangeTriggerResultSettings
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Triggers.ResultSettings.VariantChangeTriggerResultSettings, Relewise.Client";
     public SelectedProductPropertiesSettings $selectedProductProperties;
     public SelectedVariantPropertiesSettings $selectedVariantProperties;
     public static function create() : VariantChangeTriggerResultSettings

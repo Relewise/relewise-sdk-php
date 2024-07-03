@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class DataValue
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.DataValue, Relewise.Client";
     public DataValueDataValueTypes $type;
     public mixed $value;
     public static function create() : DataValue

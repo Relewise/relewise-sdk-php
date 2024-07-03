@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class SelectedProductPropertiesSettings
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Shared.SelectedProductPropertiesSettings, Relewise.Client";
     public bool $displayName;
     public bool $categoryPaths;
     public bool $assortments;

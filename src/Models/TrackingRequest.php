@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class TrackingRequest extends LicensedRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackingRequest, Relewise.Client";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

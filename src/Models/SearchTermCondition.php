@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class SearchTermCondition
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchTermCondition, Relewise.Client";
     public ?SearchTermConditionConditionKind $kind;
     public ?string $value;
     public ?array $andConditions;

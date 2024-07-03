@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class DataRelevanceModifier extends RelevanceModifier
 {
-    public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.DataRelevanceModifier, Relewise.Client";
+    public string $typeDefinition = "";
     /** The data key that this RelevanceModifier will distinguish on. */
     public string $key;
     /** Specifies whether entities that don't have the specific data Key should be considered a match (true) or not (false). */

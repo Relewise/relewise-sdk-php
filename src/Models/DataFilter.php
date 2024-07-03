@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class DataFilter extends Filter
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Filters.DataFilter, Relewise.Client";
+    public string $typeDefinition = "";
     public string $key;
     public bool $filterOutIfKeyIsNotFound;
     public bool $mustMatchAllConditions;

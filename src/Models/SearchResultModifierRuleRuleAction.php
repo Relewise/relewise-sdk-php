@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class SearchResultModifierRuleRuleAction
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchResultModifierRule+RuleAction, Relewise.Client";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

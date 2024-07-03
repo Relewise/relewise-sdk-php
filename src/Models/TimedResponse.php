@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class TimedResponse
 {
-    public string $typeDefinition = "Relewise.Client.Responses.TimedResponse, Relewise.Client";
+    public string $typeDefinition = "";
     public Statistics $statistics;
     public static function hydrate(array $arr)
     {

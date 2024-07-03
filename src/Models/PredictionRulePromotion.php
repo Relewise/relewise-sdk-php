@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class PredictionRulePromotion
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.PredictionRule+Promotion, Relewise.Client";
     public PredictionRulePromotionPosition $to;
     public array $values;
     public static function create(PredictionRulePromotionPosition $toPosition, string ... $values) : PredictionRulePromotion

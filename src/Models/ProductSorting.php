@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class ProductSorting extends ProductSortingSorting
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Product.ProductSorting, Relewise.Client";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

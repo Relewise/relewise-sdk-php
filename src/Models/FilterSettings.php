@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class FilterSettings
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Filters.Settings.FilterSettings, Relewise.Client";
     public ?FilterScopes $scopes;
     public static function create() : FilterSettings
     {

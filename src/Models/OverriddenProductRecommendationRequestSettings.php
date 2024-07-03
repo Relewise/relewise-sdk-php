@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class OverriddenProductRecommendationRequestSettings
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Recommendations.OverriddenProductRecommendationRequestSettings, Relewise.Client";
     public ?int $numberOfRecommendations;
     public ?bool $allowFillIfNecessaryToReachNumberOfRecommendations;
     public ?bool $allowReplacingOfRecentlyShownRecommendations;

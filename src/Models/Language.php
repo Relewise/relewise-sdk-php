@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class Language
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Language, Relewise.Client";
     /** Trimmed language name in lower-invariant. */
     public string $value;
     const UNDEFINED = Null;

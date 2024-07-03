@@ -7,7 +7,6 @@ use JsonSerializable;
 
 class Synonym implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Synonyms.Synonym, Relewise.Client";
     public string $id;
     public SynonymType $type;
     public array $indexes;
@@ -247,7 +246,6 @@ class Synonym implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->id))
         {
             $result["id"] = $this->id;

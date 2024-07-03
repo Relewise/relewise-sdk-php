@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class Channel
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Channel, Relewise.Client";
     public string $name;
     public ?Channel $subChannel;
     public static function create(string $name) : Channel

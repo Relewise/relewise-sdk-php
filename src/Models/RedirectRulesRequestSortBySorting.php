@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class RedirectRulesRequestSortBySorting
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Shared.Sorting`1[[Relewise.Client.Requests.Search.Rules.RedirectRulesRequest+SortBy, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public RedirectRulesRequestSortBy $sortBy;
     public SortOrder $sortOrder;
     public static function create(RedirectRulesRequestSortBy $sortBy, SortOrder $sortOrder) : RedirectRulesRequestSortBySorting

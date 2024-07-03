@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class RecommendationRequest extends LicensedRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Recommendations.RecommendationRequest, Relewise.Client";
+    public string $typeDefinition = "";
     public ?Language $language;
     public ?User $user;
     public RelevanceModifierCollection $relevanceModifiers;

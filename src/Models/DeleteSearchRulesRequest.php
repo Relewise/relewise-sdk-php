@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class DeleteSearchRulesRequest extends LicensedRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.DeleteSearchRulesRequest, Relewise.Client";
+    public string $typeDefinition = "";
     public array $ids;
     public string $deletedBy;
     public static function hydrate(array $arr)

@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class DataIndexConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.DataIndexConfiguration, Relewise.Client";
     public array $keys;
     public FieldIndexConfiguration $unspecified;
     public static function create() : DataIndexConfiguration

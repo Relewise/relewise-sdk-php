@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class ContentCategoryRecommendationRequest extends RecommendationRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ContentCategoryRecommendationRequest, Relewise.Client";
+    public string $typeDefinition = "";
     public ContentCategoryRecommendationRequestSettings $settings;
     public static function hydrate(array $arr)
     {

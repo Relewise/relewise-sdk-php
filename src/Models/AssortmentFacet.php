@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class AssortmentFacet extends intValueFacet
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.AssortmentFacet, Relewise.Client";
+    public string $typeDefinition = "";
     public AssortmentFilterType $assortmentFilterType;
     public static function hydrate(array $arr)
     {

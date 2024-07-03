@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class UserActivityTriggerResult
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.UserActivityTriggerResult, Relewise.Client";
     public UserResultDetails $user;
     public static function create() : UserActivityTriggerResult
     {

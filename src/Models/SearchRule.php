@@ -7,7 +7,7 @@ use JsonSerializable;
 
 abstract class SearchRule implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchRule, Relewise.Client";
+    public string $typeDefinition = "";
     public string $id;
     public ?ApplicableIndexes $indexes;
     public ?ApplicableLanguages $languages;
@@ -143,7 +143,6 @@ abstract class SearchRule implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->id))
         {
             $result["id"] = $this->id;

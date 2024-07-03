@@ -7,7 +7,6 @@ use JsonSerializable;
 
 class ViewedByUserInfo implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.ViewedByUserInfo, Relewise.Client";
     public DateTime $mostRecentlyViewedUtc;
     public int $totalNumberOfTimesViewed;
     public static function create(DateTime $mostRecentlyViewedUtc, int $totalNumberOfTimesViewed) : ViewedByUserInfo
@@ -43,7 +42,6 @@ class ViewedByUserInfo implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->mostRecentlyViewedUtc))
         {
             $result["mostRecentlyViewedUtc"] = $this->mostRecentlyViewedUtc->format(DATE_ATOM);

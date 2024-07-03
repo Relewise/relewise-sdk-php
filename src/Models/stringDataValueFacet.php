@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class stringDataValueFacet extends stringValueFacet
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.DataValueFacet`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Relewise.Client";
+    public string $typeDefinition = "";
     public string $key;
     public ?CollectionFilterType $collectionFilterType;
     public static function hydrate(array $arr)

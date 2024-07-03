@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class Enum extends ValueType
 {
-    public string $typeDefinition = "System.Enum, System.Private.CoreLib";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class floatProductCategoryDataRangeFacetResult extends floatRangeFacetResult
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ProductCategoryDataRangeFacetResult`1[[System.Nullable`1[[System.Double, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Relewise.Client";
+    public string $typeDefinition = "";
     public string $key;
     public static function hydrate(array $arr)
     {

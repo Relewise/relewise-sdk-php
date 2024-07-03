@@ -7,7 +7,6 @@ use JsonSerializable;
 
 class BrandResultDetails implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.BrandResultDetails, Relewise.Client";
     public string $brandId;
     public string $displayName;
     public array $assortments;
@@ -175,7 +174,6 @@ class BrandResultDetails implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->brandId))
         {
             $result["brandId"] = $this->brandId;

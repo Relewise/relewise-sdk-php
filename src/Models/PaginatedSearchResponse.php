@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class PaginatedSearchResponse extends SearchResponse
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Search.PaginatedSearchResponse, Relewise.Client";
+    public string $typeDefinition = "";
     public int $hits;
     public static function hydrate(array $arr)
     {

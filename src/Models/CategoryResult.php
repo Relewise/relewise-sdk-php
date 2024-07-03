@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class CategoryResult
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.CategoryResult, Relewise.Client";
+    public string $typeDefinition = "";
     public string $categoryId;
     public string $displayName;
     public int $rank;

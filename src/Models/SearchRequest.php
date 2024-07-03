@@ -5,7 +5,7 @@ namespace Relewise\Models;
 /** The search request shape establishes language-currency context with search filters, optional user info. Defines Language. Currency pair, as well as Filters (both PostFilters). Products search is done through - ProductSearchRequest Content search is done through - ContentSearchRequest Search term prediction is done through - SearchTermPredictionRequest */
 abstract class SearchRequest extends LicensedRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Search.SearchRequest, Relewise.Client";
+    public string $typeDefinition = "";
     public ?Language $language;
     public ?Currency $currency;
     public ?User $user;

@@ -6,7 +6,6 @@ use Relewise\FacetResultExtractable\ProductFacetResultExtractable;
 
 class ProductFacetResult extends ProductFacetResultExtractable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ProductFacetResult, Relewise.Client";
     public array $items;
     public static function create() : ProductFacetResult
     {

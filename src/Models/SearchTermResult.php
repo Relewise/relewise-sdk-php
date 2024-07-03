@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class SearchTermResult
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.SearchTermResult, Relewise.Client";
     public string $term;
     public int $rank;
     public array $expectedResultTypes;

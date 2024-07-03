@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class ProductResult
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.ProductResult, Relewise.Client";
     public string $productId;
     public string $displayName;
     public VariantResult $variant;

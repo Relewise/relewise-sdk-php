@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class ProductRecommendationRequest extends RecommendationRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ProductRecommendationRequest, Relewise.Client";
+    public string $typeDefinition = "";
     public ProductRecommendationRequestSettings $settings;
     public static function hydrate(array $arr)
     {

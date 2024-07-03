@@ -5,7 +5,6 @@ namespace Relewise\Models;
 /** Used to specify the full path of a product/lineitem, starting at the root > subcategory > subcategory2 etc. */
 class CategoryPath
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.CategoryPath, Relewise.Client";
     public array $breadcrumbPathStartingFromRoot;
     /**
      * The full path of the products, starting at the root > subcategory > subcategory2 etc. If you dont have a category id available, provide the Category name for both ID and Name, and the same if you have an ID, but not a Name. Example: new CategoryPath(new CategoryNameAndId("515", "Soups"), new CategoryNameAndId("518", "Vegetable soups"))

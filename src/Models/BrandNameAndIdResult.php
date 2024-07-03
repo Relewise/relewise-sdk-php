@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class BrandNameAndIdResult
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.BrandNameAndIdResult, Relewise.Client";
     public string $id;
     public string $displayName;
     public static function create(string $id, string $displayName) : BrandNameAndIdResult

@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class ExpectedSearchTermResult
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.ExpectedSearchTermResult, Relewise.Client";
     public int $estimatedHits;
     public EntityType $type;
     public static function create() : ExpectedSearchTermResult

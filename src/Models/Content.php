@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class Content
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Content, Relewise.Client";
     public string $id;
     public ?Multilingual $displayName;
     public ?array $categoryPaths;

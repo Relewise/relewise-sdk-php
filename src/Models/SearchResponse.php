@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class SearchResponse extends TimedResponse
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Search.SearchResponse, Relewise.Client";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

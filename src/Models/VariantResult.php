@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class VariantResult
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.VariantResult, Relewise.Client";
     public string $variantId;
     public string $displayName;
     public array $specification;

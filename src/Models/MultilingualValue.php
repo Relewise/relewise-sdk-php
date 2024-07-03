@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class MultilingualValue
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Multilingual+Value, Relewise.Client";
     public Language $language;
     public ?string $text;
     public static function create(Language $language, ?string $text) : MultilingualValue

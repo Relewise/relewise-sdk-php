@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class ProductInterestTriggerResultResultSettings
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.ProductInterestTriggerResult+ResultSettings, Relewise.Client";
     public SelectedProductPropertiesSettings $selectedProductProperties;
     public SelectedVariantPropertiesSettings $selectedVariantProperties;
     public static function create() : ProductInterestTriggerResultResultSettings

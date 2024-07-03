@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class AnalyzerRequest extends LicensedRequest
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Analyzers.AnalyzerRequest, Relewise.Client";
+    public string $typeDefinition = "";
     public ?Language $language;
     public ?Currency $currency;
     public static function hydrate(array $arr)

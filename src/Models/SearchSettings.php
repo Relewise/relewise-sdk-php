@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class SearchSettings
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.SearchSettings, Relewise.Client";
+    public string $typeDefinition = "";
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

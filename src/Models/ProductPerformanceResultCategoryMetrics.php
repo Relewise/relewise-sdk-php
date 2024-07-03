@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class ProductPerformanceResultCategoryMetrics
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.ProductPerformanceResult+CategoryMetrics, Relewise.Client";
     public CategoryNameAndIdResult $category;
     public bool $immediateParent;
     public ProductPerformanceResultViewsAndSalesMetrics $rank;

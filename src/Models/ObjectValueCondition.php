@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 abstract class ObjectValueCondition
 {
-    public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueCondition, Relewise.Client";
+    public string $typeDefinition = "";
     /** Whether the condition should be negated / inverted */
     public bool $negated;
     /** The key of the object that the condition will compare against. */

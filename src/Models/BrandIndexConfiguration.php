@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class BrandIndexConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.BrandIndexConfiguration, Relewise.Client";
     public FieldIndexConfiguration $id;
     public FieldIndexConfiguration $displayName;
     public static function create() : BrandIndexConfiguration

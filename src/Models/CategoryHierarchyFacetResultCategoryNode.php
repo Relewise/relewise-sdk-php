@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class CategoryHierarchyFacetResultCategoryNode
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.CategoryHierarchyFacetResult+CategoryNode, Relewise.Client";
     public CategoryResult $category;
     public int $hits;
     public ?string $parentId;

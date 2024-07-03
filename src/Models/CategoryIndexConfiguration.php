@@ -4,7 +4,6 @@ namespace Relewise\Models;
 
 class CategoryIndexConfiguration
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.CategoryIndexConfiguration, Relewise.Client";
     public CategoryIndexConfigurationEntry $unspecified;
     public static function create() : CategoryIndexConfiguration
     {
