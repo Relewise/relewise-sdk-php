@@ -262,7 +262,7 @@ class UserResultDetails implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.UserResultDetails, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->authenticatedId))
         {
             $result["authenticatedId"] = $this->authenticatedId;

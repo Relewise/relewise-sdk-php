@@ -121,7 +121,7 @@ class ProductChangeTriggerConfiguration extends EntityChangeTriggerConfiguration
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.Triggers.Configurations.ProductChangeTriggerConfiguration, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->entityPropertySelector))
         {
             $result["entityPropertySelector"] = $this->entityPropertySelector;

@@ -143,7 +143,7 @@ abstract class SearchRule implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.Search.Rules.SearchRule, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->id))
         {
             $result["id"] = $this->id;

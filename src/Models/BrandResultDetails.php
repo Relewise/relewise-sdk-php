@@ -175,7 +175,7 @@ class BrandResultDetails implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.BrandResultDetails, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->brandId))
         {
             $result["brandId"] = $this->brandId;

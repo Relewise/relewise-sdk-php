@@ -43,7 +43,7 @@ class ViewedByUserInfo implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.ViewedByUserInfo, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->mostRecentlyViewedUtc))
         {
             $result["mostRecentlyViewedUtc"] = $this->mostRecentlyViewedUtc->format(DATE_ATOM);

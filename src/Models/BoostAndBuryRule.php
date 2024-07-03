@@ -109,7 +109,7 @@ class BoostAndBuryRule extends MerchandisingRule implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.Merchandising.Rules.BoostAndBuryRule, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->multiplierSelector))
         {
             $result["multiplierSelector"] = $this->multiplierSelector;

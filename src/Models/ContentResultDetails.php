@@ -194,7 +194,7 @@ class ContentResultDetails implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.ContentResultDetails, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->contentId))
         {
             $result["contentId"] = $this->contentId;

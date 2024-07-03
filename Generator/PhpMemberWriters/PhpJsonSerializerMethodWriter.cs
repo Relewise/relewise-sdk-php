@@ -19,7 +19,7 @@ public class PhpJsonSerializerMethodWriter
         writer.Indent++;
 
         writer.WriteLine("$result = array();");
-        writer.WriteLine($"$result[\"typeDefinition\"] = \"{classType.FullName}, {classType.Assembly.FullName!.Split(",")[0]}\";");
+        writer.WriteLine("$result[\"typeDefinition\"] = $this->typeDefinition;");
         foreach (var (info, propertyTypeName, propertyName, lowerCaseName) in propertyInformations)
         {
             writer.WriteLine($"if (isset($this->{lowerCaseName}))");

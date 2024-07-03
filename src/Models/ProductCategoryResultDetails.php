@@ -157,7 +157,7 @@ class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryR
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.ProductCategoryResultDetails, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->purchasedFromByDifferentNumberOfUsers))
         {
             $result["purchasedFromByDifferentNumberOfUsers"] = $this->purchasedFromByDifferentNumberOfUsers;

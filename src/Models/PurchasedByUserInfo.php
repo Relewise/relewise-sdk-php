@@ -43,7 +43,7 @@ class PurchasedByUserInfo implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.PurchasedByUserInfo, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->mostRecentPurchasedUtc))
         {
             $result["mostRecentPurchasedUtc"] = $this->mostRecentPurchasedUtc->format(DATE_ATOM);

@@ -109,7 +109,7 @@ class FixedPositionRule extends MerchandisingRule implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.Merchandising.Rules.FixedPositionRule, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->position))
         {
             $result["position"] = $this->position;

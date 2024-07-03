@@ -125,7 +125,7 @@ class ProductInterestTriggerConfiguration extends ProductInterestTriggerResultTr
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.Triggers.Configurations.ProductInterestTriggerConfiguration, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->productViews))
         {
             $result["productViews"] = $this->productViews;

@@ -104,7 +104,7 @@ class AbandonedCartTriggerConfiguration extends AbandonedCartTriggerResultTrigge
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.Triggers.Configurations.AbandonedCartTriggerConfiguration, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->cartName))
         {
             $result["cartName"] = $this->cartName;

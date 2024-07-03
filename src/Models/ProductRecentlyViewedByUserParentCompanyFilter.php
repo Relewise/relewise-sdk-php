@@ -57,7 +57,7 @@ class ProductRecentlyViewedByUserParentCompanyFilter extends Filter implements J
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.Requests.Filters.ProductRecentlyViewedByUserParentCompanyFilter, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->sinceUtc))
         {
             $result["sinceUtc"] = $this->sinceUtc->format(DATE_ATOM);

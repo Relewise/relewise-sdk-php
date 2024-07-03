@@ -113,7 +113,7 @@ class ProductRecentlyViewedByCompanyRelevanceModifier extends RelevanceModifier 
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyViewedByCompanyRelevanceModifier, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->sinceUtc))
         {
             $result["sinceUtc"] = $this->sinceUtc->format(DATE_ATOM);

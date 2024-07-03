@@ -65,7 +65,7 @@ class ProductChangeTriggerResultProductChangeResultDetails implements JsonSerial
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.Responses.Triggers.Results.ProductChangeTriggerResult+ProductChangeResultDetails, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->changeTimeUtc))
         {
             $result["changeTimeUtc"] = $this->changeTimeUtc->format(DATE_ATOM);

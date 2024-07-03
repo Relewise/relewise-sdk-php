@@ -126,7 +126,7 @@ class ContentCategoryInterestTriggerConfiguration extends ContentCategoryInteres
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.Triggers.Configurations.ContentCategoryInterestTriggerConfiguration, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->categoryViews))
         {
             $result["categoryViews"] = $this->categoryViews;

@@ -155,7 +155,7 @@ class AbandonedSearchTriggerConfiguration extends AbandonedSearchTriggerResultTr
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.Triggers.Configurations.AbandonedSearchTriggerConfiguration, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->searchTypesInPrioritizedOrder))
         {
             $result["searchTypesInPrioritizedOrder"] = $this->searchTypesInPrioritizedOrder;

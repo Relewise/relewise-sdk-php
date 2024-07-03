@@ -121,7 +121,7 @@ class VariantChangeTriggerConfiguration extends EntityChangeTriggerConfiguration
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.Triggers.Configurations.VariantChangeTriggerConfiguration, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->entityPropertySelector))
         {
             $result["entityPropertySelector"] = $this->entityPropertySelector;

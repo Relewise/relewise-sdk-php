@@ -98,7 +98,7 @@ class FilterRule extends MerchandisingRule implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.Merchandising.Rules.FilterRule, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->id))
         {
             $result["id"] = $this->id;

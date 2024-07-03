@@ -93,7 +93,7 @@ class ProductRecentlyPurchasedByCompanyFilter extends Filter implements JsonSeri
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.Requests.Filters.ProductRecentlyPurchasedByCompanyFilter, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->sinceUtc))
         {
             $result["sinceUtc"] = $this->sinceUtc->format(DATE_ATOM);

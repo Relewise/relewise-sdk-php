@@ -137,7 +137,7 @@ class ContentCategoryResultDetails extends ContentCategoryResultDetailsCategoryR
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.ContentCategoryResultDetails, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->categoryId))
         {
             $result["categoryId"] = $this->categoryId;

@@ -332,7 +332,7 @@ class ProductResultDetails implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.ProductResultDetails, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->productId))
         {
             $result["productId"] = $this->productId;

@@ -116,7 +116,7 @@ class StemmingRule extends SearchRule implements JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = "Relewise.Client.DataTypes.Search.Rules.StemmingRule, Relewise.Client";
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->words))
         {
             $result["words"] = $this->words;
