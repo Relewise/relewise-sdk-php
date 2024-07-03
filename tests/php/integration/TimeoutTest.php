@@ -30,7 +30,7 @@ class TimeoutTest extends BaseTestCase
         }
 
         $trackables = array();
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 40; $i++) {
             array_push(
                 $trackables,
                 ProductUpdate::create(
