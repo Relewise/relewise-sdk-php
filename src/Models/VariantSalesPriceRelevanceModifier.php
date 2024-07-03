@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** a RelevanceModifier that can change the relevance of a Variant depending on the sales price falling within a specific Range. */
 class VariantSalesPriceRelevanceModifier extends RelevanceModifier
 {

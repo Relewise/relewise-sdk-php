@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ProductCategoryQuery extends ProductCategoryIdFilterCategoryQuery
 {
     public string $typeDefinition = "Relewise.Client.Requests.Queries.ProductCategoryQuery, Relewise.Client";

@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class RequestFilterCriteria
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.RequestFilterCriteria, Relewise.Client";

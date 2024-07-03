@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ContentDisabledFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentDisabledFilter, Relewise.Client";

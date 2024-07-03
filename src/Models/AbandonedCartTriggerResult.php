@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class AbandonedCartTriggerResult
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.AbandonedCartTriggerResult, Relewise.Client";

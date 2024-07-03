@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class GlobalTriggerConfiguration
+class GlobalTriggerConfiguration implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.GlobalTriggerConfiguration, Relewise.Client";
     public DateTime $modified;
@@ -100,5 +101,39 @@ class GlobalTriggerConfiguration
     {
         $this->settings = $settings;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = "Relewise.Client.DataTypes.Triggers.GlobalTriggerConfiguration, Relewise.Client";
+        if (isset($this->modified))
+        {
+            $result["modified"] = $this->modified->format(DATE_ATOM);
+        }
+        if (isset($this->modifiedBy))
+        {
+            $result["modifiedBy"] = $this->modifiedBy;
+        }
+        if (isset($this->enabled))
+        {
+            $result["enabled"] = $this->enabled;
+        }
+        if (isset($this->minimumCooldownAnyTrigger))
+        {
+            $result["minimumCooldownAnyTrigger"] = $this->minimumCooldownAnyTrigger;
+        }
+        if (isset($this->minimumCooldownSameTrigger))
+        {
+            $result["minimumCooldownSameTrigger"] = $this->minimumCooldownSameTrigger;
+        }
+        if (isset($this->minimumCooldownSameGroup))
+        {
+            $result["minimumCooldownSameGroup"] = $this->minimumCooldownSameGroup;
+        }
+        if (isset($this->settings))
+        {
+            $result["settings"] = $this->settings;
+        }
+        return $result;
     }
 }

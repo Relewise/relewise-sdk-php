@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class TrackingRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackingRequest, Relewise.Client";

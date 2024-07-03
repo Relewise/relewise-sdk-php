@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 use Relewise\FacetResultExtractable\ContentFacetResultExtractable;
 
 class ContentFacetResult extends ContentFacetResultExtractable

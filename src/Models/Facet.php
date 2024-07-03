@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class Facet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.Facet, Relewise.Client";

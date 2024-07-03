@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class BrandQuery extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Queries.BrandQuery, Relewise.Client";

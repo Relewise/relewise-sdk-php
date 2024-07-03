@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class CategoryPathValueFacet extends Facet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ValueFacet`1[[Relewise.Client.DataTypes.CategoryPath, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";

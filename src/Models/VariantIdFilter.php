@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class VariantIdFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.VariantIdFilter, Relewise.Client";

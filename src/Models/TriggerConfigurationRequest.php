@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class TriggerConfigurationRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Triggers.TriggerConfigurationRequest, Relewise.Client";

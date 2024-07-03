@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class Synonym
+class Synonym implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Synonyms.Synonym, Relewise.Client";
     public string $id;
@@ -242,5 +243,71 @@ class Synonym
     {
         $this->allowInPredictions = $allowInPredictions;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = "Relewise.Client.DataTypes.Search.Synonyms.Synonym, Relewise.Client";
+        if (isset($this->id))
+        {
+            $result["id"] = $this->id;
+        }
+        if (isset($this->type))
+        {
+            $result["type"] = $this->type;
+        }
+        if (isset($this->indexes))
+        {
+            $result["indexes"] = $this->indexes;
+        }
+        if (isset($this->languages))
+        {
+            $result["languages"] = $this->languages;
+        }
+        if (isset($this->created))
+        {
+            $result["created"] = $this->created->format(DATE_ATOM);
+        }
+        if (isset($this->createdBy))
+        {
+            $result["createdBy"] = $this->createdBy;
+        }
+        if (isset($this->modified))
+        {
+            $result["modified"] = $this->modified->format(DATE_ATOM);
+        }
+        if (isset($this->modifiedBy))
+        {
+            $result["modifiedBy"] = $this->modifiedBy;
+        }
+        if (isset($this->from))
+        {
+            $result["from"] = $this->from;
+        }
+        if (isset($this->words))
+        {
+            $result["words"] = $this->words;
+        }
+        if (isset($this->approved))
+        {
+            $result["approved"] = $this->approved->format(DATE_ATOM);
+        }
+        if (isset($this->approvedBy))
+        {
+            $result["approvedBy"] = $this->approvedBy;
+        }
+        if (isset($this->usages))
+        {
+            $result["usages"] = $this->usages;
+        }
+        if (isset($this->isApproved))
+        {
+            $result["isApproved"] = $this->isApproved;
+        }
+        if (isset($this->allowInPredictions))
+        {
+            $result["allowInPredictions"] = $this->allowInPredictions;
+        }
+        return $result;
     }
 }

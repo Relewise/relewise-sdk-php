@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class CartDetails
+class CartDetails implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.CartDetails, Relewise.Client";
     public string $name;
@@ -104,5 +105,31 @@ class CartDetails
     {
         $this->data = $data;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = "Relewise.Client.DataTypes.CartDetails, Relewise.Client";
+        if (isset($this->name))
+        {
+            $result["name"] = $this->name;
+        }
+        if (isset($this->modifiedUtc))
+        {
+            $result["modifiedUtc"] = $this->modifiedUtc->format(DATE_ATOM);
+        }
+        if (isset($this->lineItems))
+        {
+            $result["lineItems"] = $this->lineItems;
+        }
+        if (isset($this->subtotal))
+        {
+            $result["subtotal"] = $this->subtotal;
+        }
+        if (isset($this->data))
+        {
+            $result["data"] = $this->data;
+        }
+        return $result;
     }
 }

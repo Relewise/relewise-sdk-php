@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class DecompoundRule extends SearchRule
+class DecompoundRule extends SearchRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.DecompoundRule, Relewise.Client";
     public string $word;
@@ -122,5 +123,63 @@ class DecompoundRule extends SearchRule
     {
         $this->isApproved = $isApproved;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = "Relewise.Client.DataTypes.Search.Rules.DecompoundRule, Relewise.Client";
+        if (isset($this->word))
+        {
+            $result["word"] = $this->word;
+        }
+        if (isset($this->head))
+        {
+            $result["head"] = $this->head;
+        }
+        if (isset($this->modifiers))
+        {
+            $result["modifiers"] = $this->modifiers;
+        }
+        if (isset($this->id))
+        {
+            $result["id"] = $this->id;
+        }
+        if (isset($this->indexes))
+        {
+            $result["indexes"] = $this->indexes;
+        }
+        if (isset($this->languages))
+        {
+            $result["languages"] = $this->languages;
+        }
+        if (isset($this->created))
+        {
+            $result["created"] = $this->created->format(DATE_ATOM);
+        }
+        if (isset($this->createdBy))
+        {
+            $result["createdBy"] = $this->createdBy;
+        }
+        if (isset($this->modified))
+        {
+            $result["modified"] = $this->modified->format(DATE_ATOM);
+        }
+        if (isset($this->modifiedBy))
+        {
+            $result["modifiedBy"] = $this->modifiedBy;
+        }
+        if (isset($this->approved))
+        {
+            $result["approved"] = $this->approved->format(DATE_ATOM);
+        }
+        if (isset($this->approvedBy))
+        {
+            $result["approvedBy"] = $this->approvedBy;
+        }
+        if (isset($this->isApproved))
+        {
+            $result["isApproved"] = $this->isApproved;
+        }
+        return $result;
     }
 }

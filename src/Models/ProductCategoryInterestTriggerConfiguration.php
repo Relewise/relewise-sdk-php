@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class ProductCategoryInterestTriggerConfiguration extends ProductCategoryInterestTriggerResultTriggerConfiguration
+class ProductCategoryInterestTriggerConfiguration extends ProductCategoryInterestTriggerResultTriggerConfiguration implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.ProductCategoryInterestTriggerConfiguration, Relewise.Client";
     public ?intRange $categoryViews;
@@ -121,5 +122,71 @@ class ProductCategoryInterestTriggerConfiguration extends ProductCategoryInteres
     {
         $this->userConditions = $userConditions;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = "Relewise.Client.DataTypes.Triggers.Configurations.ProductCategoryInterestTriggerConfiguration, Relewise.Client";
+        if (isset($this->categoryViews))
+        {
+            $result["categoryViews"] = $this->categoryViews;
+        }
+        if (isset($this->productViews))
+        {
+            $result["productViews"] = $this->productViews;
+        }
+        if (isset($this->filters))
+        {
+            $result["filters"] = $this->filters;
+        }
+        if (isset($this->id))
+        {
+            $result["id"] = $this->id;
+        }
+        if (isset($this->name))
+        {
+            $result["name"] = $this->name;
+        }
+        if (isset($this->description))
+        {
+            $result["description"] = $this->description;
+        }
+        if (isset($this->group))
+        {
+            $result["group"] = $this->group;
+        }
+        if (isset($this->enabled))
+        {
+            $result["enabled"] = $this->enabled;
+        }
+        if (isset($this->created))
+        {
+            $result["created"] = $this->created->format(DATE_ATOM);
+        }
+        if (isset($this->createdBy))
+        {
+            $result["createdBy"] = $this->createdBy;
+        }
+        if (isset($this->modified))
+        {
+            $result["modified"] = $this->modified->format(DATE_ATOM);
+        }
+        if (isset($this->modifiedBy))
+        {
+            $result["modifiedBy"] = $this->modifiedBy;
+        }
+        if (isset($this->withinTimeSpanMinutes))
+        {
+            $result["withinTimeSpanMinutes"] = $this->withinTimeSpanMinutes;
+        }
+        if (isset($this->settings))
+        {
+            $result["settings"] = $this->settings;
+        }
+        if (isset($this->userConditions))
+        {
+            $result["userConditions"] = $this->userConditions;
+        }
+        return $result;
     }
 }

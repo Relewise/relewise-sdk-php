@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class Trackable
 {
     public string $typeDefinition = "Relewise.Client.Requests.Trackable, Relewise.Client";

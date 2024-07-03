@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.TimedResponse, Relewise.Client";

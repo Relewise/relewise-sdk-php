@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class DeleteSearchRulesResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.DeleteSearchRulesResponse, Relewise.Client";

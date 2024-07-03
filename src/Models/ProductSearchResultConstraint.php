@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class ProductSearchResultConstraint
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.ProductSearchResultConstraint, Relewise.Client";

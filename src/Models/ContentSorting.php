@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class ContentSorting extends ContentSortingSorting
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Content.ContentSorting, Relewise.Client";

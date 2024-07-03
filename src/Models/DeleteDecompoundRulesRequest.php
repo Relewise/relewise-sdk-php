@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class DeleteDecompoundRulesRequest extends DeleteSearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.DeleteDecompoundRulesRequest, Relewise.Client";

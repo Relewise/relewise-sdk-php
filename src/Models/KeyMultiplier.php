@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class KeyMultiplier
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.KeyMultiplier, Relewise.Client";

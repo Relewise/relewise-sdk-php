@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class FilterSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.Settings.FilterSettings, Relewise.Client";

@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SignificantDataValue
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.SignificantDataValue, Relewise.Client";

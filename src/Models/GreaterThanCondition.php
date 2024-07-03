@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class GreaterThanCondition extends ValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Conditions.GreaterThanCondition, Relewise.Client";

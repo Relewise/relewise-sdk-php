@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class PredictionRulesRequest extends PredictionRulesRequestSortBySearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.PredictionRulesRequest, Relewise.Client";

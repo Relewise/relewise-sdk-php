@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class MerchandisingRuleResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Merchandising.MerchandisingRuleResponse, Relewise.Client";

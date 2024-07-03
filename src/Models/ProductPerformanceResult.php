@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ProductPerformanceResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductPerformanceResult, Relewise.Client";

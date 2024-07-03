@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class DataObjectValueSelector
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.DataObjectValueSelector, Relewise.Client";

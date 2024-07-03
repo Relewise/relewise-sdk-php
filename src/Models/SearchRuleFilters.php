@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SearchRuleFilters
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SearchRuleFilters, Relewise.Client";

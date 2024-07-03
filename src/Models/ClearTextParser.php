@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ClearTextParser extends Parser
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.Parsers.ClearTextParser, Relewise.Client";

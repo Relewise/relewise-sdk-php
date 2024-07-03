@@ -3,9 +3,10 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
 /** a RelevanceModifier that can change the relevance of a Product depending on whether the users company or parent company have purchased this product within some timespan. */
-class ProductRecentlyPurchasedByUserCompanyRelevanceModifier extends RelevanceModifier
+class ProductRecentlyPurchasedByUserCompanyRelevanceModifier extends RelevanceModifier implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyPurchasedByUserCompanyRelevanceModifier, Relewise.Client";
     /** The start of the time period in which a product will be considered relevant to the user if purchased previously by their company. */
@@ -85,5 +86,35 @@ class ProductRecentlyPurchasedByUserCompanyRelevanceModifier extends RelevanceMo
     {
         $this->filters = $filters;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = "Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyPurchasedByUserCompanyRelevanceModifier, Relewise.Client";
+        if (isset($this->sinceUtc))
+        {
+            $result["sinceUtc"] = $this->sinceUtc->format(DATE_ATOM);
+        }
+        if (isset($this->ifPurchasedByCompanyMultiplyWeightBy))
+        {
+            $result["ifPurchasedByCompanyMultiplyWeightBy"] = $this->ifPurchasedByCompanyMultiplyWeightBy;
+        }
+        if (isset($this->elseIfPurchasedByParentCompanyMultiplyWeightBy))
+        {
+            $result["elseIfPurchasedByParentCompanyMultiplyWeightBy"] = $this->elseIfPurchasedByParentCompanyMultiplyWeightBy;
+        }
+        if (isset($this->elseIfNotPurchasedByEitherCompanyMultiplyWeightBy))
+        {
+            $result["elseIfNotPurchasedByEitherCompanyMultiplyWeightBy"] = $this->elseIfNotPurchasedByEitherCompanyMultiplyWeightBy;
+        }
+        if (isset($this->sinceMinutesAgo))
+        {
+            $result["sinceMinutesAgo"] = $this->sinceMinutesAgo;
+        }
+        if (isset($this->filters))
+        {
+            $result["filters"] = $this->filters;
+        }
+        return $result;
     }
 }

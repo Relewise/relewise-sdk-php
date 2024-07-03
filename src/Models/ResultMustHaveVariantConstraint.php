@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** Used to instruct the search engine that results which does not have any variants, must not be returned. */
 class ResultMustHaveVariantConstraint extends ProductSearchResultConstraint
 {

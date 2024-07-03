@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** a RelevanceModifier that can change the relevance of a variant depending on matching conditions on a certain key. */
 class VariantDataRelevanceModifier extends DataRelevanceModifier
 {

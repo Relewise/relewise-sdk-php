@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class SearchIndex
+class SearchIndex implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.SearchIndex, Relewise.Client";
     public string $id;
@@ -110,5 +111,47 @@ class SearchIndex
     {
         $this->configuration = $configuration;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = "Relewise.Client.DataTypes.Search.SearchIndex, Relewise.Client";
+        if (isset($this->id))
+        {
+            $result["id"] = $this->id;
+        }
+        if (isset($this->description))
+        {
+            $result["description"] = $this->description;
+        }
+        if (isset($this->enabled))
+        {
+            $result["enabled"] = $this->enabled;
+        }
+        if (isset($this->isDefault))
+        {
+            $result["isDefault"] = $this->isDefault;
+        }
+        if (isset($this->created))
+        {
+            $result["created"] = $this->created->format(DATE_ATOM);
+        }
+        if (isset($this->createdBy))
+        {
+            $result["createdBy"] = $this->createdBy;
+        }
+        if (isset($this->modified))
+        {
+            $result["modified"] = $this->modified->format(DATE_ATOM);
+        }
+        if (isset($this->modifiedBy))
+        {
+            $result["modifiedBy"] = $this->modifiedBy;
+        }
+        if (isset($this->configuration))
+        {
+            $result["configuration"] = $this->configuration;
+        }
+        return $result;
     }
 }

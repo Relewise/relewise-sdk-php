@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class ProductResultDetails
+class ProductResultDetails implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductResultDetails, Relewise.Client";
     public string $productId;
@@ -327,5 +328,99 @@ class ProductResultDetails
         }
         array_push($this->filteredVariants, $filteredVariants);
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = "Relewise.Client.DataTypes.ProductResultDetails, Relewise.Client";
+        if (isset($this->productId))
+        {
+            $result["productId"] = $this->productId;
+        }
+        if (isset($this->displayName))
+        {
+            $result["displayName"] = $this->displayName;
+        }
+        if (isset($this->variant))
+        {
+            $result["variant"] = $this->variant;
+        }
+        if (isset($this->assortments))
+        {
+            $result["assortments"] = $this->assortments;
+        }
+        if (isset($this->data))
+        {
+            $result["data"] = $this->data;
+        }
+        if (isset($this->categoryPaths))
+        {
+            $result["categoryPaths"] = $this->categoryPaths;
+        }
+        if (isset($this->purchasedByUser))
+        {
+            $result["purchasedByUser"] = $this->purchasedByUser;
+        }
+        if (isset($this->viewedByUser))
+        {
+            $result["viewedByUser"] = $this->viewedByUser;
+        }
+        if (isset($this->allVariants))
+        {
+            $result["allVariants"] = $this->allVariants;
+        }
+        if (isset($this->createdUtc))
+        {
+            $result["createdUtc"] = $this->createdUtc->format(DATE_ATOM);
+        }
+        if (isset($this->lastPurchasedUtc))
+        {
+            $result["lastPurchasedUtc"] = $this->lastPurchasedUtc->format(DATE_ATOM);
+        }
+        if (isset($this->lastViewedUtc))
+        {
+            $result["lastViewedUtc"] = $this->lastViewedUtc->format(DATE_ATOM);
+        }
+        if (isset($this->containedInTotalNumberOfOrders))
+        {
+            $result["containedInTotalNumberOfOrders"] = $this->containedInTotalNumberOfOrders;
+        }
+        if (isset($this->viewedTotalNumberOfTimes))
+        {
+            $result["viewedTotalNumberOfTimes"] = $this->viewedTotalNumberOfTimes;
+        }
+        if (isset($this->purchasedByDifferentNumberOfUsers))
+        {
+            $result["purchasedByDifferentNumberOfUsers"] = $this->purchasedByDifferentNumberOfUsers;
+        }
+        if (isset($this->viewedByDifferentNumberOfUsers))
+        {
+            $result["viewedByDifferentNumberOfUsers"] = $this->viewedByDifferentNumberOfUsers;
+        }
+        if (isset($this->disabled))
+        {
+            $result["disabled"] = $this->disabled;
+        }
+        if (isset($this->deleted))
+        {
+            $result["deleted"] = $this->deleted;
+        }
+        if (isset($this->listPrice))
+        {
+            $result["listPrice"] = $this->listPrice;
+        }
+        if (isset($this->salesPrice))
+        {
+            $result["salesPrice"] = $this->salesPrice;
+        }
+        if (isset($this->brand))
+        {
+            $result["brand"] = $this->brand;
+        }
+        if (isset($this->filteredVariants))
+        {
+            $result["filteredVariants"] = $this->filteredVariants;
+        }
+        return $result;
     }
 }

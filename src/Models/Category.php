@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class Category
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Category, Relewise.Client";

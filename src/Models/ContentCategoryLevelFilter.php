@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ContentCategoryLevelFilter extends CategoryLevelFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentCategoryLevelFilter, Relewise.Client";

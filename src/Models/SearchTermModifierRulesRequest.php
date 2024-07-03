@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SearchTermModifierRulesRequest extends SearchTermModifierRulesRequestSortBySearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SearchTermModifierRulesRequest, Relewise.Client";

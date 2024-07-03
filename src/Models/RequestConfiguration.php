@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class RequestConfiguration
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Configurations.RequestConfiguration, Relewise.Client";

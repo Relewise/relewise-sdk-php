@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class RedirectRulesRequest extends RedirectRulesRequestSortBySearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.RedirectRulesRequest, Relewise.Client";

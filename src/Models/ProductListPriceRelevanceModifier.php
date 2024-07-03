@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** a RelevanceModifier that can change the relevance of a Product depending on the list price falling within a specific Range. */
 class ProductListPriceRelevanceModifier extends RelevanceModifier
 {

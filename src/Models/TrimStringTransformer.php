@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class TrimStringTransformer
 {
     public string $typeDefinition = "Relewise.Client.Requests.Transformers.TrimStringTransformer, Relewise.Client";

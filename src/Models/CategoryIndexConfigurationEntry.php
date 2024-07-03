@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class CategoryIndexConfigurationEntry
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.CategoryIndexConfigurationEntry, Relewise.Client";

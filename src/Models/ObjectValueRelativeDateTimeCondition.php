@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** a ObjectValueCondition that can check if an object value interpreted as a timestamp is before or after the current time. */
 class ObjectValueRelativeDateTimeCondition extends ObjectValueCondition
 {

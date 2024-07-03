@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SelectedProductCategoryPropertiesSettings extends SelectedCategoryPropertiesSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Shared.SelectedProductCategoryPropertiesSettings, Relewise.Client";

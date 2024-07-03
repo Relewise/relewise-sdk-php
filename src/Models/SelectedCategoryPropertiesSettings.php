@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class SelectedCategoryPropertiesSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Shared.SelectedCategoryPropertiesSettings, Relewise.Client";

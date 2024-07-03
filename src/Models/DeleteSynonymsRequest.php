@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class DeleteSynonymsRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.DeleteSynonymsRequest, Relewise.Client";

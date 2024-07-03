@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** a Filter that can be used to define which entities to include in queries. */
 abstract class Filter
 {

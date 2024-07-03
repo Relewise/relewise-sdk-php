@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.UserCondition, Relewise.Client";

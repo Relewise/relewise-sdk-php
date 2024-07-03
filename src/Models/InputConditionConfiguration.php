@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class InputConditionConfiguration
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Configurations.InputConditionConfiguration, Relewise.Client";

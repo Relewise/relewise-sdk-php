@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class FixedDoubleValueSelector extends ValueSelector
 {
     public string $typeDefinition = "Relewise.Client.Requests.ValueSelectors.FixedDoubleValueSelector, Relewise.Client";

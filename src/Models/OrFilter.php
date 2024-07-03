@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class OrFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.OrFilter, Relewise.Client";

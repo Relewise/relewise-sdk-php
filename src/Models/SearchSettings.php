@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class SearchSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.SearchSettings, Relewise.Client";

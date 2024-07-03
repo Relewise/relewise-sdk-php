@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SearchTermCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchTermCondition, Relewise.Client";

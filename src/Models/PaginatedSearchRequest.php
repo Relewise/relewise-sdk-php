@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class PaginatedSearchRequest extends SearchRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.PaginatedSearchRequest, Relewise.Client";

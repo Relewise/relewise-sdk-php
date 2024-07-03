@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** a RelevanceModifier that can change the relevance of a Variant depending on whether the Assortments match Assortments. */
 class VariantAssortmentRelevanceModifier extends RelevanceModifier
 {

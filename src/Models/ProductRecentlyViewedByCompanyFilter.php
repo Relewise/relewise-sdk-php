@@ -3,9 +3,10 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
 /** a Filter that can filter on the products recently viewed by some companies. */
-class ProductRecentlyViewedByCompanyFilter extends Filter
+class ProductRecentlyViewedByCompanyFilter extends Filter implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductRecentlyViewedByCompanyFilter, Relewise.Client";
     /** The time from which a Product should have been viewed by any of the companies to be included by the filter. */
@@ -88,5 +89,31 @@ class ProductRecentlyViewedByCompanyFilter extends Filter
     {
         $this->settings = $settings;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = "Relewise.Client.Requests.Filters.ProductRecentlyViewedByCompanyFilter, Relewise.Client";
+        if (isset($this->sinceUtc))
+        {
+            $result["sinceUtc"] = $this->sinceUtc->format(DATE_ATOM);
+        }
+        if (isset($this->companyIds))
+        {
+            $result["companyIds"] = $this->companyIds;
+        }
+        if (isset($this->sinceMinutesAgo))
+        {
+            $result["sinceMinutesAgo"] = $this->sinceMinutesAgo;
+        }
+        if (isset($this->negated))
+        {
+            $result["negated"] = $this->negated;
+        }
+        if (isset($this->settings))
+        {
+            $result["settings"] = $this->settings;
+        }
+        return $result;
     }
 }

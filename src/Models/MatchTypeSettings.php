@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class MatchTypeSettings
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.MatchTypeSettings, Relewise.Client";

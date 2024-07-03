@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class VariantResultDetails
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.VariantResultDetails, Relewise.Client";

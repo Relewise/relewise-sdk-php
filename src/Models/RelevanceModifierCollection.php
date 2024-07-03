@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** a collection that contains multiple RelevanceModifiers in its inner list Items. */
 class RelevanceModifierCollection
 {

@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class EqualsCondition extends ValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Conditions.EqualsCondition, Relewise.Client";

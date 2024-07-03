@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class AnalyzerRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Analyzers.AnalyzerRequest, Relewise.Client";

@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class Cart extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Cart, Relewise.Client";

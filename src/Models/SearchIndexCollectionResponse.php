@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SearchIndexCollectionResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.SearchIndexCollectionResponse, Relewise.Client";

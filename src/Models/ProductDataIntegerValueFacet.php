@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** @deprecated Use ProductDataDoubleValueFacet instead */
 class ProductDataIntegerValueFacet extends intProductDataValueFacet
 {

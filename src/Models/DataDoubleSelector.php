@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class DataDoubleSelector extends ValueSelector
 {
     public string $typeDefinition = "Relewise.Client.Requests.ValueSelectors.DataDoubleSelector, Relewise.Client";

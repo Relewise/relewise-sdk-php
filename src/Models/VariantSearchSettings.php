@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class VariantSearchSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.VariantSearchSettings, Relewise.Client";

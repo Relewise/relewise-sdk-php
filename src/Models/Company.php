@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class Company
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Company, Relewise.Client";

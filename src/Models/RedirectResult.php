@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class RedirectResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RedirectResult, Relewise.Client";

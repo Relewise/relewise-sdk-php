@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class RecommendationSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.RecommendationSettings, Relewise.Client";
