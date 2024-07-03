@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ProductPerformanceResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Analyzers.ProductPerformanceResponse, Relewise.Client";

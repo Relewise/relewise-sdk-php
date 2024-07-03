@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** a RelevanceModifier that can change the relevance of an entity depending on a BrandId. */
 class BrandIdRelevanceModifier extends RelevanceModifier
 {

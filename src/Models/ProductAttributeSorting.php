@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ProductAttributeSorting extends ProductSorting
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Product.ProductAttributeSorting, Relewise.Client";

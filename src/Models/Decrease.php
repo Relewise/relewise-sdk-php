@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** Indicates that some property should change by decreasing in value. */
 class Decrease
 {

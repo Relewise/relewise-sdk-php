@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class HasClassificationCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasClassificationCondition, Relewise.Client";

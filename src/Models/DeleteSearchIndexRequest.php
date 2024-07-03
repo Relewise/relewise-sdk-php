@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class DeleteSearchIndexRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.DeleteSearchIndexRequest, Relewise.Client";

@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class VariantChangeTriggerResultSettings
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.ResultSettings.VariantChangeTriggerResultSettings, Relewise.Client";

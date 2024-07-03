@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SearchIndexSelector
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.SearchIndexSelector, Relewise.Client";

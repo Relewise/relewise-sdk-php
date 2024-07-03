@@ -3,9 +3,10 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
 /** a RelevanceModifier that can change the relevance of a Product depending on whether the users company or parent company have viewed this product within the provided timespan. */
-class ProductRecentlyViewedByUserCompanyRelevanceModifier extends RelevanceModifier
+class ProductRecentlyViewedByUserCompanyRelevanceModifier extends RelevanceModifier implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyViewedByUserCompanyRelevanceModifier, Relewise.Client";
     /** The start of the time period in which a product will be considered relevant to the user if viewed previously by their company. */
@@ -85,5 +86,35 @@ class ProductRecentlyViewedByUserCompanyRelevanceModifier extends RelevanceModif
     {
         $this->filters = $filters;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->sinceUtc))
+        {
+            $result["sinceUtc"] = $this->sinceUtc->format(DATE_ATOM);
+        }
+        if (isset($this->ifViewedByUserCompanyMultiplyWeightBy))
+        {
+            $result["ifViewedByUserCompanyMultiplyWeightBy"] = $this->ifViewedByUserCompanyMultiplyWeightBy;
+        }
+        if (isset($this->elseIfViewedByUserParentCompanyMultiplyWeightBy))
+        {
+            $result["elseIfViewedByUserParentCompanyMultiplyWeightBy"] = $this->elseIfViewedByUserParentCompanyMultiplyWeightBy;
+        }
+        if (isset($this->elseIfNotViewedByEitherCompanyMultiplyWeightBy))
+        {
+            $result["elseIfNotViewedByEitherCompanyMultiplyWeightBy"] = $this->elseIfNotViewedByEitherCompanyMultiplyWeightBy;
+        }
+        if (isset($this->sinceMinutesAgo))
+        {
+            $result["sinceMinutesAgo"] = $this->sinceMinutesAgo;
+        }
+        if (isset($this->filters))
+        {
+            $result["filters"] = $this->filters;
+        }
+        return $result;
     }
 }

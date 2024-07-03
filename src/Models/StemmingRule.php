@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class StemmingRule extends SearchRule
+class StemmingRule extends SearchRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.StemmingRule, Relewise.Client";
     public array $words;
@@ -111,5 +112,59 @@ class StemmingRule extends SearchRule
     {
         $this->isApproved = $isApproved;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->words))
+        {
+            $result["words"] = $this->words;
+        }
+        if (isset($this->stem))
+        {
+            $result["stem"] = $this->stem;
+        }
+        if (isset($this->id))
+        {
+            $result["id"] = $this->id;
+        }
+        if (isset($this->indexes))
+        {
+            $result["indexes"] = $this->indexes;
+        }
+        if (isset($this->languages))
+        {
+            $result["languages"] = $this->languages;
+        }
+        if (isset($this->created))
+        {
+            $result["created"] = $this->created->format(DATE_ATOM);
+        }
+        if (isset($this->createdBy))
+        {
+            $result["createdBy"] = $this->createdBy;
+        }
+        if (isset($this->modified))
+        {
+            $result["modified"] = $this->modified->format(DATE_ATOM);
+        }
+        if (isset($this->modifiedBy))
+        {
+            $result["modifiedBy"] = $this->modifiedBy;
+        }
+        if (isset($this->approved))
+        {
+            $result["approved"] = $this->approved->format(DATE_ATOM);
+        }
+        if (isset($this->approvedBy))
+        {
+            $result["approvedBy"] = $this->approvedBy;
+        }
+        if (isset($this->isApproved))
+        {
+            $result["isApproved"] = $this->isApproved;
+        }
+        return $result;
     }
 }

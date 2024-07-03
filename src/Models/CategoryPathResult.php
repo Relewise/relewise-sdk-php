@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class CategoryPathResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.CategoryPathResult, Relewise.Client";

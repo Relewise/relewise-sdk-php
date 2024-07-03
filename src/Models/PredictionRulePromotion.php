@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class PredictionRulePromotion
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.PredictionRule+Promotion, Relewise.Client";

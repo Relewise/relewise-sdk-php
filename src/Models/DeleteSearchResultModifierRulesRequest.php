@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class DeleteSearchResultModifierRulesRequest extends DeleteSearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.DeleteSearchResultModifierRulesRequest, Relewise.Client";

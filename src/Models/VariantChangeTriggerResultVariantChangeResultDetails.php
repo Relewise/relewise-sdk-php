@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class VariantChangeTriggerResultVariantChangeResultDetails
+class VariantChangeTriggerResultVariantChangeResultDetails implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.VariantChangeTriggerResult+VariantChangeResultDetails, Relewise.Client";
     public DateTime $changeTime;
@@ -71,5 +72,31 @@ class VariantChangeTriggerResultVariantChangeResultDetails
     {
         $this->variant = $variant;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->changeTime))
+        {
+            $result["changeTime"] = $this->changeTime->format(DATE_ATOM);
+        }
+        if (isset($this->oldValue))
+        {
+            $result["oldValue"] = $this->oldValue;
+        }
+        if (isset($this->newValue))
+        {
+            $result["newValue"] = $this->newValue;
+        }
+        if (isset($this->product))
+        {
+            $result["product"] = $this->product;
+        }
+        if (isset($this->variant))
+        {
+            $result["variant"] = $this->variant;
+        }
+        return $result;
     }
 }

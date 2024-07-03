@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ProductInterestTriggerResultResultSettings
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.ProductInterestTriggerResult+ResultSettings, Relewise.Client";

@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ProductPerformanceRequest extends AnalyzerRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Analyzers.ProductPerformanceRequest, Relewise.Client";

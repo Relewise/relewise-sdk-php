@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ContentCategoryQuery extends ContentCategoryIdFilterCategoryQuery
 {
     public string $typeDefinition = "Relewise.Client.Requests.Queries.ContentCategoryQuery, Relewise.Client";

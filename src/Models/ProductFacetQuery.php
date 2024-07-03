@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ProductFacetQuery extends FacetQuery
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ProductFacetQuery, Relewise.Client";

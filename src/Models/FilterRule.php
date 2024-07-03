@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class FilterRule extends MerchandisingRule
+class FilterRule extends MerchandisingRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Rules.FilterRule, Relewise.Client";
     public static function create(string $name, string $description) : FilterRule
@@ -93,5 +94,63 @@ class FilterRule extends MerchandisingRule
     {
         $this->settings = $settings;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->id))
+        {
+            $result["id"] = $this->id;
+        }
+        if (isset($this->name))
+        {
+            $result["name"] = $this->name;
+        }
+        if (isset($this->description))
+        {
+            $result["description"] = $this->description;
+        }
+        if (isset($this->group))
+        {
+            $result["group"] = $this->group;
+        }
+        if (isset($this->enabled))
+        {
+            $result["enabled"] = $this->enabled;
+        }
+        if (isset($this->created))
+        {
+            $result["created"] = $this->created->format(DATE_ATOM);
+        }
+        if (isset($this->createdBy))
+        {
+            $result["createdBy"] = $this->createdBy;
+        }
+        if (isset($this->modified))
+        {
+            $result["modified"] = $this->modified->format(DATE_ATOM);
+        }
+        if (isset($this->modifiedBy))
+        {
+            $result["modifiedBy"] = $this->modifiedBy;
+        }
+        if (isset($this->conditions))
+        {
+            $result["conditions"] = $this->conditions;
+        }
+        if (isset($this->request))
+        {
+            $result["request"] = $this->request;
+        }
+        if (isset($this->priority))
+        {
+            $result["priority"] = $this->priority;
+        }
+        if (isset($this->settings))
+        {
+            $result["settings"] = $this->settings;
+        }
+        return $result;
     }
 }

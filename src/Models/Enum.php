@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class Enum extends ValueType
 {
     public string $typeDefinition = "System.Enum, System.Private.CoreLib";

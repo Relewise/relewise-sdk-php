@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class AbandonedContentSearch extends stringAbandonedSearch
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.AbandonedContentSearch, Relewise.Client";

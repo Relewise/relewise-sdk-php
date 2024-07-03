@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ProductAndVariantId
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductAndVariantId, Relewise.Client";

@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class ViewedByUserCompanyInfo
+class ViewedByUserCompanyInfo implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ViewedByUserCompanyInfo, Relewise.Client";
     public DateTime $mostRecentlyViewedUtc;
@@ -48,5 +49,23 @@ class ViewedByUserCompanyInfo
     {
         $this->viewedByParentCompany = $viewedByParentCompany;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->mostRecentlyViewedUtc))
+        {
+            $result["mostRecentlyViewedUtc"] = $this->mostRecentlyViewedUtc->format(DATE_ATOM);
+        }
+        if (isset($this->totalNumberOfTimesViewed))
+        {
+            $result["totalNumberOfTimesViewed"] = $this->totalNumberOfTimesViewed;
+        }
+        if (isset($this->viewedByParentCompany))
+        {
+            $result["viewedByParentCompany"] = $this->viewedByParentCompany;
+        }
+        return $result;
     }
 }

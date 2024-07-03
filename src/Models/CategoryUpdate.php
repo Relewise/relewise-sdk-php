@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class CategoryUpdate extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.CategoryUpdate, Relewise.Client";

@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.CategoryFacetResult, Relewise.Client";

@@ -3,9 +3,10 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
 /** a RelevanceModifier that can change the relevance of a Product depending on whether the product has been viewed by any of the provided companies within the provided timespan. */
-class ProductRecentlyViewedByCompanyRelevanceModifier extends RelevanceModifier
+class ProductRecentlyViewedByCompanyRelevanceModifier extends RelevanceModifier implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyViewedByCompanyRelevanceModifier, Relewise.Client";
     /** The start of the time period in which a product will be considered relevant to the user if viewed previously by any of the provided companies. */
@@ -108,5 +109,35 @@ class ProductRecentlyViewedByCompanyRelevanceModifier extends RelevanceModifier
     {
         $this->filters = $filters;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->sinceUtc))
+        {
+            $result["sinceUtc"] = $this->sinceUtc->format(DATE_ATOM);
+        }
+        if (isset($this->companyIds))
+        {
+            $result["companyIds"] = $this->companyIds;
+        }
+        if (isset($this->ifViewedByCompanyMultiplyWeightBy))
+        {
+            $result["ifViewedByCompanyMultiplyWeightBy"] = $this->ifViewedByCompanyMultiplyWeightBy;
+        }
+        if (isset($this->elseIfNotViewedByCompanyMultiplyWeightBy))
+        {
+            $result["elseIfNotViewedByCompanyMultiplyWeightBy"] = $this->elseIfNotViewedByCompanyMultiplyWeightBy;
+        }
+        if (isset($this->sinceMinutesAgo))
+        {
+            $result["sinceMinutesAgo"] = $this->sinceMinutesAgo;
+        }
+        if (isset($this->filters))
+        {
+            $result["filters"] = $this->filters;
+        }
+        return $result;
     }
 }

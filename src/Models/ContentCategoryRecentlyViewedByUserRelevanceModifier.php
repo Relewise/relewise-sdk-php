@@ -3,9 +3,10 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
 /** a RelevanceModifier that can change the relevance of a ContentCategory depending on whether they have viewed this content within some timespan. */
-class ContentCategoryRecentlyViewedByUserRelevanceModifier extends RecentlyViewedByUserRelevanceModifier
+class ContentCategoryRecentlyViewedByUserRelevanceModifier extends RecentlyViewedByUserRelevanceModifier implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ContentCategoryRecentlyViewedByUserRelevanceModifier, Relewise.Client";
     public static function create(float $ifPreviouslyViewedByUserMultiplyWeightBy = 1, float $ifNotPreviouslyViewedByUserMultiplyWeightBy = 1) : ContentCategoryRecentlyViewedByUserRelevanceModifier
@@ -44,5 +45,31 @@ class ContentCategoryRecentlyViewedByUserRelevanceModifier extends RecentlyViewe
     {
         $this->filters = $filters;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->sinceUtc))
+        {
+            $result["sinceUtc"] = $this->sinceUtc->format(DATE_ATOM);
+        }
+        if (isset($this->ifPreviouslyViewedByUserMultiplyWeightBy))
+        {
+            $result["ifPreviouslyViewedByUserMultiplyWeightBy"] = $this->ifPreviouslyViewedByUserMultiplyWeightBy;
+        }
+        if (isset($this->ifNotPreviouslyViewedByUserMultiplyWeightBy))
+        {
+            $result["ifNotPreviouslyViewedByUserMultiplyWeightBy"] = $this->ifNotPreviouslyViewedByUserMultiplyWeightBy;
+        }
+        if (isset($this->sinceMinutesAgo))
+        {
+            $result["sinceMinutesAgo"] = $this->sinceMinutesAgo;
+        }
+        if (isset($this->filters))
+        {
+            $result["filters"] = $this->filters;
+        }
+        return $result;
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class ProductPropertySelector
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.EntityPropertySelectors.ProductPropertySelector, Relewise.Client";

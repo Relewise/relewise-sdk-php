@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class ValueSelector
 {
     public string $typeDefinition = "Relewise.Client.Requests.ValueSelectors.ValueSelector, Relewise.Client";

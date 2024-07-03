@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ContentCategoryInterestTriggerResultCategory
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.ContentCategoryInterestTriggerResult+Category, Relewise.Client";

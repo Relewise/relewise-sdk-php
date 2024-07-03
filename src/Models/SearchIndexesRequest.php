@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SearchIndexesRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.SearchIndexesRequest, Relewise.Client";

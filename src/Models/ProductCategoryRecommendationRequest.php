@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class ProductCategoryRecommendationRequest extends RecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ProductCategoryRecommendationRequest, Relewise.Client";

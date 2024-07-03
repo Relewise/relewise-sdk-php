@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class RecommendationTypeCollection
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.RecommendationTypeCollection, Relewise.Client";

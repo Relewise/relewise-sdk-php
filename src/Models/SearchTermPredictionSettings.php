@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SearchTermPredictionSettings extends SearchSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.SearchTermPredictionSettings, Relewise.Client";

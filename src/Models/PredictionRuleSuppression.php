@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class PredictionRuleSuppression
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.PredictionRule+Suppression, Relewise.Client";

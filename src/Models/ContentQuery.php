@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ContentQuery extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Queries.ContentQuery, Relewise.Client";

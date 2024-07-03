@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class DistinctCondition extends ValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Conditions.DistinctCondition, Relewise.Client";

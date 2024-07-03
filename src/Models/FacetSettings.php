@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class FacetSettings
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.FacetSettings, Relewise.Client";

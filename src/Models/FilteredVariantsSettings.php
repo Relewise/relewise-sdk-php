@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class FilteredVariantsSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Shared.FilteredVariantsSettings, Relewise.Client";

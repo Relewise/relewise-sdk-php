@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SaveTriggerConfigurationRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Triggers.SaveTriggerConfigurationRequest, Relewise.Client";

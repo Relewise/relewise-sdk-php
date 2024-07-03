@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ContentCategory extends Category
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentCategory, Relewise.Client";

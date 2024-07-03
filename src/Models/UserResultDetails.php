@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class UserResultDetails
+class UserResultDetails implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserResultDetails, Relewise.Client";
     public string $authenticatedId;
@@ -257,5 +258,75 @@ class UserResultDetails
     {
         $this->company = $company;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->authenticatedId))
+        {
+            $result["authenticatedId"] = $this->authenticatedId;
+        }
+        if (isset($this->temporaryId))
+        {
+            $result["temporaryId"] = $this->temporaryId;
+        }
+        if (isset($this->email))
+        {
+            $result["email"] = $this->email;
+        }
+        if (isset($this->classifications))
+        {
+            $result["classifications"] = $this->classifications;
+        }
+        if (isset($this->lastCartUpdateUtc))
+        {
+            $result["lastCartUpdateUtc"] = $this->lastCartUpdateUtc->format(DATE_ATOM);
+        }
+        if (isset($this->lastActivityUtc))
+        {
+            $result["lastActivityUtc"] = $this->lastActivityUtc->format(DATE_ATOM);
+        }
+        if (isset($this->lastOrderUtc))
+        {
+            $result["lastOrderUtc"] = $this->lastOrderUtc->format(DATE_ATOM);
+        }
+        if (isset($this->carts))
+        {
+            $result["carts"] = $this->carts;
+        }
+        if (isset($this->lastActiveCartName))
+        {
+            $result["lastActiveCartName"] = $this->lastActiveCartName;
+        }
+        if (isset($this->totalNumberOfOrders))
+        {
+            $result["totalNumberOfOrders"] = $this->totalNumberOfOrders;
+        }
+        if (isset($this->identifiers))
+        {
+            $result["identifiers"] = $this->identifiers;
+        }
+        if (isset($this->key))
+        {
+            $result["key"] = $this->key;
+        }
+        if (isset($this->data))
+        {
+            $result["data"] = $this->data;
+        }
+        if (isset($this->temporaryIds))
+        {
+            $result["temporaryIds"] = $this->temporaryIds;
+        }
+        if (isset($this->channel))
+        {
+            $result["channel"] = $this->channel;
+        }
+        if (isset($this->company))
+        {
+            $result["company"] = $this->company;
+        }
+        return $result;
     }
 }

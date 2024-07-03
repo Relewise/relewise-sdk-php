@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class RecommendPopularSearchTermSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.RecommendPopularSearchTermSettings, Relewise.Client";

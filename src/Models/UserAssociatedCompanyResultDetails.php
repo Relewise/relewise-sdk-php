@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class UserAssociatedCompanyResultDetails
+class UserAssociatedCompanyResultDetails implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserAssociatedCompanyResultDetails, Relewise.Client";
     public string $id;
@@ -81,5 +82,31 @@ class UserAssociatedCompanyResultDetails
     {
         $this->lastAccessedUtc = $lastAccessedUtc;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->id))
+        {
+            $result["id"] = $this->id;
+        }
+        if (isset($this->parent))
+        {
+            $result["parent"] = $this->parent;
+        }
+        if (isset($this->data))
+        {
+            $result["data"] = $this->data;
+        }
+        if (isset($this->createdUtc))
+        {
+            $result["createdUtc"] = $this->createdUtc->format(DATE_ATOM);
+        }
+        if (isset($this->lastAccessedUtc))
+        {
+            $result["lastAccessedUtc"] = $this->lastAccessedUtc->format(DATE_ATOM);
+        }
+        return $result;
     }
 }

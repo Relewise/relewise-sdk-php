@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class OverriddenSelectedContentPropertiesSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Shared.OverriddenSelectedContentPropertiesSettings, Relewise.Client";

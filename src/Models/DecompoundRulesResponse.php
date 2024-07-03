@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class DecompoundRulesResponse extends DecompoundRuleSearchRulesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.DecompoundRulesResponse, Relewise.Client";

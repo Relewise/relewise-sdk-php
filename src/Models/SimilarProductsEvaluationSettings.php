@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SimilarProductsEvaluationSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.SimilarProductsEvaluationSettings, Relewise.Client";

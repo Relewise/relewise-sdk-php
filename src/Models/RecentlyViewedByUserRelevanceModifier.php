@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-abstract class RecentlyViewedByUserRelevanceModifier extends RelevanceModifier
+abstract class RecentlyViewedByUserRelevanceModifier extends RelevanceModifier implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.RecentlyViewedByUserRelevanceModifier, Relewise.Client";
     /** The start of the time period in which an entity will be considered relevant to the user if viewed previously by them. */
@@ -84,5 +85,31 @@ abstract class RecentlyViewedByUserRelevanceModifier extends RelevanceModifier
     {
         $this->filters = $filters;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->sinceUtc))
+        {
+            $result["sinceUtc"] = $this->sinceUtc->format(DATE_ATOM);
+        }
+        if (isset($this->ifPreviouslyViewedByUserMultiplyWeightBy))
+        {
+            $result["ifPreviouslyViewedByUserMultiplyWeightBy"] = $this->ifPreviouslyViewedByUserMultiplyWeightBy;
+        }
+        if (isset($this->ifNotPreviouslyViewedByUserMultiplyWeightBy))
+        {
+            $result["ifNotPreviouslyViewedByUserMultiplyWeightBy"] = $this->ifNotPreviouslyViewedByUserMultiplyWeightBy;
+        }
+        if (isset($this->sinceMinutesAgo))
+        {
+            $result["sinceMinutesAgo"] = $this->sinceMinutesAgo;
+        }
+        if (isset($this->filters))
+        {
+            $result["filters"] = $this->filters;
+        }
+        return $result;
     }
 }

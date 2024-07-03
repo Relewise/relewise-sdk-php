@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** Indicates that some property should change by having a new value which is still of the same type. */
 class Change
 {

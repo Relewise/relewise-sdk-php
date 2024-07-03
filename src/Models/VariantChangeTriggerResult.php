@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class VariantChangeTriggerResult extends VariantChangeTriggerResultVariantChangeResultDetailsEntityChangeTriggerResult
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.VariantChangeTriggerResult, Relewise.Client";

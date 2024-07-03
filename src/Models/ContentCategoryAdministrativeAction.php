@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ContentCategoryAdministrativeAction extends CategoryAdministrativeAction
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentCategoryAdministrativeAction, Relewise.Client";

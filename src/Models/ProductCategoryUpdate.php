@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ProductCategoryUpdate extends CategoryUpdate
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductCategoryUpdate, Relewise.Client";

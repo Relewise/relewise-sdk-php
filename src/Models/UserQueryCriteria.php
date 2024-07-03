@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class UserQueryCriteria
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserQueryCriteria, Relewise.Client";

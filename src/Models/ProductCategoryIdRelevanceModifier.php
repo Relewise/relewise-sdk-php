@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** a RelevanceModifier that can change the relevance of a Product depending on if the product is in a category that matches the given CategoryId and EvaluationScope. */
 class ProductCategoryIdRelevanceModifier extends RelevanceModifier
 {

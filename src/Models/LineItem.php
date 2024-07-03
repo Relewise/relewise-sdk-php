@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class LineItem
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.LineItem, Relewise.Client";

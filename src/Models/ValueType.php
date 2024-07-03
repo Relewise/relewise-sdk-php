@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class ValueType
 {
     public string $typeDefinition = "System.ValueType, System.Private.CoreLib";

@@ -3,9 +3,10 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
 /** a RelevanceModifier that can change the relevance of a Product depending on whether they have bought this product within some timespan. */
-class ProductRecentlyPurchasedByUserRelevanceModifier extends RelevanceModifier
+class ProductRecentlyPurchasedByUserRelevanceModifier extends RelevanceModifier implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyPurchasedByUserRelevanceModifier, Relewise.Client";
     /** The start of the time period in which a product will be considered relevant to the user if bought previously by them. */
@@ -79,5 +80,31 @@ class ProductRecentlyPurchasedByUserRelevanceModifier extends RelevanceModifier
     {
         $this->filters = $filters;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->sinceUtc))
+        {
+            $result["sinceUtc"] = $this->sinceUtc->format(DATE_ATOM);
+        }
+        if (isset($this->ifPreviouslyPurchasedByUserMultiplyWeightBy))
+        {
+            $result["ifPreviouslyPurchasedByUserMultiplyWeightBy"] = $this->ifPreviouslyPurchasedByUserMultiplyWeightBy;
+        }
+        if (isset($this->ifNotPreviouslyPurchasedByUserMultiplyWeightBy))
+        {
+            $result["ifNotPreviouslyPurchasedByUserMultiplyWeightBy"] = $this->ifNotPreviouslyPurchasedByUserMultiplyWeightBy;
+        }
+        if (isset($this->sinceMinutesAgo))
+        {
+            $result["sinceMinutesAgo"] = $this->sinceMinutesAgo;
+        }
+        if (isset($this->filters))
+        {
+            $result["filters"] = $this->filters;
+        }
+        return $result;
     }
 }

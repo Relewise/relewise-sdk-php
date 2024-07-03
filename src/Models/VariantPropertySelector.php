@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class VariantPropertySelector
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.EntityPropertySelectors.VariantPropertySelector, Relewise.Client";

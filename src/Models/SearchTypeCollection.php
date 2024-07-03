@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SearchTypeCollection
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.SearchTypeCollection, Relewise.Client";

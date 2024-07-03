@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class HasAncestorCategoryFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.HasAncestorCategoryFilter, Relewise.Client";

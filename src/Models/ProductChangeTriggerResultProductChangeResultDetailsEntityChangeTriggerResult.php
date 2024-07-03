@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class ProductChangeTriggerResultProductChangeResultDetailsEntityChangeTriggerResult extends EntityChangeTriggerResult
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.EntityChangeTriggerResult`1[[Relewise.Client.Responses.Triggers.Results.ProductChangeTriggerResult+ProductChangeResultDetails, Relewise.Client, Version=1.156.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";

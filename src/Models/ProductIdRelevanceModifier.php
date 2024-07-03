@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** a RelevanceModifier that can change the relevance of a Product depending on whether it is contained in a set of ProductIds. */
 class ProductIdRelevanceModifier extends RelevanceModifier
 {

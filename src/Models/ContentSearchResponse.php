@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ContentSearchResponse extends PaginatedSearchResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.ContentSearchResponse, Relewise.Client";

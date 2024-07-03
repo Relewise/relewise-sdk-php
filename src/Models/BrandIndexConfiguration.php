@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class BrandIndexConfiguration
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.BrandIndexConfiguration, Relewise.Client";

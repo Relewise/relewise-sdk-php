@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryResultDetails
+class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryResultDetails implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductCategoryResultDetails, Relewise.Client";
     public int $purchasedFromByDifferentNumberOfUsers;
@@ -152,5 +153,67 @@ class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryR
         }
         array_push($this->parentCategories, $parentCategories);
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->purchasedFromByDifferentNumberOfUsers))
+        {
+            $result["purchasedFromByDifferentNumberOfUsers"] = $this->purchasedFromByDifferentNumberOfUsers;
+        }
+        if (isset($this->purchasedByUser))
+        {
+            $result["purchasedByUser"] = $this->purchasedByUser;
+        }
+        if (isset($this->categoryId))
+        {
+            $result["categoryId"] = $this->categoryId;
+        }
+        if (isset($this->displayName))
+        {
+            $result["displayName"] = $this->displayName;
+        }
+        if (isset($this->assortments))
+        {
+            $result["assortments"] = $this->assortments;
+        }
+        if (isset($this->data))
+        {
+            $result["data"] = $this->data;
+        }
+        if (isset($this->viewedByUser))
+        {
+            $result["viewedByUser"] = $this->viewedByUser;
+        }
+        if (isset($this->createdUtc))
+        {
+            $result["createdUtc"] = $this->createdUtc->format(DATE_ATOM);
+        }
+        if (isset($this->lastViewedUtc))
+        {
+            $result["lastViewedUtc"] = $this->lastViewedUtc->format(DATE_ATOM);
+        }
+        if (isset($this->viewedTotalNumberOfTimes))
+        {
+            $result["viewedTotalNumberOfTimes"] = $this->viewedTotalNumberOfTimes;
+        }
+        if (isset($this->viewedByDifferentNumberOfUsers))
+        {
+            $result["viewedByDifferentNumberOfUsers"] = $this->viewedByDifferentNumberOfUsers;
+        }
+        if (isset($this->disabled))
+        {
+            $result["disabled"] = $this->disabled;
+        }
+        if (isset($this->childCategories))
+        {
+            $result["childCategories"] = $this->childCategories;
+        }
+        if (isset($this->parentCategories))
+        {
+            $result["parentCategories"] = $this->parentCategories;
+        }
+        return $result;
     }
 }

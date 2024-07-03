@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class Currency
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Currency, Relewise.Client";

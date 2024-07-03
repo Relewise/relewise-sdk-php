@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ProductsViewedAfterViewingContentRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ProductsViewedAfterViewingContentRequest, Relewise.Client";

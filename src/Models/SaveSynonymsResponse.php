@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SaveSynonymsResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.SaveSynonymsResponse, Relewise.Client";

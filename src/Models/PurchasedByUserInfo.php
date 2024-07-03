@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class PurchasedByUserInfo
+class PurchasedByUserInfo implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.PurchasedByUserInfo, Relewise.Client";
     public DateTime $mostRecentPurchasedUtc;
@@ -38,5 +39,19 @@ class PurchasedByUserInfo
     {
         $this->totalNumberOfTimesPurchased = $totalNumberOfTimesPurchased;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->mostRecentPurchasedUtc))
+        {
+            $result["mostRecentPurchasedUtc"] = $this->mostRecentPurchasedUtc->format(DATE_ATOM);
+        }
+        if (isset($this->totalNumberOfTimesPurchased))
+        {
+            $result["totalNumberOfTimesPurchased"] = $this->totalNumberOfTimesPurchased;
+        }
+        return $result;
     }
 }

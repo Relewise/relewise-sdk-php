@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ObservableVariantDataValueSelector extends VariantPropertySelector
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.EntityPropertySelectors.ObservableVariantDataValueSelector, Relewise.Client";

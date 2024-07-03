@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class CompanyDataFilter extends DataFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.CompanyDataFilter, Relewise.Client";

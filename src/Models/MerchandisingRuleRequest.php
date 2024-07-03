@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class MerchandisingRuleRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Merchandising.MerchandisingRuleRequest, Relewise.Client";

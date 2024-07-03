@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class HasChildCategoryFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.HasChildCategoryFilter, Relewise.Client";

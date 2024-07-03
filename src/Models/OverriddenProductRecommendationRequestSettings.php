@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class OverriddenProductRecommendationRequestSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.OverriddenProductRecommendationRequestSettings, Relewise.Client";

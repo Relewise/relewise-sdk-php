@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ContentCategorySearchSettings extends SearchSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.ContentCategorySearchSettings, Relewise.Client";

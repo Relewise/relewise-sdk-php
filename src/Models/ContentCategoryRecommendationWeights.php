@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ContentCategoryRecommendationWeights
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ContentCategoryRecommendationWeights, Relewise.Client";

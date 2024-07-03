@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SearchResultModifierRuleAddTermFilterAction extends SearchResultModifierRuleRuleAction
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchResultModifierRule+AddTermFilterAction, Relewise.Client";

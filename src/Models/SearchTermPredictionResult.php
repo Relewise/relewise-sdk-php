@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SearchTermPredictionResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.SearchTermPredictionResult, Relewise.Client";

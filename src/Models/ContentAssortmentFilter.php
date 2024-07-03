@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ContentAssortmentFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentAssortmentFilter, Relewise.Client";

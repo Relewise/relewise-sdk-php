@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class LanguageIndexConfigurationEntry
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.LanguageIndexConfigurationEntry, Relewise.Client";

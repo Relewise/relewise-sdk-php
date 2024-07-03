@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** Used to specify the full path of a product/lineitem, starting at the root > subcategory > subcategory2 etc. */
 class CategoryPath
 {

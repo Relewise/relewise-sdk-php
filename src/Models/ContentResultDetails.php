@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class ContentResultDetails
+class ContentResultDetails implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentResultDetails, Relewise.Client";
     public string $contentId;
@@ -189,5 +190,59 @@ class ContentResultDetails
     {
         $this->deleted = $deleted;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->contentId))
+        {
+            $result["contentId"] = $this->contentId;
+        }
+        if (isset($this->displayName))
+        {
+            $result["displayName"] = $this->displayName;
+        }
+        if (isset($this->assortments))
+        {
+            $result["assortments"] = $this->assortments;
+        }
+        if (isset($this->data))
+        {
+            $result["data"] = $this->data;
+        }
+        if (isset($this->categoryPaths))
+        {
+            $result["categoryPaths"] = $this->categoryPaths;
+        }
+        if (isset($this->viewedByUser))
+        {
+            $result["viewedByUser"] = $this->viewedByUser;
+        }
+        if (isset($this->createdUtc))
+        {
+            $result["createdUtc"] = $this->createdUtc->format(DATE_ATOM);
+        }
+        if (isset($this->lastViewedUtc))
+        {
+            $result["lastViewedUtc"] = $this->lastViewedUtc->format(DATE_ATOM);
+        }
+        if (isset($this->viewedTotalNumberOfTimes))
+        {
+            $result["viewedTotalNumberOfTimes"] = $this->viewedTotalNumberOfTimes;
+        }
+        if (isset($this->viewedByDifferentNumberOfUsers))
+        {
+            $result["viewedByDifferentNumberOfUsers"] = $this->viewedByDifferentNumberOfUsers;
+        }
+        if (isset($this->disabled))
+        {
+            $result["disabled"] = $this->disabled;
+        }
+        if (isset($this->deleted))
+        {
+            $result["deleted"] = $this->deleted;
+        }
+        return $result;
     }
 }

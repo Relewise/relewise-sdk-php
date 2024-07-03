@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ContentCategoryHasParentFilter extends HasParentCategoryFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentCategoryHasParentFilter, Relewise.Client";

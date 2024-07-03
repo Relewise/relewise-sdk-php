@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
-class ProductRecentlyPurchasedByUserFilter extends Filter
+class ProductRecentlyPurchasedByUserFilter extends Filter implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductRecentlyPurchasedByUserFilter, Relewise.Client";
     public ?DateTime $sinceUtc;
@@ -48,5 +49,27 @@ class ProductRecentlyPurchasedByUserFilter extends Filter
     {
         $this->settings = $settings;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->sinceUtc))
+        {
+            $result["sinceUtc"] = $this->sinceUtc->format(DATE_ATOM);
+        }
+        if (isset($this->sinceMinutesAgo))
+        {
+            $result["sinceMinutesAgo"] = $this->sinceMinutesAgo;
+        }
+        if (isset($this->negated))
+        {
+            $result["negated"] = $this->negated;
+        }
+        if (isset($this->settings))
+        {
+            $result["settings"] = $this->settings;
+        }
+        return $result;
     }
 }

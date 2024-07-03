@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 abstract class EntityChangeTriggerResult
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.EntityChangeTriggerResult, Relewise.Client";

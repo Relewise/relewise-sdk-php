@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SearchTerm extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.SearchTerm, Relewise.Client";

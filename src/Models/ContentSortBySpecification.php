@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ContentSortBySpecification
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Content.ContentSortBySpecification, Relewise.Client";

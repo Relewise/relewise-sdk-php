@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** a RelevanceModifier that can change the relevance of a Variant depending on whether certain SpecificationKeysAndMultipliers match with a specific variant. */
 class VariantSpecificationsInCommonRelevanceModifier extends RelevanceModifier
 {

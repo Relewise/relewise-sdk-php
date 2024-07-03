@@ -3,9 +3,10 @@
 namespace Relewise\Models;
 
 use DateTime;
+use JsonSerializable;
 
 /** a RelevanceModifier that can change the relevance of a Product depending on whether the users company or parent company have purchased this product within some timespan. */
-class ProductRecentlyPurchasedByCompanyRelevanceModifier extends RelevanceModifier
+class ProductRecentlyPurchasedByCompanyRelevanceModifier extends RelevanceModifier implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyPurchasedByCompanyRelevanceModifier, Relewise.Client";
     /** The start of the time period in which a product will be considered relevant to the user if purchased previously by any of the provided companies. */
@@ -108,5 +109,35 @@ class ProductRecentlyPurchasedByCompanyRelevanceModifier extends RelevanceModifi
     {
         $this->filters = $filters;
         return $this;
+    }
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
+        if (isset($this->sinceUtc))
+        {
+            $result["sinceUtc"] = $this->sinceUtc->format(DATE_ATOM);
+        }
+        if (isset($this->companyIds))
+        {
+            $result["companyIds"] = $this->companyIds;
+        }
+        if (isset($this->ifPurchasedByCompanyMultiplyWeightBy))
+        {
+            $result["ifPurchasedByCompanyMultiplyWeightBy"] = $this->ifPurchasedByCompanyMultiplyWeightBy;
+        }
+        if (isset($this->elseIfNotPurchasedByCompanyMultiplyWeightBy))
+        {
+            $result["elseIfNotPurchasedByCompanyMultiplyWeightBy"] = $this->elseIfNotPurchasedByCompanyMultiplyWeightBy;
+        }
+        if (isset($this->sinceMinutesAgo))
+        {
+            $result["sinceMinutesAgo"] = $this->sinceMinutesAgo;
+        }
+        if (isset($this->filters))
+        {
+            $result["filters"] = $this->filters;
+        }
+        return $result;
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SearchTermModifierRuleRemoveFromTermAction extends SearchTermModifierRuleRuleAction
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchTermModifierRule+RemoveFromTermAction, Relewise.Client";

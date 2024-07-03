@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ApplicableLanguages
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ApplicableLanguages, Relewise.Client";

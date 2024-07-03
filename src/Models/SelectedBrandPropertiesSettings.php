@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class SelectedBrandPropertiesSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Shared.SelectedBrandPropertiesSettings, Relewise.Client";

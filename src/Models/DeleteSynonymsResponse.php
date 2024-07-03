@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class DeleteSynonymsResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.DeleteSynonymsResponse, Relewise.Client";

@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** a RelevanceModifier that can change the relevance of a Product depending on whether a product has been bought within some interval of minutes SinceMinutesAgofrom now, which can define complex modifiers depending on the number of purchases and how long time there has passed since the last purchase. */
 class UserFavoriteProductRelevanceModifier extends RelevanceModifier
 {

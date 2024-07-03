@@ -2,8 +2,6 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 class ProductCategoryRecommendationWeights
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ProductCategoryRecommendationWeights, Relewise.Client";
