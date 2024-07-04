@@ -63,7 +63,7 @@ public class PhpHydrationMethodsWriter
             writer.WriteLine($"public static function hydrate(array $arr) : {typeName}");
             writer.WriteLine("{");
             writer.Indent++;
-            if (type.BaseType is { IsAbstract: true } abstractBase)
+            if (type.BaseType != typeof(ValueType) && type.BaseType is { IsAbstract: true } abstractBase)
             {
                 writer.WriteLine($"$result = {phpWriter.PhpTypeName(abstractBase).Replace("?", "")}::hydrateBase(new {typeName}(), $arr);");
             }

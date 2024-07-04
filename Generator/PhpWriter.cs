@@ -23,7 +23,7 @@ public class PhpWriter
 
     public PhpWriter(Assembly assembly, string basePath, XmlDocumentation xmlDocumentation)
     {
-        phpTypeWriters = new List<IPhpTypeWriter>() { new PhpClassWriter(this), new PhpInterfaceWriter(this), new PhpEnumWriter(this), new PhpKeyValuePairWriter(this) };
+        phpTypeWriters = new List<IPhpTypeWriter>() { new PhpInterfaceWriter(this), new PhpEnumWriter(this), new PhpKeyValuePairWriter(this), new PhpClassWriter(this) };
         phpTypeResolver = new PhpTypeResolver(assembly);
         Assembly = assembly;
         BasePath = basePath;
@@ -47,6 +47,9 @@ public class PhpWriter
         while (phpTypeResolver.TypesToGenerate.Count > 0)
         {
             var type = phpTypeResolver.TypesToGenerate.Dequeue();
+
+            if (type == typeof(object) || type == typeof(ValueType) || type == typeof(Enum))
+                continue;
 
             var potentialNullableTypeName = PhpTypeName(type);
             var typeName = potentialNullableTypeName[0] is '?' ? potentialNullableTypeName[1..] : potentialNullableTypeName;
