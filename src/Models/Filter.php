@@ -24,6 +24,10 @@ abstract class Filter
         {
             return BrandDataFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.BrandDataHasKeyFilter, Relewise.Client")
+        {
+            return BrandDataHasKeyFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.BrandDisabledFilter, Relewise.Client")
         {
             return BrandDisabledFilter::hydrate($arr);
@@ -39,6 +43,10 @@ abstract class Filter
         if ($type=="Relewise.Client.Requests.Filters.CompanyDataFilter, Relewise.Client")
         {
             return CompanyDataFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.CompanyDataHasKeyFilter, Relewise.Client")
+        {
+            return CompanyDataHasKeyFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.CompanyDisabledFilter, Relewise.Client")
         {
@@ -59,6 +67,10 @@ abstract class Filter
         if ($type=="Relewise.Client.Requests.Filters.ContentCategoryDataFilter, Relewise.Client")
         {
             return ContentCategoryDataFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.ContentCategoryDataHasKeyFilter, Relewise.Client")
+        {
+            return ContentCategoryDataHasKeyFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.ContentCategoryDisabledFilter, Relewise.Client")
         {
@@ -96,9 +108,17 @@ abstract class Filter
         {
             return ContentDataFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.ContentDataHasKeyFilter, Relewise.Client")
+        {
+            return ContentDataHasKeyFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.ContentDisabledFilter, Relewise.Client")
         {
             return ContentDisabledFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.ContentHasCategoriesFilter, Relewise.Client")
+        {
+            return ContentHasCategoriesFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.ContentIdFilter, Relewise.Client")
         {
@@ -127,6 +147,10 @@ abstract class Filter
         if ($type=="Relewise.Client.Requests.Filters.ProductCategoryDataFilter, Relewise.Client")
         {
             return ProductCategoryDataFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.ProductCategoryDataHasKeyFilter, Relewise.Client")
+        {
+            return ProductCategoryDataHasKeyFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.ProductCategoryDisabledFilter, Relewise.Client")
         {
@@ -164,6 +188,10 @@ abstract class Filter
         {
             return ProductDataFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.ProductDataHasKeyFilter, Relewise.Client")
+        {
+            return ProductDataHasKeyFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.ProductDisabledFilter, Relewise.Client")
         {
             return ProductDisabledFilter::hydrate($arr);
@@ -171,6 +199,10 @@ abstract class Filter
         if ($type=="Relewise.Client.Requests.Filters.ProductDisplayNameFilter, Relewise.Client")
         {
             return ProductDisplayNameFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.ProductHasCategoriesFilter, Relewise.Client")
+        {
+            return ProductHasCategoriesFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.ProductHasVariantsFilter, Relewise.Client")
         {
@@ -227,6 +259,10 @@ abstract class Filter
         if ($type=="Relewise.Client.Requests.Filters.VariantDataFilter, Relewise.Client")
         {
             return VariantDataFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.VariantDataHasKeyFilter, Relewise.Client")
+        {
+            return VariantDataHasKeyFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.VariantDisabledFilter, Relewise.Client")
         {

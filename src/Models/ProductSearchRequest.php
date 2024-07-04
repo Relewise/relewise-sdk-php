@@ -9,6 +9,7 @@ class ProductSearchRequest extends PaginatedSearchRequest
     public ?ProductFacetQuery $facets;
     public ?ProductSearchSettings $settings;
     public ?ProductSortBySpecification $sorting;
+    public ?RetailMediaQuery $retailMedia;
     public static function create(?Language $language, ?Currency $currency, User $user, string $displayedAtLocation, ?string $term, int $skip, int $take) : ProductSearchRequest
     {
         $result = new ProductSearchRequest();
@@ -40,6 +41,10 @@ class ProductSearchRequest extends PaginatedSearchRequest
         {
             $result->sorting = ProductSortBySpecification::hydrate($arr["sorting"]);
         }
+        if (array_key_exists("retailMedia", $arr))
+        {
+            $result->retailMedia = RetailMediaQuery::hydrate($arr["retailMedia"]);
+        }
         return $result;
     }
     function setTerm(?string $term)
@@ -60,6 +65,11 @@ class ProductSearchRequest extends PaginatedSearchRequest
     function setSorting(?ProductSortBySpecification $sorting)
     {
         $this->sorting = $sorting;
+        return $this;
+    }
+    function setRetailMedia(?RetailMediaQuery $retailMedia)
+    {
+        $this->retailMedia = $retailMedia;
         return $this;
     }
     function setSkip(int $skip)

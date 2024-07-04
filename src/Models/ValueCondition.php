@@ -26,6 +26,10 @@ abstract class ValueCondition
         {
             return GreaterThanCondition::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Conditions.HasValueCondition, Relewise.Client")
+        {
+            return HasValueCondition::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Conditions.LessThanCondition, Relewise.Client")
         {
             return LessThanCondition::hydrate($arr);

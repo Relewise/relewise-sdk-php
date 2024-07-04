@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
-/** Defines how entities are to be selected by given paths. Should ImmediateParent, or Ancestors selection be applied? */
+/** Defines how entities are to be selected by given paths. */
 enum CategorySelectionStrategy : string
 {
     /** Returns entities that are in the exact path that has been selected. */
