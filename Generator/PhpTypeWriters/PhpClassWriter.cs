@@ -135,7 +135,6 @@ public class PhpClassWriter : IPhpTypeWriter
         }
         else if (IsReadonlyStruct(type))
         {
-            Console.WriteLine(typeName);
             phpWriter.PhpSettablePropertiesWriter.Write(writer, type, gettableProperties);
             phpWriter.PhpStaticReadonlyPropertiesWriter.Write(writer, staticGetterProperties);
 
