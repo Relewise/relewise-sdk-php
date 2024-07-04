@@ -18,7 +18,11 @@ public class PhpClassWriter : IPhpTypeWriter
         this.phpWriter = phpWriter;
     }
 
-    public bool CanWrite(Type type) => type.IsClass;
+    public bool CanWrite(Type type) => IsClass(type) || IsReadonlyStruct(type);
+
+    private bool IsClass(Type type) => type.IsClass;
+
+    private bool IsReadonlyStruct(Type type) => type.IsValueType && type.GetProperties().All(p => !p.CanWrite);
 
     public void Write(IndentedTextWriter writer, Type type, string typeName)
     {
@@ -37,10 +41,13 @@ public class PhpClassWriter : IPhpTypeWriter
             .Where(info => info.SetMethod is { IsAbstract: false })
             .ToArray();
 
-
+        var gettableProperties = gettablePropertyInfo
+            .Select(MapPropertyInfo)
+            .ToArray();
         var settableProperties = settablePropertyInfo
             .Select(MapPropertyInfo)
             .ToArray();
+
         var ownedProperties = settablePropertyInfo
             .Where(info => info.DeclaringType == type
                            && info.DeclaringType?.IsAbstract == type.IsAbstract)
@@ -57,7 +64,7 @@ public class PhpClassWriter : IPhpTypeWriter
         writer.WriteLine($"namespace {Constants.Namespace};");
         writer.WriteLine();
 
-        bool hasDateTimeOrDateTimeOffsetProperty = settableProperties.Any(p => p.propertyTypeName is "DateTime" or "?DateTime");
+        bool hasDateTimeOrDateTimeOffsetProperty = gettableProperties.Any(p => p.propertyTypeName is "DateTime" or "?DateTime");
         if (hasDateTimeOrDateTimeOffsetProperty)
         {
             writer.WriteLine("use DateTime;");
@@ -66,7 +73,7 @@ public class PhpClassWriter : IPhpTypeWriter
         }
 
         string? baseTypeName = null;
-        if (type.BaseType != typeof(object) && type.BaseType is { } baseType)
+        if (type.BaseType != typeof(object) && type.BaseType != typeof(ValueType) && type.BaseType is { } baseType)
         {
             baseTypeName = phpWriter.PhpTypeName(baseType).Replace("?", "");
         }
@@ -112,16 +119,33 @@ public class PhpClassWriter : IPhpTypeWriter
             writer.WriteLine($"public string $typeDefinition = \"\";");
         }
 
-        phpWriter.PhpSettablePropertiesWriter.Write(writer, type, ownedProperties);
-        phpWriter.PhpStaticReadonlyPropertiesWriter.Write(writer, staticGetterProperties);
-
-        phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, settableProperties, ownedProperties);
-        phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, ownedProperties);
-        phpWriter.PhpPropertySetterMethodsWriter.Write(writer, type, settableProperties);
-
-        if (hasDateTimeOrDateTimeOffsetProperty)
+        if (IsClass(type))
         {
-            phpWriter.PhpJsonSerializerMethodWriter.Write(writer, type, settableProperties);
+            phpWriter.PhpSettablePropertiesWriter.Write(writer, type, ownedProperties);
+            phpWriter.PhpStaticReadonlyPropertiesWriter.Write(writer, staticGetterProperties);
+
+            phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, settableProperties, ownedProperties);
+            phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, ownedProperties);
+            phpWriter.PhpPropertySetterMethodsWriter.Write(writer, type, settableProperties);
+
+            if (hasDateTimeOrDateTimeOffsetProperty)
+            {
+                phpWriter.PhpJsonSerializerMethodWriter.Write(writer, type, settableProperties);
+            }
+        }
+        else if (IsReadonlyStruct(type))
+        {
+            phpWriter.PhpSettablePropertiesWriter.Write(writer, type, gettableProperties);
+            phpWriter.PhpStaticReadonlyPropertiesWriter.Write(writer, staticGetterProperties);
+
+            phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, gettableProperties, gettableProperties);
+            phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, gettableProperties);
+            phpWriter.PhpPropertySetterMethodsWriter.Write(writer, type, gettableProperties);
+
+            if (hasDateTimeOrDateTimeOffsetProperty)
+            {
+                phpWriter.PhpJsonSerializerMethodWriter.Write(writer, type, gettableProperties);
+            }
         }
 
         writer.Indent--;
