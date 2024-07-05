@@ -8,46 +8,22 @@ use Relewise\Tracker;
 class ClientConstructionTest extends TestCase {
     public function testApiKeyEmpty(): void 
     {
-        $apiKey = "";
+        $this->expectException(InvalidArgumentException::class);
 
-        $threwInvalidArgumentException = false;
-        try {
-            $tracker = new Tracker("00000000-0000-0000-0000-000000000001", $apiKey);
-        }
-        catch (InvalidArgumentException) {
-            $threwInvalidArgumentException = true;
-        }
-
-        self::assertTrue($threwInvalidArgumentException);
+        new Tracker("00000000-0000-0000-0000-000000000001", "");
     }
 
     public function testApiKeySpaceString(): void 
     {
-        $apiKey = " ";
+        $this->expectException(InvalidArgumentException::class);
 
-        $threwInvalidArgumentException = false;
-        try {
-            $tracker = new Tracker("00000000-0000-0000-0000-000000000001", $apiKey);
-        }
-        catch (InvalidArgumentException) {
-            $threwInvalidArgumentException = true;
-        }
-
-        self::assertTrue($threwInvalidArgumentException);
+        new Tracker("00000000-0000-0000-0000-000000000001", " ");
     }
 
     public function testApiKeyValid(): void 
     {
-        $apiKey = "a-valid-apikey-format";
+        $tracker = new Tracker("00000000-0000-0000-0000-000000000001", "a-valid-apikey-format");
 
-        $threwInvalidArgumentException = false;
-        try {
-            $tracker = new Tracker("00000000-0000-0000-0000-000000000001", $apiKey);
-        }
-        catch (InvalidArgumentException) {
-            $threwInvalidArgumentException = true;
-        }
-
-        self::assertFalse($threwInvalidArgumentException);
+        self::assertNotNull($tracker);
     }
 }
