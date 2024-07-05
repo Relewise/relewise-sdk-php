@@ -16,6 +16,7 @@ use Relewise\Models\LicensedRequest;
 
 abstract class RelewiseClient
 {
+    private string $apiKeyNotDefinedMessage = "apiKey must not be empty.";
     public string $serverUrl = "https://api.relewise.com";
     private int $httpVersion = CURL_HTTP_VERSION_NONE;
     private string $apiVersion = "v1";
@@ -25,6 +26,10 @@ abstract class RelewiseClient
 
     public function __construct(private string $datasetId, private string $apiKey, private int $timeout)
     {
+        if (trim($apiKey) == "")
+        {
+            throw new InvalidArgumentException($this->apiKeyNotDefinedMessage);
+        }
         $this->clientVersion = \Composer\InstalledVersions::getRootPackage()["version"];
         $this->client = new CurlClient();
     }
@@ -46,6 +51,10 @@ abstract class RelewiseClient
 
     public function requestAndValidate(string $endpoint, LicensedRequest $request)
     {
+        if (trim($this->apiKey) == "")
+        {
+            throw new InvalidArgumentException($this->apiKeyNotDefinedMessage);
+        }
         $response = $this->request($endpoint, $request);
         if ($response->code >= 200 && $response->code <= 299) {
             return $response->body;
