@@ -5,7 +5,7 @@ namespace Relewise\Models;
 class ContentCategoryHasContentsFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentCategoryHasContentsFilter, Relewise.Client";
-    public static function create(bool $negated = false) : ContentCategoryHasContentsFilter
+    public static function create(bool $negated) : ContentCategoryHasContentsFilter
     {
         $result = new ContentCategoryHasContentsFilter();
         $result->negated = $negated;

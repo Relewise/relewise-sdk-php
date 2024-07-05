@@ -5,7 +5,7 @@ namespace Relewise\Models;
 class ProductQuery extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Queries.ProductQuery, Relewise.Client";
-    public FilterCollection $filters;
+    public ?FilterCollection $filters;
     /** @deprecated For better paging support, please use NextPageToken and PageSize */
     public int $numberOfResults;
     public ?Language $language;
@@ -16,17 +16,15 @@ class ProductQuery extends LicensedRequest
     public bool $includeDisabledProducts;
     public bool $includeDisabledVariants;
     public bool $excludeProductsWithNoVariants;
-    /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests. */
+    /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests. <remarks>Should a wrong/unexisting token be supplied, a 'Validation' exception shall be returned.</remarks> */
     public ?string $nextPageToken;
-    /** The size of the page requested. */
+    /** The size of the page requested. <remarks>Maximum allowed value is 1000.</remarks> */
     public ?int $pageSize;
     public static function create(?Language $language = Null, ?Currency $currency = Null) : ProductQuery
     {
         $result = new ProductQuery();
         $result->language = $language;
         $result->currency = $currency;
-        $result->skipNumberOfResults = 0;
-        $result->returnTotalNumberOfResults = false;
         return $result;
     }
     public static function hydrate(array $arr) : ProductQuery
@@ -78,7 +76,7 @@ class ProductQuery extends LicensedRequest
         }
         return $result;
     }
-    function setFilters(FilterCollection $filters)
+    function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
@@ -125,13 +123,13 @@ class ProductQuery extends LicensedRequest
         $this->excludeProductsWithNoVariants = $excludeProductsWithNoVariants;
         return $this;
     }
-    /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests. */
+    /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests. <remarks>Should a wrong/unexisting token be supplied, a 'Validation' exception shall be returned.</remarks> */
     function setNextPageToken(?string $nextPageToken)
     {
         $this->nextPageToken = $nextPageToken;
         return $this;
     }
-    /** The size of the page requested. */
+    /** The size of the page requested. <remarks>Maximum allowed value is 1000.</remarks> */
     function setPageSize(?int $pageSize)
     {
         $this->pageSize = $pageSize;

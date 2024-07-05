@@ -189,6 +189,34 @@ abstract class TimedResponse
         {
             return StemmingRulesResponse::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Responses.RetailMedia.AdvertisersResponse, Relewise.Client")
+        {
+            return AdvertisersResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.RetailMedia.CampaignAnalyticsResponse, Relewise.Client")
+        {
+            return CampaignAnalyticsResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.RetailMedia.CampaignsResponse, Relewise.Client")
+        {
+            return CampaignsResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.RetailMedia.LocationsResponse, Relewise.Client")
+        {
+            return LocationsResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.RetailMedia.SaveAdvertisersResponse, Relewise.Client")
+        {
+            return SaveAdvertisersResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.RetailMedia.SaveCampaignsResponse, Relewise.Client")
+        {
+            return SaveCampaignsResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.RetailMedia.SaveLocationsResponse, Relewise.Client")
+        {
+            return SaveLocationsResponse::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Responses.Merchandising.MerchandisingRuleCollectionResponse, Relewise.Client")
         {
             return MerchandisingRuleCollectionResponse::hydrate($arr);

@@ -8,4 +8,5 @@ enum PopularityTypes : string
 {
     case MostPurchased = 'MostPurchased';
     case MostViewed = 'MostViewed';
+    case LineRevenue = 'LineRevenue';
 }

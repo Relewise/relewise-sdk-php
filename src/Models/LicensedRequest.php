@@ -248,6 +248,34 @@ abstract class LicensedRequest
         {
             return StemmingRulesRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.RetailMedia.AdvertisersRequest, Relewise.Client")
+        {
+            return AdvertisersRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RetailMedia.CampaignAnalyticsRequest, Relewise.Client")
+        {
+            return CampaignAnalyticsRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RetailMedia.CampaignsRequest, Relewise.Client")
+        {
+            return CampaignsRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RetailMedia.LocationsRequest, Relewise.Client")
+        {
+            return LocationsRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RetailMedia.SaveAdvertisersRequest, Relewise.Client")
+        {
+            return SaveAdvertisersRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RetailMedia.SaveCampaignsRequest, Relewise.Client")
+        {
+            return SaveCampaignsRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RetailMedia.SaveLocationsRequest, Relewise.Client")
+        {
+            return SaveLocationsRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Recommendations.ContentCategoryRecommendationRequestCollection, Relewise.Client")
         {
             return ContentCategoryRecommendationRequestCollection::hydrate($arr);

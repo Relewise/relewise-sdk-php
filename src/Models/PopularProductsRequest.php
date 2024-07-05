@@ -7,6 +7,8 @@ class PopularProductsRequest extends ProductRecommendationRequest
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PopularProductsRequest, Relewise.Client";
     public PopularityTypes $basedOn;
     public int $sinceMinutesAgo;
+    /** A selector for changing the weighing of observed views or purchases on an entity basis when making the recommendation. */
+    public ?PopularityMultiplierSelector $popularityMultiplier;
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, PopularityTypes $basedOn) : PopularProductsRequest
     {
         $result = new PopularProductsRequest();
@@ -28,6 +30,10 @@ class PopularProductsRequest extends ProductRecommendationRequest
         {
             $result->sinceMinutesAgo = $arr["sinceMinutesAgo"];
         }
+        if (array_key_exists("popularityMultiplier", $arr))
+        {
+            $result->popularityMultiplier = PopularityMultiplierSelector::hydrate($arr["popularityMultiplier"]);
+        }
         return $result;
     }
     function setBasedOn(PopularityTypes $basedOn)
@@ -38,6 +44,12 @@ class PopularProductsRequest extends ProductRecommendationRequest
     function setSinceMinutesAgo(int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
+        return $this;
+    }
+    /** A selector for changing the weighing of observed views or purchases on an entity basis when making the recommendation. */
+    function setPopularityMultiplier(?PopularityMultiplierSelector $popularityMultiplier)
+    {
+        $this->popularityMultiplier = $popularityMultiplier;
         return $this;
     }
     function setSettings(ProductRecommendationRequestSettings $settings)

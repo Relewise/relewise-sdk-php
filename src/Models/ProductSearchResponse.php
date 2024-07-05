@@ -9,6 +9,7 @@ class ProductSearchResponse extends PaginatedSearchResponse
     public ProductFacetResult $facets;
     public array $recommendations;
     public array $redirects;
+    public RetailMediaResult $retailMedia;
     public static function create() : ProductSearchResponse
     {
         $result = new ProductSearchResponse();
@@ -44,6 +45,10 @@ class ProductSearchResponse extends PaginatedSearchResponse
             {
                 array_push($result->redirects, RedirectResult::hydrate($value));
             }
+        }
+        if (array_key_exists("retailMedia", $arr))
+        {
+            $result->retailMedia = RetailMediaResult::hydrate($arr["retailMedia"]);
         }
         return $result;
     }
@@ -110,6 +115,11 @@ class ProductSearchResponse extends PaginatedSearchResponse
             $this->redirects = array();
         }
         array_push($this->redirects, $redirects);
+        return $this;
+    }
+    function setRetailMedia(RetailMediaResult $retailMedia)
+    {
+        $this->retailMedia = $retailMedia;
         return $this;
     }
     function setHits(int $hits)
