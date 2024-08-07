@@ -1,4 +1,8 @@
-# relewise-sdk-php [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) [![Latest Stable Version](http://poser.pugx.org/relewise/client/v)](https://packagist.org/packages/relewise/client) [![PHP Version Require](http://poser.pugx.org/relewise/client/require/php)](https://packagist.org/packages/relewise/client) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Relewise/relewise-sdk-php/pulls)
+# relewise-sdk-php
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![Latest Stable Version](https://poser.pugx.org/relewise/client/v)](https://packagist.org/packages/relewise/client)
+[![PHP Version Require](https://poser.pugx.org/relewise/client/require/php)](https://packagist.org/packages/relewise/client)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Relewise/relewise-sdk-php/pulls)
 
 ## Installation
 
