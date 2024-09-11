@@ -5,48 +5,21 @@ namespace Relewise\Models;
 use DateTime;
 use JsonSerializable;
 
-class VariantChangeTriggerConfiguration extends VariantChangeTriggerResultVariantChangeTriggerResultSettingsVariantPropertySelectorEntityChangeTriggerConfiguration implements JsonSerializable
+abstract class VariantChangeTriggerResultTriggerConfiguration extends TriggerConfiguration implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.VariantChangeTriggerConfiguration, Relewise.Client";
-    public static function create(string $name, string $description, VariantPropertySelector $entityPropertySelector, IChange $change, VariantChangeTriggerResultSettings $resultSettings) : VariantChangeTriggerConfiguration
+    public string $typeDefinition = "";
+    public static function hydrate(array $arr)
     {
-        $result = new VariantChangeTriggerConfiguration();
-        $result->name = $name;
-        $result->description = $description;
-        $result->entityPropertySelector = $entityPropertySelector;
-        $result->change = $change;
-        $result->resultSettings = $resultSettings;
+        $type = $arr["\$type"];
+        if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.VariantChangeTriggerConfiguration, Relewise.Client")
+        {
+            return VariantChangeTriggerConfiguration::hydrate($arr);
+        }
+    }
+    public static function hydrateBase(mixed $result, array $arr)
+    {
+        $result = TriggerConfiguration::hydrateBase($result, $arr);
         return $result;
-    }
-    public static function hydrate(array $arr) : VariantChangeTriggerConfiguration
-    {
-        $result = VariantChangeTriggerResultVariantChangeTriggerResultSettingsVariantPropertySelectorEntityChangeTriggerConfiguration::hydrateBase(new VariantChangeTriggerConfiguration(), $arr);
-        return $result;
-    }
-    function setEntityPropertySelector(?VariantPropertySelector $entityPropertySelector)
-    {
-        $this->entityPropertySelector = $entityPropertySelector;
-        return $this;
-    }
-    function setBeforeChangeFilters(FilterCollection $beforeChangeFilters)
-    {
-        $this->beforeChangeFilters = $beforeChangeFilters;
-        return $this;
-    }
-    function setAfterChangeFilters(FilterCollection $afterChangeFilters)
-    {
-        $this->afterChangeFilters = $afterChangeFilters;
-        return $this;
-    }
-    function setChange(IChange $change)
-    {
-        $this->change = $change;
-        return $this;
-    }
-    function setResultSettings(?VariantChangeTriggerResultSettings $resultSettings)
-    {
-        $this->resultSettings = $resultSettings;
-        return $this;
     }
     function setId(string $id)
     {
@@ -121,27 +94,6 @@ class VariantChangeTriggerConfiguration extends VariantChangeTriggerResultVarian
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
-        if (isset($this->entityPropertySelector))
-        {
-            $result["entityPropertySelector"] = $this->entityPropertySelector;
-        }
-        if (isset($this->beforeChangeFilters))
-        {
-            $result["beforeChangeFilters"] = $this->beforeChangeFilters;
-        }
-        if (isset($this->afterChangeFilters))
-        {
-            $result["afterChangeFilters"] = $this->afterChangeFilters;
-        }
-        if (isset($this->change))
-        {
-            $result["change"] = $this->change;
-        }
-        if (isset($this->resultSettings))
-        {
-            $result["resultSettings"] = $this->resultSettings;
-        }
         if (isset($this->id))
         {
             $result["id"] = $this->id;

@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-class AdvertisersRequest extends EntitiesRequest
+class AdvertisersRequest extends AdvertiserEntityStateAdvertiserMetadataValuesAdvertisersRequestSortByAdvertisersRequestEntityFiltersEntitiesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.AdvertisersRequest, Relewise.Client";
     public static function create(?AdvertisersRequestEntityFilters $filters, ?AdvertisersRequestSortBySorting $sorting, int $skip, int $take) : AdvertisersRequest
@@ -16,7 +16,7 @@ class AdvertisersRequest extends EntitiesRequest
     }
     public static function hydrate(array $arr) : AdvertisersRequest
     {
-        $result = EntitiesRequest::hydrateBase(new AdvertisersRequest(), $arr);
+        $result = AdvertiserEntityStateAdvertiserMetadataValuesAdvertisersRequestSortByAdvertisersRequestEntityFiltersEntitiesRequest::hydrateBase(new AdvertisersRequest(), $arr);
         return $result;
     }
     function setFilters(?AdvertisersRequestEntityFilters $filters)
