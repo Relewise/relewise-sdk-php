@@ -5,44 +5,77 @@ namespace Relewise\Models;
 use DateTime;
 use JsonSerializable;
 
-class VariantChangeTriggerConfiguration extends VariantChangeTriggerResultVariantChangeTriggerResultSettingsVariantPropertySelectorEntityChangeTriggerConfiguration implements JsonSerializable
+abstract class VariantChangeTriggerResultVariantChangeTriggerResultSettingsVariantPropertySelectorEntityChangeTriggerConfiguration extends VariantChangeTriggerResultTriggerConfiguration implements JsonSerializable
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.VariantChangeTriggerConfiguration, Relewise.Client";
-    public static function create(string $name, string $description, VariantPropertySelector $entityPropertySelector, IChange $change, VariantChangeTriggerResultSettings $resultSettings) : VariantChangeTriggerConfiguration
+    public string $typeDefinition = "";
+    /** The selector used for choosing which property of the entity the trigger should look for change in. */
+    public ?VariantPropertySelector $entityPropertySelector;
+    /** The filter that specifies which entities the trigger should track changes for. */
+    public FilterCollection $beforeChangeFilters;
+    /** The filter for what state the tracked entities should have once they have changed to be included in the results. */
+    public FilterCollection $afterChangeFilters;
+    /** The type of change that should happen to the value selected by the EntityPropertySelector for an entity to be considered part of the results. */
+    public IChange $change;
+    /** Settings for defining which properties should be included in the result of the trigger. */
+    public ?VariantChangeTriggerResultSettings $resultSettings;
+    public static function hydrate(array $arr)
     {
-        $result = new VariantChangeTriggerConfiguration();
-        $result->name = $name;
-        $result->description = $description;
-        $result->entityPropertySelector = $entityPropertySelector;
-        $result->change = $change;
-        $result->resultSettings = $resultSettings;
+        $type = $arr["\$type"];
+        if ($type=="Relewise.Client.DataTypes.Triggers.Configurations.VariantChangeTriggerConfiguration, Relewise.Client")
+        {
+            return VariantChangeTriggerConfiguration::hydrate($arr);
+        }
+    }
+    public static function hydrateBase(mixed $result, array $arr)
+    {
+        $result = VariantChangeTriggerResultTriggerConfiguration::hydrateBase($result, $arr);
+        if (array_key_exists("entityPropertySelector", $arr))
+        {
+            $result->entityPropertySelector = VariantPropertySelector::hydrate($arr["entityPropertySelector"]);
+        }
+        if (array_key_exists("beforeChangeFilters", $arr))
+        {
+            $result->beforeChangeFilters = FilterCollection::hydrate($arr["beforeChangeFilters"]);
+        }
+        if (array_key_exists("afterChangeFilters", $arr))
+        {
+            $result->afterChangeFilters = FilterCollection::hydrate($arr["afterChangeFilters"]);
+        }
+        if (array_key_exists("change", $arr))
+        {
+            $result->change = IChange::hydrate($arr["change"]);
+        }
+        if (array_key_exists("resultSettings", $arr))
+        {
+            $result->resultSettings = VariantChangeTriggerResultSettings::hydrate($arr["resultSettings"]);
+        }
         return $result;
     }
-    public static function hydrate(array $arr) : VariantChangeTriggerConfiguration
-    {
-        $result = VariantChangeTriggerResultVariantChangeTriggerResultSettingsVariantPropertySelectorEntityChangeTriggerConfiguration::hydrateBase(new VariantChangeTriggerConfiguration(), $arr);
-        return $result;
-    }
+    /** The selector used for choosing which property of the entity the trigger should look for change in. */
     function setEntityPropertySelector(?VariantPropertySelector $entityPropertySelector)
     {
         $this->entityPropertySelector = $entityPropertySelector;
         return $this;
     }
+    /** The filter that specifies which entities the trigger should track changes for. */
     function setBeforeChangeFilters(FilterCollection $beforeChangeFilters)
     {
         $this->beforeChangeFilters = $beforeChangeFilters;
         return $this;
     }
+    /** The filter for what state the tracked entities should have once they have changed to be included in the results. */
     function setAfterChangeFilters(FilterCollection $afterChangeFilters)
     {
         $this->afterChangeFilters = $afterChangeFilters;
         return $this;
     }
+    /** The type of change that should happen to the value selected by the EntityPropertySelector for an entity to be considered part of the results. */
     function setChange(IChange $change)
     {
         $this->change = $change;
         return $this;
     }
+    /** Settings for defining which properties should be included in the result of the trigger. */
     function setResultSettings(?VariantChangeTriggerResultSettings $resultSettings)
     {
         $this->resultSettings = $resultSettings;
@@ -121,7 +154,6 @@ class VariantChangeTriggerConfiguration extends VariantChangeTriggerResultVarian
     public function jsonSerialize(): mixed
     {
         $result = array();
-        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->entityPropertySelector))
         {
             $result["entityPropertySelector"] = $this->entityPropertySelector;

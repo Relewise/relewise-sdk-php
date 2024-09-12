@@ -85,12 +85,9 @@ public class PhpTypeResolver
 
     private string GetGenericTypeDefinition(Type type)
     {
-        switch (type.GenericTypeArguments.Length)
+        if (type.GenericTypeArguments.Length >= 1)
         {
-            case 1:
-                return $"{ResolveType(type.GenericTypeArguments.Single())}{GetOrAddTypeDefinition(type)}";
-            case 2:
-                return $"{ResolveType(type.GenericTypeArguments.First())}{ResolveType(type.GenericTypeArguments.Last())}{GetOrAddTypeDefinition(type)}";
+            return string.Join("", type.GenericTypeArguments.Select(t => ResolveType(t))) + GetOrAddTypeDefinition(type);
         }
 
         if (type.GetGenericArguments() is not [var genericTypeArgumentDefinition])

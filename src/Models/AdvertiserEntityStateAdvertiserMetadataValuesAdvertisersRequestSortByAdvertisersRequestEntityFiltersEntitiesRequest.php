@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-abstract class EntitiesRequest extends LicensedRequest
+abstract class AdvertiserEntityStateAdvertiserMetadataValuesAdvertisersRequestSortByAdvertisersRequestEntityFiltersEntitiesRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
     public ?AdvertisersRequestEntityFilters $filters;
