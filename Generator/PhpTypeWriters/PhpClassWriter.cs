@@ -18,11 +18,13 @@ public class PhpClassWriter : IPhpTypeWriter
         this.phpWriter = phpWriter;
     }
 
-    public bool CanWrite(Type type) => IsClass(type) || IsReadonlyStruct(type);
+    public bool CanWrite(Type type) => IsClass(type) || IsAnyStruct(type);
 
     private bool IsClass(Type type) => type.IsClass;
 
     private bool IsReadonlyStruct(Type type) => type.IsValueType && type.GetProperties().All(p => !p.CanWrite);
+
+    private bool IsAnyStruct(Type type) => type.IsValueType;
 
     public void Write(IndentedTextWriter writer, Type type, string typeName)
     {
@@ -119,21 +121,7 @@ public class PhpClassWriter : IPhpTypeWriter
             writer.WriteLine($"public string $typeDefinition = \"\";");
         }
 
-        if (IsClass(type))
-        {
-            phpWriter.PhpSettablePropertiesWriter.Write(writer, type, ownedProperties);
-            phpWriter.PhpStaticReadonlyPropertiesWriter.Write(writer, staticGetterProperties);
-
-            phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, settableProperties, ownedProperties);
-            phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, ownedProperties);
-            phpWriter.PhpPropertySetterMethodsWriter.Write(writer, type, settableProperties);
-
-            if (hasDateTimeOrDateTimeOffsetProperty)
-            {
-                phpWriter.PhpJsonSerializerMethodWriter.Write(writer, type, settableProperties);
-            }
-        }
-        else if (IsReadonlyStruct(type))
+        if (IsReadonlyStruct(type))
         {
             phpWriter.PhpSettablePropertiesWriter.Write(writer, type, gettableProperties);
             phpWriter.PhpStaticReadonlyPropertiesWriter.Write(writer, staticGetterProperties);
@@ -145,6 +133,20 @@ public class PhpClassWriter : IPhpTypeWriter
             if (hasDateTimeOrDateTimeOffsetProperty)
             {
                 phpWriter.PhpJsonSerializerMethodWriter.Write(writer, type, gettableProperties);
+            }
+        }
+        else if (IsClass(type) || IsAnyStruct(type))
+        {
+            phpWriter.PhpSettablePropertiesWriter.Write(writer, type, ownedProperties);
+            phpWriter.PhpStaticReadonlyPropertiesWriter.Write(writer, staticGetterProperties);
+
+            phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, settableProperties, ownedProperties);
+            phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, ownedProperties);
+            phpWriter.PhpPropertySetterMethodsWriter.Write(writer, type, settableProperties);
+
+            if (hasDateTimeOrDateTimeOffsetProperty)
+            {
+                phpWriter.PhpJsonSerializerMethodWriter.Write(writer, type, settableProperties);
             }
         }
 
