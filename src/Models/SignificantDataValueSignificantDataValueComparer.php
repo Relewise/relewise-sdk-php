@@ -10,4 +10,5 @@ enum SignificantDataValueSignificantDataValueComparer : string
     case NumericPercentDifference = 'NumericPercentDifference';
     case StringSimilarity = 'StringSimilarity';
     case KeyExists = 'KeyExists';
+    case CollectionOverlap = 'CollectionOverlap';
 }

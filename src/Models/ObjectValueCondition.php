@@ -30,6 +30,10 @@ abstract class ObjectValueCondition
         {
             return ObjectValueInRangeCondition::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueIsSubsetOfCondition, Relewise.Client")
+        {
+            return ObjectValueIsSubsetOfCondition::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueLessThanCondition, Relewise.Client")
         {
             return ObjectValueLessThanCondition::hydrate($arr);

@@ -2,6 +2,7 @@
 
 namespace Relewise\Models;
 
+/** a RelevanceModifier that can change the relevance of an entity depending on matching conditions on a certain key. */
 abstract class DataRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "";

@@ -2,6 +2,7 @@
 
 namespace Relewise\Models;
 
+/** @deprecated Use ProductDataDoubleValueFacetResult instead */
 class ProductDataIntegerValueFacetResult extends intProductDataValueFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ProductDataIntegerValueFacetResult, Relewise.Client";

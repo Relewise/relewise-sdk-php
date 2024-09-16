@@ -25,6 +25,10 @@ abstract class boolValueFacet extends Facet
         {
             return ProductDataBooleanValueFacet::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.Search.Facets.Queries.RecentlyPurchasedFacet, Relewise.Client")
+        {
+            return RecentlyPurchasedFacet::hydrate($arr);
+        }
     }
     public static function hydrateBase(mixed $result, array $arr)
     {
