@@ -13,4 +13,5 @@ enum FacetingField : string
     case Brand = 'Brand';
     case Data = 'Data';
     case VariantSpecification = 'VariantSpecification';
+    case User = 'User';
 }

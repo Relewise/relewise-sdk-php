@@ -2,6 +2,7 @@
 
 namespace Relewise\Models;
 
+/** @deprecated Use ContentDataDoubleValueFacet instead */
 class ContentDataIntegerValueFacet extends intContentDataValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ContentDataIntegerValueFacet, Relewise.Client";

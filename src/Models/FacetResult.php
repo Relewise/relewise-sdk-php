@@ -145,6 +145,10 @@ abstract class FacetResult
         {
             return ProductDataIntegerValueFacetResult::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.Search.Facets.Result.RecentlyPurchasedFacetResult, Relewise.Client")
+        {
+            return RecentlyPurchasedFacetResult::hydrate($arr);
+        }
         if ($type=="Relewise.Client.DataTypes.Search.Facets.Result.VariantSpecificationFacetResult, Relewise.Client")
         {
             return VariantSpecificationFacetResult::hydrate($arr);

@@ -9,6 +9,7 @@ class ProductResultDetails implements JsonSerializable
 {
     public string $productId;
     public Multilingual $displayName;
+    /** @deprecated Not in use, this will always be null */
     public VariantResult $variant;
     public array $assortments;
     public array $data;
@@ -158,6 +159,7 @@ class ProductResultDetails implements JsonSerializable
         $this->displayName = $displayName;
         return $this;
     }
+    /** @deprecated Not in use, this will always be null */
     function setVariant(VariantResult $variant)
     {
         $this->variant = $variant;

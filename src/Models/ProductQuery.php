@@ -20,6 +20,8 @@ class ProductQuery extends LicensedRequest
     public ?string $nextPageToken;
     /** The size of the page requested. <remarks>Maximum allowed value is 1000.</remarks> */
     public ?int $pageSize;
+    /** Settings for which properties should be included for the entities in the response. If settings are not set they default to include everything. */
+    public ?ProductQuerySelectedPropertiesSettings $resultSettings;
     public static function create(?Language $language = Null, ?Currency $currency = Null) : ProductQuery
     {
         $result = new ProductQuery();
@@ -73,6 +75,10 @@ class ProductQuery extends LicensedRequest
         if (array_key_exists("pageSize", $arr))
         {
             $result->pageSize = $arr["pageSize"];
+        }
+        if (array_key_exists("resultSettings", $arr))
+        {
+            $result->resultSettings = ProductQuerySelectedPropertiesSettings::hydrate($arr["resultSettings"]);
         }
         return $result;
     }
@@ -133,6 +139,12 @@ class ProductQuery extends LicensedRequest
     function setPageSize(?int $pageSize)
     {
         $this->pageSize = $pageSize;
+        return $this;
+    }
+    /** Settings for which properties should be included for the entities in the response. If settings are not set they default to include everything. */
+    function setResultSettings(?ProductQuerySelectedPropertiesSettings $resultSettings)
+    {
+        $this->resultSettings = $resultSettings;
         return $this;
     }
 }

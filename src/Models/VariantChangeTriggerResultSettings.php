@@ -4,8 +4,8 @@ namespace Relewise\Models;
 
 class VariantChangeTriggerResultSettings
 {
-    public SelectedProductPropertiesSettings $selectedProductProperties;
-    public SelectedVariantPropertiesSettings $selectedVariantProperties;
+    public SelectedProductDetailsPropertiesSettings $selectedProductProperties;
+    public SelectedVariantDetailsPropertiesSettings $selectedVariantProperties;
     public static function create() : VariantChangeTriggerResultSettings
     {
         $result = new VariantChangeTriggerResultSettings();
@@ -16,20 +16,20 @@ class VariantChangeTriggerResultSettings
         $result = new VariantChangeTriggerResultSettings();
         if (array_key_exists("selectedProductProperties", $arr))
         {
-            $result->selectedProductProperties = SelectedProductPropertiesSettings::hydrate($arr["selectedProductProperties"]);
+            $result->selectedProductProperties = SelectedProductDetailsPropertiesSettings::hydrate($arr["selectedProductProperties"]);
         }
         if (array_key_exists("selectedVariantProperties", $arr))
         {
-            $result->selectedVariantProperties = SelectedVariantPropertiesSettings::hydrate($arr["selectedVariantProperties"]);
+            $result->selectedVariantProperties = SelectedVariantDetailsPropertiesSettings::hydrate($arr["selectedVariantProperties"]);
         }
         return $result;
     }
-    function setSelectedProductProperties(SelectedProductPropertiesSettings $selectedProductProperties)
+    function setSelectedProductProperties(SelectedProductDetailsPropertiesSettings $selectedProductProperties)
     {
         $this->selectedProductProperties = $selectedProductProperties;
         return $this;
     }
-    function setSelectedVariantProperties(SelectedVariantPropertiesSettings $selectedVariantProperties)
+    function setSelectedVariantProperties(SelectedVariantDetailsPropertiesSettings $selectedVariantProperties)
     {
         $this->selectedVariantProperties = $selectedVariantProperties;
         return $this;

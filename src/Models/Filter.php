@@ -212,6 +212,10 @@ abstract class Filter
         {
             return ProductIdFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.ProductInCartFilter, Relewise.Client")
+        {
+            return ProductInCartFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.ProductListPriceFilter, Relewise.Client")
         {
             return ProductListPriceFilter::hydrate($arr);
