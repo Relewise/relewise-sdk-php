@@ -6,9 +6,13 @@ abstract class AdvertiserEntityStateAdvertiserMetadataValuesAdvertisersRequestSo
 {
     public string $typeDefinition = "";
     public ?AdvertisersRequestEntityFilters $filters;
+    
     public ?AdvertisersRequestSortBySorting $sorting;
+    
     public int $skip;
+    
     public int $take;
+    
     
     public static function hydrate(array $arr)
     {

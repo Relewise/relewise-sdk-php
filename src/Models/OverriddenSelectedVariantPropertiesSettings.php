@@ -5,12 +5,19 @@ namespace Relewise\Models;
 class OverriddenSelectedVariantPropertiesSettings
 {
     public ?bool $displayName;
+    
     public ?bool $pricing;
+    
     public ?bool $allSpecifications;
+    
     public ?bool $assortments;
+    
     public ?bool $allData;
+    
     public array $dataKeys;
+    
     public array $specificationKeys;
+    
     public static function create() : OverriddenSelectedVariantPropertiesSettings
     {
         $result = new OverriddenSelectedVariantPropertiesSettings();

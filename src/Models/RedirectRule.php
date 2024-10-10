@@ -9,8 +9,11 @@ class RedirectRule extends SearchRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.RedirectRule, Relewise.Client";
     public SearchTermCondition $condition;
+    
     public ?string $destination;
+    
     public ?array $data;
+    
     public static function create(string $id, ?ApplicableIndexes $indexes, ?ApplicableLanguages $languages, bool $isApproved, SearchTermCondition $condition, ?string $destination, ?array $data = Null) : RedirectRule
     {
         $result = new RedirectRule();

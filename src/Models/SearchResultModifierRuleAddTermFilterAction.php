@@ -6,7 +6,9 @@ class SearchResultModifierRuleAddTermFilterAction extends SearchResultModifierRu
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchResultModifierRule+AddTermFilterAction, Relewise.Client";
     public string $term;
+    
     public bool $negated;
+    
     public static function create(string $term, bool $negated) : SearchResultModifierRuleAddTermFilterAction
     {
         $result = new SearchResultModifierRuleAddTermFilterAction();

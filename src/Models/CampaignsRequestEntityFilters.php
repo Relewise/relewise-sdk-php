@@ -6,7 +6,9 @@ class CampaignsRequestEntityFilters extends CampaignEntityStateCampaignMetadataV
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.CampaignsRequest+EntityFilters, Relewise.Client";
     public ?array $ids;
+    
     public ?array $advertiserIds;
+    
     public static function create() : CampaignsRequestEntityFilters
     {
         $result = new CampaignsRequestEntityFilters();

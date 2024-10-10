@@ -8,8 +8,11 @@ class CampaignAnalyticsRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.CampaignAnalyticsRequest, Relewise.Client";
     /** The campaign to provide analytics for. */
     public string $id;
+    
     public DateTimeRange $periodUtc;
+    
     public ?FilterCollection $filters;
+    
     public static function create(string $id, DateTimeRange $periodUtc, ?FilterCollection $filters) : CampaignAnalyticsRequest
     {
         $result = new CampaignAnalyticsRequest();

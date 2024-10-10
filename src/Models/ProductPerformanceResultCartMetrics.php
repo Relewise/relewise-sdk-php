@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductPerformanceResultCartMetrics
 {
     public int $opened;
+    
     public static function create() : ProductPerformanceResultCartMetrics
     {
         $result = new ProductPerformanceResultCartMetrics();

@@ -7,6 +7,7 @@ abstract class CategoryPathValueFacet extends Facet
     public string $typeDefinition = "";
     public ?array $selected;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

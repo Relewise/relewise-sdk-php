@@ -6,10 +6,13 @@ namespace Relewise\Models;
 class RetailMediaQueryLocationSelector
 {
     public string $key;
+    
     /** The variation to retrieve the retail media content for, e.g. "Desktop", "Mobile", "Tablet" etc. */
     public RetailMediaQueryVariationSelector $variation;
+    
     /** The placements on the specified location. */
     public array $placements;
+    
     public static function create(string $key, RetailMediaQueryVariationSelector $variation, RetailMediaQueryPlacementSelector ... $placements) : RetailMediaQueryLocationSelector
     {
         $result = new RetailMediaQueryLocationSelector();

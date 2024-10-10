@@ -5,10 +5,15 @@ namespace Relewise\Models;
 class FieldIndexConfiguration
 {
     public bool $included;
+    
     public int $weight;
+    
     public PredictionSourceType $predictionSourceType;
+    
     public ?Parser $parser;
+    
     public ?MatchTypeSettings $matchTypeSettings;
+    
     public static function create(bool $included, int $weight, PredictionSourceType $predictionSourceType, Parser $parser, ?MatchTypeSettings $matchTypeSettings = Null) : FieldIndexConfiguration
     {
         $result = new FieldIndexConfiguration();

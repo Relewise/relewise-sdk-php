@@ -6,6 +6,7 @@ class SearchTermRecommendationResponse extends RecommendationResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.SearchTermRecommendationResponse, Relewise.Client";
     public array $recommendations;
+    
     public static function create() : SearchTermRecommendationResponse
     {
         $result = new SearchTermRecommendationResponse();

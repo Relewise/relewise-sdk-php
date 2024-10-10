@@ -6,7 +6,9 @@ class ContentCategoryDetailsCollectionResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.ContentCategoryDetailsCollectionResponse, Relewise.Client";
     public array $categories;
+    
     public ?int $totalNumberOfResults;
+    
     public static function create(array $categories, ?int $totalNumberOfResults) : ContentCategoryDetailsCollectionResponse
     {
         $result = new ContentCategoryDetailsCollectionResponse();

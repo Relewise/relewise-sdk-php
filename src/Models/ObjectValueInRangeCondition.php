@@ -6,6 +6,7 @@ class ObjectValueInRangeCondition extends ObjectValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueInRangeCondition, Relewise.Client";
     public floatRange $range;
+    
     public static function create(string $key, floatRange $range, bool $negated = false) : ObjectValueInRangeCondition
     {
         $result = new ObjectValueInRangeCondition();

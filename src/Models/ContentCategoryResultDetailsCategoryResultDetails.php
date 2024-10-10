@@ -9,17 +9,29 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails implements Json
 {
     public string $typeDefinition = "";
     public string $categoryId;
+    
     public Multilingual $displayName;
+    
     public array $assortments;
+    
     public array $data;
+    
     public ViewedByUserInfo $viewedByUser;
+    
     public DateTime $createdUtc;
+    
     public ?DateTime $lastViewedUtc;
+    
     public int $viewedTotalNumberOfTimes;
+    
     public int $viewedByDifferentNumberOfUsers;
+    
     public bool $disabled;
+    
     public array $childCategories;
+    
     public array $parentCategories;
+    
     
     public static function hydrate(array $arr)
     {

@@ -24,6 +24,7 @@ public class PhpSettablePropertiesWriter
                 );
 
             writer.WriteLine($"public {propertyTypeName} ${lowerCaseName};");
+            writer.WriteLine();
         }
     }
 }

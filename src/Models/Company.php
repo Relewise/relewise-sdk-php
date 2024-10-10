@@ -5,8 +5,11 @@ namespace Relewise\Models;
 class Company
 {
     public string $id;
+    
     public ?Company $parent;
+    
     public ?array $data;
+    
     public static function create(string $id) : Company
     {
         $result = new Company();

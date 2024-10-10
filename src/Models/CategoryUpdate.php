@@ -7,6 +7,7 @@ abstract class CategoryUpdate extends Trackable
     public string $typeDefinition = "";
     public CategoryUpdateUpdateKind $kind;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

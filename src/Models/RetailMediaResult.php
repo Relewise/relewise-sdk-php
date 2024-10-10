@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class RetailMediaResult
 {
     public ?array $placements;
+    
     public static function create() : RetailMediaResult
     {
         $result = new RetailMediaResult();

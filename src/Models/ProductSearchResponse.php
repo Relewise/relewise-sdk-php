@@ -6,10 +6,15 @@ class ProductSearchResponse extends PaginatedSearchResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.ProductSearchResponse, Relewise.Client";
     public array $results;
+    
     public ProductFacetResult $facets;
+    
     public array $recommendations;
+    
     public array $redirects;
+    
     public RetailMediaResult $retailMedia;
+    
     public static function create() : ProductSearchResponse
     {
         $result = new ProductSearchResponse();

@@ -7,6 +7,7 @@ use Relewise\FacetResultExtractable\ContentFacetResultExtractable;
 class ContentFacetResult extends ContentFacetResultExtractable
 {
     public array $items;
+    
     public static function create() : ContentFacetResult
     {
         $result = new ContentFacetResult();

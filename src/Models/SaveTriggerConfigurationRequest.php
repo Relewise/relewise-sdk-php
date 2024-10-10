@@ -6,7 +6,9 @@ class SaveTriggerConfigurationRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Triggers.SaveTriggerConfigurationRequest, Relewise.Client";
     public TriggerConfiguration $configuration;
+    
     public string $modifiedBy;
+    
     public static function create(TriggerConfiguration $configuration, string $modifiedBy) : SaveTriggerConfigurationRequest
     {
         $result = new SaveTriggerConfigurationRequest();

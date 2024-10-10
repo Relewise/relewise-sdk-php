@@ -8,10 +8,13 @@ class ObjectValueRelativeDateTimeCondition extends ObjectValueCondition
     public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueRelativeDateTimeCondition, Relewise.Client";
     /** Defines whether the compared value should be before or after the current time for the condition to evaluate true. */
     public RelativeTimeComparison $comparison;
+    
     /** Defines the time unit that the compared value is defined in. */
     public TimeUnit $unit;
+    
     /** Defines an offset that is added to the current time when making the specified Comparison. This is specified in the unit defined by the Unit property. */
     public int $currentTimeOffset;
+    
     public static function create(string $key, RelativeTimeComparison $comparison, TimeUnit $unit, int $currentTimeOffset = 0, bool $negated = false) : ObjectValueRelativeDateTimeCondition
     {
         $result = new ObjectValueRelativeDateTimeCondition();

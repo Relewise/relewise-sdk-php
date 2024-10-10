@@ -6,8 +6,11 @@ class ProductPerformanceResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Analyzers.ProductPerformanceResponse, Relewise.Client";
     public array $results;
+    
     public int $totalNumberOfResults;
+    
     public int $remainingNumberOfResults;
+    
     public static function create() : ProductPerformanceResponse
     {
         $result = new ProductPerformanceResponse();

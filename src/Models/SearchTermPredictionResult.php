@@ -5,10 +5,15 @@ namespace Relewise\Models;
 class SearchTermPredictionResult
 {
     public string $term;
+    
     public int $rank;
+    
     public array $expectedResultTypes;
+    
     public SearchTermPredictionResultPredictionType $type;
+    
     public array $correctedWordsMask;
+    
     public static function create() : SearchTermPredictionResult
     {
         $result = new SearchTermPredictionResult();

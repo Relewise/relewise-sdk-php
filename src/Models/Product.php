@@ -5,13 +5,21 @@ namespace Relewise\Models;
 class Product
 {
     public string $id;
+    
     public ?Multilingual $displayName;
+    
     public ?array $categoryPaths;
+    
     public ?array $assortments;
+    
     public ?array $data;
+    
     public ?MultiCurrency $listPrice;
+    
     public ?MultiCurrency $salesPrice;
+    
     public ?Brand $brand;
+    
     public static function create(string $id) : Product
     {
         $result = new Product();

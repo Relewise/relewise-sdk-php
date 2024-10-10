@@ -6,9 +6,12 @@ class PopularProductsRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PopularProductsRequest, Relewise.Client";
     public PopularityTypes $basedOn;
+    
     public int $sinceMinutesAgo;
+    
     /** A selector for changing the weighing of observed views or purchases on an entity basis when making the recommendation. */
     public ?PopularityMultiplierSelector $popularityMultiplier;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, PopularityTypes $basedOn) : PopularProductsRequest
     {
         $result = new PopularProductsRequest();

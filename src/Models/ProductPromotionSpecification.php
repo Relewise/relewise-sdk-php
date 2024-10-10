@@ -8,6 +8,7 @@ class ProductPromotionSpecification extends PromotionSpecification
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.ProductPromotion+Specification, Relewise.Client";
     /** Filters matching the products which may be promoted */
     public ?FilterCollection $promotableProducts;
+    
     public static function create(?FilterCollection $promotableProducts) : ProductPromotionSpecification
     {
         $result = new ProductPromotionSpecification();

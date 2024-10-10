@@ -5,7 +5,9 @@ namespace Relewise\Models;
 class InputConditionConfiguration
 {
     public FilterCollection $filters;
+    
     public EvaluationMode $evaluationMode;
+    
     public static function create() : InputConditionConfiguration
     {
         $result = new InputConditionConfiguration();

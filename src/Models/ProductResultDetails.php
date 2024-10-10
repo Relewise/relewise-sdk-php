@@ -8,28 +8,50 @@ use JsonSerializable;
 class ProductResultDetails implements JsonSerializable
 {
     public string $productId;
+    
     public Multilingual $displayName;
+    
     /** @deprecated Not in use, this will always be null */
     public VariantResult $variant;
+    
     public array $assortments;
+    
     public array $data;
+    
     public array $categoryPaths;
+    
     public PurchasedByUserInfo $purchasedByUser;
+    
     public ViewedByUserInfo $viewedByUser;
+    
     public array $allVariants;
+    
     public DateTime $createdUtc;
+    
     public ?DateTime $lastPurchasedUtc;
+    
     public ?DateTime $lastViewedUtc;
+    
     public int $containedInTotalNumberOfOrders;
+    
     public int $viewedTotalNumberOfTimes;
+    
     public int $purchasedByDifferentNumberOfUsers;
+    
     public int $viewedByDifferentNumberOfUsers;
+    
     public bool $disabled;
+    
     public bool $deleted;
+    
     public MultiCurrency $listPrice;
+    
     public MultiCurrency $salesPrice;
+    
     public BrandResultDetails $brand;
+    
     public array $filteredVariants;
+    
     public static function create(string $productId) : ProductResultDetails
     {
         $result = new ProductResultDetails();

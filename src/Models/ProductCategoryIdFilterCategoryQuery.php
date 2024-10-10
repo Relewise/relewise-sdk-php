@@ -6,14 +6,23 @@ abstract class ProductCategoryIdFilterCategoryQuery extends LicensedRequest
 {
     public string $typeDefinition = "";
     public FilterCollection $filters;
+    
     public int $numberOfResults;
+    
     public ?Language $language;
+    
     public ?Currency $currency;
+    
     public int $skipNumberOfResults;
+    
     public bool $returnTotalNumberOfResults;
+    
     public bool $includeDisabledCategories;
+    
     public int $includeChildCategoriesToDepth;
+    
     public int $includeParentCategoriesToDepth;
+    
     
     public static function hydrate(array $arr)
     {

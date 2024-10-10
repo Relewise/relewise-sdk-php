@@ -6,7 +6,9 @@ class ContentRecommendationRequestCollection extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ContentRecommendationRequestCollection, Relewise.Client";
     public array $requests;
+    
     public bool $requireDistinctContentsAcrossResults;
+    
     public static function create(bool $requireDistinctContentsAcrossResults, ContentRecommendationRequest ... $requests) : ContentRecommendationRequestCollection
     {
         $result = new ContentRecommendationRequestCollection();

@@ -8,8 +8,11 @@ use JsonSerializable;
 class PurchasedByUserCompanyInfo implements JsonSerializable
 {
     public DateTime $mostRecentPurchasedUtc;
+    
     public int $totalNumberOfTimesPurchased;
+    
     public PurchasedByUserCompanyInfo $purchasedByParentCompany;
+    
     public static function create(DateTime $mostRecentPurchasedUtc, int $totalNumberOfTimesPurchased) : PurchasedByUserCompanyInfo
     {
         $result = new PurchasedByUserCompanyInfo();

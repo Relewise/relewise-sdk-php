@@ -8,12 +8,16 @@ class PurchaseQualifiers
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.PurchaseQualifiers, Relewise.Client";
     /** How fresh recent purchase must be to count as hit? */
     public int $sinceMinutesAgo;
+    
     /** Should hit be count if user recently purchased product? */
     public bool $byUser;
+    
     /** Should hit be count if user company recently had a product purchase tracked? */
     public bool $byUserCompany;
+    
     /** Should hit be count if user parent company recently had a product purchase tracked? */
     public bool $byUserParentCompany;
+    
     public static function create(int $sinceMinutesAgo, bool $byUser, bool $byUserCompany, bool $byUserParentCompany) : PurchaseQualifiers
     {
         $result = new PurchaseQualifiers();

@@ -5,12 +5,19 @@ namespace Relewise\Models;
 class SelectedVariantPropertiesSettings
 {
     public bool $displayName;
+    
     public bool $pricing;
+    
     public bool $allSpecifications;
+    
     public bool $assortments;
+    
     public bool $allData;
+    
     public ?array $dataKeys;
+    
     public ?array $specificationKeys;
+    
     public static function create() : SelectedVariantPropertiesSettings
     {
         $result = new SelectedVariantPropertiesSettings();

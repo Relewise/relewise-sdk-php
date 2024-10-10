@@ -7,6 +7,7 @@ class RelevanceModifierCollection
 {
     /** The items that the collection holds. */
     public ?array $items;
+    
     /**
      * Creates a collection that contains multiple RelevanceModifiers in its inner list Items.
      * @param RelevanceModifier[] $relevanceModifiers The items that the collection holds.

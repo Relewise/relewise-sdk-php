@@ -5,7 +5,9 @@ namespace Relewise\Models;
 class DecompoundRulesRequestSortBySorting
 {
     public DecompoundRulesRequestSortBy $sortBy;
+    
     public SortOrder $sortOrder;
+    
     public static function create(DecompoundRulesRequestSortBy $sortBy, SortOrder $sortOrder) : DecompoundRulesRequestSortBySorting
     {
         $result = new DecompoundRulesRequestSortBySorting();

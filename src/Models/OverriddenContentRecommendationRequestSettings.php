@@ -5,11 +5,17 @@ namespace Relewise\Models;
 class OverriddenContentRecommendationRequestSettings
 {
     public ?int $numberOfRecommendations;
+    
     public ?bool $allowFillIfNecessaryToReachNumberOfRecommendations;
+    
     public ?bool $allowReplacingOfRecentlyShownRecommendations;
+    
     public OverriddenSelectedContentPropertiesSettings $selectedContentProperties;
+    
     public ?bool $prioritizeDiversityBetweenRequests;
+    
     public ?int $prioritizeResultsNotRecommendedWithinSeconds;
+    
     public static function create() : OverriddenContentRecommendationRequestSettings
     {
         $result = new OverriddenContentRecommendationRequestSettings();

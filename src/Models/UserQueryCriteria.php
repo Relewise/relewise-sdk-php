@@ -5,11 +5,17 @@ namespace Relewise\Models;
 class UserQueryCriteria
 {
     public ?string $authenticatedId;
+    
     public ?string $temporaryId;
+    
     public ?string $email;
+    
     public ?Language $language;
+    
     public ?Currency $currency;
+    
     public ?array $identifiers;
+    
     public static function create() : UserQueryCriteria
     {
         $result = new UserQueryCriteria();

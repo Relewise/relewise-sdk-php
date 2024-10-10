@@ -9,7 +9,9 @@ class ContentCategoryRecentlyViewedByUserFilter extends Filter implements JsonSe
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentCategoryRecentlyViewedByUserFilter, Relewise.Client";
     public ?DateTime $sinceUtc;
+    
     public ?int $sinceMinutesAgo;
+    
     public static function create(bool $negated = false) : ContentCategoryRecentlyViewedByUserFilter
     {
         $result = new ContentCategoryRecentlyViewedByUserFilter();

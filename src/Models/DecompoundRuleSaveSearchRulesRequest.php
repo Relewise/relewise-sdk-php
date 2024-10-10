@@ -6,7 +6,9 @@ abstract class DecompoundRuleSaveSearchRulesRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
     public array $rules;
+    
     public string $modifiedBy;
+    
     
     public static function hydrate(array $arr)
     {

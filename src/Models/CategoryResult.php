@@ -6,12 +6,19 @@ abstract class CategoryResult
 {
     public string $typeDefinition = "";
     public string $categoryId;
+    
     public string $displayName;
+    
     public int $rank;
+    
     public ViewedByUserInfo $viewedByUser;
+    
     public array $paths;
+    
     public array $assortments;
+    
     public array $data;
+    
     
     public static function hydrate(array $arr)
     {

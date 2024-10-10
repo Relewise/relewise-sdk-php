@@ -6,6 +6,7 @@ class TrackProductCategoryUpdateRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackProductCategoryUpdateRequest, Relewise.Client";
     public ProductCategoryUpdate $productCategoryUpdate;
+    
     public static function create(ProductCategoryUpdate $productCategoryUpdate) : TrackProductCategoryUpdateRequest
     {
         $result = new TrackProductCategoryUpdateRequest();

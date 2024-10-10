@@ -6,7 +6,9 @@ class CustomProductRecommendationRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.CustomProductRecommendationRequest, Relewise.Client";
     public string $recommendationType;
+    
     public ?array $parameters;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, string $recommendationType) : CustomProductRecommendationRequest
     {
         $result = new CustomProductRecommendationRequest();

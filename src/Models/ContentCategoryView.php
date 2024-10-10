@@ -6,7 +6,9 @@ class ContentCategoryView extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentCategoryView, Relewise.Client";
     public ?User $user;
+    
     public array $idPath;
+    
     public static function create(?User $user, string ... $idPath) : ContentCategoryView
     {
         $result = new ContentCategoryView();

@@ -6,11 +6,17 @@ class ProductUpdate extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductUpdate, Relewise.Client";
     public Product $product;
+    
     public array $variants;
+    
     public ProductUpdateUpdateKind $productUpdateKind;
+    
     public ProductUpdateUpdateKind $variantUpdateKind;
+    
     public bool $replaceExistingVariants;
+    
     public ?BrandUpdateUpdateKind $brandUpdateKind;
+    
     public static function create(Product $product, array $variants, ProductUpdateUpdateKind $productUpdateKind = ProductUpdateUpdateKind::UpdateAndAppend, ProductUpdateUpdateKind $variantUpdateKind = ProductUpdateUpdateKind::UpdateAndAppend, bool $replaceExistingVariants = false) : ProductUpdate
     {
         $result = new ProductUpdate();

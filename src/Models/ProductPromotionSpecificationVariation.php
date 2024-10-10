@@ -8,6 +8,7 @@ class ProductPromotionSpecificationVariation extends PromotionSpecificationVaria
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.ProductPromotion+SpecificationVariation, Relewise.Client";
     /** The maximum number of products to promote at a time in this variation. */
     public int $maxCount;
+    
     public static function create(int $maxCount) : ProductPromotionSpecificationVariation
     {
         $result = new ProductPromotionSpecificationVariation();

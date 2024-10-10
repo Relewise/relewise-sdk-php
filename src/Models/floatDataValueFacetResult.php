@@ -6,7 +6,9 @@ abstract class floatDataValueFacetResult extends floatValueFacetResult
 {
     public string $typeDefinition = "";
     public string $key;
+    
     public ?CollectionFilterType $collectionFilterType;
+    
     
     public static function hydrate(array $arr)
     {

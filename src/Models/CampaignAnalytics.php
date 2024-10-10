@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class CampaignAnalytics
 {
     public CampaignAnalyticsProductAnalytics $products;
+    
     public static function create(CampaignAnalyticsProductAnalytics $products) : CampaignAnalytics
     {
         $result = new CampaignAnalytics();

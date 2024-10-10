@@ -5,7 +5,9 @@ namespace Relewise\Models;
 class ProductInterestTriggerResult
 {
     public UserResultDetails $user;
+    
     public array $products;
+    
     public static function create() : ProductInterestTriggerResult
     {
         $result = new ProductInterestTriggerResult();

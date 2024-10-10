@@ -6,6 +6,7 @@ class TrackCartRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackCartRequest, Relewise.Client";
     public Cart $cart;
+    
     public static function create(Cart $cart) : TrackCartRequest
     {
         $result = new TrackCartRequest();

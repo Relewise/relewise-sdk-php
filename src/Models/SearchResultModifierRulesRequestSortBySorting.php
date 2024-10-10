@@ -5,7 +5,9 @@ namespace Relewise\Models;
 class SearchResultModifierRulesRequestSortBySorting
 {
     public SearchResultModifierRulesRequestSortBy $sortBy;
+    
     public SortOrder $sortOrder;
+    
     public static function create(SearchResultModifierRulesRequestSortBy $sortBy, SortOrder $sortOrder) : SearchResultModifierRulesRequestSortBySorting
     {
         $result = new SearchResultModifierRulesRequestSortBySorting();

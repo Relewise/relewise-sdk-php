@@ -9,17 +9,29 @@ abstract class TriggerConfiguration implements JsonSerializable
 {
     public string $typeDefinition = "";
     public string $id;
+    
     public string $name;
+    
     public string $description;
+    
     public string $group;
+    
     public bool $enabled;
+    
     public DateTime $created;
+    
     public string $createdBy;
+    
     public DateTime $modified;
+    
     public string $modifiedBy;
+    
     public int $withinTimeSpanMinutes;
+    
     public array $settings;
+    
     public UserConditionCollection $userConditions;
+    
     
     public static function hydrate(array $arr)
     {

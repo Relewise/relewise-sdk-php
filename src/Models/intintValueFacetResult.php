@@ -6,7 +6,9 @@ abstract class intintValueFacetResult extends FacetResult
 {
     public string $typeDefinition = "";
     public array $selected;
+    
     public array $available;
+    
     
     public static function hydrate(array $arr)
     {

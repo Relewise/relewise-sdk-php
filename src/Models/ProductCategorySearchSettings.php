@@ -6,7 +6,9 @@ class ProductCategorySearchSettings extends SearchSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.ProductCategorySearchSettings, Relewise.Client";
     public ?SelectedProductCategoryPropertiesSettings $selectedCategoryProperties;
+    
     public RecommendationSettings $recommendations;
+    
     public static function create() : ProductCategorySearchSettings
     {
         $result = new ProductCategorySearchSettings();

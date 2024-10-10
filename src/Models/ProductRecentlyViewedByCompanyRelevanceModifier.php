@@ -11,14 +11,19 @@ class ProductRecentlyViewedByCompanyRelevanceModifier extends RelevanceModifier 
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyViewedByCompanyRelevanceModifier, Relewise.Client";
     /** The start of the time period in which a product will be considered relevant to the user if viewed previously by any of the provided companies. */
     public ?DateTime $sinceUtc;
+    
     /** The list of companies. */
     public array $companyIds;
+    
     /** The weight that the Product will be multiplied with if it has been viewed in the past by any of the provided companies (since SinceUtc). */
     public float $ifViewedByCompanyMultiplyWeightBy;
+    
     /** The weight that the Product will be multiplied with if it has not been viewed in the past by the users company (since SinceUtc). */
     public float $elseIfNotViewedByCompanyMultiplyWeightBy;
+    
     /** The minutes since in which a product will be considered relevant to the user if viewed previously by them. */
     public ?int $sinceMinutesAgo;
+    
     public static function create(array $companyIds, float $ifViewedByCompanyMultiplyWeightBy = 1, float $elseIfNotViewedByCompanyMultiplyWeightBy = 1) : ProductRecentlyViewedByCompanyRelevanceModifier
     {
         $result = new ProductRecentlyViewedByCompanyRelevanceModifier();

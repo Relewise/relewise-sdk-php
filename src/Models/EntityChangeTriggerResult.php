@@ -7,6 +7,7 @@ abstract class EntityChangeTriggerResult
     public string $typeDefinition = "";
     public UserResultDetails $user;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

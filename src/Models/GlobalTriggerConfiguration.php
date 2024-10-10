@@ -8,12 +8,19 @@ use JsonSerializable;
 class GlobalTriggerConfiguration implements JsonSerializable
 {
     public DateTime $modified;
+    
     public string $modifiedBy;
+    
     public bool $enabled;
+    
     public ?int $minimumCooldownAnyTrigger;
+    
     public ?int $minimumCooldownSameTrigger;
+    
     public ?int $minimumCooldownSameGroup;
+    
     public array $settings;
+    
     public static function create() : GlobalTriggerConfiguration
     {
         $result = new GlobalTriggerConfiguration();

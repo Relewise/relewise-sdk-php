@@ -6,10 +6,15 @@ class ProductSearchRequest extends PaginatedSearchRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.ProductSearchRequest, Relewise.Client";
     public ?string $term;
+    
     public ?ProductFacetQuery $facets;
+    
     public ?ProductSearchSettings $settings;
+    
     public ?ProductSortBySpecification $sorting;
+    
     public ?RetailMediaQuery $retailMedia;
+    
     public static function create(?Language $language, ?Currency $currency, User $user, string $displayedAtLocation, ?string $term, int $skip, int $take) : ProductSearchRequest
     {
         $result = new ProductSearchRequest();

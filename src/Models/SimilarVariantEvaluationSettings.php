@@ -5,11 +5,17 @@ namespace Relewise\Models;
 class SimilarVariantEvaluationSettings
 {
     public ?float $significanceOfSimilaritiesInDisplayName;
+    
     public ?float $significanceOfSimilarListPrice;
+    
     public ?float $significanceOfSimilarSalesPrice;
+    
     public ?float $significanceOfCommonDataKeys;
+    
     public ?float $significanceOfIdenticalDataValues;
+    
     public ?array $significantDataFields;
+    
     public static function create() : SimilarVariantEvaluationSettings
     {
         $result = new SimilarVariantEvaluationSettings();

@@ -5,7 +5,9 @@ namespace Relewise\Models;
 class ProductPerformanceResultViewsAndSalesMetrics
 {
     public float $byViews;
+    
     public float $bySales;
+    
     public static function create() : ProductPerformanceResultViewsAndSalesMetrics
     {
         $result = new ProductPerformanceResultViewsAndSalesMetrics();

@@ -6,7 +6,9 @@ class HasClassificationCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasClassificationCondition, Relewise.Client";
     public string $key;
+    
     public string $value;
+    
     public static function create(string $key, bool $negated) : HasClassificationCondition
     {
         $result = new HasClassificationCondition();

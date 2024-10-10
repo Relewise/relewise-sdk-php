@@ -5,7 +5,9 @@ namespace Relewise\Models;
 class AdvertisersRequestSortBySorting
 {
     public AdvertisersRequestSortBy $sortBy;
+    
     public SortOrder $sortOrder;
+    
     public static function create(AdvertisersRequestSortBy $sortBy, SortOrder $sortOrder) : AdvertisersRequestSortBySorting
     {
         $result = new AdvertisersRequestSortBySorting();

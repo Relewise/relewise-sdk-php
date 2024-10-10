@@ -6,6 +6,7 @@ class AdvertisersRequestEntityFilters extends AdvertiserEntityStateAdvertiserMet
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.AdvertisersRequest+EntityFilters, Relewise.Client";
     public ?array $ids;
+    
     public static function create() : AdvertisersRequestEntityFilters
     {
         $result = new AdvertisersRequestEntityFilters();

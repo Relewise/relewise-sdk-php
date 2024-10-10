@@ -5,7 +5,9 @@ namespace Relewise\Models;
 class FilterScopes
 {
     public ?FilterScopeSettings $default;
+    
     public ?FilterScopeSettings $fill;
+    
     public static function create() : FilterScopes
     {
         $result = new FilterScopes();

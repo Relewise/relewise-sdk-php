@@ -6,6 +6,7 @@ class HasRecentlyReceivedSameTriggerCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasRecentlyReceivedSameTriggerCondition, Relewise.Client";
     public int $withinMinutes;
+    
     public static function create(bool $negated) : HasRecentlyReceivedSameTriggerCondition
     {
         $result = new HasRecentlyReceivedSameTriggerCondition();

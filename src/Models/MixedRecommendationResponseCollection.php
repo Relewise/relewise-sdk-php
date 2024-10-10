@@ -6,6 +6,7 @@ class MixedRecommendationResponseCollection extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.MixedRecommendationResponseCollection, Relewise.Client";
     public array $responses;
+    
     public static function create(RecommendationResponse ... $responses) : MixedRecommendationResponseCollection
     {
         $result = new MixedRecommendationResponseCollection();

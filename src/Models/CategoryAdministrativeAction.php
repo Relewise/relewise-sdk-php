@@ -6,9 +6,13 @@ abstract class CategoryAdministrativeAction extends Trackable
 {
     public string $typeDefinition = "";
     public FilterCollection $filters;
+    
     public ?Language $language;
+    
     public CategoryAdministrativeActionUpdateKind $kind;
+    
     public ?Currency $currency;
+    
     
     public static function hydrate(array $arr)
     {

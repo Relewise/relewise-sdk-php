@@ -6,9 +6,13 @@ abstract class RedirectRulesRequestSortBySearchRulesRequest extends LicensedRequ
 {
     public string $typeDefinition = "";
     public SearchRuleFilters $filters;
+    
     public RedirectRulesRequestSortBySorting $sorting;
+    
     public int $skip;
+    
     public int $take;
+    
     
     public static function hydrate(array $arr)
     {

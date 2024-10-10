@@ -6,6 +6,7 @@ class ApplyFilterSettings extends FilterScopeSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.Settings.ApplyFilterSettings, Relewise.Client";
     public bool $apply;
+    
     public static function create(bool $apply) : ApplyFilterSettings
     {
         $result = new ApplyFilterSettings();

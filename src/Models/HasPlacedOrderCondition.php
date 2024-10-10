@@ -6,6 +6,7 @@ class HasPlacedOrderCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasPlacedOrderCondition, Relewise.Client";
     public int $withinMinutes;
+    
     public static function create(bool $negated) : HasPlacedOrderCondition
     {
         $result = new HasPlacedOrderCondition();

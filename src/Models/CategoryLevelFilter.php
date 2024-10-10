@@ -7,6 +7,7 @@ abstract class CategoryLevelFilter extends Filter
     public string $typeDefinition = "";
     public array $levels;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

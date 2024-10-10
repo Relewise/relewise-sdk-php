@@ -8,10 +8,15 @@ use JsonSerializable;
 class VariantChangeTriggerResultVariantChangeResultDetails implements JsonSerializable
 {
     public DateTime $changeTime;
+    
     public DataValue $oldValue;
+    
     public DataValue $newValue;
+    
     public ProductResultDetails $product;
+    
     public VariantResultDetails $variant;
+    
     public static function create(DateTime $changeTime, DataValue $oldValue, DataValue $newValue, ProductResultDetails $product, VariantResultDetails $variant) : VariantChangeTriggerResultVariantChangeResultDetails
     {
         $result = new VariantChangeTriggerResultVariantChangeResultDetails();

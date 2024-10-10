@@ -6,6 +6,7 @@ class TrackBrandAdministrativeActionRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackBrandAdministrativeActionRequest, Relewise.Client";
     public BrandAdministrativeAction $administrativeAction;
+    
     public static function create(BrandAdministrativeAction $administrativeAction) : TrackBrandAdministrativeActionRequest
     {
         $result = new TrackBrandAdministrativeActionRequest();

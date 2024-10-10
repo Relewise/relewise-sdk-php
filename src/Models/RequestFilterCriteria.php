@@ -5,8 +5,11 @@ namespace Relewise\Models;
 class RequestFilterCriteria
 {
     public FilterCollection $includes;
+    
     public FilterCollection $excludes;
+    
     public ?intRange $count;
+    
     public static function create() : RequestFilterCriteria
     {
         $result = new RequestFilterCriteria();

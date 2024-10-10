@@ -5,15 +5,25 @@ namespace Relewise\Models;
 class ProductRecommendationRequestSettings
 {
     public int $numberOfRecommendations;
+    
     public bool $allowFillIfNecessaryToReachNumberOfRecommendations;
+    
     public bool $allowReplacingOfRecentlyShownRecommendations;
+    
     public bool $recommendVariant;
+    
     public ?SelectedProductPropertiesSettings $selectedProductProperties;
+    
     public ?SelectedVariantPropertiesSettings $selectedVariantProperties;
+    
     public bool $prioritizeDiversityBetweenRequests;
+    
     public ?bool $allowProductsCurrentlyInCart;
+    
     public ?SelectedBrandPropertiesSettings $selectedBrandProperties;
+    
     public ?int $prioritizeResultsNotRecommendedWithinSeconds;
+    
     public static function create() : ProductRecommendationRequestSettings
     {
         $result = new ProductRecommendationRequestSettings();

@@ -8,17 +8,29 @@ use JsonSerializable;
 class BrandResultDetails implements JsonSerializable
 {
     public string $brandId;
+    
     public string $displayName;
+    
     public array $assortments;
+    
     public array $data;
+    
     public ViewedByUserInfo $viewedByUser;
+    
     public DateTime $createdUtc;
+    
     public ?DateTime $lastViewedUtc;
+    
     public int $viewedTotalNumberOfTimes;
+    
     public int $viewedByDifferentNumberOfUsers;
+    
     public bool $disabled;
+    
     public int $purchasedFromByDifferentNumberOfUsers;
+    
     public PurchasedByUserInfo $purchasedByUser;
+    
     public static function create(string $brandId) : BrandResultDetails
     {
         $result = new BrandResultDetails();

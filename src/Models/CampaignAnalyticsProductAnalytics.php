@@ -6,10 +6,13 @@ namespace Relewise\Models;
 class CampaignAnalyticsProductAnalytics
 {
     public array $timeSeries;
+    
     /** Number of times products are being promoted by the Campaign. */
     public int $promotions;
+    
     /** How many times each individual product was promoted. */
     public array $promotedProducts;
+    
     public static function create(array $timeSeries, int $promotions, CampaignAnalyticsProductAnalyticsPromotedProductMetrics ... $promotedProducts) : CampaignAnalyticsProductAnalytics
     {
         $result = new CampaignAnalyticsProductAnalytics();

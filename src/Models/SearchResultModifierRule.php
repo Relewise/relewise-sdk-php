@@ -9,7 +9,9 @@ class SearchResultModifierRule extends SearchRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchResultModifierRule, Relewise.Client";
     public SearchTermCondition $condition;
+    
     public array $actions;
+    
     public static function create(string $id, ?ApplicableIndexes $indexes, ?ApplicableLanguages $languages, bool $isApproved, SearchTermCondition $condition, SearchResultModifierRuleRuleAction ... $actions) : SearchResultModifierRule
     {
         $result = new SearchResultModifierRule();

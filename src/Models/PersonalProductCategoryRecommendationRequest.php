@@ -6,7 +6,9 @@ class PersonalProductCategoryRecommendationRequest extends ProductCategoryRecomm
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PersonalProductCategoryRecommendationRequest, Relewise.Client";
     public int $sinceMinutesAgo;
+    
     public ProductCategoryRecommendationWeights $weights;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ProductCategoryRecommendationWeights $weights) : PersonalProductCategoryRecommendationRequest
     {
         $result = new PersonalProductCategoryRecommendationRequest();

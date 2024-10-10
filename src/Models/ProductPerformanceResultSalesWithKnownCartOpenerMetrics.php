@@ -5,8 +5,11 @@ namespace Relewise\Models;
 class ProductPerformanceResultSalesWithKnownCartOpenerMetrics
 {
     public int $orders;
+    
     public int $opened;
+    
     public float $openedPercent;
+    
     public static function create() : ProductPerformanceResultSalesWithKnownCartOpenerMetrics
     {
         $result = new ProductPerformanceResultSalesWithKnownCartOpenerMetrics();

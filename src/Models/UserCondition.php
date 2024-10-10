@@ -7,6 +7,7 @@ abstract class UserCondition
     public string $typeDefinition = "";
     public bool $negated;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

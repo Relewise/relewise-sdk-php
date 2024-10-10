@@ -5,7 +5,9 @@ namespace Relewise\Models;
 class ProductPerformanceResult
 {
     public ProductResult $product;
+    
     public array $classifications;
+    
     public static function create() : ProductPerformanceResult
     {
         $result = new ProductPerformanceResult();

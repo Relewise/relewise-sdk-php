@@ -6,6 +6,7 @@ class ObservableProductDataValueSelector extends ProductPropertySelector
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.EntityPropertySelectors.ObservableProductDataValueSelector, Relewise.Client";
     public DataObjectValueSelector $dataObjectValueSelector;
+    
     public static function create(DataObjectValueSelector $dataObjectValueSelector) : ObservableProductDataValueSelector
     {
         $result = new ObservableProductDataValueSelector();

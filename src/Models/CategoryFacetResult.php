@@ -6,6 +6,7 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.CategoryFacetResult, Relewise.Client";
     public CategorySelectionStrategy $categorySelectionStrategy;
+    
     public static function create(CategorySelectionStrategy $categorySelectionStrategy, array $selected, CategoryNameAndIdResultAvailableFacetValue ... $available) : CategoryFacetResult
     {
         $result = new CategoryFacetResult();

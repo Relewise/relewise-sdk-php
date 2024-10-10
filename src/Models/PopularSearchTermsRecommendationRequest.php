@@ -6,7 +6,9 @@ class PopularSearchTermsRecommendationRequest extends RecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PopularSearchTermsRecommendationRequest, Relewise.Client";
     public ?string $term;
+    
     public ?RecommendPopularSearchTermSettings $settings;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user) : PopularSearchTermsRecommendationRequest
     {
         $result = new PopularSearchTermsRecommendationRequest();

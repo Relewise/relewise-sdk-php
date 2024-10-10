@@ -6,21 +6,30 @@ class User
 {
     /** A persistent Id for current user, e.g. a database-id This Id should never be expected to change in the future */
     public ?string $authenticatedId;
+    
     /** A TemporaryId, likely to change in the future, e.g. a CookieId in a web context */
     public ?string $temporaryId;
+    
     /** The email of the user */
     public ?string $email;
+    
     /** Segmentation data about the user, e.g. Country or other segmentation, useful for passing known information about the user from a CRM, CDP and other sources */
     public ?array $classifications;
+    
     /** A set of additional ids associated with the user, e.g. ERP customer id, Marketing id, CDP id etc. */
     public ?array $identifiers;
+    
     /** Data stored on the user */
     public ?array $data;
+    
     /** A fingerprint, highly likely to change in the future, e.g. between sessions */
     public ?string $fingerprint;
+    
     public ?Channel $channel;
+    
     /** Company the user is associated with in the current context (Note: Companies themselves can be associated with a parent company, if the current user is acting on the behalf of a hierarchical chain of up to 2 companies) */
     public ?Company $company;
+    
     /**
      * User DTO
      * @param ?string $authenticatedId A persistent Id for current user, e.g. a database-id

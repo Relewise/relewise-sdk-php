@@ -6,10 +6,15 @@ class ProductAdministrativeAction extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductAdministrativeAction, Relewise.Client";
     public FilterCollection $filters;
+    
     public ?Language $language;
+    
     public ProductAdministrativeActionUpdateKind $productUpdateKind;
+    
     public ProductAdministrativeActionUpdateKind $variantUpdateKind;
+    
     public ?Currency $currency;
+    
     public static function create(?Language $language, ?Currency $currency, FilterCollection $filters, ProductAdministrativeActionUpdateKind $productUpdateKind, ProductAdministrativeActionUpdateKind $variantUpdateKind) : ProductAdministrativeAction
     {
         $result = new ProductAdministrativeAction();

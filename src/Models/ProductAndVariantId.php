@@ -5,7 +5,9 @@ namespace Relewise\Models;
 class ProductAndVariantId
 {
     public string $productId;
+    
     public ?string $variantId;
+    
     public static function create(string $productId, ?string $variantId = Null) : ProductAndVariantId
     {
         $result = new ProductAndVariantId();

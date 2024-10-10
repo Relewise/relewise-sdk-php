@@ -5,9 +5,13 @@ namespace Relewise\Models;
 class RequestConfiguration
 {
     public RequestConfigurationPrioritization $filters;
+    
     public RequestConfigurationPrioritization $relevanceModifiers;
+    
     public OverriddenProductRecommendationRequestSettings $overriddenProductRecommendationRequestSettings;
+    
     public OverriddenContentRecommendationRequestSettings $overriddenContentRecommendationRequestSettings;
+    
     public static function create() : RequestConfiguration
     {
         $result = new RequestConfiguration();

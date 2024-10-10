@@ -6,6 +6,7 @@ class TrackBrandViewRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackBrandViewRequest, Relewise.Client";
     public BrandView $brandView;
+    
     public static function create(BrandView $brandView) : TrackBrandViewRequest
     {
         $result = new TrackBrandViewRequest();

@@ -5,13 +5,21 @@ namespace Relewise\Models;
 class VariantResult
 {
     public string $variantId;
+    
     public string $displayName;
+    
     public array $specification;
+    
     public array $assortments;
+    
     public array $data;
+    
     public int $rank;
+    
     public ?float $listPrice;
+    
     public ?float $salesPrice;
+    
     public static function create(string $variantId, int $rank) : VariantResult
     {
         $result = new VariantResult();

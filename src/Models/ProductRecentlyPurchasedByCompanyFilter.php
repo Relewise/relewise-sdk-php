@@ -11,10 +11,13 @@ class ProductRecentlyPurchasedByCompanyFilter extends Filter implements JsonSeri
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductRecentlyPurchasedByCompanyFilter, Relewise.Client";
     /** The time from which a Product should have been bought by any of the companies to be included by the filter. */
     public ?DateTime $sinceUtc;
+    
     /** The companies that should be evaluated in this filter. */
     public array $companyIds;
+    
     /** The time in minutes from which a Product should have been viewed by any of the companies to be included by the filter. */
     public ?int $sinceMinutesAgo;
+    
     public static function create(DateTime $sinceUtc, bool $negated = false) : ProductRecentlyPurchasedByCompanyFilter
     {
         $result = new ProductRecentlyPurchasedByCompanyFilter();

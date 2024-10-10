@@ -6,8 +6,11 @@ abstract class AbandonedSearch
 {
     public string $typeDefinition = "";
     public string $loweredSearchTerm;
+    
     public int $hits;
+    
     public ?Language $language;
+    
     
     public static function hydrate(array $arr)
     {

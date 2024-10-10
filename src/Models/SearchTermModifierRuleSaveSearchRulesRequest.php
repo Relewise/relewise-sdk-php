@@ -6,7 +6,9 @@ abstract class SearchTermModifierRuleSaveSearchRulesRequest extends LicensedRequ
 {
     public string $typeDefinition = "";
     public array $rules;
+    
     public string $modifiedBy;
+    
     
     public static function hydrate(array $arr)
     {

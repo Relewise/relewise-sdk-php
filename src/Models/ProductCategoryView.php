@@ -6,7 +6,9 @@ class ProductCategoryView extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductCategoryView, Relewise.Client";
     public ?User $user;
+    
     public array $idPath;
+    
     public static function create(?User $user, string ... $idPath) : ProductCategoryView
     {
         $result = new ProductCategoryView();

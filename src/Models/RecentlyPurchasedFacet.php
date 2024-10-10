@@ -7,6 +7,7 @@ class RecentlyPurchasedFacet extends boolValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.RecentlyPurchasedFacet, Relewise.Client";
     public PurchaseQualifiers $purchaseQualifiers;
+    
     public static function create(PurchaseQualifiers $purchaseQualifiers, bool ... $selected = Null) : RecentlyPurchasedFacet
     {
         $result = new RecentlyPurchasedFacet();

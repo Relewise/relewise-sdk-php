@@ -6,9 +6,13 @@ class PriceRangesFacet extends Facet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.PriceRangesFacet, Relewise.Client";
     public ?array $predefinedRanges;
+    
     public ?float $expandedRangeSize;
+    
     public ?array $selected;
+    
     public PriceSelectionStrategy $priceSelectionStrategy;
+    
     public static function create(FacetingField $field, PriceSelectionStrategy $priceSelectionStrategy, ?array $predefinedRanges, ?float $expandedRangeSize, ?floatChainableRange ... $selected) : PriceRangesFacet
     {
         $result = new PriceRangesFacet();

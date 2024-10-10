@@ -6,6 +6,7 @@ class SearchTermModifierRuleReplaceTermAction extends SearchTermModifierRuleRule
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchTermModifierRule+ReplaceTermAction, Relewise.Client";
     public ?string $replacement;
+    
     public static function create(?string $replacement) : SearchTermModifierRuleReplaceTermAction
     {
         $result = new SearchTermModifierRuleReplaceTermAction();

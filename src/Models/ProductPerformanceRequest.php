@@ -6,17 +6,29 @@ class ProductPerformanceRequest extends AnalyzerRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Analyzers.ProductPerformanceRequest, Relewise.Client";
     public int $fromUnixTimeSeconds;
+    
     public int $toUnixTimeSeconds;
+    
     public ?FilterCollection $filters;
+    
     public int $numberOfResults;
+    
     public int $skipNumberOfResults;
+    
     public bool $byVariant;
+    
     public ?SelectedProductPropertiesSettings $selectedProductProperties;
+    
     public ?SelectedVariantPropertiesSettings $selectedVariantProperties;
+    
     public ProductPerformanceRequestOrderByOptions $orderBy;
+    
     public ProductPerformanceRequestVariantDataOptions $variantData;
+    
     public ?array $classifications;
+    
     public ?SelectedBrandPropertiesSettings $selectedBrandProperties;
+    
     public static function create(?Language $language, ?Currency $currency, bool $byVariant, int $numberOfResultsPerRequest, int $skipNumberOfResults = 0) : ProductPerformanceRequest
     {
         $result = new ProductPerformanceRequest();

@@ -6,7 +6,9 @@ class VariantSalesPriceFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.VariantSalesPriceFilter, Relewise.Client";
     public ?floatRange $range;
+    
     public ?Currency $currency;
+    
     public static function create(?floatRange $range, ?Currency $currency = Null, bool $negated = false) : VariantSalesPriceFilter
     {
         $result = new VariantSalesPriceFilter();

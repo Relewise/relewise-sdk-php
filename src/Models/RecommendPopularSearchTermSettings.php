@@ -5,7 +5,9 @@ namespace Relewise\Models;
 class RecommendPopularSearchTermSettings
 {
     public ?array $targetEntityTypes;
+    
     public int $numberOfRecommendations;
+    
     public static function create() : RecommendPopularSearchTermSettings
     {
         $result = new RecommendPopularSearchTermSettings();

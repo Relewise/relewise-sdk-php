@@ -6,7 +6,9 @@ class ContentDetailsCollectionResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.ContentDetailsCollectionResponse, Relewise.Client";
     public array $contents;
+    
     public ?int $totalNumberOfResults;
+    
     public static function create(array $contents, ?int $totalNumberOfResults) : ContentDetailsCollectionResponse
     {
         $result = new ContentDetailsCollectionResponse();

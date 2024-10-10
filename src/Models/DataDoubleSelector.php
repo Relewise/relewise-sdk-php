@@ -6,6 +6,7 @@ class DataDoubleSelector extends ValueSelector
 {
     public string $typeDefinition = "Relewise.Client.Requests.ValueSelectors.DataDoubleSelector, Relewise.Client";
     public string $key;
+    
     public static function create(string $key) : DataDoubleSelector
     {
         $result = new DataDoubleSelector();

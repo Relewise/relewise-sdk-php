@@ -6,9 +6,12 @@ class ProductDetailsCollectionResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.ProductDetailsCollectionResponse, Relewise.Client";
     public array $products;
+    
     public ?int $totalNumberOfResults;
+    
     /** Provides a token for NextPageToken to consume ProductQuery results in pages of PageSize. Turns null as soon as cursor is fully exhausted/read/processed. Once null is returned, there are no more data to be retrieved and no more requests should be made. */
     public ?string $nextPageToken;
+    
     public static function create(array $products, ?int $totalNumberOfResults) : ProductDetailsCollectionResponse
     {
         $result = new ProductDetailsCollectionResponse();

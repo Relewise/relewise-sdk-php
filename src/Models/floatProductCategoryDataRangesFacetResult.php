@@ -7,6 +7,7 @@ abstract class floatProductCategoryDataRangesFacetResult extends floatRangesFace
     public string $typeDefinition = "";
     public string $key;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

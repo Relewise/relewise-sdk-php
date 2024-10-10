@@ -5,8 +5,11 @@ namespace Relewise\Models;
 class AbandonedSearchTriggerResult
 {
     public UserResultDetails $user;
+    
     public SearchType $type;
+    
     public array $searches;
+    
     public static function create() : AbandonedSearchTriggerResult
     {
         $result = new AbandonedSearchTriggerResult();

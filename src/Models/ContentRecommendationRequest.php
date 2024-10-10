@@ -7,6 +7,7 @@ abstract class ContentRecommendationRequest extends RecommendationRequest
     public string $typeDefinition = "";
     public ContentRecommendationRequestSettings $settings;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

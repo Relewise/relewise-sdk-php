@@ -5,8 +5,11 @@ namespace Relewise\Models;
 class SearchRuleFilters
 {
     public ?string $term;
+    
     public ?bool $approved;
+    
     public ?string $id;
+    
     public static function create(?string $term, ?bool $approved) : SearchRuleFilters
     {
         $result = new SearchRuleFilters();

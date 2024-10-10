@@ -5,10 +5,15 @@ namespace Relewise\Models;
 class SearchTermCondition
 {
     public ?SearchTermConditionConditionKind $kind;
+    
     public ?string $value;
+    
     public ?array $andConditions;
+    
     public ?array $orConditions;
+    
     public ?int $minimumLength;
+    
     public static function create() : SearchTermCondition
     {
         $result = new SearchTermCondition();

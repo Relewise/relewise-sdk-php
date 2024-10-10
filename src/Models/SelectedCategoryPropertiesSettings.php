@@ -6,11 +6,17 @@ abstract class SelectedCategoryPropertiesSettings
 {
     public string $typeDefinition = "";
     public bool $displayName;
+    
     public bool $paths;
+    
     public bool $assortments;
+    
     public bool $viewedByUserInfo;
+    
     public bool $allData;
+    
     public array $dataKeys;
+    
     
     public static function hydrate(array $arr)
     {

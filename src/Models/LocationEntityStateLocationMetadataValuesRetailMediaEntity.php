@@ -6,8 +6,10 @@ abstract class LocationEntityStateLocationMetadataValuesRetailMediaEntity extend
 {
     public string $typeDefinition = "";
     public LocationEntityState $state;
+    
     /** Managed server side only, manually setting this will have no effect */
     public LocationMetadataValues $metadata;
+    
     
     public static function hydrate(array $arr)
     {

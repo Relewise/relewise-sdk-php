@@ -7,6 +7,7 @@ abstract class floatProductDataValueFacet extends floatDataValueFacet
     public string $typeDefinition = "";
     public DataSelectionStrategy $dataSelectionStrategy;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

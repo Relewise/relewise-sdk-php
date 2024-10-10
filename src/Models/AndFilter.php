@@ -6,6 +6,7 @@ class AndFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.AndFilter, Relewise.Client";
     public array $filters;
+    
     public static function create(array $filters, bool $negated = false) : AndFilter
     {
         $result = new AndFilter();

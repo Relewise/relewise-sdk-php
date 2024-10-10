@@ -6,9 +6,13 @@ class ProductCategorySearchRequest extends PaginatedSearchRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.ProductCategorySearchRequest, Relewise.Client";
     public ?string $term;
+    
     public ?ProductCategorySearchSettings $settings;
+    
     public ?ProductCategoryFacetQuery $facets;
+    
     public ?ProductCategorySortBySpecification $sorting;
+    
     public static function create(?Language $language, ?Currency $currency, User $user, string $displayedAtLocation, ?string $term, int $skip, int $take) : ProductCategorySearchRequest
     {
         $result = new ProductCategorySearchRequest();

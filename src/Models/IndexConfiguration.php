@@ -5,9 +5,13 @@ namespace Relewise\Models;
 class IndexConfiguration
 {
     public LanguageIndexConfiguration $language;
+    
     public ProductIndexConfiguration $product;
+    
     public ContentIndexConfiguration $content;
+    
     public ProductCategoryIndexConfiguration $productCategory;
+    
     public static function create() : IndexConfiguration
     {
         $result = new IndexConfiguration();

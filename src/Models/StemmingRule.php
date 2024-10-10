@@ -9,7 +9,9 @@ class StemmingRule extends SearchRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.StemmingRule, Relewise.Client";
     public array $words;
+    
     public ?string $stem;
+    
     public static function create(string $id, ?ApplicableIndexes $indexes, ?ApplicableLanguages $languages, bool $isApproved, array $words, ?string $stem) : StemmingRule
     {
         $result = new StemmingRule();

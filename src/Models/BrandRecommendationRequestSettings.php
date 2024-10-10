@@ -5,11 +5,17 @@ namespace Relewise\Models;
 class BrandRecommendationRequestSettings
 {
     public int $numberOfRecommendations;
+    
     public bool $allowFillIfNecessaryToReachNumberOfRecommendations;
+    
     public bool $allowReplacingOfRecentlyShownRecommendations;
+    
     public bool $prioritizeDiversityBetweenRequests;
+    
     public ?SelectedBrandPropertiesSettings $selectedBrandProperties;
+    
     public ?int $prioritizeResultsNotRecommendedWithinSeconds;
+    
     public static function create() : BrandRecommendationRequestSettings
     {
         $result = new BrandRecommendationRequestSettings();

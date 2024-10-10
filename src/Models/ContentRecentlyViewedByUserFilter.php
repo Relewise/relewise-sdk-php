@@ -9,7 +9,9 @@ class ContentRecentlyViewedByUserFilter extends Filter implements JsonSerializab
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentRecentlyViewedByUserFilter, Relewise.Client";
     public ?DateTime $sinceUtc;
+    
     public ?int $sinceMinutesAgo;
+    
     public static function create(bool $negated = false) : ContentRecentlyViewedByUserFilter
     {
         $result = new ContentRecentlyViewedByUserFilter();

@@ -6,6 +6,7 @@ namespace Relewise\Models;
 class RetailMediaQueryPlacementSelector
 {
     public string $key;
+    
     public static function create(string $key) : RetailMediaQueryPlacementSelector
     {
         $result = new RetailMediaQueryPlacementSelector();

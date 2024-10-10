@@ -6,6 +6,7 @@ class SearchIndexCollectionResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.SearchIndexCollectionResponse, Relewise.Client";
     public array $indexes;
+    
     public static function create() : SearchIndexCollectionResponse
     {
         $result = new SearchIndexCollectionResponse();

@@ -6,7 +6,9 @@ class DeleteSearchIndexRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.DeleteSearchIndexRequest, Relewise.Client";
     public string $id;
+    
     public string $deletedBy;
+    
     public static function create(string $id, string $deletedBy) : DeleteSearchIndexRequest
     {
         $result = new DeleteSearchIndexRequest();

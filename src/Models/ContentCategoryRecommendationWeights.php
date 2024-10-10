@@ -5,7 +5,9 @@ namespace Relewise\Models;
 class ContentCategoryRecommendationWeights
 {
     public float $categoryViews;
+    
     public float $contentViews;
+    
     public static function create(float $categoryViews = 1, float $contentViews = 1) : ContentCategoryRecommendationWeights
     {
         $result = new ContentCategoryRecommendationWeights();

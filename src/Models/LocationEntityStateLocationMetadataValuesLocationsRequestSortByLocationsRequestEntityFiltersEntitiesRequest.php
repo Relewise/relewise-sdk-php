@@ -6,9 +6,13 @@ abstract class LocationEntityStateLocationMetadataValuesLocationsRequestSortByLo
 {
     public string $typeDefinition = "";
     public ?LocationsRequestEntityFilters $filters;
+    
     public ?LocationsRequestSortBySorting $sorting;
+    
     public int $skip;
+    
     public int $take;
+    
     
     public static function hydrate(array $arr)
     {

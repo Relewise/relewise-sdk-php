@@ -7,6 +7,7 @@ abstract class ProductChangeTriggerResultProductChangeResultDetailsEntityChangeT
     public string $typeDefinition = "";
     public array $entitiesWithChanges;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

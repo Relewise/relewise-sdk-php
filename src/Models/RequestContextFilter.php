@@ -5,11 +5,17 @@ namespace Relewise\Models;
 class RequestContextFilter
 {
     public RecommendationTypeCollection $recommendations;
+    
     public SearchTypeCollection $searches;
+    
     public array $locations;
+    
     public array $languages;
+    
     public array $currencies;
+    
     public RequestFilterCriteria $filters;
+    
     public static function create() : RequestContextFilter
     {
         $result = new RequestContextFilter();

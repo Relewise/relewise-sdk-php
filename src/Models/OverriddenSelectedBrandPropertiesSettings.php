@@ -5,10 +5,15 @@ namespace Relewise\Models;
 class OverriddenSelectedBrandPropertiesSettings
 {
     public ?bool $displayName;
+    
     public ?bool $assortments;
+    
     public ?bool $viewedByUserInfo;
+    
     public ?bool $allData;
+    
     public array $dataKeys;
+    
     public static function create() : OverriddenSelectedBrandPropertiesSettings
     {
         $result = new OverriddenSelectedBrandPropertiesSettings();

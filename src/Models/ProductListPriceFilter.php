@@ -6,7 +6,9 @@ class ProductListPriceFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductListPriceFilter, Relewise.Client";
     public ?floatRange $range;
+    
     public ?Currency $currency;
+    
     public static function create(?floatRange $range, ?Currency $currency = Null, bool $negated = false) : ProductListPriceFilter
     {
         $result = new ProductListPriceFilter();

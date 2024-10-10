@@ -6,6 +6,7 @@ class ObservableVariantAttributeSelector extends VariantPropertySelector
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.EntityPropertySelectors.ObservableVariantAttributeSelector, Relewise.Client";
     public ObservableVariantAttribute $attribute;
+    
     public static function create(ObservableVariantAttribute $attribute) : ObservableVariantAttributeSelector
     {
         $result = new ObservableVariantAttributeSelector();

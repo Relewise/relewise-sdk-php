@@ -6,7 +6,9 @@ class HasModifiedCartCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasModifiedCartCondition, Relewise.Client";
     public int $withinMinutes;
+    
     public string $cartName;
+    
     public static function create(string $cartName = Null, bool $negated = false) : HasModifiedCartCondition
     {
         $result = new HasModifiedCartCondition();

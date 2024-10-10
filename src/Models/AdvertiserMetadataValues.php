@@ -9,11 +9,17 @@ class AdvertiserMetadataValues extends MetadataValues implements JsonSerializabl
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Advertiser+MetadataValues, Relewise.Client";
     public ?DateTime $inactivated;
+    
     public ?string $inactivatedBy;
+    
     public ?DateTime $activated;
+    
     public ?string $activatedBy;
+    
     public ?DateTime $archived;
+    
     public ?string $archivedBy;
+    
     public static function create() : AdvertiserMetadataValues
     {
         $result = new AdvertiserMetadataValues();

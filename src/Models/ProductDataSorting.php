@@ -6,8 +6,11 @@ class ProductDataSorting extends ProductSorting
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Product.ProductDataSorting, Relewise.Client";
     public string $key;
+    
     public DataSelectionStrategy $dataSelectionStrategy;
+    
     public SortMode $mode;
+    
     public static function create(string $key, DataSelectionStrategy $dataSelectionStrategy, SortOrder $order, SortMode $mode = SortMode::Auto) : ProductDataSorting
     {
         $result = new ProductDataSorting();

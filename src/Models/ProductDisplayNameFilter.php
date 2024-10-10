@@ -6,8 +6,11 @@ class ProductDisplayNameFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductDisplayNameFilter, Relewise.Client";
     public ?Language $language;
+    
     public ?ValueConditionCollection $conditions;
+    
     public bool $mustMatchAllConditions;
+    
     public static function create(ValueConditionCollection $conditions, bool $mustMatchAllConditions = true, ?Language $language = Null) : ProductDisplayNameFilter
     {
         $result = new ProductDisplayNameFilter();

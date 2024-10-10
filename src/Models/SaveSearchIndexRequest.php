@@ -6,7 +6,9 @@ class SaveSearchIndexRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.SaveSearchIndexRequest, Relewise.Client";
     public SearchIndex $index;
+    
     public string $modifiedBy;
+    
     public static function create(SearchIndex $index, string $modifiedBy) : SaveSearchIndexRequest
     {
         $result = new SaveSearchIndexRequest();

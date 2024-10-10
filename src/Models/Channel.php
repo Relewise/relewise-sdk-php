@@ -5,7 +5,9 @@ namespace Relewise\Models;
 class Channel
 {
     public string $name;
+    
     public ?Channel $subChannel;
+    
     public static function create(string $name) : Channel
     {
         $result = new Channel();

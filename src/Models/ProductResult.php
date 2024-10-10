@@ -5,21 +5,37 @@ namespace Relewise\Models;
 class ProductResult
 {
     public string $productId;
+    
     public string $displayName;
+    
     public VariantResult $variant;
+    
     public int $rank;
+    
     public array $assortments;
+    
     public array $data;
+    
     public array $categoryPaths;
+    
     public PurchasedByUserInfo $purchasedByUser;
+    
     public ViewedByUserInfo $viewedByUser;
+    
     public ?float $listPrice;
+    
     public ?float $salesPrice;
+    
     public BrandResult $brand;
+    
     public array $allVariants;
+    
     public PurchasedByUserCompanyInfo $purchasedByUserCompany;
+    
     public ViewedByUserCompanyInfo $viewedByUserCompany;
+    
     public array $filteredVariants;
+    
     public static function create(string $productId, int $rank) : ProductResult
     {
         $result = new ProductResult();

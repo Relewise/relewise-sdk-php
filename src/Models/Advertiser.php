@@ -6,10 +6,13 @@ class Advertiser extends AdvertiserEntityStateAdvertiserMetadataValuesRetailMedi
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Advertiser, Relewise.Client";
     public string $name;
+    
     /** Defines what kind of promotions an advertiser is allowed to create, and constraints to what may be promoted. Constraints could as an example be all products belonging to the brand(s) this Advertiser is associated with. If null or empty, an advertiser will not be allowed to make any promotions anywhere, only useful for Advertisers in draft. */
     public ?PromotionSpecificationCollection $allowedPromotions;
+    
     /** Defines locations/placements/variations where this advertiser is allowed to make promotions at. If null or empty, an advertiser will not be allowed to make any promotions anywhere, only useful for Advertisers in draft. */
     public ?PromotionLocationCollection $allowedLocations;
+    
     public static function create(?string $id, AdvertiserEntityState $state, string $name, ?PromotionSpecificationCollection $allowedPromotions, ?PromotionLocationCollection $allowedLocations) : Advertiser
     {
         $result = new Advertiser();

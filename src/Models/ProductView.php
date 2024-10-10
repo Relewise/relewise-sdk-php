@@ -6,8 +6,11 @@ class ProductView extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductView, Relewise.Client";
     public ?User $user;
+    
     public Product $product;
+    
     public ?ProductVariant $variant;
+    
     public static function create(?User $user, Product $product, ?ProductVariant $variant = Null) : ProductView
     {
         $result = new ProductView();

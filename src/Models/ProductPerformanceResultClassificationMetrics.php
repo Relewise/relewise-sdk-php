@@ -5,10 +5,15 @@ namespace Relewise\Models;
 class ProductPerformanceResultClassificationMetrics
 {
     public array $combination;
+    
     public ProductPerformanceResultViewsMetrics $views;
+    
     public ProductPerformanceResultSalesMetrics $sales;
+    
     public ProductPerformanceResultCartMetrics $carts;
+    
     public ProductPerformanceResultRankMetrics $rank;
+    
     public static function create() : ProductPerformanceResultClassificationMetrics
     {
         $result = new ProductPerformanceResultClassificationMetrics();

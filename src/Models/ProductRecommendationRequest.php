@@ -7,6 +7,7 @@ abstract class ProductRecommendationRequest extends RecommendationRequest
     public string $typeDefinition = "";
     public ProductRecommendationRequestSettings $settings;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

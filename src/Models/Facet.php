@@ -6,7 +6,9 @@ abstract class Facet
 {
     public string $typeDefinition = "";
     public FacetingField $field;
+    
     public ?FacetSettings $settings;
+    
     
     public static function hydrate(array $arr)
     {

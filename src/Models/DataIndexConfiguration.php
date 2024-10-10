@@ -5,7 +5,9 @@ namespace Relewise\Models;
 class DataIndexConfiguration
 {
     public array $keys;
+    
     public FieldIndexConfiguration $unspecified;
+    
     public static function create() : DataIndexConfiguration
     {
         $result = new DataIndexConfiguration();
