@@ -7,9 +7,7 @@ class SaveSynonymsRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Search.SaveSynonymsRequest, Relewise.Client";
     
     public array $synonyms;
-    
     public string $modifiedBy;
-    
     public static function create(array $synonyms, string $modifiedBy) : SaveSynonymsRequest
     {
         $result = new SaveSynonymsRequest();

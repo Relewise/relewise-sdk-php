@@ -5,9 +5,7 @@ namespace Relewise\Models;
 class KeyMultiplier
 {
     public string $key;
-    
     public float $multiplier;
-    
     public static function create(string $key, float $multiplier) : KeyMultiplier
     {
         $result = new KeyMultiplier();

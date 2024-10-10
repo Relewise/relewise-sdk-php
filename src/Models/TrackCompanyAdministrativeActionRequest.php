@@ -7,7 +7,6 @@ class TrackCompanyAdministrativeActionRequest extends TrackingRequest
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackCompanyAdministrativeActionRequest, Relewise.Client";
     
     public CompanyAdministrativeAction $administrativeAction;
-    
     public static function create(CompanyAdministrativeAction $administrativeAction) : TrackCompanyAdministrativeActionRequest
     {
         $result = new TrackCompanyAdministrativeActionRequest();

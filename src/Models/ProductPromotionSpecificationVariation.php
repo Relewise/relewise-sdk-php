@@ -9,7 +9,6 @@ class ProductPromotionSpecificationVariation extends PromotionSpecificationVaria
     
     /** The maximum number of products to promote at a time in this variation. */
     public int $maxCount;
-    
     public static function create(int $maxCount) : ProductPromotionSpecificationVariation
     {
         $result = new ProductPromotionSpecificationVariation();

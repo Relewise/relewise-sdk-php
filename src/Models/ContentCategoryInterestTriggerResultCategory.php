@@ -5,11 +5,8 @@ namespace Relewise\Models;
 class ContentCategoryInterestTriggerResultCategory
 {
     public array $lastPath;
-    
     public int $views;
-    
     public array $viewedContents;
-    
     public static function create() : ContentCategoryInterestTriggerResultCategory
     {
         $result = new ContentCategoryInterestTriggerResultCategory();

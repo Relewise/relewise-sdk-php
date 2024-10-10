@@ -6,9 +6,7 @@ namespace Relewise\Models;
 class CategoryNameAndId
 {
     public string $id;
-    
     public ?Multilingual $displayName;
-    
     /**
      * The id and name of a category segment
      * @param string $id The ID of the category (Which is generally very unlikely to change in the future)

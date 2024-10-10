@@ -5,29 +5,17 @@ namespace Relewise\Models;
 class SimilarProductsEvaluationSettings
 {
     public float $significanceOfSimilaritiesInDisplayName;
-    
     public ?TrimStringTransformer $productDisplayNameTransformer;
-    
     public float $significanceOfSimilarListPrice;
-    
     public float $significanceOfCommonImmediateParentCategories;
-    
     public float $significanceOfCommonParentsParentCategories;
-    
     public float $significanceOfCommonAncestorCategories;
-    
     public float $significanceOfCommonProductDataKeys;
-    
     public float $significanceOfIdenticalProductDataValues;
-    
     public ?array $significantProductDataFields;
-    
     public float $significanceOfSimilarSalesPrice;
-    
     public float $significanceOfSimilarBrand;
-    
     public ?SimilarVariantEvaluationSettings $variantEvaluationSettings;
-    
     public static function create() : SimilarProductsEvaluationSettings
     {
         $result = new SimilarProductsEvaluationSettings();

@@ -7,9 +7,7 @@ class ProductCategoryDataSorting extends ProductCategorySorting
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.ProductCategory.ProductCategoryDataSorting, Relewise.Client";
     
     public string $key;
-    
     public SortMode $mode;
-    
     public static function create(string $key, SortOrder $order, SortMode $mode = SortMode::Auto) : ProductCategoryDataSorting
     {
         $result = new ProductCategoryDataSorting();

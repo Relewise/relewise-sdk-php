@@ -7,9 +7,7 @@ abstract class floatRangeFacetResult extends FacetResult
     public string $typeDefinition = "";
     
     public ?floatRange $selected;
-    
     public ?floatRangeAvailableFacetValue $available;
-    
     
     public static function hydrate(array $arr)
     {

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ContentSortBySpecification
 {
     public ContentSorting $value;
-    
     public static function create() : ContentSortBySpecification
     {
         $result = new ContentSortBySpecification();

@@ -8,29 +8,17 @@ use JsonSerializable;
 class ContentResultDetails implements JsonSerializable
 {
     public string $contentId;
-    
     public Multilingual $displayName;
-    
     public array $assortments;
-    
     public array $data;
-    
     public array $categoryPaths;
-    
     public ViewedByUserInfo $viewedByUser;
-    
     public DateTime $createdUtc;
-    
     public ?DateTime $lastViewedUtc;
-    
     public int $viewedTotalNumberOfTimes;
-    
     public int $viewedByDifferentNumberOfUsers;
-    
     public bool $disabled;
-    
     public bool $deleted;
-    
     public static function create(string $contentId) : ContentResultDetails
     {
         $result = new ContentResultDetails();

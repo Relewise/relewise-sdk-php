@@ -7,9 +7,7 @@ class PopularProductCategoriesRecommendationRequest extends ProductCategoryRecom
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PopularProductCategoriesRecommendationRequest, Relewise.Client";
     
     public int $sinceMinutesAgo;
-    
     public ProductCategoryRecommendationWeights $weights;
-    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ProductCategoryRecommendationWeights $weights) : PopularProductCategoriesRecommendationRequest
     {
         $result = new PopularProductCategoriesRecommendationRequest();

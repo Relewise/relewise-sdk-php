@@ -10,31 +10,18 @@ abstract class MerchandisingRule implements JsonSerializable
     public string $typeDefinition = "";
     
     public string $id;
-    
     public string $name;
-    
     public string $description;
-    
     public string $group;
-    
     public bool $enabled;
-    
     public DateTime $created;
-    
     public string $createdBy;
-    
     public DateTime $modified;
-    
     public string $modifiedBy;
-    
     public ConditionConfiguration $conditions;
-    
     public RequestConfiguration $request;
-    
     public float $priority;
-    
     public array $settings;
-    
     
     public static function hydrate(array $arr)
     {

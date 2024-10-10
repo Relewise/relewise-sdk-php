@@ -7,9 +7,7 @@ class ContentUpdate extends Trackable
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentUpdate, Relewise.Client";
     
     public Content $content;
-    
     public ContentUpdateUpdateKind $kind;
-    
     public static function create(Content $content, ContentUpdateUpdateKind $kind = ContentUpdateUpdateKind::UpdateAndAppend) : ContentUpdate
     {
         $result = new ContentUpdate();

@@ -8,11 +8,8 @@ use JsonSerializable;
 class ViewedByUserCompanyInfo implements JsonSerializable
 {
     public DateTime $mostRecentlyViewedUtc;
-    
     public int $totalNumberOfTimesViewed;
-    
     public ViewedByUserCompanyInfo $viewedByParentCompany;
-    
     public static function create(DateTime $mostRecentlyViewedUtc, int $totalNumberOfTimesViewed) : ViewedByUserCompanyInfo
     {
         $result = new ViewedByUserCompanyInfo();

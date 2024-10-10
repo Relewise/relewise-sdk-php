@@ -5,9 +5,7 @@ namespace Relewise\Models;
 class ApplicableIndexes
 {
     public array $indexes;
-    
     const ALL = Null;
-    
     public static function create(string ... $indexes) : ApplicableIndexes
     {
         $result = new ApplicableIndexes();

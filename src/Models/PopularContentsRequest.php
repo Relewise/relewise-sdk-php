@@ -7,7 +7,6 @@ class PopularContentsRequest extends ContentRecommendationRequest
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PopularContentsRequest, Relewise.Client";
     
     public int $sinceMinutesAgo;
-    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user) : PopularContentsRequest
     {
         $result = new PopularContentsRequest();

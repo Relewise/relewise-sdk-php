@@ -8,9 +8,7 @@ use JsonSerializable;
 class DateTimeRange implements JsonSerializable
 {
     public DateTime $lowerBoundInclusive;
-    
     public DateTime $upperBoundInclusive;
-    
     public static function create(DateTime $lowerBoundInclusive, DateTime $upperBoundInclusive) : DateTimeRange
     {
         $result = new DateTimeRange();

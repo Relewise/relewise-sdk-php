@@ -7,13 +7,9 @@ abstract class StemmingRulesRequestSortBySearchRulesRequest extends LicensedRequ
     public string $typeDefinition = "";
     
     public SearchRuleFilters $filters;
-    
     public StemmingRulesRequestSortBySorting $sorting;
-    
     public int $skip;
-    
     public int $take;
-    
     
     public static function hydrate(array $arr)
     {

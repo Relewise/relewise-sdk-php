@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class CategoryPathResultDetails
 {
     public array $breadcrumbPathStartingFromRoot;
-    
     public static function create(CategoryNameAndId ... $breadcrumbPathStartingFromRoot) : CategoryPathResultDetails
     {
         $result = new CategoryPathResultDetails();

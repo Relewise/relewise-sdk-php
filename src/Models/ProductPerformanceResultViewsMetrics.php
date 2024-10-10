@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductPerformanceResultViewsMetrics
 {
     public int $total;
-    
     public static function create() : ProductPerformanceResultViewsMetrics
     {
         $result = new ProductPerformanceResultViewsMetrics();

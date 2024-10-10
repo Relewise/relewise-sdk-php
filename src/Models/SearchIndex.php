@@ -8,23 +8,14 @@ use JsonSerializable;
 class SearchIndex implements JsonSerializable
 {
     public string $id;
-    
     public string $description;
-    
     public bool $enabled;
-    
     public bool $isDefault;
-    
     public DateTime $created;
-    
     public string $createdBy;
-    
     public DateTime $modified;
-    
     public string $modifiedBy;
-    
     public IndexConfiguration $configuration;
-    
     public static function create(string $id, string $description, bool $isDefault, bool $enabled = true) : SearchIndex
     {
         $result = new SearchIndex();

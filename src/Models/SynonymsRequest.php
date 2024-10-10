@@ -7,15 +7,10 @@ class SynonymsRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Search.SynonymsRequest, Relewise.Client";
     
     public SynonymsRequestSynonymSortingSorting $sorting;
-    
     public int $take;
-    
     public int $skip;
-    
     public string $term;
-    
     public ?bool $isApproved;
-    
     public static function create() : SynonymsRequest
     {
         $result = new SynonymsRequest();

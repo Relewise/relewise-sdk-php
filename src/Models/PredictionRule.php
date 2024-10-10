@@ -10,11 +10,8 @@ class PredictionRule extends SearchRule implements JsonSerializable
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.PredictionRule, Relewise.Client";
     
     public SearchTermCondition $condition;
-    
     public PredictionRulePromotion $promote;
-    
     public PredictionRuleSuppression $suppress;
-    
     public static function create(string $id, ?ApplicableIndexes $indexes, ?ApplicableLanguages $languages, bool $isApproved, SearchTermCondition $condition) : PredictionRule
     {
         $result = new PredictionRule();

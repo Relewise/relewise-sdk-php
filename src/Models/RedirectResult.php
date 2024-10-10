@@ -5,13 +5,9 @@ namespace Relewise\Models;
 class RedirectResult
 {
     public string $id;
-    
     public SearchTermCondition $condition;
-    
     public ?string $destination;
-    
     public ?array $data;
-    
     public static function create(string $id, SearchTermCondition $condition, ?string $destination, ?array $data) : RedirectResult
     {
         $result = new RedirectResult();

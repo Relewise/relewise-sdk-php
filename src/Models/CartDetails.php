@@ -8,15 +8,10 @@ use JsonSerializable;
 class CartDetails implements JsonSerializable
 {
     public string $name;
-    
     public DateTime $modifiedUtc;
-    
     public array $lineItems;
-    
     public Money $subtotal;
-    
     public array $data;
-    
     public static function create(string $name, DateTime $modifiedUtc, array $lineItems, Money $subtotal, array $data) : CartDetails
     {
         $result = new CartDetails();

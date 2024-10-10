@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class TrimStringTransformer
 {
     public array $valuesToTrim;
-    
     public static function create(string ... $valuesToTrim) : TrimStringTransformer
     {
         $result = new TrimStringTransformer();

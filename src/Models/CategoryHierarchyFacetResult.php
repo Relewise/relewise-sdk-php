@@ -7,9 +7,7 @@ class CategoryHierarchyFacetResult extends FacetResult
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.CategoryHierarchyFacetResult, Relewise.Client";
     
     public CategorySelectionStrategy $categorySelectionStrategy;
-    
     public array $nodes;
-    
     public static function create(CategorySelectionStrategy $categorySelectionStrategy, CategoryHierarchyFacetResultCategoryNode ... $nodes) : CategoryHierarchyFacetResult
     {
         $result = new CategoryHierarchyFacetResult();

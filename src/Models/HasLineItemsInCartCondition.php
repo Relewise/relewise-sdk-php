@@ -7,11 +7,8 @@ class HasLineItemsInCartCondition extends UserCondition
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasLineItemsInCartCondition, Relewise.Client";
     
     public ?intRange $numberOfItems;
-    
     public string $cartName;
-    
     public FilterCollection $filters;
-    
     public static function create(?intRange $numberOfItems, string $cartName = Null, FilterCollection $filters = Null, bool $negated = false) : HasLineItemsInCartCondition
     {
         $result = new HasLineItemsInCartCondition();

@@ -7,7 +7,6 @@ class DeleteMerchandisingRuleRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Merchandising.DeleteMerchandisingRuleRequest, Relewise.Client";
     
     public string $id;
-    
     public static function create(string $id) : DeleteMerchandisingRuleRequest
     {
         $result = new DeleteMerchandisingRuleRequest();

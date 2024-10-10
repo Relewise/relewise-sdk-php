@@ -7,7 +7,6 @@ class LessThanCondition extends ValueCondition
     public string $typeDefinition = "Relewise.Client.Requests.Conditions.LessThanCondition, Relewise.Client";
     
     public float $value;
-    
     public static function create(float $value, bool $negated = false) : LessThanCondition
     {
         $result = new LessThanCondition();

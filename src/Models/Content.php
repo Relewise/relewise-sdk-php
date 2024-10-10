@@ -5,15 +5,10 @@ namespace Relewise\Models;
 class Content
 {
     public string $id;
-    
     public ?Multilingual $displayName;
-    
     public ?array $categoryPaths;
-    
     public ?array $assortments;
-    
     public ?array $data;
-    
     public static function create(string $id) : Content
     {
         $result = new Content();

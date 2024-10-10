@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class UserConditionConfiguration
 {
     public UserConditionCollection $conditions;
-    
     public static function create() : UserConditionConfiguration
     {
         $result = new UserConditionConfiguration();

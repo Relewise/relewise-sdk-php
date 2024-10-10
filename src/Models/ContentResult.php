@@ -5,19 +5,12 @@ namespace Relewise\Models;
 class ContentResult
 {
     public string $contentId;
-    
     public string $displayName;
-    
     public int $rank;
-    
     public array $assortments;
-    
     public array $data;
-    
     public array $categoryPaths;
-    
     public ViewedByUserInfo $viewedByUser;
-    
     public static function create(string $contentId, int $rank) : ContentResult
     {
         $result = new ContentResult();

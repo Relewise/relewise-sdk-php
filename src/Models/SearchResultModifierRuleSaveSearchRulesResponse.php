@@ -8,7 +8,6 @@ abstract class SearchResultModifierRuleSaveSearchRulesResponse extends TimedResp
     
     public array $rules;
     
-    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

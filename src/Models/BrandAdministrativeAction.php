@@ -7,13 +7,9 @@ class BrandAdministrativeAction extends Trackable
     public string $typeDefinition = "Relewise.Client.DataTypes.BrandAdministrativeAction, Relewise.Client";
     
     public FilterCollection $filters;
-    
     public ?Language $language;
-    
     public BrandAdministrativeActionUpdateKind $kind;
-    
     public ?Currency $currency;
-    
     public static function create(?Language $language, ?Currency $currency, FilterCollection $filters, BrandAdministrativeActionUpdateKind $kind) : BrandAdministrativeAction
     {
         $result = new BrandAdministrativeAction();

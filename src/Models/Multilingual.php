@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class Multilingual
 {
     public ?array $values;
-    
     public static function create(MultilingualValue ... $translations) : Multilingual
     {
         $result = new Multilingual();

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ContextConditionConfiguration
 {
     public array $filters;
-    
     public static function create() : ContextConditionConfiguration
     {
         $result = new ContextConditionConfiguration();

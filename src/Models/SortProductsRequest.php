@@ -7,7 +7,6 @@ class SortProductsRequest extends ProductRecommendationRequest
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.SortProductsRequest, Relewise.Client";
     
     public array $productIds;
-    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ... $productIds) : SortProductsRequest
     {
         $result = new SortProductsRequest();

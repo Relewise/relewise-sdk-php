@@ -8,7 +8,6 @@ class ProductPromotion extends Promotion
     
     /** Filters matching the products to be promoted */
     public ?FilterCollection $filters;
-    
     public static function create(string $name, ?FilterCollection $filters, ?PromotionLocationCollection $locations) : ProductPromotion
     {
         $result = new ProductPromotion();

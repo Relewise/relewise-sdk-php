@@ -7,15 +7,10 @@ class Cart extends Trackable
     public string $typeDefinition = "Relewise.Client.DataTypes.Cart, Relewise.Client";
     
     public ?User $user;
-    
     public ?string $name;
-    
     public ?Money $subtotal;
-    
     public ?array $lineItems;
-    
     public ?array $data;
-    
     public static function create(?User $user, Money $subtotal, ?array $lineItems, string $cartName = "default") : Cart
     {
         $result = new Cart();

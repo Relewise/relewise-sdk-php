@@ -5,15 +5,10 @@ namespace Relewise\Models;
 class ProductPerformanceResultSalesByCurrency
 {
     public Currency $currency;
-    
     public int $orders;
-    
     public float $averageSubtotal;
-    
     public float $units;
-    
     public float $revenue;
-    
     public static function create() : ProductPerformanceResultSalesByCurrency
     {
         $result = new ProductPerformanceResultSalesByCurrency();

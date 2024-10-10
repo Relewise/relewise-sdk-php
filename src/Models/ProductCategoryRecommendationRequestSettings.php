@@ -5,17 +5,11 @@ namespace Relewise\Models;
 class ProductCategoryRecommendationRequestSettings
 {
     public int $numberOfRecommendations;
-    
     public bool $allowFillIfNecessaryToReachNumberOfRecommendations;
-    
     public bool $allowReplacingOfRecentlyShownRecommendations;
-    
     public bool $prioritizeDiversityBetweenRequests;
-    
     public SelectedProductCategoryPropertiesSettings $selectedProductCategoryProperties;
-    
     public ?int $prioritizeResultsNotRecommendedWithinSeconds;
-    
     public static function create() : ProductCategoryRecommendationRequestSettings
     {
         $result = new ProductCategoryRecommendationRequestSettings();

@@ -8,35 +8,20 @@ use JsonSerializable;
 class Synonym implements JsonSerializable
 {
     public string $id;
-    
     public SynonymType $type;
-    
     public array $indexes;
-    
     public array $languages;
-    
     public DateTime $created;
-    
     public string $createdBy;
-    
     public DateTime $modified;
-    
     public string $modifiedBy;
-    
     public array $from;
-    
     public array $words;
-    
     public ?DateTime $approved;
-    
     public string $approvedBy;
-    
     public int $usages;
-    
     public bool $isApproved;
-    
     public bool $allowInPredictions;
-    
     public static function create() : Synonym
     {
         $result = new Synonym();

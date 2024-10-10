@@ -10,13 +10,9 @@ abstract class MetadataValues implements JsonSerializable
     public string $typeDefinition = "";
     
     public DateTime $created;
-    
     public string $createdBy;
-    
     public DateTime $modified;
-    
     public string $modifiedBy;
-    
     
     public static function hydrate(array $arr)
     {

@@ -7,9 +7,7 @@ abstract class CampaignEntityStateCampaignMetadataValuesRetailMediaEntityEntityF
     public string $typeDefinition = "";
     
     public ?string $term;
-    
     public ?array $states;
-    
     
     public static function hydrate(array $arr)
     {

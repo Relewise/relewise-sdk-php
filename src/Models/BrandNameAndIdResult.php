@@ -5,9 +5,7 @@ namespace Relewise\Models;
 class BrandNameAndIdResult
 {
     public string $id;
-    
     public string $displayName;
-    
     public static function create(string $id, string $displayName) : BrandNameAndIdResult
     {
         $result = new BrandNameAndIdResult();

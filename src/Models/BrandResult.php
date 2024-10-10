@@ -5,17 +5,11 @@ namespace Relewise\Models;
 class BrandResult
 {
     public string $id;
-    
     public string $displayName;
-    
     public int $rank;
-    
     public ViewedByUserInfo $viewedByUser;
-    
     public array $assortments;
-    
     public array $data;
-    
     public static function create(string $id, int $rank) : BrandResult
     {
         $result = new BrandResult();

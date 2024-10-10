@@ -7,13 +7,9 @@ class CompanyUpdate extends Trackable
     public string $typeDefinition = "Relewise.Client.DataTypes.CompanyUpdate, Relewise.Client";
     
     public Company $company;
-    
     public CompanyUpdateUpdateKind $kind;
-    
     public ?array $parents;
-    
     public bool $replaceExistingParents;
-    
     public static function create(Company $company, bool $replaceExistingParents, ?array $parents, CompanyUpdateUpdateKind $kind = CompanyUpdateUpdateKind::UpdateAndAppend) : CompanyUpdate
     {
         $result = new CompanyUpdate();

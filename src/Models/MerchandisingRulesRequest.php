@@ -7,7 +7,6 @@ class MerchandisingRulesRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Merchandising.MerchandisingRulesRequest, Relewise.Client";
     
     public ?int $type;
-    
     public static function create() : MerchandisingRulesRequest
     {
         $result = new MerchandisingRulesRequest();

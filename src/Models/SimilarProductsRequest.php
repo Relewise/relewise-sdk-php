@@ -7,15 +7,10 @@ class SimilarProductsRequest extends ProductRecommendationRequest
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.SimilarProductsRequest, Relewise.Client";
     
     public ?ProductAndVariantId $existingProductId;
-    
     public ?Product $productData;
-    
     public bool $considerAlreadyKnownInformationAboutProduct;
-    
     public ?SimilarProductsEvaluationSettings $evaluationSettings;
-    
     public ?int $explodedVariants;
-    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ?SimilarProductsEvaluationSettings $evaluationSettings = Null) : SimilarProductsRequest
     {
         $result = new SimilarProductsRequest();

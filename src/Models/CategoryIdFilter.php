@@ -7,9 +7,7 @@ abstract class CategoryIdFilter extends Filter
     public string $typeDefinition = "";
     
     public array $categoryIds;
-    
     public CategoryScope $evaluationScope;
-    
     
     public static function hydrate(array $arr)
     {

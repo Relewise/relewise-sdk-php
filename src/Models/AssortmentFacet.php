@@ -8,7 +8,6 @@ abstract class AssortmentFacet extends intValueFacet
     
     public AssortmentFilterType $assortmentFilterType;
     
-    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

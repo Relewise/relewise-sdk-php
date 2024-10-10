@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class RetailMediaResultPlacementResultEntityProduct
 {
     public ProductResult $result;
-    
     public static function create() : RetailMediaResultPlacementResultEntityProduct
     {
         $result = new RetailMediaResultPlacementResultEntityProduct();

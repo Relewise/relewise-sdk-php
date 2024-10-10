@@ -5,9 +5,7 @@ namespace Relewise\Models;
 class PredictionRuleSuppression
 {
     public PredictionRuleSuppressionConditionKind $condition;
-    
     public array $values;
-    
     public static function create(PredictionRuleSuppressionConditionKind $condition, string ... $values) : PredictionRuleSuppression
     {
         $result = new PredictionRuleSuppression();

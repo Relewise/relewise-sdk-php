@@ -7,7 +7,6 @@ class ProductsViewedAfterViewingProductRequest extends ProductRecommendationRequ
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ProductsViewedAfterViewingProductRequest, Relewise.Client";
     
     public ProductAndVariantId $productAndVariantId;
-    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ProductAndVariantId $productAndVariantId) : ProductsViewedAfterViewingProductRequest
     {
         $result = new ProductsViewedAfterViewingProductRequest();

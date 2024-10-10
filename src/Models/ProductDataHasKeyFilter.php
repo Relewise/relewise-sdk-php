@@ -7,7 +7,6 @@ class ProductDataHasKeyFilter extends Filter
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductDataHasKeyFilter, Relewise.Client";
     
     public string $key;
-    
     public static function create(string $key, bool $negated = false) : ProductDataHasKeyFilter
     {
         $result = new ProductDataHasKeyFilter();

@@ -8,38 +8,22 @@ use JsonSerializable;
 class UserResultDetails implements JsonSerializable
 {
     public string $authenticatedId;
-    
     public string $temporaryId;
-    
     public string $email;
-    
     public array $classifications;
-    
     public ?DateTime $lastCartUpdateUtc;
-    
     public DateTime $lastActivityUtc;
-    
     public ?DateTime $lastOrderUtc;
-    
     public array $carts;
-    
     public string $lastActiveCartName;
-    
     public int $totalNumberOfOrders;
-    
     public array $identifiers;
-    
     public int $key;
-    
     public array $data;
-    
     /** All known temporary ids for the user */
     public array $temporaryIds;
-    
     public ?Channel $channel;
-    
     public ?UserAssociatedCompanyResultDetails $company;
-    
     public static function create() : UserResultDetails
     {
         $result = new UserResultDetails();

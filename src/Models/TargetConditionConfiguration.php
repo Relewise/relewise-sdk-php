@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class TargetConditionConfiguration
 {
     public FilterCollection $filters;
-    
     public static function create() : TargetConditionConfiguration
     {
         $result = new TargetConditionConfiguration();

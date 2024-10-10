@@ -7,9 +7,7 @@ abstract class intDataValueFacet extends intValueFacet
     public string $typeDefinition = "";
     
     public string $key;
-    
     public ?CollectionFilterType $collectionFilterType;
-    
     
     public static function hydrate(array $arr)
     {

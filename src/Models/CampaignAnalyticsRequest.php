@@ -9,11 +9,8 @@ class CampaignAnalyticsRequest extends LicensedRequest
     
     /** The campaign to provide analytics for. */
     public string $id;
-    
     public DateTimeRange $periodUtc;
-    
     public ?FilterCollection $filters;
-    
     public static function create(string $id, DateTimeRange $periodUtc, ?FilterCollection $filters) : CampaignAnalyticsRequest
     {
         $result = new CampaignAnalyticsRequest();

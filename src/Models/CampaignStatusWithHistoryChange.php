@@ -10,9 +10,7 @@ class CampaignStatusWithHistoryChange implements JsonSerializable
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Campaign+StatusWithHistory+Change, Relewise.Client";
     
     public DateTime $utcTime;
-    
     public CampaignStatusWithHistoryStatusName $status;
-    
     public static function create(DateTime $utcTime, CampaignStatusWithHistoryStatusName $status) : CampaignStatusWithHistoryChange
     {
         $result = new CampaignStatusWithHistoryChange();

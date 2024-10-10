@@ -6,7 +6,6 @@ class RetailMediaQuery
 {
     /** Defines the location (f.e. 'Home Page'), placements (f.e. 'main zone' and 'power action') for specific Variation (f.e. 'desktop'). */
     public RetailMediaQueryLocationSelector $location;
-    
     public static function create(RetailMediaQueryLocationSelector $location) : RetailMediaQuery
     {
         $result = new RetailMediaQuery();

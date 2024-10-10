@@ -7,17 +7,11 @@ abstract class RecommendationRequest extends LicensedRequest
     public string $typeDefinition = "";
     
     public ?Language $language;
-    
     public ?User $user;
-    
     public RelevanceModifierCollection $relevanceModifiers;
-    
     public FilterCollection $filters;
-    
     public string $displayedAtLocationType;
-    
     public ?Currency $currency;
-    
     
     public static function hydrate(array $arr)
     {

@@ -5,9 +5,7 @@ namespace Relewise\Models;
 class RedirectRulesRequestSortBySorting
 {
     public RedirectRulesRequestSortBy $sortBy;
-    
     public SortOrder $sortOrder;
-    
     public static function create(RedirectRulesRequestSortBy $sortBy, SortOrder $sortOrder) : RedirectRulesRequestSortBySorting
     {
         $result = new RedirectRulesRequestSortBySorting();

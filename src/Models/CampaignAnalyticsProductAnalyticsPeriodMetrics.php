@@ -10,13 +10,9 @@ class CampaignAnalyticsProductAnalyticsPeriodMetrics implements JsonSerializable
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.CampaignAnalytics+ProductAnalytics+PeriodMetrics, Relewise.Client";
     
     public DateTime $periodFromUtc;
-    
     public int $views;
-    
     public int $salesQuantity;
-    
     public array $currencies;
-    
     public static function create(DateTime $periodFromUtc, int $views, int $salesQuantity, CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics ... $currencies) : CampaignAnalyticsProductAnalyticsPeriodMetrics
     {
         $result = new CampaignAnalyticsProductAnalyticsPeriodMetrics();

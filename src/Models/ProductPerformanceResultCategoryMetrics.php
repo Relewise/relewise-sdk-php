@@ -5,11 +5,8 @@ namespace Relewise\Models;
 class ProductPerformanceResultCategoryMetrics
 {
     public CategoryNameAndIdResult $category;
-    
     public bool $immediateParent;
-    
     public ProductPerformanceResultViewsAndSalesMetrics $rank;
-    
     public static function create() : ProductPerformanceResultCategoryMetrics
     {
         $result = new ProductPerformanceResultCategoryMetrics();

@@ -5,9 +5,7 @@ namespace Relewise\Models;
 class floatChainableRange
 {
     public ?float $lowerBoundInclusive;
-    
     public ?float $upperBoundExclusive;
-    
     public static function create(?float $lowerBoundInclusive, ?float $upperBoundExclusive) : floatChainableRange
     {
         $result = new floatChainableRange();

@@ -7,7 +7,6 @@ class ContentDataHasKeyFilter extends Filter
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentDataHasKeyFilter, Relewise.Client";
     
     public string $key;
-    
     public static function create(string $key, bool $negated = false) : ContentDataHasKeyFilter
     {
         $result = new ContentDataHasKeyFilter();

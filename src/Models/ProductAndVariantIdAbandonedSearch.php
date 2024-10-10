@@ -8,7 +8,6 @@ abstract class ProductAndVariantIdAbandonedSearch extends AbandonedSearch
     
     public array $topResults;
     
-    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

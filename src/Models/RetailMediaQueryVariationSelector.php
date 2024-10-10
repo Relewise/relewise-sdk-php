@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class RetailMediaQueryVariationSelector
 {
     public string $key;
-    
     public static function create(string $key) : RetailMediaQueryVariationSelector
     {
         $result = new RetailMediaQueryVariationSelector();

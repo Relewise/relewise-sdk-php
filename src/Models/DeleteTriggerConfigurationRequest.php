@@ -7,7 +7,6 @@ class DeleteTriggerConfigurationRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Triggers.DeleteTriggerConfigurationRequest, Relewise.Client";
     
     public string $id;
-    
     public static function create(string $id) : DeleteTriggerConfigurationRequest
     {
         $result = new DeleteTriggerConfigurationRequest();

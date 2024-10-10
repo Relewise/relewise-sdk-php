@@ -7,7 +7,6 @@ class SearchIndexRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Search.SearchIndexRequest, Relewise.Client";
     
     public string $id;
-    
     public static function create(string $id) : SearchIndexRequest
     {
         $result = new SearchIndexRequest();

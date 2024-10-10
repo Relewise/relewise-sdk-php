@@ -5,19 +5,12 @@ namespace Relewise\Models;
 class ProductVariant
 {
     public string $id;
-    
     public ?Multilingual $displayName;
-    
     public ?array $assortments;
-    
     public ?array $specification;
-    
     public ?array $data;
-    
     public ?MultiCurrency $listPrice;
-    
     public ?MultiCurrency $salesPrice;
-    
     public static function create(string $variantId) : ProductVariant
     {
         $result = new ProductVariant();

@@ -5,15 +5,10 @@ namespace Relewise\Models;
 class MatchTypeSettings
 {
     public bool $compound;
-    
     public bool $exact;
-    
     public bool $startsWith;
-    
     public bool $endsWith;
-    
     public bool $fuzzy;
-    
     public static function create() : MatchTypeSettings
     {
         $result = new MatchTypeSettings();

@@ -7,7 +7,6 @@ class ContentsViewedAfterViewingMultipleContentsRequest extends ContentRecommend
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ContentsViewedAfterViewingMultipleContentsRequest, Relewise.Client";
     
     public array $contentIds;
-    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, string ... $contentIds) : ContentsViewedAfterViewingMultipleContentsRequest
     {
         $result = new ContentsViewedAfterViewingMultipleContentsRequest();

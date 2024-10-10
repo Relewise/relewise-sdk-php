@@ -5,13 +5,9 @@ namespace Relewise\Models;
 class VariantIndexConfiguration
 {
     public FieldIndexConfiguration $id;
-    
     public FieldIndexConfiguration $displayName;
-    
     public SpecificationsIndexConfiguration $specifications;
-    
     public DataIndexConfiguration $data;
-    
     public static function create() : VariantIndexConfiguration
     {
         $result = new VariantIndexConfiguration();

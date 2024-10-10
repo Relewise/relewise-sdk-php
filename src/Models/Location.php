@@ -9,16 +9,12 @@ class Location extends LocationEntityStateLocationMetadataValuesRetailMediaEntit
     
     /** The name of this location, e.g. "Front page", "PDP", "Home screen" etc. */
     public string $name;
-    
     /** A key which is automatically computed based on the name of the location. This will be used as identifier to reference this location when retrieving Retail Media content for it from the consuming client This value gets created the first time the location is saved and cannot be modified in the future. Manually assigning a value to this will have no effect. */
     public ?string $key;
-    
     /** The placements where promotions may be displayed at this location If null or empty, no promotions will be shown at this location */
     public ?LocationPlacementCollection $placements;
-    
     /** Defines what kinds of promotions are supported by this location */
     public ?PromotionSpecificationCollection $supportedPromotions;
-    
     public static function create(?string $id, LocationEntityState $state, string $name) : Location
     {
         $result = new Location();

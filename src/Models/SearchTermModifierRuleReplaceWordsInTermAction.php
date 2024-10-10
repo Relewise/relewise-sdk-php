@@ -7,9 +7,7 @@ class SearchTermModifierRuleReplaceWordsInTermAction extends SearchTermModifierR
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchTermModifierRule+ReplaceWordsInTermAction, Relewise.Client";
     
     public string $words;
-    
     public ?string $replacement;
-    
     public static function create(string $words, ?string $replacement) : SearchTermModifierRuleReplaceWordsInTermAction
     {
         $result = new SearchTermModifierRuleReplaceWordsInTermAction();

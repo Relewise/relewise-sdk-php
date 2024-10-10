@@ -7,9 +7,7 @@ class ContentSearchSettings extends SearchSettings
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.ContentSearchSettings, Relewise.Client";
     
     public ?SelectedContentPropertiesSettings $selectedContentProperties;
-    
     public RecommendationSettings $recommendations;
-    
     public static function create() : ContentSearchSettings
     {
         $result = new ContentSearchSettings();

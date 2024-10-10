@@ -8,7 +8,6 @@ abstract class floatContentDataRangesFacetResult extends floatRangesFacetResult
     
     public string $key;
     
-    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

@@ -5,11 +5,8 @@ namespace Relewise\Models;
 class boolAvailableFacetValue
 {
     public bool $value;
-    
     public int $hits;
-    
     public bool $selected;
-    
     public static function create(bool $value, bool $selected, int $hits) : boolAvailableFacetValue
     {
         $result = new boolAvailableFacetValue();

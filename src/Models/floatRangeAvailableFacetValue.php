@@ -5,11 +5,8 @@ namespace Relewise\Models;
 class floatRangeAvailableFacetValue
 {
     public ?floatRange $value;
-    
     public int $hits;
-    
     public bool $selected;
-    
     public static function create(?floatRange $value, bool $selected, int $hits) : floatRangeAvailableFacetValue
     {
         $result = new floatRangeAvailableFacetValue();

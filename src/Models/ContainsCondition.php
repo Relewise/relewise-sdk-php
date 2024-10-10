@@ -7,11 +7,8 @@ class ContainsCondition extends ValueCondition
     public string $typeDefinition = "Relewise.Client.Requests.Conditions.ContainsCondition, Relewise.Client";
     
     public ?DataValue $value;
-    
     public ContainsConditionCollectionArgumentEvaluationMode $valueCollectionEvaluationMode;
-    
     public ?DataObjectFilter $objectFilter;
-    
     public static function create(bool $negated = false) : ContainsCondition
     {
         $result = new ContainsCondition();

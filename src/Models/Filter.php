@@ -9,9 +9,7 @@ abstract class Filter
     
     /** Defines whether the Filter should exclude the matching entities instead of including the matching entities. */
     public bool $negated;
-    
     public ?FilterSettings $settings;
-    
     
     public static function hydrate(array $arr)
     {

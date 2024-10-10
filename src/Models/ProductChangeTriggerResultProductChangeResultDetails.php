@@ -8,13 +8,9 @@ use JsonSerializable;
 class ProductChangeTriggerResultProductChangeResultDetails implements JsonSerializable
 {
     public DateTime $changeTimeUtc;
-    
     public DataValue $oldValue;
-    
     public DataValue $newValue;
-    
     public ProductResultDetails $product;
-    
     public static function create(DateTime $changeTimeUtc, DataValue $oldValue, DataValue $newValue, ProductResultDetails $product) : ProductChangeTriggerResultProductChangeResultDetails
     {
         $result = new ProductChangeTriggerResultProductChangeResultDetails();

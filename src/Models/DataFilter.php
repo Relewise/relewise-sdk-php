@@ -7,19 +7,12 @@ abstract class DataFilter extends Filter
     public string $typeDefinition = "";
     
     public string $key;
-    
     public bool $filterOutIfKeyIsNotFound;
-    
     public bool $mustMatchAllConditions;
-    
     public ?ValueConditionCollection $conditions;
-    
     public ?Language $language;
-    
     public ?Currency $currency;
-    
     public ?array $objectPath;
-    
     
     public static function hydrate(array $arr)
     {

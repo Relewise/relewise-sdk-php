@@ -11,19 +11,14 @@ abstract class VariantChangeTriggerResultVariantChangeTriggerResultSettingsVaria
     
     /** The selector used for choosing which property of the entity the trigger should look for change in. */
     public ?VariantPropertySelector $entityPropertySelector;
-    
     /** The filter that specifies which entities the trigger should track changes for. */
     public FilterCollection $beforeChangeFilters;
-    
     /** The filter for what state the tracked entities should have once they have changed to be included in the results. */
     public FilterCollection $afterChangeFilters;
-    
     /** The type of change that should happen to the value selected by the EntityPropertySelector for an entity to be considered part of the results. */
     public IChange $change;
-    
     /** Settings for defining which properties should be included in the result of the trigger. */
     public ?VariantChangeTriggerResultSettings $resultSettings;
-    
     
     public static function hydrate(array $arr)
     {

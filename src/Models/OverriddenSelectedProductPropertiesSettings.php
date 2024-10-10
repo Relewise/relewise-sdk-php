@@ -5,25 +5,15 @@ namespace Relewise\Models;
 class OverriddenSelectedProductPropertiesSettings
 {
     public ?bool $displayName;
-    
     public ?bool $categoryPaths;
-    
     public ?bool $assortments;
-    
     public ?bool $pricing;
-    
     public ?bool $allData;
-    
     public ?bool $viewedByUserInfo;
-    
     public ?bool $purchasedByUserInfo;
-    
     public ?bool $brand;
-    
     public ?bool $allVariants;
-    
     public array $dataKeys;
-    
     public static function create() : OverriddenSelectedProductPropertiesSettings
     {
         $result = new OverriddenSelectedProductPropertiesSettings();

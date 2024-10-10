@@ -7,13 +7,9 @@ class ContentSearchRequest extends PaginatedSearchRequest
     public string $typeDefinition = "Relewise.Client.Requests.Search.ContentSearchRequest, Relewise.Client";
     
     public ?string $term;
-    
     public ?ContentFacetQuery $facets;
-    
     public ?ContentSearchSettings $settings;
-    
     public ?ContentSortBySpecification $sorting;
-    
     public static function create(?Language $language, ?Currency $currency, User $user, string $displayedAtLocation, ?string $term, int $skip, int $take) : ContentSearchRequest
     {
         $result = new ContentSearchRequest();

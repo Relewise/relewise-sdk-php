@@ -7,7 +7,6 @@ class BatchedTrackingRequest extends TrackingRequest
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.BatchedTrackingRequest, Relewise.Client";
     
     public array $items;
-    
     public static function create(Trackable ... $items) : BatchedTrackingRequest
     {
         $result = new BatchedTrackingRequest();

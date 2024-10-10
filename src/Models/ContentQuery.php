@@ -7,19 +7,12 @@ class ContentQuery extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Queries.ContentQuery, Relewise.Client";
     
     public FilterCollection $filters;
-    
     public int $numberOfResults;
-    
     public ?Language $language;
-    
     public ?Currency $currency;
-    
     public int $skipNumberOfResults;
-    
     public bool $returnTotalNumberOfResults;
-    
     public bool $includeDisabledContents;
-    
     public static function create(?Language $language = Null, ?Currency $currency = Null) : ContentQuery
     {
         $result = new ContentQuery();

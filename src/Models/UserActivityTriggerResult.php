@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class UserActivityTriggerResult
 {
     public UserResultDetails $user;
-    
     public static function create() : UserActivityTriggerResult
     {
         $result = new UserActivityTriggerResult();

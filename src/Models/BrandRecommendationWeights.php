@@ -5,11 +5,8 @@ namespace Relewise\Models;
 class BrandRecommendationWeights
 {
     public float $brandViews;
-    
     public float $productViews;
-    
     public float $productPurchases;
-    
     public static function create(float $brandViews = 1, float $productViews = 1, float $productPurchases = 1) : BrandRecommendationWeights
     {
         $result = new BrandRecommendationWeights();

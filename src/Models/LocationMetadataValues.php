@@ -10,17 +10,11 @@ class LocationMetadataValues extends MetadataValues implements JsonSerializable
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Location+MetadataValues, Relewise.Client";
     
     public ?DateTime $inactivated;
-    
     public ?string $inactivatedBy;
-    
     public ?DateTime $activated;
-    
     public ?string $activatedBy;
-    
     public ?DateTime $archived;
-    
     public ?string $archivedBy;
-    
     public static function create() : LocationMetadataValues
     {
         $result = new LocationMetadataValues();

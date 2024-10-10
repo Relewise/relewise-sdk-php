@@ -9,13 +9,10 @@ class BrandIdRelevanceModifier extends RelevanceModifier
     
     /** The Id of the Brand that this RelevanceModifier will distinguish on. */
     public string $brandId;
-    
     /** The weight that the entity will be multiplied with if it matches the specific BrandId. */
     public float $ifProductIsBrandMultiplyWeightBy;
-    
     /** The weight that the entity will be multiplied with if it does not match the specific BrandId. */
     public float $ifProductIsNotBrandMultiplyWeightBy;
-    
     /**
      * Creates a RelevanceModifier that can change the relevance of an entity depending on a BrandId.
      * @param string $brandId The Id of the Brand that this RelevanceModifier will distinguish on.

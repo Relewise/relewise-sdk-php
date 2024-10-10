@@ -7,13 +7,9 @@ abstract class SearchTermModifierRulesRequestSortBySearchRulesRequest extends Li
     public string $typeDefinition = "";
     
     public SearchRuleFilters $filters;
-    
     public SearchTermModifierRulesRequestSortBySorting $sorting;
-    
     public int $skip;
-    
     public int $take;
-    
     
     public static function hydrate(array $arr)
     {

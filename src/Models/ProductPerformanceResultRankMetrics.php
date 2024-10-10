@@ -5,11 +5,8 @@ namespace Relewise\Models;
 class ProductPerformanceResultRankMetrics
 {
     public ProductPerformanceResultViewsAndSalesMetrics $overall;
-    
     public array $withinCategories;
-    
     public ProductPerformanceResultViewsAndSalesMetrics $withinBrand;
-    
     public static function create() : ProductPerformanceResultRankMetrics
     {
         $result = new ProductPerformanceResultRankMetrics();

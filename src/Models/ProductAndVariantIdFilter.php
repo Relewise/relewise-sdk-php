@@ -7,7 +7,6 @@ class ProductAndVariantIdFilter extends Filter
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductAndVariantIdFilter, Relewise.Client";
     
     public array $productAndVariantIds;
-    
     public static function create(bool $negated = false) : ProductAndVariantIdFilter
     {
         $result = new ProductAndVariantIdFilter();

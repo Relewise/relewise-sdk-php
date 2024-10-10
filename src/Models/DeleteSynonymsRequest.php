@@ -7,9 +7,7 @@ class DeleteSynonymsRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Search.DeleteSynonymsRequest, Relewise.Client";
     
     public array $ids;
-    
     public string $deletedBy;
-    
     public static function create(array $ids, string $deletedBy) : DeleteSynonymsRequest
     {
         $result = new DeleteSynonymsRequest();

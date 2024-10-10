@@ -8,13 +8,10 @@ abstract class ObjectValueCondition
     
     /** Whether the condition should be negated / inverted */
     public bool $negated;
-    
     /** The key of the object that the condition will compare against. */
     public string $key;
-    
     /** An optional path to some nested object defined under the selected Key. */
     public ?array $objectPath;
-    
     
     public static function hydrate(array $arr)
     {

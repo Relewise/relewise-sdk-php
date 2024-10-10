@@ -8,7 +8,6 @@ abstract class BrandRecommendationRequest extends RecommendationRequest
     
     public BrandRecommendationRequestSettings $settings;
     
-    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

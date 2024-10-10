@@ -7,9 +7,7 @@ class ProductVariantSpecificationSorting extends ProductSorting
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Product.ProductVariantSpecificationSorting, Relewise.Client";
     
     public string $key;
-    
     public SortMode $mode;
-    
     public static function create(string $key, SortOrder $order, SortMode $mode = SortMode::Auto) : ProductVariantSpecificationSorting
     {
         $result = new ProductVariantSpecificationSorting();

@@ -7,7 +7,6 @@ use Relewise\FacetResultExtractable\ProductFacetResultExtractable;
 class ProductFacetResult extends ProductFacetResultExtractable
 {
     public array $items;
-    
     public static function create() : ProductFacetResult
     {
         $result = new ProductFacetResult();

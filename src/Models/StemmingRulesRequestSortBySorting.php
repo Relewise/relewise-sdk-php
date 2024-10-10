@@ -5,9 +5,7 @@ namespace Relewise\Models;
 class StemmingRulesRequestSortBySorting
 {
     public StemmingRulesRequestSortBy $sortBy;
-    
     public SortOrder $sortOrder;
-    
     public static function create(StemmingRulesRequestSortBy $sortBy, SortOrder $sortOrder) : StemmingRulesRequestSortBySorting
     {
         $result = new StemmingRulesRequestSortBySorting();

@@ -7,10 +7,8 @@ abstract class CampaignEntityStateCampaignMetadataValuesRetailMediaEntity extend
     public string $typeDefinition = "";
     
     public CampaignEntityState $state;
-    
     /** Managed server side only, manually setting this will have no effect */
     public CampaignMetadataValues $metadata;
-    
     
     public static function hydrate(array $arr)
     {

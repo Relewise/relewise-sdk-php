@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class PromotionLocationCollection
 {
     public array $items;
-    
     public static function create(PromotionLocation ... $placements) : PromotionLocationCollection
     {
         $result = new PromotionLocationCollection();

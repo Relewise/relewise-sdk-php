@@ -5,9 +5,7 @@ namespace Relewise\Models;
 class LocationsRequestSortBySorting
 {
     public LocationsRequestSortBy $sortBy;
-    
     public SortOrder $sortOrder;
-    
     public static function create(LocationsRequestSortBy $sortBy, SortOrder $sortOrder) : LocationsRequestSortBySorting
     {
         $result = new LocationsRequestSortBySorting();

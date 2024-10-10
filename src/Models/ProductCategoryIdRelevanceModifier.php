@@ -9,16 +9,12 @@ class ProductCategoryIdRelevanceModifier extends RelevanceModifier
     
     /** The Id of the Category that this RelevanceModifier will multiply the weight for. */
     public string $categoryId;
-    
     /** The relative Category levels that this RelevanceModifier should match with. */
     public CategoryScope $evaluationScope;
-    
     /** The weight that this RelevanceModifier will multiply relevant products with. */
     public float $multiplyWeightBy;
-    
     /** Determines whether this RelevanceModifier should apply to all the Products that don't match the specific CategoryId instead. */
     public bool $negated;
-    
     /**
      * Creates a RelevanceModifier that can change the relevance of a Product depending on if the product is in a category that matches the given CategoryId and EvaluationScope.
      * @param string $categoryId The Id of the Category that this RelevanceModifier will multiply the weight for.

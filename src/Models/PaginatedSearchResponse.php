@@ -8,7 +8,6 @@ abstract class PaginatedSearchResponse extends SearchResponse
     
     public int $hits;
     
-    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

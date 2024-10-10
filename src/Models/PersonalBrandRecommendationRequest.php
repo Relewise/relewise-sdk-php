@@ -7,9 +7,7 @@ class PersonalBrandRecommendationRequest extends BrandRecommendationRequest
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PersonalBrandRecommendationRequest, Relewise.Client";
     
     public int $sinceMinutesAgo;
-    
     public BrandRecommendationWeights $weights;
-    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, BrandRecommendationWeights $weights) : PersonalBrandRecommendationRequest
     {
         $result = new PersonalBrandRecommendationRequest();

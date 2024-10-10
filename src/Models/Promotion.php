@@ -7,9 +7,7 @@ abstract class Promotion
     public string $typeDefinition = "";
     
     public string $name;
-    
     public ?PromotionLocationCollection $locations;
-    
     
     public static function hydrate(array $arr)
     {

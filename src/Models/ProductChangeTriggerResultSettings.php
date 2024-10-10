@@ -5,9 +5,7 @@ namespace Relewise\Models;
 class ProductChangeTriggerResultSettings
 {
     public SelectedProductDetailsPropertiesSettings $selectedProductProperties;
-    
     public SelectedVariantDetailsPropertiesSettings $selectedVariantProperties;
-    
     public static function create() : ProductChangeTriggerResultSettings
     {
         $result = new ProductChangeTriggerResultSettings();

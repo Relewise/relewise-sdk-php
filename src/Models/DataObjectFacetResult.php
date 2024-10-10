@@ -7,11 +7,8 @@ class DataObjectFacetResult extends FacetResult
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.DataObjectFacetResult, Relewise.Client";
     
     public string $key;
-    
     public array $items;
-    
     public DataObjectFilter $filter;
-    
     public static function create(string $key, array $items, DataObjectFilter $filter) : DataObjectFacetResult
     {
         $result = new DataObjectFacetResult();

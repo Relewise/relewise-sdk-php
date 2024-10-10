@@ -10,9 +10,7 @@ class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryR
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductCategoryResultDetails, Relewise.Client";
     
     public int $purchasedFromByDifferentNumberOfUsers;
-    
     public PurchasedByUserInfo $purchasedByUser;
-    
     public static function create(string $categoryId) : ProductCategoryResultDetails
     {
         $result = new ProductCategoryResultDetails();

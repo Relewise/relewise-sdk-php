@@ -7,9 +7,7 @@ abstract class StemmingRuleSearchRulesResponse extends TimedResponse
     public string $typeDefinition = "";
     
     public array $rules;
-    
     public int $hits;
-    
     
     public static function hydrate(array $arr)
     {

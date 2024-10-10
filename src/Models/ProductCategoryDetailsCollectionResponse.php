@@ -7,9 +7,7 @@ class ProductCategoryDetailsCollectionResponse extends TimedResponse
     public string $typeDefinition = "Relewise.Client.Responses.ProductCategoryDetailsCollectionResponse, Relewise.Client";
     
     public array $categories;
-    
     public ?int $totalNumberOfResults;
-    
     public static function create(array $categories, ?int $totalNumberOfResults) : ProductCategoryDetailsCollectionResponse
     {
         $result = new ProductCategoryDetailsCollectionResponse();

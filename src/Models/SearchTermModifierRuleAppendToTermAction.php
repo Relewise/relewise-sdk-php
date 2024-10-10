@@ -7,7 +7,6 @@ class SearchTermModifierRuleAppendToTermAction extends SearchTermModifierRuleRul
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchTermModifierRule+AppendToTermAction, Relewise.Client";
     
     public string $words;
-    
     public static function create(string $words) : SearchTermModifierRuleAppendToTermAction
     {
         $result = new SearchTermModifierRuleAppendToTermAction();

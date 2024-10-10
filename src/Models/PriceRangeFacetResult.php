@@ -7,11 +7,8 @@ class PriceRangeFacetResult extends FacetResult
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.PriceRangeFacetResult, Relewise.Client";
     
     public ?floatRange $selected;
-    
     public floatRangeAvailableFacetValue $available;
-    
     public PriceSelectionStrategy $priceSelectionStrategy;
-    
     public static function create(FacetingField $field, PriceSelectionStrategy $priceSelectionStrategy, ?floatRange $selected, floatRangeAvailableFacetValue $available) : PriceRangeFacetResult
     {
         $result = new PriceRangeFacetResult();

@@ -7,19 +7,12 @@ class BrandQuery extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Queries.BrandQuery, Relewise.Client";
     
     public FilterCollection $filters;
-    
     public int $numberOfResults;
-    
     public ?Language $language;
-    
     public ?Currency $currency;
-    
     public int $skipNumberOfResults;
-    
     public bool $returnTotalNumberOfResults;
-    
     public bool $includeDisabledBrands;
-    
     public static function create(?Language $language = Null, ?Currency $currency = Null) : BrandQuery
     {
         $result = new BrandQuery();

@@ -5,17 +5,11 @@ namespace Relewise\Models;
 class SelectedContentPropertiesSettings
 {
     public bool $displayName;
-    
     public bool $categoryPaths;
-    
     public bool $assortments;
-    
     public bool $allData;
-    
     public bool $viewedByUserInfo;
-    
     public ?array $dataKeys;
-    
     public static function create() : SelectedContentPropertiesSettings
     {
         $result = new SelectedContentPropertiesSettings();

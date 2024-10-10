@@ -9,7 +9,6 @@ class ProductPromotionSpecification extends PromotionSpecification
     
     /** Filters matching the products which may be promoted */
     public ?FilterCollection $promotableProducts;
-    
     public static function create(?FilterCollection $promotableProducts) : ProductPromotionSpecification
     {
         $result = new ProductPromotionSpecification();

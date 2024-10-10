@@ -7,13 +7,9 @@ abstract class PredictionRulesRequestSortBySearchRulesRequest extends LicensedRe
     public string $typeDefinition = "";
     
     public SearchRuleFilters $filters;
-    
     public PredictionRulesRequestSortBySorting $sorting;
-    
     public int $skip;
-    
     public int $take;
-    
     
     public static function hydrate(array $arr)
     {

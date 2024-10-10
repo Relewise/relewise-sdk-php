@@ -5,31 +5,18 @@ namespace Relewise\Models;
 class SelectedProductDetailsPropertiesSettings
 {
     public bool $displayName;
-    
     public bool $categoryPaths;
-    
     public bool $assortments;
-    
     public bool $pricing;
-    
     public bool $allData;
-    
     public bool $viewedByUserInfo;
-    
     public bool $purchasedByUserInfo;
-    
     public bool $brand;
-    
     public bool $allVariants;
-    
     public ?array $dataKeys;
-    
     public bool $viewedByUserCompanyInfo;
-    
     public bool $purchasedByUserCompanyInfo;
-    
     public ?FilteredVariantsSettings $filteredVariants;
-    
     public static function create() : SelectedProductDetailsPropertiesSettings
     {
         $result = new SelectedProductDetailsPropertiesSettings();

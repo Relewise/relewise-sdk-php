@@ -9,7 +9,6 @@ class VariantSpecificationsInCommonRelevanceModifier extends RelevanceModifier
     
     /** A collection of KeyMultiplier that each define a certain key and value that the relevance should be multiplied with if matching on this key. The default multiplier for keys not included, is 1.0. */
     public array $specificationKeysAndMultipliers;
-    
     /**
      * Creates a RelevanceModifier that can change the relevance of a Variant depending on whether certain SpecificationKeysAndMultipliers match with a specific variant.
      * @param KeyMultiplier[] $specificationKeysAndMultipliers A collection of KeyMultiplier that each define a certain key and value that the relevance should be multiplied with if matching on this key. The default multiplier for keys not included, is 1.0.

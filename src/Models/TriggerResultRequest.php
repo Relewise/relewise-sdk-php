@@ -7,7 +7,6 @@ class TriggerResultRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Triggers.TriggerResultRequest, Relewise.Client";
     
     public string $configurationId;
-    
     public static function create(string $configurationId) : TriggerResultRequest
     {
         $result = new TriggerResultRequest();

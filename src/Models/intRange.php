@@ -5,9 +5,7 @@ namespace Relewise\Models;
 class intRange
 {
     public ?int $lowerBoundInclusive;
-    
     public ?int $upperBoundInclusive;
-    
     public static function create(?int $lowerBoundInclusive, ?int $upperBoundInclusive) : intRange
     {
         $result = new intRange();

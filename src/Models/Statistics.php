@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class Statistics
 {
     public float $serverTimeInMs;
-    
     public static function create() : Statistics
     {
         $result = new Statistics();

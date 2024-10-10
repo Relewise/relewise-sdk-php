@@ -7,9 +7,7 @@ class SynonymsResponse extends TimedResponse
     public string $typeDefinition = "Relewise.Client.Responses.Search.SynonymsResponse, Relewise.Client";
     
     public array $values;
-    
     public int $hits;
-    
     public static function create(array $values, int $hits) : SynonymsResponse
     {
         $result = new SynonymsResponse();

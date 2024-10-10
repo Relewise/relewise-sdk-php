@@ -7,9 +7,7 @@ class HasActivityCondition extends UserCondition
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasActivityCondition, Relewise.Client";
     
     public int $withinMinutes;
-    
     public int $forAtLeastSeconds;
-    
     public static function create(bool $negated) : HasActivityCondition
     {
         $result = new HasActivityCondition();

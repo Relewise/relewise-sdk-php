@@ -5,11 +5,8 @@ namespace Relewise\Models;
 class BrandNameAndIdResultAvailableFacetValue
 {
     public BrandNameAndIdResult $value;
-    
     public int $hits;
-    
     public bool $selected;
-    
     public static function create(BrandNameAndIdResult $value, bool $selected, int $hits) : BrandNameAndIdResultAvailableFacetValue
     {
         $result = new BrandNameAndIdResultAvailableFacetValue();

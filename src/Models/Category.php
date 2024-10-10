@@ -7,15 +7,10 @@ abstract class Category
     public string $typeDefinition = "";
     
     public string $id;
-    
     public Multilingual $displayName;
-    
     public array $categoryPaths;
-    
     public array $assortments;
-    
     public array $data;
-    
     
     public static function hydrate(array $arr)
     {

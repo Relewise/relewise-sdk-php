@@ -5,11 +5,8 @@ namespace Relewise\Models;
 class floatChainableRangeAvailableFacetValue
 {
     public ?floatChainableRange $value;
-    
     public int $hits;
-    
     public bool $selected;
-    
     public static function create(?floatChainableRange $value, bool $selected, int $hits) : floatChainableRangeAvailableFacetValue
     {
         $result = new floatChainableRangeAvailableFacetValue();

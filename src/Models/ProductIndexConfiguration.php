@@ -5,17 +5,11 @@ namespace Relewise\Models;
 class ProductIndexConfiguration
 {
     public FieldIndexConfiguration $id;
-    
     public FieldIndexConfiguration $displayName;
-    
     public CategoryIndexConfiguration $category;
-    
     public BrandIndexConfiguration $brand;
-    
     public DataIndexConfiguration $data;
-    
     public VariantIndexConfiguration $variants;
-    
     public static function create() : ProductIndexConfiguration
     {
         $result = new ProductIndexConfiguration();

@@ -5,13 +5,9 @@ namespace Relewise\Models;
 class ProductPerformanceResultSalesMetrics
 {
     public int $orders;
-    
     public float $averageNoOfLineItems;
-    
     public array $currencies;
-    
     public ProductPerformanceResultSalesWithKnownCartOpenerMetrics $withKnownCartOpener;
-    
     public static function create() : ProductPerformanceResultSalesMetrics
     {
         $result = new ProductPerformanceResultSalesMetrics();

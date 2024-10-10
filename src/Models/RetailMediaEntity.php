@@ -8,7 +8,6 @@ abstract class RetailMediaEntity
     
     public ?string $id;
     
-    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

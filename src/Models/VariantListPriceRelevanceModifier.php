@@ -9,16 +9,12 @@ class VariantListPriceRelevanceModifier extends RelevanceModifier
     
     /** The range of list prices that this RelevanceModifier will distinguish on. */
     public ?floatRange $range;
-    
     /** The currency that is used to distinguish the price. */
     public ?Currency $currency;
-    
     /** The weight that this RelevanceModifier will multiply relevant products with. */
     public float $multiplyWeightBy;
-    
     /** Determines whether this RelevanceModifier should apply to all the Variants that aren't contained within the specific Range instead. */
     public bool $negated;
-    
     /**
      * Creates a RelevanceModifier that can change the relevance of a Variant depending on the list price falling within a specific Range.
      * @param ?floatRange $range The range of list prices that this RelevanceModifier will distinguish on.

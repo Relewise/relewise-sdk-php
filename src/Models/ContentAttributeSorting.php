@@ -7,9 +7,7 @@ class ContentAttributeSorting extends ContentSorting
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Content.ContentAttributeSorting, Relewise.Client";
     
     public ContentAttributeSortingSortableAttribute $attribute;
-    
     public SortMode $mode;
-    
     public static function create(ContentAttributeSortingSortableAttribute $attribute, SortOrder $order, SortMode $mode = SortMode::Auto) : ContentAttributeSorting
     {
         $result = new ContentAttributeSorting();

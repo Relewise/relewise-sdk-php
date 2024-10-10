@@ -7,9 +7,7 @@ class TriggerConfigurationRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Triggers.TriggerConfigurationRequest, Relewise.Client";
     
     public string $id;
-    
     public ?int $type;
-    
     public static function create(string $id) : TriggerConfigurationRequest
     {
         $result = new TriggerConfigurationRequest();

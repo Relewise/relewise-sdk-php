@@ -7,11 +7,8 @@ class VariantSpecificationFilter extends Filter
     public string $typeDefinition = "Relewise.Client.Requests.Filters.VariantSpecificationFilter, Relewise.Client";
     
     public string $key;
-    
     public bool $filterOutIfKeyIsNotFound;
-    
     public string $equalTo;
-    
     public static function create(string $key, string $equalToValue, bool $filterOutIfKeyIsNotFound = true) : VariantSpecificationFilter
     {
         $result = new VariantSpecificationFilter();

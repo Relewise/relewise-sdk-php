@@ -7,13 +7,9 @@ abstract class DecompoundRulesRequestSortBySearchRulesRequest extends LicensedRe
     public string $typeDefinition = "";
     
     public SearchRuleFilters $filters;
-    
     public DecompoundRulesRequestSortBySorting $sorting;
-    
     public int $skip;
-    
     public int $take;
-    
     
     public static function hydrate(array $arr)
     {

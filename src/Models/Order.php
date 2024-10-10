@@ -7,17 +7,11 @@ class Order extends Trackable
     public string $typeDefinition = "Relewise.Client.DataTypes.Order, Relewise.Client";
     
     public ?User $user;
-    
     public Money $subtotal;
-    
     public array $lineItems;
-    
     public string $orderNumber;
-    
     public string $cartName;
-    
     public ?array $data;
-    
     public static function create(User $user, Money $subtotal, string $orderNumber, array $lineItems, string $cartName = "default") : Order
     {
         $result = new Order();

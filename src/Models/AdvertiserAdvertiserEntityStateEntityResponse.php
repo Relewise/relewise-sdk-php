@@ -7,11 +7,8 @@ abstract class AdvertiserAdvertiserEntityStateEntityResponse extends TimedRespon
     public string $typeDefinition = "";
     
     public array $entities;
-    
     public int $hits;
-    
     public array $hitsPerState;
-    
     
     public static function hydrate(array $arr)
     {

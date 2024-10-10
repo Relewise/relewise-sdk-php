@@ -7,9 +7,7 @@ abstract class ProductCategorySortingSorting
     public string $typeDefinition = "";
     
     public SortOrder $order;
-    
     public ProductCategorySorting $thenBy;
-    
     
     public static function hydrate(array $arr)
     {

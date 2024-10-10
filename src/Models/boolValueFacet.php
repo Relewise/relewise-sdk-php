@@ -8,7 +8,6 @@ abstract class boolValueFacet extends Facet
     
     public ?array $selected;
     
-    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

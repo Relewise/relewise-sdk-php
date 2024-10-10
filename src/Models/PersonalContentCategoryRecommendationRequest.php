@@ -7,9 +7,7 @@ class PersonalContentCategoryRecommendationRequest extends ContentCategoryRecomm
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PersonalContentCategoryRecommendationRequest, Relewise.Client";
     
     public int $sinceMinutesAgo;
-    
     public ContentCategoryRecommendationWeights $weights;
-    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ContentCategoryRecommendationWeights $weights) : PersonalContentCategoryRecommendationRequest
     {
         $result = new PersonalContentCategoryRecommendationRequest();

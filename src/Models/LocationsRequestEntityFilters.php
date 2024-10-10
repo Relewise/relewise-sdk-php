@@ -7,9 +7,7 @@ class LocationsRequestEntityFilters extends LocationEntityStateLocationMetadataV
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.LocationsRequest+EntityFilters, Relewise.Client";
     
     public ?array $ids;
-    
     public ?array $keys;
-    
     public static function create() : LocationsRequestEntityFilters
     {
         $result = new LocationsRequestEntityFilters();

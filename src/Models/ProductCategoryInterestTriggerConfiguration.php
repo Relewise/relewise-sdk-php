@@ -10,11 +10,8 @@ class ProductCategoryInterestTriggerConfiguration extends ProductCategoryInteres
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.ProductCategoryInterestTriggerConfiguration, Relewise.Client";
     
     public ?intRange $categoryViews;
-    
     public ?intRange $productViews;
-    
     public FilterCollection $filters;
-    
     public static function create(string $name, string $description, ?intRange $categoryViews, ?intRange $productViews, FilterCollection $filters = Null) : ProductCategoryInterestTriggerConfiguration
     {
         $result = new ProductCategoryInterestTriggerConfiguration();

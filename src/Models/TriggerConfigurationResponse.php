@@ -7,7 +7,6 @@ class TriggerConfigurationResponse extends TimedResponse
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.TriggerConfigurationResponse, Relewise.Client";
     
     public TriggerConfiguration $configuration;
-    
     public static function create() : TriggerConfigurationResponse
     {
         $result = new TriggerConfigurationResponse();

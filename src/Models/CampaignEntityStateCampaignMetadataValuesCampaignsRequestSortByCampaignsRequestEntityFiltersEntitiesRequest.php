@@ -7,13 +7,9 @@ abstract class CampaignEntityStateCampaignMetadataValuesCampaignsRequestSortByCa
     public string $typeDefinition = "";
     
     public ?CampaignsRequestEntityFilters $filters;
-    
     public ?CampaignsRequestSortBySorting $sorting;
-    
     public int $skip;
-    
     public int $take;
-    
     
     public static function hydrate(array $arr)
     {

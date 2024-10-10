@@ -8,21 +8,13 @@ abstract class SearchRequest extends LicensedRequest
     public string $typeDefinition = "";
     
     public ?Language $language;
-    
     public ?Currency $currency;
-    
     public ?User $user;
-    
     public ?string $displayedAtLocation;
-    
     public ?RelevanceModifierCollection $relevanceModifiers;
-    
     public ?FilterCollection $filters;
-    
     public ?SearchIndexSelector $indexSelector;
-    
     public ?FilterCollection $postFilters;
-    
     
     public static function hydrate(array $arr)
     {

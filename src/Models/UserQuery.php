@@ -7,11 +7,8 @@ class UserQuery extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Queries.UserQuery, Relewise.Client";
     
     public array $criteria;
-    
     public ?Language $language;
-    
     public ?Currency $currency;
-    
     public static function create(?Language $language, ?Currency $currency, UserQueryCriteria ... $criteria) : UserQuery
     {
         $result = new UserQuery();

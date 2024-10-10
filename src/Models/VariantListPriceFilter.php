@@ -7,9 +7,7 @@ class VariantListPriceFilter extends Filter
     public string $typeDefinition = "Relewise.Client.Requests.Filters.VariantListPriceFilter, Relewise.Client";
     
     public ?floatRange $range;
-    
     public ?Currency $currency;
-    
     public static function create(?floatRange $range, ?Currency $currency = Null, bool $negated = false) : VariantListPriceFilter
     {
         $result = new VariantListPriceFilter();

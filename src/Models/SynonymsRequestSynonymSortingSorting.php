@@ -5,9 +5,7 @@ namespace Relewise\Models;
 class SynonymsRequestSynonymSortingSorting
 {
     public SynonymsRequestSynonymSorting $sortBy;
-    
     public SortOrder $sortOrder;
-    
     public static function create(SynonymsRequestSynonymSorting $sortBy, SortOrder $sortOrder) : SynonymsRequestSynonymSortingSorting
     {
         $result = new SynonymsRequestSynonymSortingSorting();

@@ -8,7 +8,6 @@ abstract class stringProductDataValueFacet extends stringDataValueFacet
     
     public DataSelectionStrategy $dataSelectionStrategy;
     
-    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

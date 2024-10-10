@@ -7,7 +7,6 @@ class SearchTermPredictionResponse extends SearchResponse
     public string $typeDefinition = "Relewise.Client.Responses.Search.SearchTermPredictionResponse, Relewise.Client";
     
     public array $predictions;
-    
     public static function create() : SearchTermPredictionResponse
     {
         $result = new SearchTermPredictionResponse();

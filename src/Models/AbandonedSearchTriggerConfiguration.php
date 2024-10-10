@@ -10,13 +10,9 @@ class AbandonedSearchTriggerConfiguration extends AbandonedSearchTriggerResultTr
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.AbandonedSearchTriggerConfiguration, Relewise.Client";
     
     public array $searchTypesInPrioritizedOrder;
-    
     public ?SearchTermCondition $searchTermCondition;
-    
     public bool $suppressOnEntityFromSearchResultViewed;
-    
     public int $considerAbandonedAfterMinutes;
-    
     public static function create(string $name, string $description, array $searchTypesInPrioritizedOrder, ?SearchTermCondition $searchTermCondition = Null, bool $suppressOnEntityFromSearchResultViewed = true) : AbandonedSearchTriggerConfiguration
     {
         $result = new AbandonedSearchTriggerConfiguration();

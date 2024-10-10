@@ -10,7 +10,6 @@ class AbandonedCartTriggerConfiguration extends AbandonedCartTriggerResultTrigge
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.AbandonedCartTriggerConfiguration, Relewise.Client";
     
     public string $cartName;
-    
     public static function create(string $name, string $description, string $cartName = Null) : AbandonedCartTriggerConfiguration
     {
         $result = new AbandonedCartTriggerConfiguration();

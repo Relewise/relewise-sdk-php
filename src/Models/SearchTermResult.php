@@ -5,11 +5,8 @@ namespace Relewise\Models;
 class SearchTermResult
 {
     public string $term;
-    
     public int $rank;
-    
     public array $expectedResultTypes;
-    
     public static function create() : SearchTermResult
     {
         $result = new SearchTermResult();

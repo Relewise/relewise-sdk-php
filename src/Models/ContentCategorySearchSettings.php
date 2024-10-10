@@ -7,9 +7,7 @@ class ContentCategorySearchSettings extends SearchSettings
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.ContentCategorySearchSettings, Relewise.Client";
     
     public ?int $numberOfRecommendations;
-    
     public ?bool $onlyIncludeRecommendationsForEmptyResults;
-    
     public static function create() : ContentCategorySearchSettings
     {
         $result = new ContentCategorySearchSettings();

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class UserConditionCollection
 {
     public array $items;
-    
     public static function create(UserCondition ... $conditions) : UserConditionCollection
     {
         $result = new UserConditionCollection();

@@ -5,11 +5,8 @@ namespace Relewise\Models;
 class DataObjectFilter
 {
     public ?array $conditions;
-    
     public ?int $skip;
-    
     public ?int $take;
-    
     public static function create(ObjectValueCondition ... $conditions) : DataObjectFilter
     {
         $result = new DataObjectFilter();

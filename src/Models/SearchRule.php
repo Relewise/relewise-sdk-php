@@ -10,25 +10,15 @@ abstract class SearchRule implements JsonSerializable
     public string $typeDefinition = "";
     
     public string $id;
-    
     public ?ApplicableIndexes $indexes;
-    
     public ?ApplicableLanguages $languages;
-    
     public DateTime $created;
-    
     public string $createdBy;
-    
     public DateTime $modified;
-    
     public string $modifiedBy;
-    
     public ?DateTime $approved;
-    
     public string $approvedBy;
-    
     public bool $isApproved;
-    
     
     public static function hydrate(array $arr)
     {

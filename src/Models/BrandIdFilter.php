@@ -7,7 +7,6 @@ class BrandIdFilter extends Filter
     public string $typeDefinition = "Relewise.Client.Requests.Filters.BrandIdFilter, Relewise.Client";
     
     public array $brandIds;
-    
     public static function create(bool $negated = false) : BrandIdFilter
     {
         $result = new BrandIdFilter();
