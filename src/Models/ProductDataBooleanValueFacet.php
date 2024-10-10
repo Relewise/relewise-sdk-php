@@ -14,37 +14,44 @@ class ProductDataBooleanValueFacet extends boolProductDataValueFacet
         $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDataBooleanValueFacet
     {
         $result = boolProductDataValueFacet::hydrateBase(new ProductDataBooleanValueFacet(), $arr);
         return $result;
     }
+    
     function setDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
     {
         $this->dataSelectionStrategy = $dataSelectionStrategy;
         return $this;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setCollectionFilterType(?CollectionFilterType $collectionFilterType)
     {
         $this->collectionFilterType = $collectionFilterType;
         return $this;
     }
+    
     function setSelected(bool ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?bool[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(bool $selected)
     {
         if (!isset($this->selected))
@@ -54,11 +61,13 @@ class ProductDataBooleanValueFacet extends boolProductDataValueFacet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

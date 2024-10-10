@@ -7,6 +7,7 @@ class SearchResultModifierRuleAddTermFilterAction extends SearchResultModifierRu
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchResultModifierRule+AddTermFilterAction, Relewise.Client";
     public string $term;
     public bool $negated;
+    
     public static function create(string $term, bool $negated) : SearchResultModifierRuleAddTermFilterAction
     {
         $result = new SearchResultModifierRuleAddTermFilterAction();
@@ -14,6 +15,7 @@ class SearchResultModifierRuleAddTermFilterAction extends SearchResultModifierRu
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchResultModifierRuleAddTermFilterAction
     {
         $result = SearchResultModifierRuleRuleAction::hydrateBase(new SearchResultModifierRuleAddTermFilterAction(), $arr);
@@ -27,11 +29,13 @@ class SearchResultModifierRuleAddTermFilterAction extends SearchResultModifierRu
         }
         return $result;
     }
+    
     function setTerm(string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

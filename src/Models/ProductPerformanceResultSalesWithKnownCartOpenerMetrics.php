@@ -7,11 +7,13 @@ class ProductPerformanceResultSalesWithKnownCartOpenerMetrics
     public int $orders;
     public int $opened;
     public float $openedPercent;
+    
     public static function create() : ProductPerformanceResultSalesWithKnownCartOpenerMetrics
     {
         $result = new ProductPerformanceResultSalesWithKnownCartOpenerMetrics();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResultSalesWithKnownCartOpenerMetrics
     {
         $result = new ProductPerformanceResultSalesWithKnownCartOpenerMetrics();
@@ -29,16 +31,19 @@ class ProductPerformanceResultSalesWithKnownCartOpenerMetrics
         }
         return $result;
     }
+    
     function setOrders(int $orders)
     {
         $this->orders = $orders;
         return $this;
     }
+    
     function setOpened(int $opened)
     {
         $this->opened = $opened;
         return $this;
     }
+    
     function setOpenedPercent(float $openedPercent)
     {
         $this->openedPercent = $openedPercent;

@@ -7,6 +7,8 @@ abstract class stringDataValueFacet extends stringValueFacet
     public string $typeDefinition = "";
     public string $key;
     public ?CollectionFilterType $collectionFilterType;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -27,6 +29,7 @@ abstract class stringDataValueFacet extends stringValueFacet
             return ProductDataStringValueFacet::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = stringValueFacet::hydrateBase($result, $arr);
@@ -40,27 +43,32 @@ abstract class stringDataValueFacet extends stringValueFacet
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setCollectionFilterType(?CollectionFilterType $collectionFilterType)
     {
         $this->collectionFilterType = $collectionFilterType;
         return $this;
     }
+    
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -70,11 +78,13 @@ abstract class stringDataValueFacet extends stringValueFacet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

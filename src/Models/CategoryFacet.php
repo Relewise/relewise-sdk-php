@@ -6,6 +6,7 @@ class CategoryFacet extends stringValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.CategoryFacet, Relewise.Client";
     public CategorySelectionStrategy $categorySelectionStrategy;
+    
     public static function create(CategorySelectionStrategy $categorySelectionStrategy, string ... $selectedIds) : CategoryFacet
     {
         $result = new CategoryFacet();
@@ -13,6 +14,7 @@ class CategoryFacet extends stringValueFacet
         $result->selected = $selectedIds;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryFacet
     {
         $result = stringValueFacet::hydrateBase(new CategoryFacet(), $arr);
@@ -22,22 +24,26 @@ class CategoryFacet extends stringValueFacet
         }
         return $result;
     }
+    
     function setCategorySelectionStrategy(CategorySelectionStrategy $categorySelectionStrategy)
     {
         $this->categorySelectionStrategy = $categorySelectionStrategy;
         return $this;
     }
+    
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -47,11 +53,13 @@ class CategoryFacet extends stringValueFacet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

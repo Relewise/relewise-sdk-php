@@ -8,11 +8,13 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
     public array $results;
     public ProductCategoryFacetResult $facets;
     public array $recommendations;
+    
     public static function create() : ProductCategorySearchResponse
     {
         $result = new ProductCategorySearchResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategorySearchResponse
     {
         $result = PaginatedSearchResponse::hydrateBase(new ProductCategorySearchResponse(), $arr);
@@ -38,17 +40,20 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
         }
         return $result;
     }
+    
     function setResults(ProductCategoryResult ... $results)
     {
         $this->results = $results;
         return $this;
     }
+    
     /** @param ProductCategoryResult[] $results new value. */
     function setResultsFromArray(array $results)
     {
         $this->results = $results;
         return $this;
     }
+    
     function addToResults(ProductCategoryResult $results)
     {
         if (!isset($this->results))
@@ -58,22 +63,26 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
         array_push($this->results, $results);
         return $this;
     }
+    
     function setFacets(ProductCategoryFacetResult $facets)
     {
         $this->facets = $facets;
         return $this;
     }
+    
     function setRecommendations(ProductCategoryResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     /** @param ProductCategoryResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     function addToRecommendations(ProductCategoryResult $recommendations)
     {
         if (!isset($this->recommendations))
@@ -83,11 +92,13 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
         array_push($this->recommendations, $recommendations);
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

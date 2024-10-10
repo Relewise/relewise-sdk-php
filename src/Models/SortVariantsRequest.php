@@ -6,6 +6,7 @@ class SortVariantsRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.SortVariantsRequest, Relewise.Client";
     public string $productId;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, string $productId) : SortVariantsRequest
     {
         $result = new SortVariantsRequest();
@@ -16,6 +17,7 @@ class SortVariantsRequest extends ProductRecommendationRequest
         $result->productId = $productId;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SortVariantsRequest
     {
         $result = ProductRecommendationRequest::hydrateBase(new SortVariantsRequest(), $arr);
@@ -25,41 +27,49 @@ class SortVariantsRequest extends ProductRecommendationRequest
         }
         return $result;
     }
+    
     function setProductId(string $productId)
     {
         $this->productId = $productId;
         return $this;
     }
+    
     function setSettings(ProductRecommendationRequestSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setDisplayedAtLocationType(string $displayedAtLocationType)
     {
         $this->displayedAtLocationType = $displayedAtLocationType;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

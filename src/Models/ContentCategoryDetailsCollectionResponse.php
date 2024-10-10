@@ -7,6 +7,7 @@ class ContentCategoryDetailsCollectionResponse extends TimedResponse
     public string $typeDefinition = "Relewise.Client.Responses.ContentCategoryDetailsCollectionResponse, Relewise.Client";
     public array $categories;
     public ?int $totalNumberOfResults;
+    
     public static function create(array $categories, ?int $totalNumberOfResults) : ContentCategoryDetailsCollectionResponse
     {
         $result = new ContentCategoryDetailsCollectionResponse();
@@ -14,6 +15,7 @@ class ContentCategoryDetailsCollectionResponse extends TimedResponse
         $result->totalNumberOfResults = $totalNumberOfResults;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryDetailsCollectionResponse
     {
         $result = TimedResponse::hydrateBase(new ContentCategoryDetailsCollectionResponse(), $arr);
@@ -31,17 +33,20 @@ class ContentCategoryDetailsCollectionResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setCategories(ContentCategoryResultDetails ... $categories)
     {
         $this->categories = $categories;
         return $this;
     }
+    
     /** @param ContentCategoryResultDetails[] $categories new value. */
     function setCategoriesFromArray(array $categories)
     {
         $this->categories = $categories;
         return $this;
     }
+    
     function addToCategories(ContentCategoryResultDetails $categories)
     {
         if (!isset($this->categories))
@@ -51,11 +56,13 @@ class ContentCategoryDetailsCollectionResponse extends TimedResponse
         array_push($this->categories, $categories);
         return $this;
     }
+    
     function setTotalNumberOfResults(?int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

@@ -6,12 +6,14 @@ class SaveSynonymsResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.SaveSynonymsResponse, Relewise.Client";
     public array $values;
+    
     public static function create(Synonym ... $values) : SaveSynonymsResponse
     {
         $result = new SaveSynonymsResponse();
         $result->values = $values;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveSynonymsResponse
     {
         $result = TimedResponse::hydrateBase(new SaveSynonymsResponse(), $arr);
@@ -25,17 +27,20 @@ class SaveSynonymsResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setValues(Synonym ... $values)
     {
         $this->values = $values;
         return $this;
     }
+    
     /** @param Synonym[] $values new value. */
     function setValuesFromArray(array $values)
     {
         $this->values = $values;
         return $this;
     }
+    
     function addToValues(Synonym $values)
     {
         if (!isset($this->values))
@@ -45,6 +50,7 @@ class SaveSynonymsResponse extends TimedResponse
         array_push($this->values, $values);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

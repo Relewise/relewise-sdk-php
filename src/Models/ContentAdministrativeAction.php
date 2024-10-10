@@ -9,6 +9,7 @@ class ContentAdministrativeAction extends Trackable
     public ?Language $language;
     public ContentAdministrativeActionUpdateKind $kind;
     public ?Currency $currency;
+    
     public static function create(?Language $language, ?Currency $currency, FilterCollection $filters, ContentAdministrativeActionUpdateKind $kind) : ContentAdministrativeAction
     {
         $result = new ContentAdministrativeAction();
@@ -18,6 +19,7 @@ class ContentAdministrativeAction extends Trackable
         $result->kind = $kind;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentAdministrativeAction
     {
         $result = Trackable::hydrateBase(new ContentAdministrativeAction(), $arr);
@@ -39,21 +41,25 @@ class ContentAdministrativeAction extends Trackable
         }
         return $result;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setKind(ContentAdministrativeActionUpdateKind $kind)
     {
         $this->kind = $kind;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

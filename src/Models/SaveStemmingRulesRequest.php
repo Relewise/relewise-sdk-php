@@ -11,22 +11,26 @@ class SaveStemmingRulesRequest extends StemmingRuleSaveSearchRulesRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveStemmingRulesRequest
     {
         $result = StemmingRuleSaveSearchRulesRequest::hydrateBase(new SaveStemmingRulesRequest(), $arr);
         return $result;
     }
+    
     function setRules(StemmingRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param StemmingRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(StemmingRule $rules)
     {
         if (!isset($this->rules))
@@ -36,6 +40,7 @@ class SaveStemmingRulesRequest extends StemmingRuleSaveSearchRulesRequest
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

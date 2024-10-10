@@ -6,6 +6,7 @@ class ObjectValueIsSubsetOfCondition extends ObjectValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueIsSubsetOfCondition, Relewise.Client";
     public DataValue $value;
+    
     public static function create(string $key, DataValue $value, bool $negated = false) : ObjectValueIsSubsetOfCondition
     {
         $result = new ObjectValueIsSubsetOfCondition();
@@ -14,6 +15,7 @@ class ObjectValueIsSubsetOfCondition extends ObjectValueCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ObjectValueIsSubsetOfCondition
     {
         $result = ObjectValueCondition::hydrateBase(new ObjectValueIsSubsetOfCondition(), $arr);
@@ -23,32 +25,38 @@ class ObjectValueIsSubsetOfCondition extends ObjectValueCondition
         }
         return $result;
     }
+    
     function setValue(DataValue $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setObjectPath(string ... $objectPath)
     {
         $this->objectPath = $objectPath;
         return $this;
     }
+    
     /** @param ?string[] $objectPath new value. */
     function setObjectPathFromArray(array $objectPath)
     {
         $this->objectPath = $objectPath;
         return $this;
     }
+    
     function addToObjectPath(string $objectPath)
     {
         if (!isset($this->objectPath))

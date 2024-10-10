@@ -8,6 +8,7 @@ class ProductDisplayNameFilter extends Filter
     public ?Language $language;
     public ?ValueConditionCollection $conditions;
     public bool $mustMatchAllConditions;
+    
     public static function create(ValueConditionCollection $conditions, bool $mustMatchAllConditions = true, ?Language $language = Null) : ProductDisplayNameFilter
     {
         $result = new ProductDisplayNameFilter();
@@ -16,6 +17,7 @@ class ProductDisplayNameFilter extends Filter
         $result->language = $language;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDisplayNameFilter
     {
         $result = Filter::hydrateBase(new ProductDisplayNameFilter(), $arr);
@@ -33,26 +35,31 @@ class ProductDisplayNameFilter extends Filter
         }
         return $result;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setConditions(?ValueConditionCollection $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
+    
     function setMustMatchAllConditions(bool $mustMatchAllConditions)
     {
         $this->mustMatchAllConditions = $mustMatchAllConditions;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

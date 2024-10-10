@@ -9,6 +9,7 @@ class HasRecentlyReceivedTriggerCondition extends UserCondition
     public ?string $id;
     public string $group;
     public ?int $type;
+    
     public static function create(?string $id, string $group, bool $negated) : HasRecentlyReceivedTriggerCondition
     {
         $result = new HasRecentlyReceivedTriggerCondition();
@@ -17,6 +18,7 @@ class HasRecentlyReceivedTriggerCondition extends UserCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : HasRecentlyReceivedTriggerCondition
     {
         $result = UserCondition::hydrateBase(new HasRecentlyReceivedTriggerCondition(), $arr);
@@ -38,26 +40,31 @@ class HasRecentlyReceivedTriggerCondition extends UserCondition
         }
         return $result;
     }
+    
     function setWithinMinutes(int $withinMinutes)
     {
         $this->withinMinutes = $withinMinutes;
         return $this;
     }
+    
     function setId(?string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setGroup(string $group)
     {
         $this->group = $group;
         return $this;
     }
+    
     function setType(?int $type)
     {
         $this->type = $type;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

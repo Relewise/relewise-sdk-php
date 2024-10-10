@@ -8,11 +8,13 @@ class IndexConfiguration
     public ProductIndexConfiguration $product;
     public ContentIndexConfiguration $content;
     public ProductCategoryIndexConfiguration $productCategory;
+    
     public static function create() : IndexConfiguration
     {
         $result = new IndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : IndexConfiguration
     {
         $result = new IndexConfiguration();
@@ -34,21 +36,25 @@ class IndexConfiguration
         }
         return $result;
     }
+    
     function setLanguage(LanguageIndexConfiguration $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setProduct(ProductIndexConfiguration $product)
     {
         $this->product = $product;
         return $this;
     }
+    
     function setContent(ContentIndexConfiguration $content)
     {
         $this->content = $content;
         return $this;
     }
+    
     function setProductCategory(ProductCategoryIndexConfiguration $productCategory)
     {
         $this->productCategory = $productCategory;

@@ -9,6 +9,7 @@ class FieldIndexConfiguration
     public PredictionSourceType $predictionSourceType;
     public ?Parser $parser;
     public ?MatchTypeSettings $matchTypeSettings;
+    
     public static function create(bool $included, int $weight, PredictionSourceType $predictionSourceType, Parser $parser, ?MatchTypeSettings $matchTypeSettings = Null) : FieldIndexConfiguration
     {
         $result = new FieldIndexConfiguration();
@@ -19,6 +20,7 @@ class FieldIndexConfiguration
         $result->matchTypeSettings = $matchTypeSettings;
         return $result;
     }
+    
     public static function hydrate(array $arr) : FieldIndexConfiguration
     {
         $result = new FieldIndexConfiguration();
@@ -44,26 +46,31 @@ class FieldIndexConfiguration
         }
         return $result;
     }
+    
     function setIncluded(bool $included)
     {
         $this->included = $included;
         return $this;
     }
+    
     function setWeight(int $weight)
     {
         $this->weight = $weight;
         return $this;
     }
+    
     function setPredictionSourceType(PredictionSourceType $predictionSourceType)
     {
         $this->predictionSourceType = $predictionSourceType;
         return $this;
     }
+    
     function setParser(?Parser $parser)
     {
         $this->parser = $parser;
         return $this;
     }
+    
     function setMatchTypeSettings(?MatchTypeSettings $matchTypeSettings)
     {
         $this->matchTypeSettings = $matchTypeSettings;

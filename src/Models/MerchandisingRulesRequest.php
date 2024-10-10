@@ -6,11 +6,13 @@ class MerchandisingRulesRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Merchandising.MerchandisingRulesRequest, Relewise.Client";
     public ?int $type;
+    
     public static function create() : MerchandisingRulesRequest
     {
         $result = new MerchandisingRulesRequest();
         return $result;
     }
+    
     public static function hydrate(array $arr) : MerchandisingRulesRequest
     {
         $result = LicensedRequest::hydrateBase(new MerchandisingRulesRequest(), $arr);
@@ -20,6 +22,7 @@ class MerchandisingRulesRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setType(?int $type)
     {
         $this->type = $type;

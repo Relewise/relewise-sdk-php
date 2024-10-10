@@ -6,11 +6,13 @@ class FilterScopes
 {
     public ?FilterScopeSettings $default;
     public ?FilterScopeSettings $fill;
+    
     public static function create() : FilterScopes
     {
         $result = new FilterScopes();
         return $result;
     }
+    
     public static function hydrate(array $arr) : FilterScopes
     {
         $result = new FilterScopes();
@@ -24,11 +26,13 @@ class FilterScopes
         }
         return $result;
     }
+    
     function setDefault(?FilterScopeSettings $default)
     {
         $this->default = $default;
         return $this;
     }
+    
     function setFill(?FilterScopeSettings $fill)
     {
         $this->fill = $fill;

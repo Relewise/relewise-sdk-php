@@ -6,6 +6,7 @@ class KeyMultiplier
 {
     public string $key;
     public float $multiplier;
+    
     public static function create(string $key, float $multiplier) : KeyMultiplier
     {
         $result = new KeyMultiplier();
@@ -13,6 +14,7 @@ class KeyMultiplier
         $result->multiplier = $multiplier;
         return $result;
     }
+    
     public static function hydrate(array $arr) : KeyMultiplier
     {
         $result = new KeyMultiplier();
@@ -26,11 +28,13 @@ class KeyMultiplier
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setMultiplier(float $multiplier)
     {
         $this->multiplier = $multiplier;

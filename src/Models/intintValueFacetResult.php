@@ -7,6 +7,8 @@ abstract class intintValueFacetResult extends FacetResult
     public string $typeDefinition = "";
     public array $selected;
     public array $available;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -31,6 +33,7 @@ abstract class intintValueFacetResult extends FacetResult
             return ProductDataIntegerValueFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = FacetResult::hydrateBase($result, $arr);
@@ -52,17 +55,20 @@ abstract class intintValueFacetResult extends FacetResult
         }
         return $result;
     }
+    
     function setSelected(int ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param int[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(int $selected)
     {
         if (!isset($this->selected))
@@ -72,17 +78,20 @@ abstract class intintValueFacetResult extends FacetResult
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setAvailable(intAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     /** @param intAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function addToAvailable(intAvailableFacetValue $available)
     {
         if (!isset($this->available))
@@ -92,6 +101,7 @@ abstract class intintValueFacetResult extends FacetResult
         array_push($this->available, $available);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

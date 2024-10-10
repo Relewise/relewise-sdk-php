@@ -13,26 +13,31 @@ class ProductCategoryDataDoubleRangeFacetResult extends floatProductCategoryData
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryDataDoubleRangeFacetResult
     {
         $result = floatProductCategoryDataRangeFacetResult::hydrateBase(new ProductCategoryDataDoubleRangeFacetResult(), $arr);
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setSelected(?floatRange $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function setAvailable(?floatRangeAvailableFacetValue $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

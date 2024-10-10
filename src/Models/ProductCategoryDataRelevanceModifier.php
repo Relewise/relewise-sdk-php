@@ -15,43 +15,51 @@ class ProductCategoryDataRelevanceModifier extends DataRelevanceModifier
         $result->mustMatchAllConditions = true;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryDataRelevanceModifier
     {
         $result = DataRelevanceModifier::hydrateBase(new ProductCategoryDataRelevanceModifier(), $arr);
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setConsiderAsMatchIfKeyIsNotFound(bool $considerAsMatchIfKeyIsNotFound)
     {
         $this->considerAsMatchIfKeyIsNotFound = $considerAsMatchIfKeyIsNotFound;
         return $this;
     }
+    
     /** @deprecated Use MultiplierSelector instead */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    
     function setMustMatchAllConditions(bool $mustMatchAllConditions)
     {
         $this->mustMatchAllConditions = $mustMatchAllConditions;
         return $this;
     }
+    
     function setConditions(ValueCondition ... $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
+    
     /** @param ValueCondition[] $conditions new value. */
     function setConditionsFromArray(array $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
+    
     function addToConditions(ValueCondition $conditions)
     {
         if (!isset($this->conditions))
@@ -61,11 +69,13 @@ class ProductCategoryDataRelevanceModifier extends DataRelevanceModifier
         array_push($this->conditions, $conditions);
         return $this;
     }
+    
     function setMultiplierSelector(ValueSelector $multiplierSelector)
     {
         $this->multiplierSelector = $multiplierSelector;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

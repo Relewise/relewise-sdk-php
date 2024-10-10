@@ -6,6 +6,7 @@ class ProductAndVariantId
 {
     public string $productId;
     public ?string $variantId;
+    
     public static function create(string $productId, ?string $variantId = Null) : ProductAndVariantId
     {
         $result = new ProductAndVariantId();
@@ -13,6 +14,7 @@ class ProductAndVariantId
         $result->variantId = $variantId;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductAndVariantId
     {
         $result = new ProductAndVariantId();
@@ -26,11 +28,13 @@ class ProductAndVariantId
         }
         return $result;
     }
+    
     function setProductId(string $productId)
     {
         $this->productId = $productId;
         return $this;
     }
+    
     function setVariantId(?string $variantId)
     {
         $this->variantId = $variantId;

@@ -7,11 +7,13 @@ use Relewise\FacetResultExtractable\ContentFacetResultExtractable;
 class ContentFacetResult extends ContentFacetResultExtractable
 {
     public array $items;
+    
     public static function create() : ContentFacetResult
     {
         $result = new ContentFacetResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentFacetResult
     {
         $result = new ContentFacetResult();
@@ -25,17 +27,20 @@ class ContentFacetResult extends ContentFacetResultExtractable
         }
         return $result;
     }
+    
     function setItems(FacetResult ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param FacetResult[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(FacetResult $items)
     {
         if (!isset($this->items))

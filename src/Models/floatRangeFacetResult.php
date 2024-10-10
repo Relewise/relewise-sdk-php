@@ -7,6 +7,8 @@ abstract class floatRangeFacetResult extends FacetResult
     public string $typeDefinition = "";
     public ?floatRange $selected;
     public ?floatRangeAvailableFacetValue $available;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -27,6 +29,7 @@ abstract class floatRangeFacetResult extends FacetResult
             return ProductDataDoubleRangeFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = FacetResult::hydrateBase($result, $arr);
@@ -40,16 +43,19 @@ abstract class floatRangeFacetResult extends FacetResult
         }
         return $result;
     }
+    
     function setSelected(?floatRange $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function setAvailable(?floatRangeAvailableFacetValue $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

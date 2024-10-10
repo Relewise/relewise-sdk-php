@@ -14,26 +14,31 @@ class LocationsRequest extends LocationEntityStateLocationMetadataValuesLocation
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LocationsRequest
     {
         $result = LocationEntityStateLocationMetadataValuesLocationsRequestSortByLocationsRequestEntityFiltersEntitiesRequest::hydrateBase(new LocationsRequest(), $arr);
         return $result;
     }
+    
     function setFilters(?LocationsRequestEntityFilters $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setSorting(?LocationsRequestSortBySorting $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
+    
     function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
+    
     function setTake(int $take)
     {
         $this->take = $take;

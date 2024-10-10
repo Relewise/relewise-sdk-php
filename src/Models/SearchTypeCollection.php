@@ -5,11 +5,13 @@ namespace Relewise\Models;
 class SearchTypeCollection
 {
     public array $unionCodes;
+    
     public static function create() : SearchTypeCollection
     {
         $result = new SearchTypeCollection();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTypeCollection
     {
         $result = new SearchTypeCollection();
@@ -23,17 +25,20 @@ class SearchTypeCollection
         }
         return $result;
     }
+    
     function setUnionCodes(int ... $unionCodes)
     {
         $this->unionCodes = $unionCodes;
         return $this;
     }
+    
     /** @param int[] $unionCodes new value. */
     function setUnionCodesFromArray(array $unionCodes)
     {
         $this->unionCodes = $unionCodes;
         return $this;
     }
+    
     function addToUnionCodes(int $unionCodes)
     {
         if (!isset($this->unionCodes))

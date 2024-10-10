@@ -7,6 +7,7 @@ class ProductVariantSpecificationSorting extends ProductSorting
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Product.ProductVariantSpecificationSorting, Relewise.Client";
     public string $key;
     public SortMode $mode;
+    
     public static function create(string $key, SortOrder $order, SortMode $mode = SortMode::Auto) : ProductVariantSpecificationSorting
     {
         $result = new ProductVariantSpecificationSorting();
@@ -15,6 +16,7 @@ class ProductVariantSpecificationSorting extends ProductSorting
         $result->mode = $mode;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductVariantSpecificationSorting
     {
         $result = ProductSorting::hydrateBase(new ProductVariantSpecificationSorting(), $arr);
@@ -28,21 +30,25 @@ class ProductVariantSpecificationSorting extends ProductSorting
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setMode(SortMode $mode)
     {
         $this->mode = $mode;
         return $this;
     }
+    
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    
     function setThenBy(ProductSorting $thenBy)
     {
         $this->thenBy = $thenBy;

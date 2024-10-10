@@ -8,12 +8,14 @@ class ProductPromotionSpecificationVariation extends PromotionSpecificationVaria
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.ProductPromotion+SpecificationVariation, Relewise.Client";
     /** The maximum number of products to promote at a time in this variation. */
     public int $maxCount;
+    
     public static function create(int $maxCount) : ProductPromotionSpecificationVariation
     {
         $result = new ProductPromotionSpecificationVariation();
         $result->maxCount = $maxCount;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPromotionSpecificationVariation
     {
         $result = PromotionSpecificationVariation::hydrateBase(new ProductPromotionSpecificationVariation(), $arr);
@@ -23,6 +25,7 @@ class ProductPromotionSpecificationVariation extends PromotionSpecificationVaria
         }
         return $result;
     }
+    
     /** The maximum number of products to promote at a time in this variation. */
     function setMaxCount(int $maxCount)
     {

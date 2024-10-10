@@ -6,12 +6,14 @@ class ApplicableLanguages
 {
     public array $languages;
     const ALL = Null;
+    
     public static function create(Language ... $languages) : ApplicableLanguages
     {
         $result = new ApplicableLanguages();
         $result->languages = $languages;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ApplicableLanguages
     {
         $result = new ApplicableLanguages();
@@ -25,17 +27,20 @@ class ApplicableLanguages
         }
         return $result;
     }
+    
     function setLanguages(Language ... $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    
     /** @param Language[] $languages new value. */
     function setLanguagesFromArray(array $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    
     function addToLanguages(Language $languages)
     {
         if (!isset($this->languages))

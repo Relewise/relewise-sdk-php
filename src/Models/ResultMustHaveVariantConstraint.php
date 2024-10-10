@@ -8,11 +8,13 @@ class ResultMustHaveVariantConstraint extends ProductSearchResultConstraint
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.ResultMustHaveVariantConstraint, Relewise.Client";
     /** Used to instruct the search engine that products which does not have any variants, will be returned anyway. */
     public bool $exceptWhenProductHasNoVariants;
+    
     public static function create() : ResultMustHaveVariantConstraint
     {
         $result = new ResultMustHaveVariantConstraint();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ResultMustHaveVariantConstraint
     {
         $result = ProductSearchResultConstraint::hydrateBase(new ResultMustHaveVariantConstraint(), $arr);
@@ -22,6 +24,7 @@ class ResultMustHaveVariantConstraint extends ProductSearchResultConstraint
         }
         return $result;
     }
+    
     /** Used to instruct the search engine that products which does not have any variants, will be returned anyway. */
     function setExceptWhenProductHasNoVariants(bool $exceptWhenProductHasNoVariants)
     {

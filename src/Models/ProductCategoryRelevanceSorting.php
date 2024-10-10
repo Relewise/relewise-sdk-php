@@ -11,16 +11,19 @@ class ProductCategoryRelevanceSorting extends ProductCategorySorting
         $result->order = $order;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryRelevanceSorting
     {
         $result = ProductCategorySorting::hydrateBase(new ProductCategoryRelevanceSorting(), $arr);
         return $result;
     }
+    
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    
     function setThenBy(ProductCategorySorting $thenBy)
     {
         $this->thenBy = $thenBy;

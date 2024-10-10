@@ -6,6 +6,7 @@ class ContentCategoryRecommendationWeights
 {
     public float $categoryViews;
     public float $contentViews;
+    
     public static function create(float $categoryViews = 1, float $contentViews = 1) : ContentCategoryRecommendationWeights
     {
         $result = new ContentCategoryRecommendationWeights();
@@ -13,6 +14,7 @@ class ContentCategoryRecommendationWeights
         $result->contentViews = $contentViews;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryRecommendationWeights
     {
         $result = new ContentCategoryRecommendationWeights();
@@ -26,11 +28,13 @@ class ContentCategoryRecommendationWeights
         }
         return $result;
     }
+    
     function setCategoryViews(float $categoryViews)
     {
         $this->categoryViews = $categoryViews;
         return $this;
     }
+    
     function setContentViews(float $contentViews)
     {
         $this->contentViews = $contentViews;

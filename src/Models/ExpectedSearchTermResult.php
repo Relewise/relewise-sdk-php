@@ -6,11 +6,13 @@ class ExpectedSearchTermResult
 {
     public int $estimatedHits;
     public EntityType $type;
+    
     public static function create() : ExpectedSearchTermResult
     {
         $result = new ExpectedSearchTermResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ExpectedSearchTermResult
     {
         $result = new ExpectedSearchTermResult();
@@ -24,11 +26,13 @@ class ExpectedSearchTermResult
         }
         return $result;
     }
+    
     function setEstimatedHits(int $estimatedHits)
     {
         $this->estimatedHits = $estimatedHits;
         return $this;
     }
+    
     function setType(EntityType $type)
     {
         $this->type = $type;

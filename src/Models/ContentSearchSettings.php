@@ -7,11 +7,13 @@ class ContentSearchSettings extends SearchSettings
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.ContentSearchSettings, Relewise.Client";
     public ?SelectedContentPropertiesSettings $selectedContentProperties;
     public RecommendationSettings $recommendations;
+    
     public static function create() : ContentSearchSettings
     {
         $result = new ContentSearchSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentSearchSettings
     {
         $result = SearchSettings::hydrateBase(new ContentSearchSettings(), $arr);
@@ -25,11 +27,13 @@ class ContentSearchSettings extends SearchSettings
         }
         return $result;
     }
+    
     function setSelectedContentProperties(?SelectedContentPropertiesSettings $selectedContentProperties)
     {
         $this->selectedContentProperties = $selectedContentProperties;
         return $this;
     }
+    
     function setRecommendations(RecommendationSettings $recommendations)
     {
         $this->recommendations = $recommendations;

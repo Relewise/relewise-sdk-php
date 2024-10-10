@@ -6,6 +6,7 @@ class Money
 {
     public float $amount;
     public Currency $currency;
+    
     public static function create(Currency $currency, float $amount) : Money
     {
         $result = new Money();
@@ -13,6 +14,7 @@ class Money
         $result->amount = $amount;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Money
     {
         $result = new Money();
@@ -26,11 +28,13 @@ class Money
         }
         return $result;
     }
+    
     function setAmount(float $amount)
     {
         $this->amount = $amount;
         return $this;
     }
+    
     function setCurrency(Currency $currency)
     {
         $this->currency = $currency;

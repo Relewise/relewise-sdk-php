@@ -6,6 +6,7 @@ class CategoryNameAndIdResult
 {
     public string $id;
     public string $displayName;
+    
     public static function create(string $id, string $displayName) : CategoryNameAndIdResult
     {
         $result = new CategoryNameAndIdResult();
@@ -13,6 +14,7 @@ class CategoryNameAndIdResult
         $result->displayName = $displayName;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryNameAndIdResult
     {
         $result = new CategoryNameAndIdResult();
@@ -26,11 +28,13 @@ class CategoryNameAndIdResult
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;

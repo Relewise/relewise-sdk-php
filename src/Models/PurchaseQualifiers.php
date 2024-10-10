@@ -14,6 +14,7 @@ class PurchaseQualifiers
     public bool $byUserCompany;
     /** Should hit be count if user parent company recently had a product purchase tracked? */
     public bool $byUserParentCompany;
+    
     public static function create(int $sinceMinutesAgo, bool $byUser, bool $byUserCompany, bool $byUserParentCompany) : PurchaseQualifiers
     {
         $result = new PurchaseQualifiers();
@@ -23,6 +24,7 @@ class PurchaseQualifiers
         $result->byUserParentCompany = $byUserParentCompany;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PurchaseQualifiers
     {
         $result = new PurchaseQualifiers();
@@ -44,24 +46,28 @@ class PurchaseQualifiers
         }
         return $result;
     }
+    
     /** How fresh recent purchase must be to count as hit? */
     function setSinceMinutesAgo(int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     /** Should hit be count if user recently purchased product? */
     function setByUser(bool $byUser)
     {
         $this->byUser = $byUser;
         return $this;
     }
+    
     /** Should hit be count if user company recently had a product purchase tracked? */
     function setByUserCompany(bool $byUserCompany)
     {
         $this->byUserCompany = $byUserCompany;
         return $this;
     }
+    
     /** Should hit be count if user parent company recently had a product purchase tracked? */
     function setByUserParentCompany(bool $byUserParentCompany)
     {

@@ -9,6 +9,7 @@ class PriceRangesFacet extends Facet
     public ?float $expandedRangeSize;
     public ?array $selected;
     public PriceSelectionStrategy $priceSelectionStrategy;
+    
     public static function create(FacetingField $field, PriceSelectionStrategy $priceSelectionStrategy, ?array $predefinedRanges, ?float $expandedRangeSize, ?floatChainableRange ... $selected) : PriceRangesFacet
     {
         $result = new PriceRangesFacet();
@@ -19,6 +20,7 @@ class PriceRangesFacet extends Facet
         $result->selected = $selected;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PriceRangesFacet
     {
         $result = Facet::hydrateBase(new PriceRangesFacet(), $arr);
@@ -48,17 +50,20 @@ class PriceRangesFacet extends Facet
         }
         return $result;
     }
+    
     function setPredefinedRanges(?floatChainableRange ... $predefinedRanges)
     {
         $this->predefinedRanges = $predefinedRanges;
         return $this;
     }
+    
     /** @param ??floatChainableRange[] $predefinedRanges new value. */
     function setPredefinedRangesFromArray(array $predefinedRanges)
     {
         $this->predefinedRanges = $predefinedRanges;
         return $this;
     }
+    
     function addToPredefinedRanges(?floatChainableRange $predefinedRanges)
     {
         if (!isset($this->predefinedRanges))
@@ -68,22 +73,26 @@ class PriceRangesFacet extends Facet
         array_push($this->predefinedRanges, $predefinedRanges);
         return $this;
     }
+    
     function setExpandedRangeSize(?float $expandedRangeSize)
     {
         $this->expandedRangeSize = $expandedRangeSize;
         return $this;
     }
+    
     function setSelected(?floatChainableRange ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ??floatChainableRange[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(?floatChainableRange $selected)
     {
         if (!isset($this->selected))
@@ -93,16 +102,19 @@ class PriceRangesFacet extends Facet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setPriceSelectionStrategy(PriceSelectionStrategy $priceSelectionStrategy)
     {
         $this->priceSelectionStrategy = $priceSelectionStrategy;
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

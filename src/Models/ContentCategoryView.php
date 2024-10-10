@@ -7,6 +7,7 @@ class ContentCategoryView extends Trackable
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentCategoryView, Relewise.Client";
     public ?User $user;
     public array $idPath;
+    
     public static function create(?User $user, string ... $idPath) : ContentCategoryView
     {
         $result = new ContentCategoryView();
@@ -14,6 +15,7 @@ class ContentCategoryView extends Trackable
         $result->idPath = $idPath;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryView
     {
         $result = Trackable::hydrateBase(new ContentCategoryView(), $arr);
@@ -31,22 +33,26 @@ class ContentCategoryView extends Trackable
         }
         return $result;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setIdPath(string ... $idPath)
     {
         $this->idPath = $idPath;
         return $this;
     }
+    
     /** @param string[] $idPath new value. */
     function setIdPathFromArray(array $idPath)
     {
         $this->idPath = $idPath;
         return $this;
     }
+    
     function addToIdPath(string $idPath)
     {
         if (!isset($this->idPath))

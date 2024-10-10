@@ -10,6 +10,7 @@ class Decrease
         $result = new Decrease();
         return $result;
     }
+    
     public static function hydrate(array $arr) : Decrease
     {
         $result = new Decrease();

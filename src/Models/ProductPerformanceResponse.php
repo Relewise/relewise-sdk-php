@@ -8,11 +8,13 @@ class ProductPerformanceResponse extends TimedResponse
     public array $results;
     public int $totalNumberOfResults;
     public int $remainingNumberOfResults;
+    
     public static function create() : ProductPerformanceResponse
     {
         $result = new ProductPerformanceResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResponse
     {
         $result = TimedResponse::hydrateBase(new ProductPerformanceResponse(), $arr);
@@ -34,17 +36,20 @@ class ProductPerformanceResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setResults(ProductPerformanceResult ... $results)
     {
         $this->results = $results;
         return $this;
     }
+    
     /** @param ProductPerformanceResult[] $results new value. */
     function setResultsFromArray(array $results)
     {
         $this->results = $results;
         return $this;
     }
+    
     function addToResults(ProductPerformanceResult $results)
     {
         if (!isset($this->results))
@@ -54,16 +59,19 @@ class ProductPerformanceResponse extends TimedResponse
         array_push($this->results, $results);
         return $this;
     }
+    
     function setTotalNumberOfResults(int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;
         return $this;
     }
+    
     function setRemainingNumberOfResults(int $remainingNumberOfResults)
     {
         $this->remainingNumberOfResults = $remainingNumberOfResults;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

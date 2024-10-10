@@ -14,32 +14,38 @@ class ProductCategoryDataStringValueFacetResult extends stringProductCategoryDat
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryDataStringValueFacetResult
     {
         $result = stringProductCategoryDataValueFacetResult::hydrateBase(new ProductCategoryDataStringValueFacetResult(), $arr);
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setCollectionFilterType(?CollectionFilterType $collectionFilterType)
     {
         $this->collectionFilterType = $collectionFilterType;
         return $this;
     }
+    
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -49,17 +55,20 @@ class ProductCategoryDataStringValueFacetResult extends stringProductCategoryDat
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setAvailable(stringAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     /** @param stringAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function addToAvailable(stringAvailableFacetValue $available)
     {
         if (!isset($this->available))
@@ -69,6 +78,7 @@ class ProductCategoryDataStringValueFacetResult extends stringProductCategoryDat
         array_push($this->available, $available);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

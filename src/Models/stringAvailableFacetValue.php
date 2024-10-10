@@ -7,6 +7,7 @@ class stringAvailableFacetValue
     public string $value;
     public int $hits;
     public bool $selected;
+    
     public static function create(string $value, bool $selected, int $hits) : stringAvailableFacetValue
     {
         $result = new stringAvailableFacetValue();
@@ -15,6 +16,7 @@ class stringAvailableFacetValue
         $result->hits = $hits;
         return $result;
     }
+    
     public static function hydrate(array $arr) : stringAvailableFacetValue
     {
         $result = new stringAvailableFacetValue();
@@ -32,16 +34,19 @@ class stringAvailableFacetValue
         }
         return $result;
     }
+    
     function setValue(string $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setSelected(bool $selected)
     {
         $this->selected = $selected;

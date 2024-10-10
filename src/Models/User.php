@@ -21,6 +21,7 @@ class User
     public ?Channel $channel;
     /** Company the user is associated with in the current context (Note: Companies themselves can be associated with a parent company, if the current user is acting on the behalf of a hierarchical chain of up to 2 companies) */
     public ?Company $company;
+    
     /**
      * User DTO
      * @param ?string $authenticatedId A persistent Id for current user, e.g. a database-id
@@ -43,6 +44,7 @@ class User
         $result->data = $data;
         return $result;
     }
+    
     public static function hydrate(array $arr) : User
     {
         $result = new User();
@@ -96,24 +98,28 @@ class User
         }
         return $result;
     }
+    
     /** A persistent Id for current user, e.g. a database-id This Id should never be expected to change in the future */
     function setAuthenticatedId(?string $authenticatedId)
     {
         $this->authenticatedId = $authenticatedId;
         return $this;
     }
+    
     /** A TemporaryId, likely to change in the future, e.g. a CookieId in a web context */
     function setTemporaryId(?string $temporaryId)
     {
         $this->temporaryId = $temporaryId;
         return $this;
     }
+    
     /** The email of the user */
     function setEmail(?string $email)
     {
         $this->email = $email;
         return $this;
     }
+    
     /** Segmentation data about the user, e.g. Country or other segmentation, useful for passing known information about the user from a CRM, CDP and other sources */
     function addToClassifications(string $key, string $value)
     {
@@ -124,6 +130,7 @@ class User
         $this->classifications[$key] = $value;
         return $this;
     }
+    
     /**
      * Segmentation data about the user, e.g. Country or other segmentation, useful for passing known information about the user from a CRM, CDP and other sources
      * @param ?array<string, string> $classifications associative array.
@@ -133,6 +140,7 @@ class User
         $this->classifications = $classifications;
         return $this;
     }
+    
     /** A set of additional ids associated with the user, e.g. ERP customer id, Marketing id, CDP id etc. */
     function addToIdentifiers(string $key, string $value)
     {
@@ -143,6 +151,7 @@ class User
         $this->identifiers[$key] = $value;
         return $this;
     }
+    
     /**
      * A set of additional ids associated with the user, e.g. ERP customer id, Marketing id, CDP id etc.
      * @param ?array<string, string> $identifiers associative array.
@@ -152,6 +161,7 @@ class User
         $this->identifiers = $identifiers;
         return $this;
     }
+    
     /** Data stored on the user */
     function addToData(string $key, DataValue $value)
     {
@@ -162,6 +172,7 @@ class User
         $this->data[$key] = $value;
         return $this;
     }
+    
     /**
      * Data stored on the user
      * @param ?array<string, DataValue> $data associative array.
@@ -171,17 +182,20 @@ class User
         $this->data = $data;
         return $this;
     }
+    
     /** A fingerprint, highly likely to change in the future, e.g. between sessions */
     function setFingerprint(?string $fingerprint)
     {
         $this->fingerprint = $fingerprint;
         return $this;
     }
+    
     function setChannel(?Channel $channel)
     {
         $this->channel = $channel;
         return $this;
     }
+    
     /** Company the user is associated with in the current context (Note: Companies themselves can be associated with a parent company, if the current user is acting on the behalf of a hierarchical chain of up to 2 companies) */
     function setCompany(?Company $company)
     {

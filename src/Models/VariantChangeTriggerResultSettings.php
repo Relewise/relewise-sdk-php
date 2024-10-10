@@ -6,11 +6,13 @@ class VariantChangeTriggerResultSettings
 {
     public SelectedProductDetailsPropertiesSettings $selectedProductProperties;
     public SelectedVariantDetailsPropertiesSettings $selectedVariantProperties;
+    
     public static function create() : VariantChangeTriggerResultSettings
     {
         $result = new VariantChangeTriggerResultSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantChangeTriggerResultSettings
     {
         $result = new VariantChangeTriggerResultSettings();
@@ -24,11 +26,13 @@ class VariantChangeTriggerResultSettings
         }
         return $result;
     }
+    
     function setSelectedProductProperties(SelectedProductDetailsPropertiesSettings $selectedProductProperties)
     {
         $this->selectedProductProperties = $selectedProductProperties;
         return $this;
     }
+    
     function setSelectedVariantProperties(SelectedVariantDetailsPropertiesSettings $selectedVariantProperties)
     {
         $this->selectedVariantProperties = $selectedVariantProperties;

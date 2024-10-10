@@ -7,6 +7,8 @@ abstract class SearchTermModifierRuleSaveSearchRulesRequest extends LicensedRequ
     public string $typeDefinition = "";
     public array $rules;
     public string $modifiedBy;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -15,6 +17,7 @@ abstract class SearchTermModifierRuleSaveSearchRulesRequest extends LicensedRequ
             return SaveSearchTermModifierRulesRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);
@@ -32,17 +35,20 @@ abstract class SearchTermModifierRuleSaveSearchRulesRequest extends LicensedRequ
         }
         return $result;
     }
+    
     function setRules(SearchTermModifierRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param SearchTermModifierRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(SearchTermModifierRule $rules)
     {
         if (!isset($this->rules))
@@ -52,6 +58,7 @@ abstract class SearchTermModifierRuleSaveSearchRulesRequest extends LicensedRequ
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

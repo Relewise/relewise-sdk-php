@@ -5,11 +5,13 @@ namespace Relewise\Models;
 class LanguageIndexConfiguration
 {
     public array $languages;
+    
     public static function create() : LanguageIndexConfiguration
     {
         $result = new LanguageIndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : LanguageIndexConfiguration
     {
         $result = new LanguageIndexConfiguration();
@@ -23,17 +25,20 @@ class LanguageIndexConfiguration
         }
         return $result;
     }
+    
     function setLanguages(LanguageIndexConfigurationEntry ... $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    
     /** @param LanguageIndexConfigurationEntry[] $languages new value. */
     function setLanguagesFromArray(array $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    
     function addToLanguages(LanguageIndexConfigurationEntry $languages)
     {
         if (!isset($this->languages))

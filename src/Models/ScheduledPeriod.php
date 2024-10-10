@@ -9,6 +9,7 @@ class ScheduledPeriod implements JsonSerializable
 {
     public ?DateTime $fromUtc;
     public ?DateTime $toUtc;
+    
     public static function create(?DateTime $fromUtc, ?DateTime $toUtc) : ScheduledPeriod
     {
         $result = new ScheduledPeriod();
@@ -16,6 +17,7 @@ class ScheduledPeriod implements JsonSerializable
         $result->toUtc = $toUtc;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ScheduledPeriod
     {
         $result = new ScheduledPeriod();
@@ -29,16 +31,19 @@ class ScheduledPeriod implements JsonSerializable
         }
         return $result;
     }
+    
     function setFromUtc(?DateTime $fromUtc)
     {
         $this->fromUtc = $fromUtc;
         return $this;
     }
+    
     function setToUtc(?DateTime $toUtc)
     {
         $this->toUtc = $toUtc;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

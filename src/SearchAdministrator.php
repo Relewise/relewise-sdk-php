@@ -47,10 +47,12 @@ class SearchAdministrator extends RelewiseClient
     {
         parent::__construct($datasetId, $apiKey, $timeout);
     }
+    
     public function deleteSearchIndex(DeleteSearchIndexRequest $request)
     {
         return $this->requestAndValidate("DeleteSearchIndexRequest", $request);
     }
+    
     public function saveSearchIndex(SaveSearchIndexRequest $request) : ?SearchIndexResponse
     {
         $response = $this->requestAndValidate("SaveSearchIndexRequest", $request);
@@ -60,6 +62,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return SearchIndexResponse::hydrate($response);
     }
+    
     public function searchIndex(SearchIndexRequest $request) : ?SearchIndexResponse
     {
         $response = $this->requestAndValidate("SearchIndexRequest", $request);
@@ -69,6 +72,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return SearchIndexResponse::hydrate($response);
     }
+    
     public function searchIndexes(SearchIndexesRequest $request) : ?SearchIndexCollectionResponse
     {
         $response = $this->requestAndValidate("SearchIndexesRequest", $request);
@@ -78,6 +82,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return SearchIndexCollectionResponse::hydrate($response);
     }
+    
     public function synonyms(SynonymsRequest $request) : ?SynonymsResponse
     {
         $response = $this->requestAndValidate("SynonymsRequest", $request);
@@ -87,6 +92,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return SynonymsResponse::hydrate($response);
     }
+    
     public function saveSynonyms(SaveSynonymsRequest $request) : ?SynonymsResponse
     {
         $response = $this->requestAndValidate("SaveSynonymsRequest", $request);
@@ -96,6 +102,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return SynonymsResponse::hydrate($response);
     }
+    
     public function deleteSynonyms(DeleteSynonymsRequest $request) : ?DeleteSynonymsResponse
     {
         $response = $this->requestAndValidate("DeleteSynonymsRequest", $request);
@@ -105,6 +112,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return DeleteSynonymsResponse::hydrate($response);
     }
+    
     public function redirectRules(RedirectRulesRequest $request) : ?RedirectRulesResponse
     {
         $response = $this->requestAndValidate("RedirectRulesRequest", $request);
@@ -114,6 +122,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return RedirectRulesResponse::hydrate($response);
     }
+    
     public function saveRedirectRules(SaveRedirectRulesRequest $request) : ?SaveRedirectRulesResponse
     {
         $response = $this->requestAndValidate("SaveRedirectRulesRequest", $request);
@@ -123,6 +132,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return SaveRedirectRulesResponse::hydrate($response);
     }
+    
     public function deleteRedirectRules(DeleteRedirectRulesRequest $request) : ?DeleteSearchRulesResponse
     {
         $response = $this->requestAndValidate("DeleteRedirectRulesRequest", $request);
@@ -132,6 +142,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return DeleteSearchRulesResponse::hydrate($response);
     }
+    
     public function decompoundRules(DecompoundRulesRequest $request) : ?DecompoundRulesResponse
     {
         $response = $this->requestAndValidate("DecompoundRulesRequest", $request);
@@ -141,6 +152,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return DecompoundRulesResponse::hydrate($response);
     }
+    
     public function saveDecompoundRules(SaveDecompoundRulesRequest $request) : ?SaveDecompoundRulesResponse
     {
         $response = $this->requestAndValidate("SaveDecompoundRulesRequest", $request);
@@ -150,6 +162,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return SaveDecompoundRulesResponse::hydrate($response);
     }
+    
     public function deleteDecompoundRules(DeleteDecompoundRulesRequest $request) : ?DeleteSearchRulesResponse
     {
         $response = $this->requestAndValidate("DeleteDecompoundRulesRequest", $request);
@@ -159,6 +172,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return DeleteSearchRulesResponse::hydrate($response);
     }
+    
     public function stemmingRules(StemmingRulesRequest $request) : ?StemmingRulesResponse
     {
         $response = $this->requestAndValidate("StemmingRulesRequest", $request);
@@ -168,6 +182,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return StemmingRulesResponse::hydrate($response);
     }
+    
     public function saveStemmingRules(SaveStemmingRulesRequest $request) : ?SaveStemmingRulesResponse
     {
         $response = $this->requestAndValidate("SaveStemmingRulesRequest", $request);
@@ -177,6 +192,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return SaveStemmingRulesResponse::hydrate($response);
     }
+    
     public function deleteStemmingRules(DeleteStemmingRulesRequest $request) : ?DeleteSearchRulesResponse
     {
         $response = $this->requestAndValidate("DeleteStemmingRulesRequest", $request);
@@ -186,6 +202,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return DeleteSearchRulesResponse::hydrate($response);
     }
+    
     public function searchTermModifierRules(SearchTermModifierRulesRequest $request) : ?SearchTermModifierRulesResponse
     {
         $response = $this->requestAndValidate("SearchTermModifierRulesRequest", $request);
@@ -195,6 +212,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return SearchTermModifierRulesResponse::hydrate($response);
     }
+    
     public function saveSearchTermModifierRules(SaveSearchTermModifierRulesRequest $request) : ?SaveSearchTermModifierRulesResponse
     {
         $response = $this->requestAndValidate("SaveSearchTermModifierRulesRequest", $request);
@@ -204,6 +222,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return SaveSearchTermModifierRulesResponse::hydrate($response);
     }
+    
     public function deleteSearchTermModifierRules(DeleteSearchTermModifierRulesRequest $request) : ?DeleteSearchRulesResponse
     {
         $response = $this->requestAndValidate("DeleteSearchTermModifierRulesRequest", $request);
@@ -213,6 +232,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return DeleteSearchRulesResponse::hydrate($response);
     }
+    
     public function searchResultModifierRules(SearchResultModifierRulesRequest $request) : ?SearchResultModifierRulesResponse
     {
         $response = $this->requestAndValidate("SearchResultModifierRulesRequest", $request);
@@ -222,6 +242,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return SearchResultModifierRulesResponse::hydrate($response);
     }
+    
     public function saveSearchResultModifierRules(SaveSearchResultModifierRulesRequest $request) : ?SaveSearchResultModifierRulesResponse
     {
         $response = $this->requestAndValidate("SaveSearchResultModifierRulesRequest", $request);
@@ -231,6 +252,7 @@ class SearchAdministrator extends RelewiseClient
         }
         return SaveSearchResultModifierRulesResponse::hydrate($response);
     }
+    
     public function deleteSearchResultModifierRules(DeleteSearchResultModifierRulesRequest $request) : ?DeleteSearchRulesResponse
     {
         $response = $this->requestAndValidate("DeleteSearchResultModifierRulesRequest", $request);

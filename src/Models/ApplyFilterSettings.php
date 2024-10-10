@@ -6,12 +6,14 @@ class ApplyFilterSettings extends FilterScopeSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.Settings.ApplyFilterSettings, Relewise.Client";
     public bool $apply;
+    
     public static function create(bool $apply) : ApplyFilterSettings
     {
         $result = new ApplyFilterSettings();
         $result->apply = $apply;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ApplyFilterSettings
     {
         $result = FilterScopeSettings::hydrateBase(new ApplyFilterSettings(), $arr);
@@ -21,6 +23,7 @@ class ApplyFilterSettings extends FilterScopeSettings
         }
         return $result;
     }
+    
     function setApply(bool $apply)
     {
         $this->apply = $apply;

@@ -7,6 +7,7 @@ class VariantListPriceFilter extends Filter
     public string $typeDefinition = "Relewise.Client.Requests.Filters.VariantListPriceFilter, Relewise.Client";
     public ?floatRange $range;
     public ?Currency $currency;
+    
     public static function create(?floatRange $range, ?Currency $currency = Null, bool $negated = false) : VariantListPriceFilter
     {
         $result = new VariantListPriceFilter();
@@ -15,6 +16,7 @@ class VariantListPriceFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantListPriceFilter
     {
         $result = Filter::hydrateBase(new VariantListPriceFilter(), $arr);
@@ -28,21 +30,25 @@ class VariantListPriceFilter extends Filter
         }
         return $result;
     }
+    
     function setRange(?floatRange $range)
     {
         $this->range = $range;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

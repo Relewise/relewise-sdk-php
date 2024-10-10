@@ -6,6 +6,8 @@ abstract class CampaignSaveEntitiesResponse extends TimedResponse
 {
     public string $typeDefinition = "";
     public array $entities;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -14,6 +16,7 @@ abstract class CampaignSaveEntitiesResponse extends TimedResponse
             return SaveCampaignsResponse::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = TimedResponse::hydrateBase($result, $arr);
@@ -27,17 +30,20 @@ abstract class CampaignSaveEntitiesResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setEntities(Campaign ... $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     /** @param Campaign[] $entities new value. */
     function setEntitiesFromArray(array $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     function addToEntities(Campaign $entities)
     {
         if (!isset($this->entities))
@@ -47,6 +53,7 @@ abstract class CampaignSaveEntitiesResponse extends TimedResponse
         array_push($this->entities, $entities);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

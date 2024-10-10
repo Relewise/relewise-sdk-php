@@ -6,12 +6,14 @@ class HasPlacedOrderCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasPlacedOrderCondition, Relewise.Client";
     public int $withinMinutes;
+    
     public static function create(bool $negated) : HasPlacedOrderCondition
     {
         $result = new HasPlacedOrderCondition();
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : HasPlacedOrderCondition
     {
         $result = UserCondition::hydrateBase(new HasPlacedOrderCondition(), $arr);
@@ -21,11 +23,13 @@ class HasPlacedOrderCondition extends UserCondition
         }
         return $result;
     }
+    
     function setWithinMinutes(int $withinMinutes)
     {
         $this->withinMinutes = $withinMinutes;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

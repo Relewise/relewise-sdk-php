@@ -6,6 +6,7 @@ class ProductCategoryDataHasKeyFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductCategoryDataHasKeyFilter, Relewise.Client";
     public string $key;
+    
     public static function create(string $key, bool $negated = false) : ProductCategoryDataHasKeyFilter
     {
         $result = new ProductCategoryDataHasKeyFilter();
@@ -13,6 +14,7 @@ class ProductCategoryDataHasKeyFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryDataHasKeyFilter
     {
         $result = Filter::hydrateBase(new ProductCategoryDataHasKeyFilter(), $arr);
@@ -22,16 +24,19 @@ class ProductCategoryDataHasKeyFilter extends Filter
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

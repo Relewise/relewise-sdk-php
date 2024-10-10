@@ -7,6 +7,7 @@ class DeleteSearchIndexRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Search.DeleteSearchIndexRequest, Relewise.Client";
     public string $id;
     public string $deletedBy;
+    
     public static function create(string $id, string $deletedBy) : DeleteSearchIndexRequest
     {
         $result = new DeleteSearchIndexRequest();
@@ -14,6 +15,7 @@ class DeleteSearchIndexRequest extends LicensedRequest
         $result->deletedBy = $deletedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DeleteSearchIndexRequest
     {
         $result = LicensedRequest::hydrateBase(new DeleteSearchIndexRequest(), $arr);
@@ -27,11 +29,13 @@ class DeleteSearchIndexRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setDeletedBy(string $deletedBy)
     {
         $this->deletedBy = $deletedBy;

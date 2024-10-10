@@ -6,6 +6,7 @@ class SearchTermModifierRulesRequestSortBySorting
 {
     public SearchTermModifierRulesRequestSortBy $sortBy;
     public SortOrder $sortOrder;
+    
     public static function create(SearchTermModifierRulesRequestSortBy $sortBy, SortOrder $sortOrder) : SearchTermModifierRulesRequestSortBySorting
     {
         $result = new SearchTermModifierRulesRequestSortBySorting();
@@ -13,6 +14,7 @@ class SearchTermModifierRulesRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermModifierRulesRequestSortBySorting
     {
         $result = new SearchTermModifierRulesRequestSortBySorting();
@@ -26,11 +28,13 @@ class SearchTermModifierRulesRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(SearchTermModifierRulesRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

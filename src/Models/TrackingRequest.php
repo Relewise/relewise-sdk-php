@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class TrackingRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -97,6 +98,7 @@ abstract class TrackingRequest extends LicensedRequest
             return TrackUserUpdateRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);

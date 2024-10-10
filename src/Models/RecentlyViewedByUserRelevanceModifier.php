@@ -16,6 +16,8 @@ abstract class RecentlyViewedByUserRelevanceModifier extends RelevanceModifier i
     public float $ifNotPreviouslyViewedByUserMultiplyWeightBy;
     /** The minutes since in which an entity will be considered relevant to the user if viewed previously by them. */
     public ?int $sinceMinutesAgo;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -36,6 +38,7 @@ abstract class RecentlyViewedByUserRelevanceModifier extends RelevanceModifier i
             return ProductRecentlyViewedByUserRelevanceModifier::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = RelevanceModifier::hydrateBase($result, $arr);
@@ -57,35 +60,41 @@ abstract class RecentlyViewedByUserRelevanceModifier extends RelevanceModifier i
         }
         return $result;
     }
+    
     /** The start of the time period in which an entity will be considered relevant to the user if viewed previously by them. */
     function setSinceUtc(?DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
+    
     /** The weight that the entity will be multiplied with if it has been viewed in the past by the user (since SinceUtc). */
     function setIfPreviouslyViewedByUserMultiplyWeightBy(float $ifPreviouslyViewedByUserMultiplyWeightBy)
     {
         $this->ifPreviouslyViewedByUserMultiplyWeightBy = $ifPreviouslyViewedByUserMultiplyWeightBy;
         return $this;
     }
+    
     /** The weight that the entity will be multiplied with if it has not been viewed in the past by the user (since SinceUtc). */
     function setIfNotPreviouslyViewedByUserMultiplyWeightBy(float $ifNotPreviouslyViewedByUserMultiplyWeightBy)
     {
         $this->ifNotPreviouslyViewedByUserMultiplyWeightBy = $ifNotPreviouslyViewedByUserMultiplyWeightBy;
         return $this;
     }
+    
     /** The minutes since in which an entity will be considered relevant to the user if viewed previously by them. */
     function setSinceMinutesAgo(?int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

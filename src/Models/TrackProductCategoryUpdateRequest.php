@@ -6,12 +6,14 @@ class TrackProductCategoryUpdateRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackProductCategoryUpdateRequest, Relewise.Client";
     public ProductCategoryUpdate $productCategoryUpdate;
+    
     public static function create(ProductCategoryUpdate $productCategoryUpdate) : TrackProductCategoryUpdateRequest
     {
         $result = new TrackProductCategoryUpdateRequest();
         $result->productCategoryUpdate = $productCategoryUpdate;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackProductCategoryUpdateRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackProductCategoryUpdateRequest(), $arr);
@@ -21,6 +23,7 @@ class TrackProductCategoryUpdateRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setProductCategoryUpdate(ProductCategoryUpdate $productCategoryUpdate)
     {
         $this->productCategoryUpdate = $productCategoryUpdate;

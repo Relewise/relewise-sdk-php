@@ -126,6 +126,11 @@ public class PhpClassWriter : IPhpTypeWriter
             phpWriter.PhpSettablePropertiesWriter.Write(writer, type, gettableProperties);
             phpWriter.PhpStaticReadonlyPropertiesWriter.Write(writer, staticGetterProperties);
 
+            if (gettableProperties.Length + staticGetterProperties.Length > 0)
+            {
+                writer.WriteLine(); // We only add spacing here if there are any properties.
+            }
+
             phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, gettableProperties, gettableProperties);
             phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, gettableProperties);
             phpWriter.PhpPropertySetterMethodsWriter.Write(writer, type, gettableProperties);
@@ -139,6 +144,11 @@ public class PhpClassWriter : IPhpTypeWriter
         {
             phpWriter.PhpSettablePropertiesWriter.Write(writer, type, ownedProperties);
             phpWriter.PhpStaticReadonlyPropertiesWriter.Write(writer, staticGetterProperties);
+
+            if (ownedProperties.Length + staticGetterProperties.Length > 0)
+            {
+                writer.WriteLine(); // We only add spacing here if there are any properties.
+            }
 
             phpWriter.PhpCreatorMethodWriter.Write(writer, type, typeName, settableProperties, ownedProperties);
             phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, ownedProperties);

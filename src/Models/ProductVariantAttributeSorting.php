@@ -7,6 +7,7 @@ class ProductVariantAttributeSorting extends ProductSorting
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Product.ProductVariantAttributeSorting, Relewise.Client";
     public ProductVariantAttributeSortingSortableAttribute $attribute;
     public SortMode $mode;
+    
     public static function create(ProductVariantAttributeSortingSortableAttribute $attribute, SortOrder $order, SortMode $mode = SortMode::Auto) : ProductVariantAttributeSorting
     {
         $result = new ProductVariantAttributeSorting();
@@ -15,6 +16,7 @@ class ProductVariantAttributeSorting extends ProductSorting
         $result->mode = $mode;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductVariantAttributeSorting
     {
         $result = ProductSorting::hydrateBase(new ProductVariantAttributeSorting(), $arr);
@@ -28,21 +30,25 @@ class ProductVariantAttributeSorting extends ProductSorting
         }
         return $result;
     }
+    
     function setAttribute(ProductVariantAttributeSortingSortableAttribute $attribute)
     {
         $this->attribute = $attribute;
         return $this;
     }
+    
     function setMode(SortMode $mode)
     {
         $this->mode = $mode;
         return $this;
     }
+    
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    
     function setThenBy(ProductSorting $thenBy)
     {
         $this->thenBy = $thenBy;

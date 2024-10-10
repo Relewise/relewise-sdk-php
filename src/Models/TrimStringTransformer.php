@@ -5,12 +5,14 @@ namespace Relewise\Models;
 class TrimStringTransformer
 {
     public array $valuesToTrim;
+    
     public static function create(string ... $valuesToTrim) : TrimStringTransformer
     {
         $result = new TrimStringTransformer();
         $result->valuesToTrim = $valuesToTrim;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrimStringTransformer
     {
         $result = new TrimStringTransformer();
@@ -24,17 +26,20 @@ class TrimStringTransformer
         }
         return $result;
     }
+    
     function setValuesToTrim(string ... $valuesToTrim)
     {
         $this->valuesToTrim = $valuesToTrim;
         return $this;
     }
+    
     /** @param string[] $valuesToTrim new value. */
     function setValuesToTrimFromArray(array $valuesToTrim)
     {
         $this->valuesToTrim = $valuesToTrim;
         return $this;
     }
+    
     function addToValuesToTrim(string $valuesToTrim)
     {
         if (!isset($this->valuesToTrim))

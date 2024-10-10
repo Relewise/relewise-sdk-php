@@ -5,12 +5,14 @@ namespace Relewise\Models;
 class PromotionLocationPlacementCollection
 {
     public array $items;
+    
     public static function create(PromotionLocationPlacement ... $placements) : PromotionLocationPlacementCollection
     {
         $result = new PromotionLocationPlacementCollection();
         $result->items = $placements;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PromotionLocationPlacementCollection
     {
         $result = new PromotionLocationPlacementCollection();
@@ -24,17 +26,20 @@ class PromotionLocationPlacementCollection
         }
         return $result;
     }
+    
     function setItems(PromotionLocationPlacement ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param PromotionLocationPlacement[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(PromotionLocationPlacement $items)
     {
         if (!isset($this->items))

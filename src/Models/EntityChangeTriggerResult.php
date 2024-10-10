@@ -6,6 +6,8 @@ abstract class EntityChangeTriggerResult
 {
     public string $typeDefinition = "";
     public UserResultDetails $user;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -18,6 +20,7 @@ abstract class EntityChangeTriggerResult
             return VariantChangeTriggerResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("user", $arr))
@@ -26,6 +29,7 @@ abstract class EntityChangeTriggerResult
         }
         return $result;
     }
+    
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;

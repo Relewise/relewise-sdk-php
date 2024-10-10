@@ -9,6 +9,8 @@ abstract class AdvertiserEntityStateAdvertiserMetadataValuesAdvertisersRequestSo
     public ?AdvertisersRequestSortBySorting $sorting;
     public int $skip;
     public int $take;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -17,6 +19,7 @@ abstract class AdvertiserEntityStateAdvertiserMetadataValuesAdvertisersRequestSo
             return AdvertisersRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);
@@ -38,21 +41,25 @@ abstract class AdvertiserEntityStateAdvertiserMetadataValuesAdvertisersRequestSo
         }
         return $result;
     }
+    
     function setFilters(?AdvertisersRequestEntityFilters $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setSorting(?AdvertisersRequestSortBySorting $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
+    
     function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
+    
     function setTake(int $take)
     {
         $this->take = $take;

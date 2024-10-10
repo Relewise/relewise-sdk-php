@@ -11,22 +11,26 @@ class SaveDecompoundRulesRequest extends DecompoundRuleSaveSearchRulesRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveDecompoundRulesRequest
     {
         $result = DecompoundRuleSaveSearchRulesRequest::hydrateBase(new SaveDecompoundRulesRequest(), $arr);
         return $result;
     }
+    
     function setRules(DecompoundRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param DecompoundRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(DecompoundRule $rules)
     {
         if (!isset($this->rules))
@@ -36,6 +40,7 @@ class SaveDecompoundRulesRequest extends DecompoundRuleSaveSearchRulesRequest
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

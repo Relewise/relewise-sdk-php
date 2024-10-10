@@ -20,6 +20,7 @@ class ProductResult
     public PurchasedByUserCompanyInfo $purchasedByUserCompany;
     public ViewedByUserCompanyInfo $viewedByUserCompany;
     public array $filteredVariants;
+    
     public static function create(string $productId, int $rank) : ProductResult
     {
         $result = new ProductResult();
@@ -27,6 +28,7 @@ class ProductResult
         $result->rank = $rank;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductResult
     {
         $result = new ProductResult();
@@ -116,37 +118,44 @@ class ProductResult
         }
         return $result;
     }
+    
     function setProductId(string $productId)
     {
         $this->productId = $productId;
         return $this;
     }
+    
     function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setVariant(VariantResult $variant)
     {
         $this->variant = $variant;
         return $this;
     }
+    
     function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;
     }
+    
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     /** @param int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -156,6 +165,7 @@ class ProductResult
         array_push($this->assortments, $assortments);
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -165,23 +175,27 @@ class ProductResult
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
         return $this;
     }
+    
     function setCategoryPaths(CategoryPathResult ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    
     /** @param CategoryPathResult[] $categoryPaths new value. */
     function setCategoryPathsFromArray(array $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    
     function addToCategoryPaths(CategoryPathResult $categoryPaths)
     {
         if (!isset($this->categoryPaths))
@@ -191,42 +205,50 @@ class ProductResult
         array_push($this->categoryPaths, $categoryPaths);
         return $this;
     }
+    
     function setPurchasedByUser(PurchasedByUserInfo $purchasedByUser)
     {
         $this->purchasedByUser = $purchasedByUser;
         return $this;
     }
+    
     function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;
     }
+    
     function setListPrice(?float $listPrice)
     {
         $this->listPrice = $listPrice;
         return $this;
     }
+    
     function setSalesPrice(?float $salesPrice)
     {
         $this->salesPrice = $salesPrice;
         return $this;
     }
+    
     function setBrand(BrandResult $brand)
     {
         $this->brand = $brand;
         return $this;
     }
+    
     function setAllVariants(VariantResult ... $allVariants)
     {
         $this->allVariants = $allVariants;
         return $this;
     }
+    
     /** @param VariantResult[] $allVariants new value. */
     function setAllVariantsFromArray(array $allVariants)
     {
         $this->allVariants = $allVariants;
         return $this;
     }
+    
     function addToAllVariants(VariantResult $allVariants)
     {
         if (!isset($this->allVariants))
@@ -236,27 +258,32 @@ class ProductResult
         array_push($this->allVariants, $allVariants);
         return $this;
     }
+    
     function setPurchasedByUserCompany(PurchasedByUserCompanyInfo $purchasedByUserCompany)
     {
         $this->purchasedByUserCompany = $purchasedByUserCompany;
         return $this;
     }
+    
     function setViewedByUserCompany(ViewedByUserCompanyInfo $viewedByUserCompany)
     {
         $this->viewedByUserCompany = $viewedByUserCompany;
         return $this;
     }
+    
     function setFilteredVariants(VariantResult ... $filteredVariants)
     {
         $this->filteredVariants = $filteredVariants;
         return $this;
     }
+    
     /** @param VariantResult[] $filteredVariants new value. */
     function setFilteredVariantsFromArray(array $filteredVariants)
     {
         $this->filteredVariants = $filteredVariants;
         return $this;
     }
+    
     function addToFilteredVariants(VariantResult $filteredVariants)
     {
         if (!isset($this->filteredVariants))

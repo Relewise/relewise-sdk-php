@@ -11,6 +11,7 @@ class ProductUpdate extends Trackable
     public ProductUpdateUpdateKind $variantUpdateKind;
     public bool $replaceExistingVariants;
     public ?BrandUpdateUpdateKind $brandUpdateKind;
+    
     public static function create(Product $product, array $variants, ProductUpdateUpdateKind $productUpdateKind = ProductUpdateUpdateKind::UpdateAndAppend, ProductUpdateUpdateKind $variantUpdateKind = ProductUpdateUpdateKind::UpdateAndAppend, bool $replaceExistingVariants = false) : ProductUpdate
     {
         $result = new ProductUpdate();
@@ -21,6 +22,7 @@ class ProductUpdate extends Trackable
         $result->replaceExistingVariants = $replaceExistingVariants;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductUpdate
     {
         $result = Trackable::hydrateBase(new ProductUpdate(), $arr);
@@ -54,22 +56,26 @@ class ProductUpdate extends Trackable
         }
         return $result;
     }
+    
     function setProduct(Product $product)
     {
         $this->product = $product;
         return $this;
     }
+    
     function setVariants(ProductVariant ... $variants)
     {
         $this->variants = $variants;
         return $this;
     }
+    
     /** @param ProductVariant[] $variants new value. */
     function setVariantsFromArray(array $variants)
     {
         $this->variants = $variants;
         return $this;
     }
+    
     function addToVariants(ProductVariant $variants)
     {
         if (!isset($this->variants))
@@ -79,21 +85,25 @@ class ProductUpdate extends Trackable
         array_push($this->variants, $variants);
         return $this;
     }
+    
     function setProductUpdateKind(ProductUpdateUpdateKind $productUpdateKind)
     {
         $this->productUpdateKind = $productUpdateKind;
         return $this;
     }
+    
     function setVariantUpdateKind(ProductUpdateUpdateKind $variantUpdateKind)
     {
         $this->variantUpdateKind = $variantUpdateKind;
         return $this;
     }
+    
     function setReplaceExistingVariants(bool $replaceExistingVariants)
     {
         $this->replaceExistingVariants = $replaceExistingVariants;
         return $this;
     }
+    
     function setBrandUpdateKind(?BrandUpdateUpdateKind $brandUpdateKind)
     {
         $this->brandUpdateKind = $brandUpdateKind;

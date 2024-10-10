@@ -6,12 +6,14 @@ class TrackProductAdministrativeActionRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackProductAdministrativeActionRequest, Relewise.Client";
     public ProductAdministrativeAction $administrativeAction;
+    
     public static function create(ProductAdministrativeAction $administrativeAction) : TrackProductAdministrativeActionRequest
     {
         $result = new TrackProductAdministrativeActionRequest();
         $result->administrativeAction = $administrativeAction;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackProductAdministrativeActionRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackProductAdministrativeActionRequest(), $arr);
@@ -21,6 +23,7 @@ class TrackProductAdministrativeActionRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setAdministrativeAction(ProductAdministrativeAction $administrativeAction)
     {
         $this->administrativeAction = $administrativeAction;

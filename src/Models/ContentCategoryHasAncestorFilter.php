@@ -11,22 +11,26 @@ class ContentCategoryHasAncestorFilter extends HasAncestorCategoryFilter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryHasAncestorFilter
     {
         $result = HasAncestorCategoryFilter::hydrateBase(new ContentCategoryHasAncestorFilter(), $arr);
         return $result;
     }
+    
     function setCategoryIds(string ... $categoryIds)
     {
         $this->categoryIds = $categoryIds;
         return $this;
     }
+    
     /** @param string[] $categoryIds new value. */
     function setCategoryIdsFromArray(array $categoryIds)
     {
         $this->categoryIds = $categoryIds;
         return $this;
     }
+    
     function addToCategoryIds(string $categoryIds)
     {
         if (!isset($this->categoryIds))
@@ -36,11 +40,13 @@ class ContentCategoryHasAncestorFilter extends HasAncestorCategoryFilter
         array_push($this->categoryIds, $categoryIds);
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

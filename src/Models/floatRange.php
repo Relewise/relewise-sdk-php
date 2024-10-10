@@ -6,6 +6,7 @@ class floatRange
 {
     public ?float $lowerBoundInclusive;
     public ?float $upperBoundInclusive;
+    
     public static function create(?float $lowerBoundInclusive, ?float $upperBoundInclusive) : floatRange
     {
         $result = new floatRange();
@@ -13,6 +14,7 @@ class floatRange
         $result->upperBoundInclusive = $upperBoundInclusive;
         return $result;
     }
+    
     public static function hydrate(array $arr) : floatRange
     {
         $result = new floatRange();
@@ -26,11 +28,13 @@ class floatRange
         }
         return $result;
     }
+    
     function setLowerBoundInclusive(?float $lowerBoundInclusive)
     {
         $this->lowerBoundInclusive = $lowerBoundInclusive;
         return $this;
     }
+    
     function setUpperBoundInclusive(?float $upperBoundInclusive)
     {
         $this->upperBoundInclusive = $upperBoundInclusive;

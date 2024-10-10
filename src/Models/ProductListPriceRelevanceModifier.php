@@ -14,6 +14,7 @@ class ProductListPriceRelevanceModifier extends RelevanceModifier
     public float $multiplyWeightBy;
     /** Determines whether this RelevanceModifier should apply to all the Products that aren't contained within the specific Range instead. */
     public bool $negated;
+    
     /**
      * Creates a RelevanceModifier that can change the relevance of a Product depending on the list price falling within a specific Range.
      * @param ?floatRange $range The range of list prices that this RelevanceModifier will distinguish on.
@@ -30,6 +31,7 @@ class ProductListPriceRelevanceModifier extends RelevanceModifier
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductListPriceRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new ProductListPriceRelevanceModifier(), $arr);
@@ -51,30 +53,35 @@ class ProductListPriceRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    
     /** The range of list prices that this RelevanceModifier will distinguish on. */
     function setRange(?floatRange $range)
     {
         $this->range = $range;
         return $this;
     }
+    
     /** The currency that is used to distinguish the price. */
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     /** The weight that this RelevanceModifier will multiply relevant products with. */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    
     /** Determines whether this RelevanceModifier should apply to all the Products that aren't contained within the specific Range instead. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

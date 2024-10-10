@@ -5,12 +5,14 @@ namespace Relewise\Models;
 class Multilingual
 {
     public ?array $values;
+    
     public static function create(MultilingualValue ... $translations) : Multilingual
     {
         $result = new Multilingual();
         $result->values = $translations;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Multilingual
     {
         $result = new Multilingual();
@@ -24,17 +26,20 @@ class Multilingual
         }
         return $result;
     }
+    
     function setValues(MultilingualValue ... $values)
     {
         $this->values = $values;
         return $this;
     }
+    
     /** @param ?MultilingualValue[] $values new value. */
     function setValuesFromArray(array $values)
     {
         $this->values = $values;
         return $this;
     }
+    
     function addToValues(MultilingualValue $values)
     {
         if (!isset($this->values))

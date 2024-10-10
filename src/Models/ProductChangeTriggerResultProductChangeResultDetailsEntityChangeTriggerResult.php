@@ -6,6 +6,8 @@ abstract class ProductChangeTriggerResultProductChangeResultDetailsEntityChangeT
 {
     public string $typeDefinition = "";
     public array $entitiesWithChanges;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -14,6 +16,7 @@ abstract class ProductChangeTriggerResultProductChangeResultDetailsEntityChangeT
             return ProductChangeTriggerResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = EntityChangeTriggerResult::hydrateBase($result, $arr);
@@ -27,17 +30,20 @@ abstract class ProductChangeTriggerResultProductChangeResultDetailsEntityChangeT
         }
         return $result;
     }
+    
     function setEntitiesWithChanges(ProductChangeTriggerResultProductChangeResultDetails ... $entitiesWithChanges)
     {
         $this->entitiesWithChanges = $entitiesWithChanges;
         return $this;
     }
+    
     /** @param ProductChangeTriggerResultProductChangeResultDetails[] $entitiesWithChanges new value. */
     function setEntitiesWithChangesFromArray(array $entitiesWithChanges)
     {
         $this->entitiesWithChanges = $entitiesWithChanges;
         return $this;
     }
+    
     function addToEntitiesWithChanges(ProductChangeTriggerResultProductChangeResultDetails $entitiesWithChanges)
     {
         if (!isset($this->entitiesWithChanges))
@@ -47,6 +53,7 @@ abstract class ProductChangeTriggerResultProductChangeResultDetailsEntityChangeT
         array_push($this->entitiesWithChanges, $entitiesWithChanges);
         return $this;
     }
+    
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;

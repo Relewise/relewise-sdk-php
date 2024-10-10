@@ -6,11 +6,13 @@ class TriggerConfigurationsRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Triggers.TriggerConfigurationsRequest, Relewise.Client";
     public ?int $type;
+    
     public static function create() : TriggerConfigurationsRequest
     {
         $result = new TriggerConfigurationsRequest();
         return $result;
     }
+    
     public static function hydrate(array $arr) : TriggerConfigurationsRequest
     {
         $result = LicensedRequest::hydrateBase(new TriggerConfigurationsRequest(), $arr);
@@ -20,6 +22,7 @@ class TriggerConfigurationsRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setType(?int $type)
     {
         $this->type = $type;

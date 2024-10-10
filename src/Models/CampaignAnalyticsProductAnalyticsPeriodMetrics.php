@@ -12,6 +12,7 @@ class CampaignAnalyticsProductAnalyticsPeriodMetrics implements JsonSerializable
     public int $views;
     public int $salesQuantity;
     public array $currencies;
+    
     public static function create(DateTime $periodFromUtc, int $views, int $salesQuantity, CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics ... $currencies) : CampaignAnalyticsProductAnalyticsPeriodMetrics
     {
         $result = new CampaignAnalyticsProductAnalyticsPeriodMetrics();
@@ -21,6 +22,7 @@ class CampaignAnalyticsProductAnalyticsPeriodMetrics implements JsonSerializable
         $result->currencies = $currencies;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignAnalyticsProductAnalyticsPeriodMetrics
     {
         $result = new CampaignAnalyticsProductAnalyticsPeriodMetrics();
@@ -46,32 +48,38 @@ class CampaignAnalyticsProductAnalyticsPeriodMetrics implements JsonSerializable
         }
         return $result;
     }
+    
     function setPeriodFromUtc(DateTime $periodFromUtc)
     {
         $this->periodFromUtc = $periodFromUtc;
         return $this;
     }
+    
     function setViews(int $views)
     {
         $this->views = $views;
         return $this;
     }
+    
     function setSalesQuantity(int $salesQuantity)
     {
         $this->salesQuantity = $salesQuantity;
         return $this;
     }
+    
     function setCurrencies(CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics ... $currencies)
     {
         $this->currencies = $currencies;
         return $this;
     }
+    
     /** @param CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics[] $currencies new value. */
     function setCurrenciesFromArray(array $currencies)
     {
         $this->currencies = $currencies;
         return $this;
     }
+    
     function addToCurrencies(CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics $currencies)
     {
         if (!isset($this->currencies))
@@ -81,6 +89,7 @@ class CampaignAnalyticsProductAnalyticsPeriodMetrics implements JsonSerializable
         array_push($this->currencies, $currencies);
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

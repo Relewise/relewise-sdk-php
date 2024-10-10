@@ -11,6 +11,7 @@ class ProductChangeTriggerResultProductChangeResultDetails implements JsonSerial
     public DataValue $oldValue;
     public DataValue $newValue;
     public ProductResultDetails $product;
+    
     public static function create(DateTime $changeTimeUtc, DataValue $oldValue, DataValue $newValue, ProductResultDetails $product) : ProductChangeTriggerResultProductChangeResultDetails
     {
         $result = new ProductChangeTriggerResultProductChangeResultDetails();
@@ -20,6 +21,7 @@ class ProductChangeTriggerResultProductChangeResultDetails implements JsonSerial
         $result->product = $product;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductChangeTriggerResultProductChangeResultDetails
     {
         $result = new ProductChangeTriggerResultProductChangeResultDetails();
@@ -41,26 +43,31 @@ class ProductChangeTriggerResultProductChangeResultDetails implements JsonSerial
         }
         return $result;
     }
+    
     function setChangeTimeUtc(DateTime $changeTimeUtc)
     {
         $this->changeTimeUtc = $changeTimeUtc;
         return $this;
     }
+    
     function setOldValue(DataValue $oldValue)
     {
         $this->oldValue = $oldValue;
         return $this;
     }
+    
     function setNewValue(DataValue $newValue)
     {
         $this->newValue = $newValue;
         return $this;
     }
+    
     function setProduct(ProductResultDetails $product)
     {
         $this->product = $product;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

@@ -10,11 +10,13 @@ class SynonymsRequest extends LicensedRequest
     public int $skip;
     public string $term;
     public ?bool $isApproved;
+    
     public static function create() : SynonymsRequest
     {
         $result = new SynonymsRequest();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SynonymsRequest
     {
         $result = LicensedRequest::hydrateBase(new SynonymsRequest(), $arr);
@@ -40,26 +42,31 @@ class SynonymsRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setSorting(SynonymsRequestSynonymSortingSorting $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
+    
     function setTake(int $take)
     {
         $this->take = $take;
         return $this;
     }
+    
     function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
+    
     function setTerm(string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setIsApproved(?bool $isApproved)
     {
         $this->isApproved = $isApproved;

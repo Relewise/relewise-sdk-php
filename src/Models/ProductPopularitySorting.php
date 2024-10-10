@@ -11,16 +11,19 @@ class ProductPopularitySorting extends ProductSorting
         $result->order = $order;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPopularitySorting
     {
         $result = ProductSorting::hydrateBase(new ProductPopularitySorting(), $arr);
         return $result;
     }
+    
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    
     function setThenBy(ProductSorting $thenBy)
     {
         $this->thenBy = $thenBy;

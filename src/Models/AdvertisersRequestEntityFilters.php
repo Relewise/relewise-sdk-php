@@ -6,11 +6,13 @@ class AdvertisersRequestEntityFilters extends AdvertiserEntityStateAdvertiserMet
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.AdvertisersRequest+EntityFilters, Relewise.Client";
     public ?array $ids;
+    
     public static function create() : AdvertisersRequestEntityFilters
     {
         $result = new AdvertisersRequestEntityFilters();
         return $result;
     }
+    
     public static function hydrate(array $arr) : AdvertisersRequestEntityFilters
     {
         $result = AdvertiserEntityStateAdvertiserMetadataValuesRetailMediaEntityEntityFilters::hydrateBase(new AdvertisersRequestEntityFilters(), $arr);
@@ -24,17 +26,20 @@ class AdvertisersRequestEntityFilters extends AdvertiserEntityStateAdvertiserMet
         }
         return $result;
     }
+    
     function setIds(string ... $ids)
     {
         $this->ids = $ids;
         return $this;
     }
+    
     /** @param ?string[] $ids new value. */
     function setIdsFromArray(array $ids)
     {
         $this->ids = $ids;
         return $this;
     }
+    
     function addToIds(string $ids)
     {
         if (!isset($this->ids))
@@ -44,22 +49,26 @@ class AdvertisersRequestEntityFilters extends AdvertiserEntityStateAdvertiserMet
         array_push($this->ids, $ids);
         return $this;
     }
+    
     function setTerm(?string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setStates(AdvertiserEntityState ... $states)
     {
         $this->states = $states;
         return $this;
     }
+    
     /** @param ?AdvertiserEntityState[] $states new value. */
     function setStatesFromArray(array $states)
     {
         $this->states = $states;
         return $this;
     }
+    
     function addToStates(AdvertiserEntityState $states)
     {
         if (!isset($this->states))

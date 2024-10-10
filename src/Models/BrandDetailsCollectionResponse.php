@@ -7,6 +7,7 @@ class BrandDetailsCollectionResponse extends TimedResponse
     public string $typeDefinition = "Relewise.Client.Responses.BrandDetailsCollectionResponse, Relewise.Client";
     public array $brands;
     public ?int $totalNumberOfResults;
+    
     public static function create(array $brands, ?int $totalNumberOfResults) : BrandDetailsCollectionResponse
     {
         $result = new BrandDetailsCollectionResponse();
@@ -14,6 +15,7 @@ class BrandDetailsCollectionResponse extends TimedResponse
         $result->totalNumberOfResults = $totalNumberOfResults;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandDetailsCollectionResponse
     {
         $result = TimedResponse::hydrateBase(new BrandDetailsCollectionResponse(), $arr);
@@ -31,17 +33,20 @@ class BrandDetailsCollectionResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setBrands(BrandResultDetails ... $brands)
     {
         $this->brands = $brands;
         return $this;
     }
+    
     /** @param BrandResultDetails[] $brands new value. */
     function setBrandsFromArray(array $brands)
     {
         $this->brands = $brands;
         return $this;
     }
+    
     function addToBrands(BrandResultDetails $brands)
     {
         if (!isset($this->brands))
@@ -51,11 +56,13 @@ class BrandDetailsCollectionResponse extends TimedResponse
         array_push($this->brands, $brands);
         return $this;
     }
+    
     function setTotalNumberOfResults(?int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

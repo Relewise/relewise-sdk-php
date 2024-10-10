@@ -30,12 +30,14 @@ class ProductResultDetails implements JsonSerializable
     public MultiCurrency $salesPrice;
     public BrandResultDetails $brand;
     public array $filteredVariants;
+    
     public static function create(string $productId) : ProductResultDetails
     {
         $result = new ProductResultDetails();
         $result->productId = $productId;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductResultDetails
     {
         $result = new ProductResultDetails();
@@ -149,33 +151,39 @@ class ProductResultDetails implements JsonSerializable
         }
         return $result;
     }
+    
     function setProductId(string $productId)
     {
         $this->productId = $productId;
         return $this;
     }
+    
     function setDisplayName(Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     /** @deprecated Not in use, this will always be null */
     function setVariant(VariantResult $variant)
     {
         $this->variant = $variant;
         return $this;
     }
+    
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     /** @param int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -185,6 +193,7 @@ class ProductResultDetails implements JsonSerializable
         array_push($this->assortments, $assortments);
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -194,23 +203,27 @@ class ProductResultDetails implements JsonSerializable
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
         return $this;
     }
+    
     function setCategoryPaths(CategoryPathResultDetails ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    
     /** @param CategoryPathResultDetails[] $categoryPaths new value. */
     function setCategoryPathsFromArray(array $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    
     function addToCategoryPaths(CategoryPathResultDetails $categoryPaths)
     {
         if (!isset($this->categoryPaths))
@@ -220,27 +233,32 @@ class ProductResultDetails implements JsonSerializable
         array_push($this->categoryPaths, $categoryPaths);
         return $this;
     }
+    
     function setPurchasedByUser(PurchasedByUserInfo $purchasedByUser)
     {
         $this->purchasedByUser = $purchasedByUser;
         return $this;
     }
+    
     function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;
     }
+    
     function setAllVariants(VariantResultDetails ... $allVariants)
     {
         $this->allVariants = $allVariants;
         return $this;
     }
+    
     /** @param VariantResultDetails[] $allVariants new value. */
     function setAllVariantsFromArray(array $allVariants)
     {
         $this->allVariants = $allVariants;
         return $this;
     }
+    
     function addToAllVariants(VariantResultDetails $allVariants)
     {
         if (!isset($this->allVariants))
@@ -250,77 +268,92 @@ class ProductResultDetails implements JsonSerializable
         array_push($this->allVariants, $allVariants);
         return $this;
     }
+    
     function setCreatedUtc(DateTime $createdUtc)
     {
         $this->createdUtc = $createdUtc;
         return $this;
     }
+    
     function setLastPurchasedUtc(?DateTime $lastPurchasedUtc)
     {
         $this->lastPurchasedUtc = $lastPurchasedUtc;
         return $this;
     }
+    
     function setLastViewedUtc(?DateTime $lastViewedUtc)
     {
         $this->lastViewedUtc = $lastViewedUtc;
         return $this;
     }
+    
     function setContainedInTotalNumberOfOrders(int $containedInTotalNumberOfOrders)
     {
         $this->containedInTotalNumberOfOrders = $containedInTotalNumberOfOrders;
         return $this;
     }
+    
     function setViewedTotalNumberOfTimes(int $viewedTotalNumberOfTimes)
     {
         $this->viewedTotalNumberOfTimes = $viewedTotalNumberOfTimes;
         return $this;
     }
+    
     function setPurchasedByDifferentNumberOfUsers(int $purchasedByDifferentNumberOfUsers)
     {
         $this->purchasedByDifferentNumberOfUsers = $purchasedByDifferentNumberOfUsers;
         return $this;
     }
+    
     function setViewedByDifferentNumberOfUsers(int $viewedByDifferentNumberOfUsers)
     {
         $this->viewedByDifferentNumberOfUsers = $viewedByDifferentNumberOfUsers;
         return $this;
     }
+    
     function setDisabled(bool $disabled)
     {
         $this->disabled = $disabled;
         return $this;
     }
+    
     function setDeleted(bool $deleted)
     {
         $this->deleted = $deleted;
         return $this;
     }
+    
     function setListPrice(MultiCurrency $listPrice)
     {
         $this->listPrice = $listPrice;
         return $this;
     }
+    
     function setSalesPrice(MultiCurrency $salesPrice)
     {
         $this->salesPrice = $salesPrice;
         return $this;
     }
+    
     function setBrand(BrandResultDetails $brand)
     {
         $this->brand = $brand;
         return $this;
     }
+    
     function setFilteredVariants(VariantResultDetails ... $filteredVariants)
     {
         $this->filteredVariants = $filteredVariants;
         return $this;
     }
+    
     /** @param VariantResultDetails[] $filteredVariants new value. */
     function setFilteredVariantsFromArray(array $filteredVariants)
     {
         $this->filteredVariants = $filteredVariants;
         return $this;
     }
+    
     function addToFilteredVariants(VariantResultDetails $filteredVariants)
     {
         if (!isset($this->filteredVariants))
@@ -330,6 +363,7 @@ class ProductResultDetails implements JsonSerializable
         array_push($this->filteredVariants, $filteredVariants);
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

@@ -10,6 +10,7 @@ class ProductSearchRequest extends PaginatedSearchRequest
     public ?ProductSearchSettings $settings;
     public ?ProductSortBySpecification $sorting;
     public ?RetailMediaQuery $retailMedia;
+    
     public static function create(?Language $language, ?Currency $currency, User $user, string $displayedAtLocation, ?string $term, int $skip, int $take) : ProductSearchRequest
     {
         $result = new ProductSearchRequest();
@@ -22,6 +23,7 @@ class ProductSearchRequest extends PaginatedSearchRequest
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductSearchRequest
     {
         $result = PaginatedSearchRequest::hydrateBase(new ProductSearchRequest(), $arr);
@@ -47,76 +49,91 @@ class ProductSearchRequest extends PaginatedSearchRequest
         }
         return $result;
     }
+    
     function setTerm(?string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setFacets(?ProductFacetQuery $facets)
     {
         $this->facets = $facets;
         return $this;
     }
+    
     function setSettings(?ProductSearchSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
+    
     function setSorting(?ProductSortBySpecification $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
+    
     function setRetailMedia(?RetailMediaQuery $retailMedia)
     {
         $this->retailMedia = $retailMedia;
         return $this;
     }
+    
     function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
+    
     function setTake(int $take)
     {
         $this->take = $take;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setDisplayedAtLocation(?string $displayedAtLocation)
     {
         $this->displayedAtLocation = $displayedAtLocation;
         return $this;
     }
+    
     function setRelevanceModifiers(?RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
+    
     function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setIndexSelector(?SearchIndexSelector $indexSelector)
     {
         $this->indexSelector = $indexSelector;
         return $this;
     }
+    
     function setPostFilters(?FilterCollection $postFilters)
     {
         $this->postFilters = $postFilters;

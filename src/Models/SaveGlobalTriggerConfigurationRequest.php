@@ -7,6 +7,7 @@ class SaveGlobalTriggerConfigurationRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Triggers.SaveGlobalTriggerConfigurationRequest, Relewise.Client";
     public GlobalTriggerConfiguration $configuration;
     public string $modifiedBy;
+    
     public static function create(GlobalTriggerConfiguration $configuration, string $modifiedBy) : SaveGlobalTriggerConfigurationRequest
     {
         $result = new SaveGlobalTriggerConfigurationRequest();
@@ -14,6 +15,7 @@ class SaveGlobalTriggerConfigurationRequest extends LicensedRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveGlobalTriggerConfigurationRequest
     {
         $result = LicensedRequest::hydrateBase(new SaveGlobalTriggerConfigurationRequest(), $arr);
@@ -27,11 +29,13 @@ class SaveGlobalTriggerConfigurationRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setConfiguration(GlobalTriggerConfiguration $configuration)
     {
         $this->configuration = $configuration;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

@@ -6,6 +6,7 @@ class SearchTermBasedProductRecommendationRequest extends ProductRecommendationR
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.SearchTermBasedProductRecommendationRequest, Relewise.Client";
     public string $term;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, string $term) : SearchTermBasedProductRecommendationRequest
     {
         $result = new SearchTermBasedProductRecommendationRequest();
@@ -16,6 +17,7 @@ class SearchTermBasedProductRecommendationRequest extends ProductRecommendationR
         $result->term = $term;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermBasedProductRecommendationRequest
     {
         $result = ProductRecommendationRequest::hydrateBase(new SearchTermBasedProductRecommendationRequest(), $arr);
@@ -25,41 +27,49 @@ class SearchTermBasedProductRecommendationRequest extends ProductRecommendationR
         }
         return $result;
     }
+    
     function setTerm(string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setSettings(ProductRecommendationRequestSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setDisplayedAtLocationType(string $displayedAtLocationType)
     {
         $this->displayedAtLocationType = $displayedAtLocationType;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

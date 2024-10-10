@@ -7,6 +7,7 @@ class floatAvailableFacetValue
     public float $value;
     public int $hits;
     public bool $selected;
+    
     public static function create(float $value, bool $selected, int $hits) : floatAvailableFacetValue
     {
         $result = new floatAvailableFacetValue();
@@ -15,6 +16,7 @@ class floatAvailableFacetValue
         $result->hits = $hits;
         return $result;
     }
+    
     public static function hydrate(array $arr) : floatAvailableFacetValue
     {
         $result = new floatAvailableFacetValue();
@@ -32,16 +34,19 @@ class floatAvailableFacetValue
         }
         return $result;
     }
+    
     function setValue(float $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setSelected(bool $selected)
     {
         $this->selected = $selected;

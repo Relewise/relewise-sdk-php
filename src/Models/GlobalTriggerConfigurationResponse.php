@@ -6,11 +6,13 @@ class GlobalTriggerConfigurationResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.GlobalTriggerConfigurationResponse, Relewise.Client";
     public GlobalTriggerConfiguration $configuration;
+    
     public static function create() : GlobalTriggerConfigurationResponse
     {
         $result = new GlobalTriggerConfigurationResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : GlobalTriggerConfigurationResponse
     {
         $result = TimedResponse::hydrateBase(new GlobalTriggerConfigurationResponse(), $arr);
@@ -20,11 +22,13 @@ class GlobalTriggerConfigurationResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setConfiguration(GlobalTriggerConfiguration $configuration)
     {
         $this->configuration = $configuration;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

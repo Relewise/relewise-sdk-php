@@ -6,12 +6,14 @@ class SearchIndexSelector
 {
     public string $id;
     const DEFAULT = Null;
+    
     public static function create(string $id) : SearchIndexSelector
     {
         $result = new SearchIndexSelector();
         $result->id = $id;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchIndexSelector
     {
         $result = new SearchIndexSelector();
@@ -21,6 +23,7 @@ class SearchIndexSelector
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;

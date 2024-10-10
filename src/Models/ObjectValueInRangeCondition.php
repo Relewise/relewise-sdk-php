@@ -6,6 +6,7 @@ class ObjectValueInRangeCondition extends ObjectValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueInRangeCondition, Relewise.Client";
     public floatRange $range;
+    
     public static function create(string $key, floatRange $range, bool $negated = false) : ObjectValueInRangeCondition
     {
         $result = new ObjectValueInRangeCondition();
@@ -14,6 +15,7 @@ class ObjectValueInRangeCondition extends ObjectValueCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ObjectValueInRangeCondition
     {
         $result = ObjectValueCondition::hydrateBase(new ObjectValueInRangeCondition(), $arr);
@@ -23,32 +25,38 @@ class ObjectValueInRangeCondition extends ObjectValueCondition
         }
         return $result;
     }
+    
     function setRange(floatRange $range)
     {
         $this->range = $range;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setObjectPath(string ... $objectPath)
     {
         $this->objectPath = $objectPath;
         return $this;
     }
+    
     /** @param ?string[] $objectPath new value. */
     function setObjectPathFromArray(array $objectPath)
     {
         $this->objectPath = $objectPath;
         return $this;
     }
+    
     function addToObjectPath(string $objectPath)
     {
         if (!isset($this->objectPath))

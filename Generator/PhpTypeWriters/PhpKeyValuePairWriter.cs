@@ -28,7 +28,9 @@ use DateTime;
         writer.Indent++;
 
         writer.WriteLine($"public {phpWriter.PhpTypeName(type.GenericTypeArguments[0])} $key;");
+        writer.WriteLine();
         writer.WriteLine($"public {phpWriter.PhpTypeName(type.GenericTypeArguments[1])} $value;");
+        writer.WriteLine();
 
         writer.WriteLine($"function __construct({phpWriter.PhpTypeName(type.GenericTypeArguments[0])} $key, {phpWriter.PhpTypeName(type.GenericTypeArguments[1])} $value)");
         writer.WriteLine("{");
@@ -37,6 +39,7 @@ use DateTime;
         writer.WriteLine("$this->value = $value;");
         writer.Indent--;
         writer.WriteLine("}");
+        writer.WriteLine();
 
         writer.WriteLine($"public static function create({phpWriter.PhpTypeName(type.GenericTypeArguments[0])} $key, {phpWriter.PhpTypeName(type.GenericTypeArguments[1])} $value) : {typeName}");
         writer.WriteLine("{");
@@ -44,6 +47,7 @@ use DateTime;
         writer.WriteLine($"return new {typeName}($key, $value);");
         writer.Indent--;
         writer.WriteLine("}");
+        writer.WriteLine();
 
         writer.WriteLine($"public static function hydrate(array $arr) : {typeName}");
         writer.WriteLine("{");

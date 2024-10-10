@@ -6,12 +6,14 @@ class TrackSearchTermRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackSearchTermRequest, Relewise.Client";
     public SearchTerm $searchTerm;
+    
     public static function create(SearchTerm $searchTerm) : TrackSearchTermRequest
     {
         $result = new TrackSearchTermRequest();
         $result->searchTerm = $searchTerm;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackSearchTermRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackSearchTermRequest(), $arr);
@@ -21,6 +23,7 @@ class TrackSearchTermRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setSearchTerm(SearchTerm $searchTerm)
     {
         $this->searchTerm = $searchTerm;

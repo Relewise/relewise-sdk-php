@@ -8,6 +8,7 @@ class RedirectResult
     public SearchTermCondition $condition;
     public ?string $destination;
     public ?array $data;
+    
     public static function create(string $id, SearchTermCondition $condition, ?string $destination, ?array $data) : RedirectResult
     {
         $result = new RedirectResult();
@@ -17,6 +18,7 @@ class RedirectResult
         $result->data = $data;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RedirectResult
     {
         $result = new RedirectResult();
@@ -42,21 +44,25 @@ class RedirectResult
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setCondition(SearchTermCondition $condition)
     {
         $this->condition = $condition;
         return $this;
     }
+    
     function setDestination(?string $destination)
     {
         $this->destination = $destination;
         return $this;
     }
+    
     function addToData(string $key, string $value)
     {
         if (!isset($this->data))
@@ -66,6 +72,7 @@ class RedirectResult
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param ?array<string, string> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {

@@ -7,6 +7,7 @@ class CampaignAnalyticsProductAnalyticsPromotedProductMetrics
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.CampaignAnalytics+ProductAnalytics+PromotedProductMetrics, Relewise.Client";
     public string $productId;
     public int $promotions;
+    
     public static function create(string $productId, int $promotions) : CampaignAnalyticsProductAnalyticsPromotedProductMetrics
     {
         $result = new CampaignAnalyticsProductAnalyticsPromotedProductMetrics();
@@ -14,6 +15,7 @@ class CampaignAnalyticsProductAnalyticsPromotedProductMetrics
         $result->promotions = $promotions;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignAnalyticsProductAnalyticsPromotedProductMetrics
     {
         $result = new CampaignAnalyticsProductAnalyticsPromotedProductMetrics();
@@ -27,11 +29,13 @@ class CampaignAnalyticsProductAnalyticsPromotedProductMetrics
         }
         return $result;
     }
+    
     function setProductId(string $productId)
     {
         $this->productId = $productId;
         return $this;
     }
+    
     function setPromotions(int $promotions)
     {
         $this->promotions = $promotions;

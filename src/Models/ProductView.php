@@ -8,6 +8,7 @@ class ProductView extends Trackable
     public ?User $user;
     public Product $product;
     public ?ProductVariant $variant;
+    
     public static function create(?User $user, Product $product, ?ProductVariant $variant = Null) : ProductView
     {
         $result = new ProductView();
@@ -16,6 +17,7 @@ class ProductView extends Trackable
         $result->variant = $variant;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductView
     {
         $result = Trackable::hydrateBase(new ProductView(), $arr);
@@ -33,16 +35,19 @@ class ProductView extends Trackable
         }
         return $result;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setProduct(Product $product)
     {
         $this->product = $product;
         return $this;
     }
+    
     function setVariant(?ProductVariant $variant)
     {
         $this->variant = $variant;

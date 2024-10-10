@@ -6,6 +6,7 @@ class OrCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.OrCondition, Relewise.Client";
     public UserConditionCollection $conditions;
+    
     public static function create(UserConditionCollection $conditions, bool $negated) : OrCondition
     {
         $result = new OrCondition();
@@ -13,6 +14,7 @@ class OrCondition extends UserCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : OrCondition
     {
         $result = UserCondition::hydrateBase(new OrCondition(), $arr);
@@ -22,11 +24,13 @@ class OrCondition extends UserCondition
         }
         return $result;
     }
+    
     function setConditions(UserConditionCollection $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

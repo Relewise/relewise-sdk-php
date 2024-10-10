@@ -11,22 +11,26 @@ class SaveStemmingRulesResponse extends StemmingRuleSaveSearchRulesResponse
         $result->rules = $rules;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveStemmingRulesResponse
     {
         $result = StemmingRuleSaveSearchRulesResponse::hydrateBase(new SaveStemmingRulesResponse(), $arr);
         return $result;
     }
+    
     function setRules(StemmingRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param StemmingRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(StemmingRule $rules)
     {
         if (!isset($this->rules))
@@ -36,6 +40,7 @@ class SaveStemmingRulesResponse extends StemmingRuleSaveSearchRulesResponse
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

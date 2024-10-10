@@ -5,11 +5,13 @@ namespace Relewise\Models;
 class UserConditionConfiguration
 {
     public UserConditionCollection $conditions;
+    
     public static function create() : UserConditionConfiguration
     {
         $result = new UserConditionConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserConditionConfiguration
     {
         $result = new UserConditionConfiguration();
@@ -19,6 +21,7 @@ class UserConditionConfiguration
         }
         return $result;
     }
+    
     function setConditions(UserConditionCollection $conditions)
     {
         $this->conditions = $conditions;

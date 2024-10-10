@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class VariantPropertySelector
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -17,6 +18,7 @@ abstract class VariantPropertySelector
             return ObservableVariantDataValueSelector::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         return $result;

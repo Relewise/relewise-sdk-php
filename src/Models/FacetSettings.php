@@ -6,11 +6,13 @@ class FacetSettings
 {
     public bool $alwaysIncludeSelectedInAvailable;
     public bool $includeZeroHitsInAvailable;
+    
     public static function create() : FacetSettings
     {
         $result = new FacetSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : FacetSettings
     {
         $result = new FacetSettings();
@@ -24,11 +26,13 @@ class FacetSettings
         }
         return $result;
     }
+    
     function setAlwaysIncludeSelectedInAvailable(bool $alwaysIncludeSelectedInAvailable)
     {
         $this->alwaysIncludeSelectedInAvailable = $alwaysIncludeSelectedInAvailable;
         return $this;
     }
+    
     function setIncludeZeroHitsInAvailable(bool $includeZeroHitsInAvailable)
     {
         $this->includeZeroHitsInAvailable = $includeZeroHitsInAvailable;

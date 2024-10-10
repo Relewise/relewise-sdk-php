@@ -10,6 +10,7 @@ class ClearTextParser extends Parser
         $result = new ClearTextParser();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ClearTextParser
     {
         $result = Parser::hydrateBase(new ClearTextParser(), $arr);

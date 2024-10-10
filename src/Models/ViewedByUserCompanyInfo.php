@@ -10,6 +10,7 @@ class ViewedByUserCompanyInfo implements JsonSerializable
     public DateTime $mostRecentlyViewedUtc;
     public int $totalNumberOfTimesViewed;
     public ViewedByUserCompanyInfo $viewedByParentCompany;
+    
     public static function create(DateTime $mostRecentlyViewedUtc, int $totalNumberOfTimesViewed) : ViewedByUserCompanyInfo
     {
         $result = new ViewedByUserCompanyInfo();
@@ -17,6 +18,7 @@ class ViewedByUserCompanyInfo implements JsonSerializable
         $result->totalNumberOfTimesViewed = $totalNumberOfTimesViewed;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ViewedByUserCompanyInfo
     {
         $result = new ViewedByUserCompanyInfo();
@@ -34,21 +36,25 @@ class ViewedByUserCompanyInfo implements JsonSerializable
         }
         return $result;
     }
+    
     function setMostRecentlyViewedUtc(DateTime $mostRecentlyViewedUtc)
     {
         $this->mostRecentlyViewedUtc = $mostRecentlyViewedUtc;
         return $this;
     }
+    
     function setTotalNumberOfTimesViewed(int $totalNumberOfTimesViewed)
     {
         $this->totalNumberOfTimesViewed = $totalNumberOfTimesViewed;
         return $this;
     }
+    
     function setViewedByParentCompany(ViewedByUserCompanyInfo $viewedByParentCompany)
     {
         $this->viewedByParentCompany = $viewedByParentCompany;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

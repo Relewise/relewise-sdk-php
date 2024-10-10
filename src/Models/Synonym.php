@@ -22,11 +22,13 @@ class Synonym implements JsonSerializable
     public int $usages;
     public bool $isApproved;
     public bool $allowInPredictions;
+    
     public static function create() : Synonym
     {
         $result = new Synonym();
         return $result;
     }
+    
     public static function hydrate(array $arr) : Synonym
     {
         $result = new Synonym();
@@ -108,27 +110,32 @@ class Synonym implements JsonSerializable
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setType(SynonymType $type)
     {
         $this->type = $type;
         return $this;
     }
+    
     function setIndexes(string ... $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
+    
     /** @param string[] $indexes new value. */
     function setIndexesFromArray(array $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
+    
     function addToIndexes(string $indexes)
     {
         if (!isset($this->indexes))
@@ -138,17 +145,20 @@ class Synonym implements JsonSerializable
         array_push($this->indexes, $indexes);
         return $this;
     }
+    
     function setLanguages(Language ... $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    
     /** @param Language[] $languages new value. */
     function setLanguagesFromArray(array $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    
     function addToLanguages(Language $languages)
     {
         if (!isset($this->languages))
@@ -158,37 +168,44 @@ class Synonym implements JsonSerializable
         array_push($this->languages, $languages);
         return $this;
     }
+    
     function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
+    
     function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
+    
     function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
+    
     function setFrom(string ... $from)
     {
         $this->from = $from;
         return $this;
     }
+    
     /** @param string[] $from new value. */
     function setFromFromArray(array $from)
     {
         $this->from = $from;
         return $this;
     }
+    
     function addToFrom(string $from)
     {
         if (!isset($this->from))
@@ -198,17 +215,20 @@ class Synonym implements JsonSerializable
         array_push($this->from, $from);
         return $this;
     }
+    
     function setWords(string ... $words)
     {
         $this->words = $words;
         return $this;
     }
+    
     /** @param string[] $words new value. */
     function setWordsFromArray(array $words)
     {
         $this->words = $words;
         return $this;
     }
+    
     function addToWords(string $words)
     {
         if (!isset($this->words))
@@ -218,31 +238,37 @@ class Synonym implements JsonSerializable
         array_push($this->words, $words);
         return $this;
     }
+    
     function setApproved(?DateTime $approved)
     {
         $this->approved = $approved;
         return $this;
     }
+    
     function setApprovedBy(string $approvedBy)
     {
         $this->approvedBy = $approvedBy;
         return $this;
     }
+    
     function setUsages(int $usages)
     {
         $this->usages = $usages;
         return $this;
     }
+    
     function setIsApproved(bool $isApproved)
     {
         $this->isApproved = $isApproved;
         return $this;
     }
+    
     function setAllowInPredictions(bool $allowInPredictions)
     {
         $this->allowInPredictions = $allowInPredictions;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

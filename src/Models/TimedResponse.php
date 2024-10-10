@@ -6,6 +6,8 @@ abstract class TimedResponse
 {
     public string $typeDefinition = "";
     public Statistics $statistics;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -230,6 +232,7 @@ abstract class TimedResponse
             return ProductPerformanceResponse::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("statistics", $arr))
@@ -238,6 +241,7 @@ abstract class TimedResponse
         }
         return $result;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

@@ -7,6 +7,7 @@ class UserUpdate extends Trackable
     public string $typeDefinition = "Relewise.Client.DataTypes.UserUpdate, Relewise.Client";
     public User $user;
     public UserUpdateUpdateKind $kind;
+    
     public static function create(User $user, UserUpdateUpdateKind $updateKind = UserUpdateUpdateKind::UpdateAndAppend) : UserUpdate
     {
         $result = new UserUpdate();
@@ -14,6 +15,7 @@ class UserUpdate extends Trackable
         $result->kind = $updateKind;
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserUpdate
     {
         $result = Trackable::hydrateBase(new UserUpdate(), $arr);
@@ -27,11 +29,13 @@ class UserUpdate extends Trackable
         }
         return $result;
     }
+    
     function setUser(User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setKind(UserUpdateUpdateKind $kind)
     {
         $this->kind = $kind;

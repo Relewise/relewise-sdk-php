@@ -6,6 +6,7 @@ class ContentCategoryUpdate extends CategoryUpdate
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentCategoryUpdate, Relewise.Client";
     public ContentCategory $category;
+    
     public static function create(ContentCategory $category, CategoryUpdateUpdateKind $kind = CategoryUpdateUpdateKind::UpdateAndAppend) : ContentCategoryUpdate
     {
         $result = new ContentCategoryUpdate();
@@ -13,6 +14,7 @@ class ContentCategoryUpdate extends CategoryUpdate
         $result->kind = $kind;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryUpdate
     {
         $result = CategoryUpdate::hydrateBase(new ContentCategoryUpdate(), $arr);
@@ -22,11 +24,13 @@ class ContentCategoryUpdate extends CategoryUpdate
         }
         return $result;
     }
+    
     function setCategory(ContentCategory $category)
     {
         $this->category = $category;
         return $this;
     }
+    
     function setKind(CategoryUpdateUpdateKind $kind)
     {
         $this->kind = $kind;

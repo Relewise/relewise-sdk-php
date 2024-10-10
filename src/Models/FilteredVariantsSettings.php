@@ -6,11 +6,13 @@ class FilteredVariantsSettings
 {
     public ?FilterCollection $filters;
     public ?bool $inheritFiltersFromRequest;
+    
     public static function create() : FilteredVariantsSettings
     {
         $result = new FilteredVariantsSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : FilteredVariantsSettings
     {
         $result = new FilteredVariantsSettings();
@@ -24,11 +26,13 @@ class FilteredVariantsSettings
         }
         return $result;
     }
+    
     function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setInheritFiltersFromRequest(?bool $inheritFiltersFromRequest)
     {
         $this->inheritFiltersFromRequest = $inheritFiltersFromRequest;

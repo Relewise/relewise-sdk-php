@@ -10,11 +10,13 @@ class ProductCategoryRecommendationRequestSettings
     public bool $prioritizeDiversityBetweenRequests;
     public SelectedProductCategoryPropertiesSettings $selectedProductCategoryProperties;
     public ?int $prioritizeResultsNotRecommendedWithinSeconds;
+    
     public static function create() : ProductCategoryRecommendationRequestSettings
     {
         $result = new ProductCategoryRecommendationRequestSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryRecommendationRequestSettings
     {
         $result = new ProductCategoryRecommendationRequestSettings();
@@ -44,31 +46,37 @@ class ProductCategoryRecommendationRequestSettings
         }
         return $result;
     }
+    
     function setNumberOfRecommendations(int $numberOfRecommendations)
     {
         $this->numberOfRecommendations = $numberOfRecommendations;
         return $this;
     }
+    
     function setAllowFillIfNecessaryToReachNumberOfRecommendations(bool $allowFillIfNecessaryToReachNumberOfRecommendations)
     {
         $this->allowFillIfNecessaryToReachNumberOfRecommendations = $allowFillIfNecessaryToReachNumberOfRecommendations;
         return $this;
     }
+    
     function setAllowReplacingOfRecentlyShownRecommendations(bool $allowReplacingOfRecentlyShownRecommendations)
     {
         $this->allowReplacingOfRecentlyShownRecommendations = $allowReplacingOfRecentlyShownRecommendations;
         return $this;
     }
+    
     function setPrioritizeDiversityBetweenRequests(bool $prioritizeDiversityBetweenRequests)
     {
         $this->prioritizeDiversityBetweenRequests = $prioritizeDiversityBetweenRequests;
         return $this;
     }
+    
     function setSelectedProductCategoryProperties(SelectedProductCategoryPropertiesSettings $selectedProductCategoryProperties)
     {
         $this->selectedProductCategoryProperties = $selectedProductCategoryProperties;
         return $this;
     }
+    
     function setPrioritizeResultsNotRecommendedWithinSeconds(?int $prioritizeResultsNotRecommendedWithinSeconds)
     {
         $this->prioritizeResultsNotRecommendedWithinSeconds = $prioritizeResultsNotRecommendedWithinSeconds;

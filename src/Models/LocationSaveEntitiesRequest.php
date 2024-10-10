@@ -7,6 +7,8 @@ abstract class LocationSaveEntitiesRequest extends LicensedRequest
     public string $typeDefinition = "";
     public array $entities;
     public string $modifiedBy;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -15,6 +17,7 @@ abstract class LocationSaveEntitiesRequest extends LicensedRequest
             return SaveLocationsRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);
@@ -32,17 +35,20 @@ abstract class LocationSaveEntitiesRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setEntities(Location ... $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     /** @param Location[] $entities new value. */
     function setEntitiesFromArray(array $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     function addToEntities(Location $entities)
     {
         if (!isset($this->entities))
@@ -52,6 +58,7 @@ abstract class LocationSaveEntitiesRequest extends LicensedRequest
         array_push($this->entities, $entities);
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

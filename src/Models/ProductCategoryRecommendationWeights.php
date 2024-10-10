@@ -7,6 +7,7 @@ class ProductCategoryRecommendationWeights
     public float $categoryViews;
     public float $productViews;
     public float $productPurchases;
+    
     public static function create(float $categoryViews = 1, float $productViews = 1, float $productPurchases = 1) : ProductCategoryRecommendationWeights
     {
         $result = new ProductCategoryRecommendationWeights();
@@ -15,6 +16,7 @@ class ProductCategoryRecommendationWeights
         $result->productPurchases = $productPurchases;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryRecommendationWeights
     {
         $result = new ProductCategoryRecommendationWeights();
@@ -32,16 +34,19 @@ class ProductCategoryRecommendationWeights
         }
         return $result;
     }
+    
     function setCategoryViews(float $categoryViews)
     {
         $this->categoryViews = $categoryViews;
         return $this;
     }
+    
     function setProductViews(float $productViews)
     {
         $this->productViews = $productViews;
         return $this;
     }
+    
     function setProductPurchases(float $productPurchases)
     {
         $this->productPurchases = $productPurchases;

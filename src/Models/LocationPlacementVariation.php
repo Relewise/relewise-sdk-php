@@ -7,6 +7,7 @@ class LocationPlacementVariation
     public string $name;
     public ?string $key;
     public ?PromotionSpecificationVariationCollection $supportedPromotions;
+    
     public static function create(string $name, ?PromotionSpecificationVariationCollection $supportedPromotions) : LocationPlacementVariation
     {
         $result = new LocationPlacementVariation();
@@ -14,6 +15,7 @@ class LocationPlacementVariation
         $result->supportedPromotions = $supportedPromotions;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LocationPlacementVariation
     {
         $result = new LocationPlacementVariation();
@@ -31,16 +33,19 @@ class LocationPlacementVariation
         }
         return $result;
     }
+    
     function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
+    
     function setKey(?string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setSupportedPromotions(?PromotionSpecificationVariationCollection $supportedPromotions)
     {
         $this->supportedPromotions = $supportedPromotions;

@@ -7,6 +7,7 @@ class ContentDataSorting extends ContentSorting
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Content.ContentDataSorting, Relewise.Client";
     public string $key;
     public SortMode $mode;
+    
     public static function create(string $key, SortOrder $order, SortMode $mode = SortMode::Auto) : ContentDataSorting
     {
         $result = new ContentDataSorting();
@@ -15,6 +16,7 @@ class ContentDataSorting extends ContentSorting
         $result->mode = $mode;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentDataSorting
     {
         $result = ContentSorting::hydrateBase(new ContentDataSorting(), $arr);
@@ -28,21 +30,25 @@ class ContentDataSorting extends ContentSorting
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setMode(SortMode $mode)
     {
         $this->mode = $mode;
         return $this;
     }
+    
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    
     function setThenBy(ContentSorting $thenBy)
     {
         $this->thenBy = $thenBy;

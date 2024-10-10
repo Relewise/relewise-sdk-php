@@ -9,11 +9,13 @@ class MatchTypeSettings
     public bool $startsWith;
     public bool $endsWith;
     public bool $fuzzy;
+    
     public static function create() : MatchTypeSettings
     {
         $result = new MatchTypeSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : MatchTypeSettings
     {
         $result = new MatchTypeSettings();
@@ -39,26 +41,31 @@ class MatchTypeSettings
         }
         return $result;
     }
+    
     function setCompound(bool $compound)
     {
         $this->compound = $compound;
         return $this;
     }
+    
     function setExact(bool $exact)
     {
         $this->exact = $exact;
         return $this;
     }
+    
     function setStartsWith(bool $startsWith)
     {
         $this->startsWith = $startsWith;
         return $this;
     }
+    
     function setEndsWith(bool $endsWith)
     {
         $this->endsWith = $endsWith;
         return $this;
     }
+    
     function setFuzzy(bool $fuzzy)
     {
         $this->fuzzy = $fuzzy;

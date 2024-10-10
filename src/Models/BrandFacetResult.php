@@ -12,22 +12,26 @@ class BrandFacetResult extends stringBrandNameAndIdResultValueFacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandFacetResult
     {
         $result = stringBrandNameAndIdResultValueFacetResult::hydrateBase(new BrandFacetResult(), $arr);
         return $result;
     }
+    
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -37,17 +41,20 @@ class BrandFacetResult extends stringBrandNameAndIdResultValueFacetResult
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setAvailable(BrandNameAndIdResultAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     /** @param BrandNameAndIdResultAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function addToAvailable(BrandNameAndIdResultAvailableFacetValue $available)
     {
         if (!isset($this->available))
@@ -57,6 +64,7 @@ class BrandFacetResult extends stringBrandNameAndIdResultValueFacetResult
         array_push($this->available, $available);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

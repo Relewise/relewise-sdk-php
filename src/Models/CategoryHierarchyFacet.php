@@ -7,6 +7,7 @@ class CategoryHierarchyFacet extends CategoryPathValueFacet
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.CategoryHierarchyFacet, Relewise.Client";
     public CategorySelectionStrategy $categorySelectionStrategy;
     public ?SelectedCategoryPropertiesSettings $selectedPropertiesSettings;
+    
     public static function create(CategorySelectionStrategy $categorySelectionStrategy, CategoryPath ... $selectedCategoryPath) : CategoryHierarchyFacet
     {
         $result = new CategoryHierarchyFacet();
@@ -14,6 +15,7 @@ class CategoryHierarchyFacet extends CategoryPathValueFacet
         $result->selected = $selectedCategoryPath;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryHierarchyFacet
     {
         $result = CategoryPathValueFacet::hydrateBase(new CategoryHierarchyFacet(), $arr);
@@ -27,27 +29,32 @@ class CategoryHierarchyFacet extends CategoryPathValueFacet
         }
         return $result;
     }
+    
     function setCategorySelectionStrategy(CategorySelectionStrategy $categorySelectionStrategy)
     {
         $this->categorySelectionStrategy = $categorySelectionStrategy;
         return $this;
     }
+    
     function setSelectedPropertiesSettings(?SelectedCategoryPropertiesSettings $selectedPropertiesSettings)
     {
         $this->selectedPropertiesSettings = $selectedPropertiesSettings;
         return $this;
     }
+    
     function setSelected(CategoryPath ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?CategoryPath[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(CategoryPath $selected)
     {
         if (!isset($this->selected))
@@ -57,11 +64,13 @@ class CategoryHierarchyFacet extends CategoryPathValueFacet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

@@ -7,6 +7,7 @@ class ProductCategoryView extends Trackable
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductCategoryView, Relewise.Client";
     public ?User $user;
     public array $idPath;
+    
     public static function create(?User $user, string ... $idPath) : ProductCategoryView
     {
         $result = new ProductCategoryView();
@@ -14,6 +15,7 @@ class ProductCategoryView extends Trackable
         $result->idPath = $idPath;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryView
     {
         $result = Trackable::hydrateBase(new ProductCategoryView(), $arr);
@@ -31,22 +33,26 @@ class ProductCategoryView extends Trackable
         }
         return $result;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setIdPath(string ... $idPath)
     {
         $this->idPath = $idPath;
         return $this;
     }
+    
     /** @param string[] $idPath new value. */
     function setIdPathFromArray(array $idPath)
     {
         $this->idPath = $idPath;
         return $this;
     }
+    
     function addToIdPath(string $idPath)
     {
         if (!isset($this->idPath))

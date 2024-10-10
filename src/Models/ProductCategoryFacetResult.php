@@ -7,11 +7,13 @@ use Relewise\FacetResultExtractable\ProductCategoryFacetResultExtractable;
 class ProductCategoryFacetResult extends ProductCategoryFacetResultExtractable
 {
     public array $items;
+    
     public static function create() : ProductCategoryFacetResult
     {
         $result = new ProductCategoryFacetResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryFacetResult
     {
         $result = new ProductCategoryFacetResult();
@@ -25,17 +27,20 @@ class ProductCategoryFacetResult extends ProductCategoryFacetResultExtractable
         }
         return $result;
     }
+    
     function setItems(FacetResult ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param FacetResult[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(FacetResult $items)
     {
         if (!isset($this->items))

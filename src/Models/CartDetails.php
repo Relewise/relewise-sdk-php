@@ -12,6 +12,7 @@ class CartDetails implements JsonSerializable
     public array $lineItems;
     public Money $subtotal;
     public array $data;
+    
     public static function create(string $name, DateTime $modifiedUtc, array $lineItems, Money $subtotal, array $data) : CartDetails
     {
         $result = new CartDetails();
@@ -22,6 +23,7 @@ class CartDetails implements JsonSerializable
         $result->data = $data;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CartDetails
     {
         $result = new CartDetails();
@@ -55,27 +57,32 @@ class CartDetails implements JsonSerializable
         }
         return $result;
     }
+    
     function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
+    
     function setModifiedUtc(DateTime $modifiedUtc)
     {
         $this->modifiedUtc = $modifiedUtc;
         return $this;
     }
+    
     function setLineItems(LineItem ... $lineItems)
     {
         $this->lineItems = $lineItems;
         return $this;
     }
+    
     /** @param LineItem[] $lineItems new value. */
     function setLineItemsFromArray(array $lineItems)
     {
         $this->lineItems = $lineItems;
         return $this;
     }
+    
     function addToLineItems(LineItem $lineItems)
     {
         if (!isset($this->lineItems))
@@ -85,11 +92,13 @@ class CartDetails implements JsonSerializable
         array_push($this->lineItems, $lineItems);
         return $this;
     }
+    
     function setSubtotal(Money $subtotal)
     {
         $this->subtotal = $subtotal;
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -99,12 +108,14 @@ class CartDetails implements JsonSerializable
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

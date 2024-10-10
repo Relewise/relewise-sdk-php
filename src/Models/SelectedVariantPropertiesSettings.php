@@ -11,11 +11,13 @@ class SelectedVariantPropertiesSettings
     public bool $allData;
     public ?array $dataKeys;
     public ?array $specificationKeys;
+    
     public static function create() : SelectedVariantPropertiesSettings
     {
         $result = new SelectedVariantPropertiesSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SelectedVariantPropertiesSettings
     {
         $result = new SelectedVariantPropertiesSettings();
@@ -57,42 +59,50 @@ class SelectedVariantPropertiesSettings
         }
         return $result;
     }
+    
     function setDisplayName(bool $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setPricing(bool $pricing)
     {
         $this->pricing = $pricing;
         return $this;
     }
+    
     function setAllSpecifications(bool $allSpecifications)
     {
         $this->allSpecifications = $allSpecifications;
         return $this;
     }
+    
     function setAssortments(bool $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     function setAllData(bool $allData)
     {
         $this->allData = $allData;
         return $this;
     }
+    
     function setDataKeys(string ... $dataKeys)
     {
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    
     /** @param ?string[] $dataKeys new value. */
     function setDataKeysFromArray(array $dataKeys)
     {
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    
     function addToDataKeys(string $dataKeys)
     {
         if (!isset($this->dataKeys))
@@ -102,17 +112,20 @@ class SelectedVariantPropertiesSettings
         array_push($this->dataKeys, $dataKeys);
         return $this;
     }
+    
     function setSpecificationKeys(string ... $specificationKeys)
     {
         $this->specificationKeys = $specificationKeys;
         return $this;
     }
+    
     /** @param ?string[] $specificationKeys new value. */
     function setSpecificationKeysFromArray(array $specificationKeys)
     {
         $this->specificationKeys = $specificationKeys;
         return $this;
     }
+    
     function addToSpecificationKeys(string $specificationKeys)
     {
         if (!isset($this->specificationKeys))

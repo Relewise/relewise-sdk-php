@@ -7,6 +7,8 @@ abstract class floatProductDataRangeFacetResult extends floatRangeFacetResult
     public string $typeDefinition = "";
     public string $key;
     public DataSelectionStrategy $dataSelectionStrategy;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -15,6 +17,7 @@ abstract class floatProductDataRangeFacetResult extends floatRangeFacetResult
             return ProductDataDoubleRangeFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = floatRangeFacetResult::hydrateBase($result, $arr);
@@ -28,26 +31,31 @@ abstract class floatProductDataRangeFacetResult extends floatRangeFacetResult
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
     {
         $this->dataSelectionStrategy = $dataSelectionStrategy;
         return $this;
     }
+    
     function setSelected(?floatRange $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function setAvailable(?floatRangeAvailableFacetValue $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

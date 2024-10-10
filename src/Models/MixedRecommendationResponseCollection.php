@@ -6,12 +6,14 @@ class MixedRecommendationResponseCollection extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.MixedRecommendationResponseCollection, Relewise.Client";
     public array $responses;
+    
     public static function create(RecommendationResponse ... $responses) : MixedRecommendationResponseCollection
     {
         $result = new MixedRecommendationResponseCollection();
         $result->responses = $responses;
         return $result;
     }
+    
     public static function hydrate(array $arr) : MixedRecommendationResponseCollection
     {
         $result = TimedResponse::hydrateBase(new MixedRecommendationResponseCollection(), $arr);
@@ -25,17 +27,20 @@ class MixedRecommendationResponseCollection extends TimedResponse
         }
         return $result;
     }
+    
     function setResponses(RecommendationResponse ... $responses)
     {
         $this->responses = $responses;
         return $this;
     }
+    
     /** @param RecommendationResponse[] $responses new value. */
     function setResponsesFromArray(array $responses)
     {
         $this->responses = $responses;
         return $this;
     }
+    
     function addToResponses(RecommendationResponse $responses)
     {
         if (!isset($this->responses))
@@ -45,6 +50,7 @@ class MixedRecommendationResponseCollection extends TimedResponse
         array_push($this->responses, $responses);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

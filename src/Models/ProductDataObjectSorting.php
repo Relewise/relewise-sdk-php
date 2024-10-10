@@ -8,6 +8,7 @@ class ProductDataObjectSorting extends ProductSorting
     public DataSelectionStrategy $dataSelectionStrategy;
     public SortMode $mode;
     public DataObjectValueSelector $valueSelector;
+    
     public static function create(DataSelectionStrategy $dataSelectionStrategy, SortOrder $order, DataObjectValueSelector $valueSelector, SortMode $mode = SortMode::Auto) : ProductDataObjectSorting
     {
         $result = new ProductDataObjectSorting();
@@ -17,6 +18,7 @@ class ProductDataObjectSorting extends ProductSorting
         $result->mode = $mode;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDataObjectSorting
     {
         $result = ProductSorting::hydrateBase(new ProductDataObjectSorting(), $arr);
@@ -34,26 +36,31 @@ class ProductDataObjectSorting extends ProductSorting
         }
         return $result;
     }
+    
     function setDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
     {
         $this->dataSelectionStrategy = $dataSelectionStrategy;
         return $this;
     }
+    
     function setMode(SortMode $mode)
     {
         $this->mode = $mode;
         return $this;
     }
+    
     function setValueSelector(DataObjectValueSelector $valueSelector)
     {
         $this->valueSelector = $valueSelector;
         return $this;
     }
+    
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    
     function setThenBy(ProductSorting $thenBy)
     {
         $this->thenBy = $thenBy;

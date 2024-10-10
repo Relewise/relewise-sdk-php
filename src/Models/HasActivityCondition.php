@@ -7,12 +7,14 @@ class HasActivityCondition extends UserCondition
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasActivityCondition, Relewise.Client";
     public int $withinMinutes;
     public int $forAtLeastSeconds;
+    
     public static function create(bool $negated) : HasActivityCondition
     {
         $result = new HasActivityCondition();
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : HasActivityCondition
     {
         $result = UserCondition::hydrateBase(new HasActivityCondition(), $arr);
@@ -26,16 +28,19 @@ class HasActivityCondition extends UserCondition
         }
         return $result;
     }
+    
     function setWithinMinutes(int $withinMinutes)
     {
         $this->withinMinutes = $withinMinutes;
         return $this;
     }
+    
     function setForAtLeastSeconds(int $forAtLeastSeconds)
     {
         $this->forAtLeastSeconds = $forAtLeastSeconds;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

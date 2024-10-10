@@ -12,6 +12,7 @@ class ContentQuery extends LicensedRequest
     public int $skipNumberOfResults;
     public bool $returnTotalNumberOfResults;
     public bool $includeDisabledContents;
+    
     public static function create(?Language $language = Null, ?Currency $currency = Null) : ContentQuery
     {
         $result = new ContentQuery();
@@ -21,6 +22,7 @@ class ContentQuery extends LicensedRequest
         $result->returnTotalNumberOfResults = false;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentQuery
     {
         $result = LicensedRequest::hydrateBase(new ContentQuery(), $arr);
@@ -54,36 +56,43 @@ class ContentQuery extends LicensedRequest
         }
         return $result;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setNumberOfResults(int $numberOfResults)
     {
         $this->numberOfResults = $numberOfResults;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     function setSkipNumberOfResults(int $skipNumberOfResults)
     {
         $this->skipNumberOfResults = $skipNumberOfResults;
         return $this;
     }
+    
     function setReturnTotalNumberOfResults(bool $returnTotalNumberOfResults)
     {
         $this->returnTotalNumberOfResults = $returnTotalNumberOfResults;
         return $this;
     }
+    
     function setIncludeDisabledContents(bool $includeDisabledContents)
     {
         $this->includeDisabledContents = $includeDisabledContents;

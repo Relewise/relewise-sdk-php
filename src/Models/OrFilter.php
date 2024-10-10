@@ -6,6 +6,7 @@ class OrFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.OrFilter, Relewise.Client";
     public array $filters;
+    
     public static function create(array $filters, bool $negated = false) : OrFilter
     {
         $result = new OrFilter();
@@ -13,6 +14,7 @@ class OrFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : OrFilter
     {
         $result = Filter::hydrateBase(new OrFilter(), $arr);
@@ -26,17 +28,20 @@ class OrFilter extends Filter
         }
         return $result;
     }
+    
     function setFilters(Filter ... $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     /** @param Filter[] $filters new value. */
     function setFiltersFromArray(array $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function addToFilters(Filter $filters)
     {
         if (!isset($this->filters))
@@ -46,11 +51,13 @@ class OrFilter extends Filter
         array_push($this->filters, $filters);
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

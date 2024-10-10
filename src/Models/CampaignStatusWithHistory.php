@@ -6,6 +6,7 @@ class CampaignStatusWithHistory
 {
     public CampaignStatusWithHistoryStatusName $current;
     public array $history;
+    
     public static function create(CampaignStatusWithHistoryStatusName $current, CampaignStatusWithHistoryChange ... $history) : CampaignStatusWithHistory
     {
         $result = new CampaignStatusWithHistory();
@@ -13,6 +14,7 @@ class CampaignStatusWithHistory
         $result->history = $history;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignStatusWithHistory
     {
         $result = new CampaignStatusWithHistory();
@@ -30,22 +32,26 @@ class CampaignStatusWithHistory
         }
         return $result;
     }
+    
     function setCurrent(CampaignStatusWithHistoryStatusName $current)
     {
         $this->current = $current;
         return $this;
     }
+    
     function setHistory(CampaignStatusWithHistoryChange ... $history)
     {
         $this->history = $history;
         return $this;
     }
+    
     /** @param CampaignStatusWithHistoryChange[] $history new value. */
     function setHistoryFromArray(array $history)
     {
         $this->history = $history;
         return $this;
     }
+    
     function addToHistory(CampaignStatusWithHistoryChange $history)
     {
         if (!isset($this->history))

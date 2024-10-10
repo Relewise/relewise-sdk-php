@@ -6,11 +6,13 @@ class BrandIndexConfiguration
 {
     public FieldIndexConfiguration $id;
     public FieldIndexConfiguration $displayName;
+    
     public static function create() : BrandIndexConfiguration
     {
         $result = new BrandIndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandIndexConfiguration
     {
         $result = new BrandIndexConfiguration();
@@ -24,11 +26,13 @@ class BrandIndexConfiguration
         }
         return $result;
     }
+    
     function setId(FieldIndexConfiguration $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setDisplayName(FieldIndexConfiguration $displayName)
     {
         $this->displayName = $displayName;

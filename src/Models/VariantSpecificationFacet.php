@@ -6,6 +6,7 @@ class VariantSpecificationFacet extends stringValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.VariantSpecificationFacet, Relewise.Client";
     public string $key;
+    
     public static function create(string $key, string ... $selected) : VariantSpecificationFacet
     {
         $result = new VariantSpecificationFacet();
@@ -13,6 +14,7 @@ class VariantSpecificationFacet extends stringValueFacet
         $result->selected = $selected;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantSpecificationFacet
     {
         $result = stringValueFacet::hydrateBase(new VariantSpecificationFacet(), $arr);
@@ -22,22 +24,26 @@ class VariantSpecificationFacet extends stringValueFacet
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -47,11 +53,13 @@ class VariantSpecificationFacet extends stringValueFacet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

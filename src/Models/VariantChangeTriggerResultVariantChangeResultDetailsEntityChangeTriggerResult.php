@@ -6,6 +6,8 @@ abstract class VariantChangeTriggerResultVariantChangeResultDetailsEntityChangeT
 {
     public string $typeDefinition = "";
     public array $entitiesWithChanges;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -14,6 +16,7 @@ abstract class VariantChangeTriggerResultVariantChangeResultDetailsEntityChangeT
             return VariantChangeTriggerResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = EntityChangeTriggerResult::hydrateBase($result, $arr);
@@ -27,17 +30,20 @@ abstract class VariantChangeTriggerResultVariantChangeResultDetailsEntityChangeT
         }
         return $result;
     }
+    
     function setEntitiesWithChanges(VariantChangeTriggerResultVariantChangeResultDetails ... $entitiesWithChanges)
     {
         $this->entitiesWithChanges = $entitiesWithChanges;
         return $this;
     }
+    
     /** @param VariantChangeTriggerResultVariantChangeResultDetails[] $entitiesWithChanges new value. */
     function setEntitiesWithChangesFromArray(array $entitiesWithChanges)
     {
         $this->entitiesWithChanges = $entitiesWithChanges;
         return $this;
     }
+    
     function addToEntitiesWithChanges(VariantChangeTriggerResultVariantChangeResultDetails $entitiesWithChanges)
     {
         if (!isset($this->entitiesWithChanges))
@@ -47,6 +53,7 @@ abstract class VariantChangeTriggerResultVariantChangeResultDetailsEntityChangeT
         array_push($this->entitiesWithChanges, $entitiesWithChanges);
         return $this;
     }
+    
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;

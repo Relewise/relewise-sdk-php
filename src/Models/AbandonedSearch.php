@@ -8,6 +8,8 @@ abstract class AbandonedSearch
     public string $loweredSearchTerm;
     public int $hits;
     public ?Language $language;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -24,6 +26,7 @@ abstract class AbandonedSearch
             return AbandonedProductSearch::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("loweredSearchTerm", $arr))
@@ -40,16 +43,19 @@ abstract class AbandonedSearch
         }
         return $result;
     }
+    
     function setLoweredSearchTerm(string $loweredSearchTerm)
     {
         $this->loweredSearchTerm = $loweredSearchTerm;
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;

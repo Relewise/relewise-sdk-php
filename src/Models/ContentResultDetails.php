@@ -19,12 +19,14 @@ class ContentResultDetails implements JsonSerializable
     public int $viewedByDifferentNumberOfUsers;
     public bool $disabled;
     public bool $deleted;
+    
     public static function create(string $contentId) : ContentResultDetails
     {
         $result = new ContentResultDetails();
         $result->contentId = $contentId;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentResultDetails
     {
         $result = new ContentResultDetails();
@@ -90,27 +92,32 @@ class ContentResultDetails implements JsonSerializable
         }
         return $result;
     }
+    
     function setContentId(string $contentId)
     {
         $this->contentId = $contentId;
         return $this;
     }
+    
     function setDisplayName(Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     /** @param int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -120,6 +127,7 @@ class ContentResultDetails implements JsonSerializable
         array_push($this->assortments, $assortments);
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -129,23 +137,27 @@ class ContentResultDetails implements JsonSerializable
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
         return $this;
     }
+    
     function setCategoryPaths(CategoryPathResultDetails ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    
     /** @param CategoryPathResultDetails[] $categoryPaths new value. */
     function setCategoryPathsFromArray(array $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    
     function addToCategoryPaths(CategoryPathResultDetails $categoryPaths)
     {
         if (!isset($this->categoryPaths))
@@ -155,41 +167,49 @@ class ContentResultDetails implements JsonSerializable
         array_push($this->categoryPaths, $categoryPaths);
         return $this;
     }
+    
     function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;
     }
+    
     function setCreatedUtc(DateTime $createdUtc)
     {
         $this->createdUtc = $createdUtc;
         return $this;
     }
+    
     function setLastViewedUtc(?DateTime $lastViewedUtc)
     {
         $this->lastViewedUtc = $lastViewedUtc;
         return $this;
     }
+    
     function setViewedTotalNumberOfTimes(int $viewedTotalNumberOfTimes)
     {
         $this->viewedTotalNumberOfTimes = $viewedTotalNumberOfTimes;
         return $this;
     }
+    
     function setViewedByDifferentNumberOfUsers(int $viewedByDifferentNumberOfUsers)
     {
         $this->viewedByDifferentNumberOfUsers = $viewedByDifferentNumberOfUsers;
         return $this;
     }
+    
     function setDisabled(bool $disabled)
     {
         $this->disabled = $disabled;
         return $this;
     }
+    
     function setDeleted(bool $deleted)
     {
         $this->deleted = $deleted;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

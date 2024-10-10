@@ -7,12 +7,14 @@ class Language
     /** Trimmed language name in lower-invariant. */
     public string $value;
     const UNDEFINED = Null;
+    
     public static function create(string $name) : Language
     {
         $result = new Language();
         $result->value = $name;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Language
     {
         $result = new Language();
@@ -22,6 +24,7 @@ class Language
         }
         return $result;
     }
+    
     /** Trimmed language name in lower-invariant. */
     function setValue(string $value)
     {

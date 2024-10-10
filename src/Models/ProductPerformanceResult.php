@@ -6,11 +6,13 @@ class ProductPerformanceResult
 {
     public ProductResult $product;
     public array $classifications;
+    
     public static function create() : ProductPerformanceResult
     {
         $result = new ProductPerformanceResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResult
     {
         $result = new ProductPerformanceResult();
@@ -28,22 +30,26 @@ class ProductPerformanceResult
         }
         return $result;
     }
+    
     function setProduct(ProductResult $product)
     {
         $this->product = $product;
         return $this;
     }
+    
     function setClassifications(ProductPerformanceResultClassificationMetrics ... $classifications)
     {
         $this->classifications = $classifications;
         return $this;
     }
+    
     /** @param ProductPerformanceResultClassificationMetrics[] $classifications new value. */
     function setClassificationsFromArray(array $classifications)
     {
         $this->classifications = $classifications;
         return $this;
     }
+    
     function addToClassifications(ProductPerformanceResultClassificationMetrics $classifications)
     {
         if (!isset($this->classifications))

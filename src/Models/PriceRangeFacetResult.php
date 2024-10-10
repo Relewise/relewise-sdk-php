@@ -8,6 +8,7 @@ class PriceRangeFacetResult extends FacetResult
     public ?floatRange $selected;
     public floatRangeAvailableFacetValue $available;
     public PriceSelectionStrategy $priceSelectionStrategy;
+    
     public static function create(FacetingField $field, PriceSelectionStrategy $priceSelectionStrategy, ?floatRange $selected, floatRangeAvailableFacetValue $available) : PriceRangeFacetResult
     {
         $result = new PriceRangeFacetResult();
@@ -17,6 +18,7 @@ class PriceRangeFacetResult extends FacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PriceRangeFacetResult
     {
         $result = FacetResult::hydrateBase(new PriceRangeFacetResult(), $arr);
@@ -34,21 +36,25 @@ class PriceRangeFacetResult extends FacetResult
         }
         return $result;
     }
+    
     function setSelected(?floatRange $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function setAvailable(floatRangeAvailableFacetValue $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function setPriceSelectionStrategy(PriceSelectionStrategy $priceSelectionStrategy)
     {
         $this->priceSelectionStrategy = $priceSelectionStrategy;
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

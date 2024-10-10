@@ -6,6 +6,7 @@ class DecompoundRulesRequestSortBySorting
 {
     public DecompoundRulesRequestSortBy $sortBy;
     public SortOrder $sortOrder;
+    
     public static function create(DecompoundRulesRequestSortBy $sortBy, SortOrder $sortOrder) : DecompoundRulesRequestSortBySorting
     {
         $result = new DecompoundRulesRequestSortBySorting();
@@ -13,6 +14,7 @@ class DecompoundRulesRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DecompoundRulesRequestSortBySorting
     {
         $result = new DecompoundRulesRequestSortBySorting();
@@ -26,11 +28,13 @@ class DecompoundRulesRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(DecompoundRulesRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

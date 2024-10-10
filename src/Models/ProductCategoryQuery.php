@@ -14,51 +14,61 @@ class ProductCategoryQuery extends ProductCategoryIdFilterCategoryQuery
         $result->returnTotalNumberOfResults = false;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryQuery
     {
         $result = ProductCategoryIdFilterCategoryQuery::hydrateBase(new ProductCategoryQuery(), $arr);
         return $result;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setNumberOfResults(int $numberOfResults)
     {
         $this->numberOfResults = $numberOfResults;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     function setSkipNumberOfResults(int $skipNumberOfResults)
     {
         $this->skipNumberOfResults = $skipNumberOfResults;
         return $this;
     }
+    
     function setReturnTotalNumberOfResults(bool $returnTotalNumberOfResults)
     {
         $this->returnTotalNumberOfResults = $returnTotalNumberOfResults;
         return $this;
     }
+    
     function setIncludeDisabledCategories(bool $includeDisabledCategories)
     {
         $this->includeDisabledCategories = $includeDisabledCategories;
         return $this;
     }
+    
     function setIncludeChildCategoriesToDepth(int $includeChildCategoriesToDepth)
     {
         $this->includeChildCategoriesToDepth = $includeChildCategoriesToDepth;
         return $this;
     }
+    
     function setIncludeParentCategoriesToDepth(int $includeParentCategoriesToDepth)
     {
         $this->includeParentCategoriesToDepth = $includeParentCategoriesToDepth;

@@ -6,12 +6,14 @@ class SearchTermModifierRuleRemoveFromTermAction extends SearchTermModifierRuleR
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchTermModifierRule+RemoveFromTermAction, Relewise.Client";
     public string $words;
+    
     public static function create(string $words) : SearchTermModifierRuleRemoveFromTermAction
     {
         $result = new SearchTermModifierRuleRemoveFromTermAction();
         $result->words = $words;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermModifierRuleRemoveFromTermAction
     {
         $result = SearchTermModifierRuleRuleAction::hydrateBase(new SearchTermModifierRuleRemoveFromTermAction(), $arr);
@@ -21,6 +23,7 @@ class SearchTermModifierRuleRemoveFromTermAction extends SearchTermModifierRuleR
         }
         return $result;
     }
+    
     function setWords(string $words)
     {
         $this->words = $words;

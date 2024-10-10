@@ -6,6 +6,8 @@ abstract class stringAbandonedSearch extends AbandonedSearch
 {
     public string $typeDefinition = "";
     public array $topResults;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -18,6 +20,7 @@ abstract class stringAbandonedSearch extends AbandonedSearch
             return AbandonedProductCategorySearch::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = AbandonedSearch::hydrateBase($result, $arr);
@@ -31,17 +34,20 @@ abstract class stringAbandonedSearch extends AbandonedSearch
         }
         return $result;
     }
+    
     function setTopResults(string ... $topResults)
     {
         $this->topResults = $topResults;
         return $this;
     }
+    
     /** @param string[] $topResults new value. */
     function setTopResultsFromArray(array $topResults)
     {
         $this->topResults = $topResults;
         return $this;
     }
+    
     function addToTopResults(string $topResults)
     {
         if (!isset($this->topResults))
@@ -51,16 +57,19 @@ abstract class stringAbandonedSearch extends AbandonedSearch
         array_push($this->topResults, $topResults);
         return $this;
     }
+    
     function setLoweredSearchTerm(string $loweredSearchTerm)
     {
         $this->loweredSearchTerm = $loweredSearchTerm;
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;

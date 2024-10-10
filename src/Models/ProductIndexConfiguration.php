@@ -10,11 +10,13 @@ class ProductIndexConfiguration
     public BrandIndexConfiguration $brand;
     public DataIndexConfiguration $data;
     public VariantIndexConfiguration $variants;
+    
     public static function create() : ProductIndexConfiguration
     {
         $result = new ProductIndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductIndexConfiguration
     {
         $result = new ProductIndexConfiguration();
@@ -44,31 +46,37 @@ class ProductIndexConfiguration
         }
         return $result;
     }
+    
     function setId(FieldIndexConfiguration $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setDisplayName(FieldIndexConfiguration $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setCategory(CategoryIndexConfiguration $category)
     {
         $this->category = $category;
         return $this;
     }
+    
     function setBrand(BrandIndexConfiguration $brand)
     {
         $this->brand = $brand;
         return $this;
     }
+    
     function setData(DataIndexConfiguration $data)
     {
         $this->data = $data;
         return $this;
     }
+    
     function setVariants(VariantIndexConfiguration $variants)
     {
         $this->variants = $variants;

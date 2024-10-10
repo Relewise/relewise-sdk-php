@@ -7,6 +7,7 @@ class BrandNameAndIdResultAvailableFacetValue
     public BrandNameAndIdResult $value;
     public int $hits;
     public bool $selected;
+    
     public static function create(BrandNameAndIdResult $value, bool $selected, int $hits) : BrandNameAndIdResultAvailableFacetValue
     {
         $result = new BrandNameAndIdResultAvailableFacetValue();
@@ -15,6 +16,7 @@ class BrandNameAndIdResultAvailableFacetValue
         $result->hits = $hits;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandNameAndIdResultAvailableFacetValue
     {
         $result = new BrandNameAndIdResultAvailableFacetValue();
@@ -32,16 +34,19 @@ class BrandNameAndIdResultAvailableFacetValue
         }
         return $result;
     }
+    
     function setValue(BrandNameAndIdResult $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setSelected(bool $selected)
     {
         $this->selected = $selected;

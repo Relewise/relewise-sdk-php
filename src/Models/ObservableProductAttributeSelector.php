@@ -6,12 +6,14 @@ class ObservableProductAttributeSelector extends ProductPropertySelector
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.EntityPropertySelectors.ObservableProductAttributeSelector, Relewise.Client";
     public ObservableProductAttribute $attribute;
+    
     public static function create(ObservableProductAttribute $attribute) : ObservableProductAttributeSelector
     {
         $result = new ObservableProductAttributeSelector();
         $result->attribute = $attribute;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ObservableProductAttributeSelector
     {
         $result = ProductPropertySelector::hydrateBase(new ObservableProductAttributeSelector(), $arr);
@@ -21,6 +23,7 @@ class ObservableProductAttributeSelector extends ProductPropertySelector
         }
         return $result;
     }
+    
     function setAttribute(ObservableProductAttribute $attribute)
     {
         $this->attribute = $attribute;

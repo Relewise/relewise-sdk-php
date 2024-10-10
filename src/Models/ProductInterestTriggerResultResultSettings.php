@@ -6,11 +6,13 @@ class ProductInterestTriggerResultResultSettings
 {
     public SelectedProductDetailsPropertiesSettings $selectedProductProperties;
     public SelectedVariantDetailsPropertiesSettings $selectedVariantProperties;
+    
     public static function create() : ProductInterestTriggerResultResultSettings
     {
         $result = new ProductInterestTriggerResultResultSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductInterestTriggerResultResultSettings
     {
         $result = new ProductInterestTriggerResultResultSettings();
@@ -24,11 +26,13 @@ class ProductInterestTriggerResultResultSettings
         }
         return $result;
     }
+    
     function setSelectedProductProperties(SelectedProductDetailsPropertiesSettings $selectedProductProperties)
     {
         $this->selectedProductProperties = $selectedProductProperties;
         return $this;
     }
+    
     function setSelectedVariantProperties(SelectedVariantDetailsPropertiesSettings $selectedVariantProperties)
     {
         $this->selectedVariantProperties = $selectedVariantProperties;

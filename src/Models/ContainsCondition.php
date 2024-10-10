@@ -8,12 +8,14 @@ class ContainsCondition extends ValueCondition
     public ?DataValue $value;
     public ContainsConditionCollectionArgumentEvaluationMode $valueCollectionEvaluationMode;
     public ?DataObjectFilter $objectFilter;
+    
     public static function create(bool $negated = false) : ContainsCondition
     {
         $result = new ContainsCondition();
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContainsCondition
     {
         $result = ValueCondition::hydrateBase(new ContainsCondition(), $arr);
@@ -31,21 +33,25 @@ class ContainsCondition extends ValueCondition
         }
         return $result;
     }
+    
     function setValue(?DataValue $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     function setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode $valueCollectionEvaluationMode)
     {
         $this->valueCollectionEvaluationMode = $valueCollectionEvaluationMode;
         return $this;
     }
+    
     function setObjectFilter(?DataObjectFilter $objectFilter)
     {
         $this->objectFilter = $objectFilter;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

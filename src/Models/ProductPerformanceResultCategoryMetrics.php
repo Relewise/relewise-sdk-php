@@ -7,11 +7,13 @@ class ProductPerformanceResultCategoryMetrics
     public CategoryNameAndIdResult $category;
     public bool $immediateParent;
     public ProductPerformanceResultViewsAndSalesMetrics $rank;
+    
     public static function create() : ProductPerformanceResultCategoryMetrics
     {
         $result = new ProductPerformanceResultCategoryMetrics();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResultCategoryMetrics
     {
         $result = new ProductPerformanceResultCategoryMetrics();
@@ -29,16 +31,19 @@ class ProductPerformanceResultCategoryMetrics
         }
         return $result;
     }
+    
     function setCategory(CategoryNameAndIdResult $category)
     {
         $this->category = $category;
         return $this;
     }
+    
     function setImmediateParent(bool $immediateParent)
     {
         $this->immediateParent = $immediateParent;
         return $this;
     }
+    
     function setRank(ProductPerformanceResultViewsAndSalesMetrics $rank)
     {
         $this->rank = $rank;

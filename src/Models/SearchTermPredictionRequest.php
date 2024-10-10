@@ -8,6 +8,7 @@ class SearchTermPredictionRequest extends SearchRequest
     public string $term;
     public int $take;
     public ?SearchTermPredictionSettings $settings;
+    
     public static function create(?Language $language, ?Currency $currency, User $user, string $displayedAtLocation, string $term, int $take) : SearchTermPredictionRequest
     {
         $result = new SearchTermPredictionRequest();
@@ -19,6 +20,7 @@ class SearchTermPredictionRequest extends SearchRequest
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermPredictionRequest
     {
         $result = SearchRequest::hydrateBase(new SearchTermPredictionRequest(), $arr);
@@ -36,56 +38,67 @@ class SearchTermPredictionRequest extends SearchRequest
         }
         return $result;
     }
+    
     function setTerm(string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setTake(int $take)
     {
         $this->take = $take;
         return $this;
     }
+    
     function setSettings(?SearchTermPredictionSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setDisplayedAtLocation(?string $displayedAtLocation)
     {
         $this->displayedAtLocation = $displayedAtLocation;
         return $this;
     }
+    
     function setRelevanceModifiers(?RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
+    
     function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setIndexSelector(?SearchIndexSelector $indexSelector)
     {
         $this->indexSelector = $indexSelector;
         return $this;
     }
+    
     function setPostFilters(?FilterCollection $postFilters)
     {
         $this->postFilters = $postFilters;

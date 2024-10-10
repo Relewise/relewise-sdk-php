@@ -8,6 +8,7 @@ class HasLineItemsInCartCondition extends UserCondition
     public ?intRange $numberOfItems;
     public string $cartName;
     public FilterCollection $filters;
+    
     public static function create(?intRange $numberOfItems, string $cartName = Null, FilterCollection $filters = Null, bool $negated = false) : HasLineItemsInCartCondition
     {
         $result = new HasLineItemsInCartCondition();
@@ -17,6 +18,7 @@ class HasLineItemsInCartCondition extends UserCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : HasLineItemsInCartCondition
     {
         $result = UserCondition::hydrateBase(new HasLineItemsInCartCondition(), $arr);
@@ -34,21 +36,25 @@ class HasLineItemsInCartCondition extends UserCondition
         }
         return $result;
     }
+    
     function setNumberOfItems(?intRange $numberOfItems)
     {
         $this->numberOfItems = $numberOfItems;
         return $this;
     }
+    
     function setCartName(string $cartName)
     {
         $this->cartName = $cartName;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

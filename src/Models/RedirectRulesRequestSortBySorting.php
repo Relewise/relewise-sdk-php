@@ -6,6 +6,7 @@ class RedirectRulesRequestSortBySorting
 {
     public RedirectRulesRequestSortBy $sortBy;
     public SortOrder $sortOrder;
+    
     public static function create(RedirectRulesRequestSortBy $sortBy, SortOrder $sortOrder) : RedirectRulesRequestSortBySorting
     {
         $result = new RedirectRulesRequestSortBySorting();
@@ -13,6 +14,7 @@ class RedirectRulesRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RedirectRulesRequestSortBySorting
     {
         $result = new RedirectRulesRequestSortBySorting();
@@ -26,11 +28,13 @@ class RedirectRulesRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(RedirectRulesRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

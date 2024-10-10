@@ -9,11 +9,13 @@ class ProductPerformanceResultClassificationMetrics
     public ProductPerformanceResultSalesMetrics $sales;
     public ProductPerformanceResultCartMetrics $carts;
     public ProductPerformanceResultRankMetrics $rank;
+    
     public static function create() : ProductPerformanceResultClassificationMetrics
     {
         $result = new ProductPerformanceResultClassificationMetrics();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResultClassificationMetrics
     {
         $result = new ProductPerformanceResultClassificationMetrics();
@@ -43,6 +45,7 @@ class ProductPerformanceResultClassificationMetrics
         }
         return $result;
     }
+    
     function addToCombination(string $key, string $value)
     {
         if (!isset($this->combination))
@@ -52,27 +55,32 @@ class ProductPerformanceResultClassificationMetrics
         $this->combination[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, string> $combination associative array. */
     function setCombinationFromAssociativeArray(array $combination)
     {
         $this->combination = $combination;
         return $this;
     }
+    
     function setViews(ProductPerformanceResultViewsMetrics $views)
     {
         $this->views = $views;
         return $this;
     }
+    
     function setSales(ProductPerformanceResultSalesMetrics $sales)
     {
         $this->sales = $sales;
         return $this;
     }
+    
     function setCarts(ProductPerformanceResultCartMetrics $carts)
     {
         $this->carts = $carts;
         return $this;
     }
+    
     function setRank(ProductPerformanceResultRankMetrics $rank)
     {
         $this->rank = $rank;

@@ -6,6 +6,7 @@ class floatChainableRange
 {
     public ?float $lowerBoundInclusive;
     public ?float $upperBoundExclusive;
+    
     public static function create(?float $lowerBoundInclusive, ?float $upperBoundExclusive) : floatChainableRange
     {
         $result = new floatChainableRange();
@@ -13,6 +14,7 @@ class floatChainableRange
         $result->upperBoundExclusive = $upperBoundExclusive;
         return $result;
     }
+    
     public static function hydrate(array $arr) : floatChainableRange
     {
         $result = new floatChainableRange();
@@ -26,11 +28,13 @@ class floatChainableRange
         }
         return $result;
     }
+    
     function setLowerBoundInclusive(?float $lowerBoundInclusive)
     {
         $this->lowerBoundInclusive = $lowerBoundInclusive;
         return $this;
     }
+    
     function setUpperBoundExclusive(?float $upperBoundExclusive)
     {
         $this->upperBoundExclusive = $upperBoundExclusive;

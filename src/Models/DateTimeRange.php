@@ -9,6 +9,7 @@ class DateTimeRange implements JsonSerializable
 {
     public DateTime $lowerBoundInclusive;
     public DateTime $upperBoundInclusive;
+    
     public static function create(DateTime $lowerBoundInclusive, DateTime $upperBoundInclusive) : DateTimeRange
     {
         $result = new DateTimeRange();
@@ -16,6 +17,7 @@ class DateTimeRange implements JsonSerializable
         $result->upperBoundInclusive = $upperBoundInclusive;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DateTimeRange
     {
         $result = new DateTimeRange();
@@ -29,16 +31,19 @@ class DateTimeRange implements JsonSerializable
         }
         return $result;
     }
+    
     function setLowerBoundInclusive(DateTime $lowerBoundInclusive)
     {
         $this->lowerBoundInclusive = $lowerBoundInclusive;
         return $this;
     }
+    
     function setUpperBoundInclusive(DateTime $upperBoundInclusive)
     {
         $this->upperBoundInclusive = $upperBoundInclusive;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

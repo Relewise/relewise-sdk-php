@@ -6,12 +6,14 @@ class BatchedTrackingRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.BatchedTrackingRequest, Relewise.Client";
     public array $items;
+    
     public static function create(Trackable ... $items) : BatchedTrackingRequest
     {
         $result = new BatchedTrackingRequest();
         $result->items = $items;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BatchedTrackingRequest
     {
         $result = TrackingRequest::hydrateBase(new BatchedTrackingRequest(), $arr);
@@ -25,17 +27,20 @@ class BatchedTrackingRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setItems(Trackable ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param Trackable[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(Trackable $items)
     {
         if (!isset($this->items))

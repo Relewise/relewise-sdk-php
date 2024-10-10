@@ -7,11 +7,13 @@ class ContentCategoryInterestTriggerResultCategory
     public array $lastPath;
     public int $views;
     public array $viewedContents;
+    
     public static function create() : ContentCategoryInterestTriggerResultCategory
     {
         $result = new ContentCategoryInterestTriggerResultCategory();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryInterestTriggerResultCategory
     {
         $result = new ContentCategoryInterestTriggerResultCategory();
@@ -37,17 +39,20 @@ class ContentCategoryInterestTriggerResultCategory
         }
         return $result;
     }
+    
     function setLastPath(string ... $lastPath)
     {
         $this->lastPath = $lastPath;
         return $this;
     }
+    
     /** @param string[] $lastPath new value. */
     function setLastPathFromArray(array $lastPath)
     {
         $this->lastPath = $lastPath;
         return $this;
     }
+    
     function addToLastPath(string $lastPath)
     {
         if (!isset($this->lastPath))
@@ -57,22 +62,26 @@ class ContentCategoryInterestTriggerResultCategory
         array_push($this->lastPath, $lastPath);
         return $this;
     }
+    
     function setViews(int $views)
     {
         $this->views = $views;
         return $this;
     }
+    
     function setViewedContents(ContentResultDetails ... $viewedContents)
     {
         $this->viewedContents = $viewedContents;
         return $this;
     }
+    
     /** @param ContentResultDetails[] $viewedContents new value. */
     function setViewedContentsFromArray(array $viewedContents)
     {
         $this->viewedContents = $viewedContents;
         return $this;
     }
+    
     function addToViewedContents(ContentResultDetails $viewedContents)
     {
         if (!isset($this->viewedContents))

@@ -6,12 +6,14 @@ class TrackContentCategoryViewRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackContentCategoryViewRequest, Relewise.Client";
     public ContentCategoryView $contentCategoryView;
+    
     public static function create(ContentCategoryView $contentCategoryView) : TrackContentCategoryViewRequest
     {
         $result = new TrackContentCategoryViewRequest();
         $result->contentCategoryView = $contentCategoryView;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackContentCategoryViewRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackContentCategoryViewRequest(), $arr);
@@ -21,6 +23,7 @@ class TrackContentCategoryViewRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setContentCategoryView(ContentCategoryView $contentCategoryView)
     {
         $this->contentCategoryView = $contentCategoryView;

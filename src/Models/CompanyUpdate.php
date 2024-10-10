@@ -9,6 +9,7 @@ class CompanyUpdate extends Trackable
     public CompanyUpdateUpdateKind $kind;
     public ?array $parents;
     public bool $replaceExistingParents;
+    
     public static function create(Company $company, bool $replaceExistingParents, ?array $parents, CompanyUpdateUpdateKind $kind = CompanyUpdateUpdateKind::UpdateAndAppend) : CompanyUpdate
     {
         $result = new CompanyUpdate();
@@ -18,6 +19,7 @@ class CompanyUpdate extends Trackable
         $result->kind = $kind;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CompanyUpdate
     {
         $result = Trackable::hydrateBase(new CompanyUpdate(), $arr);
@@ -43,27 +45,32 @@ class CompanyUpdate extends Trackable
         }
         return $result;
     }
+    
     function setCompany(Company $company)
     {
         $this->company = $company;
         return $this;
     }
+    
     function setKind(CompanyUpdateUpdateKind $kind)
     {
         $this->kind = $kind;
         return $this;
     }
+    
     function setParents(Company ... $parents)
     {
         $this->parents = $parents;
         return $this;
     }
+    
     /** @param ?Company[] $parents new value. */
     function setParentsFromArray(array $parents)
     {
         $this->parents = $parents;
         return $this;
     }
+    
     function addToParents(Company $parents)
     {
         if (!isset($this->parents))
@@ -73,6 +80,7 @@ class CompanyUpdate extends Trackable
         array_push($this->parents, $parents);
         return $this;
     }
+    
     function setReplaceExistingParents(bool $replaceExistingParents)
     {
         $this->replaceExistingParents = $replaceExistingParents;

@@ -10,11 +10,13 @@ class ProductCategoryIndexConfiguration extends CategoryIndexConfiguration
         $result = new ProductCategoryIndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryIndexConfiguration
     {
         $result = new ProductCategoryIndexConfiguration();
         return $result;
     }
+    
     function setUnspecified(CategoryIndexConfigurationEntry $unspecified)
     {
         $this->unspecified = $unspecified;

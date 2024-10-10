@@ -7,6 +7,7 @@ class DeleteSynonymsRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Search.DeleteSynonymsRequest, Relewise.Client";
     public array $ids;
     public string $deletedBy;
+    
     public static function create(array $ids, string $deletedBy) : DeleteSynonymsRequest
     {
         $result = new DeleteSynonymsRequest();
@@ -14,6 +15,7 @@ class DeleteSynonymsRequest extends LicensedRequest
         $result->deletedBy = $deletedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DeleteSynonymsRequest
     {
         $result = LicensedRequest::hydrateBase(new DeleteSynonymsRequest(), $arr);
@@ -31,17 +33,20 @@ class DeleteSynonymsRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setIds(string ... $ids)
     {
         $this->ids = $ids;
         return $this;
     }
+    
     /** @param string[] $ids new value. */
     function setIdsFromArray(array $ids)
     {
         $this->ids = $ids;
         return $this;
     }
+    
     function addToIds(string $ids)
     {
         if (!isset($this->ids))
@@ -51,6 +56,7 @@ class DeleteSynonymsRequest extends LicensedRequest
         array_push($this->ids, $ids);
         return $this;
     }
+    
     function setDeletedBy(string $deletedBy)
     {
         $this->deletedBy = $deletedBy;

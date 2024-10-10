@@ -7,6 +7,7 @@ class SaveSynonymsRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Search.SaveSynonymsRequest, Relewise.Client";
     public array $synonyms;
     public string $modifiedBy;
+    
     public static function create(array $synonyms, string $modifiedBy) : SaveSynonymsRequest
     {
         $result = new SaveSynonymsRequest();
@@ -14,6 +15,7 @@ class SaveSynonymsRequest extends LicensedRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveSynonymsRequest
     {
         $result = LicensedRequest::hydrateBase(new SaveSynonymsRequest(), $arr);
@@ -31,17 +33,20 @@ class SaveSynonymsRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setSynonyms(Synonym ... $synonyms)
     {
         $this->synonyms = $synonyms;
         return $this;
     }
+    
     /** @param Synonym[] $synonyms new value. */
     function setSynonymsFromArray(array $synonyms)
     {
         $this->synonyms = $synonyms;
         return $this;
     }
+    
     function addToSynonyms(Synonym $synonyms)
     {
         if (!isset($this->synonyms))
@@ -51,6 +56,7 @@ class SaveSynonymsRequest extends LicensedRequest
         array_push($this->synonyms, $synonyms);
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

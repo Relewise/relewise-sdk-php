@@ -6,6 +6,7 @@ class intRange
 {
     public ?int $lowerBoundInclusive;
     public ?int $upperBoundInclusive;
+    
     public static function create(?int $lowerBoundInclusive, ?int $upperBoundInclusive) : intRange
     {
         $result = new intRange();
@@ -13,6 +14,7 @@ class intRange
         $result->upperBoundInclusive = $upperBoundInclusive;
         return $result;
     }
+    
     public static function hydrate(array $arr) : intRange
     {
         $result = new intRange();
@@ -26,11 +28,13 @@ class intRange
         }
         return $result;
     }
+    
     function setLowerBoundInclusive(?int $lowerBoundInclusive)
     {
         $this->lowerBoundInclusive = $lowerBoundInclusive;
         return $this;
     }
+    
     function setUpperBoundInclusive(?int $upperBoundInclusive)
     {
         $this->upperBoundInclusive = $upperBoundInclusive;

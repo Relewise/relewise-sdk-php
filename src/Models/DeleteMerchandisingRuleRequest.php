@@ -6,12 +6,14 @@ class DeleteMerchandisingRuleRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Merchandising.DeleteMerchandisingRuleRequest, Relewise.Client";
     public string $id;
+    
     public static function create(string $id) : DeleteMerchandisingRuleRequest
     {
         $result = new DeleteMerchandisingRuleRequest();
         $result->id = $id;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DeleteMerchandisingRuleRequest
     {
         $result = LicensedRequest::hydrateBase(new DeleteMerchandisingRuleRequest(), $arr);
@@ -21,6 +23,7 @@ class DeleteMerchandisingRuleRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;

@@ -10,11 +10,13 @@ class RequestContextFilter
     public array $languages;
     public array $currencies;
     public RequestFilterCriteria $filters;
+    
     public static function create() : RequestContextFilter
     {
         $result = new RequestContextFilter();
         return $result;
     }
+    
     public static function hydrate(array $arr) : RequestContextFilter
     {
         $result = new RequestContextFilter();
@@ -56,27 +58,32 @@ class RequestContextFilter
         }
         return $result;
     }
+    
     function setRecommendations(RecommendationTypeCollection $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     function setSearches(SearchTypeCollection $searches)
     {
         $this->searches = $searches;
         return $this;
     }
+    
     function setLocations(string ... $locations)
     {
         $this->locations = $locations;
         return $this;
     }
+    
     /** @param string[] $locations new value. */
     function setLocationsFromArray(array $locations)
     {
         $this->locations = $locations;
         return $this;
     }
+    
     function addToLocations(string $locations)
     {
         if (!isset($this->locations))
@@ -86,17 +93,20 @@ class RequestContextFilter
         array_push($this->locations, $locations);
         return $this;
     }
+    
     function setLanguages(Language ... $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    
     /** @param Language[] $languages new value. */
     function setLanguagesFromArray(array $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    
     function addToLanguages(Language $languages)
     {
         if (!isset($this->languages))
@@ -106,17 +116,20 @@ class RequestContextFilter
         array_push($this->languages, $languages);
         return $this;
     }
+    
     function setCurrencies(Currency ... $currencies)
     {
         $this->currencies = $currencies;
         return $this;
     }
+    
     /** @param Currency[] $currencies new value. */
     function setCurrenciesFromArray(array $currencies)
     {
         $this->currencies = $currencies;
         return $this;
     }
+    
     function addToCurrencies(Currency $currencies)
     {
         if (!isset($this->currencies))
@@ -126,6 +139,7 @@ class RequestContextFilter
         array_push($this->currencies, $currencies);
         return $this;
     }
+    
     function setFilters(RequestFilterCriteria $filters)
     {
         $this->filters = $filters;

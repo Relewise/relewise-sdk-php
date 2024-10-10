@@ -12,22 +12,26 @@ class SearchResultModifierRulesResponse extends SearchResultModifierRuleSearchRu
         $result->hits = $hits;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchResultModifierRulesResponse
     {
         $result = SearchResultModifierRuleSearchRulesResponse::hydrateBase(new SearchResultModifierRulesResponse(), $arr);
         return $result;
     }
+    
     function setRules(SearchResultModifierRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param SearchResultModifierRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(SearchResultModifierRule $rules)
     {
         if (!isset($this->rules))
@@ -37,11 +41,13 @@ class SearchResultModifierRulesResponse extends SearchResultModifierRuleSearchRu
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

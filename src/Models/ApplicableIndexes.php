@@ -6,12 +6,14 @@ class ApplicableIndexes
 {
     public array $indexes;
     const ALL = Null;
+    
     public static function create(string ... $indexes) : ApplicableIndexes
     {
         $result = new ApplicableIndexes();
         $result->indexes = $indexes;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ApplicableIndexes
     {
         $result = new ApplicableIndexes();
@@ -25,17 +27,20 @@ class ApplicableIndexes
         }
         return $result;
     }
+    
     function setIndexes(string ... $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
+    
     /** @param string[] $indexes new value. */
     function setIndexesFromArray(array $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
+    
     function addToIndexes(string $indexes)
     {
         if (!isset($this->indexes))

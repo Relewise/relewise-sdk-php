@@ -6,6 +6,8 @@ abstract class ContentRecommendationRequest extends RecommendationRequest
 {
     public string $typeDefinition = "";
     public ContentRecommendationRequestSettings $settings;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -34,6 +36,7 @@ abstract class ContentRecommendationRequest extends RecommendationRequest
             return PopularContentsRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = RecommendationRequest::hydrateBase($result, $arr);
@@ -43,36 +46,43 @@ abstract class ContentRecommendationRequest extends RecommendationRequest
         }
         return $result;
     }
+    
     function setSettings(ContentRecommendationRequestSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setDisplayedAtLocationType(string $displayedAtLocationType)
     {
         $this->displayedAtLocationType = $displayedAtLocationType;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

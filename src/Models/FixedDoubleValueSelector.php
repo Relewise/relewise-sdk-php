@@ -6,12 +6,14 @@ class FixedDoubleValueSelector extends ValueSelector
 {
     public string $typeDefinition = "Relewise.Client.Requests.ValueSelectors.FixedDoubleValueSelector, Relewise.Client";
     public float $value;
+    
     public static function create(float $value) : FixedDoubleValueSelector
     {
         $result = new FixedDoubleValueSelector();
         $result->value = $value;
         return $result;
     }
+    
     public static function hydrate(array $arr) : FixedDoubleValueSelector
     {
         $result = ValueSelector::hydrateBase(new FixedDoubleValueSelector(), $arr);
@@ -21,6 +23,7 @@ class FixedDoubleValueSelector extends ValueSelector
         }
         return $result;
     }
+    
     function setValue(float $value)
     {
         $this->value = $value;

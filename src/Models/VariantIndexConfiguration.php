@@ -8,11 +8,13 @@ class VariantIndexConfiguration
     public FieldIndexConfiguration $displayName;
     public SpecificationsIndexConfiguration $specifications;
     public DataIndexConfiguration $data;
+    
     public static function create() : VariantIndexConfiguration
     {
         $result = new VariantIndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantIndexConfiguration
     {
         $result = new VariantIndexConfiguration();
@@ -34,21 +36,25 @@ class VariantIndexConfiguration
         }
         return $result;
     }
+    
     function setId(FieldIndexConfiguration $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setDisplayName(FieldIndexConfiguration $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setSpecifications(SpecificationsIndexConfiguration $specifications)
     {
         $this->specifications = $specifications;
         return $this;
     }
+    
     function setData(DataIndexConfiguration $data)
     {
         $this->data = $data;

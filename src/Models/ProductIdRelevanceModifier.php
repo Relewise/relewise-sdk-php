@@ -12,6 +12,7 @@ class ProductIdRelevanceModifier extends RelevanceModifier
     public float $multiplyWeightBy;
     /** Determines whether this RelevanceModifier should apply to all the Products that don't match one of the specified ProductIds instead. */
     public bool $negated;
+    
     /**
      * Creates a RelevanceModifier that can change the relevance of a Product depending on whether it is contained in a set of ProductIds.
      * @param string[] $productIds The Ids of the Products that this RelevanceModifier will distinguish on.
@@ -26,6 +27,7 @@ class ProductIdRelevanceModifier extends RelevanceModifier
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductIdRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new ProductIdRelevanceModifier(), $arr);
@@ -47,12 +49,14 @@ class ProductIdRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    
     /** The Ids of the Products that this RelevanceModifier will distinguish on. */
     function setProductIds(string ... $productIds)
     {
         $this->productIds = $productIds;
         return $this;
     }
+    
     /**
      * The Ids of the Products that this RelevanceModifier will distinguish on.
      * @param string[] $productIds new value.
@@ -62,6 +66,7 @@ class ProductIdRelevanceModifier extends RelevanceModifier
         $this->productIds = $productIds;
         return $this;
     }
+    
     /** The Ids of the Products that this RelevanceModifier will distinguish on. */
     function addToProductIds(string $productIds)
     {
@@ -72,18 +77,21 @@ class ProductIdRelevanceModifier extends RelevanceModifier
         array_push($this->productIds, $productIds);
         return $this;
     }
+    
     /** The weight that this RelevanceModifier will multiply relevant products with. */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    
     /** Determines whether this RelevanceModifier should apply to all the Products that don't match one of the specified ProductIds instead. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

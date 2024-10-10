@@ -10,6 +10,7 @@ class SimilarProductsRequest extends ProductRecommendationRequest
     public bool $considerAlreadyKnownInformationAboutProduct;
     public ?SimilarProductsEvaluationSettings $evaluationSettings;
     public ?int $explodedVariants;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ?SimilarProductsEvaluationSettings $evaluationSettings = Null) : SimilarProductsRequest
     {
         $result = new SimilarProductsRequest();
@@ -20,6 +21,7 @@ class SimilarProductsRequest extends ProductRecommendationRequest
         $result->evaluationSettings = $evaluationSettings;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SimilarProductsRequest
     {
         $result = ProductRecommendationRequest::hydrateBase(new SimilarProductsRequest(), $arr);
@@ -45,61 +47,73 @@ class SimilarProductsRequest extends ProductRecommendationRequest
         }
         return $result;
     }
+    
     function setExistingProductId(?ProductAndVariantId $existingProductId)
     {
         $this->existingProductId = $existingProductId;
         return $this;
     }
+    
     function setProductData(?Product $productData)
     {
         $this->productData = $productData;
         return $this;
     }
+    
     function setConsiderAlreadyKnownInformationAboutProduct(bool $considerAlreadyKnownInformationAboutProduct)
     {
         $this->considerAlreadyKnownInformationAboutProduct = $considerAlreadyKnownInformationAboutProduct;
         return $this;
     }
+    
     function setEvaluationSettings(?SimilarProductsEvaluationSettings $evaluationSettings)
     {
         $this->evaluationSettings = $evaluationSettings;
         return $this;
     }
+    
     function setExplodedVariants(?int $explodedVariants)
     {
         $this->explodedVariants = $explodedVariants;
         return $this;
     }
+    
     function setSettings(ProductRecommendationRequestSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setDisplayedAtLocationType(string $displayedAtLocationType)
     {
         $this->displayedAtLocationType = $displayedAtLocationType;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

@@ -9,6 +9,8 @@ abstract class SearchResultModifierRulesRequestSortBySearchRulesRequest extends 
     public SearchResultModifierRulesRequestSortBySorting $sorting;
     public int $skip;
     public int $take;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -17,6 +19,7 @@ abstract class SearchResultModifierRulesRequestSortBySearchRulesRequest extends 
             return SearchResultModifierRulesRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);
@@ -38,21 +41,25 @@ abstract class SearchResultModifierRulesRequestSortBySearchRulesRequest extends 
         }
         return $result;
     }
+    
     function setFilters(SearchRuleFilters $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setSorting(SearchResultModifierRulesRequestSortBySorting $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
+    
     function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
+    
     function setTake(int $take)
     {
         $this->take = $take;

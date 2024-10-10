@@ -12,6 +12,8 @@ abstract class MetadataValues implements JsonSerializable
     public string $createdBy;
     public DateTime $modified;
     public string $modifiedBy;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -28,6 +30,7 @@ abstract class MetadataValues implements JsonSerializable
             return LocationMetadataValues::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("created", $arr))
@@ -48,26 +51,31 @@ abstract class MetadataValues implements JsonSerializable
         }
         return $result;
     }
+    
     function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
+    
     function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
+    
     function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

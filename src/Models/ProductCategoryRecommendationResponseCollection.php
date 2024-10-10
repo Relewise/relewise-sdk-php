@@ -6,12 +6,14 @@ class ProductCategoryRecommendationResponseCollection extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.ProductCategoryRecommendationResponseCollection, Relewise.Client";
     public array $responses;
+    
     public static function create(ProductCategoryRecommendationResponse ... $responses) : ProductCategoryRecommendationResponseCollection
     {
         $result = new ProductCategoryRecommendationResponseCollection();
         $result->responses = $responses;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryRecommendationResponseCollection
     {
         $result = TimedResponse::hydrateBase(new ProductCategoryRecommendationResponseCollection(), $arr);
@@ -25,17 +27,20 @@ class ProductCategoryRecommendationResponseCollection extends TimedResponse
         }
         return $result;
     }
+    
     function setResponses(ProductCategoryRecommendationResponse ... $responses)
     {
         $this->responses = $responses;
         return $this;
     }
+    
     /** @param ProductCategoryRecommendationResponse[] $responses new value. */
     function setResponsesFromArray(array $responses)
     {
         $this->responses = $responses;
         return $this;
     }
+    
     function addToResponses(ProductCategoryRecommendationResponse $responses)
     {
         if (!isset($this->responses))
@@ -45,6 +50,7 @@ class ProductCategoryRecommendationResponseCollection extends TimedResponse
         array_push($this->responses, $responses);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

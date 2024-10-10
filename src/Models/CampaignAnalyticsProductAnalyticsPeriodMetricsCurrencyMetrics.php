@@ -7,6 +7,7 @@ class CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.CampaignAnalytics+ProductAnalytics+PeriodMetrics+CurrencyMetrics, Relewise.Client";
     public string $currency;
     public float $revenue;
+    
     public static function create(string $currency, float $revenue) : CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics
     {
         $result = new CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics();
@@ -14,6 +15,7 @@ class CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics
         $result->revenue = $revenue;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics
     {
         $result = new CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics();
@@ -27,11 +29,13 @@ class CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics
         }
         return $result;
     }
+    
     function setCurrency(string $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     function setRevenue(float $revenue)
     {
         $this->revenue = $revenue;

@@ -6,6 +6,7 @@ class StemmingRulesRequestSortBySorting
 {
     public StemmingRulesRequestSortBy $sortBy;
     public SortOrder $sortOrder;
+    
     public static function create(StemmingRulesRequestSortBy $sortBy, SortOrder $sortOrder) : StemmingRulesRequestSortBySorting
     {
         $result = new StemmingRulesRequestSortBySorting();
@@ -13,6 +14,7 @@ class StemmingRulesRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : StemmingRulesRequestSortBySorting
     {
         $result = new StemmingRulesRequestSortBySorting();
@@ -26,11 +28,13 @@ class StemmingRulesRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(StemmingRulesRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

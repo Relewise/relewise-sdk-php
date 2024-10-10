@@ -9,11 +9,13 @@ class ProductPerformanceResultSalesByCurrency
     public float $averageSubtotal;
     public float $units;
     public float $revenue;
+    
     public static function create() : ProductPerformanceResultSalesByCurrency
     {
         $result = new ProductPerformanceResultSalesByCurrency();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResultSalesByCurrency
     {
         $result = new ProductPerformanceResultSalesByCurrency();
@@ -39,26 +41,31 @@ class ProductPerformanceResultSalesByCurrency
         }
         return $result;
     }
+    
     function setCurrency(Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     function setOrders(int $orders)
     {
         $this->orders = $orders;
         return $this;
     }
+    
     function setAverageSubtotal(float $averageSubtotal)
     {
         $this->averageSubtotal = $averageSubtotal;
         return $this;
     }
+    
     function setUnits(float $units)
     {
         $this->units = $units;
         return $this;
     }
+    
     function setRevenue(float $revenue)
     {
         $this->revenue = $revenue;

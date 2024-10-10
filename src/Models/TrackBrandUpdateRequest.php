@@ -6,12 +6,14 @@ class TrackBrandUpdateRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackBrandUpdateRequest, Relewise.Client";
     public BrandUpdate $brandUpdate;
+    
     public static function create(BrandUpdate $brandUpdate) : TrackBrandUpdateRequest
     {
         $result = new TrackBrandUpdateRequest();
         $result->brandUpdate = $brandUpdate;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackBrandUpdateRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackBrandUpdateRequest(), $arr);
@@ -21,6 +23,7 @@ class TrackBrandUpdateRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setBrandUpdate(BrandUpdate $brandUpdate)
     {
         $this->brandUpdate = $brandUpdate;

@@ -7,6 +7,8 @@ abstract class stringBrandNameAndIdResultValueFacetResult extends FacetResult
     public string $typeDefinition = "";
     public array $selected;
     public array $available;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -15,6 +17,7 @@ abstract class stringBrandNameAndIdResultValueFacetResult extends FacetResult
             return BrandFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = FacetResult::hydrateBase($result, $arr);
@@ -36,17 +39,20 @@ abstract class stringBrandNameAndIdResultValueFacetResult extends FacetResult
         }
         return $result;
     }
+    
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -56,17 +62,20 @@ abstract class stringBrandNameAndIdResultValueFacetResult extends FacetResult
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setAvailable(BrandNameAndIdResultAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     /** @param BrandNameAndIdResultAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function addToAvailable(BrandNameAndIdResultAvailableFacetValue $available)
     {
         if (!isset($this->available))
@@ -76,6 +85,7 @@ abstract class stringBrandNameAndIdResultValueFacetResult extends FacetResult
         array_push($this->available, $available);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

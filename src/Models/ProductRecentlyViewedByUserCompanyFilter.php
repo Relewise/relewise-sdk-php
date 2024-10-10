@@ -13,12 +13,14 @@ class ProductRecentlyViewedByUserCompanyFilter extends Filter implements JsonSer
     public ?DateTime $sinceUtc;
     /** The time in minutes from which a Product should have been viewed by any of the companies to be included by the filter. */
     public ?int $sinceMinutesAgo;
+    
     public static function create(bool $negated = false) : ProductRecentlyViewedByUserCompanyFilter
     {
         $result = new ProductRecentlyViewedByUserCompanyFilter();
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductRecentlyViewedByUserCompanyFilter
     {
         $result = Filter::hydrateBase(new ProductRecentlyViewedByUserCompanyFilter(), $arr);
@@ -32,28 +34,33 @@ class ProductRecentlyViewedByUserCompanyFilter extends Filter implements JsonSer
         }
         return $result;
     }
+    
     /** The time from which a Product should have been viewed by any of the companies to be included by the filter. */
     function setSinceUtc(?DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
+    
     /** The time in minutes from which a Product should have been viewed by any of the companies to be included by the filter. */
     function setSinceMinutesAgo(?int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

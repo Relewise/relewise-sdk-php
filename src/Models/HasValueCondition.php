@@ -11,11 +11,13 @@ class HasValueCondition extends ValueCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : HasValueCondition
     {
         $result = ValueCondition::hydrateBase(new HasValueCondition(), $arr);
         return $result;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

@@ -5,11 +5,13 @@ namespace Relewise\Models;
 class ContextConditionConfiguration
 {
     public array $filters;
+    
     public static function create() : ContextConditionConfiguration
     {
         $result = new ContextConditionConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContextConditionConfiguration
     {
         $result = new ContextConditionConfiguration();
@@ -23,17 +25,20 @@ class ContextConditionConfiguration
         }
         return $result;
     }
+    
     function setFilters(RequestContextFilter ... $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     /** @param RequestContextFilter[] $filters new value. */
     function setFiltersFromArray(array $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function addToFilters(RequestContextFilter $filters)
     {
         if (!isset($this->filters))

@@ -8,6 +8,7 @@ class SignificantDataValue
     public SignificantDataValueSignificantDataValueComparer $comparer;
     public float $significance;
     public ?TrimStringTransformer $transformer;
+    
     public static function create(string $key, SignificantDataValueSignificantDataValueComparer $comparer, float $significance = 1, ?TrimStringTransformer $transformer = Null) : SignificantDataValue
     {
         $result = new SignificantDataValue();
@@ -17,6 +18,7 @@ class SignificantDataValue
         $result->transformer = $transformer;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SignificantDataValue
     {
         $result = new SignificantDataValue();
@@ -38,21 +40,25 @@ class SignificantDataValue
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setComparer(SignificantDataValueSignificantDataValueComparer $comparer)
     {
         $this->comparer = $comparer;
         return $this;
     }
+    
     function setSignificance(float $significance)
     {
         $this->significance = $significance;
         return $this;
     }
+    
     function setTransformer(?TrimStringTransformer $transformer)
     {
         $this->transformer = $transformer;

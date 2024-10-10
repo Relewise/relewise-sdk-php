@@ -8,6 +8,7 @@ class DataKeyPopularityMultiplierSelector extends PopularityMultiplierSelector
     public string $typeDefinition = "Relewise.Client.Requests.PopularityMultiplierSelectors.DataKeyPopularityMultiplierSelector, Relewise.Client";
     /** The data key that will be used to select a factor that is applied to the entities observed views or purchases. */
     public string $key;
+    
     /**
      * Creates a selector that uses a Key to pick a value from an entity's data to change the weighing of an observed view or purchase when making a PopularProductsRequest.
      * @param string $key The data key that will be used to select a factor that is applied to the entities observed views or purchases.
@@ -18,6 +19,7 @@ class DataKeyPopularityMultiplierSelector extends PopularityMultiplierSelector
         $result->key = $key;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataKeyPopularityMultiplierSelector
     {
         $result = PopularityMultiplierSelector::hydrateBase(new DataKeyPopularityMultiplierSelector(), $arr);
@@ -27,6 +29,7 @@ class DataKeyPopularityMultiplierSelector extends PopularityMultiplierSelector
         }
         return $result;
     }
+    
     /** The data key that will be used to select a factor that is applied to the entities observed views or purchases. */
     function setKey(string $key)
     {

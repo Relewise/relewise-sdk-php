@@ -7,6 +7,7 @@ class ProductPromotion extends Promotion
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.ProductPromotion, Relewise.Client";
     /** Filters matching the products to be promoted */
     public ?FilterCollection $filters;
+    
     public static function create(string $name, ?FilterCollection $filters, ?PromotionLocationCollection $locations) : ProductPromotion
     {
         $result = new ProductPromotion();
@@ -15,6 +16,7 @@ class ProductPromotion extends Promotion
         $result->locations = $locations;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPromotion
     {
         $result = Promotion::hydrateBase(new ProductPromotion(), $arr);
@@ -24,17 +26,20 @@ class ProductPromotion extends Promotion
         }
         return $result;
     }
+    
     /** Filters matching the products to be promoted */
     function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
+    
     function setLocations(?PromotionLocationCollection $locations)
     {
         $this->locations = $locations;

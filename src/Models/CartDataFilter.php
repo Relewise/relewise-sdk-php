@@ -11,6 +11,7 @@ class CartDataFilter extends Filter
     public ?ValueConditionCollection $conditions;
     public ?Language $language;
     public ?Currency $currency;
+    
     public static function create(string $key, ?ValueConditionCollection $conditions = Null, bool $mustMatchAllConditions = true, bool $filterOutIfKeyIsNotFound = true, ?Language $language = Null, ?Currency $currency = Null) : CartDataFilter
     {
         $result = new CartDataFilter();
@@ -22,6 +23,7 @@ class CartDataFilter extends Filter
         $result->currency = $currency;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CartDataFilter
     {
         $result = Filter::hydrateBase(new CartDataFilter(), $arr);
@@ -51,41 +53,49 @@ class CartDataFilter extends Filter
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setFilterOutIfKeyIsNotFound(bool $filterOutIfKeyIsNotFound)
     {
         $this->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
         return $this;
     }
+    
     function setMustMatchAllConditions(bool $mustMatchAllConditions)
     {
         $this->mustMatchAllConditions = $mustMatchAllConditions;
         return $this;
     }
+    
     function setConditions(?ValueConditionCollection $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

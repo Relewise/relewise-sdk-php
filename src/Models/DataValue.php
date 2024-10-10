@@ -6,11 +6,13 @@ class DataValue
 {
     public DataValueDataValueTypes $type;
     public mixed $value;
+    
     public static function create() : DataValue
     {
         $result = new DataValue();
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataValue
     {
         $result = new DataValue();
@@ -24,11 +26,13 @@ class DataValue
         }
         return $result;
     }
+    
     function setType(DataValueDataValueTypes $type)
     {
         $this->type = $type;
         return $this;
     }
+    
     function setValue(mixed $value)
     {
         $this->value = $value;

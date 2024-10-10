@@ -7,6 +7,7 @@ class ContentRecommendationRequestCollection extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ContentRecommendationRequestCollection, Relewise.Client";
     public array $requests;
     public bool $requireDistinctContentsAcrossResults;
+    
     public static function create(bool $requireDistinctContentsAcrossResults, ContentRecommendationRequest ... $requests) : ContentRecommendationRequestCollection
     {
         $result = new ContentRecommendationRequestCollection();
@@ -14,6 +15,7 @@ class ContentRecommendationRequestCollection extends LicensedRequest
         $result->requests = $requests;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentRecommendationRequestCollection
     {
         $result = LicensedRequest::hydrateBase(new ContentRecommendationRequestCollection(), $arr);
@@ -31,17 +33,20 @@ class ContentRecommendationRequestCollection extends LicensedRequest
         }
         return $result;
     }
+    
     function setRequests(ContentRecommendationRequest ... $requests)
     {
         $this->requests = $requests;
         return $this;
     }
+    
     /** @param ContentRecommendationRequest[] $requests new value. */
     function setRequestsFromArray(array $requests)
     {
         $this->requests = $requests;
         return $this;
     }
+    
     function addToRequests(ContentRecommendationRequest $requests)
     {
         if (!isset($this->requests))
@@ -51,6 +56,7 @@ class ContentRecommendationRequestCollection extends LicensedRequest
         array_push($this->requests, $requests);
         return $this;
     }
+    
     function setRequireDistinctContentsAcrossResults(bool $requireDistinctContentsAcrossResults)
     {
         $this->requireDistinctContentsAcrossResults = $requireDistinctContentsAcrossResults;

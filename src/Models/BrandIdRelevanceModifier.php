@@ -12,6 +12,7 @@ class BrandIdRelevanceModifier extends RelevanceModifier
     public float $ifProductIsBrandMultiplyWeightBy;
     /** The weight that the entity will be multiplied with if it does not match the specific BrandId. */
     public float $ifProductIsNotBrandMultiplyWeightBy;
+    
     /**
      * Creates a RelevanceModifier that can change the relevance of an entity depending on a BrandId.
      * @param string $brandId The Id of the Brand that this RelevanceModifier will distinguish on.
@@ -26,6 +27,7 @@ class BrandIdRelevanceModifier extends RelevanceModifier
         $result->ifProductIsNotBrandMultiplyWeightBy = $ifProductIsNotBrandMultiplyWeightBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandIdRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new BrandIdRelevanceModifier(), $arr);
@@ -43,24 +45,28 @@ class BrandIdRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    
     /** The Id of the Brand that this RelevanceModifier will distinguish on. */
     function setBrandId(string $brandId)
     {
         $this->brandId = $brandId;
         return $this;
     }
+    
     /** The weight that the entity will be multiplied with if it matches the specific BrandId. */
     function setIfProductIsBrandMultiplyWeightBy(float $ifProductIsBrandMultiplyWeightBy)
     {
         $this->ifProductIsBrandMultiplyWeightBy = $ifProductIsBrandMultiplyWeightBy;
         return $this;
     }
+    
     /** The weight that the entity will be multiplied with if it does not match the specific BrandId. */
     function setIfProductIsNotBrandMultiplyWeightBy(float $ifProductIsNotBrandMultiplyWeightBy)
     {
         $this->ifProductIsNotBrandMultiplyWeightBy = $ifProductIsNotBrandMultiplyWeightBy;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

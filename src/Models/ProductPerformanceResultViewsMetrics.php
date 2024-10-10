@@ -5,11 +5,13 @@ namespace Relewise\Models;
 class ProductPerformanceResultViewsMetrics
 {
     public int $total;
+    
     public static function create() : ProductPerformanceResultViewsMetrics
     {
         $result = new ProductPerformanceResultViewsMetrics();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResultViewsMetrics
     {
         $result = new ProductPerformanceResultViewsMetrics();
@@ -19,6 +21,7 @@ class ProductPerformanceResultViewsMetrics
         }
         return $result;
     }
+    
     function setTotal(int $total)
     {
         $this->total = $total;

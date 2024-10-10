@@ -8,6 +8,7 @@ class DataObjectValueSelector
     public ?DataObjectFilter $filter;
     public ?DataObjectValueSelector $childSelector;
     public ?DataObjectValueSelector $fallbackSelector;
+    
     public static function create(string $key, ?DataObjectFilter $filter, ?DataObjectValueSelector $childSelector, ?DataObjectValueSelector $fallbackSelector) : DataObjectValueSelector
     {
         $result = new DataObjectValueSelector();
@@ -17,6 +18,7 @@ class DataObjectValueSelector
         $result->fallbackSelector = $fallbackSelector;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataObjectValueSelector
     {
         $result = new DataObjectValueSelector();
@@ -38,21 +40,25 @@ class DataObjectValueSelector
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setFilter(?DataObjectFilter $filter)
     {
         $this->filter = $filter;
         return $this;
     }
+    
     function setChildSelector(?DataObjectValueSelector $childSelector)
     {
         $this->childSelector = $childSelector;
         return $this;
     }
+    
     function setFallbackSelector(?DataObjectValueSelector $fallbackSelector)
     {
         $this->fallbackSelector = $fallbackSelector;

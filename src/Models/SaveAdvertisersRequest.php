@@ -11,22 +11,26 @@ class SaveAdvertisersRequest extends AdvertiserSaveEntitiesRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveAdvertisersRequest
     {
         $result = AdvertiserSaveEntitiesRequest::hydrateBase(new SaveAdvertisersRequest(), $arr);
         return $result;
     }
+    
     function setEntities(Advertiser ... $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     /** @param Advertiser[] $entities new value. */
     function setEntitiesFromArray(array $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     function addToEntities(Advertiser $entities)
     {
         if (!isset($this->entities))
@@ -36,6 +40,7 @@ class SaveAdvertisersRequest extends AdvertiserSaveEntitiesRequest
         array_push($this->entities, $entities);
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

@@ -16,36 +16,43 @@ class ContentRecentlyViewedByUserRelevanceModifier extends RecentlyViewedByUserR
         $result->ifNotPreviouslyViewedByUserMultiplyWeightBy = $ifNotPreviouslyViewedByUserMultiplyWeightBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentRecentlyViewedByUserRelevanceModifier
     {
         $result = RecentlyViewedByUserRelevanceModifier::hydrateBase(new ContentRecentlyViewedByUserRelevanceModifier(), $arr);
         return $result;
     }
+    
     function setSinceUtc(?DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
+    
     function setIfPreviouslyViewedByUserMultiplyWeightBy(float $ifPreviouslyViewedByUserMultiplyWeightBy)
     {
         $this->ifPreviouslyViewedByUserMultiplyWeightBy = $ifPreviouslyViewedByUserMultiplyWeightBy;
         return $this;
     }
+    
     function setIfNotPreviouslyViewedByUserMultiplyWeightBy(float $ifNotPreviouslyViewedByUserMultiplyWeightBy)
     {
         $this->ifNotPreviouslyViewedByUserMultiplyWeightBy = $ifNotPreviouslyViewedByUserMultiplyWeightBy;
         return $this;
     }
+    
     function setSinceMinutesAgo(?int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

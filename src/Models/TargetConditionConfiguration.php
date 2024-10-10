@@ -5,11 +5,13 @@ namespace Relewise\Models;
 class TargetConditionConfiguration
 {
     public FilterCollection $filters;
+    
     public static function create() : TargetConditionConfiguration
     {
         $result = new TargetConditionConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : TargetConditionConfiguration
     {
         $result = new TargetConditionConfiguration();
@@ -19,6 +21,7 @@ class TargetConditionConfiguration
         }
         return $result;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

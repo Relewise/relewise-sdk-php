@@ -12,6 +12,7 @@ class VariantIdRelevanceModifier extends RelevanceModifier
     public float $multiplyWeightBy;
     /** Determines whether this RelevanceModifier should apply to all the Variants that don't match one of the specified VariantIds instead. */
     public bool $negated;
+    
     /**
      * Creates a RelevanceModifier that can change the relevance of a Variant depending on whether it is contained in a set of VariantIds.
      * @param string[] $variantIds The Ids of the Variants that this RelevanceModifier will distinguish on.
@@ -26,6 +27,7 @@ class VariantIdRelevanceModifier extends RelevanceModifier
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantIdRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new VariantIdRelevanceModifier(), $arr);
@@ -47,12 +49,14 @@ class VariantIdRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    
     /** The Ids of the Variants that this RelevanceModifier will distinguish on. */
     function setVariantIds(string ... $variantIds)
     {
         $this->variantIds = $variantIds;
         return $this;
     }
+    
     /**
      * The Ids of the Variants that this RelevanceModifier will distinguish on.
      * @param string[] $variantIds new value.
@@ -62,6 +66,7 @@ class VariantIdRelevanceModifier extends RelevanceModifier
         $this->variantIds = $variantIds;
         return $this;
     }
+    
     /** The Ids of the Variants that this RelevanceModifier will distinguish on. */
     function addToVariantIds(string $variantIds)
     {
@@ -72,18 +77,21 @@ class VariantIdRelevanceModifier extends RelevanceModifier
         array_push($this->variantIds, $variantIds);
         return $this;
     }
+    
     /** The weight that this RelevanceModifier will multiply relevant variants with. */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    
     /** Determines whether this RelevanceModifier should apply to all the Variants that don't match one of the specified VariantIds instead. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

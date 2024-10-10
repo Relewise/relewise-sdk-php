@@ -6,11 +6,13 @@ class SearchTermPredictionResponse extends SearchResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.SearchTermPredictionResponse, Relewise.Client";
     public array $predictions;
+    
     public static function create() : SearchTermPredictionResponse
     {
         $result = new SearchTermPredictionResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermPredictionResponse
     {
         $result = SearchResponse::hydrateBase(new SearchTermPredictionResponse(), $arr);
@@ -24,17 +26,20 @@ class SearchTermPredictionResponse extends SearchResponse
         }
         return $result;
     }
+    
     function setPredictions(SearchTermPredictionResult ... $predictions)
     {
         $this->predictions = $predictions;
         return $this;
     }
+    
     /** @param SearchTermPredictionResult[] $predictions new value. */
     function setPredictionsFromArray(array $predictions)
     {
         $this->predictions = $predictions;
         return $this;
     }
+    
     function addToPredictions(SearchTermPredictionResult $predictions)
     {
         if (!isset($this->predictions))
@@ -44,6 +49,7 @@ class SearchTermPredictionResponse extends SearchResponse
         array_push($this->predictions, $predictions);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

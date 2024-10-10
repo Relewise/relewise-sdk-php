@@ -9,6 +9,7 @@ class LineItem
     public int $quantity;
     public float $lineTotal;
     public ?array $data;
+    
     public static function create(Product $product, ?ProductVariant $variant, int $quantity, float $lineTotal) : LineItem
     {
         $result = new LineItem();
@@ -18,6 +19,7 @@ class LineItem
         $result->lineTotal = $lineTotal;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LineItem
     {
         $result = new LineItem();
@@ -47,26 +49,31 @@ class LineItem
         }
         return $result;
     }
+    
     function setProduct(Product $product)
     {
         $this->product = $product;
         return $this;
     }
+    
     function setVariant(?ProductVariant $variant)
     {
         $this->variant = $variant;
         return $this;
     }
+    
     function setQuantity(int $quantity)
     {
         $this->quantity = $quantity;
         return $this;
     }
+    
     function setLineTotal(float $lineTotal)
     {
         $this->lineTotal = $lineTotal;
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -76,6 +83,7 @@ class LineItem
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param ?array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {

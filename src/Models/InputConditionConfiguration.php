@@ -6,11 +6,13 @@ class InputConditionConfiguration
 {
     public FilterCollection $filters;
     public EvaluationMode $evaluationMode;
+    
     public static function create() : InputConditionConfiguration
     {
         $result = new InputConditionConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : InputConditionConfiguration
     {
         $result = new InputConditionConfiguration();
@@ -24,11 +26,13 @@ class InputConditionConfiguration
         }
         return $result;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setEvaluationMode(EvaluationMode $evaluationMode)
     {
         $this->evaluationMode = $evaluationMode;

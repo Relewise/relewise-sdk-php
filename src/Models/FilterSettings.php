@@ -5,11 +5,13 @@ namespace Relewise\Models;
 class FilterSettings
 {
     public ?FilterScopes $scopes;
+    
     public static function create() : FilterSettings
     {
         $result = new FilterSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : FilterSettings
     {
         $result = new FilterSettings();
@@ -19,6 +21,7 @@ class FilterSettings
         }
         return $result;
     }
+    
     function setScopes(?FilterScopes $scopes)
     {
         $this->scopes = $scopes;

@@ -10,6 +10,7 @@ class CampaignAnalyticsRequest extends LicensedRequest
     public string $id;
     public DateTimeRange $periodUtc;
     public ?FilterCollection $filters;
+    
     public static function create(string $id, DateTimeRange $periodUtc, ?FilterCollection $filters) : CampaignAnalyticsRequest
     {
         $result = new CampaignAnalyticsRequest();
@@ -18,6 +19,7 @@ class CampaignAnalyticsRequest extends LicensedRequest
         $result->filters = $filters;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignAnalyticsRequest
     {
         $result = LicensedRequest::hydrateBase(new CampaignAnalyticsRequest(), $arr);
@@ -35,17 +37,20 @@ class CampaignAnalyticsRequest extends LicensedRequest
         }
         return $result;
     }
+    
     /** The campaign to provide analytics for. */
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setPeriodUtc(DateTimeRange $periodUtc)
     {
         $this->periodUtc = $periodUtc;
         return $this;
     }
+    
     function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;

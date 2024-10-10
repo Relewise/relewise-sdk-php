@@ -7,6 +7,7 @@ class intAvailableFacetValue
     public int $value;
     public int $hits;
     public bool $selected;
+    
     public static function create(int $value, bool $selected, int $hits) : intAvailableFacetValue
     {
         $result = new intAvailableFacetValue();
@@ -15,6 +16,7 @@ class intAvailableFacetValue
         $result->hits = $hits;
         return $result;
     }
+    
     public static function hydrate(array $arr) : intAvailableFacetValue
     {
         $result = new intAvailableFacetValue();
@@ -32,16 +34,19 @@ class intAvailableFacetValue
         }
         return $result;
     }
+    
     function setValue(int $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setSelected(bool $selected)
     {
         $this->selected = $selected;

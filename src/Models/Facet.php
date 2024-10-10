@@ -7,6 +7,8 @@ abstract class Facet
     public string $typeDefinition = "";
     public FacetingField $field;
     public ?FacetSettings $settings;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -155,6 +157,7 @@ abstract class Facet
             return VariantSpecificationFacet::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("field", $arr))
@@ -167,11 +170,13 @@ abstract class Facet
         }
         return $result;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

@@ -7,6 +7,7 @@ class SearchTermModifierRuleReplaceWordsInTermAction extends SearchTermModifierR
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchTermModifierRule+ReplaceWordsInTermAction, Relewise.Client";
     public string $words;
     public ?string $replacement;
+    
     public static function create(string $words, ?string $replacement) : SearchTermModifierRuleReplaceWordsInTermAction
     {
         $result = new SearchTermModifierRuleReplaceWordsInTermAction();
@@ -14,6 +15,7 @@ class SearchTermModifierRuleReplaceWordsInTermAction extends SearchTermModifierR
         $result->replacement = $replacement;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermModifierRuleReplaceWordsInTermAction
     {
         $result = SearchTermModifierRuleRuleAction::hydrateBase(new SearchTermModifierRuleReplaceWordsInTermAction(), $arr);
@@ -27,11 +29,13 @@ class SearchTermModifierRuleReplaceWordsInTermAction extends SearchTermModifierR
         }
         return $result;
     }
+    
     function setWords(string $words)
     {
         $this->words = $words;
         return $this;
     }
+    
     function setReplacement(?string $replacement)
     {
         $this->replacement = $replacement;

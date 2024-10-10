@@ -8,6 +8,7 @@ class UserQuery extends LicensedRequest
     public array $criteria;
     public ?Language $language;
     public ?Currency $currency;
+    
     public static function create(?Language $language, ?Currency $currency, UserQueryCriteria ... $criteria) : UserQuery
     {
         $result = new UserQuery();
@@ -16,6 +17,7 @@ class UserQuery extends LicensedRequest
         $result->criteria = $criteria;
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserQuery
     {
         $result = LicensedRequest::hydrateBase(new UserQuery(), $arr);
@@ -37,17 +39,20 @@ class UserQuery extends LicensedRequest
         }
         return $result;
     }
+    
     function setCriteria(UserQueryCriteria ... $criteria)
     {
         $this->criteria = $criteria;
         return $this;
     }
+    
     /** @param UserQueryCriteria[] $criteria new value. */
     function setCriteriaFromArray(array $criteria)
     {
         $this->criteria = $criteria;
         return $this;
     }
+    
     function addToCriteria(UserQueryCriteria $criteria)
     {
         if (!isset($this->criteria))
@@ -57,11 +62,13 @@ class UserQuery extends LicensedRequest
         array_push($this->criteria, $criteria);
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

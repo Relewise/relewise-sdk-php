@@ -5,12 +5,14 @@ namespace Relewise\Models;
 class LocationPlacementVariationCollection
 {
     public array $items;
+    
     public static function create(LocationPlacementVariation ... $variations) : LocationPlacementVariationCollection
     {
         $result = new LocationPlacementVariationCollection();
         $result->items = $variations;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LocationPlacementVariationCollection
     {
         $result = new LocationPlacementVariationCollection();
@@ -24,17 +26,20 @@ class LocationPlacementVariationCollection
         }
         return $result;
     }
+    
     function setItems(LocationPlacementVariation ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param LocationPlacementVariation[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(LocationPlacementVariation $items)
     {
         if (!isset($this->items))

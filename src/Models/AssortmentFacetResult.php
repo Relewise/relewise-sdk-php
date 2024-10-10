@@ -6,6 +6,8 @@ abstract class AssortmentFacetResult extends intintValueFacetResult
 {
     public string $typeDefinition = "";
     public AssortmentFilterType $assortmentFilterType;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -22,6 +24,7 @@ abstract class AssortmentFacetResult extends intintValueFacetResult
             return ProductCategoryAssortmentFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = intintValueFacetResult::hydrateBase($result, $arr);
@@ -31,22 +34,26 @@ abstract class AssortmentFacetResult extends intintValueFacetResult
         }
         return $result;
     }
+    
     function setAssortmentFilterType(AssortmentFilterType $assortmentFilterType)
     {
         $this->assortmentFilterType = $assortmentFilterType;
         return $this;
     }
+    
     function setSelected(int ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param int[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(int $selected)
     {
         if (!isset($this->selected))
@@ -56,17 +63,20 @@ abstract class AssortmentFacetResult extends intintValueFacetResult
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setAvailable(intAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     /** @param intAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function addToAvailable(intAvailableFacetValue $available)
     {
         if (!isset($this->available))
@@ -76,6 +86,7 @@ abstract class AssortmentFacetResult extends intintValueFacetResult
         array_push($this->available, $available);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

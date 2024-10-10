@@ -7,11 +7,13 @@ class CampaignsRequestEntityFilters extends CampaignEntityStateCampaignMetadataV
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.CampaignsRequest+EntityFilters, Relewise.Client";
     public ?array $ids;
     public ?array $advertiserIds;
+    
     public static function create() : CampaignsRequestEntityFilters
     {
         $result = new CampaignsRequestEntityFilters();
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignsRequestEntityFilters
     {
         $result = CampaignEntityStateCampaignMetadataValuesRetailMediaEntityEntityFilters::hydrateBase(new CampaignsRequestEntityFilters(), $arr);
@@ -33,17 +35,20 @@ class CampaignsRequestEntityFilters extends CampaignEntityStateCampaignMetadataV
         }
         return $result;
     }
+    
     function setIds(string ... $ids)
     {
         $this->ids = $ids;
         return $this;
     }
+    
     /** @param ?string[] $ids new value. */
     function setIdsFromArray(array $ids)
     {
         $this->ids = $ids;
         return $this;
     }
+    
     function addToIds(string $ids)
     {
         if (!isset($this->ids))
@@ -53,17 +58,20 @@ class CampaignsRequestEntityFilters extends CampaignEntityStateCampaignMetadataV
         array_push($this->ids, $ids);
         return $this;
     }
+    
     function setAdvertiserIds(string ... $advertiserIds)
     {
         $this->advertiserIds = $advertiserIds;
         return $this;
     }
+    
     /** @param ?string[] $advertiserIds new value. */
     function setAdvertiserIdsFromArray(array $advertiserIds)
     {
         $this->advertiserIds = $advertiserIds;
         return $this;
     }
+    
     function addToAdvertiserIds(string $advertiserIds)
     {
         if (!isset($this->advertiserIds))
@@ -73,22 +81,26 @@ class CampaignsRequestEntityFilters extends CampaignEntityStateCampaignMetadataV
         array_push($this->advertiserIds, $advertiserIds);
         return $this;
     }
+    
     function setTerm(?string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setStates(CampaignEntityState ... $states)
     {
         $this->states = $states;
         return $this;
     }
+    
     /** @param ?CampaignEntityState[] $states new value. */
     function setStatesFromArray(array $states)
     {
         $this->states = $states;
         return $this;
     }
+    
     function addToStates(CampaignEntityState $states)
     {
         if (!isset($this->states))

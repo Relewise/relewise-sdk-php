@@ -12,22 +12,26 @@ class LocationsResponse extends LocationLocationEntityStateEntityResponse
         $result->hitsPerState = $hitsPerState;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LocationsResponse
     {
         $result = LocationLocationEntityStateEntityResponse::hydrateBase(new LocationsResponse(), $arr);
         return $result;
     }
+    
     function setEntities(Location ... $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     /** @param Location[] $entities new value. */
     function setEntitiesFromArray(array $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     function addToEntities(Location $entities)
     {
         if (!isset($this->entities))
@@ -37,11 +41,13 @@ class LocationsResponse extends LocationLocationEntityStateEntityResponse
         array_push($this->entities, $entities);
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function addToHitsPerState(LocationEntityState $key, int $value)
     {
         if (!isset($this->hitsPerState))
@@ -51,12 +57,14 @@ class LocationsResponse extends LocationLocationEntityStateEntityResponse
         $this->hitsPerState[$key] = $value;
         return $this;
     }
+    
     /** @param array<LocationEntityState, int> $hitsPerState associative array. */
     function setHitsPerStateFromAssociativeArray(array $hitsPerState)
     {
         $this->hitsPerState = $hitsPerState;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

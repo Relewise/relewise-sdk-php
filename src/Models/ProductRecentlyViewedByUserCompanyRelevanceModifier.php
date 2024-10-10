@@ -19,6 +19,7 @@ class ProductRecentlyViewedByUserCompanyRelevanceModifier extends RelevanceModif
     public float $elseIfNotViewedByEitherCompanyMultiplyWeightBy;
     /** The minutes since in which a product will be considered relevant to the user if viewed previously by them. */
     public ?int $sinceMinutesAgo;
+    
     public static function create(float $ifViewedByUserCompanyMultiplyWeightBy = 1, float $elseIfViewedByUserParentCompanyMultiplyWeightBy = 1, float $elseIfNotViewedByEitherCompanyMultiplyWeightBy = 1) : ProductRecentlyViewedByUserCompanyRelevanceModifier
     {
         $result = new ProductRecentlyViewedByUserCompanyRelevanceModifier();
@@ -27,6 +28,7 @@ class ProductRecentlyViewedByUserCompanyRelevanceModifier extends RelevanceModif
         $result->elseIfNotViewedByEitherCompanyMultiplyWeightBy = $elseIfNotViewedByEitherCompanyMultiplyWeightBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductRecentlyViewedByUserCompanyRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new ProductRecentlyViewedByUserCompanyRelevanceModifier(), $arr);
@@ -52,41 +54,48 @@ class ProductRecentlyViewedByUserCompanyRelevanceModifier extends RelevanceModif
         }
         return $result;
     }
+    
     /** The start of the time period in which a product will be considered relevant to the user if viewed previously by their company. */
     function setSinceUtc(?DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
+    
     /** The weight that the Product will be multiplied with if it has been viewed in the past by the users company (since SinceUtc). */
     function setIfViewedByUserCompanyMultiplyWeightBy(float $ifViewedByUserCompanyMultiplyWeightBy)
     {
         $this->ifViewedByUserCompanyMultiplyWeightBy = $ifViewedByUserCompanyMultiplyWeightBy;
         return $this;
     }
+    
     /** The weight that the Product will be multiplied with if it has been viewed in the past by the users parent company (since SinceUtc). */
     function setElseIfViewedByUserParentCompanyMultiplyWeightBy(float $elseIfViewedByUserParentCompanyMultiplyWeightBy)
     {
         $this->elseIfViewedByUserParentCompanyMultiplyWeightBy = $elseIfViewedByUserParentCompanyMultiplyWeightBy;
         return $this;
     }
+    
     /** The weight that the Product will be multiplied with if it has not been viewed in the past by the users parent company (since SinceUtc). */
     function setElseIfNotViewedByEitherCompanyMultiplyWeightBy(float $elseIfNotViewedByEitherCompanyMultiplyWeightBy)
     {
         $this->elseIfNotViewedByEitherCompanyMultiplyWeightBy = $elseIfNotViewedByEitherCompanyMultiplyWeightBy;
         return $this;
     }
+    
     /** The minutes since in which a product will be considered relevant to the user if viewed previously by them. */
     function setSinceMinutesAgo(?int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

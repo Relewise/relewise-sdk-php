@@ -6,12 +6,14 @@ class TrackCartRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackCartRequest, Relewise.Client";
     public Cart $cart;
+    
     public static function create(Cart $cart) : TrackCartRequest
     {
         $result = new TrackCartRequest();
         $result->cart = $cart;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackCartRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackCartRequest(), $arr);
@@ -21,6 +23,7 @@ class TrackCartRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setCart(Cart $cart)
     {
         $this->cart = $cart;

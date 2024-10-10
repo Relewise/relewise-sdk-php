@@ -6,11 +6,13 @@ class MerchandisingRuleCollectionResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Merchandising.MerchandisingRuleCollectionResponse, Relewise.Client";
     public array $rules;
+    
     public static function create() : MerchandisingRuleCollectionResponse
     {
         $result = new MerchandisingRuleCollectionResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : MerchandisingRuleCollectionResponse
     {
         $result = TimedResponse::hydrateBase(new MerchandisingRuleCollectionResponse(), $arr);
@@ -24,17 +26,20 @@ class MerchandisingRuleCollectionResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setRules(MerchandisingRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param MerchandisingRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(MerchandisingRule $rules)
     {
         if (!isset($this->rules))
@@ -44,6 +49,7 @@ class MerchandisingRuleCollectionResponse extends TimedResponse
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

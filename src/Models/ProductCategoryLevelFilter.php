@@ -11,22 +11,26 @@ class ProductCategoryLevelFilter extends CategoryLevelFilter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryLevelFilter
     {
         $result = CategoryLevelFilter::hydrateBase(new ProductCategoryLevelFilter(), $arr);
         return $result;
     }
+    
     function setLevels(int ... $levels)
     {
         $this->levels = $levels;
         return $this;
     }
+    
     /** @param int[] $levels new value. */
     function setLevelsFromArray(array $levels)
     {
         $this->levels = $levels;
         return $this;
     }
+    
     function addToLevels(int $levels)
     {
         if (!isset($this->levels))
@@ -36,11 +40,13 @@ class ProductCategoryLevelFilter extends CategoryLevelFilter
         array_push($this->levels, $levels);
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

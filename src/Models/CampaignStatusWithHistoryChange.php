@@ -10,6 +10,7 @@ class CampaignStatusWithHistoryChange implements JsonSerializable
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Campaign+StatusWithHistory+Change, Relewise.Client";
     public DateTime $utcTime;
     public CampaignStatusWithHistoryStatusName $status;
+    
     public static function create(DateTime $utcTime, CampaignStatusWithHistoryStatusName $status) : CampaignStatusWithHistoryChange
     {
         $result = new CampaignStatusWithHistoryChange();
@@ -17,6 +18,7 @@ class CampaignStatusWithHistoryChange implements JsonSerializable
         $result->status = $status;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignStatusWithHistoryChange
     {
         $result = new CampaignStatusWithHistoryChange();
@@ -30,16 +32,19 @@ class CampaignStatusWithHistoryChange implements JsonSerializable
         }
         return $result;
     }
+    
     function setUtcTime(DateTime $utcTime)
     {
         $this->utcTime = $utcTime;
         return $this;
     }
+    
     function setStatus(CampaignStatusWithHistoryStatusName $status)
     {
         $this->status = $status;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

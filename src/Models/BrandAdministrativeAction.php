@@ -9,6 +9,7 @@ class BrandAdministrativeAction extends Trackable
     public ?Language $language;
     public BrandAdministrativeActionUpdateKind $kind;
     public ?Currency $currency;
+    
     public static function create(?Language $language, ?Currency $currency, FilterCollection $filters, BrandAdministrativeActionUpdateKind $kind) : BrandAdministrativeAction
     {
         $result = new BrandAdministrativeAction();
@@ -18,6 +19,7 @@ class BrandAdministrativeAction extends Trackable
         $result->kind = $kind;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandAdministrativeAction
     {
         $result = Trackable::hydrateBase(new BrandAdministrativeAction(), $arr);
@@ -39,21 +41,25 @@ class BrandAdministrativeAction extends Trackable
         }
         return $result;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setKind(BrandAdministrativeActionUpdateKind $kind)
     {
         $this->kind = $kind;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

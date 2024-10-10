@@ -7,6 +7,8 @@ abstract class CampaignEntityStateCampaignMetadataValuesRetailMediaEntityEntityF
     public string $typeDefinition = "";
     public ?string $term;
     public ?array $states;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -15,6 +17,7 @@ abstract class CampaignEntityStateCampaignMetadataValuesRetailMediaEntityEntityF
             return CampaignsRequestEntityFilters::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("term", $arr))
@@ -31,22 +34,26 @@ abstract class CampaignEntityStateCampaignMetadataValuesRetailMediaEntityEntityF
         }
         return $result;
     }
+    
     function setTerm(?string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setStates(CampaignEntityState ... $states)
     {
         $this->states = $states;
         return $this;
     }
+    
     /** @param ?CampaignEntityState[] $states new value. */
     function setStatesFromArray(array $states)
     {
         $this->states = $states;
         return $this;
     }
+    
     function addToStates(CampaignEntityState $states)
     {
         if (!isset($this->states))

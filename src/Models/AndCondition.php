@@ -6,6 +6,7 @@ class AndCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.AndCondition, Relewise.Client";
     public UserConditionCollection $conditions;
+    
     public static function create(UserConditionCollection $conditions, bool $negated) : AndCondition
     {
         $result = new AndCondition();
@@ -13,6 +14,7 @@ class AndCondition extends UserCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : AndCondition
     {
         $result = UserCondition::hydrateBase(new AndCondition(), $arr);
@@ -22,11 +24,13 @@ class AndCondition extends UserCondition
         }
         return $result;
     }
+    
     function setConditions(UserConditionCollection $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

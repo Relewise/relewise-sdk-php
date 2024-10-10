@@ -8,6 +8,7 @@ class SearchTerm extends Trackable
     public Language $language;
     public User $user;
     public string $term;
+    
     public static function create(Language $language, User $user, string $term) : SearchTerm
     {
         $result = new SearchTerm();
@@ -16,6 +17,7 @@ class SearchTerm extends Trackable
         $result->term = $term;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTerm
     {
         $result = Trackable::hydrateBase(new SearchTerm(), $arr);
@@ -33,16 +35,19 @@ class SearchTerm extends Trackable
         }
         return $result;
     }
+    
     function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setUser(User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setTerm(string $term)
     {
         $this->term = $term;

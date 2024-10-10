@@ -10,11 +10,13 @@ class ContentRecommendationRequestSettings
     public ?SelectedContentPropertiesSettings $selectedContentProperties;
     public bool $prioritizeDiversityBetweenRequests;
     public ?int $prioritizeResultsNotRecommendedWithinSeconds;
+    
     public static function create() : ContentRecommendationRequestSettings
     {
         $result = new ContentRecommendationRequestSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentRecommendationRequestSettings
     {
         $result = new ContentRecommendationRequestSettings();
@@ -44,31 +46,37 @@ class ContentRecommendationRequestSettings
         }
         return $result;
     }
+    
     function setNumberOfRecommendations(int $numberOfRecommendations)
     {
         $this->numberOfRecommendations = $numberOfRecommendations;
         return $this;
     }
+    
     function setAllowFillIfNecessaryToReachNumberOfRecommendations(bool $allowFillIfNecessaryToReachNumberOfRecommendations)
     {
         $this->allowFillIfNecessaryToReachNumberOfRecommendations = $allowFillIfNecessaryToReachNumberOfRecommendations;
         return $this;
     }
+    
     function setAllowReplacingOfRecentlyShownRecommendations(bool $allowReplacingOfRecentlyShownRecommendations)
     {
         $this->allowReplacingOfRecentlyShownRecommendations = $allowReplacingOfRecentlyShownRecommendations;
         return $this;
     }
+    
     function setSelectedContentProperties(?SelectedContentPropertiesSettings $selectedContentProperties)
     {
         $this->selectedContentProperties = $selectedContentProperties;
         return $this;
     }
+    
     function setPrioritizeDiversityBetweenRequests(bool $prioritizeDiversityBetweenRequests)
     {
         $this->prioritizeDiversityBetweenRequests = $prioritizeDiversityBetweenRequests;
         return $this;
     }
+    
     function setPrioritizeResultsNotRecommendedWithinSeconds(?int $prioritizeResultsNotRecommendedWithinSeconds)
     {
         $this->prioritizeResultsNotRecommendedWithinSeconds = $prioritizeResultsNotRecommendedWithinSeconds;

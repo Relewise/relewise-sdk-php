@@ -5,12 +5,14 @@ namespace Relewise\Models;
 class CampaignAnalytics
 {
     public CampaignAnalyticsProductAnalytics $products;
+    
     public static function create(CampaignAnalyticsProductAnalytics $products) : CampaignAnalytics
     {
         $result = new CampaignAnalytics();
         $result->products = $products;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignAnalytics
     {
         $result = new CampaignAnalytics();
@@ -20,6 +22,7 @@ class CampaignAnalytics
         }
         return $result;
     }
+    
     function setProducts(CampaignAnalyticsProductAnalytics $products)
     {
         $this->products = $products;

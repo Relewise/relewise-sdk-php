@@ -7,6 +7,8 @@ abstract class RelevanceModifier
     public string $typeDefinition = "";
     /** Filters which entities this relevance modifier can apply to. */
     public FilterCollection $filters;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -119,6 +121,7 @@ abstract class RelevanceModifier
             return VariantSpecificationValueRelevanceModifier::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("filters", $arr))
@@ -127,6 +130,7 @@ abstract class RelevanceModifier
         }
         return $result;
     }
+    
     /** Filters which entities this relevance modifier can apply to. */
     function setFilters(FilterCollection $filters)
     {

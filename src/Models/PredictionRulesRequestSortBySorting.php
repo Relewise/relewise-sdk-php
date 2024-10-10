@@ -6,6 +6,7 @@ class PredictionRulesRequestSortBySorting
 {
     public PredictionRulesRequestSortBy $sortBy;
     public SortOrder $sortOrder;
+    
     public static function create(PredictionRulesRequestSortBy $sortBy, SortOrder $sortOrder) : PredictionRulesRequestSortBySorting
     {
         $result = new PredictionRulesRequestSortBySorting();
@@ -13,6 +14,7 @@ class PredictionRulesRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PredictionRulesRequestSortBySorting
     {
         $result = new PredictionRulesRequestSortBySorting();
@@ -26,11 +28,13 @@ class PredictionRulesRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(PredictionRulesRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

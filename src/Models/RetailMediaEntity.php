@@ -6,6 +6,8 @@ abstract class RetailMediaEntity
 {
     public string $typeDefinition = "";
     public ?string $id;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -22,6 +24,7 @@ abstract class RetailMediaEntity
             return Location::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("id", $arr))
@@ -30,6 +33,7 @@ abstract class RetailMediaEntity
         }
         return $result;
     }
+    
     function setId(?string $id)
     {
         $this->id = $id;

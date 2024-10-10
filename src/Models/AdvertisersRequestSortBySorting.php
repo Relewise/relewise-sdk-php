@@ -6,6 +6,7 @@ class AdvertisersRequestSortBySorting
 {
     public AdvertisersRequestSortBy $sortBy;
     public SortOrder $sortOrder;
+    
     public static function create(AdvertisersRequestSortBy $sortBy, SortOrder $sortOrder) : AdvertisersRequestSortBySorting
     {
         $result = new AdvertisersRequestSortBySorting();
@@ -13,6 +14,7 @@ class AdvertisersRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : AdvertisersRequestSortBySorting
     {
         $result = new AdvertisersRequestSortBySorting();
@@ -26,11 +28,13 @@ class AdvertisersRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(AdvertisersRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

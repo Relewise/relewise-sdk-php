@@ -86,6 +86,8 @@ use Relewise\Infrastructure\HttpClient\Response;
         foreach (var method in clientMethods.DistinctBy(method => method.parameterType))
         {
             var methodName = method.methodName.EndsWith("Request") ? method.methodName[..^7].ToCamelCase() : method.methodName.EndsWith("RequestCollection") ? $"batch{method.methodName[..^17]}" : method.methodName.ToCamelCase();
+
+            writer.WriteLine();
             writer.WriteLine($"public function {methodName}({method.parameterType} ${method.parameterName}){(method.returnType != typeof(void) ? $" : ?{phpWriter.PhpTypeName(method.returnType)}" : "")}");
             writer.WriteLine("{");
             writer.Indent++;

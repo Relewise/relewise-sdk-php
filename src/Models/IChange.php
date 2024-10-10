@@ -7,6 +7,7 @@ use DateTime;
 /** This is actually an interface. */
 abstract class IChange
 {
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -23,6 +24,7 @@ abstract class IChange
             return Increase::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         return $result;

@@ -14,6 +14,8 @@ abstract class SearchRequest extends LicensedRequest
     public ?FilterCollection $filters;
     public ?SearchIndexSelector $indexSelector;
     public ?FilterCollection $postFilters;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -42,6 +44,7 @@ abstract class SearchRequest extends LicensedRequest
             return SearchTermPredictionRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);
@@ -79,41 +82,49 @@ abstract class SearchRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setDisplayedAtLocation(?string $displayedAtLocation)
     {
         $this->displayedAtLocation = $displayedAtLocation;
         return $this;
     }
+    
     function setRelevanceModifiers(?RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
+    
     function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setIndexSelector(?SearchIndexSelector $indexSelector)
     {
         $this->indexSelector = $indexSelector;
         return $this;
     }
+    
     function setPostFilters(?FilterCollection $postFilters)
     {
         $this->postFilters = $postFilters;

@@ -8,11 +8,13 @@ class ConditionConfiguration
     public InputConditionConfiguration $input;
     public TargetConditionConfiguration $target;
     public ContextConditionConfiguration $context;
+    
     public static function create() : ConditionConfiguration
     {
         $result = new ConditionConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ConditionConfiguration
     {
         $result = new ConditionConfiguration();
@@ -34,21 +36,25 @@ class ConditionConfiguration
         }
         return $result;
     }
+    
     function setUser(UserConditionConfiguration $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setInput(InputConditionConfiguration $input)
     {
         $this->input = $input;
         return $this;
     }
+    
     function setTarget(TargetConditionConfiguration $target)
     {
         $this->target = $target;
         return $this;
     }
+    
     function setContext(ContextConditionConfiguration $context)
     {
         $this->context = $context;

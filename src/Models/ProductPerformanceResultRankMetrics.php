@@ -7,11 +7,13 @@ class ProductPerformanceResultRankMetrics
     public ProductPerformanceResultViewsAndSalesMetrics $overall;
     public array $withinCategories;
     public ProductPerformanceResultViewsAndSalesMetrics $withinBrand;
+    
     public static function create() : ProductPerformanceResultRankMetrics
     {
         $result = new ProductPerformanceResultRankMetrics();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResultRankMetrics
     {
         $result = new ProductPerformanceResultRankMetrics();
@@ -33,22 +35,26 @@ class ProductPerformanceResultRankMetrics
         }
         return $result;
     }
+    
     function setOverall(ProductPerformanceResultViewsAndSalesMetrics $overall)
     {
         $this->overall = $overall;
         return $this;
     }
+    
     function setWithinCategories(ProductPerformanceResultCategoryMetrics ... $withinCategories)
     {
         $this->withinCategories = $withinCategories;
         return $this;
     }
+    
     /** @param ProductPerformanceResultCategoryMetrics[] $withinCategories new value. */
     function setWithinCategoriesFromArray(array $withinCategories)
     {
         $this->withinCategories = $withinCategories;
         return $this;
     }
+    
     function addToWithinCategories(ProductPerformanceResultCategoryMetrics $withinCategories)
     {
         if (!isset($this->withinCategories))
@@ -58,6 +64,7 @@ class ProductPerformanceResultRankMetrics
         array_push($this->withinCategories, $withinCategories);
         return $this;
     }
+    
     function setWithinBrand(ProductPerformanceResultViewsAndSalesMetrics $withinBrand)
     {
         $this->withinBrand = $withinBrand;

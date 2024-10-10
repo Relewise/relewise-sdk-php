@@ -6,11 +6,13 @@ class ContentFacetQuery extends FacetQuery
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ContentFacetQuery, Relewise.Client";
     public array $items;
+    
     public static function create() : ContentFacetQuery
     {
         $result = new ContentFacetQuery();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentFacetQuery
     {
         $result = FacetQuery::hydrateBase(new ContentFacetQuery(), $arr);
@@ -24,17 +26,20 @@ class ContentFacetQuery extends FacetQuery
         }
         return $result;
     }
+    
     function setItems(Facet ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param Facet[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(Facet $items)
     {
         if (!isset($this->items))

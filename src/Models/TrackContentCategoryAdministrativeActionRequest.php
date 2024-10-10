@@ -6,12 +6,14 @@ class TrackContentCategoryAdministrativeActionRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackContentCategoryAdministrativeActionRequest, Relewise.Client";
     public ContentCategoryAdministrativeAction $administrativeAction;
+    
     public static function create(ContentCategoryAdministrativeAction $administrativeAction) : TrackContentCategoryAdministrativeActionRequest
     {
         $result = new TrackContentCategoryAdministrativeActionRequest();
         $result->administrativeAction = $administrativeAction;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackContentCategoryAdministrativeActionRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackContentCategoryAdministrativeActionRequest(), $arr);
@@ -21,6 +23,7 @@ class TrackContentCategoryAdministrativeActionRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setAdministrativeAction(ContentCategoryAdministrativeAction $administrativeAction)
     {
         $this->administrativeAction = $administrativeAction;

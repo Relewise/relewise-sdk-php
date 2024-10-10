@@ -6,12 +6,14 @@ class TrackOrderRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackOrderRequest, Relewise.Client";
     public Order $order;
+    
     public static function create(Order $order) : TrackOrderRequest
     {
         $result = new TrackOrderRequest();
         $result->order = $order;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackOrderRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackOrderRequest(), $arr);
@@ -21,6 +23,7 @@ class TrackOrderRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setOrder(Order $order)
     {
         $this->order = $order;

@@ -9,11 +9,13 @@ class ProductQuerySelectedPropertiesSettings
     public ?SelectedProductDetailsPropertiesSettings $selectedProductDetailsProperties;
     /** Settings for which properties should be mapped for the VariantResultDetails in the ProductDetailsCollectionResponse returned for the current ProductQuery. */
     public ?SelectedVariantDetailsPropertiesSettings $selectedVariantDetailsProperties;
+    
     public static function create() : ProductQuerySelectedPropertiesSettings
     {
         $result = new ProductQuerySelectedPropertiesSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductQuerySelectedPropertiesSettings
     {
         $result = new ProductQuerySelectedPropertiesSettings();
@@ -27,12 +29,14 @@ class ProductQuerySelectedPropertiesSettings
         }
         return $result;
     }
+    
     /** Settings for which properties should be mapped for the ProductResultDetails in the ProductDetailsCollectionResponse returned for the current ProductQuery. */
     function setSelectedProductDetailsProperties(?SelectedProductDetailsPropertiesSettings $selectedProductDetailsProperties)
     {
         $this->selectedProductDetailsProperties = $selectedProductDetailsProperties;
         return $this;
     }
+    
     /** Settings for which properties should be mapped for the VariantResultDetails in the ProductDetailsCollectionResponse returned for the current ProductQuery. */
     function setSelectedVariantDetailsProperties(?SelectedVariantDetailsPropertiesSettings $selectedVariantDetailsProperties)
     {

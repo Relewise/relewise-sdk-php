@@ -51,6 +51,7 @@ class Recommender extends RelewiseClient
     {
         parent::__construct($datasetId, $apiKey, $timeout);
     }
+    
     public function purchasedWithProduct(PurchasedWithProductRequest $request) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("PurchasedWithProductRequest", $request);
@@ -60,6 +61,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponse::hydrate($response);
     }
+    
     public function purchasedWithMultipleProducts(PurchasedWithMultipleProductsRequest $request) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("PurchasedWithMultipleProductsRequest", $request);
@@ -69,6 +71,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponse::hydrate($response);
     }
+    
     public function purchasedWithCurrentCart(PurchasedWithCurrentCartRequest $request) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("PurchasedWithCurrentCartRequest", $request);
@@ -78,6 +81,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponse::hydrate($response);
     }
+    
     public function productsViewedAfterViewingProduct(ProductsViewedAfterViewingProductRequest $request) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("ProductsViewedAfterViewingProductRequest", $request);
@@ -87,6 +91,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponse::hydrate($response);
     }
+    
     public function productsViewedAfterViewingContent(ProductsViewedAfterViewingContentRequest $request) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("ProductsViewedAfterViewingContentRequest", $request);
@@ -96,6 +101,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponse::hydrate($response);
     }
+    
     public function similarProducts(SimilarProductsRequest $request) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("SimilarProductsRequest", $request);
@@ -105,6 +111,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponse::hydrate($response);
     }
+    
     public function popularProducts(PopularProductsRequest $request) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("PopularProductsRequest", $request);
@@ -114,6 +121,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponse::hydrate($response);
     }
+    
     public function recentlyViewedProducts(RecentlyViewedProductsRequest $productsRequest) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("RecentlyViewedProductsRequest", $productsRequest);
@@ -123,6 +131,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponse::hydrate($response);
     }
+    
     public function personalProductRecommendation(PersonalProductRecommendationRequest $request) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("PersonalProductRecommendationRequest", $request);
@@ -132,6 +141,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponse::hydrate($response);
     }
+    
     public function searchTermBasedProductRecommendation(SearchTermBasedProductRecommendationRequest $request) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("SearchTermBasedProductRecommendationRequest", $request);
@@ -141,6 +151,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponse::hydrate($response);
     }
+    
     public function popularSearchTermsRecommendation(PopularSearchTermsRecommendationRequest $request) : ?SearchTermRecommendationResponse
     {
         $response = $this->requestAndValidate("PopularSearchTermsRecommendationRequest", $request);
@@ -150,6 +161,7 @@ class Recommender extends RelewiseClient
         }
         return SearchTermRecommendationResponse::hydrate($response);
     }
+    
     public function sortProducts(SortProductsRequest $request) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("SortProductsRequest", $request);
@@ -159,6 +171,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponse::hydrate($response);
     }
+    
     public function sortVariants(SortVariantsRequest $request) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("SortVariantsRequest", $request);
@@ -168,6 +181,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponse::hydrate($response);
     }
+    
     public function customProductRecommendation(CustomProductRecommendationRequest $request) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("CustomProductRecommendationRequest", $request);
@@ -177,6 +191,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponse::hydrate($response);
     }
+    
     public function contentsViewedAfterViewingContent(ContentsViewedAfterViewingContentRequest $request) : ?ContentRecommendationResponse
     {
         $response = $this->requestAndValidate("ContentsViewedAfterViewingContentRequest", $request);
@@ -186,6 +201,7 @@ class Recommender extends RelewiseClient
         }
         return ContentRecommendationResponse::hydrate($response);
     }
+    
     public function personalContentRecommendation(PersonalContentRecommendationRequest $request) : ?ContentRecommendationResponse
     {
         $response = $this->requestAndValidate("PersonalContentRecommendationRequest", $request);
@@ -195,6 +211,7 @@ class Recommender extends RelewiseClient
         }
         return ContentRecommendationResponse::hydrate($response);
     }
+    
     public function contentsViewedAfterViewingMultipleContents(ContentsViewedAfterViewingMultipleContentsRequest $request) : ?ContentRecommendationResponse
     {
         $response = $this->requestAndValidate("ContentsViewedAfterViewingMultipleContentsRequest", $request);
@@ -204,6 +221,7 @@ class Recommender extends RelewiseClient
         }
         return ContentRecommendationResponse::hydrate($response);
     }
+    
     public function contentsViewedAfterViewingProduct(ContentsViewedAfterViewingProductRequest $request) : ?ContentRecommendationResponse
     {
         $response = $this->requestAndValidate("ContentsViewedAfterViewingProductRequest", $request);
@@ -213,6 +231,7 @@ class Recommender extends RelewiseClient
         }
         return ContentRecommendationResponse::hydrate($response);
     }
+    
     public function contentsViewedAfterViewingMultipleProducts(ContentsViewedAfterViewingMultipleProductsRequest $request) : ?ContentRecommendationResponse
     {
         $response = $this->requestAndValidate("ContentsViewedAfterViewingMultipleProductsRequest", $request);
@@ -222,6 +241,7 @@ class Recommender extends RelewiseClient
         }
         return ContentRecommendationResponse::hydrate($response);
     }
+    
     public function popularContents(PopularContentsRequest $request) : ?ContentRecommendationResponse
     {
         $response = $this->requestAndValidate("PopularContentsRequest", $request);
@@ -231,6 +251,7 @@ class Recommender extends RelewiseClient
         }
         return ContentRecommendationResponse::hydrate($response);
     }
+    
     public function popularContentCategoriesRecommendation(PopularContentCategoriesRecommendationRequest $request) : ?ContentCategoryRecommendationResponse
     {
         $response = $this->requestAndValidate("PopularContentCategoriesRecommendationRequest", $request);
@@ -240,6 +261,7 @@ class Recommender extends RelewiseClient
         }
         return ContentCategoryRecommendationResponse::hydrate($response);
     }
+    
     public function personalContentCategoryRecommendation(PersonalContentCategoryRecommendationRequest $request) : ?ContentCategoryRecommendationResponse
     {
         $response = $this->requestAndValidate("PersonalContentCategoryRecommendationRequest", $request);
@@ -249,6 +271,7 @@ class Recommender extends RelewiseClient
         }
         return ContentCategoryRecommendationResponse::hydrate($response);
     }
+    
     public function popularProductCategoriesRecommendation(PopularProductCategoriesRecommendationRequest $request) : ?ProductCategoryRecommendationResponse
     {
         $response = $this->requestAndValidate("PopularProductCategoriesRecommendationRequest", $request);
@@ -258,6 +281,7 @@ class Recommender extends RelewiseClient
         }
         return ProductCategoryRecommendationResponse::hydrate($response);
     }
+    
     public function personalProductCategoryRecommendation(PersonalProductCategoryRecommendationRequest $request) : ?ProductCategoryRecommendationResponse
     {
         $response = $this->requestAndValidate("PersonalProductCategoryRecommendationRequest", $request);
@@ -267,6 +291,7 @@ class Recommender extends RelewiseClient
         }
         return ProductCategoryRecommendationResponse::hydrate($response);
     }
+    
     public function popularBrandsRecommendation(PopularBrandsRecommendationRequest $request) : ?BrandRecommendationResponse
     {
         $response = $this->requestAndValidate("PopularBrandsRecommendationRequest", $request);
@@ -276,6 +301,7 @@ class Recommender extends RelewiseClient
         }
         return BrandRecommendationResponse::hydrate($response);
     }
+    
     public function personalBrandRecommendation(PersonalBrandRecommendationRequest $request) : ?BrandRecommendationResponse
     {
         $response = $this->requestAndValidate("PersonalBrandRecommendationRequest", $request);
@@ -285,6 +311,7 @@ class Recommender extends RelewiseClient
         }
         return BrandRecommendationResponse::hydrate($response);
     }
+    
     public function brandRecommendation(BrandRecommendationRequest $request) : ?BrandRecommendationResponse
     {
         $response = $this->requestAndValidate("BrandRecommendationRequest", $request);
@@ -294,6 +321,7 @@ class Recommender extends RelewiseClient
         }
         return BrandRecommendationResponse::hydrate($response);
     }
+    
     public function batchproductRecommendation(ProductRecommendationRequestCollection $request) : ?ProductRecommendationResponseCollection
     {
         $response = $this->requestAndValidate("ProductRecommendationRequestCollection", $request);
@@ -303,6 +331,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponseCollection::hydrate($response);
     }
+    
     public function batchcontentRecommendation(ContentRecommendationRequestCollection $request) : ?ContentRecommendationResponseCollection
     {
         $response = $this->requestAndValidate("ContentRecommendationRequestCollection", $request);
@@ -312,6 +341,7 @@ class Recommender extends RelewiseClient
         }
         return ContentRecommendationResponseCollection::hydrate($response);
     }
+    
     public function productRecommendation(ProductRecommendationRequest $request) : ?ProductRecommendationResponse
     {
         $response = $this->requestAndValidate("ProductRecommendationRequest", $request);
@@ -321,6 +351,7 @@ class Recommender extends RelewiseClient
         }
         return ProductRecommendationResponse::hydrate($response);
     }
+    
     public function contentRecommendation(ContentRecommendationRequest $request) : ?ContentRecommendationResponse
     {
         $response = $this->requestAndValidate("ContentRecommendationRequest", $request);
@@ -330,6 +361,7 @@ class Recommender extends RelewiseClient
         }
         return ContentRecommendationResponse::hydrate($response);
     }
+    
     public function contentCategoryRecommendation(ContentCategoryRecommendationRequest $request) : ?ContentCategoryRecommendationResponse
     {
         $response = $this->requestAndValidate("ContentCategoryRecommendationRequest", $request);
@@ -339,6 +371,7 @@ class Recommender extends RelewiseClient
         }
         return ContentCategoryRecommendationResponse::hydrate($response);
     }
+    
     public function productCategoryRecommendation(ProductCategoryRecommendationRequest $request) : ?ProductCategoryRecommendationResponse
     {
         $response = $this->requestAndValidate("ProductCategoryRecommendationRequest", $request);

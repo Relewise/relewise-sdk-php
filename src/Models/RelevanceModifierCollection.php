@@ -7,6 +7,7 @@ class RelevanceModifierCollection
 {
     /** The items that the collection holds. */
     public ?array $items;
+    
     /**
      * Creates a collection that contains multiple RelevanceModifiers in its inner list Items.
      * @param RelevanceModifier[] $relevanceModifiers The items that the collection holds.
@@ -17,6 +18,7 @@ class RelevanceModifierCollection
         $result->items = $relevanceModifiers;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RelevanceModifierCollection
     {
         $result = new RelevanceModifierCollection();
@@ -30,12 +32,14 @@ class RelevanceModifierCollection
         }
         return $result;
     }
+    
     /** The items that the collection holds. */
     function setItems(RelevanceModifier ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /**
      * The items that the collection holds.
      * @param ?RelevanceModifier[] $items new value.
@@ -45,6 +49,7 @@ class RelevanceModifierCollection
         $this->items = $items;
         return $this;
     }
+    
     /** The items that the collection holds. */
     function addToItems(RelevanceModifier $items)
     {

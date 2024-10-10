@@ -6,12 +6,14 @@ namespace Relewise\Models;
 class RetailMediaQueryVariationSelector
 {
     public string $key;
+    
     public static function create(string $key) : RetailMediaQueryVariationSelector
     {
         $result = new RetailMediaQueryVariationSelector();
         $result->key = $key;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RetailMediaQueryVariationSelector
     {
         $result = new RetailMediaQueryVariationSelector();
@@ -21,6 +23,7 @@ class RetailMediaQueryVariationSelector
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;

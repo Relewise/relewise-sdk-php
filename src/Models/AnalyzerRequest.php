@@ -7,6 +7,8 @@ abstract class AnalyzerRequest extends LicensedRequest
     public string $typeDefinition = "";
     public ?Language $language;
     public ?Currency $currency;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -15,6 +17,7 @@ abstract class AnalyzerRequest extends LicensedRequest
             return ProductPerformanceRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);
@@ -28,11 +31,13 @@ abstract class AnalyzerRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

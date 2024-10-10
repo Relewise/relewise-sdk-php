@@ -6,11 +6,13 @@ class SearchResponseCollection extends SearchResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.SearchResponseCollection, Relewise.Client";
     public array $responses;
+    
     public static function create() : SearchResponseCollection
     {
         $result = new SearchResponseCollection();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchResponseCollection
     {
         $result = SearchResponse::hydrateBase(new SearchResponseCollection(), $arr);
@@ -24,17 +26,20 @@ class SearchResponseCollection extends SearchResponse
         }
         return $result;
     }
+    
     function setResponses(SearchResponse ... $responses)
     {
         $this->responses = $responses;
         return $this;
     }
+    
     /** @param SearchResponse[] $responses new value. */
     function setResponsesFromArray(array $responses)
     {
         $this->responses = $responses;
         return $this;
     }
+    
     function addToResponses(SearchResponse $responses)
     {
         if (!isset($this->responses))
@@ -44,6 +49,7 @@ class SearchResponseCollection extends SearchResponse
         array_push($this->responses, $responses);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

@@ -6,6 +6,7 @@ class VariantDataHasKeyFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.VariantDataHasKeyFilter, Relewise.Client";
     public string $key;
+    
     public static function create(string $key, bool $negated = false) : VariantDataHasKeyFilter
     {
         $result = new VariantDataHasKeyFilter();
@@ -13,6 +14,7 @@ class VariantDataHasKeyFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantDataHasKeyFilter
     {
         $result = Filter::hydrateBase(new VariantDataHasKeyFilter(), $arr);
@@ -22,16 +24,19 @@ class VariantDataHasKeyFilter extends Filter
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

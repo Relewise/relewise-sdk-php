@@ -9,6 +9,7 @@ class CategoryHierarchyFacetResultCategoryNode
     public ?string $parentId;
     public ?array $children;
     public bool $selected;
+    
     public static function create(CategoryResult $category, int $hits, ?string $parentId, ?array $children, bool $selected) : CategoryHierarchyFacetResultCategoryNode
     {
         $result = new CategoryHierarchyFacetResultCategoryNode();
@@ -19,6 +20,7 @@ class CategoryHierarchyFacetResultCategoryNode
         $result->selected = $selected;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryHierarchyFacetResultCategoryNode
     {
         $result = new CategoryHierarchyFacetResultCategoryNode();
@@ -48,32 +50,38 @@ class CategoryHierarchyFacetResultCategoryNode
         }
         return $result;
     }
+    
     function setCategory(CategoryResult $category)
     {
         $this->category = $category;
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setParentId(?string $parentId)
     {
         $this->parentId = $parentId;
         return $this;
     }
+    
     function setChildren(CategoryHierarchyFacetResultCategoryNode ... $children)
     {
         $this->children = $children;
         return $this;
     }
+    
     /** @param ?CategoryHierarchyFacetResultCategoryNode[] $children new value. */
     function setChildrenFromArray(array $children)
     {
         $this->children = $children;
         return $this;
     }
+    
     function addToChildren(CategoryHierarchyFacetResultCategoryNode $children)
     {
         if (!isset($this->children))
@@ -83,6 +91,7 @@ class CategoryHierarchyFacetResultCategoryNode
         array_push($this->children, $children);
         return $this;
     }
+    
     function setSelected(bool $selected)
     {
         $this->selected = $selected;

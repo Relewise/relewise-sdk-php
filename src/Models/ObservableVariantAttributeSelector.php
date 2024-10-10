@@ -6,12 +6,14 @@ class ObservableVariantAttributeSelector extends VariantPropertySelector
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.EntityPropertySelectors.ObservableVariantAttributeSelector, Relewise.Client";
     public ObservableVariantAttribute $attribute;
+    
     public static function create(ObservableVariantAttribute $attribute) : ObservableVariantAttributeSelector
     {
         $result = new ObservableVariantAttributeSelector();
         $result->attribute = $attribute;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ObservableVariantAttributeSelector
     {
         $result = VariantPropertySelector::hydrateBase(new ObservableVariantAttributeSelector(), $arr);
@@ -21,6 +23,7 @@ class ObservableVariantAttributeSelector extends VariantPropertySelector
         }
         return $result;
     }
+    
     function setAttribute(ObservableVariantAttribute $attribute)
     {
         $this->attribute = $attribute;

@@ -7,11 +7,13 @@ class RequestFilterCriteria
     public FilterCollection $includes;
     public FilterCollection $excludes;
     public ?intRange $count;
+    
     public static function create() : RequestFilterCriteria
     {
         $result = new RequestFilterCriteria();
         return $result;
     }
+    
     public static function hydrate(array $arr) : RequestFilterCriteria
     {
         $result = new RequestFilterCriteria();
@@ -29,16 +31,19 @@ class RequestFilterCriteria
         }
         return $result;
     }
+    
     function setIncludes(FilterCollection $includes)
     {
         $this->includes = $includes;
         return $this;
     }
+    
     function setExcludes(FilterCollection $excludes)
     {
         $this->excludes = $excludes;
         return $this;
     }
+    
     function setCount(?intRange $count)
     {
         $this->count = $count;

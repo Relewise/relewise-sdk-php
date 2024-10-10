@@ -5,11 +5,13 @@ namespace Relewise\Models;
 class RetailMediaResult
 {
     public ?array $placements;
+    
     public static function create() : RetailMediaResult
     {
         $result = new RetailMediaResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : RetailMediaResult
     {
         $result = new RetailMediaResult();
@@ -23,6 +25,7 @@ class RetailMediaResult
         }
         return $result;
     }
+    
     function addToPlacements(string $key, RetailMediaResultPlacement $value)
     {
         if (!isset($this->placements))
@@ -32,6 +35,7 @@ class RetailMediaResult
         $this->placements[$key] = $value;
         return $this;
     }
+    
     /** @param ?array<string, RetailMediaResultPlacement> $placements associative array. */
     function setPlacementsFromAssociativeArray(array $placements)
     {

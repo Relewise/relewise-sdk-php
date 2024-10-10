@@ -7,6 +7,7 @@ class PopularProductCategoriesRecommendationRequest extends ProductCategoryRecom
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PopularProductCategoriesRecommendationRequest, Relewise.Client";
     public int $sinceMinutesAgo;
     public ProductCategoryRecommendationWeights $weights;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ProductCategoryRecommendationWeights $weights) : PopularProductCategoriesRecommendationRequest
     {
         $result = new PopularProductCategoriesRecommendationRequest();
@@ -17,6 +18,7 @@ class PopularProductCategoriesRecommendationRequest extends ProductCategoryRecom
         $result->weights = $weights;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PopularProductCategoriesRecommendationRequest
     {
         $result = ProductCategoryRecommendationRequest::hydrateBase(new PopularProductCategoriesRecommendationRequest(), $arr);
@@ -30,46 +32,55 @@ class PopularProductCategoriesRecommendationRequest extends ProductCategoryRecom
         }
         return $result;
     }
+    
     function setSinceMinutesAgo(int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     function setWeights(ProductCategoryRecommendationWeights $weights)
     {
         $this->weights = $weights;
         return $this;
     }
+    
     function setSettings(ProductCategoryRecommendationRequestSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setDisplayedAtLocationType(string $displayedAtLocationType)
     {
         $this->displayedAtLocationType = $displayedAtLocationType;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

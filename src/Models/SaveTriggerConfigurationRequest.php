@@ -7,6 +7,7 @@ class SaveTriggerConfigurationRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Triggers.SaveTriggerConfigurationRequest, Relewise.Client";
     public TriggerConfiguration $configuration;
     public string $modifiedBy;
+    
     public static function create(TriggerConfiguration $configuration, string $modifiedBy) : SaveTriggerConfigurationRequest
     {
         $result = new SaveTriggerConfigurationRequest();
@@ -14,6 +15,7 @@ class SaveTriggerConfigurationRequest extends LicensedRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveTriggerConfigurationRequest
     {
         $result = LicensedRequest::hydrateBase(new SaveTriggerConfigurationRequest(), $arr);
@@ -27,11 +29,13 @@ class SaveTriggerConfigurationRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setConfiguration(TriggerConfiguration $configuration)
     {
         $this->configuration = $configuration;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

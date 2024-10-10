@@ -7,6 +7,7 @@ class ContentUpdate extends Trackable
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentUpdate, Relewise.Client";
     public Content $content;
     public ContentUpdateUpdateKind $kind;
+    
     public static function create(Content $content, ContentUpdateUpdateKind $kind = ContentUpdateUpdateKind::UpdateAndAppend) : ContentUpdate
     {
         $result = new ContentUpdate();
@@ -14,6 +15,7 @@ class ContentUpdate extends Trackable
         $result->kind = $kind;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentUpdate
     {
         $result = Trackable::hydrateBase(new ContentUpdate(), $arr);
@@ -27,11 +29,13 @@ class ContentUpdate extends Trackable
         }
         return $result;
     }
+    
     function setContent(Content $content)
     {
         $this->content = $content;
         return $this;
     }
+    
     function setKind(ContentUpdateUpdateKind $kind)
     {
         $this->kind = $kind;

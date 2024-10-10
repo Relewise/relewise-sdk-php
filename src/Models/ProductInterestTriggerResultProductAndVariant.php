@@ -7,11 +7,13 @@ class ProductInterestTriggerResultProductAndVariant
     public ProductResultDetails $product;
     public VariantResultDetails $variant;
     public int $views;
+    
     public static function create() : ProductInterestTriggerResultProductAndVariant
     {
         $result = new ProductInterestTriggerResultProductAndVariant();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductInterestTriggerResultProductAndVariant
     {
         $result = new ProductInterestTriggerResultProductAndVariant();
@@ -29,16 +31,19 @@ class ProductInterestTriggerResultProductAndVariant
         }
         return $result;
     }
+    
     function setProduct(ProductResultDetails $product)
     {
         $this->product = $product;
         return $this;
     }
+    
     function setVariant(VariantResultDetails $variant)
     {
         $this->variant = $variant;
         return $this;
     }
+    
     function setViews(int $views)
     {
         $this->views = $views;

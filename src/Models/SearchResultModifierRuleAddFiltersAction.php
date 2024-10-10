@@ -6,12 +6,14 @@ class SearchResultModifierRuleAddFiltersAction extends SearchResultModifierRuleR
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchResultModifierRule+AddFiltersAction, Relewise.Client";
     public FilterCollection $filters;
+    
     public static function create(FilterCollection $filters) : SearchResultModifierRuleAddFiltersAction
     {
         $result = new SearchResultModifierRuleAddFiltersAction();
         $result->filters = $filters;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchResultModifierRuleAddFiltersAction
     {
         $result = SearchResultModifierRuleRuleAction::hydrateBase(new SearchResultModifierRuleAddFiltersAction(), $arr);
@@ -21,6 +23,7 @@ class SearchResultModifierRuleAddFiltersAction extends SearchResultModifierRuleR
         }
         return $result;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

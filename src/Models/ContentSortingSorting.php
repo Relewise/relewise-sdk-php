@@ -7,6 +7,8 @@ abstract class ContentSortingSorting
     public string $typeDefinition = "";
     public SortOrder $order;
     public ContentSorting $thenBy;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -27,6 +29,7 @@ abstract class ContentSortingSorting
             return ContentRelevanceSorting::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("order", $arr))
@@ -39,11 +42,13 @@ abstract class ContentSortingSorting
         }
         return $result;
     }
+    
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    
     function setThenBy(ContentSorting $thenBy)
     {
         $this->thenBy = $thenBy;

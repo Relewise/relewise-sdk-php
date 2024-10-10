@@ -5,11 +5,13 @@ namespace Relewise\Models;
 class AbandonedCartTriggerResult
 {
     public UserResultDetails $user;
+    
     public static function create() : AbandonedCartTriggerResult
     {
         $result = new AbandonedCartTriggerResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : AbandonedCartTriggerResult
     {
         $result = new AbandonedCartTriggerResult();
@@ -19,6 +21,7 @@ class AbandonedCartTriggerResult
         }
         return $result;
     }
+    
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;

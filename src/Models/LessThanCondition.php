@@ -6,6 +6,7 @@ class LessThanCondition extends ValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Conditions.LessThanCondition, Relewise.Client";
     public float $value;
+    
     public static function create(float $value, bool $negated = false) : LessThanCondition
     {
         $result = new LessThanCondition();
@@ -13,6 +14,7 @@ class LessThanCondition extends ValueCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LessThanCondition
     {
         $result = ValueCondition::hydrateBase(new LessThanCondition(), $arr);
@@ -22,11 +24,13 @@ class LessThanCondition extends ValueCondition
         }
         return $result;
     }
+    
     function setValue(float $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

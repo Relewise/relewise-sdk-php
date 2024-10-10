@@ -11,22 +11,26 @@ class SaveSearchTermModifierRulesRequest extends SearchTermModifierRuleSaveSearc
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveSearchTermModifierRulesRequest
     {
         $result = SearchTermModifierRuleSaveSearchRulesRequest::hydrateBase(new SaveSearchTermModifierRulesRequest(), $arr);
         return $result;
     }
+    
     function setRules(SearchTermModifierRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param SearchTermModifierRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(SearchTermModifierRule $rules)
     {
         if (!isset($this->rules))
@@ -36,6 +40,7 @@ class SaveSearchTermModifierRulesRequest extends SearchTermModifierRuleSaveSearc
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

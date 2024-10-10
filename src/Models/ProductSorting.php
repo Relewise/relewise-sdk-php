@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class ProductSorting extends ProductSortingSorting
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -37,16 +38,19 @@ abstract class ProductSorting extends ProductSortingSorting
             return ProductVariantSpecificationSorting::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = ProductSortingSorting::hydrateBase($result, $arr);
         return $result;
     }
+    
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    
     function setThenBy(ProductSorting $thenBy)
     {
         $this->thenBy = $thenBy;

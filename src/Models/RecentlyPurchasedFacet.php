@@ -7,6 +7,7 @@ class RecentlyPurchasedFacet extends boolValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.RecentlyPurchasedFacet, Relewise.Client";
     public PurchaseQualifiers $purchaseQualifiers;
+    
     public static function create(PurchaseQualifiers $purchaseQualifiers, bool ... $selected = Null) : RecentlyPurchasedFacet
     {
         $result = new RecentlyPurchasedFacet();
@@ -14,6 +15,7 @@ class RecentlyPurchasedFacet extends boolValueFacet
         $result->selected = $selected;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RecentlyPurchasedFacet
     {
         $result = boolValueFacet::hydrateBase(new RecentlyPurchasedFacet(), $arr);
@@ -23,22 +25,26 @@ class RecentlyPurchasedFacet extends boolValueFacet
         }
         return $result;
     }
+    
     function setPurchaseQualifiers(PurchaseQualifiers $purchaseQualifiers)
     {
         $this->purchaseQualifiers = $purchaseQualifiers;
         return $this;
     }
+    
     function setSelected(bool ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?bool[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(bool $selected)
     {
         if (!isset($this->selected))
@@ -48,11 +54,13 @@ class RecentlyPurchasedFacet extends boolValueFacet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

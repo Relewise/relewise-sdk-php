@@ -6,6 +6,8 @@ abstract class UserCondition
 {
     public string $typeDefinition = "";
     public bool $negated;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -58,6 +60,7 @@ abstract class UserCondition
             return OrCondition::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("negated", $arr))
@@ -66,6 +69,7 @@ abstract class UserCondition
         }
         return $result;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

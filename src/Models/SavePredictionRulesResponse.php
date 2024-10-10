@@ -11,22 +11,26 @@ class SavePredictionRulesResponse extends PredictionRuleSaveSearchRulesResponse
         $result->rules = $rules;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SavePredictionRulesResponse
     {
         $result = PredictionRuleSaveSearchRulesResponse::hydrateBase(new SavePredictionRulesResponse(), $arr);
         return $result;
     }
+    
     function setRules(PredictionRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param PredictionRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(PredictionRule $rules)
     {
         if (!isset($this->rules))
@@ -36,6 +40,7 @@ class SavePredictionRulesResponse extends PredictionRuleSaveSearchRulesResponse
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

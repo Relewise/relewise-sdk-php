@@ -6,12 +6,14 @@ class ProductRecommendationResponse extends RecommendationResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.ProductRecommendationResponse, Relewise.Client";
     public array $recommendations;
+    
     public static function create(ProductResult ... $recommendations) : ProductRecommendationResponse
     {
         $result = new ProductRecommendationResponse();
         $result->recommendations = $recommendations;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductRecommendationResponse
     {
         $result = RecommendationResponse::hydrateBase(new ProductRecommendationResponse(), $arr);
@@ -25,17 +27,20 @@ class ProductRecommendationResponse extends RecommendationResponse
         }
         return $result;
     }
+    
     function setRecommendations(ProductResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     /** @param ProductResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     function addToRecommendations(ProductResult $recommendations)
     {
         if (!isset($this->recommendations))
@@ -45,6 +50,7 @@ class ProductRecommendationResponse extends RecommendationResponse
         array_push($this->recommendations, $recommendations);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

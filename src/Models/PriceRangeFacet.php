@@ -7,6 +7,7 @@ class PriceRangeFacet extends Facet
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.PriceRangeFacet, Relewise.Client";
     public ?floatRange $selected;
     public PriceSelectionStrategy $priceSelectionStrategy;
+    
     public static function create(FacetingField $field, PriceSelectionStrategy $priceSelectionStrategy, ?floatRange $selected) : PriceRangeFacet
     {
         $result = new PriceRangeFacet();
@@ -15,6 +16,7 @@ class PriceRangeFacet extends Facet
         $result->selected = $selected;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PriceRangeFacet
     {
         $result = Facet::hydrateBase(new PriceRangeFacet(), $arr);
@@ -28,21 +30,25 @@ class PriceRangeFacet extends Facet
         }
         return $result;
     }
+    
     function setSelected(?floatRange $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function setPriceSelectionStrategy(PriceSelectionStrategy $priceSelectionStrategy)
     {
         $this->priceSelectionStrategy = $priceSelectionStrategy;
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

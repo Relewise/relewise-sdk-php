@@ -10,11 +10,13 @@ class SelectedContentPropertiesSettings
     public bool $allData;
     public bool $viewedByUserInfo;
     public ?array $dataKeys;
+    
     public static function create() : SelectedContentPropertiesSettings
     {
         $result = new SelectedContentPropertiesSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SelectedContentPropertiesSettings
     {
         $result = new SelectedContentPropertiesSettings();
@@ -48,42 +50,50 @@ class SelectedContentPropertiesSettings
         }
         return $result;
     }
+    
     function setDisplayName(bool $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setCategoryPaths(bool $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    
     function setAssortments(bool $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     function setAllData(bool $allData)
     {
         $this->allData = $allData;
         return $this;
     }
+    
     function setViewedByUserInfo(bool $viewedByUserInfo)
     {
         $this->viewedByUserInfo = $viewedByUserInfo;
         return $this;
     }
+    
     function setDataKeys(string ... $dataKeys)
     {
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    
     /** @param ?string[] $dataKeys new value. */
     function setDataKeysFromArray(array $dataKeys)
     {
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    
     function addToDataKeys(string $dataKeys)
     {
         if (!isset($this->dataKeys))

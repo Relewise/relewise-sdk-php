@@ -6,12 +6,14 @@ class TrackCompanyUpdateRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackCompanyUpdateRequest, Relewise.Client";
     public CompanyUpdate $companyUpdate;
+    
     public static function create(CompanyUpdate $companyUpdate) : TrackCompanyUpdateRequest
     {
         $result = new TrackCompanyUpdateRequest();
         $result->companyUpdate = $companyUpdate;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackCompanyUpdateRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackCompanyUpdateRequest(), $arr);
@@ -21,6 +23,7 @@ class TrackCompanyUpdateRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setCompanyUpdate(CompanyUpdate $companyUpdate)
     {
         $this->companyUpdate = $companyUpdate;

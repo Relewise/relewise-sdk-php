@@ -6,6 +6,8 @@ abstract class floatValueFacet extends Facet
 {
     public string $typeDefinition = "";
     public ?array $selected;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -26,6 +28,7 @@ abstract class floatValueFacet extends Facet
             return ProductDataDoubleValueFacet::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = Facet::hydrateBase($result, $arr);
@@ -39,17 +42,20 @@ abstract class floatValueFacet extends Facet
         }
         return $result;
     }
+    
     function setSelected(float ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?float[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(float $selected)
     {
         if (!isset($this->selected))
@@ -59,11 +65,13 @@ abstract class floatValueFacet extends Facet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

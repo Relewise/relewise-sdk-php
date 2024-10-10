@@ -12,22 +12,26 @@ class ProductChangeTriggerResult extends ProductChangeTriggerResultProductChange
         $result->entitiesWithChanges = $entitiesWithChanges;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductChangeTriggerResult
     {
         $result = ProductChangeTriggerResultProductChangeResultDetailsEntityChangeTriggerResult::hydrateBase(new ProductChangeTriggerResult(), $arr);
         return $result;
     }
+    
     function setEntitiesWithChanges(ProductChangeTriggerResultProductChangeResultDetails ... $entitiesWithChanges)
     {
         $this->entitiesWithChanges = $entitiesWithChanges;
         return $this;
     }
+    
     /** @param ProductChangeTriggerResultProductChangeResultDetails[] $entitiesWithChanges new value. */
     function setEntitiesWithChangesFromArray(array $entitiesWithChanges)
     {
         $this->entitiesWithChanges = $entitiesWithChanges;
         return $this;
     }
+    
     function addToEntitiesWithChanges(ProductChangeTriggerResultProductChangeResultDetails $entitiesWithChanges)
     {
         if (!isset($this->entitiesWithChanges))
@@ -37,6 +41,7 @@ class ProductChangeTriggerResult extends ProductChangeTriggerResultProductChange
         array_push($this->entitiesWithChanges, $entitiesWithChanges);
         return $this;
     }
+    
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;

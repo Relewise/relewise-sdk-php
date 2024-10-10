@@ -5,11 +5,13 @@ namespace Relewise\Models;
 class RetailMediaResultPlacementResultEntityProduct
 {
     public ProductResult $result;
+    
     public static function create() : RetailMediaResultPlacementResultEntityProduct
     {
         $result = new RetailMediaResultPlacementResultEntityProduct();
         return $result;
     }
+    
     public static function hydrate(array $arr) : RetailMediaResultPlacementResultEntityProduct
     {
         $result = new RetailMediaResultPlacementResultEntityProduct();
@@ -19,6 +21,7 @@ class RetailMediaResultPlacementResultEntityProduct
         }
         return $result;
     }
+    
     function setResult(ProductResult $result)
     {
         $this->result = $result;

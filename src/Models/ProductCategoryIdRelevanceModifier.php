@@ -14,6 +14,7 @@ class ProductCategoryIdRelevanceModifier extends RelevanceModifier
     public float $multiplyWeightBy;
     /** Determines whether this RelevanceModifier should apply to all the Products that don't match the specific CategoryId instead. */
     public bool $negated;
+    
     /**
      * Creates a RelevanceModifier that can change the relevance of a Product depending on if the product is in a category that matches the given CategoryId and EvaluationScope.
      * @param string $categoryId The Id of the Category that this RelevanceModifier will multiply the weight for.
@@ -30,6 +31,7 @@ class ProductCategoryIdRelevanceModifier extends RelevanceModifier
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryIdRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new ProductCategoryIdRelevanceModifier(), $arr);
@@ -51,30 +53,35 @@ class ProductCategoryIdRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    
     /** The Id of the Category that this RelevanceModifier will multiply the weight for. */
     function setCategoryId(string $categoryId)
     {
         $this->categoryId = $categoryId;
         return $this;
     }
+    
     /** The relative Category levels that this RelevanceModifier should match with. */
     function setEvaluationScope(CategoryScope $evaluationScope)
     {
         $this->evaluationScope = $evaluationScope;
         return $this;
     }
+    
     /** The weight that this RelevanceModifier will multiply relevant products with. */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    
     /** Determines whether this RelevanceModifier should apply to all the Products that don't match the specific CategoryId instead. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

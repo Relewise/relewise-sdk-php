@@ -6,6 +6,7 @@ class LocationsRequestSortBySorting
 {
     public LocationsRequestSortBy $sortBy;
     public SortOrder $sortOrder;
+    
     public static function create(LocationsRequestSortBy $sortBy, SortOrder $sortOrder) : LocationsRequestSortBySorting
     {
         $result = new LocationsRequestSortBySorting();
@@ -13,6 +14,7 @@ class LocationsRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LocationsRequestSortBySorting
     {
         $result = new LocationsRequestSortBySorting();
@@ -26,11 +28,13 @@ class LocationsRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(LocationsRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

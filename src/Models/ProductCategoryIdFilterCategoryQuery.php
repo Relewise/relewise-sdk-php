@@ -14,6 +14,8 @@ abstract class ProductCategoryIdFilterCategoryQuery extends LicensedRequest
     public bool $includeDisabledCategories;
     public int $includeChildCategoriesToDepth;
     public int $includeParentCategoriesToDepth;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -22,6 +24,7 @@ abstract class ProductCategoryIdFilterCategoryQuery extends LicensedRequest
             return ProductCategoryQuery::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);
@@ -63,46 +66,55 @@ abstract class ProductCategoryIdFilterCategoryQuery extends LicensedRequest
         }
         return $result;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setNumberOfResults(int $numberOfResults)
     {
         $this->numberOfResults = $numberOfResults;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     function setSkipNumberOfResults(int $skipNumberOfResults)
     {
         $this->skipNumberOfResults = $skipNumberOfResults;
         return $this;
     }
+    
     function setReturnTotalNumberOfResults(bool $returnTotalNumberOfResults)
     {
         $this->returnTotalNumberOfResults = $returnTotalNumberOfResults;
         return $this;
     }
+    
     function setIncludeDisabledCategories(bool $includeDisabledCategories)
     {
         $this->includeDisabledCategories = $includeDisabledCategories;
         return $this;
     }
+    
     function setIncludeChildCategoriesToDepth(int $includeChildCategoriesToDepth)
     {
         $this->includeChildCategoriesToDepth = $includeChildCategoriesToDepth;
         return $this;
     }
+    
     function setIncludeParentCategoriesToDepth(int $includeParentCategoriesToDepth)
     {
         $this->includeParentCategoriesToDepth = $includeParentCategoriesToDepth;

@@ -10,6 +10,7 @@ class ProductAssortmentRelevanceModifier extends RelevanceModifier
     public array $assortments;
     /** The weight that this RelevanceModifier will multiply relevant products with. */
     public float $multiplyWeightBy;
+    
     /**
      * Creates a RelevanceModifier that can change the relevance of a Product depending on whether the Assortments match Assortments.
      * @param int[] $assortments The assortments that this RelevanceModifier will multiply the weight for.
@@ -22,6 +23,7 @@ class ProductAssortmentRelevanceModifier extends RelevanceModifier
         $result->multiplyWeightBy = $multiplyWeightBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductAssortmentRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new ProductAssortmentRelevanceModifier(), $arr);
@@ -39,12 +41,14 @@ class ProductAssortmentRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    
     /** The assortments that this RelevanceModifier will multiply the weight for. */
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     /**
      * The assortments that this RelevanceModifier will multiply the weight for.
      * @param int[] $assortments new value.
@@ -54,6 +58,7 @@ class ProductAssortmentRelevanceModifier extends RelevanceModifier
         $this->assortments = $assortments;
         return $this;
     }
+    
     /** The assortments that this RelevanceModifier will multiply the weight for. */
     function addToAssortments(int $assortments)
     {
@@ -64,12 +69,14 @@ class ProductAssortmentRelevanceModifier extends RelevanceModifier
         array_push($this->assortments, $assortments);
         return $this;
     }
+    
     /** The weight that this RelevanceModifier will multiply relevant products with. */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

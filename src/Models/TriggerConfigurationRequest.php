@@ -7,12 +7,14 @@ class TriggerConfigurationRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Triggers.TriggerConfigurationRequest, Relewise.Client";
     public string $id;
     public ?int $type;
+    
     public static function create(string $id) : TriggerConfigurationRequest
     {
         $result = new TriggerConfigurationRequest();
         $result->id = $id;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TriggerConfigurationRequest
     {
         $result = LicensedRequest::hydrateBase(new TriggerConfigurationRequest(), $arr);
@@ -26,11 +28,13 @@ class TriggerConfigurationRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setType(?int $type)
     {
         $this->type = $type;

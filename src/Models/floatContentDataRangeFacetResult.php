@@ -6,6 +6,8 @@ abstract class floatContentDataRangeFacetResult extends floatRangeFacetResult
 {
     public string $typeDefinition = "";
     public string $key;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -14,6 +16,7 @@ abstract class floatContentDataRangeFacetResult extends floatRangeFacetResult
             return ContentDataDoubleRangeFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = floatRangeFacetResult::hydrateBase($result, $arr);
@@ -23,21 +26,25 @@ abstract class floatContentDataRangeFacetResult extends floatRangeFacetResult
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setSelected(?floatRange $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function setAvailable(?floatRangeAvailableFacetValue $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

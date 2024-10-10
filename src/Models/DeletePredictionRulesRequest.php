@@ -11,22 +11,26 @@ class DeletePredictionRulesRequest extends DeleteSearchRulesRequest
         $result->deletedBy = $deletedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DeletePredictionRulesRequest
     {
         $result = DeleteSearchRulesRequest::hydrateBase(new DeletePredictionRulesRequest(), $arr);
         return $result;
     }
+    
     function setIds(string ... $ids)
     {
         $this->ids = $ids;
         return $this;
     }
+    
     /** @param string[] $ids new value. */
     function setIdsFromArray(array $ids)
     {
         $this->ids = $ids;
         return $this;
     }
+    
     function addToIds(string $ids)
     {
         if (!isset($this->ids))
@@ -36,6 +40,7 @@ class DeletePredictionRulesRequest extends DeleteSearchRulesRequest
         array_push($this->ids, $ids);
         return $this;
     }
+    
     function setDeletedBy(string $deletedBy)
     {
         $this->deletedBy = $deletedBy;

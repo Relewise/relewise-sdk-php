@@ -15,6 +15,7 @@ public class PhpJsonSerializerMethodWriter
 
     public void Write(IndentedTextWriter writer, Type classType, (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations)
     {
+        writer.WriteLine();
         writer.WriteLine("public function jsonSerialize(): mixed");
         writer.WriteLine("{");
         writer.Indent++;

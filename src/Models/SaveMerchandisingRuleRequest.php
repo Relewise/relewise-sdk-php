@@ -7,6 +7,7 @@ class SaveMerchandisingRuleRequest extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Merchandising.SaveMerchandisingRuleRequest, Relewise.Client";
     public MerchandisingRule $rule;
     public string $modifiedBy;
+    
     public static function create(MerchandisingRule $rule, string $modifiedBy) : SaveMerchandisingRuleRequest
     {
         $result = new SaveMerchandisingRuleRequest();
@@ -14,6 +15,7 @@ class SaveMerchandisingRuleRequest extends LicensedRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveMerchandisingRuleRequest
     {
         $result = LicensedRequest::hydrateBase(new SaveMerchandisingRuleRequest(), $arr);
@@ -27,11 +29,13 @@ class SaveMerchandisingRuleRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setRule(MerchandisingRule $rule)
     {
         $this->rule = $rule;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

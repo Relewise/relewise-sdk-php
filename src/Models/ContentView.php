@@ -7,6 +7,7 @@ class ContentView extends Trackable
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentView, Relewise.Client";
     public ?User $user;
     public Content $content;
+    
     public static function create(?User $user, Content $content) : ContentView
     {
         $result = new ContentView();
@@ -14,6 +15,7 @@ class ContentView extends Trackable
         $result->content = $content;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentView
     {
         $result = Trackable::hydrateBase(new ContentView(), $arr);
@@ -27,11 +29,13 @@ class ContentView extends Trackable
         }
         return $result;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setContent(Content $content)
     {
         $this->content = $content;

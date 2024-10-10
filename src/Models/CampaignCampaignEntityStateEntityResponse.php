@@ -8,6 +8,8 @@ abstract class CampaignCampaignEntityStateEntityResponse extends TimedResponse
     public array $entities;
     public int $hits;
     public array $hitsPerState;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -16,6 +18,7 @@ abstract class CampaignCampaignEntityStateEntityResponse extends TimedResponse
             return CampaignsResponse::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = TimedResponse::hydrateBase($result, $arr);
@@ -41,17 +44,20 @@ abstract class CampaignCampaignEntityStateEntityResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setEntities(Campaign ... $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     /** @param Campaign[] $entities new value. */
     function setEntitiesFromArray(array $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     function addToEntities(Campaign $entities)
     {
         if (!isset($this->entities))
@@ -61,11 +67,13 @@ abstract class CampaignCampaignEntityStateEntityResponse extends TimedResponse
         array_push($this->entities, $entities);
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function addToHitsPerState(CampaignEntityState $key, int $value)
     {
         if (!isset($this->hitsPerState))
@@ -75,12 +83,14 @@ abstract class CampaignCampaignEntityStateEntityResponse extends TimedResponse
         $this->hitsPerState[$key] = $value;
         return $this;
     }
+    
     /** @param array<CampaignEntityState, int> $hitsPerState associative array. */
     function setHitsPerStateFromAssociativeArray(array $hitsPerState)
     {
         $this->hitsPerState = $hitsPerState;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

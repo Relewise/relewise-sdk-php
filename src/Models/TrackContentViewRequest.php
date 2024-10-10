@@ -6,12 +6,14 @@ class TrackContentViewRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackContentViewRequest, Relewise.Client";
     public ContentView $contentView;
+    
     public static function create(ContentView $contentView) : TrackContentViewRequest
     {
         $result = new TrackContentViewRequest();
         $result->contentView = $contentView;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackContentViewRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackContentViewRequest(), $arr);
@@ -21,6 +23,7 @@ class TrackContentViewRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setContentView(ContentView $contentView)
     {
         $this->contentView = $contentView;

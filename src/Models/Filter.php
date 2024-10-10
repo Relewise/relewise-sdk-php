@@ -9,6 +9,8 @@ abstract class Filter
     /** Defines whether the Filter should exclude the matching entities instead of including the matching entities. */
     public bool $negated;
     public ?FilterSettings $settings;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -289,6 +291,7 @@ abstract class Filter
             return VariantSpecificationFilter::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("negated", $arr))
@@ -301,12 +304,14 @@ abstract class Filter
         }
         return $result;
     }
+    
     /** Defines whether the Filter should exclude the matching entities instead of including the matching entities. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

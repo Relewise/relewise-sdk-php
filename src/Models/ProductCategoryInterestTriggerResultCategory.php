@@ -7,11 +7,13 @@ class ProductCategoryInterestTriggerResultCategory
     public array $lastPath;
     public int $views;
     public array $viewedProducts;
+    
     public static function create() : ProductCategoryInterestTriggerResultCategory
     {
         $result = new ProductCategoryInterestTriggerResultCategory();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryInterestTriggerResultCategory
     {
         $result = new ProductCategoryInterestTriggerResultCategory();
@@ -37,17 +39,20 @@ class ProductCategoryInterestTriggerResultCategory
         }
         return $result;
     }
+    
     function setLastPath(string ... $lastPath)
     {
         $this->lastPath = $lastPath;
         return $this;
     }
+    
     /** @param string[] $lastPath new value. */
     function setLastPathFromArray(array $lastPath)
     {
         $this->lastPath = $lastPath;
         return $this;
     }
+    
     function addToLastPath(string $lastPath)
     {
         if (!isset($this->lastPath))
@@ -57,22 +62,26 @@ class ProductCategoryInterestTriggerResultCategory
         array_push($this->lastPath, $lastPath);
         return $this;
     }
+    
     function setViews(int $views)
     {
         $this->views = $views;
         return $this;
     }
+    
     function setViewedProducts(ProductCategoryInterestTriggerResultCategoryProductAndVariant ... $viewedProducts)
     {
         $this->viewedProducts = $viewedProducts;
         return $this;
     }
+    
     /** @param ProductCategoryInterestTriggerResultCategoryProductAndVariant[] $viewedProducts new value. */
     function setViewedProductsFromArray(array $viewedProducts)
     {
         $this->viewedProducts = $viewedProducts;
         return $this;
     }
+    
     function addToViewedProducts(ProductCategoryInterestTriggerResultCategoryProductAndVariant $viewedProducts)
     {
         if (!isset($this->viewedProducts))

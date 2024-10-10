@@ -6,6 +6,7 @@ class CampaignsRequestSortBySorting
 {
     public CampaignsRequestSortBy $sortBy;
     public SortOrder $sortOrder;
+    
     public static function create(CampaignsRequestSortBy $sortBy, SortOrder $sortOrder) : CampaignsRequestSortBySorting
     {
         $result = new CampaignsRequestSortBySorting();
@@ -13,6 +14,7 @@ class CampaignsRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignsRequestSortBySorting
     {
         $result = new CampaignsRequestSortBySorting();
@@ -26,11 +28,13 @@ class CampaignsRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(CampaignsRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

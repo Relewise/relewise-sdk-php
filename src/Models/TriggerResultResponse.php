@@ -6,11 +6,13 @@ class TriggerResultResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.TriggerResultResponse, Relewise.Client";
     public ITriggerResult $result;
+    
     public static function create() : TriggerResultResponse
     {
         $result = new TriggerResultResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : TriggerResultResponse
     {
         $result = TimedResponse::hydrateBase(new TriggerResultResponse(), $arr);
@@ -20,11 +22,13 @@ class TriggerResultResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setResult(ITriggerResult $result)
     {
         $this->result = $result;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

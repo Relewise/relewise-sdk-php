@@ -10,11 +10,13 @@ class UserQueryCriteria
     public ?Language $language;
     public ?Currency $currency;
     public ?array $identifiers;
+    
     public static function create() : UserQueryCriteria
     {
         $result = new UserQueryCriteria();
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserQueryCriteria
     {
         $result = new UserQueryCriteria();
@@ -48,31 +50,37 @@ class UserQueryCriteria
         }
         return $result;
     }
+    
     function setAuthenticatedId(?string $authenticatedId)
     {
         $this->authenticatedId = $authenticatedId;
         return $this;
     }
+    
     function setTemporaryId(?string $temporaryId)
     {
         $this->temporaryId = $temporaryId;
         return $this;
     }
+    
     function setEmail(?string $email)
     {
         $this->email = $email;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     function addToIdentifiers(string $key, string $value)
     {
         if (!isset($this->identifiers))
@@ -82,6 +90,7 @@ class UserQueryCriteria
         $this->identifiers[$key] = $value;
         return $this;
     }
+    
     /** @param ?array<string, string> $identifiers associative array. */
     function setIdentifiersFromAssociativeArray(array $identifiers)
     {

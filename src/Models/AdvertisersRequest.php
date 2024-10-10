@@ -14,26 +14,31 @@ class AdvertisersRequest extends AdvertiserEntityStateAdvertiserMetadataValuesAd
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : AdvertisersRequest
     {
         $result = AdvertiserEntityStateAdvertiserMetadataValuesAdvertisersRequestSortByAdvertisersRequestEntityFiltersEntitiesRequest::hydrateBase(new AdvertisersRequest(), $arr);
         return $result;
     }
+    
     function setFilters(?AdvertisersRequestEntityFilters $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setSorting(?AdvertisersRequestSortBySorting $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
+    
     function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
+    
     function setTake(int $take)
     {
         $this->take = $take;

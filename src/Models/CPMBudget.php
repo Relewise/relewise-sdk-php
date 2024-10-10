@@ -6,6 +6,7 @@ class CPMBudget extends Budget
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.CPMBudget, Relewise.Client";
     public float $costPerMille;
+    
     public static function create(float $costPerMille, ?float $maxTotalCost) : CPMBudget
     {
         $result = new CPMBudget();
@@ -13,6 +14,7 @@ class CPMBudget extends Budget
         $result->maxTotalCost = $maxTotalCost;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CPMBudget
     {
         $result = Budget::hydrateBase(new CPMBudget(), $arr);
@@ -22,16 +24,19 @@ class CPMBudget extends Budget
         }
         return $result;
     }
+    
     function setCostPerMille(float $costPerMille)
     {
         $this->costPerMille = $costPerMille;
         return $this;
     }
+    
     function setMaxTotalCost(?float $maxTotalCost)
     {
         $this->maxTotalCost = $maxTotalCost;
         return $this;
     }
+    
     function setTotalCost(float $totalCost)
     {
         $this->totalCost = $totalCost;

@@ -5,12 +5,14 @@ namespace Relewise\Models;
 class CategoryPathResultDetails
 {
     public array $breadcrumbPathStartingFromRoot;
+    
     public static function create(CategoryNameAndId ... $breadcrumbPathStartingFromRoot) : CategoryPathResultDetails
     {
         $result = new CategoryPathResultDetails();
         $result->breadcrumbPathStartingFromRoot = $breadcrumbPathStartingFromRoot;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryPathResultDetails
     {
         $result = new CategoryPathResultDetails();
@@ -24,17 +26,20 @@ class CategoryPathResultDetails
         }
         return $result;
     }
+    
     function setBreadcrumbPathStartingFromRoot(CategoryNameAndId ... $breadcrumbPathStartingFromRoot)
     {
         $this->breadcrumbPathStartingFromRoot = $breadcrumbPathStartingFromRoot;
         return $this;
     }
+    
     /** @param CategoryNameAndId[] $breadcrumbPathStartingFromRoot new value. */
     function setBreadcrumbPathStartingFromRootFromArray(array $breadcrumbPathStartingFromRoot)
     {
         $this->breadcrumbPathStartingFromRoot = $breadcrumbPathStartingFromRoot;
         return $this;
     }
+    
     function addToBreadcrumbPathStartingFromRoot(CategoryNameAndId $breadcrumbPathStartingFromRoot)
     {
         if (!isset($this->breadcrumbPathStartingFromRoot))

@@ -6,6 +6,7 @@ class PromotionLocation
 {
     public string $key;
     public ?PromotionLocationPlacementCollection $placements;
+    
     public static function create(string $key, ?PromotionLocationPlacementCollection $placements = Null) : PromotionLocation
     {
         $result = new PromotionLocation();
@@ -13,6 +14,7 @@ class PromotionLocation
         $result->placements = $placements;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PromotionLocation
     {
         $result = new PromotionLocation();
@@ -26,11 +28,13 @@ class PromotionLocation
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setPlacements(?PromotionLocationPlacementCollection $placements)
     {
         $this->placements = $placements;

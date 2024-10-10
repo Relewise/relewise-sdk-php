@@ -8,6 +8,8 @@ abstract class LocationEntityStateLocationMetadataValuesRetailMediaEntity extend
     public LocationEntityState $state;
     /** Managed server side only, manually setting this will have no effect */
     public LocationMetadataValues $metadata;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -16,6 +18,7 @@ abstract class LocationEntityStateLocationMetadataValuesRetailMediaEntity extend
             return Location::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = RetailMediaEntity::hydrateBase($result, $arr);
@@ -29,17 +32,20 @@ abstract class LocationEntityStateLocationMetadataValuesRetailMediaEntity extend
         }
         return $result;
     }
+    
     function setState(LocationEntityState $state)
     {
         $this->state = $state;
         return $this;
     }
+    
     /** Managed server side only, manually setting this will have no effect */
     function setMetadata(LocationMetadataValues $metadata)
     {
         $this->metadata = $metadata;
         return $this;
     }
+    
     function setId(?string $id)
     {
         $this->id = $id;

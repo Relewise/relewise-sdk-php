@@ -6,12 +6,14 @@ class TriggerResultRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Triggers.TriggerResultRequest, Relewise.Client";
     public string $configurationId;
+    
     public static function create(string $configurationId) : TriggerResultRequest
     {
         $result = new TriggerResultRequest();
         $result->configurationId = $configurationId;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TriggerResultRequest
     {
         $result = LicensedRequest::hydrateBase(new TriggerResultRequest(), $arr);
@@ -21,6 +23,7 @@ class TriggerResultRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setConfigurationId(string $configurationId)
     {
         $this->configurationId = $configurationId;

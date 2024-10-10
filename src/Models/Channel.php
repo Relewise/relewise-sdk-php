@@ -6,12 +6,14 @@ class Channel
 {
     public string $name;
     public ?Channel $subChannel;
+    
     public static function create(string $name) : Channel
     {
         $result = new Channel();
         $result->name = $name;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Channel
     {
         $result = new Channel();
@@ -25,11 +27,13 @@ class Channel
         }
         return $result;
     }
+    
     function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
+    
     function setSubChannel(?Channel $subChannel)
     {
         $this->subChannel = $subChannel;

@@ -6,12 +6,14 @@ class ContentCategoryRecommendationResponse extends RecommendationResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.ContentCategoryRecommendationResponse, Relewise.Client";
     public array $recommendations;
+    
     public static function create(ContentCategoryResult ... $recommendations) : ContentCategoryRecommendationResponse
     {
         $result = new ContentCategoryRecommendationResponse();
         $result->recommendations = $recommendations;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryRecommendationResponse
     {
         $result = RecommendationResponse::hydrateBase(new ContentCategoryRecommendationResponse(), $arr);
@@ -25,17 +27,20 @@ class ContentCategoryRecommendationResponse extends RecommendationResponse
         }
         return $result;
     }
+    
     function setRecommendations(ContentCategoryResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     /** @param ContentCategoryResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     function addToRecommendations(ContentCategoryResult $recommendations)
     {
         if (!isset($this->recommendations))
@@ -45,6 +50,7 @@ class ContentCategoryRecommendationResponse extends RecommendationResponse
         array_push($this->recommendations, $recommendations);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

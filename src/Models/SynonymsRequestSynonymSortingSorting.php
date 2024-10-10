@@ -6,6 +6,7 @@ class SynonymsRequestSynonymSortingSorting
 {
     public SynonymsRequestSynonymSorting $sortBy;
     public SortOrder $sortOrder;
+    
     public static function create(SynonymsRequestSynonymSorting $sortBy, SortOrder $sortOrder) : SynonymsRequestSynonymSortingSorting
     {
         $result = new SynonymsRequestSynonymSortingSorting();
@@ -13,6 +14,7 @@ class SynonymsRequestSynonymSortingSorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SynonymsRequestSynonymSortingSorting
     {
         $result = new SynonymsRequestSynonymSortingSorting();
@@ -26,11 +28,13 @@ class SynonymsRequestSynonymSortingSorting
         }
         return $result;
     }
+    
     function setSortBy(SynonymsRequestSynonymSorting $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

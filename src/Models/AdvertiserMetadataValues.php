@@ -14,11 +14,13 @@ class AdvertiserMetadataValues extends MetadataValues implements JsonSerializabl
     public ?string $activatedBy;
     public ?DateTime $archived;
     public ?string $archivedBy;
+    
     public static function create() : AdvertiserMetadataValues
     {
         $result = new AdvertiserMetadataValues();
         return $result;
     }
+    
     public static function hydrate(array $arr) : AdvertiserMetadataValues
     {
         $result = MetadataValues::hydrateBase(new AdvertiserMetadataValues(), $arr);
@@ -48,56 +50,67 @@ class AdvertiserMetadataValues extends MetadataValues implements JsonSerializabl
         }
         return $result;
     }
+    
     function setInactivated(?DateTime $inactivated)
     {
         $this->inactivated = $inactivated;
         return $this;
     }
+    
     function setInactivatedBy(?string $inactivatedBy)
     {
         $this->inactivatedBy = $inactivatedBy;
         return $this;
     }
+    
     function setActivated(?DateTime $activated)
     {
         $this->activated = $activated;
         return $this;
     }
+    
     function setActivatedBy(?string $activatedBy)
     {
         $this->activatedBy = $activatedBy;
         return $this;
     }
+    
     function setArchived(?DateTime $archived)
     {
         $this->archived = $archived;
         return $this;
     }
+    
     function setArchivedBy(?string $archivedBy)
     {
         $this->archivedBy = $archivedBy;
         return $this;
     }
+    
     function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
+    
     function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
+    
     function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

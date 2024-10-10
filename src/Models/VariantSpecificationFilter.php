@@ -8,6 +8,7 @@ class VariantSpecificationFilter extends Filter
     public string $key;
     public bool $filterOutIfKeyIsNotFound;
     public string $equalTo;
+    
     public static function create(string $key, string $equalToValue, bool $filterOutIfKeyIsNotFound = true) : VariantSpecificationFilter
     {
         $result = new VariantSpecificationFilter();
@@ -16,6 +17,7 @@ class VariantSpecificationFilter extends Filter
         $result->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantSpecificationFilter
     {
         $result = Filter::hydrateBase(new VariantSpecificationFilter(), $arr);
@@ -33,26 +35,31 @@ class VariantSpecificationFilter extends Filter
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setFilterOutIfKeyIsNotFound(bool $filterOutIfKeyIsNotFound)
     {
         $this->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
         return $this;
     }
+    
     function setEqualTo(string $equalTo)
     {
         $this->equalTo = $equalTo;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

@@ -6,12 +6,14 @@ class SearchTermModifierRuleReplaceTermAction extends SearchTermModifierRuleRule
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchTermModifierRule+ReplaceTermAction, Relewise.Client";
     public ?string $replacement;
+    
     public static function create(?string $replacement) : SearchTermModifierRuleReplaceTermAction
     {
         $result = new SearchTermModifierRuleReplaceTermAction();
         $result->replacement = $replacement;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermModifierRuleReplaceTermAction
     {
         $result = SearchTermModifierRuleRuleAction::hydrateBase(new SearchTermModifierRuleReplaceTermAction(), $arr);
@@ -21,6 +23,7 @@ class SearchTermModifierRuleReplaceTermAction extends SearchTermModifierRuleRule
         }
         return $result;
     }
+    
     function setReplacement(?string $replacement)
     {
         $this->replacement = $replacement;

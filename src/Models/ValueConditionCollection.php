@@ -7,6 +7,7 @@ class ValueConditionCollection
 {
     /** The items that this collection holds. */
     public ?array $items;
+    
     /**
      * Creates a collection that contains multiple ValueConditions in its inner list Items.
      * @param ValueCondition[] $conditions The items that this collection holds.
@@ -17,6 +18,7 @@ class ValueConditionCollection
         $result->items = $conditions;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ValueConditionCollection
     {
         $result = new ValueConditionCollection();
@@ -30,12 +32,14 @@ class ValueConditionCollection
         }
         return $result;
     }
+    
     /** The items that this collection holds. */
     function setItems(ValueCondition ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /**
      * The items that this collection holds.
      * @param ?ValueCondition[] $items new value.
@@ -45,6 +49,7 @@ class ValueConditionCollection
         $this->items = $items;
         return $this;
     }
+    
     /** The items that this collection holds. */
     function addToItems(ValueCondition $items)
     {

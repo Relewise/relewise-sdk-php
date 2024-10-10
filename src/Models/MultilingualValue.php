@@ -6,6 +6,7 @@ class MultilingualValue
 {
     public Language $language;
     public ?string $text;
+    
     public static function create(Language $language, ?string $text) : MultilingualValue
     {
         $result = new MultilingualValue();
@@ -13,6 +14,7 @@ class MultilingualValue
         $result->text = $text;
         return $result;
     }
+    
     public static function hydrate(array $arr) : MultilingualValue
     {
         $result = new MultilingualValue();
@@ -26,11 +28,13 @@ class MultilingualValue
         }
         return $result;
     }
+    
     function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setText(?string $text)
     {
         $this->text = $text;

@@ -9,6 +9,8 @@ abstract class PredictionRulesRequestSortBySearchRulesRequest extends LicensedRe
     public PredictionRulesRequestSortBySorting $sorting;
     public int $skip;
     public int $take;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -17,6 +19,7 @@ abstract class PredictionRulesRequestSortBySearchRulesRequest extends LicensedRe
             return PredictionRulesRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);
@@ -38,21 +41,25 @@ abstract class PredictionRulesRequestSortBySearchRulesRequest extends LicensedRe
         }
         return $result;
     }
+    
     function setFilters(SearchRuleFilters $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setSorting(PredictionRulesRequestSortBySorting $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
+    
     function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
+    
     function setTake(int $take)
     {
         $this->take = $take;

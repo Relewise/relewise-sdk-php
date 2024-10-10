@@ -5,12 +5,14 @@ namespace Relewise\Models;
 class UserConditionCollection
 {
     public array $items;
+    
     public static function create(UserCondition ... $conditions) : UserConditionCollection
     {
         $result = new UserConditionCollection();
         $result->items = $conditions;
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserConditionCollection
     {
         $result = new UserConditionCollection();
@@ -24,17 +26,20 @@ class UserConditionCollection
         }
         return $result;
     }
+    
     function setItems(UserCondition ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param UserCondition[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(UserCondition $items)
     {
         if (!isset($this->items))

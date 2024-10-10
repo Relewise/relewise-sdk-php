@@ -9,6 +9,7 @@ class PurchasedByUserInfo implements JsonSerializable
 {
     public DateTime $mostRecentPurchasedUtc;
     public int $totalNumberOfTimesPurchased;
+    
     public static function create(DateTime $mostRecentPurchasedUtc, int $totalNumberOfTimesPurchased) : PurchasedByUserInfo
     {
         $result = new PurchasedByUserInfo();
@@ -16,6 +17,7 @@ class PurchasedByUserInfo implements JsonSerializable
         $result->totalNumberOfTimesPurchased = $totalNumberOfTimesPurchased;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PurchasedByUserInfo
     {
         $result = new PurchasedByUserInfo();
@@ -29,16 +31,19 @@ class PurchasedByUserInfo implements JsonSerializable
         }
         return $result;
     }
+    
     function setMostRecentPurchasedUtc(DateTime $mostRecentPurchasedUtc)
     {
         $this->mostRecentPurchasedUtc = $mostRecentPurchasedUtc;
         return $this;
     }
+    
     function setTotalNumberOfTimesPurchased(int $totalNumberOfTimesPurchased)
     {
         $this->totalNumberOfTimesPurchased = $totalNumberOfTimesPurchased;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

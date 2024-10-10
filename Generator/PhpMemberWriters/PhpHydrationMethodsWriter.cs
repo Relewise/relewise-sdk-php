@@ -16,6 +16,7 @@ public class PhpHydrationMethodsWriter
     {
         if (type.IsAbstract || type.IsInterface)
         {
+            writer.WriteLine();
             writer.WriteLine("public static function hydrate(array $arr)");
             writer.WriteLine("{");
             writer.Indent++;
@@ -43,6 +44,7 @@ public class PhpHydrationMethodsWriter
             writer.Indent--;
             writer.WriteLine("}");
 
+            writer.WriteLine();
             writer.WriteLine("public static function hydrateBase(mixed $result, array $arr)");
             writer.WriteLine("{");
             writer.Indent++;
@@ -60,6 +62,7 @@ public class PhpHydrationMethodsWriter
         }
         else
         {
+            writer.WriteLine();
             writer.WriteLine($"public static function hydrate(array $arr) : {typeName}");
             writer.WriteLine("{");
             writer.Indent++;

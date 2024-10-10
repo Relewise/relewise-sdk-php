@@ -6,11 +6,13 @@ class TriggerConfigurationCollectionResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.TriggerConfigurationCollectionResponse, Relewise.Client";
     public array $configurations;
+    
     public static function create() : TriggerConfigurationCollectionResponse
     {
         $result = new TriggerConfigurationCollectionResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : TriggerConfigurationCollectionResponse
     {
         $result = TimedResponse::hydrateBase(new TriggerConfigurationCollectionResponse(), $arr);
@@ -24,17 +26,20 @@ class TriggerConfigurationCollectionResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setConfigurations(TriggerConfiguration ... $configurations)
     {
         $this->configurations = $configurations;
         return $this;
     }
+    
     /** @param TriggerConfiguration[] $configurations new value. */
     function setConfigurationsFromArray(array $configurations)
     {
         $this->configurations = $configurations;
         return $this;
     }
+    
     function addToConfigurations(TriggerConfiguration $configurations)
     {
         if (!isset($this->configurations))
@@ -44,6 +49,7 @@ class TriggerConfigurationCollectionResponse extends TimedResponse
         array_push($this->configurations, $configurations);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

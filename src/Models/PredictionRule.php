@@ -11,6 +11,7 @@ class PredictionRule extends SearchRule implements JsonSerializable
     public SearchTermCondition $condition;
     public PredictionRulePromotion $promote;
     public PredictionRuleSuppression $suppress;
+    
     public static function create(string $id, ?ApplicableIndexes $indexes, ?ApplicableLanguages $languages, bool $isApproved, SearchTermCondition $condition) : PredictionRule
     {
         $result = new PredictionRule();
@@ -21,6 +22,7 @@ class PredictionRule extends SearchRule implements JsonSerializable
         $result->condition = $condition;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PredictionRule
     {
         $result = SearchRule::hydrateBase(new PredictionRule(), $arr);
@@ -38,71 +40,85 @@ class PredictionRule extends SearchRule implements JsonSerializable
         }
         return $result;
     }
+    
     function setCondition(SearchTermCondition $condition)
     {
         $this->condition = $condition;
         return $this;
     }
+    
     function setPromote(PredictionRulePromotion $promote)
     {
         $this->promote = $promote;
         return $this;
     }
+    
     function setSuppress(PredictionRuleSuppression $suppress)
     {
         $this->suppress = $suppress;
         return $this;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setIndexes(?ApplicableIndexes $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
+    
     function setLanguages(?ApplicableLanguages $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    
     function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
+    
     function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
+    
     function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
+    
     function setApproved(?DateTime $approved)
     {
         $this->approved = $approved;
         return $this;
     }
+    
     function setApprovedBy(string $approvedBy)
     {
         $this->approvedBy = $approvedBy;
         return $this;
     }
+    
     function setIsApproved(bool $isApproved)
     {
         $this->isApproved = $isApproved;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

@@ -6,12 +6,14 @@ class TrackBrandViewRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackBrandViewRequest, Relewise.Client";
     public BrandView $brandView;
+    
     public static function create(BrandView $brandView) : TrackBrandViewRequest
     {
         $result = new TrackBrandViewRequest();
         $result->brandView = $brandView;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackBrandViewRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackBrandViewRequest(), $arr);
@@ -21,6 +23,7 @@ class TrackBrandViewRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setBrandView(BrandView $brandView)
     {
         $this->brandView = $brandView;

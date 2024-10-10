@@ -5,11 +5,13 @@ namespace Relewise\Models;
 class PromotionSpecificationVariationCollection
 {
     public ?ProductPromotionSpecificationVariation $productPromotion;
+    
     public static function create() : PromotionSpecificationVariationCollection
     {
         $result = new PromotionSpecificationVariationCollection();
         return $result;
     }
+    
     public static function hydrate(array $arr) : PromotionSpecificationVariationCollection
     {
         $result = new PromotionSpecificationVariationCollection();
@@ -19,6 +21,7 @@ class PromotionSpecificationVariationCollection
         }
         return $result;
     }
+    
     function setProductPromotion(?ProductPromotionSpecificationVariation $productPromotion)
     {
         $this->productPromotion = $productPromotion;

@@ -7,6 +7,7 @@ class BrandView extends Trackable
     public string $typeDefinition = "Relewise.Client.DataTypes.BrandView, Relewise.Client";
     public ?User $user;
     public Brand $brand;
+    
     public static function create(?User $user, Brand $brand) : BrandView
     {
         $result = new BrandView();
@@ -14,6 +15,7 @@ class BrandView extends Trackable
         $result->brand = $brand;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandView
     {
         $result = Trackable::hydrateBase(new BrandView(), $arr);
@@ -27,11 +29,13 @@ class BrandView extends Trackable
         }
         return $result;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setBrand(Brand $brand)
     {
         $this->brand = $brand;

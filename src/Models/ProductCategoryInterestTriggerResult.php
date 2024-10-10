@@ -6,11 +6,13 @@ class ProductCategoryInterestTriggerResult
 {
     public UserResultDetails $user;
     public array $categories;
+    
     public static function create() : ProductCategoryInterestTriggerResult
     {
         $result = new ProductCategoryInterestTriggerResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryInterestTriggerResult
     {
         $result = new ProductCategoryInterestTriggerResult();
@@ -28,22 +30,26 @@ class ProductCategoryInterestTriggerResult
         }
         return $result;
     }
+    
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setCategories(ProductCategoryInterestTriggerResultCategory ... $categories)
     {
         $this->categories = $categories;
         return $this;
     }
+    
     /** @param ProductCategoryInterestTriggerResultCategory[] $categories new value. */
     function setCategoriesFromArray(array $categories)
     {
         $this->categories = $categories;
         return $this;
     }
+    
     function addToCategories(ProductCategoryInterestTriggerResultCategory $categories)
     {
         if (!isset($this->categories))

@@ -6,11 +6,13 @@ class DataIndexConfiguration
 {
     public array $keys;
     public FieldIndexConfiguration $unspecified;
+    
     public static function create() : DataIndexConfiguration
     {
         $result = new DataIndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataIndexConfiguration
     {
         $result = new DataIndexConfiguration();
@@ -28,6 +30,7 @@ class DataIndexConfiguration
         }
         return $result;
     }
+    
     function addToKeys(string $key, FieldIndexConfiguration $value)
     {
         if (!isset($this->keys))
@@ -37,12 +40,14 @@ class DataIndexConfiguration
         $this->keys[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, FieldIndexConfiguration> $keys associative array. */
     function setKeysFromAssociativeArray(array $keys)
     {
         $this->keys = $keys;
         return $this;
     }
+    
     function setUnspecified(FieldIndexConfiguration $unspecified)
     {
         $this->unspecified = $unspecified;

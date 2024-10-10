@@ -6,11 +6,13 @@ class ProductPerformanceResultViewsAndSalesMetrics
 {
     public float $byViews;
     public float $bySales;
+    
     public static function create() : ProductPerformanceResultViewsAndSalesMetrics
     {
         $result = new ProductPerformanceResultViewsAndSalesMetrics();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResultViewsAndSalesMetrics
     {
         $result = new ProductPerformanceResultViewsAndSalesMetrics();
@@ -24,11 +26,13 @@ class ProductPerformanceResultViewsAndSalesMetrics
         }
         return $result;
     }
+    
     function setByViews(float $byViews)
     {
         $this->byViews = $byViews;
         return $this;
     }
+    
     function setBySales(float $bySales)
     {
         $this->bySales = $bySales;

@@ -5,11 +5,13 @@ namespace Relewise\Models;
 class ContentSortBySpecification
 {
     public ContentSorting $value;
+    
     public static function create() : ContentSortBySpecification
     {
         $result = new ContentSortBySpecification();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentSortBySpecification
     {
         $result = new ContentSortBySpecification();
@@ -19,6 +21,7 @@ class ContentSortBySpecification
         }
         return $result;
     }
+    
     function setValue(ContentSorting $value)
     {
         $this->value = $value;

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class RecommendationResponse extends TimedResponse
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -33,11 +34,13 @@ abstract class RecommendationResponse extends TimedResponse
             return SearchTermRecommendationResponse::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = TimedResponse::hydrateBase($result, $arr);
         return $result;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

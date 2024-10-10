@@ -19,6 +19,7 @@ class ProductRecentlyViewedByCompanyRelevanceModifier extends RelevanceModifier 
     public float $elseIfNotViewedByCompanyMultiplyWeightBy;
     /** The minutes since in which a product will be considered relevant to the user if viewed previously by them. */
     public ?int $sinceMinutesAgo;
+    
     public static function create(array $companyIds, float $ifViewedByCompanyMultiplyWeightBy = 1, float $elseIfNotViewedByCompanyMultiplyWeightBy = 1) : ProductRecentlyViewedByCompanyRelevanceModifier
     {
         $result = new ProductRecentlyViewedByCompanyRelevanceModifier();
@@ -27,6 +28,7 @@ class ProductRecentlyViewedByCompanyRelevanceModifier extends RelevanceModifier 
         $result->elseIfNotViewedByCompanyMultiplyWeightBy = $elseIfNotViewedByCompanyMultiplyWeightBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductRecentlyViewedByCompanyRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new ProductRecentlyViewedByCompanyRelevanceModifier(), $arr);
@@ -56,18 +58,21 @@ class ProductRecentlyViewedByCompanyRelevanceModifier extends RelevanceModifier 
         }
         return $result;
     }
+    
     /** The start of the time period in which a product will be considered relevant to the user if viewed previously by any of the provided companies. */
     function setSinceUtc(?DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
+    
     /** The list of companies. */
     function setCompanyIds(string ... $companyIds)
     {
         $this->companyIds = $companyIds;
         return $this;
     }
+    
     /**
      * The list of companies.
      * @param string[] $companyIds new value.
@@ -77,6 +82,7 @@ class ProductRecentlyViewedByCompanyRelevanceModifier extends RelevanceModifier 
         $this->companyIds = $companyIds;
         return $this;
     }
+    
     /** The list of companies. */
     function addToCompanyIds(string $companyIds)
     {
@@ -87,29 +93,34 @@ class ProductRecentlyViewedByCompanyRelevanceModifier extends RelevanceModifier 
         array_push($this->companyIds, $companyIds);
         return $this;
     }
+    
     /** The weight that the Product will be multiplied with if it has been viewed in the past by any of the provided companies (since SinceUtc). */
     function setIfViewedByCompanyMultiplyWeightBy(float $ifViewedByCompanyMultiplyWeightBy)
     {
         $this->ifViewedByCompanyMultiplyWeightBy = $ifViewedByCompanyMultiplyWeightBy;
         return $this;
     }
+    
     /** The weight that the Product will be multiplied with if it has not been viewed in the past by the users company (since SinceUtc). */
     function setElseIfNotViewedByCompanyMultiplyWeightBy(float $elseIfNotViewedByCompanyMultiplyWeightBy)
     {
         $this->elseIfNotViewedByCompanyMultiplyWeightBy = $elseIfNotViewedByCompanyMultiplyWeightBy;
         return $this;
     }
+    
     /** The minutes since in which a product will be considered relevant to the user if viewed previously by them. */
     function setSinceMinutesAgo(?int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

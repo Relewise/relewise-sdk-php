@@ -7,6 +7,7 @@ class ProductCategoryRecommendationRequestCollection extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ProductCategoryRecommendationRequestCollection, Relewise.Client";
     public array $requests;
     public bool $requireDistinctCategoriesAcrossResults;
+    
     public static function create(bool $requireDistinctCategoriesesAcrossResults, ProductCategoryRecommendationRequest ... $requests) : ProductCategoryRecommendationRequestCollection
     {
         $result = new ProductCategoryRecommendationRequestCollection();
@@ -14,6 +15,7 @@ class ProductCategoryRecommendationRequestCollection extends LicensedRequest
         $result->requests = $requests;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryRecommendationRequestCollection
     {
         $result = LicensedRequest::hydrateBase(new ProductCategoryRecommendationRequestCollection(), $arr);
@@ -31,17 +33,20 @@ class ProductCategoryRecommendationRequestCollection extends LicensedRequest
         }
         return $result;
     }
+    
     function setRequests(ProductCategoryRecommendationRequest ... $requests)
     {
         $this->requests = $requests;
         return $this;
     }
+    
     /** @param ProductCategoryRecommendationRequest[] $requests new value. */
     function setRequestsFromArray(array $requests)
     {
         $this->requests = $requests;
         return $this;
     }
+    
     function addToRequests(ProductCategoryRecommendationRequest $requests)
     {
         if (!isset($this->requests))
@@ -51,6 +56,7 @@ class ProductCategoryRecommendationRequestCollection extends LicensedRequest
         array_push($this->requests, $requests);
         return $this;
     }
+    
     function setRequireDistinctCategoriesAcrossResults(bool $requireDistinctCategoriesAcrossResults)
     {
         $this->requireDistinctCategoriesAcrossResults = $requireDistinctCategoriesAcrossResults;

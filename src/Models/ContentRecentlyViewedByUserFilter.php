@@ -10,12 +10,14 @@ class ContentRecentlyViewedByUserFilter extends Filter implements JsonSerializab
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentRecentlyViewedByUserFilter, Relewise.Client";
     public ?DateTime $sinceUtc;
     public ?int $sinceMinutesAgo;
+    
     public static function create(bool $negated = false) : ContentRecentlyViewedByUserFilter
     {
         $result = new ContentRecentlyViewedByUserFilter();
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentRecentlyViewedByUserFilter
     {
         $result = Filter::hydrateBase(new ContentRecentlyViewedByUserFilter(), $arr);
@@ -29,26 +31,31 @@ class ContentRecentlyViewedByUserFilter extends Filter implements JsonSerializab
         }
         return $result;
     }
+    
     function setSinceUtc(?DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
+    
     function setSinceMinutesAgo(?int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

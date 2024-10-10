@@ -6,6 +6,7 @@ class HasIdentifierCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasIdentifierCondition, Relewise.Client";
     public string $key;
+    
     public static function create(string $key, bool $negated) : HasIdentifierCondition
     {
         $result = new HasIdentifierCondition();
@@ -13,6 +14,7 @@ class HasIdentifierCondition extends UserCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : HasIdentifierCondition
     {
         $result = UserCondition::hydrateBase(new HasIdentifierCondition(), $arr);
@@ -22,11 +24,13 @@ class HasIdentifierCondition extends UserCondition
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

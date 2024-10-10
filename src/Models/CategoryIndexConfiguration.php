@@ -5,11 +5,13 @@ namespace Relewise\Models;
 class CategoryIndexConfiguration
 {
     public CategoryIndexConfigurationEntry $unspecified;
+    
     public static function create() : CategoryIndexConfiguration
     {
         $result = new CategoryIndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryIndexConfiguration
     {
         $result = new CategoryIndexConfiguration();
@@ -19,6 +21,7 @@ class CategoryIndexConfiguration
         }
         return $result;
     }
+    
     function setUnspecified(CategoryIndexConfigurationEntry $unspecified)
     {
         $this->unspecified = $unspecified;

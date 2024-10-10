@@ -11,6 +11,7 @@ class RedirectRule extends SearchRule implements JsonSerializable
     public SearchTermCondition $condition;
     public ?string $destination;
     public ?array $data;
+    
     public static function create(string $id, ?ApplicableIndexes $indexes, ?ApplicableLanguages $languages, bool $isApproved, SearchTermCondition $condition, ?string $destination, ?array $data = Null) : RedirectRule
     {
         $result = new RedirectRule();
@@ -23,6 +24,7 @@ class RedirectRule extends SearchRule implements JsonSerializable
         $result->data = $data;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RedirectRule
     {
         $result = SearchRule::hydrateBase(new RedirectRule(), $arr);
@@ -44,16 +46,19 @@ class RedirectRule extends SearchRule implements JsonSerializable
         }
         return $result;
     }
+    
     function setCondition(SearchTermCondition $condition)
     {
         $this->condition = $condition;
         return $this;
     }
+    
     function setDestination(?string $destination)
     {
         $this->destination = $destination;
         return $this;
     }
+    
     function addToData(string $key, string $value)
     {
         if (!isset($this->data))
@@ -63,62 +68,74 @@ class RedirectRule extends SearchRule implements JsonSerializable
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param ?array<string, string> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
         return $this;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setIndexes(?ApplicableIndexes $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
+    
     function setLanguages(?ApplicableLanguages $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    
     function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
+    
     function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
+    
     function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
+    
     function setApproved(?DateTime $approved)
     {
         $this->approved = $approved;
         return $this;
     }
+    
     function setApprovedBy(string $approvedBy)
     {
         $this->approvedBy = $approvedBy;
         return $this;
     }
+    
     function setIsApproved(bool $isApproved)
     {
         $this->isApproved = $isApproved;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

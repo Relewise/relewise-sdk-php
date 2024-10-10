@@ -11,22 +11,26 @@ class SaveRedirectRulesResponse extends RedirectRuleSaveSearchRulesResponse
         $result->rules = $rules;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveRedirectRulesResponse
     {
         $result = RedirectRuleSaveSearchRulesResponse::hydrateBase(new SaveRedirectRulesResponse(), $arr);
         return $result;
     }
+    
     function setRules(RedirectRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param RedirectRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(RedirectRule $rules)
     {
         if (!isset($this->rules))
@@ -36,6 +40,7 @@ class SaveRedirectRulesResponse extends RedirectRuleSaveSearchRulesResponse
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

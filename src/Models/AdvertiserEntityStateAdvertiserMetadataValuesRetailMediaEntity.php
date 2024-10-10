@@ -8,6 +8,8 @@ abstract class AdvertiserEntityStateAdvertiserMetadataValuesRetailMediaEntity ex
     public AdvertiserEntityState $state;
     /** Managed server side only, manually setting this will have no effect */
     public AdvertiserMetadataValues $metadata;
+    
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -16,6 +18,7 @@ abstract class AdvertiserEntityStateAdvertiserMetadataValuesRetailMediaEntity ex
             return Advertiser::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = RetailMediaEntity::hydrateBase($result, $arr);
@@ -29,17 +32,20 @@ abstract class AdvertiserEntityStateAdvertiserMetadataValuesRetailMediaEntity ex
         }
         return $result;
     }
+    
     function setState(AdvertiserEntityState $state)
     {
         $this->state = $state;
         return $this;
     }
+    
     /** Managed server side only, manually setting this will have no effect */
     function setMetadata(AdvertiserMetadataValues $metadata)
     {
         $this->metadata = $metadata;
         return $this;
     }
+    
     function setId(?string $id)
     {
         $this->id = $id;

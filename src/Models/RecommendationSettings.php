@@ -6,11 +6,13 @@ class RecommendationSettings
 {
     public ?int $take;
     public ?int $onlyIncludeRecommendationsWhenLessResultsThan;
+    
     public static function create() : RecommendationSettings
     {
         $result = new RecommendationSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : RecommendationSettings
     {
         $result = new RecommendationSettings();
@@ -24,11 +26,13 @@ class RecommendationSettings
         }
         return $result;
     }
+    
     function setTake(?int $take)
     {
         $this->take = $take;
         return $this;
     }
+    
     function setOnlyIncludeRecommendationsWhenLessResultsThan(?int $onlyIncludeRecommendationsWhenLessResultsThan)
     {
         $this->onlyIncludeRecommendationsWhenLessResultsThan = $onlyIncludeRecommendationsWhenLessResultsThan;

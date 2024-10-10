@@ -7,11 +7,13 @@ class CategoryIndexConfigurationEntry
     public FieldIndexConfiguration $id;
     public FieldIndexConfiguration $displayName;
     public DataIndexConfiguration $data;
+    
     public static function create() : CategoryIndexConfigurationEntry
     {
         $result = new CategoryIndexConfigurationEntry();
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryIndexConfigurationEntry
     {
         $result = new CategoryIndexConfigurationEntry();
@@ -29,16 +31,19 @@ class CategoryIndexConfigurationEntry
         }
         return $result;
     }
+    
     function setId(FieldIndexConfiguration $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setDisplayName(FieldIndexConfiguration $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setData(DataIndexConfiguration $data)
     {
         $this->data = $data;
