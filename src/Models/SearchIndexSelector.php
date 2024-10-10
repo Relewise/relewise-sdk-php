@@ -6,6 +6,7 @@ class SearchIndexSelector
 {
     public string $id;
     const DEFAULT = Null;
+    
     public static function create(string $id) : SearchIndexSelector
     {
         $result = new SearchIndexSelector();

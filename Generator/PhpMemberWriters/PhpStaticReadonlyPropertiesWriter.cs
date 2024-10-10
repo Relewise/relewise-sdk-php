@@ -23,6 +23,7 @@ public class PhpStaticReadonlyPropertiesWriter
                 throw new NotImplementedException("We have not implemented support for static readonly properties that return other values than 'null'.");
             }
             writer.WriteLine($"const {lowerCaseName.ToUpper()} = Null;");
+            writer.WriteLine();
         }
     }
 }
