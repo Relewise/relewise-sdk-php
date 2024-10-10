@@ -12,6 +12,7 @@ class Analyzer extends RelewiseClient
     {
         parent::__construct($datasetId, $apiKey, $timeout);
     }
+    
     public function productPerformance(ProductPerformanceRequest $request) : ?ProductPerformanceResponse
     {
         $response = $this->requestAndValidate("ProductPerformanceRequest", $request);

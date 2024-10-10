@@ -22,6 +22,7 @@ class Searcher extends RelewiseClient
     {
         parent::__construct($datasetId, $apiKey, $timeout);
     }
+    
     public function productSearch(ProductSearchRequest $request) : ?ProductSearchResponse
     {
         $response = $this->requestAndValidate("ProductSearchRequest", $request);
@@ -31,6 +32,7 @@ class Searcher extends RelewiseClient
         }
         return ProductSearchResponse::hydrate($response);
     }
+    
     public function contentSearch(ContentSearchRequest $request) : ?ContentSearchResponse
     {
         $response = $this->requestAndValidate("ContentSearchRequest", $request);
@@ -40,6 +42,7 @@ class Searcher extends RelewiseClient
         }
         return ContentSearchResponse::hydrate($response);
     }
+    
     public function productCategorySearch(ProductCategorySearchRequest $request) : ?ProductCategorySearchResponse
     {
         $response = $this->requestAndValidate("ProductCategorySearchRequest", $request);
@@ -49,6 +52,7 @@ class Searcher extends RelewiseClient
         }
         return ProductCategorySearchResponse::hydrate($response);
     }
+    
     public function contentCategorySearch(ContentCategorySearchRequest $request) : ?ContentCategorySearchResponse
     {
         $response = $this->requestAndValidate("ContentCategorySearchRequest", $request);
@@ -58,6 +62,7 @@ class Searcher extends RelewiseClient
         }
         return ContentCategorySearchResponse::hydrate($response);
     }
+    
     public function searchTermPrediction(SearchTermPredictionRequest $request) : ?SearchTermPredictionResponse
     {
         $response = $this->requestAndValidate("SearchTermPredictionRequest", $request);
@@ -67,6 +72,7 @@ class Searcher extends RelewiseClient
         }
         return SearchTermPredictionResponse::hydrate($response);
     }
+    
     public function batchsearch(SearchRequestCollection $request) : ?SearchResponseCollection
     {
         $response = $this->requestAndValidate("SearchRequestCollection", $request);
