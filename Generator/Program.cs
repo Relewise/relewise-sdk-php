@@ -42,6 +42,7 @@ phpClientWriter.GenerateClientClass(typeof(Tracker), new[] { "Track" });
 phpClientWriter.GenerateClientClass(typeof(Searcher), new[] { "Search", "Predict", "Batch" });
 phpClientWriter.GenerateClientClass(typeof(Recommender), new[] { "Recommend" });
 phpClientWriter.GenerateClientClass(typeof(SearchAdministrator), new[] { "Delete", "Save", "Load" });
+phpClientWriter.GenerateClientClass(typeof(Analyzer), new[] { "Analyze" });
 
 if (phpWriter.MissingTypeDefinitions.Count > 0)
 {
