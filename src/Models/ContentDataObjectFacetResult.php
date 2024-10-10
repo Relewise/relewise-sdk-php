@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ContentDataObjectFacetResult extends DataObjectFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ContentDataObjectFacetResult, Relewise.Client";
-    
     public static function create(string $key, array $items, DataObjectFilter $filter) : ContentDataObjectFacetResult
     {
         $result = new ContentDataObjectFacetResult();

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class MerchandisingRuleResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Merchandising.MerchandisingRuleResponse, Relewise.Client";
-    
     public MerchandisingRule $rule;
     
     public static function create() : MerchandisingRuleResponse

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class OrCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.OrCondition, Relewise.Client";
-    
     public UserConditionCollection $conditions;
     
     public static function create(UserConditionCollection $conditions, bool $negated) : OrCondition

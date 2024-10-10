@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class RedirectRuleSaveSearchRulesRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
-    
     public array $rules;
     public string $modifiedBy;
     

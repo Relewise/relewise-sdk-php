@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class AdvertiserEntityStateAdvertiserMetadataValuesAdvertisersRequestSortByAdvertisersRequestEntityFiltersEntitiesRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
-    
     public ?AdvertisersRequestEntityFilters $filters;
     public ?AdvertisersRequestSortBySorting $sorting;
     public int $skip;

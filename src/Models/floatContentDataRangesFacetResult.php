@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class floatContentDataRangesFacetResult extends floatRangesFacetResult
 {
     public string $typeDefinition = "";
-    
     public string $key;
     
     

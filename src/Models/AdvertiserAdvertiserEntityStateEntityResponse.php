@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class AdvertiserAdvertiserEntityStateEntityResponse extends TimedResponse
 {
     public string $typeDefinition = "";
-    
     public array $entities;
     public int $hits;
     public array $hitsPerState;

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class PopularBrandsRecommendationRequest extends BrandRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PopularBrandsRecommendationRequest, Relewise.Client";
-    
     public int $sinceMinutesAgo;
     public BrandRecommendationWeights $weights;
     

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ContentDataStringValueFacet extends stringContentDataValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ContentDataStringValueFacet, Relewise.Client";
-    
     public static function create(string $key, ?array $selected, ?CollectionFilterType $collectionFilterType) : ContentDataStringValueFacet
     {
         $result = new ContentDataStringValueFacet();

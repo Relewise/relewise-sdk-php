@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class VariantListPriceRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.VariantListPriceRelevanceModifier, Relewise.Client";
-    
     /** The range of list prices that this RelevanceModifier will distinguish on. */
     public ?floatRange $range;
     /** The currency that is used to distinguish the price. */

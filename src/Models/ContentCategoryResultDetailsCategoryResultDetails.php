@@ -8,7 +8,6 @@ use JsonSerializable;
 abstract class ContentCategoryResultDetailsCategoryResultDetails implements JsonSerializable
 {
     public string $typeDefinition = "";
-    
     public string $categoryId;
     public Multilingual $displayName;
     public array $assortments;

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductDisplayNameFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductDisplayNameFilter, Relewise.Client";
-    
     public ?Language $language;
     public ?ValueConditionCollection $conditions;
     public bool $mustMatchAllConditions;

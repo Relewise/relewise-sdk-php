@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class VariantSpecificationFacetResult extends stringValueFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.VariantSpecificationFacetResult, Relewise.Client";
-    
     public string $key;
     
     public static function create(string $key, array $selected, stringAvailableFacetValue ... $available) : VariantSpecificationFacetResult

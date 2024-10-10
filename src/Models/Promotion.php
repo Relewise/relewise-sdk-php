@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class Promotion
 {
     public string $typeDefinition = "";
-    
     public string $name;
     public ?PromotionLocationCollection $locations;
     

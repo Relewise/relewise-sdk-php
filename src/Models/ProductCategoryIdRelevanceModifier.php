@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class ProductCategoryIdRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductCategoryIdRelevanceModifier, Relewise.Client";
-    
     /** The Id of the Category that this RelevanceModifier will multiply the weight for. */
     public string $categoryId;
     /** The relative Category levels that this RelevanceModifier should match with. */

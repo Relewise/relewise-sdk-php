@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class DeleteSearchRulesRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
-    
     public array $ids;
     public string $deletedBy;
     

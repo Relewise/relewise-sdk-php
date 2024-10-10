@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class Category
 {
     public string $typeDefinition = "";
-    
     public string $id;
     public Multilingual $displayName;
     public array $categoryPaths;

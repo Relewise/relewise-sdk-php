@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductCategoryAdministrativeAction extends CategoryAdministrativeAction
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductCategoryAdministrativeAction, Relewise.Client";
-    
     public static function create(?Language $language, ?Currency $currency, CategoryAdministrativeActionUpdateKind $kind) : ProductCategoryAdministrativeAction
     {
         $result = new ProductCategoryAdministrativeAction();

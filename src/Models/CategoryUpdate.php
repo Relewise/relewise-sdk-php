@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class CategoryUpdate extends Trackable
 {
     public string $typeDefinition = "";
-    
     public CategoryUpdateUpdateKind $kind;
     
     

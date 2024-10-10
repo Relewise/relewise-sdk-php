@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class CampaignsRequestEntityFilters extends CampaignEntityStateCampaignMetadataValuesRetailMediaEntityEntityFilters
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.CampaignsRequest+EntityFilters, Relewise.Client";
-    
     public ?array $ids;
     public ?array $advertiserIds;
     

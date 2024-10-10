@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductDataObjectFacet extends DataObjectFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ProductDataObjectFacet, Relewise.Client";
-    
     public DataSelectionStrategy $dataSelectionStrategy;
     
     public static function create(DataSelectionStrategy $dataSelectionStrategy, string $key) : ProductDataObjectFacet

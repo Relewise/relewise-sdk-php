@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class BrandFacet extends stringValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.BrandFacet, Relewise.Client";
-    
     public static function create(string ... $selectedIds) : BrandFacet
     {
         $result = new BrandFacet();

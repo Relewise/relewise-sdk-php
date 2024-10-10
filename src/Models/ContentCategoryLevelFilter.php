@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ContentCategoryLevelFilter extends CategoryLevelFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentCategoryLevelFilter, Relewise.Client";
-    
     public static function create(bool $negated = false) : ContentCategoryLevelFilter
     {
         $result = new ContentCategoryLevelFilter();

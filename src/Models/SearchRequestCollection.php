@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SearchRequestCollection extends SearchRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.SearchRequestCollection, Relewise.Client";
-    
     public array $requests;
     
     public static function create(SearchRequest ... $requests) : SearchRequestCollection

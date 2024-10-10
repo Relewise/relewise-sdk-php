@@ -6,7 +6,6 @@ namespace Relewise\Models;
 abstract class Filter
 {
     public string $typeDefinition = "";
-    
     /** Defines whether the Filter should exclude the matching entities instead of including the matching entities. */
     public bool $negated;
     public ?FilterSettings $settings;

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ContentDataFilter extends DataFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentDataFilter, Relewise.Client";
-    
     public static function create(string $key, bool $filterOutIfKeyIsNotFound = true, ?Language $language = Null, ?Currency $currency = Null) : ContentDataFilter
     {
         $result = new ContentDataFilter();

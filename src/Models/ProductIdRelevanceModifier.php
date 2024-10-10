@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class ProductIdRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductIdRelevanceModifier, Relewise.Client";
-    
     /** The Ids of the Products that this RelevanceModifier will distinguish on. */
     public array $productIds;
     /** The weight that this RelevanceModifier will multiply relevant products with. */

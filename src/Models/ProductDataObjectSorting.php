@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductDataObjectSorting extends ProductSorting
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Product.ProductDataObjectSorting, Relewise.Client";
-    
     public DataSelectionStrategy $dataSelectionStrategy;
     public SortMode $mode;
     public DataObjectValueSelector $valueSelector;

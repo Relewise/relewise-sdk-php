@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class CampaignAnalyticsResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.RetailMedia.CampaignAnalyticsResponse, Relewise.Client";
-    
     public CampaignAnalytics $analytics;
     
     public static function create(CampaignAnalytics $analytics) : CampaignAnalyticsResponse

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SaveSynonymsRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.SaveSynonymsRequest, Relewise.Client";
-    
     public array $synonyms;
     public string $modifiedBy;
     

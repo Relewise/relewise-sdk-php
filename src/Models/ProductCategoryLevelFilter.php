@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductCategoryLevelFilter extends CategoryLevelFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductCategoryLevelFilter, Relewise.Client";
-    
     public static function create(bool $negated = false) : ProductCategoryLevelFilter
     {
         $result = new ProductCategoryLevelFilter();

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class StemmingRulesRequest extends StemmingRulesRequestSortBySearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.StemmingRulesRequest, Relewise.Client";
-    
     public static function create(SearchRuleFilters $filters, StemmingRulesRequestSortBySorting $sorting, int $skip, int $take) : StemmingRulesRequest
     {
         $result = new StemmingRulesRequest();

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class TrackBrandUpdateRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackBrandUpdateRequest, Relewise.Client";
-    
     public BrandUpdate $brandUpdate;
     
     public static function create(BrandUpdate $brandUpdate) : TrackBrandUpdateRequest

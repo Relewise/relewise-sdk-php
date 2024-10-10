@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class HasModifiedCartCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasModifiedCartCondition, Relewise.Client";
-    
     public int $withinMinutes;
     public string $cartName;
     

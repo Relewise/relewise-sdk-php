@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class VariantDataFilter extends DataFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.VariantDataFilter, Relewise.Client";
-    
     public static function create(string $key, bool $mustMatchAllConditions = true, bool $filterOutIfKeyIsNotFound = true, ?Language $language = Null, ?Currency $currency = Null) : VariantDataFilter
     {
         $result = new VariantDataFilter();

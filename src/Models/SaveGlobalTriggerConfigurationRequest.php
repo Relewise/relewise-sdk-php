@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SaveGlobalTriggerConfigurationRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Triggers.SaveGlobalTriggerConfigurationRequest, Relewise.Client";
-    
     public GlobalTriggerConfiguration $configuration;
     public string $modifiedBy;
     

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class SelectedCategoryPropertiesSettings
 {
     public string $typeDefinition = "";
-    
     public bool $displayName;
     public bool $paths;
     public bool $assortments;

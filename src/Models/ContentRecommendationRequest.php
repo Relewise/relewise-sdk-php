@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class ContentRecommendationRequest extends RecommendationRequest
 {
     public string $typeDefinition = "";
-    
     public ContentRecommendationRequestSettings $settings;
     
     

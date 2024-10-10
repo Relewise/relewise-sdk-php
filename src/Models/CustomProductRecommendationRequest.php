@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class CustomProductRecommendationRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.CustomProductRecommendationRequest, Relewise.Client";
-    
     public string $recommendationType;
     public ?array $parameters;
     

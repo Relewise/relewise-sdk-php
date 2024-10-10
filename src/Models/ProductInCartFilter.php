@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class ProductInCartFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductInCartFilter, Relewise.Client";
-    
     public static function create(bool $negated = false) : ProductInCartFilter
     {
         $result = new ProductInCartFilter();

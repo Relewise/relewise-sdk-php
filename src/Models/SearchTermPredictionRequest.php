@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SearchTermPredictionRequest extends SearchRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.SearchTermPredictionRequest, Relewise.Client";
-    
     public string $term;
     public int $take;
     public ?SearchTermPredictionSettings $settings;

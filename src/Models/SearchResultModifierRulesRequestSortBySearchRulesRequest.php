@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class SearchResultModifierRulesRequestSortBySearchRulesRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
-    
     public SearchRuleFilters $filters;
     public SearchResultModifierRulesRequestSortBySorting $sorting;
     public int $skip;

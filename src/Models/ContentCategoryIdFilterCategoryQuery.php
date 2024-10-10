@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class ContentCategoryIdFilterCategoryQuery extends LicensedRequest
 {
     public string $typeDefinition = "";
-    
     public FilterCollection $filters;
     public int $numberOfResults;
     public ?Language $language;

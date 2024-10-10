@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class FacetResult
 {
     public string $typeDefinition = "";
-    
     public FacetingField $field;
     
     

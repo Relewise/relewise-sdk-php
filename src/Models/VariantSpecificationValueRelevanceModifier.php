@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class VariantSpecificationValueRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.VariantSpecificationValueRelevanceModifier, Relewise.Client";
-    
     /** The specification key that this RelevanceModifier will distinguish on. */
     public string $key;
     /** The value that the key must be equal. */

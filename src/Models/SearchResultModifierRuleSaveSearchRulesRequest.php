@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class SearchResultModifierRuleSaveSearchRulesRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
-    
     public array $rules;
     public string $modifiedBy;
     

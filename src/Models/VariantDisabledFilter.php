@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class VariantDisabledFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.VariantDisabledFilter, Relewise.Client";
-    
     public static function create(bool $negated = false) : VariantDisabledFilter
     {
         $result = new VariantDisabledFilter();

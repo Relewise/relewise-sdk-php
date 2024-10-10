@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class CampaignsResponse extends CampaignCampaignEntityStateEntityResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.RetailMedia.CampaignsResponse, Relewise.Client";
-    
     public static function create(int $hits, array $hitsPerState) : CampaignsResponse
     {
         $result = new CampaignsResponse();

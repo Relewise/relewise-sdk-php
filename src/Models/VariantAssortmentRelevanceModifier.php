@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class VariantAssortmentRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.VariantAssortmentRelevanceModifier, Relewise.Client";
-    
     /** The assortments that this RelevanceModifier will multiply the weight for. */
     public array $assortments;
     /** The weight that this RelevanceModifier will multiply relevant variants with. */

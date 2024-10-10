@@ -9,7 +9,6 @@ use JsonSerializable;
 class ProductRecentlyPurchasedByCompanyFilter extends Filter implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductRecentlyPurchasedByCompanyFilter, Relewise.Client";
-    
     /** The time from which a Product should have been bought by any of the companies to be included by the filter. */
     public ?DateTime $sinceUtc;
     /** The companies that should be evaluated in this filter. */

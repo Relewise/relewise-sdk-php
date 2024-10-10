@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class stringAbandonedSearch extends AbandonedSearch
 {
     public string $typeDefinition = "";
-    
     public array $topResults;
     
     

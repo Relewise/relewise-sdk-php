@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SearchTermModifierRuleReplaceWordsInTermAction extends SearchTermModifierRuleRuleAction
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchTermModifierRule+ReplaceWordsInTermAction, Relewise.Client";
-    
     public string $words;
     public ?string $replacement;
     

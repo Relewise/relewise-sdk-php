@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class TrackContentCategoryUpdateRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackContentCategoryUpdateRequest, Relewise.Client";
-    
     public ContentCategoryUpdate $contentCategoryUpdate;
     
     public static function create(ContentCategoryUpdate $contentCategoryUpdate) : TrackContentCategoryUpdateRequest

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductAdministrativeAction extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductAdministrativeAction, Relewise.Client";
-    
     public FilterCollection $filters;
     public ?Language $language;
     public ProductAdministrativeActionUpdateKind $productUpdateKind;

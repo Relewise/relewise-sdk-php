@@ -8,7 +8,6 @@ use JsonSerializable;
 class ContentCategoryInterestTriggerConfiguration extends ContentCategoryInterestTriggerResultTriggerConfiguration implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.ContentCategoryInterestTriggerConfiguration, Relewise.Client";
-    
     public ?intRange $categoryViews;
     public ?intRange $contentViews;
     public FilterCollection $filters;

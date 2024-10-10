@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class LocationEntityStateLocationMetadataValuesLocationsRequestSortByLocationsRequestEntityFiltersEntitiesRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
-    
     public ?LocationsRequestEntityFilters $filters;
     public ?LocationsRequestSortBySorting $sorting;
     public int $skip;

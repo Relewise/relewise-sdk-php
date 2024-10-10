@@ -8,7 +8,6 @@ use JsonSerializable;
 class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryResultDetails implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductCategoryResultDetails, Relewise.Client";
-    
     public int $purchasedFromByDifferentNumberOfUsers;
     public PurchasedByUserInfo $purchasedByUser;
     

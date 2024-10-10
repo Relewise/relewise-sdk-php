@@ -6,7 +6,6 @@ abstract class FacetQuery
 {
     public string $typeDefinition = "";
     
-    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

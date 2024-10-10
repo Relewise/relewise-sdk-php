@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class PredictionRuleSaveSearchRulesResponse extends TimedResponse
 {
     public string $typeDefinition = "";
-    
     public array $rules;
     
     

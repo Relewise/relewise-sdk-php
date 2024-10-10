@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class CampaignSaveEntitiesResponse extends TimedResponse
 {
     public string $typeDefinition = "";
-    
     public array $entities;
     
     

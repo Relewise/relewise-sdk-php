@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ContentAssortmentFacet extends AssortmentFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ContentAssortmentFacet, Relewise.Client";
-    
     public static function create(AssortmentFilterType $assortmentFilterType, int ... $selected) : ContentAssortmentFacet
     {
         $result = new ContentAssortmentFacet();

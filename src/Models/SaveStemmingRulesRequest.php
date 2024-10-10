@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SaveStemmingRulesRequest extends StemmingRuleSaveSearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SaveStemmingRulesRequest, Relewise.Client";
-    
     public static function create(string $modifiedBy) : SaveStemmingRulesRequest
     {
         $result = new SaveStemmingRulesRequest();

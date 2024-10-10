@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class CampaignsRequest extends CampaignEntityStateCampaignMetadataValuesCampaignsRequestSortByCampaignsRequestEntityFiltersEntitiesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.CampaignsRequest, Relewise.Client";
-    
     public static function create(?CampaignsRequestEntityFilters $filters, ?CampaignsRequestSortBySorting $sorting, int $skip, int $take) : CampaignsRequest
     {
         $result = new CampaignsRequest();

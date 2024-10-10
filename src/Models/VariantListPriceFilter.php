@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class VariantListPriceFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.VariantListPriceFilter, Relewise.Client";
-    
     public ?floatRange $range;
     public ?Currency $currency;
     

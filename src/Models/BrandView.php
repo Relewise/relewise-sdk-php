@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class BrandView extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.BrandView, Relewise.Client";
-    
     public ?User $user;
     public Brand $brand;
     

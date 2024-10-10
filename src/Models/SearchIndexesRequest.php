@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SearchIndexesRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.SearchIndexesRequest, Relewise.Client";
-    
     public static function create() : SearchIndexesRequest
     {
         $result = new SearchIndexesRequest();

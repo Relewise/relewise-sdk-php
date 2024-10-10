@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class ProductDataIntegerValueFacetResult extends intProductDataValueFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ProductDataIntegerValueFacetResult, Relewise.Client";
-    
     public static function create(DataSelectionStrategy $dataSelectionStrategy, string $key, array $selected, ?CollectionFilterType $collectionFilterType, intAvailableFacetValue ... $available) : ProductDataIntegerValueFacetResult
     {
         $result = new ProductDataIntegerValueFacetResult();

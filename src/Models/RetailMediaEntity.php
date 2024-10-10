@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class RetailMediaEntity
 {
     public string $typeDefinition = "";
-    
     public ?string $id;
     
     

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductAssortmentFacetResult extends AssortmentFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ProductAssortmentFacetResult, Relewise.Client";
-    
     public AssortmentSelectionStrategy $assortmentSelectionStrategy;
     
     public static function create(AssortmentSelectionStrategy $assortmentSelectionStrategy, AssortmentFilterType $assortmentFilterType, array $selected, intAvailableFacetValue ... $available) : ProductAssortmentFacetResult

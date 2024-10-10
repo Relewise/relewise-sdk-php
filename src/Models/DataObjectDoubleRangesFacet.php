@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class DataObjectDoubleRangesFacet extends floatDataObjectRangesFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.DataObjectDoubleRangesFacet, Relewise.Client";
-    
     public static function create(string $key, ?array $predefinedRanges, ?float $expandedRangeSize, ?floatChainableRange ... $selected) : DataObjectDoubleRangesFacet
     {
         $result = new DataObjectDoubleRangesFacet();

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SaveAdvertisersRequest extends AdvertiserSaveEntitiesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.SaveAdvertisersRequest, Relewise.Client";
-    
     public static function create(string $modifiedBy) : SaveAdvertisersRequest
     {
         $result = new SaveAdvertisersRequest();

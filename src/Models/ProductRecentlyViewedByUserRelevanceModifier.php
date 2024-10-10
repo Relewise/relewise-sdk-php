@@ -9,7 +9,6 @@ use JsonSerializable;
 class ProductRecentlyViewedByUserRelevanceModifier extends RecentlyViewedByUserRelevanceModifier implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductRecentlyViewedByUserRelevanceModifier, Relewise.Client";
-    
     /**
      * Creates a RelevanceModifier that can change the relevance of a Product depending on whether they have viewed this product within some timespan.
      * @param DateTime $sinceUtc The start of the time period in which an entity will be considered relevant to the user if viewed previously by them.

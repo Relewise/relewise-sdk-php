@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class VariantAssortmentFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.VariantAssortmentFilter, Relewise.Client";
-    
     public array $assortments;
     
     public static function create(bool $negated = false) : VariantAssortmentFilter

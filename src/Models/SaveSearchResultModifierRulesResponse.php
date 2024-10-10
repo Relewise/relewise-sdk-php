@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SaveSearchResultModifierRulesResponse extends SearchResultModifierRuleSaveSearchRulesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.SaveSearchResultModifierRulesResponse, Relewise.Client";
-    
     public static function create(SearchResultModifierRule ... $rules) : SaveSearchResultModifierRulesResponse
     {
         $result = new SaveSearchResultModifierRulesResponse();

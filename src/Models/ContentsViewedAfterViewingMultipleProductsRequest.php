@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ContentsViewedAfterViewingMultipleProductsRequest extends ContentRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ContentsViewedAfterViewingMultipleProductsRequest, Relewise.Client";
-    
     public array $productAndVariantIds;
     
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ProductAndVariantId ... $productAndVariantIds) : ContentsViewedAfterViewingMultipleProductsRequest

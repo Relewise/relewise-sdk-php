@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class DataKeyPopularityMultiplierSelector extends PopularityMultiplierSelector
 {
     public string $typeDefinition = "Relewise.Client.Requests.PopularityMultiplierSelectors.DataKeyPopularityMultiplierSelector, Relewise.Client";
-    
     /** The data key that will be used to select a factor that is applied to the entities observed views or purchases. */
     public string $key;
     

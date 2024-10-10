@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class PopularSearchTermsRecommendationRequest extends RecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PopularSearchTermsRecommendationRequest, Relewise.Client";
-    
     public ?string $term;
     public ?RecommendPopularSearchTermSettings $settings;
     

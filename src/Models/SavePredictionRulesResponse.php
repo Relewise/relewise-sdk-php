@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SavePredictionRulesResponse extends PredictionRuleSaveSearchRulesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.SavePredictionRulesResponse, Relewise.Client";
-    
     public static function create(PredictionRule ... $rules) : SavePredictionRulesResponse
     {
         $result = new SavePredictionRulesResponse();

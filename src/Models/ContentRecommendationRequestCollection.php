@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ContentRecommendationRequestCollection extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ContentRecommendationRequestCollection, Relewise.Client";
-    
     public array $requests;
     public bool $requireDistinctContentsAcrossResults;
     

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class RedirectRulesResponse extends RedirectRuleSearchRulesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.RedirectRulesResponse, Relewise.Client";
-    
     public static function create(array $rules, int $hits) : RedirectRulesResponse
     {
         $result = new RedirectRulesResponse();

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class TriggersResponse extends TimedResponse
 {
     public string $typeDefinition = "";
-    
     public int $remainingResults;
     
     

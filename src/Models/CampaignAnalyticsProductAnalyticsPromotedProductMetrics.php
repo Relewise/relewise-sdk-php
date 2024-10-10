@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class CampaignAnalyticsProductAnalyticsPromotedProductMetrics
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.CampaignAnalytics+ProductAnalytics+PromotedProductMetrics, Relewise.Client";
-    
     public string $productId;
     public int $promotions;
     

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductCategoryView extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductCategoryView, Relewise.Client";
-    
     public ?User $user;
     public array $idPath;
     

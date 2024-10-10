@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class VariantIdRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.VariantIdRelevanceModifier, Relewise.Client";
-    
     /** The Ids of the Variants that this RelevanceModifier will distinguish on. */
     public array $variantIds;
     /** The weight that this RelevanceModifier will multiply relevant variants with. */

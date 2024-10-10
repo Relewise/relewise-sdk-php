@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class ProductCategorySortingSorting
 {
     public string $typeDefinition = "";
-    
     public SortOrder $order;
     public ProductCategorySorting $thenBy;
     

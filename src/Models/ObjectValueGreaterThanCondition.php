@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ObjectValueGreaterThanCondition extends ObjectValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueGreaterThanCondition, Relewise.Client";
-    
     public float $value;
     
     public static function create(string $key, float $value, bool $negated = false) : ObjectValueGreaterThanCondition

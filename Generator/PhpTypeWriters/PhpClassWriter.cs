@@ -114,13 +114,11 @@ public class PhpClassWriter : IPhpTypeWriter
         if (type.HasBaseTypeAndIsNotAbstract())
         {
             writer.WriteLine($"public string $typeDefinition = \"{type.FullName}, {type.Assembly.FullName!.Split(",")[0]}\";");
-            writer.WriteLine();
         }
         else if (type.IsAbstract)
         {
             // This is here so that it can be overriden by a concrete implementation in the JSON serialization.
             writer.WriteLine($"public string $typeDefinition = \"\";");
-            writer.WriteLine();
         }
 
         if (IsReadonlyStruct(type))

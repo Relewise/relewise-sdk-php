@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class CategoryLevelFilter extends Filter
 {
     public string $typeDefinition = "";
-    
     public array $levels;
     
     

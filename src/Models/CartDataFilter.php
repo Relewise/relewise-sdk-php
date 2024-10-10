@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class CartDataFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.CartDataFilter, Relewise.Client";
-    
     public string $key;
     public bool $filterOutIfKeyIsNotFound;
     public bool $mustMatchAllConditions;

@@ -6,7 +6,6 @@ namespace Relewise\Models;
 abstract class SearchRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
-    
     public ?Language $language;
     public ?Currency $currency;
     public ?User $user;

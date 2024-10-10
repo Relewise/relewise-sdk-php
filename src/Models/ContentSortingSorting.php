@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class ContentSortingSorting
 {
     public string $typeDefinition = "";
-    
     public SortOrder $order;
     public ContentSorting $thenBy;
     

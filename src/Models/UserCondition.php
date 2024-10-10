@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class UserCondition
 {
     public string $typeDefinition = "";
-    
     public bool $negated;
     
     

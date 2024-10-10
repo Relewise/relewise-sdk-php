@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SaveAdvertisersResponse extends AdvertiserSaveEntitiesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.RetailMedia.SaveAdvertisersResponse, Relewise.Client";
-    
     public static function create() : SaveAdvertisersResponse
     {
         $result = new SaveAdvertisersResponse();

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class EntityChangeTriggerResult
 {
     public string $typeDefinition = "";
-    
     public UserResultDetails $user;
     
     

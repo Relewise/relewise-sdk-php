@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class BrandQuery extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Queries.BrandQuery, Relewise.Client";
-    
     public FilterCollection $filters;
     public int $numberOfResults;
     public ?Language $language;

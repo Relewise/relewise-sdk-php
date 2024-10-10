@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductCategoryDataDoubleRangesFacetResult extends floatProductCategoryDataRangesFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ProductCategoryDataDoubleRangesFacetResult, Relewise.Client";
-    
     public static function create(string $key, ?float $expandedRangeSize, array $selected, ?floatChainableRangeAvailableFacetValue ... $available) : ProductCategoryDataDoubleRangesFacetResult
     {
         $result = new ProductCategoryDataDoubleRangesFacetResult();

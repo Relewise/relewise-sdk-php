@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class StemmingRulesResponse extends StemmingRuleSearchRulesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.StemmingRulesResponse, Relewise.Client";
-    
     public static function create(array $rules, int $hits) : StemmingRulesResponse
     {
         $result = new StemmingRulesResponse();

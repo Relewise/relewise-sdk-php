@@ -8,7 +8,6 @@ use JsonSerializable;
 class VariantChangeTriggerConfiguration extends VariantChangeTriggerResultVariantChangeTriggerResultSettingsVariantPropertySelectorEntityChangeTriggerConfiguration implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.VariantChangeTriggerConfiguration, Relewise.Client";
-    
     public static function create(string $name, string $description, VariantPropertySelector $entityPropertySelector, IChange $change, VariantChangeTriggerResultSettings $resultSettings) : VariantChangeTriggerConfiguration
     {
         $result = new VariantChangeTriggerConfiguration();

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class PopularContentCategoriesRecommendationRequest extends ContentCategoryRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PopularContentCategoriesRecommendationRequest, Relewise.Client";
-    
     public int $sinceMinutesAgo;
     public ContentCategoryRecommendationWeights $weights;
     

@@ -9,7 +9,6 @@ use JsonSerializable;
 class ProductCategoryRecentlyViewedByUserRelevanceModifier extends RecentlyViewedByUserRelevanceModifier implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductCategoryRecentlyViewedByUserRelevanceModifier, Relewise.Client";
-    
     public static function create(float $ifPreviouslyViewedByUserMultiplyWeightBy = 1, float $ifNotPreviouslyViewedByUserMultiplyWeightBy = 1) : ProductCategoryRecentlyViewedByUserRelevanceModifier
     {
         $result = new ProductCategoryRecentlyViewedByUserRelevanceModifier();

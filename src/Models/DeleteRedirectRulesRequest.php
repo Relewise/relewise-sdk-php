@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class DeleteRedirectRulesRequest extends DeleteSearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.DeleteRedirectRulesRequest, Relewise.Client";
-    
     public static function create(string $deletedBy) : DeleteRedirectRulesRequest
     {
         $result = new DeleteRedirectRulesRequest();

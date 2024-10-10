@@ -8,7 +8,6 @@ use JsonSerializable;
 class InputModifierRule extends MerchandisingRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Rules.InputModifierRule, Relewise.Client";
-    
     public static function create(string $name, string $description) : InputModifierRule
     {
         $result = new InputModifierRule();

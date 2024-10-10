@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductPerformanceRequest extends AnalyzerRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Analyzers.ProductPerformanceRequest, Relewise.Client";
-    
     public int $fromUnixTimeSeconds;
     public int $toUnixTimeSeconds;
     public ?FilterCollection $filters;

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class boolProductDataValueFacetResult extends boolDataValueFacetResult
 {
     public string $typeDefinition = "";
-    
     public DataSelectionStrategy $dataSelectionStrategy;
     
     

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductSearchSettings extends SearchSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.ProductSearchSettings, Relewise.Client";
-    
     public ?SelectedProductPropertiesSettings $selectedProductProperties;
     public ?SelectedVariantPropertiesSettings $selectedVariantProperties;
     public ?int $explodedVariants;

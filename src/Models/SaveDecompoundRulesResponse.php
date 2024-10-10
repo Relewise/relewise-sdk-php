@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SaveDecompoundRulesResponse extends DecompoundRuleSaveSearchRulesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.SaveDecompoundRulesResponse, Relewise.Client";
-    
     public static function create(DecompoundRule ... $rules) : SaveDecompoundRulesResponse
     {
         $result = new SaveDecompoundRulesResponse();

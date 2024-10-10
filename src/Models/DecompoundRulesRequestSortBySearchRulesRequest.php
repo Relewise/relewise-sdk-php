@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class DecompoundRulesRequestSortBySearchRulesRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
-    
     public SearchRuleFilters $filters;
     public DecompoundRulesRequestSortBySorting $sorting;
     public int $skip;

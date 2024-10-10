@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class PriceRangeFacet extends Facet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.PriceRangeFacet, Relewise.Client";
-    
     public ?floatRange $selected;
     public PriceSelectionStrategy $priceSelectionStrategy;
     

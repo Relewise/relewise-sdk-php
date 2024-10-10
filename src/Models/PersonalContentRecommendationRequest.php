@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class PersonalContentRecommendationRequest extends ContentRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PersonalContentRecommendationRequest, Relewise.Client";
-    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user) : PersonalContentRecommendationRequest
     {
         $result = new PersonalContentRecommendationRequest();

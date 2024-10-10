@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class CategoryHierarchyFacet extends CategoryPathValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.CategoryHierarchyFacet, Relewise.Client";
-    
     public CategorySelectionStrategy $categorySelectionStrategy;
     public ?SelectedCategoryPropertiesSettings $selectedPropertiesSettings;
     

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class Campaign extends CampaignEntityStateCampaignMetadataValuesRetailMediaEntity
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Campaign, Relewise.Client";
-    
     public string $name;
     public ?ISchedule $schedule;
     public PromotionCollection $promotions;

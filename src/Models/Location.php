@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class Location extends LocationEntityStateLocationMetadataValuesRetailMediaEntity
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Location, Relewise.Client";
-    
     /** The name of this location, e.g. "Front page", "PDP", "Home screen" etc. */
     public string $name;
     /** A key which is automatically computed based on the name of the location. This will be used as identifier to reference this location when retrieving Retail Media content for it from the consuming client This value gets created the first time the location is saved and cannot be modified in the future. Manually assigning a value to this will have no effect. */

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductView extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductView, Relewise.Client";
-    
     public ?User $user;
     public Product $product;
     public ?ProductVariant $variant;

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class LocationEntityStateLocationMetadataValuesRetailMediaEntity extends RetailMediaEntity
 {
     public string $typeDefinition = "";
-    
     public LocationEntityState $state;
     /** Managed server side only, manually setting this will have no effect */
     public LocationMetadataValues $metadata;

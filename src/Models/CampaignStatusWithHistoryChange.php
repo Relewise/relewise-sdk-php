@@ -8,7 +8,6 @@ use JsonSerializable;
 class CampaignStatusWithHistoryChange implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Campaign+StatusWithHistory+Change, Relewise.Client";
-    
     public DateTime $utcTime;
     public CampaignStatusWithHistoryStatusName $status;
     

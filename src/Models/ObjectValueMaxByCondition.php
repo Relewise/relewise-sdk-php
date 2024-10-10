@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ObjectValueMaxByCondition extends ObjectValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueMaxByCondition, Relewise.Client";
-    
     public static function create(string $key, bool $negated = false) : ObjectValueMaxByCondition
     {
         $result = new ObjectValueMaxByCondition();

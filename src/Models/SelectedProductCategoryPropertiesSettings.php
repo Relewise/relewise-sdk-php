@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SelectedProductCategoryPropertiesSettings extends SelectedCategoryPropertiesSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Shared.SelectedProductCategoryPropertiesSettings, Relewise.Client";
-    
     public static function create() : SelectedProductCategoryPropertiesSettings
     {
         $result = new SelectedProductCategoryPropertiesSettings();

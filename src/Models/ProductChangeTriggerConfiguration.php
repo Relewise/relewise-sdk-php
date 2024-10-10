@@ -8,7 +8,6 @@ use JsonSerializable;
 class ProductChangeTriggerConfiguration extends ProductChangeTriggerResultProductChangeTriggerResultSettingsProductPropertySelectorEntityChangeTriggerConfiguration implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.ProductChangeTriggerConfiguration, Relewise.Client";
-    
     public static function create(string $name, string $description, ProductPropertySelector $entityPropertySelector, IChange $change, ProductChangeTriggerResultSettings $resultSettings) : ProductChangeTriggerConfiguration
     {
         $result = new ProductChangeTriggerConfiguration();

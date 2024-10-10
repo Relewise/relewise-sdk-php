@@ -8,7 +8,6 @@ use JsonSerializable;
 class FixedPositionRule extends MerchandisingRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Rules.FixedPositionRule, Relewise.Client";
-    
     public int $position;
     
     public static function create(string $name, string $description, int $position) : FixedPositionRule

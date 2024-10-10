@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ObjectValueContainsCondition extends ObjectValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueContainsCondition, Relewise.Client";
-    
     public DataValue $value;
     public ObjectValueContainsConditionCompareMode $mode;
     

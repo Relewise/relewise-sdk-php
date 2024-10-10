@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class RelativeDateTimeCondition extends ValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Conditions.RelativeDateTimeCondition, Relewise.Client";
-    
     /** Defines whether the compared value should be before or after the current time for the condition to evaluate true. */
     public RelativeTimeComparison $comparison;
     /** Defines the time unit that the compared value is defined in. */

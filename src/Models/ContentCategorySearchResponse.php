@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ContentCategorySearchResponse extends PaginatedSearchResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.ContentCategorySearchResponse, Relewise.Client";
-    
     public static function create() : ContentCategorySearchResponse
     {
         $result = new ContentCategorySearchResponse();

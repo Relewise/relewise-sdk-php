@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ContentDisabledFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentDisabledFilter, Relewise.Client";
-    
     public static function create(bool $negated = false) : ContentDisabledFilter
     {
         $result = new ContentDisabledFilter();

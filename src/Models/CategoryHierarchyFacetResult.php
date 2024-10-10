@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class CategoryHierarchyFacetResult extends FacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.CategoryHierarchyFacetResult, Relewise.Client";
-    
     public CategorySelectionStrategy $categorySelectionStrategy;
     public array $nodes;
     

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class Advertiser extends AdvertiserEntityStateAdvertiserMetadataValuesRetailMediaEntity
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Advertiser, Relewise.Client";
-    
     public string $name;
     /** Defines what kind of promotions an advertiser is allowed to create, and constraints to what may be promoted. Constraints could as an example be all products belonging to the brand(s) this Advertiser is associated with. If null or empty, an advertiser will not be allowed to make any promotions anywhere, only useful for Advertisers in draft. */
     public ?PromotionSpecificationCollection $allowedPromotions;

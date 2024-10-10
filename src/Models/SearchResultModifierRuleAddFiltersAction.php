@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SearchResultModifierRuleAddFiltersAction extends SearchResultModifierRuleRuleAction
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchResultModifierRule+AddFiltersAction, Relewise.Client";
-    
     public FilterCollection $filters;
     
     public static function create(FilterCollection $filters) : SearchResultModifierRuleAddFiltersAction

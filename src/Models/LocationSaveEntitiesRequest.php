@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class LocationSaveEntitiesRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
-    
     public array $entities;
     public string $modifiedBy;
     

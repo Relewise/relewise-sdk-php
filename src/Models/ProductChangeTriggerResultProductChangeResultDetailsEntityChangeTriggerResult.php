@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class ProductChangeTriggerResultProductChangeResultDetailsEntityChangeTriggerResult extends EntityChangeTriggerResult
 {
     public string $typeDefinition = "";
-    
     public array $entitiesWithChanges;
     
     

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class HasParentCategoryFilter extends Filter
 {
     public string $typeDefinition = "";
-    
     public array $categoryIds;
     
     

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ObjectValueMinByCondition extends ObjectValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueMinByCondition, Relewise.Client";
-    
     public static function create(string $key, bool $negated = false) : ObjectValueMinByCondition
     {
         $result = new ObjectValueMinByCondition();

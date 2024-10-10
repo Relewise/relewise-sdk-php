@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class PurchaseQualifiers
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.PurchaseQualifiers, Relewise.Client";
-    
     /** How fresh recent purchase must be to count as hit? */
     public int $sinceMinutesAgo;
     /** Should hit be count if user recently purchased product? */

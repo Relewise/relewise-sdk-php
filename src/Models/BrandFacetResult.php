@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class BrandFacetResult extends stringBrandNameAndIdResultValueFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.BrandFacetResult, Relewise.Client";
-    
     public static function create(array $selected, BrandNameAndIdResultAvailableFacetValue ... $available) : BrandFacetResult
     {
         $result = new BrandFacetResult();

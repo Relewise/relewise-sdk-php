@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class ValueCondition
 {
     public string $typeDefinition = "";
-    
     /** Whether the condition should be negated / inverted */
     public bool $negated;
     

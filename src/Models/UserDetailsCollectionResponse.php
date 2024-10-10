@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class UserDetailsCollectionResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.UserDetailsCollectionResponse, Relewise.Client";
-    
     public array $results;
     
     public static function create(array ... $results) : UserDetailsCollectionResponse

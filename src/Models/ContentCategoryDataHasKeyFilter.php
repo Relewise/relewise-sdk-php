@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ContentCategoryDataHasKeyFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentCategoryDataHasKeyFilter, Relewise.Client";
-    
     public string $key;
     
     public static function create(string $key, bool $negated = false) : ContentCategoryDataHasKeyFilter

@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class RecentlyPurchasedFacetResult extends boolboolValueFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.RecentlyPurchasedFacetResult, Relewise.Client";
-    
     public PurchaseQualifiers $purchaseQualifiers;
     
     public static function create(PurchaseQualifiers $purchaseQualifiers, array $selected, boolAvailableFacetValue ... $available) : RecentlyPurchasedFacetResult

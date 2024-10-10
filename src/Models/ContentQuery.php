@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ContentQuery extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Queries.ContentQuery, Relewise.Client";
-    
     public FilterCollection $filters;
     public int $numberOfResults;
     public ?Language $language;

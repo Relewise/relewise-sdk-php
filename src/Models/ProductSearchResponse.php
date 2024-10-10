@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductSearchResponse extends PaginatedSearchResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.ProductSearchResponse, Relewise.Client";
-    
     public array $results;
     public ProductFacetResult $facets;
     public array $recommendations;

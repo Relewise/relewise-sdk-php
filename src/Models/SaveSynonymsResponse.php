@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SaveSynonymsResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.SaveSynonymsResponse, Relewise.Client";
-    
     public array $values;
     
     public static function create(Synonym ... $values) : SaveSynonymsResponse

@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ContentCategoryUpdate extends CategoryUpdate
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentCategoryUpdate, Relewise.Client";
-    
     public ContentCategory $category;
     
     public static function create(ContentCategory $category, CategoryUpdateUpdateKind $kind = CategoryUpdateUpdateKind::UpdateAndAppend) : ContentCategoryUpdate

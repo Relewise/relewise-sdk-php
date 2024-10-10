@@ -6,7 +6,6 @@ namespace Relewise\Models;
 class ProductPromotionSpecificationVariation extends PromotionSpecificationVariation
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.ProductPromotion+SpecificationVariation, Relewise.Client";
-    
     /** The maximum number of products to promote at a time in this variation. */
     public int $maxCount;
     

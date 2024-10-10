@@ -9,7 +9,6 @@ abstract class UserActivityTriggerResultTriggerConfiguration extends TriggerConf
 {
     public string $typeDefinition = "";
     
-    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

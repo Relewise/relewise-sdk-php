@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class HasClassificationCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasClassificationCondition, Relewise.Client";
-    
     public string $key;
     public string $value;
     

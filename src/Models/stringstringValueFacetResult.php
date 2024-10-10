@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class stringstringValueFacetResult extends FacetResult
 {
     public string $typeDefinition = "";
-    
     public array $selected;
     public array $available;
     

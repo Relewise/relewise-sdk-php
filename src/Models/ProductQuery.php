@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class ProductQuery extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Queries.ProductQuery, Relewise.Client";
-    
     public ?FilterCollection $filters;
     /** @deprecated For better paging support, please use NextPageToken and PageSize */
     public int $numberOfResults;

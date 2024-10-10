@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class LocationsRequest extends LocationEntityStateLocationMetadataValuesLocationsRequestSortByLocationsRequestEntityFiltersEntitiesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.LocationsRequest, Relewise.Client";
-    
     public static function create(?LocationsRequestEntityFilters $filters, ?LocationsRequestSortBySorting $sorting, int $skip, int $take) : LocationsRequest
     {
         $result = new LocationsRequest();

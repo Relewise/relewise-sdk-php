@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class VariantDataHasKeyFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.VariantDataHasKeyFilter, Relewise.Client";
-    
     public string $key;
     
     public static function create(string $key, bool $negated = false) : VariantDataHasKeyFilter

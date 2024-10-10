@@ -5,7 +5,6 @@ namespace Relewise\Models;
 abstract class PaginatedSearchResponse extends SearchResponse
 {
     public string $typeDefinition = "";
-    
     public int $hits;
     
     

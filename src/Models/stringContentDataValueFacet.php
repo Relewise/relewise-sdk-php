@@ -6,7 +6,6 @@ abstract class stringContentDataValueFacet extends stringDataValueFacet
 {
     public string $typeDefinition = "";
     
-    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

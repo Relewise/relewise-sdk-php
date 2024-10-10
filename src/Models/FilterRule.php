@@ -8,7 +8,6 @@ use JsonSerializable;
 class FilterRule extends MerchandisingRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Rules.FilterRule, Relewise.Client";
-    
     public static function create(string $name, string $description) : FilterRule
     {
         $result = new FilterRule();

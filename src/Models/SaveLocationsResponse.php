@@ -5,7 +5,6 @@ namespace Relewise\Models;
 class SaveLocationsResponse extends LocationSaveEntitiesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.RetailMedia.SaveLocationsResponse, Relewise.Client";
-    
     public static function create() : SaveLocationsResponse
     {
         $result = new SaveLocationsResponse();
