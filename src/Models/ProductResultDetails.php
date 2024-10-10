@@ -361,6 +361,7 @@ class ProductResultDetails implements JsonSerializable
         array_push($this->filteredVariants, $filteredVariants);
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

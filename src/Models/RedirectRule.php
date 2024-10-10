@@ -133,6 +133,7 @@ class RedirectRule extends SearchRule implements JsonSerializable
         $this->isApproved = $isApproved;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

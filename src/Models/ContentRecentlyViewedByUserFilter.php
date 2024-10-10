@@ -53,6 +53,7 @@ class ContentRecentlyViewedByUserFilter extends Filter implements JsonSerializab
         $this->settings = $settings;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

@@ -58,6 +58,7 @@ class ProductRecentlyViewedByUserRelevanceModifier extends RecentlyViewedByUserR
         $this->filters = $filters;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

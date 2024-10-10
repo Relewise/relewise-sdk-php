@@ -171,6 +171,7 @@ class AbandonedSearchTriggerConfiguration extends AbandonedSearchTriggerResultTr
         $this->userConditions = $userConditions;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

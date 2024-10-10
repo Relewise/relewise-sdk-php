@@ -104,6 +104,7 @@ abstract class AbandonedSearchTriggerResultTriggerConfiguration extends TriggerC
         $this->userConditions = $userConditions;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

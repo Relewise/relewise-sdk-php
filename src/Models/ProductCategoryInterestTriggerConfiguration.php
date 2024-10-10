@@ -139,6 +139,7 @@ class ProductCategoryInterestTriggerConfiguration extends ProductCategoryInteres
         $this->userConditions = $userConditions;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

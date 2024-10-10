@@ -41,6 +41,7 @@ class DateTimeRange implements JsonSerializable
         $this->upperBoundInclusive = $upperBoundInclusive;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

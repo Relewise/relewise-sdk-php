@@ -266,6 +266,7 @@ class Synonym implements JsonSerializable
         $this->allowInPredictions = $allowInPredictions;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

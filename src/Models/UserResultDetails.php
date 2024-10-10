@@ -280,6 +280,7 @@ class UserResultDetails implements JsonSerializable
         $this->company = $company;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

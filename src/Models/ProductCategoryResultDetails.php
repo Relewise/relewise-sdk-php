@@ -175,6 +175,7 @@ class ProductCategoryResultDetails extends ProductCategoryResultDetailsCategoryR
         array_push($this->parentCategories, $parentCategories);
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

@@ -52,6 +52,7 @@ class PurchasedByUserCompanyInfo implements JsonSerializable
         $this->purchasedByParentCompany = $purchasedByParentCompany;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

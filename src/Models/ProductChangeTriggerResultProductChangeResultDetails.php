@@ -65,6 +65,7 @@ class ProductChangeTriggerResultProductChangeResultDetails implements JsonSerial
         $this->product = $product;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

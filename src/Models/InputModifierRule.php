@@ -109,6 +109,7 @@ class InputModifierRule extends MerchandisingRule implements JsonSerializable
         $this->settings = $settings;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

@@ -136,6 +136,7 @@ class ProductChangeTriggerConfiguration extends ProductChangeTriggerResultProduc
         $this->userConditions = $userConditions;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

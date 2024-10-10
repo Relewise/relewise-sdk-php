@@ -108,6 +108,7 @@ class AdvertiserMetadataValues extends MetadataValues implements JsonSerializabl
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

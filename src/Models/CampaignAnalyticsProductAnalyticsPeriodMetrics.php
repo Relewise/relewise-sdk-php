@@ -87,6 +87,7 @@ class CampaignAnalyticsProductAnalyticsPeriodMetrics implements JsonSerializable
         array_push($this->currencies, $currencies);
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

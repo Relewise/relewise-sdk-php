@@ -41,6 +41,7 @@ class ScheduledPeriod implements JsonSerializable
         $this->toUtc = $toUtc;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

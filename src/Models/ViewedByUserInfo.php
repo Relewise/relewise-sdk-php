@@ -41,6 +41,7 @@ class ViewedByUserInfo implements JsonSerializable
         $this->totalNumberOfTimesViewed = $totalNumberOfTimesViewed;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

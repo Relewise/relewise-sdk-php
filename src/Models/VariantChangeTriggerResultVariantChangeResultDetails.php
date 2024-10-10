@@ -77,6 +77,7 @@ class VariantChangeTriggerResultVariantChangeResultDetails implements JsonSerial
         $this->variant = $variant;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

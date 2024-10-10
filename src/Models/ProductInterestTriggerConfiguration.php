@@ -138,6 +138,7 @@ class ProductInterestTriggerConfiguration extends ProductInterestTriggerResultTr
         $this->userConditions = $userConditions;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

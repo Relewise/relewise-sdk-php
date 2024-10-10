@@ -169,6 +169,7 @@ abstract class VariantChangeTriggerResultVariantChangeTriggerResultSettingsVaria
         $this->userConditions = $userConditions;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

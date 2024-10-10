@@ -113,6 +113,7 @@ class CartDetails implements JsonSerializable
         $this->data = $data;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

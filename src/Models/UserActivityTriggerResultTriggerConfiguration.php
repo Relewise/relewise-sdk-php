@@ -104,6 +104,7 @@ abstract class UserActivityTriggerResultTriggerConfiguration extends TriggerConf
         $this->userConditions = $userConditions;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

@@ -58,6 +58,7 @@ class ProductRecentlyViewedByUserParentCompanyFilter extends Filter implements J
         $this->settings = $settings;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

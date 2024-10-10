@@ -230,6 +230,7 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails implements Json
         array_push($this->parentCategories, $parentCategories);
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

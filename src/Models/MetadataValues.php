@@ -72,6 +72,7 @@ abstract class MetadataValues implements JsonSerializable
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

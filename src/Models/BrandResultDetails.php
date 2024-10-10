@@ -186,6 +186,7 @@ class BrandResultDetails implements JsonSerializable
         $this->purchasedByUser = $purchasedByUser;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

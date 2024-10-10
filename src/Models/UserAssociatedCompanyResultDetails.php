@@ -88,6 +88,7 @@ class UserAssociatedCompanyResultDetails implements JsonSerializable
         $this->lastAccessedUtc = $lastAccessedUtc;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

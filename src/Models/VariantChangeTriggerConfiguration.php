@@ -136,6 +136,7 @@ class VariantChangeTriggerConfiguration extends VariantChangeTriggerResultVarian
         $this->userConditions = $userConditions;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

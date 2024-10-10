@@ -42,6 +42,7 @@ class CampaignStatusWithHistoryChange implements JsonSerializable
         $this->status = $status;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

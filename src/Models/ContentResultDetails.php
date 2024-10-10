@@ -207,6 +207,7 @@ class ContentResultDetails implements JsonSerializable
         $this->deleted = $deleted;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

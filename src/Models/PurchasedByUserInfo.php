@@ -41,6 +41,7 @@ class PurchasedByUserInfo implements JsonSerializable
         $this->totalNumberOfTimesPurchased = $totalNumberOfTimesPurchased;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

@@ -53,6 +53,7 @@ class ProductCategoryRecentlyViewedByUserFilter extends Filter implements JsonSe
         $this->settings = $settings;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

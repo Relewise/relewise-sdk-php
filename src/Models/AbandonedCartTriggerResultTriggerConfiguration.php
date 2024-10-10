@@ -104,6 +104,7 @@ abstract class AbandonedCartTriggerResultTriggerConfiguration extends TriggerCon
         $this->userConditions = $userConditions;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

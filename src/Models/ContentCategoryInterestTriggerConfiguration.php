@@ -139,6 +139,7 @@ class ContentCategoryInterestTriggerConfiguration extends ContentCategoryInteres
         $this->userConditions = $userConditions;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

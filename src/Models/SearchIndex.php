@@ -120,6 +120,7 @@ class SearchIndex implements JsonSerializable
         $this->configuration = $configuration;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

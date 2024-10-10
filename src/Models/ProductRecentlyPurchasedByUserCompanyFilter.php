@@ -64,6 +64,7 @@ class ProductRecentlyPurchasedByUserCompanyFilter extends Filter implements Json
         $this->settings = $settings;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();

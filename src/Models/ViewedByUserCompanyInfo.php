@@ -52,6 +52,7 @@ class ViewedByUserCompanyInfo implements JsonSerializable
         $this->viewedByParentCompany = $viewedByParentCompany;
         return $this;
     }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();
