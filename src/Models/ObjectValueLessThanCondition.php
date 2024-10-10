@@ -23,32 +23,38 @@ class ObjectValueLessThanCondition extends ObjectValueCondition
         }
         return $result;
     }
+    
     function setValue(float $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setObjectPath(string ... $objectPath)
     {
         $this->objectPath = $objectPath;
         return $this;
     }
+    
     /** @param ?string[] $objectPath new value. */
     function setObjectPathFromArray(array $objectPath)
     {
         $this->objectPath = $objectPath;
         return $this;
     }
+    
     function addToObjectPath(string $objectPath)
     {
         if (!isset($this->objectPath))

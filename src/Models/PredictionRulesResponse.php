@@ -17,17 +17,20 @@ class PredictionRulesResponse extends PredictionRuleSearchRulesResponse
         $result = PredictionRuleSearchRulesResponse::hydrateBase(new PredictionRulesResponse(), $arr);
         return $result;
     }
+    
     function setRules(PredictionRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param PredictionRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(PredictionRule $rules)
     {
         if (!isset($this->rules))
@@ -37,11 +40,13 @@ class PredictionRulesResponse extends PredictionRuleSearchRulesResponse
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

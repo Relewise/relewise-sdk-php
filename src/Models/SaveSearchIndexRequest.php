@@ -27,11 +27,13 @@ class SaveSearchIndexRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setIndex(SearchIndex $index)
     {
         $this->index = $index;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

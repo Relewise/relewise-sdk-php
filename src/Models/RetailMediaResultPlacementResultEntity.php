@@ -19,6 +19,7 @@ class RetailMediaResultPlacementResultEntity
         }
         return $result;
     }
+    
     function setPromotedProduct(?RetailMediaResultPlacementResultEntityProduct $promotedProduct)
     {
         $this->promotedProduct = $promotedProduct;

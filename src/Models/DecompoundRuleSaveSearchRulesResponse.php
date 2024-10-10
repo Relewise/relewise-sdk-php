@@ -27,17 +27,20 @@ abstract class DecompoundRuleSaveSearchRulesResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setRules(DecompoundRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param DecompoundRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(DecompoundRule $rules)
     {
         if (!isset($this->rules))
@@ -47,6 +50,7 @@ abstract class DecompoundRuleSaveSearchRulesResponse extends TimedResponse
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

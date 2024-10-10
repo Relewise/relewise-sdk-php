@@ -20,11 +20,13 @@ class SearchIndexResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setIndex(SearchIndex $index)
     {
         $this->index = $index;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

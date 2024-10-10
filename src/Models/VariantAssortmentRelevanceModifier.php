@@ -39,12 +39,14 @@ class VariantAssortmentRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    
     /** The assortments that this RelevanceModifier will multiply the weight for. */
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     /**
      * The assortments that this RelevanceModifier will multiply the weight for.
      * @param int[] $assortments new value.
@@ -54,6 +56,7 @@ class VariantAssortmentRelevanceModifier extends RelevanceModifier
         $this->assortments = $assortments;
         return $this;
     }
+    
     /** The assortments that this RelevanceModifier will multiply the weight for. */
     function addToAssortments(int $assortments)
     {
@@ -64,12 +67,14 @@ class VariantAssortmentRelevanceModifier extends RelevanceModifier
         array_push($this->assortments, $assortments);
         return $this;
     }
+    
     /** The weight that this RelevanceModifier will multiply relevant variants with. */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

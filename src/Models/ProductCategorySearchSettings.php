@@ -25,11 +25,13 @@ class ProductCategorySearchSettings extends SearchSettings
         }
         return $result;
     }
+    
     function setSelectedCategoryProperties(?SelectedProductCategoryPropertiesSettings $selectedCategoryProperties)
     {
         $this->selectedCategoryProperties = $selectedCategoryProperties;
         return $this;
     }
+    
     function setRecommendations(RecommendationSettings $recommendations)
     {
         $this->recommendations = $recommendations;

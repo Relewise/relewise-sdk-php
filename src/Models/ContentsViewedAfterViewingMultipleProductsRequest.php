@@ -29,17 +29,20 @@ class ContentsViewedAfterViewingMultipleProductsRequest extends ContentRecommend
         }
         return $result;
     }
+    
     function setProductAndVariantIds(ProductAndVariantId ... $productAndVariantIds)
     {
         $this->productAndVariantIds = $productAndVariantIds;
         return $this;
     }
+    
     /** @param ProductAndVariantId[] $productAndVariantIds new value. */
     function setProductAndVariantIdsFromArray(array $productAndVariantIds)
     {
         $this->productAndVariantIds = $productAndVariantIds;
         return $this;
     }
+    
     function addToProductAndVariantIds(ProductAndVariantId $productAndVariantIds)
     {
         if (!isset($this->productAndVariantIds))
@@ -49,36 +52,43 @@ class ContentsViewedAfterViewingMultipleProductsRequest extends ContentRecommend
         array_push($this->productAndVariantIds, $productAndVariantIds);
         return $this;
     }
+    
     function setSettings(ContentRecommendationRequestSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setDisplayedAtLocationType(string $displayedAtLocationType)
     {
         $this->displayedAtLocationType = $displayedAtLocationType;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

@@ -22,6 +22,7 @@ class ResultMustHaveVariantConstraint extends ProductSearchResultConstraint
         }
         return $result;
     }
+    
     /** Used to instruct the search engine that products which does not have any variants, will be returned anyway. */
     function setExceptWhenProductHasNoVariants(bool $exceptWhenProductHasNoVariants)
     {

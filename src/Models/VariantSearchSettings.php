@@ -20,6 +20,7 @@ class VariantSearchSettings
         }
         return $result;
     }
+    
     /** @deprecated Use ProductSearchSettings.ResultConstraint instead */
     function setExcludeResultsWithoutVariant(bool $excludeResultsWithoutVariant)
     {

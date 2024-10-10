@@ -25,17 +25,20 @@ class ApplicableIndexes
         }
         return $result;
     }
+    
     function setIndexes(string ... $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
+    
     /** @param string[] $indexes new value. */
     function setIndexesFromArray(array $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
+    
     function addToIndexes(string $indexes)
     {
         if (!isset($this->indexes))

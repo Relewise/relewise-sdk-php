@@ -25,11 +25,13 @@ class Channel
         }
         return $result;
     }
+    
     function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
+    
     function setSubChannel(?Channel $subChannel)
     {
         $this->subChannel = $subChannel;

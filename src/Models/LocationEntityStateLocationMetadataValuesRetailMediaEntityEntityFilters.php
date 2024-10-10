@@ -31,22 +31,26 @@ abstract class LocationEntityStateLocationMetadataValuesRetailMediaEntityEntityF
         }
         return $result;
     }
+    
     function setTerm(?string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setStates(LocationEntityState ... $states)
     {
         $this->states = $states;
         return $this;
     }
+    
     /** @param ?LocationEntityState[] $states new value. */
     function setStatesFromArray(array $states)
     {
         $this->states = $states;
         return $this;
     }
+    
     function addToStates(LocationEntityState $states)
     {
         if (!isset($this->states))

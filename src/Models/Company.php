@@ -34,16 +34,19 @@ class Company
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setParent(?Company $parent)
     {
         $this->parent = $parent;
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -53,6 +56,7 @@ class Company
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param ?array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {

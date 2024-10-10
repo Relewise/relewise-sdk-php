@@ -27,27 +27,32 @@ class CategoryHierarchyFacet extends CategoryPathValueFacet
         }
         return $result;
     }
+    
     function setCategorySelectionStrategy(CategorySelectionStrategy $categorySelectionStrategy)
     {
         $this->categorySelectionStrategy = $categorySelectionStrategy;
         return $this;
     }
+    
     function setSelectedPropertiesSettings(?SelectedCategoryPropertiesSettings $selectedPropertiesSettings)
     {
         $this->selectedPropertiesSettings = $selectedPropertiesSettings;
         return $this;
     }
+    
     function setSelected(CategoryPath ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?CategoryPath[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(CategoryPath $selected)
     {
         if (!isset($this->selected))
@@ -57,11 +62,13 @@ class CategoryHierarchyFacet extends CategoryPathValueFacet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

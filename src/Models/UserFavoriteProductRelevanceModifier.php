@@ -51,30 +51,35 @@ class UserFavoriteProductRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    
     /** The timespan in minutes up till now that a product should be considered relevant if it has been bought by the user. */
     function setSinceMinutesAgo(int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     /** The multiplier that decides how important the amount of times the product has been bought is. */
     function setNumberOfPurchasesWeight(float $numberOfPurchasesWeight)
     {
         $this->numberOfPurchasesWeight = $numberOfPurchasesWeight;
         return $this;
     }
+    
     /** The multiplier that decides how important the amount of times the product has been bought is. */
     function setMostRecentPurchaseWeight(float $mostRecentPurchaseWeight)
     {
         $this->mostRecentPurchaseWeight = $mostRecentPurchaseWeight;
         return $this;
     }
+    
     /** The multiplier that decides how important more recent purchases should */
     function setIfNotPurchasedBaseWeight(float $ifNotPurchasedBaseWeight)
     {
         $this->ifNotPurchasedBaseWeight = $ifNotPurchasedBaseWeight;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

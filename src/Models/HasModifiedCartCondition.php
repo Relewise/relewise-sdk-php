@@ -27,16 +27,19 @@ class HasModifiedCartCondition extends UserCondition
         }
         return $result;
     }
+    
     function setWithinMinutes(int $withinMinutes)
     {
         $this->withinMinutes = $withinMinutes;
         return $this;
     }
+    
     function setCartName(string $cartName)
     {
         $this->cartName = $cartName;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

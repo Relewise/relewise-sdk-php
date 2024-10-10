@@ -24,6 +24,7 @@ public class PhpPropertySetterMethodsWriter
             {
                 var keyTypeName = phpWriter.PhpTypeName(keyType);
                 var valueTypeName = phpWriter.PhpTypeName(valueType);
+                writer.WriteLine();
                 writer.WriteCommentBlock(
                     phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
                     deprecationComment
@@ -42,6 +43,7 @@ public class PhpPropertySetterMethodsWriter
                 writer.Indent--;
                 writer.WriteLine("}");
 
+                writer.WriteLine();
                 writer.WriteCommentBlock(
                     phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
                     deprecationComment,
@@ -57,6 +59,7 @@ public class PhpPropertySetterMethodsWriter
             }
             else
             {
+                writer.WriteLine();
                 writer.WriteCommentBlock(
                     phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
                     deprecationComment
@@ -82,6 +85,7 @@ public class PhpPropertySetterMethodsWriter
             }
             if (elementType is not null)
             {
+                writer.WriteLine();
                 writer.WriteCommentBlock(
                     phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
                     deprecationComment,
@@ -97,6 +101,7 @@ public class PhpPropertySetterMethodsWriter
 
                 var elementTypeName = phpWriter.PhpTypeName(elementType);
 
+                writer.WriteLine();
                 writer.WriteCommentBlock(
                     phpWriter.XmlDocumentation.GetSummary(classType, propertyName),
                     deprecationComment

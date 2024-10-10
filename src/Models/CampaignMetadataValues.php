@@ -48,51 +48,61 @@ class CampaignMetadataValues extends MetadataValues implements JsonSerializable
         }
         return $result;
     }
+    
     function setProposed(?DateTime $proposed)
     {
         $this->proposed = $proposed;
         return $this;
     }
+    
     function setProposedBy(?string $proposedBy)
     {
         $this->proposedBy = $proposedBy;
         return $this;
     }
+    
     function setApproved(?DateTime $approved)
     {
         $this->approved = $approved;
         return $this;
     }
+    
     function setApprovedBy(?string $approvedBy)
     {
         $this->approvedBy = $approvedBy;
         return $this;
     }
+    
     function setArchived(?DateTime $archived)
     {
         $this->archived = $archived;
         return $this;
     }
+    
     function setArchivedBy(?string $archivedBy)
     {
         $this->archivedBy = $archivedBy;
         return $this;
     }
+    
     function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
+    
     function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
+    
     function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

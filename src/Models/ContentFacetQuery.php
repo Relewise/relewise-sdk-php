@@ -24,17 +24,20 @@ class ContentFacetQuery extends FacetQuery
         }
         return $result;
     }
+    
     function setItems(Facet ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param Facet[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(Facet $items)
     {
         if (!isset($this->items))

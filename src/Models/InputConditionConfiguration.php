@@ -24,11 +24,13 @@ class InputConditionConfiguration
         }
         return $result;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setEvaluationMode(EvaluationMode $evaluationMode)
     {
         $this->evaluationMode = $evaluationMode;

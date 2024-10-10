@@ -33,26 +33,31 @@ class ProductDisplayNameFilter extends Filter
         }
         return $result;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setConditions(?ValueConditionCollection $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
+    
     function setMustMatchAllConditions(bool $mustMatchAllConditions)
     {
         $this->mustMatchAllConditions = $mustMatchAllConditions;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

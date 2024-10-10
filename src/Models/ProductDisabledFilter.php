@@ -16,11 +16,13 @@ class ProductDisabledFilter extends Filter
         $result = Filter::hydrateBase(new ProductDisabledFilter(), $arr);
         return $result;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

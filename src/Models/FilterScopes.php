@@ -24,11 +24,13 @@ class FilterScopes
         }
         return $result;
     }
+    
     function setDefault(?FilterScopeSettings $default)
     {
         $this->default = $default;
         return $this;
     }
+    
     function setFill(?FilterScopeSettings $fill)
     {
         $this->fill = $fill;

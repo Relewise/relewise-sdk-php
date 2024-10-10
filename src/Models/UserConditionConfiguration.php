@@ -19,6 +19,7 @@ class UserConditionConfiguration
         }
         return $result;
     }
+    
     function setConditions(UserConditionCollection $conditions)
     {
         $this->conditions = $conditions;

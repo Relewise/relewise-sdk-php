@@ -24,11 +24,13 @@ class RecommendationSettings
         }
         return $result;
     }
+    
     function setTake(?int $take)
     {
         $this->take = $take;
         return $this;
     }
+    
     function setOnlyIncludeRecommendationsWhenLessResultsThan(?int $onlyIncludeRecommendationsWhenLessResultsThan)
     {
         $this->onlyIncludeRecommendationsWhenLessResultsThan = $onlyIncludeRecommendationsWhenLessResultsThan;

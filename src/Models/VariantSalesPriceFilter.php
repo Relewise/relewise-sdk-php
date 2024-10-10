@@ -28,21 +28,25 @@ class VariantSalesPriceFilter extends Filter
         }
         return $result;
     }
+    
     function setRange(?floatRange $range)
     {
         $this->range = $range;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

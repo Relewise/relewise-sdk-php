@@ -25,17 +25,20 @@ class VariantIdFilter extends Filter
         }
         return $result;
     }
+    
     function setVariantIds(string ... $variantIds)
     {
         $this->variantIds = $variantIds;
         return $this;
     }
+    
     /** @param string[] $variantIds new value. */
     function setVariantIdsFromArray(array $variantIds)
     {
         $this->variantIds = $variantIds;
         return $this;
     }
+    
     function addToVariantIds(string $variantIds)
     {
         if (!isset($this->variantIds))
@@ -45,11 +48,13 @@ class VariantIdFilter extends Filter
         array_push($this->variantIds, $variantIds);
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

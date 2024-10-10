@@ -52,17 +52,20 @@ class ProductSearchResponse extends PaginatedSearchResponse
         }
         return $result;
     }
+    
     function setResults(ProductResult ... $results)
     {
         $this->results = $results;
         return $this;
     }
+    
     /** @param ProductResult[] $results new value. */
     function setResultsFromArray(array $results)
     {
         $this->results = $results;
         return $this;
     }
+    
     function addToResults(ProductResult $results)
     {
         if (!isset($this->results))
@@ -72,22 +75,26 @@ class ProductSearchResponse extends PaginatedSearchResponse
         array_push($this->results, $results);
         return $this;
     }
+    
     function setFacets(ProductFacetResult $facets)
     {
         $this->facets = $facets;
         return $this;
     }
+    
     function setRecommendations(ProductResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     /** @param ProductResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     function addToRecommendations(ProductResult $recommendations)
     {
         if (!isset($this->recommendations))
@@ -97,17 +104,20 @@ class ProductSearchResponse extends PaginatedSearchResponse
         array_push($this->recommendations, $recommendations);
         return $this;
     }
+    
     function setRedirects(RedirectResult ... $redirects)
     {
         $this->redirects = $redirects;
         return $this;
     }
+    
     /** @param RedirectResult[] $redirects new value. */
     function setRedirectsFromArray(array $redirects)
     {
         $this->redirects = $redirects;
         return $this;
     }
+    
     function addToRedirects(RedirectResult $redirects)
     {
         if (!isset($this->redirects))
@@ -117,16 +127,19 @@ class ProductSearchResponse extends PaginatedSearchResponse
         array_push($this->redirects, $redirects);
         return $this;
     }
+    
     function setRetailMedia(RetailMediaResult $retailMedia)
     {
         $this->retailMedia = $retailMedia;
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

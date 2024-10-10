@@ -24,11 +24,13 @@ class DataValue
         }
         return $result;
     }
+    
     function setType(DataValueDataValueTypes $type)
     {
         $this->type = $type;
         return $this;
     }
+    
     function setValue(mixed $value)
     {
         $this->value = $value;

@@ -31,17 +31,20 @@ class ContentCategoryRecommendationRequestCollection extends LicensedRequest
         }
         return $result;
     }
+    
     function setRequests(ContentCategoryRecommendationRequest ... $requests)
     {
         $this->requests = $requests;
         return $this;
     }
+    
     /** @param ContentCategoryRecommendationRequest[] $requests new value. */
     function setRequestsFromArray(array $requests)
     {
         $this->requests = $requests;
         return $this;
     }
+    
     function addToRequests(ContentCategoryRecommendationRequest $requests)
     {
         if (!isset($this->requests))
@@ -51,6 +54,7 @@ class ContentCategoryRecommendationRequestCollection extends LicensedRequest
         array_push($this->requests, $requests);
         return $this;
     }
+    
     function setRequireDistinctCategoriesAcrossResults(bool $requireDistinctCategoriesAcrossResults)
     {
         $this->requireDistinctCategoriesAcrossResults = $requireDistinctCategoriesAcrossResults;

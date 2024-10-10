@@ -24,17 +24,20 @@ class LocationPlacementCollection
         }
         return $result;
     }
+    
     function setItems(LocationPlacement ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param LocationPlacement[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(LocationPlacement $items)
     {
         if (!isset($this->items))

@@ -19,6 +19,7 @@ class FilterSettings
         }
         return $result;
     }
+    
     function setScopes(?FilterScopes $scopes)
     {
         $this->scopes = $scopes;

@@ -20,11 +20,13 @@ class MerchandisingRuleResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setRule(MerchandisingRule $rule)
     {
         $this->rule = $rule;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

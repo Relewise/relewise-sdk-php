@@ -26,11 +26,13 @@ class AdvertisersRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(AdvertisersRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

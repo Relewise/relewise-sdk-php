@@ -21,6 +21,7 @@ class TrackOrderRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setOrder(Order $order)
     {
         $this->order = $order;

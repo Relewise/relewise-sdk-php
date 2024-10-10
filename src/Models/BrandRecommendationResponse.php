@@ -25,17 +25,20 @@ class BrandRecommendationResponse extends RecommendationResponse
         }
         return $result;
     }
+    
     function setRecommendations(BrandResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     /** @param BrandResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     function addToRecommendations(BrandResult $recommendations)
     {
         if (!isset($this->recommendations))
@@ -45,6 +48,7 @@ class BrandRecommendationResponse extends RecommendationResponse
         array_push($this->recommendations, $recommendations);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

@@ -38,27 +38,32 @@ class ProductPerformanceResultSalesMetrics
         }
         return $result;
     }
+    
     function setOrders(int $orders)
     {
         $this->orders = $orders;
         return $this;
     }
+    
     function setAverageNoOfLineItems(float $averageNoOfLineItems)
     {
         $this->averageNoOfLineItems = $averageNoOfLineItems;
         return $this;
     }
+    
     function setCurrencies(ProductPerformanceResultSalesByCurrency ... $currencies)
     {
         $this->currencies = $currencies;
         return $this;
     }
+    
     /** @param ProductPerformanceResultSalesByCurrency[] $currencies new value. */
     function setCurrenciesFromArray(array $currencies)
     {
         $this->currencies = $currencies;
         return $this;
     }
+    
     function addToCurrencies(ProductPerformanceResultSalesByCurrency $currencies)
     {
         if (!isset($this->currencies))
@@ -68,6 +73,7 @@ class ProductPerformanceResultSalesMetrics
         array_push($this->currencies, $currencies);
         return $this;
     }
+    
     function setWithKnownCartOpener(ProductPerformanceResultSalesWithKnownCartOpenerMetrics $withKnownCartOpener)
     {
         $this->withKnownCartOpener = $withKnownCartOpener;

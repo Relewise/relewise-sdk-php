@@ -17,17 +17,20 @@ class AdvertisersResponse extends AdvertiserAdvertiserEntityStateEntityResponse
         $result = AdvertiserAdvertiserEntityStateEntityResponse::hydrateBase(new AdvertisersResponse(), $arr);
         return $result;
     }
+    
     function setEntities(Advertiser ... $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     /** @param Advertiser[] $entities new value. */
     function setEntitiesFromArray(array $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     function addToEntities(Advertiser $entities)
     {
         if (!isset($this->entities))
@@ -37,11 +40,13 @@ class AdvertisersResponse extends AdvertiserAdvertiserEntityStateEntityResponse
         array_push($this->entities, $entities);
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function addToHitsPerState(AdvertiserEntityState $key, int $value)
     {
         if (!isset($this->hitsPerState))
@@ -51,12 +56,14 @@ class AdvertisersResponse extends AdvertiserAdvertiserEntityStateEntityResponse
         $this->hitsPerState[$key] = $value;
         return $this;
     }
+    
     /** @param array<AdvertiserEntityState, int> $hitsPerState associative array. */
     function setHitsPerStateFromAssociativeArray(array $hitsPerState)
     {
         $this->hitsPerState = $hitsPerState;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

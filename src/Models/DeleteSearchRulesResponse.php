@@ -15,6 +15,7 @@ class DeleteSearchRulesResponse extends TimedResponse
         $result = TimedResponse::hydrateBase(new DeleteSearchRulesResponse(), $arr);
         return $result;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

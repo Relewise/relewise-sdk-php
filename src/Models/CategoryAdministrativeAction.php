@@ -42,21 +42,25 @@ abstract class CategoryAdministrativeAction extends Trackable
         }
         return $result;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setKind(CategoryAdministrativeActionUpdateKind $kind)
     {
         $this->kind = $kind;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

@@ -26,11 +26,13 @@ class StemmingRulesRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(StemmingRulesRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

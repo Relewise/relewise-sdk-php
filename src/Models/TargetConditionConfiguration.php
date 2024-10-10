@@ -19,6 +19,7 @@ class TargetConditionConfiguration
         }
         return $result;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

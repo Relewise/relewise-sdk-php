@@ -38,21 +38,25 @@ class SignificantDataValue
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setComparer(SignificantDataValueSignificantDataValueComparer $comparer)
     {
         $this->comparer = $comparer;
         return $this;
     }
+    
     function setSignificance(float $significance)
     {
         $this->significance = $significance;
         return $this;
     }
+    
     function setTransformer(?TrimStringTransformer $transformer)
     {
         $this->transformer = $transformer;

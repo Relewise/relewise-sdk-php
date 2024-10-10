@@ -21,6 +21,7 @@ class TrackContentViewRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setContentView(ContentView $contentView)
     {
         $this->contentView = $contentView;

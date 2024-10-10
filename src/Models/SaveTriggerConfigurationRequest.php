@@ -27,11 +27,13 @@ class SaveTriggerConfigurationRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setConfiguration(TriggerConfiguration $configuration)
     {
         $this->configuration = $configuration;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

@@ -24,17 +24,20 @@ class UserConditionCollection
         }
         return $result;
     }
+    
     function setItems(UserCondition ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param UserCondition[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(UserCondition $items)
     {
         if (!isset($this->items))

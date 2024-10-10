@@ -83,62 +83,74 @@ class SelectedProductDetailsPropertiesSettings
         }
         return $result;
     }
+    
     function setDisplayName(bool $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setCategoryPaths(bool $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    
     function setAssortments(bool $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     function setPricing(bool $pricing)
     {
         $this->pricing = $pricing;
         return $this;
     }
+    
     function setAllData(bool $allData)
     {
         $this->allData = $allData;
         return $this;
     }
+    
     function setViewedByUserInfo(bool $viewedByUserInfo)
     {
         $this->viewedByUserInfo = $viewedByUserInfo;
         return $this;
     }
+    
     function setPurchasedByUserInfo(bool $purchasedByUserInfo)
     {
         $this->purchasedByUserInfo = $purchasedByUserInfo;
         return $this;
     }
+    
     function setBrand(bool $brand)
     {
         $this->brand = $brand;
         return $this;
     }
+    
     function setAllVariants(bool $allVariants)
     {
         $this->allVariants = $allVariants;
         return $this;
     }
+    
     function setDataKeys(string ... $dataKeys)
     {
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    
     /** @param ?string[] $dataKeys new value. */
     function setDataKeysFromArray(array $dataKeys)
     {
         $this->dataKeys = $dataKeys;
         return $this;
     }
+    
     function addToDataKeys(string $dataKeys)
     {
         if (!isset($this->dataKeys))
@@ -148,16 +160,19 @@ class SelectedProductDetailsPropertiesSettings
         array_push($this->dataKeys, $dataKeys);
         return $this;
     }
+    
     function setViewedByUserCompanyInfo(bool $viewedByUserCompanyInfo)
     {
         $this->viewedByUserCompanyInfo = $viewedByUserCompanyInfo;
         return $this;
     }
+    
     function setPurchasedByUserCompanyInfo(bool $purchasedByUserCompanyInfo)
     {
         $this->purchasedByUserCompanyInfo = $purchasedByUserCompanyInfo;
         return $this;
     }
+    
     function setFilteredVariants(?FilteredVariantsSettings $filteredVariants)
     {
         $this->filteredVariants = $filteredVariants;

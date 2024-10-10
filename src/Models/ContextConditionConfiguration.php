@@ -23,17 +23,20 @@ class ContextConditionConfiguration
         }
         return $result;
     }
+    
     function setFilters(RequestContextFilter ... $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     /** @param RequestContextFilter[] $filters new value. */
     function setFiltersFromArray(array $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function addToFilters(RequestContextFilter $filters)
     {
         if (!isset($this->filters))

@@ -21,6 +21,7 @@ class TrackContentCategoryUpdateRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setContentCategoryUpdate(ContentCategoryUpdate $contentCategoryUpdate)
     {
         $this->contentCategoryUpdate = $contentCategoryUpdate;

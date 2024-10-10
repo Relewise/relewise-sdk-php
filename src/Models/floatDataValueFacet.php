@@ -40,27 +40,32 @@ abstract class floatDataValueFacet extends floatValueFacet
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setCollectionFilterType(?CollectionFilterType $collectionFilterType)
     {
         $this->collectionFilterType = $collectionFilterType;
         return $this;
     }
+    
     function setSelected(float ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?float[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(float $selected)
     {
         if (!isset($this->selected))
@@ -70,11 +75,13 @@ abstract class floatDataValueFacet extends floatValueFacet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

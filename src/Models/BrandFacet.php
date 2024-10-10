@@ -16,17 +16,20 @@ class BrandFacet extends stringValueFacet
         $result = stringValueFacet::hydrateBase(new BrandFacet(), $arr);
         return $result;
     }
+    
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -36,11 +39,13 @@ class BrandFacet extends stringValueFacet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

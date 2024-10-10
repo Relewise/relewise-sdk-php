@@ -118,21 +118,25 @@ class UserResultDetails implements JsonSerializable
         }
         return $result;
     }
+    
     function setAuthenticatedId(string $authenticatedId)
     {
         $this->authenticatedId = $authenticatedId;
         return $this;
     }
+    
     function setTemporaryId(string $temporaryId)
     {
         $this->temporaryId = $temporaryId;
         return $this;
     }
+    
     function setEmail(string $email)
     {
         $this->email = $email;
         return $this;
     }
+    
     function addToClassifications(string $key, string $value)
     {
         if (!isset($this->classifications))
@@ -142,27 +146,32 @@ class UserResultDetails implements JsonSerializable
         $this->classifications[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, string> $classifications associative array. */
     function setClassificationsFromAssociativeArray(array $classifications)
     {
         $this->classifications = $classifications;
         return $this;
     }
+    
     function setLastCartUpdateUtc(?DateTime $lastCartUpdateUtc)
     {
         $this->lastCartUpdateUtc = $lastCartUpdateUtc;
         return $this;
     }
+    
     function setLastActivityUtc(DateTime $lastActivityUtc)
     {
         $this->lastActivityUtc = $lastActivityUtc;
         return $this;
     }
+    
     function setLastOrderUtc(?DateTime $lastOrderUtc)
     {
         $this->lastOrderUtc = $lastOrderUtc;
         return $this;
     }
+    
     function addToCarts(string $key, CartDetails $value)
     {
         if (!isset($this->carts))
@@ -172,22 +181,26 @@ class UserResultDetails implements JsonSerializable
         $this->carts[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, CartDetails> $carts associative array. */
     function setCartsFromAssociativeArray(array $carts)
     {
         $this->carts = $carts;
         return $this;
     }
+    
     function setLastActiveCartName(string $lastActiveCartName)
     {
         $this->lastActiveCartName = $lastActiveCartName;
         return $this;
     }
+    
     function setTotalNumberOfOrders(int $totalNumberOfOrders)
     {
         $this->totalNumberOfOrders = $totalNumberOfOrders;
         return $this;
     }
+    
     function addToIdentifiers(string $key, string $value)
     {
         if (!isset($this->identifiers))
@@ -197,17 +210,20 @@ class UserResultDetails implements JsonSerializable
         $this->identifiers[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, string> $identifiers associative array. */
     function setIdentifiersFromAssociativeArray(array $identifiers)
     {
         $this->identifiers = $identifiers;
         return $this;
     }
+    
     function setKey(int $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -217,18 +233,21 @@ class UserResultDetails implements JsonSerializable
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
         return $this;
     }
+    
     /** All known temporary ids for the user */
     function setTemporaryIds(string ... $temporaryIds)
     {
         $this->temporaryIds = $temporaryIds;
         return $this;
     }
+    
     /**
      * All known temporary ids for the user
      * @param string[] $temporaryIds new value.
@@ -238,6 +257,7 @@ class UserResultDetails implements JsonSerializable
         $this->temporaryIds = $temporaryIds;
         return $this;
     }
+    
     /** All known temporary ids for the user */
     function addToTemporaryIds(string $temporaryIds)
     {
@@ -248,11 +268,13 @@ class UserResultDetails implements JsonSerializable
         array_push($this->temporaryIds, $temporaryIds);
         return $this;
     }
+    
     function setChannel(?Channel $channel)
     {
         $this->channel = $channel;
         return $this;
     }
+    
     function setCompany(?UserAssociatedCompanyResultDetails $company)
     {
         $this->company = $company;

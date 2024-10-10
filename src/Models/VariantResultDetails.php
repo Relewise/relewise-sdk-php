@@ -67,16 +67,19 @@ class VariantResultDetails
         }
         return $result;
     }
+    
     function setVariantId(string $variantId)
     {
         $this->variantId = $variantId;
         return $this;
     }
+    
     function setDisplayName(Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function addToSpecification(string $key, string $value)
     {
         if (!isset($this->specification))
@@ -86,23 +89,27 @@ class VariantResultDetails
         $this->specification[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, string> $specification associative array. */
     function setSpecificationFromAssociativeArray(array $specification)
     {
         $this->specification = $specification;
         return $this;
     }
+    
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     /** @param int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -112,6 +119,7 @@ class VariantResultDetails
         array_push($this->assortments, $assortments);
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -121,22 +129,26 @@ class VariantResultDetails
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
         return $this;
     }
+    
     function setListPrice(MultiCurrency $listPrice)
     {
         $this->listPrice = $listPrice;
         return $this;
     }
+    
     function setSalesPrice(MultiCurrency $salesPrice)
     {
         $this->salesPrice = $salesPrice;
         return $this;
     }
+    
     function setDisabled(bool $disabled)
     {
         $this->disabled = $disabled;

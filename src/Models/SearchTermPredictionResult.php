@@ -47,27 +47,32 @@ class SearchTermPredictionResult
         }
         return $result;
     }
+    
     function setTerm(string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;
     }
+    
     function setExpectedResultTypes(ExpectedSearchTermResult ... $expectedResultTypes)
     {
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;
     }
+    
     /** @param ExpectedSearchTermResult[] $expectedResultTypes new value. */
     function setExpectedResultTypesFromArray(array $expectedResultTypes)
     {
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;
     }
+    
     function addToExpectedResultTypes(ExpectedSearchTermResult $expectedResultTypes)
     {
         if (!isset($this->expectedResultTypes))
@@ -77,22 +82,26 @@ class SearchTermPredictionResult
         array_push($this->expectedResultTypes, $expectedResultTypes);
         return $this;
     }
+    
     function setType(SearchTermPredictionResultPredictionType $type)
     {
         $this->type = $type;
         return $this;
     }
+    
     function setCorrectedWordsMask(bool ... $correctedWordsMask)
     {
         $this->correctedWordsMask = $correctedWordsMask;
         return $this;
     }
+    
     /** @param bool[] $correctedWordsMask new value. */
     function setCorrectedWordsMaskFromArray(array $correctedWordsMask)
     {
         $this->correctedWordsMask = $correctedWordsMask;
         return $this;
     }
+    
     function addToCorrectedWordsMask(bool $correctedWordsMask)
     {
         if (!isset($this->correctedWordsMask))

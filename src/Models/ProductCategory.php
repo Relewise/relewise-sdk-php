@@ -16,27 +16,32 @@ class ProductCategory extends Category
         $result = Category::hydrateBase(new ProductCategory(), $arr);
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setDisplayName(Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setCategoryPaths(CategoryPath ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    
     /** @param CategoryPath[] $categoryPaths new value. */
     function setCategoryPathsFromArray(array $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    
     function addToCategoryPaths(CategoryPath $categoryPaths)
     {
         if (!isset($this->categoryPaths))
@@ -46,17 +51,20 @@ class ProductCategory extends Category
         array_push($this->categoryPaths, $categoryPaths);
         return $this;
     }
+    
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     /** @param int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -66,6 +74,7 @@ class ProductCategory extends Category
         array_push($this->assortments, $assortments);
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -75,6 +84,7 @@ class ProductCategory extends Category
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {

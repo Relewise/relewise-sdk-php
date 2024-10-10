@@ -28,6 +28,7 @@ class SpecificationsIndexConfiguration
         }
         return $result;
     }
+    
     function addToKeys(string $key, FieldIndexConfiguration $value)
     {
         if (!isset($this->keys))
@@ -37,12 +38,14 @@ class SpecificationsIndexConfiguration
         $this->keys[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, FieldIndexConfiguration> $keys associative array. */
     function setKeysFromAssociativeArray(array $keys)
     {
         $this->keys = $keys;
         return $this;
     }
+    
     function setUnspecified(FieldIndexConfiguration $unspecified)
     {
         $this->unspecified = $unspecified;

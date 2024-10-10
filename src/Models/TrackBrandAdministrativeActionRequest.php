@@ -21,6 +21,7 @@ class TrackBrandAdministrativeActionRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setAdministrativeAction(BrandAdministrativeAction $administrativeAction)
     {
         $this->administrativeAction = $administrativeAction;

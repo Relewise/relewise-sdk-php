@@ -16,17 +16,20 @@ class SaveRedirectRulesRequest extends RedirectRuleSaveSearchRulesRequest
         $result = RedirectRuleSaveSearchRulesRequest::hydrateBase(new SaveRedirectRulesRequest(), $arr);
         return $result;
     }
+    
     function setRules(RedirectRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param RedirectRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(RedirectRule $rules)
     {
         if (!isset($this->rules))
@@ -36,6 +39,7 @@ class SaveRedirectRulesRequest extends RedirectRuleSaveSearchRulesRequest
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

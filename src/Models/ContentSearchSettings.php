@@ -25,11 +25,13 @@ class ContentSearchSettings extends SearchSettings
         }
         return $result;
     }
+    
     function setSelectedContentProperties(?SelectedContentPropertiesSettings $selectedContentProperties)
     {
         $this->selectedContentProperties = $selectedContentProperties;
         return $this;
     }
+    
     function setRecommendations(RecommendationSettings $recommendations)
     {
         $this->recommendations = $recommendations;

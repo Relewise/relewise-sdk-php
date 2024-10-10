@@ -16,17 +16,20 @@ class SaveCampaignsRequest extends CampaignSaveEntitiesRequest
         $result = CampaignSaveEntitiesRequest::hydrateBase(new SaveCampaignsRequest(), $arr);
         return $result;
     }
+    
     function setEntities(Campaign ... $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     /** @param Campaign[] $entities new value. */
     function setEntitiesFromArray(array $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     function addToEntities(Campaign $entities)
     {
         if (!isset($this->entities))
@@ -36,6 +39,7 @@ class SaveCampaignsRequest extends CampaignSaveEntitiesRequest
         array_push($this->entities, $entities);
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

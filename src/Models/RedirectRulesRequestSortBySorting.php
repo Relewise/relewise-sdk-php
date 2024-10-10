@@ -26,11 +26,13 @@ class RedirectRulesRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(RedirectRulesRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

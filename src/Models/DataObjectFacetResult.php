@@ -37,22 +37,26 @@ class DataObjectFacetResult extends FacetResult
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setItems(FacetResult ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param FacetResult[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(FacetResult $items)
     {
         if (!isset($this->items))
@@ -62,11 +66,13 @@ class DataObjectFacetResult extends FacetResult
         array_push($this->items, $items);
         return $this;
     }
+    
     function setFilter(DataObjectFilter $filter)
     {
         $this->filter = $filter;
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

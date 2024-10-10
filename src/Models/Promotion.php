@@ -27,11 +27,13 @@ abstract class Promotion
         }
         return $result;
     }
+    
     function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
+    
     function setLocations(?PromotionLocationCollection $locations)
     {
         $this->locations = $locations;

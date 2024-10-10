@@ -25,17 +25,20 @@ class ProductCategoryFacetResult extends ProductCategoryFacetResultExtractable
         }
         return $result;
     }
+    
     function setItems(FacetResult ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param FacetResult[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(FacetResult $items)
     {
         if (!isset($this->items))

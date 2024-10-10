@@ -43,17 +43,20 @@ abstract class intValueFacet extends Facet
         }
         return $result;
     }
+    
     function setSelected(int ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?int[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(int $selected)
     {
         if (!isset($this->selected))
@@ -63,11 +66,13 @@ abstract class intValueFacet extends Facet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

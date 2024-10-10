@@ -86,27 +86,32 @@ class BrandResultDetails implements JsonSerializable
         }
         return $result;
     }
+    
     function setBrandId(string $brandId)
     {
         $this->brandId = $brandId;
         return $this;
     }
+    
     function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     /** @param int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -116,6 +121,7 @@ class BrandResultDetails implements JsonSerializable
         array_push($this->assortments, $assortments);
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -125,47 +131,56 @@ class BrandResultDetails implements JsonSerializable
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
         return $this;
     }
+    
     function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;
     }
+    
     function setCreatedUtc(DateTime $createdUtc)
     {
         $this->createdUtc = $createdUtc;
         return $this;
     }
+    
     function setLastViewedUtc(?DateTime $lastViewedUtc)
     {
         $this->lastViewedUtc = $lastViewedUtc;
         return $this;
     }
+    
     function setViewedTotalNumberOfTimes(int $viewedTotalNumberOfTimes)
     {
         $this->viewedTotalNumberOfTimes = $viewedTotalNumberOfTimes;
         return $this;
     }
+    
     function setViewedByDifferentNumberOfUsers(int $viewedByDifferentNumberOfUsers)
     {
         $this->viewedByDifferentNumberOfUsers = $viewedByDifferentNumberOfUsers;
         return $this;
     }
+    
     function setDisabled(bool $disabled)
     {
         $this->disabled = $disabled;
         return $this;
     }
+    
     function setPurchasedFromByDifferentNumberOfUsers(int $purchasedFromByDifferentNumberOfUsers)
     {
         $this->purchasedFromByDifferentNumberOfUsers = $purchasedFromByDifferentNumberOfUsers;
         return $this;
     }
+    
     function setPurchasedByUser(PurchasedByUserInfo $purchasedByUser)
     {
         $this->purchasedByUser = $purchasedByUser;

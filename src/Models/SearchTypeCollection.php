@@ -23,17 +23,20 @@ class SearchTypeCollection
         }
         return $result;
     }
+    
     function setUnionCodes(int ... $unionCodes)
     {
         $this->unionCodes = $unionCodes;
         return $this;
     }
+    
     /** @param int[] $unionCodes new value. */
     function setUnionCodesFromArray(array $unionCodes)
     {
         $this->unionCodes = $unionCodes;
         return $this;
     }
+    
     function addToUnionCodes(int $unionCodes)
     {
         if (!isset($this->unionCodes))

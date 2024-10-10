@@ -34,16 +34,19 @@ class PurchasedByUserCompanyInfo implements JsonSerializable
         }
         return $result;
     }
+    
     function setMostRecentPurchasedUtc(DateTime $mostRecentPurchasedUtc)
     {
         $this->mostRecentPurchasedUtc = $mostRecentPurchasedUtc;
         return $this;
     }
+    
     function setTotalNumberOfTimesPurchased(int $totalNumberOfTimesPurchased)
     {
         $this->totalNumberOfTimesPurchased = $totalNumberOfTimesPurchased;
         return $this;
     }
+    
     function setPurchasedByParentCompany(PurchasedByUserCompanyInfo $purchasedByParentCompany)
     {
         $this->purchasedByParentCompany = $purchasedByParentCompany;

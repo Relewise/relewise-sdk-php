@@ -22,16 +22,19 @@ class ProductHasVariantsFilter extends Filter
         }
         return $result;
     }
+    
     function setNumberOfVariants(?intRange $numberOfVariants)
     {
         $this->numberOfVariants = $numberOfVariants;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

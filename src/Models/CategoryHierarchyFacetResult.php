@@ -31,22 +31,26 @@ class CategoryHierarchyFacetResult extends FacetResult
         }
         return $result;
     }
+    
     function setCategorySelectionStrategy(CategorySelectionStrategy $categorySelectionStrategy)
     {
         $this->categorySelectionStrategy = $categorySelectionStrategy;
         return $this;
     }
+    
     function setNodes(CategoryHierarchyFacetResultCategoryNode ... $nodes)
     {
         $this->nodes = $nodes;
         return $this;
     }
+    
     /** @param CategoryHierarchyFacetResultCategoryNode[] $nodes new value. */
     function setNodesFromArray(array $nodes)
     {
         $this->nodes = $nodes;
         return $this;
     }
+    
     function addToNodes(CategoryHierarchyFacetResultCategoryNode $nodes)
     {
         if (!isset($this->nodes))
@@ -56,6 +60,7 @@ class CategoryHierarchyFacetResult extends FacetResult
         array_push($this->nodes, $nodes);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

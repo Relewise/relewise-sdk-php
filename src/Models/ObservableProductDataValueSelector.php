@@ -21,6 +21,7 @@ class ObservableProductDataValueSelector extends ProductPropertySelector
         }
         return $result;
     }
+    
     function setDataObjectValueSelector(DataObjectValueSelector $dataObjectValueSelector)
     {
         $this->dataObjectValueSelector = $dataObjectValueSelector;

@@ -40,21 +40,25 @@ abstract class floatDataRangeFacet extends Facet
         }
         return $result;
     }
+    
     function setSelected(?floatRange $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

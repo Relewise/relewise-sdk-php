@@ -19,6 +19,7 @@ class PromotionSpecificationVariationCollection
         }
         return $result;
     }
+    
     function setProductPromotion(?ProductPromotionSpecificationVariation $productPromotion)
     {
         $this->productPromotion = $productPromotion;

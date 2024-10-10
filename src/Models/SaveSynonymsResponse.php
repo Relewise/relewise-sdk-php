@@ -25,17 +25,20 @@ class SaveSynonymsResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setValues(Synonym ... $values)
     {
         $this->values = $values;
         return $this;
     }
+    
     /** @param Synonym[] $values new value. */
     function setValuesFromArray(array $values)
     {
         $this->values = $values;
         return $this;
     }
+    
     function addToValues(Synonym $values)
     {
         if (!isset($this->values))
@@ -45,6 +48,7 @@ class SaveSynonymsResponse extends TimedResponse
         array_push($this->values, $values);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

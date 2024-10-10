@@ -127,6 +127,7 @@ abstract class RelevanceModifier
         }
         return $result;
     }
+    
     /** Filters which entities this relevance modifier can apply to. */
     function setFilters(FilterCollection $filters)
     {

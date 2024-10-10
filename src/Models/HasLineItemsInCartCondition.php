@@ -34,21 +34,25 @@ class HasLineItemsInCartCondition extends UserCondition
         }
         return $result;
     }
+    
     function setNumberOfItems(?intRange $numberOfItems)
     {
         $this->numberOfItems = $numberOfItems;
         return $this;
     }
+    
     function setCartName(string $cartName)
     {
         $this->cartName = $cartName;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

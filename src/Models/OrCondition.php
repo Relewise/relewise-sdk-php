@@ -22,11 +22,13 @@ class OrCondition extends UserCondition
         }
         return $result;
     }
+    
     function setConditions(UserConditionCollection $conditions)
     {
         $this->conditions = $conditions;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

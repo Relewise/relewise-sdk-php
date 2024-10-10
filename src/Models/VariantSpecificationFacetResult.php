@@ -23,22 +23,26 @@ class VariantSpecificationFacetResult extends stringValueFacetResult
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -48,17 +52,20 @@ class VariantSpecificationFacetResult extends stringValueFacetResult
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setAvailable(stringAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     /** @param stringAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function addToAvailable(stringAvailableFacetValue $available)
     {
         if (!isset($this->available))
@@ -68,6 +75,7 @@ class VariantSpecificationFacetResult extends stringValueFacetResult
         array_push($this->available, $available);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

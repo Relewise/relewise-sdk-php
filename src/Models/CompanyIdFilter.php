@@ -25,17 +25,20 @@ class CompanyIdFilter extends Filter
         }
         return $result;
     }
+    
     function setCompanyIds(string ... $companyIds)
     {
         $this->companyIds = $companyIds;
         return $this;
     }
+    
     /** @param string[] $companyIds new value. */
     function setCompanyIdsFromArray(array $companyIds)
     {
         $this->companyIds = $companyIds;
         return $this;
     }
+    
     function addToCompanyIds(string $companyIds)
     {
         if (!isset($this->companyIds))
@@ -45,11 +48,13 @@ class CompanyIdFilter extends Filter
         array_push($this->companyIds, $companyIds);
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

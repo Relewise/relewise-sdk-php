@@ -16,6 +16,7 @@ class HasValueCondition extends ValueCondition
         $result = ValueCondition::hydrateBase(new HasValueCondition(), $arr);
         return $result;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

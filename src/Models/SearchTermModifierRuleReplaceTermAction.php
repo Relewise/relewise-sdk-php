@@ -21,6 +21,7 @@ class SearchTermModifierRuleReplaceTermAction extends SearchTermModifierRuleRule
         }
         return $result;
     }
+    
     function setReplacement(?string $replacement)
     {
         $this->replacement = $replacement;

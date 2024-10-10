@@ -48,22 +48,26 @@ class PriceRangesFacetResult extends FacetResult
         }
         return $result;
     }
+    
     function setExpandedRangeSize(?float $expandedRangeSize)
     {
         $this->expandedRangeSize = $expandedRangeSize;
         return $this;
     }
+    
     function setSelected(?floatChainableRange ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?floatChainableRange[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(?floatChainableRange $selected)
     {
         if (!isset($this->selected))
@@ -73,17 +77,20 @@ class PriceRangesFacetResult extends FacetResult
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setAvailable(?floatChainableRangeAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     /** @param ?floatChainableRangeAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function addToAvailable(?floatChainableRangeAvailableFacetValue $available)
     {
         if (!isset($this->available))
@@ -93,11 +100,13 @@ class PriceRangesFacetResult extends FacetResult
         array_push($this->available, $available);
         return $this;
     }
+    
     function setPriceSelectionStrategy(PriceSelectionStrategy $priceSelectionStrategy)
     {
         $this->priceSelectionStrategy = $priceSelectionStrategy;
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

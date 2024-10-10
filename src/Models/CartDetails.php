@@ -55,27 +55,32 @@ class CartDetails implements JsonSerializable
         }
         return $result;
     }
+    
     function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
+    
     function setModifiedUtc(DateTime $modifiedUtc)
     {
         $this->modifiedUtc = $modifiedUtc;
         return $this;
     }
+    
     function setLineItems(LineItem ... $lineItems)
     {
         $this->lineItems = $lineItems;
         return $this;
     }
+    
     /** @param LineItem[] $lineItems new value. */
     function setLineItemsFromArray(array $lineItems)
     {
         $this->lineItems = $lineItems;
         return $this;
     }
+    
     function addToLineItems(LineItem $lineItems)
     {
         if (!isset($this->lineItems))
@@ -85,11 +90,13 @@ class CartDetails implements JsonSerializable
         array_push($this->lineItems, $lineItems);
         return $this;
     }
+    
     function setSubtotal(Money $subtotal)
     {
         $this->subtotal = $subtotal;
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -99,6 +106,7 @@ class CartDetails implements JsonSerializable
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {

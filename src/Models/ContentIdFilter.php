@@ -25,17 +25,20 @@ class ContentIdFilter extends Filter
         }
         return $result;
     }
+    
     function setContentIds(string ... $contentIds)
     {
         $this->contentIds = $contentIds;
         return $this;
     }
+    
     /** @param string[] $contentIds new value. */
     function setContentIdsFromArray(array $contentIds)
     {
         $this->contentIds = $contentIds;
         return $this;
     }
+    
     function addToContentIds(string $contentIds)
     {
         if (!isset($this->contentIds))
@@ -45,11 +48,13 @@ class ContentIdFilter extends Filter
         array_push($this->contentIds, $contentIds);
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

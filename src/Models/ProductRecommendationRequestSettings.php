@@ -64,51 +64,61 @@ class ProductRecommendationRequestSettings
         }
         return $result;
     }
+    
     function setNumberOfRecommendations(int $numberOfRecommendations)
     {
         $this->numberOfRecommendations = $numberOfRecommendations;
         return $this;
     }
+    
     function setAllowFillIfNecessaryToReachNumberOfRecommendations(bool $allowFillIfNecessaryToReachNumberOfRecommendations)
     {
         $this->allowFillIfNecessaryToReachNumberOfRecommendations = $allowFillIfNecessaryToReachNumberOfRecommendations;
         return $this;
     }
+    
     function setAllowReplacingOfRecentlyShownRecommendations(bool $allowReplacingOfRecentlyShownRecommendations)
     {
         $this->allowReplacingOfRecentlyShownRecommendations = $allowReplacingOfRecentlyShownRecommendations;
         return $this;
     }
+    
     function setRecommendVariant(bool $recommendVariant)
     {
         $this->recommendVariant = $recommendVariant;
         return $this;
     }
+    
     function setSelectedProductProperties(?SelectedProductPropertiesSettings $selectedProductProperties)
     {
         $this->selectedProductProperties = $selectedProductProperties;
         return $this;
     }
+    
     function setSelectedVariantProperties(?SelectedVariantPropertiesSettings $selectedVariantProperties)
     {
         $this->selectedVariantProperties = $selectedVariantProperties;
         return $this;
     }
+    
     function setPrioritizeDiversityBetweenRequests(bool $prioritizeDiversityBetweenRequests)
     {
         $this->prioritizeDiversityBetweenRequests = $prioritizeDiversityBetweenRequests;
         return $this;
     }
+    
     function setAllowProductsCurrentlyInCart(?bool $allowProductsCurrentlyInCart)
     {
         $this->allowProductsCurrentlyInCart = $allowProductsCurrentlyInCart;
         return $this;
     }
+    
     function setSelectedBrandProperties(?SelectedBrandPropertiesSettings $selectedBrandProperties)
     {
         $this->selectedBrandProperties = $selectedBrandProperties;
         return $this;
     }
+    
     function setPrioritizeResultsNotRecommendedWithinSeconds(?int $prioritizeResultsNotRecommendedWithinSeconds)
     {
         $this->prioritizeResultsNotRecommendedWithinSeconds = $prioritizeResultsNotRecommendedWithinSeconds;

@@ -59,36 +59,42 @@ class VariantSpecificationValueRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    
     /** The specification key that this RelevanceModifier will distinguish on. */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     /** The value that the key must be equal. */
     function setValue(string $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     /** The weight that this RelevanceModifier will multiply relevant variants with. */
     function setIfIdenticalMultiplyWeightBy(float $ifIdenticalMultiplyWeightBy)
     {
         $this->ifIdenticalMultiplyWeightBy = $ifIdenticalMultiplyWeightBy;
         return $this;
     }
+    
     /** The weight that this RelevanceModifier will multiply variants that are note relevant with. */
     function setIfNotIdenticalMultiplyWeightBy(float $ifNotIdenticalMultiplyWeightBy)
     {
         $this->ifNotIdenticalMultiplyWeightBy = $ifNotIdenticalMultiplyWeightBy;
         return $this;
     }
+    
     /** Determines whether specification keys that are not found should count as the value not being equal i.e. multiplying by IfNotIdenticalMultiplyWeightBy. Alternatively the rank will not be modified in any way by this modifier. */
     function setIfSpecificationKeyNotFoundApplyNotEqualMultiplier(bool $ifSpecificationKeyNotFoundApplyNotEqualMultiplier)
     {
         $this->ifSpecificationKeyNotFoundApplyNotEqualMultiplier = $ifSpecificationKeyNotFoundApplyNotEqualMultiplier;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

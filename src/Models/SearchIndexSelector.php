@@ -21,6 +21,7 @@ class SearchIndexSelector
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;

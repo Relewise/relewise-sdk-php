@@ -56,18 +56,21 @@ class ProductRecentlyPurchasedByCompanyRelevanceModifier extends RelevanceModifi
         }
         return $result;
     }
+    
     /** The start of the time period in which a product will be considered relevant to the user if purchased previously by any of the provided companies. */
     function setSinceUtc(?DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
+    
     /** The companies that should be evaluated in this modifier. */
     function setCompanyIds(string ... $companyIds)
     {
         $this->companyIds = $companyIds;
         return $this;
     }
+    
     /**
      * The companies that should be evaluated in this modifier.
      * @param string[] $companyIds new value.
@@ -77,6 +80,7 @@ class ProductRecentlyPurchasedByCompanyRelevanceModifier extends RelevanceModifi
         $this->companyIds = $companyIds;
         return $this;
     }
+    
     /** The companies that should be evaluated in this modifier. */
     function addToCompanyIds(string $companyIds)
     {
@@ -87,24 +91,28 @@ class ProductRecentlyPurchasedByCompanyRelevanceModifier extends RelevanceModifi
         array_push($this->companyIds, $companyIds);
         return $this;
     }
+    
     /** The weight that the Product will be multiplied with if it has been purchased in the past by any of the provided companies (since SinceUtc). */
     function setIfPurchasedByCompanyMultiplyWeightBy(float $ifPurchasedByCompanyMultiplyWeightBy)
     {
         $this->ifPurchasedByCompanyMultiplyWeightBy = $ifPurchasedByCompanyMultiplyWeightBy;
         return $this;
     }
+    
     /** The weight that the Product will be multiplied with if it has not been purchased in the past by any of the provided companies (since SinceUtc). */
     function setElseIfNotPurchasedByCompanyMultiplyWeightBy(float $elseIfNotPurchasedByCompanyMultiplyWeightBy)
     {
         $this->elseIfNotPurchasedByCompanyMultiplyWeightBy = $elseIfNotPurchasedByCompanyMultiplyWeightBy;
         return $this;
     }
+    
     /** The minutes since in which a product will be considered relevant to the user if bought previously by them. */
     function setSinceMinutesAgo(?int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

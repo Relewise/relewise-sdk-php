@@ -28,22 +28,26 @@ class ProductCategoryInterestTriggerResult
         }
         return $result;
     }
+    
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setCategories(ProductCategoryInterestTriggerResultCategory ... $categories)
     {
         $this->categories = $categories;
         return $this;
     }
+    
     /** @param ProductCategoryInterestTriggerResultCategory[] $categories new value. */
     function setCategoriesFromArray(array $categories)
     {
         $this->categories = $categories;
         return $this;
     }
+    
     function addToCategories(ProductCategoryInterestTriggerResultCategory $categories)
     {
         if (!isset($this->categories))

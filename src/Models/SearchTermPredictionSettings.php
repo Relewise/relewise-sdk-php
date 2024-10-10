@@ -24,17 +24,20 @@ class SearchTermPredictionSettings extends SearchSettings
         }
         return $result;
     }
+    
     function setTargetEntityTypes(EntityType ... $targetEntityTypes)
     {
         $this->targetEntityTypes = $targetEntityTypes;
         return $this;
     }
+    
     /** @param ?EntityType[] $targetEntityTypes new value. */
     function setTargetEntityTypesFromArray(array $targetEntityTypes)
     {
         $this->targetEntityTypes = $targetEntityTypes;
         return $this;
     }
+    
     function addToTargetEntityTypes(EntityType $targetEntityTypes)
     {
         if (!isset($this->targetEntityTypes))

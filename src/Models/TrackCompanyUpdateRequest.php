@@ -21,6 +21,7 @@ class TrackCompanyUpdateRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setCompanyUpdate(CompanyUpdate $companyUpdate)
     {
         $this->companyUpdate = $companyUpdate;

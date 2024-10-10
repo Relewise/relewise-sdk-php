@@ -21,6 +21,7 @@ class ObservableProductAttributeSelector extends ProductPropertySelector
         }
         return $result;
     }
+    
     function setAttribute(ObservableProductAttribute $attribute)
     {
         $this->attribute = $attribute;

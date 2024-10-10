@@ -31,21 +31,25 @@ class ContainsCondition extends ValueCondition
         }
         return $result;
     }
+    
     function setValue(?DataValue $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     function setValueCollectionEvaluationMode(ContainsConditionCollectionArgumentEvaluationMode $valueCollectionEvaluationMode)
     {
         $this->valueCollectionEvaluationMode = $valueCollectionEvaluationMode;
         return $this;
     }
+    
     function setObjectFilter(?DataObjectFilter $objectFilter)
     {
         $this->objectFilter = $objectFilter;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

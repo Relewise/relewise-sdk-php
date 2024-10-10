@@ -33,27 +33,32 @@ class AbandonedSearchTriggerResult
         }
         return $result;
     }
+    
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setType(SearchType $type)
     {
         $this->type = $type;
         return $this;
     }
+    
     function setSearches(AbandonedSearch ... $searches)
     {
         $this->searches = $searches;
         return $this;
     }
+    
     /** @param AbandonedSearch[] $searches new value. */
     function setSearchesFromArray(array $searches)
     {
         $this->searches = $searches;
         return $this;
     }
+    
     function addToSearches(AbandonedSearch $searches)
     {
         if (!isset($this->searches))

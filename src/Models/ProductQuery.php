@@ -82,65 +82,77 @@ class ProductQuery extends LicensedRequest
         }
         return $result;
     }
+    
     function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     /** @deprecated For better paging support, please use NextPageToken and PageSize */
     function setNumberOfResults(int $numberOfResults)
     {
         $this->numberOfResults = $numberOfResults;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     /** @deprecated For better paging support, please use NextPageToken and PageSize */
     function setSkipNumberOfResults(int $skipNumberOfResults)
     {
         $this->skipNumberOfResults = $skipNumberOfResults;
         return $this;
     }
+    
     function setReturnTotalNumberOfResults(bool $returnTotalNumberOfResults)
     {
         $this->returnTotalNumberOfResults = $returnTotalNumberOfResults;
         return $this;
     }
+    
     function setIncludeDisabledProducts(bool $includeDisabledProducts)
     {
         $this->includeDisabledProducts = $includeDisabledProducts;
         return $this;
     }
+    
     function setIncludeDisabledVariants(bool $includeDisabledVariants)
     {
         $this->includeDisabledVariants = $includeDisabledVariants;
         return $this;
     }
+    
     function setExcludeProductsWithNoVariants(bool $excludeProductsWithNoVariants)
     {
         $this->excludeProductsWithNoVariants = $excludeProductsWithNoVariants;
         return $this;
     }
+    
     /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests. <remarks>Should a wrong/unexisting token be supplied, a 'Validation' exception shall be returned.</remarks> */
     function setNextPageToken(?string $nextPageToken)
     {
         $this->nextPageToken = $nextPageToken;
         return $this;
     }
+    
     /** The size of the page requested. <remarks>Maximum allowed value is 1000.</remarks> */
     function setPageSize(?int $pageSize)
     {
         $this->pageSize = $pageSize;
         return $this;
     }
+    
     /** Settings for which properties should be included for the entities in the response. If settings are not set they default to include everything. */
     function setResultSettings(?ProductQuerySelectedPropertiesSettings $resultSettings)
     {

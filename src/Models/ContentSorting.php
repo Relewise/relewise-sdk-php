@@ -30,11 +30,13 @@ abstract class ContentSorting extends ContentSortingSorting
         $result = ContentSortingSorting::hydrateBase($result, $arr);
         return $result;
     }
+    
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    
     function setThenBy(ContentSorting $thenBy)
     {
         $this->thenBy = $thenBy;

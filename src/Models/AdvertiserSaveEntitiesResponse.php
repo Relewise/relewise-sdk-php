@@ -27,17 +27,20 @@ abstract class AdvertiserSaveEntitiesResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setEntities(Advertiser ... $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     /** @param Advertiser[] $entities new value. */
     function setEntitiesFromArray(array $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     function addToEntities(Advertiser $entities)
     {
         if (!isset($this->entities))
@@ -47,6 +50,7 @@ abstract class AdvertiserSaveEntitiesResponse extends TimedResponse
         array_push($this->entities, $entities);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

@@ -27,17 +27,20 @@ abstract class LocationSaveEntitiesResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setEntities(Location ... $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     /** @param Location[] $entities new value. */
     function setEntitiesFromArray(array $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     function addToEntities(Location $entities)
     {
         if (!isset($this->entities))
@@ -47,6 +50,7 @@ abstract class LocationSaveEntitiesResponse extends TimedResponse
         array_push($this->entities, $entities);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

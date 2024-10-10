@@ -22,11 +22,13 @@ class GreaterThanCondition extends ValueCondition
         }
         return $result;
     }
+    
     function setValue(float $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

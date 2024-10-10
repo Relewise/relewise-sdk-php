@@ -43,27 +43,32 @@ class Brand
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setDisplayName(?string $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     /** @param ?int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -73,6 +78,7 @@ class Brand
         array_push($this->assortments, $assortments);
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -82,6 +88,7 @@ class Brand
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param ?array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {

@@ -27,11 +27,13 @@ class UserUpdate extends Trackable
         }
         return $result;
     }
+    
     function setUser(User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setKind(UserUpdateUpdateKind $kind)
     {
         $this->kind = $kind;

@@ -34,21 +34,25 @@ class IndexConfiguration
         }
         return $result;
     }
+    
     function setLanguage(LanguageIndexConfiguration $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setProduct(ProductIndexConfiguration $product)
     {
         $this->product = $product;
         return $this;
     }
+    
     function setContent(ContentIndexConfiguration $content)
     {
         $this->content = $content;
         return $this;
     }
+    
     function setProductCategory(ProductCategoryIndexConfiguration $productCategory)
     {
         $this->productCategory = $productCategory;

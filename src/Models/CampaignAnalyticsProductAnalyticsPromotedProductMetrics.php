@@ -27,11 +27,13 @@ class CampaignAnalyticsProductAnalyticsPromotedProductMetrics
         }
         return $result;
     }
+    
     function setProductId(string $productId)
     {
         $this->productId = $productId;
         return $this;
     }
+    
     function setPromotions(int $promotions)
     {
         $this->promotions = $promotions;

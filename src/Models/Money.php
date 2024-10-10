@@ -26,11 +26,13 @@ class Money
         }
         return $result;
     }
+    
     function setAmount(float $amount)
     {
         $this->amount = $amount;
         return $this;
     }
+    
     function setCurrency(Currency $currency)
     {
         $this->currency = $currency;

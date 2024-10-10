@@ -29,17 +29,20 @@ abstract class CampaignEntityStateCampaignMetadataValuesRetailMediaEntity extend
         }
         return $result;
     }
+    
     function setState(CampaignEntityState $state)
     {
         $this->state = $state;
         return $this;
     }
+    
     /** Managed server side only, manually setting this will have no effect */
     function setMetadata(CampaignMetadataValues $metadata)
     {
         $this->metadata = $metadata;
         return $this;
     }
+    
     function setId(?string $id)
     {
         $this->id = $id;

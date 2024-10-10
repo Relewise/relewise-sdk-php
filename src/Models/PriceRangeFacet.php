@@ -28,21 +28,25 @@ class PriceRangeFacet extends Facet
         }
         return $result;
     }
+    
     function setSelected(?floatRange $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function setPriceSelectionStrategy(PriceSelectionStrategy $priceSelectionStrategy)
     {
         $this->priceSelectionStrategy = $priceSelectionStrategy;
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

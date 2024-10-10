@@ -29,16 +29,19 @@ class CategoryIndexConfigurationEntry
         }
         return $result;
     }
+    
     function setId(FieldIndexConfiguration $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setDisplayName(FieldIndexConfiguration $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setData(DataIndexConfiguration $data)
     {
         $this->data = $data;

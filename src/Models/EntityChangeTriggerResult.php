@@ -26,6 +26,7 @@ abstract class EntityChangeTriggerResult
         }
         return $result;
     }
+    
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;

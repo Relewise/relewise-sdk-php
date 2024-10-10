@@ -21,6 +21,7 @@ class DeleteMerchandisingRuleRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;

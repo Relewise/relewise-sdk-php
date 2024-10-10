@@ -29,16 +29,19 @@ class ProductInterestTriggerResultProductAndVariant
         }
         return $result;
     }
+    
     function setProduct(ProductResultDetails $product)
     {
         $this->product = $product;
         return $this;
     }
+    
     function setVariant(VariantResultDetails $variant)
     {
         $this->variant = $variant;
         return $this;
     }
+    
     function setViews(int $views)
     {
         $this->views = $views;

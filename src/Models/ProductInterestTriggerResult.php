@@ -28,22 +28,26 @@ class ProductInterestTriggerResult
         }
         return $result;
     }
+    
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setProducts(ProductInterestTriggerResultProductAndVariant ... $products)
     {
         $this->products = $products;
         return $this;
     }
+    
     /** @param ProductInterestTriggerResultProductAndVariant[] $products new value. */
     function setProductsFromArray(array $products)
     {
         $this->products = $products;
         return $this;
     }
+    
     function addToProducts(ProductInterestTriggerResultProductAndVariant $products)
     {
         if (!isset($this->products))

@@ -21,6 +21,7 @@ class DataDoubleSelector extends ValueSelector
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;

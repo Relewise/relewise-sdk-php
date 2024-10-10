@@ -32,17 +32,20 @@ abstract class AdvertiserSaveEntitiesRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setEntities(Advertiser ... $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     /** @param Advertiser[] $entities new value. */
     function setEntitiesFromArray(array $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     function addToEntities(Advertiser $entities)
     {
         if (!isset($this->entities))
@@ -52,6 +55,7 @@ abstract class AdvertiserSaveEntitiesRequest extends LicensedRequest
         array_push($this->entities, $entities);
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

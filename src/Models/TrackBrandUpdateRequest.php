@@ -21,6 +21,7 @@ class TrackBrandUpdateRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setBrandUpdate(BrandUpdate $brandUpdate)
     {
         $this->brandUpdate = $brandUpdate;

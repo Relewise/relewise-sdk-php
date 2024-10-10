@@ -17,27 +17,32 @@ class ObjectValueMinByCondition extends ObjectValueCondition
         $result = ObjectValueCondition::hydrateBase(new ObjectValueMinByCondition(), $arr);
         return $result;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setObjectPath(string ... $objectPath)
     {
         $this->objectPath = $objectPath;
         return $this;
     }
+    
     /** @param ?string[] $objectPath new value. */
     function setObjectPathFromArray(array $objectPath)
     {
         $this->objectPath = $objectPath;
         return $this;
     }
+    
     function addToObjectPath(string $objectPath)
     {
         if (!isset($this->objectPath))

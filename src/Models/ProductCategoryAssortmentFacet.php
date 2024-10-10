@@ -17,22 +17,26 @@ class ProductCategoryAssortmentFacet extends AssortmentFacet
         $result = AssortmentFacet::hydrateBase(new ProductCategoryAssortmentFacet(), $arr);
         return $result;
     }
+    
     function setAssortmentFilterType(AssortmentFilterType $assortmentFilterType)
     {
         $this->assortmentFilterType = $assortmentFilterType;
         return $this;
     }
+    
     function setSelected(int ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?int[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(int $selected)
     {
         if (!isset($this->selected))
@@ -42,11 +46,13 @@ class ProductCategoryAssortmentFacet extends AssortmentFacet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

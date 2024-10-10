@@ -16,17 +16,20 @@ class SaveSearchResultModifierRulesRequest extends SearchResultModifierRuleSaveS
         $result = SearchResultModifierRuleSaveSearchRulesRequest::hydrateBase(new SaveSearchResultModifierRulesRequest(), $arr);
         return $result;
     }
+    
     function setRules(SearchResultModifierRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param SearchResultModifierRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(SearchResultModifierRule $rules)
     {
         if (!isset($this->rules))
@@ -36,6 +39,7 @@ class SaveSearchResultModifierRulesRequest extends SearchResultModifierRuleSaveS
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

@@ -40,16 +40,19 @@ abstract class AbandonedSearch
         }
         return $result;
     }
+    
     function setLoweredSearchTerm(string $loweredSearchTerm)
     {
         $this->loweredSearchTerm = $loweredSearchTerm;
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;

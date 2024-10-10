@@ -25,17 +25,20 @@ class ContentCategoryRecommendationResponse extends RecommendationResponse
         }
         return $result;
     }
+    
     function setRecommendations(ContentCategoryResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     /** @param ContentCategoryResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     function addToRecommendations(ContentCategoryResult $recommendations)
     {
         if (!isset($this->recommendations))
@@ -45,6 +48,7 @@ class ContentCategoryRecommendationResponse extends RecommendationResponse
         array_push($this->recommendations, $recommendations);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

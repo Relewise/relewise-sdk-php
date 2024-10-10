@@ -48,21 +48,25 @@ abstract class MetadataValues implements JsonSerializable
         }
         return $result;
     }
+    
     function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
+    
     function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
+    
     function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

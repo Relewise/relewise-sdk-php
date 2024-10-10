@@ -29,21 +29,25 @@ class ProductCategoryRecentlyViewedByUserFilter extends Filter implements JsonSe
         }
         return $result;
     }
+    
     function setSinceUtc(?DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
+    
     function setSinceMinutesAgo(?int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

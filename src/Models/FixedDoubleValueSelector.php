@@ -21,6 +21,7 @@ class FixedDoubleValueSelector extends ValueSelector
         }
         return $result;
     }
+    
     function setValue(float $value)
     {
         $this->value = $value;

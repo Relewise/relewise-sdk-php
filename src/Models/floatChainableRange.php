@@ -26,11 +26,13 @@ class floatChainableRange
         }
         return $result;
     }
+    
     function setLowerBoundInclusive(?float $lowerBoundInclusive)
     {
         $this->lowerBoundInclusive = $lowerBoundInclusive;
         return $this;
     }
+    
     function setUpperBoundExclusive(?float $upperBoundExclusive)
     {
         $this->upperBoundExclusive = $upperBoundExclusive;

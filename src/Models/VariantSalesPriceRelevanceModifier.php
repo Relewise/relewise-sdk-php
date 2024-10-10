@@ -51,30 +51,35 @@ class VariantSalesPriceRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    
     /** The range of sales prices that this RelevanceModifier will distinguish on. */
     function setRange(?floatRange $range)
     {
         $this->range = $range;
         return $this;
     }
+    
     /** The currency that is used to distinguish the price. */
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     /** The weight that this RelevanceModifier will multiply relevant products with. */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    
     /** Determines whether this RelevanceModifier should apply to all the Products that aren't contained within the specific Range instead. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

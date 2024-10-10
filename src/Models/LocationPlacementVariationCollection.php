@@ -24,17 +24,20 @@ class LocationPlacementVariationCollection
         }
         return $result;
     }
+    
     function setItems(LocationPlacementVariation ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param LocationPlacementVariation[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(LocationPlacementVariation $items)
     {
         if (!isset($this->items))

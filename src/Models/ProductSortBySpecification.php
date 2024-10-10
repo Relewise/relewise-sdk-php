@@ -19,6 +19,7 @@ class ProductSortBySpecification
         }
         return $result;
     }
+    
     function setValue(ProductSorting $value)
     {
         $this->value = $value;

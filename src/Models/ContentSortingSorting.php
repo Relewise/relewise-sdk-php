@@ -39,11 +39,13 @@ abstract class ContentSortingSorting
         }
         return $result;
     }
+    
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    
     function setThenBy(ContentSorting $thenBy)
     {
         $this->thenBy = $thenBy;

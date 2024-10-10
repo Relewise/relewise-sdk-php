@@ -22,16 +22,19 @@ class CPMBudget extends Budget
         }
         return $result;
     }
+    
     function setCostPerMille(float $costPerMille)
     {
         $this->costPerMille = $costPerMille;
         return $this;
     }
+    
     function setMaxTotalCost(?float $maxTotalCost)
     {
         $this->maxTotalCost = $maxTotalCost;
         return $this;
     }
+    
     function setTotalCost(float $totalCost)
     {
         $this->totalCost = $totalCost;

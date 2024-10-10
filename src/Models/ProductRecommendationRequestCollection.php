@@ -31,17 +31,20 @@ class ProductRecommendationRequestCollection extends LicensedRequest
         }
         return $result;
     }
+    
     function setRequests(ProductRecommendationRequest ... $requests)
     {
         $this->requests = $requests;
         return $this;
     }
+    
     /** @param ProductRecommendationRequest[] $requests new value. */
     function setRequestsFromArray(array $requests)
     {
         $this->requests = $requests;
         return $this;
     }
+    
     function addToRequests(ProductRecommendationRequest $requests)
     {
         if (!isset($this->requests))
@@ -51,6 +54,7 @@ class ProductRecommendationRequestCollection extends LicensedRequest
         array_push($this->requests, $requests);
         return $this;
     }
+    
     function setRequireDistinctProductsAcrossResults(bool $requireDistinctProductsAcrossResults)
     {
         $this->requireDistinctProductsAcrossResults = $requireDistinctProductsAcrossResults;

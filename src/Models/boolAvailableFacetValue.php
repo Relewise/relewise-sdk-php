@@ -32,16 +32,19 @@ class boolAvailableFacetValue
         }
         return $result;
     }
+    
     function setValue(bool $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setSelected(bool $selected)
     {
         $this->selected = $selected;

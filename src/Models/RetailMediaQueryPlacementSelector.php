@@ -21,6 +21,7 @@ class RetailMediaQueryPlacementSelector
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;

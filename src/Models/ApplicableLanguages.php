@@ -25,17 +25,20 @@ class ApplicableLanguages
         }
         return $result;
     }
+    
     function setLanguages(Language ... $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    
     /** @param Language[] $languages new value. */
     function setLanguagesFromArray(array $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    
     function addToLanguages(Language $languages)
     {
         if (!isset($this->languages))

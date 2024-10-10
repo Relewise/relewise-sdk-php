@@ -23,17 +23,20 @@ class LanguageIndexConfiguration
         }
         return $result;
     }
+    
     function setLanguages(LanguageIndexConfigurationEntry ... $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    
     /** @param LanguageIndexConfigurationEntry[] $languages new value. */
     function setLanguagesFromArray(array $languages)
     {
         $this->languages = $languages;
         return $this;
     }
+    
     function addToLanguages(LanguageIndexConfigurationEntry $languages)
     {
         if (!isset($this->languages))

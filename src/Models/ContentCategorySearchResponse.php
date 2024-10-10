@@ -15,11 +15,13 @@ class ContentCategorySearchResponse extends PaginatedSearchResponse
         $result = PaginatedSearchResponse::hydrateBase(new ContentCategorySearchResponse(), $arr);
         return $result;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

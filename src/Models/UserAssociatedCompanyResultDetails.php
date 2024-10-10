@@ -47,16 +47,19 @@ class UserAssociatedCompanyResultDetails implements JsonSerializable
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setParent(?UserAssociatedCompanyResultDetails $parent)
     {
         $this->parent = $parent;
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -66,17 +69,20 @@ class UserAssociatedCompanyResultDetails implements JsonSerializable
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param ?array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
         return $this;
     }
+    
     function setCreatedUtc(DateTime $createdUtc)
     {
         $this->createdUtc = $createdUtc;
         return $this;
     }
+    
     function setLastAccessedUtc(DateTime $lastAccessedUtc)
     {
         $this->lastAccessedUtc = $lastAccessedUtc;

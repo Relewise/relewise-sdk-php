@@ -26,11 +26,13 @@ class PredictionRulesRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(PredictionRulesRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

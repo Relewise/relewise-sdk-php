@@ -84,67 +84,80 @@ class ProductPerformanceRequest extends AnalyzerRequest
         }
         return $result;
     }
+    
     function setFromUnixTimeSeconds(int $fromUnixTimeSeconds)
     {
         $this->fromUnixTimeSeconds = $fromUnixTimeSeconds;
         return $this;
     }
+    
     function setToUnixTimeSeconds(int $toUnixTimeSeconds)
     {
         $this->toUnixTimeSeconds = $toUnixTimeSeconds;
         return $this;
     }
+    
     function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setNumberOfResults(int $numberOfResults)
     {
         $this->numberOfResults = $numberOfResults;
         return $this;
     }
+    
     function setSkipNumberOfResults(int $skipNumberOfResults)
     {
         $this->skipNumberOfResults = $skipNumberOfResults;
         return $this;
     }
+    
     function setByVariant(bool $byVariant)
     {
         $this->byVariant = $byVariant;
         return $this;
     }
+    
     function setSelectedProductProperties(?SelectedProductPropertiesSettings $selectedProductProperties)
     {
         $this->selectedProductProperties = $selectedProductProperties;
         return $this;
     }
+    
     function setSelectedVariantProperties(?SelectedVariantPropertiesSettings $selectedVariantProperties)
     {
         $this->selectedVariantProperties = $selectedVariantProperties;
         return $this;
     }
+    
     function setOrderBy(ProductPerformanceRequestOrderByOptions $orderBy)
     {
         $this->orderBy = $orderBy;
         return $this;
     }
+    
     function setVariantData(ProductPerformanceRequestVariantDataOptions $variantData)
     {
         $this->variantData = $variantData;
         return $this;
     }
+    
     function setClassifications(stringstringKeyValuePair ... $classifications)
     {
         $this->classifications = $classifications;
         return $this;
     }
+    
     /** @param ?stringstringKeyValuePair[] $classifications new value. */
     function setClassificationsFromArray(array $classifications)
     {
         $this->classifications = $classifications;
         return $this;
     }
+    
     function addToClassifications(stringstringKeyValuePair $classifications)
     {
         if (!isset($this->classifications))
@@ -154,16 +167,19 @@ class ProductPerformanceRequest extends AnalyzerRequest
         array_push($this->classifications, $classifications);
         return $this;
     }
+    
     function setSelectedBrandProperties(?SelectedBrandPropertiesSettings $selectedBrandProperties)
     {
         $this->selectedBrandProperties = $selectedBrandProperties;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

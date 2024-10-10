@@ -19,6 +19,7 @@ class UserActivityTriggerResult
         }
         return $result;
     }
+    
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;

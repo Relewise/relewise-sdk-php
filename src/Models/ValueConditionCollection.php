@@ -30,12 +30,14 @@ class ValueConditionCollection
         }
         return $result;
     }
+    
     /** The items that this collection holds. */
     function setItems(ValueCondition ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /**
      * The items that this collection holds.
      * @param ?ValueCondition[] $items new value.
@@ -45,6 +47,7 @@ class ValueConditionCollection
         $this->items = $items;
         return $this;
     }
+    
     /** The items that this collection holds. */
     function addToItems(ValueCondition $items)
     {

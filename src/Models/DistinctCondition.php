@@ -21,11 +21,13 @@ class DistinctCondition extends ValueCondition
         }
         return $result;
     }
+    
     function setNumberOfOccurrencesAllowedWithTheSameValue(int $numberOfOccurrencesAllowedWithTheSameValue)
     {
         $this->numberOfOccurrencesAllowedWithTheSameValue = $numberOfOccurrencesAllowedWithTheSameValue;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

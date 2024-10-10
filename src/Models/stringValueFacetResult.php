@@ -34,17 +34,20 @@ abstract class stringValueFacetResult extends stringstringValueFacetResult
         $result = stringstringValueFacetResult::hydrateBase($result, $arr);
         return $result;
     }
+    
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -54,17 +57,20 @@ abstract class stringValueFacetResult extends stringstringValueFacetResult
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setAvailable(stringAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     /** @param stringAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function addToAvailable(stringAvailableFacetValue $available)
     {
         if (!isset($this->available))
@@ -74,6 +80,7 @@ abstract class stringValueFacetResult extends stringstringValueFacetResult
         array_push($this->available, $available);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

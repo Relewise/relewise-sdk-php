@@ -39,26 +39,31 @@ class ProductPerformanceResultSalesByCurrency
         }
         return $result;
     }
+    
     function setCurrency(Currency $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     function setOrders(int $orders)
     {
         $this->orders = $orders;
         return $this;
     }
+    
     function setAverageSubtotal(float $averageSubtotal)
     {
         $this->averageSubtotal = $averageSubtotal;
         return $this;
     }
+    
     function setUnits(float $units)
     {
         $this->units = $units;
         return $this;
     }
+    
     function setRevenue(float $revenue)
     {
         $this->revenue = $revenue;

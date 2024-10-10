@@ -21,6 +21,7 @@ class RetailMediaQueryVariationSelector
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;

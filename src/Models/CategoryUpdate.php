@@ -27,6 +27,7 @@ abstract class CategoryUpdate extends Trackable
         }
         return $result;
     }
+    
     function setKind(CategoryUpdateUpdateKind $kind)
     {
         $this->kind = $kind;

@@ -24,17 +24,20 @@ class AdvertisersRequestEntityFilters extends AdvertiserEntityStateAdvertiserMet
         }
         return $result;
     }
+    
     function setIds(string ... $ids)
     {
         $this->ids = $ids;
         return $this;
     }
+    
     /** @param ?string[] $ids new value. */
     function setIdsFromArray(array $ids)
     {
         $this->ids = $ids;
         return $this;
     }
+    
     function addToIds(string $ids)
     {
         if (!isset($this->ids))
@@ -44,22 +47,26 @@ class AdvertisersRequestEntityFilters extends AdvertiserEntityStateAdvertiserMet
         array_push($this->ids, $ids);
         return $this;
     }
+    
     function setTerm(?string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setStates(AdvertiserEntityState ... $states)
     {
         $this->states = $states;
         return $this;
     }
+    
     /** @param ?AdvertiserEntityState[] $states new value. */
     function setStatesFromArray(array $states)
     {
         $this->states = $states;
         return $this;
     }
+    
     function addToStates(AdvertiserEntityState $states)
     {
         if (!isset($this->states))

@@ -20,6 +20,7 @@ class CampaignAnalytics
         }
         return $result;
     }
+    
     function setProducts(CampaignAnalyticsProductAnalytics $products)
     {
         $this->products = $products;

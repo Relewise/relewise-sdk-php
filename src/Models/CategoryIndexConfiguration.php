@@ -19,6 +19,7 @@ class CategoryIndexConfiguration
         }
         return $result;
     }
+    
     function setUnspecified(CategoryIndexConfigurationEntry $unspecified)
     {
         $this->unspecified = $unspecified;

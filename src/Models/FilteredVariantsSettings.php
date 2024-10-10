@@ -24,11 +24,13 @@ class FilteredVariantsSettings
         }
         return $result;
     }
+    
     function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setInheritFiltersFromRequest(?bool $inheritFiltersFromRequest)
     {
         $this->inheritFiltersFromRequest = $inheritFiltersFromRequest;

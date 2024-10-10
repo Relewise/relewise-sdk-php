@@ -23,17 +23,20 @@ class RetailMediaResultPlacement
         }
         return $result;
     }
+    
     function setResults(RetailMediaResultPlacementResultEntity ... $results)
     {
         $this->results = $results;
         return $this;
     }
+    
     /** @param ?RetailMediaResultPlacementResultEntity[] $results new value. */
     function setResultsFromArray(array $results)
     {
         $this->results = $results;
         return $this;
     }
+    
     function addToResults(RetailMediaResultPlacementResultEntity $results)
     {
         if (!isset($this->results))

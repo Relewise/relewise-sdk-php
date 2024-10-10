@@ -21,6 +21,7 @@ class ApplyFilterSettings extends FilterScopeSettings
         }
         return $result;
     }
+    
     function setApply(bool $apply)
     {
         $this->apply = $apply;

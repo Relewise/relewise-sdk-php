@@ -25,17 +25,20 @@ class ProductRecommendationResponse extends RecommendationResponse
         }
         return $result;
     }
+    
     function setRecommendations(ProductResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     /** @param ProductResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     function addToRecommendations(ProductResult $recommendations)
     {
         if (!isset($this->recommendations))
@@ -45,6 +48,7 @@ class ProductRecommendationResponse extends RecommendationResponse
         array_push($this->recommendations, $recommendations);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

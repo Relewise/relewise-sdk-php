@@ -16,17 +16,20 @@ class SaveDecompoundRulesResponse extends DecompoundRuleSaveSearchRulesResponse
         $result = DecompoundRuleSaveSearchRulesResponse::hydrateBase(new SaveDecompoundRulesResponse(), $arr);
         return $result;
     }
+    
     function setRules(DecompoundRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param DecompoundRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(DecompoundRule $rules)
     {
         if (!isset($this->rules))
@@ -36,6 +39,7 @@ class SaveDecompoundRulesResponse extends DecompoundRuleSaveSearchRulesResponse
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

@@ -31,16 +31,19 @@ class LocationPlacementVariation
         }
         return $result;
     }
+    
     function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
+    
     function setKey(?string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setSupportedPromotions(?PromotionSpecificationVariationCollection $supportedPromotions)
     {
         $this->supportedPromotions = $supportedPromotions;

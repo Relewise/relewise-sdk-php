@@ -26,11 +26,13 @@ class SynonymsRequestSynonymSortingSorting
         }
         return $result;
     }
+    
     function setSortBy(SynonymsRequestSynonymSorting $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

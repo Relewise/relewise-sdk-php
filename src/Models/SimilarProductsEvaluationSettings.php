@@ -78,57 +78,68 @@ class SimilarProductsEvaluationSettings
         }
         return $result;
     }
+    
     function setSignificanceOfSimilaritiesInDisplayName(float $significanceOfSimilaritiesInDisplayName)
     {
         $this->significanceOfSimilaritiesInDisplayName = $significanceOfSimilaritiesInDisplayName;
         return $this;
     }
+    
     function setProductDisplayNameTransformer(?TrimStringTransformer $productDisplayNameTransformer)
     {
         $this->productDisplayNameTransformer = $productDisplayNameTransformer;
         return $this;
     }
+    
     function setSignificanceOfSimilarListPrice(float $significanceOfSimilarListPrice)
     {
         $this->significanceOfSimilarListPrice = $significanceOfSimilarListPrice;
         return $this;
     }
+    
     function setSignificanceOfCommonImmediateParentCategories(float $significanceOfCommonImmediateParentCategories)
     {
         $this->significanceOfCommonImmediateParentCategories = $significanceOfCommonImmediateParentCategories;
         return $this;
     }
+    
     function setSignificanceOfCommonParentsParentCategories(float $significanceOfCommonParentsParentCategories)
     {
         $this->significanceOfCommonParentsParentCategories = $significanceOfCommonParentsParentCategories;
         return $this;
     }
+    
     function setSignificanceOfCommonAncestorCategories(float $significanceOfCommonAncestorCategories)
     {
         $this->significanceOfCommonAncestorCategories = $significanceOfCommonAncestorCategories;
         return $this;
     }
+    
     function setSignificanceOfCommonProductDataKeys(float $significanceOfCommonProductDataKeys)
     {
         $this->significanceOfCommonProductDataKeys = $significanceOfCommonProductDataKeys;
         return $this;
     }
+    
     function setSignificanceOfIdenticalProductDataValues(float $significanceOfIdenticalProductDataValues)
     {
         $this->significanceOfIdenticalProductDataValues = $significanceOfIdenticalProductDataValues;
         return $this;
     }
+    
     function setSignificantProductDataFields(SignificantDataValue ... $significantProductDataFields)
     {
         $this->significantProductDataFields = $significantProductDataFields;
         return $this;
     }
+    
     /** @param ?SignificantDataValue[] $significantProductDataFields new value. */
     function setSignificantProductDataFieldsFromArray(array $significantProductDataFields)
     {
         $this->significantProductDataFields = $significantProductDataFields;
         return $this;
     }
+    
     function addToSignificantProductDataFields(SignificantDataValue $significantProductDataFields)
     {
         if (!isset($this->significantProductDataFields))
@@ -138,16 +149,19 @@ class SimilarProductsEvaluationSettings
         array_push($this->significantProductDataFields, $significantProductDataFields);
         return $this;
     }
+    
     function setSignificanceOfSimilarSalesPrice(float $significanceOfSimilarSalesPrice)
     {
         $this->significanceOfSimilarSalesPrice = $significanceOfSimilarSalesPrice;
         return $this;
     }
+    
     function setSignificanceOfSimilarBrand(float $significanceOfSimilarBrand)
     {
         $this->significanceOfSimilarBrand = $significanceOfSimilarBrand;
         return $this;
     }
+    
     function setVariantEvaluationSettings(?SimilarVariantEvaluationSettings $variantEvaluationSettings)
     {
         $this->variantEvaluationSettings = $variantEvaluationSettings;

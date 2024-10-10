@@ -34,21 +34,25 @@ class RequestConfiguration
         }
         return $result;
     }
+    
     function setFilters(RequestConfigurationPrioritization $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setRelevanceModifiers(RequestConfigurationPrioritization $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
+    
     function setOverriddenProductRecommendationRequestSettings(OverriddenProductRecommendationRequestSettings $overriddenProductRecommendationRequestSettings)
     {
         $this->overriddenProductRecommendationRequestSettings = $overriddenProductRecommendationRequestSettings;
         return $this;
     }
+    
     function setOverriddenContentRecommendationRequestSettings(OverriddenContentRecommendationRequestSettings $overriddenContentRecommendationRequestSettings)
     {
         $this->overriddenContentRecommendationRequestSettings = $overriddenContentRecommendationRequestSettings;

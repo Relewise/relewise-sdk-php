@@ -31,17 +31,20 @@ class ContentDetailsCollectionResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setContents(ContentResultDetails ... $contents)
     {
         $this->contents = $contents;
         return $this;
     }
+    
     /** @param ContentResultDetails[] $contents new value. */
     function setContentsFromArray(array $contents)
     {
         $this->contents = $contents;
         return $this;
     }
+    
     function addToContents(ContentResultDetails $contents)
     {
         if (!isset($this->contents))
@@ -51,11 +54,13 @@ class ContentDetailsCollectionResponse extends TimedResponse
         array_push($this->contents, $contents);
         return $this;
     }
+    
     function setTotalNumberOfResults(?int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

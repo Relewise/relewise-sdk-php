@@ -35,11 +35,13 @@ abstract class PaginatedSearchResponse extends SearchResponse
         }
         return $result;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

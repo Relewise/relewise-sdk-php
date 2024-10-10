@@ -47,6 +47,7 @@ abstract class ValueCondition
         }
         return $result;
     }
+    
     /** Whether the condition should be negated / inverted */
     function setNegated(bool $negated)
     {

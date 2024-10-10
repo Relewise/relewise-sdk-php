@@ -44,24 +44,28 @@ class PurchaseQualifiers
         }
         return $result;
     }
+    
     /** How fresh recent purchase must be to count as hit? */
     function setSinceMinutesAgo(int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     /** Should hit be count if user recently purchased product? */
     function setByUser(bool $byUser)
     {
         $this->byUser = $byUser;
         return $this;
     }
+    
     /** Should hit be count if user company recently had a product purchase tracked? */
     function setByUserCompany(bool $byUserCompany)
     {
         $this->byUserCompany = $byUserCompany;
         return $this;
     }
+    
     /** Should hit be count if user parent company recently had a product purchase tracked? */
     function setByUserParentCompany(bool $byUserParentCompany)
     {

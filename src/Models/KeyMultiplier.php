@@ -26,11 +26,13 @@ class KeyMultiplier
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setMultiplier(float $multiplier)
     {
         $this->multiplier = $multiplier;

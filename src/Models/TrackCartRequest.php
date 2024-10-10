@@ -21,6 +21,7 @@ class TrackCartRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setCart(Cart $cart)
     {
         $this->cart = $cart;

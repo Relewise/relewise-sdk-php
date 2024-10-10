@@ -30,6 +30,7 @@ abstract class RetailMediaEntity
         }
         return $result;
     }
+    
     function setId(?string $id)
     {
         $this->id = $id;

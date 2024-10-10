@@ -21,6 +21,7 @@ class ObservableVariantAttributeSelector extends VariantPropertySelector
         }
         return $result;
     }
+    
     function setAttribute(ObservableVariantAttribute $attribute)
     {
         $this->attribute = $attribute;

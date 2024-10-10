@@ -21,6 +21,7 @@ class ObservableVariantDataValueSelector extends VariantPropertySelector
         }
         return $result;
     }
+    
     function setDataObjectValueSelector(DataObjectValueSelector $dataObjectValueSelector)
     {
         $this->dataObjectValueSelector = $dataObjectValueSelector;

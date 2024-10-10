@@ -39,11 +39,13 @@ abstract class ProductCategorySortingSorting
         }
         return $result;
     }
+    
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    
     function setThenBy(ProductCategorySorting $thenBy)
     {
         $this->thenBy = $thenBy;

@@ -33,27 +33,32 @@ class SearchTermResult
         }
         return $result;
     }
+    
     function setTerm(string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;
     }
+    
     function setExpectedResultTypes(ExpectedSearchTermResult ... $expectedResultTypes)
     {
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;
     }
+    
     /** @param ExpectedSearchTermResult[] $expectedResultTypes new value. */
     function setExpectedResultTypesFromArray(array $expectedResultTypes)
     {
         $this->expectedResultTypes = $expectedResultTypes;
         return $this;
     }
+    
     function addToExpectedResultTypes(ExpectedSearchTermResult $expectedResultTypes)
     {
         if (!isset($this->expectedResultTypes))

@@ -25,17 +25,20 @@ class ContentCategoryRecommendationResponseCollection extends TimedResponse
         }
         return $result;
     }
+    
     function setResponses(ContentCategoryRecommendationResponse ... $responses)
     {
         $this->responses = $responses;
         return $this;
     }
+    
     /** @param ContentCategoryRecommendationResponse[] $responses new value. */
     function setResponsesFromArray(array $responses)
     {
         $this->responses = $responses;
         return $this;
     }
+    
     function addToResponses(ContentCategoryRecommendationResponse $responses)
     {
         if (!isset($this->responses))
@@ -45,6 +48,7 @@ class ContentCategoryRecommendationResponseCollection extends TimedResponse
         array_push($this->responses, $responses);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

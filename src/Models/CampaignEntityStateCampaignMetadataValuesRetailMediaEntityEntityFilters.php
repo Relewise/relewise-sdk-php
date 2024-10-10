@@ -31,22 +31,26 @@ abstract class CampaignEntityStateCampaignMetadataValuesRetailMediaEntityEntityF
         }
         return $result;
     }
+    
     function setTerm(?string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setStates(CampaignEntityState ... $states)
     {
         $this->states = $states;
         return $this;
     }
+    
     /** @param ?CampaignEntityState[] $states new value. */
     function setStatesFromArray(array $states)
     {
         $this->states = $states;
         return $this;
     }
+    
     function addToStates(CampaignEntityState $states)
     {
         if (!isset($this->states))

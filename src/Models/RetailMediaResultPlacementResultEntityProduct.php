@@ -19,6 +19,7 @@ class RetailMediaResultPlacementResultEntityProduct
         }
         return $result;
     }
+    
     function setResult(ProductResult $result)
     {
         $this->result = $result;

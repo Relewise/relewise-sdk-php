@@ -32,17 +32,20 @@ abstract class SearchTermModifierRuleSearchRulesResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setRules(SearchTermModifierRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param SearchTermModifierRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(SearchTermModifierRule $rules)
     {
         if (!isset($this->rules))
@@ -52,11 +55,13 @@ abstract class SearchTermModifierRuleSearchRulesResponse extends TimedResponse
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

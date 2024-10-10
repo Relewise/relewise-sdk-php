@@ -34,16 +34,19 @@ class ViewedByUserCompanyInfo implements JsonSerializable
         }
         return $result;
     }
+    
     function setMostRecentlyViewedUtc(DateTime $mostRecentlyViewedUtc)
     {
         $this->mostRecentlyViewedUtc = $mostRecentlyViewedUtc;
         return $this;
     }
+    
     function setTotalNumberOfTimesViewed(int $totalNumberOfTimesViewed)
     {
         $this->totalNumberOfTimesViewed = $totalNumberOfTimesViewed;
         return $this;
     }
+    
     function setViewedByParentCompany(ViewedByUserCompanyInfo $viewedByParentCompany)
     {
         $this->viewedByParentCompany = $viewedByParentCompany;

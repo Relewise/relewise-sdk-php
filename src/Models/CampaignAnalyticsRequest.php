@@ -35,17 +35,20 @@ class CampaignAnalyticsRequest extends LicensedRequest
         }
         return $result;
     }
+    
     /** The campaign to provide analytics for. */
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setPeriodUtc(DateTimeRange $periodUtc)
     {
         $this->periodUtc = $periodUtc;
         return $this;
     }
+    
     function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;

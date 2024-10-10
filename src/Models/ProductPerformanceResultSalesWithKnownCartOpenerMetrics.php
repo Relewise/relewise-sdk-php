@@ -29,16 +29,19 @@ class ProductPerformanceResultSalesWithKnownCartOpenerMetrics
         }
         return $result;
     }
+    
     function setOrders(int $orders)
     {
         $this->orders = $orders;
         return $this;
     }
+    
     function setOpened(int $opened)
     {
         $this->opened = $opened;
         return $this;
     }
+    
     function setOpenedPercent(float $openedPercent)
     {
         $this->openedPercent = $openedPercent;

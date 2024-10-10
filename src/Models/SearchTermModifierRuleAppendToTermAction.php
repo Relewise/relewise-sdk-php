@@ -21,6 +21,7 @@ class SearchTermModifierRuleAppendToTermAction extends SearchTermModifierRuleRul
         }
         return $result;
     }
+    
     function setWords(string $words)
     {
         $this->words = $words;

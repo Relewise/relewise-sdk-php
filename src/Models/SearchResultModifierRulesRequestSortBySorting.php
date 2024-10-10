@@ -26,11 +26,13 @@ class SearchResultModifierRulesRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(SearchResultModifierRulesRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

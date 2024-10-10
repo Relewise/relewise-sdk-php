@@ -30,22 +30,26 @@ class CampaignStatusWithHistory
         }
         return $result;
     }
+    
     function setCurrent(CampaignStatusWithHistoryStatusName $current)
     {
         $this->current = $current;
         return $this;
     }
+    
     function setHistory(CampaignStatusWithHistoryChange ... $history)
     {
         $this->history = $history;
         return $this;
     }
+    
     /** @param CampaignStatusWithHistoryChange[] $history new value. */
     function setHistoryFromArray(array $history)
     {
         $this->history = $history;
         return $this;
     }
+    
     function addToHistory(CampaignStatusWithHistoryChange $history)
     {
         if (!isset($this->history))

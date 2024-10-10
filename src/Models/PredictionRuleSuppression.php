@@ -30,22 +30,26 @@ class PredictionRuleSuppression
         }
         return $result;
     }
+    
     function setCondition(PredictionRuleSuppressionConditionKind $condition)
     {
         $this->condition = $condition;
         return $this;
     }
+    
     function setValues(string ... $values)
     {
         $this->values = $values;
         return $this;
     }
+    
     /** @param string[] $values new value. */
     function setValuesFromArray(array $values)
     {
         $this->values = $values;
         return $this;
     }
+    
     function addToValues(string $values)
     {
         if (!isset($this->values))

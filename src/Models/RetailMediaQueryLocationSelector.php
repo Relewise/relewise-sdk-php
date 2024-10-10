@@ -39,23 +39,27 @@ class RetailMediaQueryLocationSelector
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     /** The variation to retrieve the retail media content for, e.g. "Desktop", "Mobile", "Tablet" etc. */
     function setVariation(RetailMediaQueryVariationSelector $variation)
     {
         $this->variation = $variation;
         return $this;
     }
+    
     /** The placements on the specified location. */
     function setPlacements(RetailMediaQueryPlacementSelector ... $placements)
     {
         $this->placements = $placements;
         return $this;
     }
+    
     /**
      * The placements on the specified location.
      * @param RetailMediaQueryPlacementSelector[] $placements new value.
@@ -65,6 +69,7 @@ class RetailMediaQueryLocationSelector
         $this->placements = $placements;
         return $this;
     }
+    
     /** The placements on the specified location. */
     function addToPlacements(RetailMediaQueryPlacementSelector $placements)
     {

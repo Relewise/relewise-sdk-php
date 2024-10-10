@@ -52,32 +52,38 @@ class Cart extends Trackable
         }
         return $result;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setName(?string $name)
     {
         $this->name = $name;
         return $this;
     }
+    
     function setSubtotal(?Money $subtotal)
     {
         $this->subtotal = $subtotal;
         return $this;
     }
+    
     function setLineItems(LineItem ... $lineItems)
     {
         $this->lineItems = $lineItems;
         return $this;
     }
+    
     /** @param ?LineItem[] $lineItems new value. */
     function setLineItemsFromArray(array $lineItems)
     {
         $this->lineItems = $lineItems;
         return $this;
     }
+    
     function addToLineItems(LineItem $lineItems)
     {
         if (!isset($this->lineItems))
@@ -87,6 +93,7 @@ class Cart extends Trackable
         array_push($this->lineItems, $lineItems);
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -96,6 +103,7 @@ class Cart extends Trackable
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param ?array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {

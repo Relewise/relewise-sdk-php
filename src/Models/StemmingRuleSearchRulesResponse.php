@@ -32,17 +32,20 @@ abstract class StemmingRuleSearchRulesResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setRules(StemmingRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param StemmingRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(StemmingRule $rules)
     {
         if (!isset($this->rules))
@@ -52,11 +55,13 @@ abstract class StemmingRuleSearchRulesResponse extends TimedResponse
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

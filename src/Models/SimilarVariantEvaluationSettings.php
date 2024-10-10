@@ -48,42 +48,50 @@ class SimilarVariantEvaluationSettings
         }
         return $result;
     }
+    
     function setSignificanceOfSimilaritiesInDisplayName(?float $significanceOfSimilaritiesInDisplayName)
     {
         $this->significanceOfSimilaritiesInDisplayName = $significanceOfSimilaritiesInDisplayName;
         return $this;
     }
+    
     function setSignificanceOfSimilarListPrice(?float $significanceOfSimilarListPrice)
     {
         $this->significanceOfSimilarListPrice = $significanceOfSimilarListPrice;
         return $this;
     }
+    
     function setSignificanceOfSimilarSalesPrice(?float $significanceOfSimilarSalesPrice)
     {
         $this->significanceOfSimilarSalesPrice = $significanceOfSimilarSalesPrice;
         return $this;
     }
+    
     function setSignificanceOfCommonDataKeys(?float $significanceOfCommonDataKeys)
     {
         $this->significanceOfCommonDataKeys = $significanceOfCommonDataKeys;
         return $this;
     }
+    
     function setSignificanceOfIdenticalDataValues(?float $significanceOfIdenticalDataValues)
     {
         $this->significanceOfIdenticalDataValues = $significanceOfIdenticalDataValues;
         return $this;
     }
+    
     function setSignificantDataFields(SignificantDataValue ... $significantDataFields)
     {
         $this->significantDataFields = $significantDataFields;
         return $this;
     }
+    
     /** @param ?SignificantDataValue[] $significantDataFields new value. */
     function setSignificantDataFieldsFromArray(array $significantDataFields)
     {
         $this->significantDataFields = $significantDataFields;
         return $this;
     }
+    
     function addToSignificantDataFields(SignificantDataValue $significantDataFields)
     {
         if (!isset($this->significantDataFields))

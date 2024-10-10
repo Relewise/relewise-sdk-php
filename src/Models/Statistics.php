@@ -19,6 +19,7 @@ class Statistics
         }
         return $result;
     }
+    
     function setServerTimeInMs(float $serverTimeInMs)
     {
         $this->serverTimeInMs = $serverTimeInMs;

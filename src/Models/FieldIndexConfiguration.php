@@ -44,26 +44,31 @@ class FieldIndexConfiguration
         }
         return $result;
     }
+    
     function setIncluded(bool $included)
     {
         $this->included = $included;
         return $this;
     }
+    
     function setWeight(int $weight)
     {
         $this->weight = $weight;
         return $this;
     }
+    
     function setPredictionSourceType(PredictionSourceType $predictionSourceType)
     {
         $this->predictionSourceType = $predictionSourceType;
         return $this;
     }
+    
     function setParser(?Parser $parser)
     {
         $this->parser = $parser;
         return $this;
     }
+    
     function setMatchTypeSettings(?MatchTypeSettings $matchTypeSettings)
     {
         $this->matchTypeSettings = $matchTypeSettings;

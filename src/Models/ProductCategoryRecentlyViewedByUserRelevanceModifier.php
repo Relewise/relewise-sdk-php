@@ -21,26 +21,31 @@ class ProductCategoryRecentlyViewedByUserRelevanceModifier extends RecentlyViewe
         $result = RecentlyViewedByUserRelevanceModifier::hydrateBase(new ProductCategoryRecentlyViewedByUserRelevanceModifier(), $arr);
         return $result;
     }
+    
     function setSinceUtc(?DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
+    
     function setIfPreviouslyViewedByUserMultiplyWeightBy(float $ifPreviouslyViewedByUserMultiplyWeightBy)
     {
         $this->ifPreviouslyViewedByUserMultiplyWeightBy = $ifPreviouslyViewedByUserMultiplyWeightBy;
         return $this;
     }
+    
     function setIfNotPreviouslyViewedByUserMultiplyWeightBy(float $ifNotPreviouslyViewedByUserMultiplyWeightBy)
     {
         $this->ifNotPreviouslyViewedByUserMultiplyWeightBy = $ifNotPreviouslyViewedByUserMultiplyWeightBy;
         return $this;
     }
+    
     function setSinceMinutesAgo(?int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

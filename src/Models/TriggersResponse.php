@@ -19,11 +19,13 @@ abstract class TriggersResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setRemainingResults(int $remainingResults)
     {
         $this->remainingResults = $remainingResults;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

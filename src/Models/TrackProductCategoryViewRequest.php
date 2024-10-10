@@ -21,6 +21,7 @@ class TrackProductCategoryViewRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setProductCategoryView(ProductCategoryView $productCategoryView)
     {
         $this->productCategoryView = $productCategoryView;

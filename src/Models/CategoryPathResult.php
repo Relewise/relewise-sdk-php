@@ -29,17 +29,20 @@ class CategoryPathResult
         }
         return $result;
     }
+    
     function setPathFromRoot(CategoryNameAndIdResult ... $pathFromRoot)
     {
         $this->pathFromRoot = $pathFromRoot;
         return $this;
     }
+    
     /** @param CategoryNameAndIdResult[] $pathFromRoot new value. */
     function setPathFromRootFromArray(array $pathFromRoot)
     {
         $this->pathFromRoot = $pathFromRoot;
         return $this;
     }
+    
     function addToPathFromRoot(CategoryNameAndIdResult $pathFromRoot)
     {
         if (!isset($this->pathFromRoot))
@@ -49,6 +52,7 @@ class CategoryPathResult
         array_push($this->pathFromRoot, $pathFromRoot);
         return $this;
     }
+    
     function setRank(int $rank)
     {
         $this->rank = $rank;

@@ -71,24 +71,28 @@ abstract class ObjectValueCondition
         }
         return $result;
     }
+    
     /** Whether the condition should be negated / inverted */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     /** The key of the object that the condition will compare against. */
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     /** An optional path to some nested object defined under the selected Key. */
     function setObjectPath(string ... $objectPath)
     {
         $this->objectPath = $objectPath;
         return $this;
     }
+    
     /**
      * An optional path to some nested object defined under the selected Key.
      * @param ?string[] $objectPath new value.
@@ -98,6 +102,7 @@ abstract class ObjectValueCondition
         $this->objectPath = $objectPath;
         return $this;
     }
+    
     /** An optional path to some nested object defined under the selected Key. */
     function addToObjectPath(string $objectPath)
     {

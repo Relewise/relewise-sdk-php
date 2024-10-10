@@ -26,11 +26,13 @@ class CampaignsRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(CampaignsRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

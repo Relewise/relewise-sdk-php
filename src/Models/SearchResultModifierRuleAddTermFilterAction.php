@@ -27,11 +27,13 @@ class SearchResultModifierRuleAddTermFilterAction extends SearchResultModifierRu
         }
         return $result;
     }
+    
     function setTerm(string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

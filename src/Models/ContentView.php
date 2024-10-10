@@ -27,11 +27,13 @@ class ContentView extends Trackable
         }
         return $result;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setContent(Content $content)
     {
         $this->content = $content;

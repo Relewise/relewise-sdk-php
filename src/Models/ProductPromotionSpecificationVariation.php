@@ -23,6 +23,7 @@ class ProductPromotionSpecificationVariation extends PromotionSpecificationVaria
         }
         return $result;
     }
+    
     /** The maximum number of products to promote at a time in this variation. */
     function setMaxCount(int $maxCount)
     {

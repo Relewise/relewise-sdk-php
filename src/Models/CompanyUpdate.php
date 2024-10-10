@@ -43,27 +43,32 @@ class CompanyUpdate extends Trackable
         }
         return $result;
     }
+    
     function setCompany(Company $company)
     {
         $this->company = $company;
         return $this;
     }
+    
     function setKind(CompanyUpdateUpdateKind $kind)
     {
         $this->kind = $kind;
         return $this;
     }
+    
     function setParents(Company ... $parents)
     {
         $this->parents = $parents;
         return $this;
     }
+    
     /** @param ?Company[] $parents new value. */
     function setParentsFromArray(array $parents)
     {
         $this->parents = $parents;
         return $this;
     }
+    
     function addToParents(Company $parents)
     {
         if (!isset($this->parents))
@@ -73,6 +78,7 @@ class CompanyUpdate extends Trackable
         array_push($this->parents, $parents);
         return $this;
     }
+    
     function setReplaceExistingParents(bool $replaceExistingParents)
     {
         $this->replaceExistingParents = $replaceExistingParents;

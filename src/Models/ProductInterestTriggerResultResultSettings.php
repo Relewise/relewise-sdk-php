@@ -24,11 +24,13 @@ class ProductInterestTriggerResultResultSettings
         }
         return $result;
     }
+    
     function setSelectedProductProperties(SelectedProductDetailsPropertiesSettings $selectedProductProperties)
     {
         $this->selectedProductProperties = $selectedProductProperties;
         return $this;
     }
+    
     function setSelectedVariantProperties(SelectedVariantDetailsPropertiesSettings $selectedVariantProperties)
     {
         $this->selectedVariantProperties = $selectedVariantProperties;

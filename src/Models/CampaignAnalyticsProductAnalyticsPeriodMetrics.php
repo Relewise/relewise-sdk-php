@@ -46,32 +46,38 @@ class CampaignAnalyticsProductAnalyticsPeriodMetrics implements JsonSerializable
         }
         return $result;
     }
+    
     function setPeriodFromUtc(DateTime $periodFromUtc)
     {
         $this->periodFromUtc = $periodFromUtc;
         return $this;
     }
+    
     function setViews(int $views)
     {
         $this->views = $views;
         return $this;
     }
+    
     function setSalesQuantity(int $salesQuantity)
     {
         $this->salesQuantity = $salesQuantity;
         return $this;
     }
+    
     function setCurrencies(CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics ... $currencies)
     {
         $this->currencies = $currencies;
         return $this;
     }
+    
     /** @param CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics[] $currencies new value. */
     function setCurrenciesFromArray(array $currencies)
     {
         $this->currencies = $currencies;
         return $this;
     }
+    
     function addToCurrencies(CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics $currencies)
     {
         if (!isset($this->currencies))

@@ -15,6 +15,7 @@ class DeleteSynonymsResponse extends TimedResponse
         $result = TimedResponse::hydrateBase(new DeleteSynonymsResponse(), $arr);
         return $result;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

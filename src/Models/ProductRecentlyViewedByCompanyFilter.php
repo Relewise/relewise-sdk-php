@@ -43,18 +43,21 @@ class ProductRecentlyViewedByCompanyFilter extends Filter implements JsonSeriali
         }
         return $result;
     }
+    
     /** The time from which a Product should have been viewed by any of the companies to be included by the filter. */
     function setSinceUtc(?DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
+    
     /** The companies that should be evaluated in this filter. */
     function setCompanyIds(string ... $companyIds)
     {
         $this->companyIds = $companyIds;
         return $this;
     }
+    
     /**
      * The companies that should be evaluated in this filter.
      * @param string[] $companyIds new value.
@@ -64,6 +67,7 @@ class ProductRecentlyViewedByCompanyFilter extends Filter implements JsonSeriali
         $this->companyIds = $companyIds;
         return $this;
     }
+    
     /** The companies that should be evaluated in this filter. */
     function addToCompanyIds(string $companyIds)
     {
@@ -74,17 +78,20 @@ class ProductRecentlyViewedByCompanyFilter extends Filter implements JsonSeriali
         array_push($this->companyIds, $companyIds);
         return $this;
     }
+    
     /** The time in minutes from which a Product should have been viewed by any of the companies to be included by the filter. */
     function setSinceMinutesAgo(?int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

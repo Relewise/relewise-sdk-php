@@ -39,21 +39,25 @@ class CompanyAdministrativeAction extends Trackable
         }
         return $result;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setKind(CompanyAdministrativeActionUpdateKind $kind)
     {
         $this->kind = $kind;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

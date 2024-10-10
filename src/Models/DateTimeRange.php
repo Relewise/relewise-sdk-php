@@ -29,11 +29,13 @@ class DateTimeRange implements JsonSerializable
         }
         return $result;
     }
+    
     function setLowerBoundInclusive(DateTime $lowerBoundInclusive)
     {
         $this->lowerBoundInclusive = $lowerBoundInclusive;
         return $this;
     }
+    
     function setUpperBoundInclusive(DateTime $upperBoundInclusive)
     {
         $this->upperBoundInclusive = $upperBoundInclusive;

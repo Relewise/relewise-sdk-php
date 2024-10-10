@@ -27,11 +27,13 @@ class SearchTermModifierRuleReplaceWordsInTermAction extends SearchTermModifierR
         }
         return $result;
     }
+    
     function setWords(string $words)
     {
         $this->words = $words;
         return $this;
     }
+    
     function setReplacement(?string $replacement)
     {
         $this->replacement = $replacement;

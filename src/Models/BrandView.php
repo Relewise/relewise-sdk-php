@@ -27,11 +27,13 @@ class BrandView extends Trackable
         }
         return $result;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setBrand(Brand $brand)
     {
         $this->brand = $brand;

@@ -25,17 +25,20 @@ class ProductIdFilter extends Filter
         }
         return $result;
     }
+    
     function setProductIds(string ... $productIds)
     {
         $this->productIds = $productIds;
         return $this;
     }
+    
     /** @param string[] $productIds new value. */
     function setProductIdsFromArray(array $productIds)
     {
         $this->productIds = $productIds;
         return $this;
     }
+    
     function addToProductIds(string $productIds)
     {
         if (!isset($this->productIds))
@@ -45,11 +48,13 @@ class ProductIdFilter extends Filter
         array_push($this->productIds, $productIds);
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

@@ -25,17 +25,20 @@ class ProductAndVariantIdFilter extends Filter
         }
         return $result;
     }
+    
     function setProductAndVariantIds(ProductAndVariantId ... $productAndVariantIds)
     {
         $this->productAndVariantIds = $productAndVariantIds;
         return $this;
     }
+    
     /** @param ProductAndVariantId[] $productAndVariantIds new value. */
     function setProductAndVariantIdsFromArray(array $productAndVariantIds)
     {
         $this->productAndVariantIds = $productAndVariantIds;
         return $this;
     }
+    
     function addToProductAndVariantIds(ProductAndVariantId $productAndVariantIds)
     {
         if (!isset($this->productAndVariantIds))
@@ -45,11 +48,13 @@ class ProductAndVariantIdFilter extends Filter
         array_push($this->productAndVariantIds, $productAndVariantIds);
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

@@ -20,32 +20,38 @@ class ProductDataIntegerValueFacet extends intProductDataValueFacet
         $result = intProductDataValueFacet::hydrateBase(new ProductDataIntegerValueFacet(), $arr);
         return $result;
     }
+    
     function setDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
     {
         $this->dataSelectionStrategy = $dataSelectionStrategy;
         return $this;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setCollectionFilterType(?CollectionFilterType $collectionFilterType)
     {
         $this->collectionFilterType = $collectionFilterType;
         return $this;
     }
+    
     function setSelected(int ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?int[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(int $selected)
     {
         if (!isset($this->selected))
@@ -55,11 +61,13 @@ class ProductDataIntegerValueFacet extends intProductDataValueFacet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

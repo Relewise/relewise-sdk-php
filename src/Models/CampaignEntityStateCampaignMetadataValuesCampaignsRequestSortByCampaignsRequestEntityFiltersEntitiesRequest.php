@@ -38,21 +38,25 @@ abstract class CampaignEntityStateCampaignMetadataValuesCampaignsRequestSortByCa
         }
         return $result;
     }
+    
     function setFilters(?CampaignsRequestEntityFilters $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setSorting(?CampaignsRequestSortBySorting $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
+    
     function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
+    
     function setTake(int $take)
     {
         $this->take = $take;

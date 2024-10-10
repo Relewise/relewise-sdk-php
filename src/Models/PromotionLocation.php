@@ -26,11 +26,13 @@ class PromotionLocation
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setPlacements(?PromotionLocationPlacementCollection $placements)
     {
         $this->placements = $placements;

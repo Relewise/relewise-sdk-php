@@ -28,22 +28,26 @@ class ProductPerformanceResult
         }
         return $result;
     }
+    
     function setProduct(ProductResult $product)
     {
         $this->product = $product;
         return $this;
     }
+    
     function setClassifications(ProductPerformanceResultClassificationMetrics ... $classifications)
     {
         $this->classifications = $classifications;
         return $this;
     }
+    
     /** @param ProductPerformanceResultClassificationMetrics[] $classifications new value. */
     function setClassificationsFromArray(array $classifications)
     {
         $this->classifications = $classifications;
         return $this;
     }
+    
     function addToClassifications(ProductPerformanceResultClassificationMetrics $classifications)
     {
         if (!isset($this->classifications))

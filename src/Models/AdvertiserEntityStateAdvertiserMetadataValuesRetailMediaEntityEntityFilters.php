@@ -31,22 +31,26 @@ abstract class AdvertiserEntityStateAdvertiserMetadataValuesRetailMediaEntityEnt
         }
         return $result;
     }
+    
     function setTerm(?string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setStates(AdvertiserEntityState ... $states)
     {
         $this->states = $states;
         return $this;
     }
+    
     /** @param ?AdvertiserEntityState[] $states new value. */
     function setStatesFromArray(array $states)
     {
         $this->states = $states;
         return $this;
     }
+    
     function addToStates(AdvertiserEntityState $states)
     {
         if (!isset($this->states))

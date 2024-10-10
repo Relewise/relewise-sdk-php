@@ -29,11 +29,13 @@ class ViewedByUserInfo implements JsonSerializable
         }
         return $result;
     }
+    
     function setMostRecentlyViewedUtc(DateTime $mostRecentlyViewedUtc)
     {
         $this->mostRecentlyViewedUtc = $mostRecentlyViewedUtc;
         return $this;
     }
+    
     function setTotalNumberOfTimesViewed(int $totalNumberOfTimesViewed)
     {
         $this->totalNumberOfTimesViewed = $totalNumberOfTimesViewed;

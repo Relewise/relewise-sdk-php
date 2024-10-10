@@ -28,11 +28,13 @@ abstract class AnalyzerRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

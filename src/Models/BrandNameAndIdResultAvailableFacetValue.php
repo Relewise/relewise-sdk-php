@@ -32,16 +32,19 @@ class BrandNameAndIdResultAvailableFacetValue
         }
         return $result;
     }
+    
     function setValue(BrandNameAndIdResult $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setSelected(bool $selected)
     {
         $this->selected = $selected;

@@ -29,17 +29,20 @@ abstract class LocationEntityStateLocationMetadataValuesRetailMediaEntity extend
         }
         return $result;
     }
+    
     function setState(LocationEntityState $state)
     {
         $this->state = $state;
         return $this;
     }
+    
     /** Managed server side only, manually setting this will have no effect */
     function setMetadata(LocationMetadataValues $metadata)
     {
         $this->metadata = $metadata;
         return $this;
     }
+    
     function setId(?string $id)
     {
         $this->id = $id;

@@ -21,11 +21,13 @@ class CampaignAnalyticsResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setAnalytics(CampaignAnalytics $analytics)
     {
         $this->analytics = $analytics;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

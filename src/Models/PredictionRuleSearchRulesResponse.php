@@ -32,17 +32,20 @@ abstract class PredictionRuleSearchRulesResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setRules(PredictionRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param PredictionRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(PredictionRule $rules)
     {
         if (!isset($this->rules))
@@ -52,11 +55,13 @@ abstract class PredictionRuleSearchRulesResponse extends TimedResponse
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

@@ -26,11 +26,13 @@ class TriggerConfigurationRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setType(?int $type)
     {
         $this->type = $type;

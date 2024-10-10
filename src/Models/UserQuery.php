@@ -37,17 +37,20 @@ class UserQuery extends LicensedRequest
         }
         return $result;
     }
+    
     function setCriteria(UserQueryCriteria ... $criteria)
     {
         $this->criteria = $criteria;
         return $this;
     }
+    
     /** @param UserQueryCriteria[] $criteria new value. */
     function setCriteriaFromArray(array $criteria)
     {
         $this->criteria = $criteria;
         return $this;
     }
+    
     function addToCriteria(UserQueryCriteria $criteria)
     {
         if (!isset($this->criteria))
@@ -57,11 +60,13 @@ class UserQuery extends LicensedRequest
         array_push($this->criteria, $criteria);
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

@@ -31,17 +31,20 @@ class ProductCategoryDetailsCollectionResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setCategories(ProductCategoryResultDetails ... $categories)
     {
         $this->categories = $categories;
         return $this;
     }
+    
     /** @param ProductCategoryResultDetails[] $categories new value. */
     function setCategoriesFromArray(array $categories)
     {
         $this->categories = $categories;
         return $this;
     }
+    
     function addToCategories(ProductCategoryResultDetails $categories)
     {
         if (!isset($this->categories))
@@ -51,11 +54,13 @@ class ProductCategoryDetailsCollectionResponse extends TimedResponse
         array_push($this->categories, $categories);
         return $this;
     }
+    
     function setTotalNumberOfResults(?int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

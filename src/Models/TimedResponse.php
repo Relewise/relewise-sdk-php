@@ -238,6 +238,7 @@ abstract class TimedResponse
         }
         return $result;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

@@ -24,17 +24,20 @@ class SearchTermRecommendationResponse extends RecommendationResponse
         }
         return $result;
     }
+    
     function setRecommendations(SearchTermResult ... $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     /** @param SearchTermResult[] $recommendations new value. */
     function setRecommendationsFromArray(array $recommendations)
     {
         $this->recommendations = $recommendations;
         return $this;
     }
+    
     function addToRecommendations(SearchTermResult $recommendations)
     {
         if (!isset($this->recommendations))
@@ -44,6 +47,7 @@ class SearchTermRecommendationResponse extends RecommendationResponse
         array_push($this->recommendations, $recommendations);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

@@ -21,6 +21,7 @@ class RetailMediaQuery
         }
         return $result;
     }
+    
     /** Defines the location (f.e. 'Home Page'), placements (f.e. 'main zone' and 'power action') for specific Variation (f.e. 'desktop'). */
     function setLocation(RetailMediaQueryLocationSelector $location)
     {

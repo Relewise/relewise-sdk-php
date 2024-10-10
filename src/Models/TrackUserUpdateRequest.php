@@ -21,6 +21,7 @@ class TrackUserUpdateRequest extends TrackingRequest
         }
         return $result;
     }
+    
     function setUserUpdate(UserUpdate $userUpdate)
     {
         $this->userUpdate = $userUpdate;

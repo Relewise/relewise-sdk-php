@@ -27,11 +27,13 @@ class SaveGlobalTriggerConfigurationRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setConfiguration(GlobalTriggerConfiguration $configuration)
     {
         $this->configuration = $configuration;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

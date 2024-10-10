@@ -29,17 +29,20 @@ class SortProductsRequest extends ProductRecommendationRequest
         }
         return $result;
     }
+    
     function setProductIds(string ... $productIds)
     {
         $this->productIds = $productIds;
         return $this;
     }
+    
     /** @param string[] $productIds new value. */
     function setProductIdsFromArray(array $productIds)
     {
         $this->productIds = $productIds;
         return $this;
     }
+    
     function addToProductIds(string $productIds)
     {
         if (!isset($this->productIds))
@@ -49,36 +52,43 @@ class SortProductsRequest extends ProductRecommendationRequest
         array_push($this->productIds, $productIds);
         return $this;
     }
+    
     function setSettings(ProductRecommendationRequestSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setDisplayedAtLocationType(string $displayedAtLocationType)
     {
         $this->displayedAtLocationType = $displayedAtLocationType;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

@@ -21,6 +21,7 @@ class TriggerResultRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setConfigurationId(string $configurationId)
     {
         $this->configurationId = $configurationId;

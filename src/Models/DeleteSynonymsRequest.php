@@ -31,17 +31,20 @@ class DeleteSynonymsRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setIds(string ... $ids)
     {
         $this->ids = $ids;
         return $this;
     }
+    
     /** @param string[] $ids new value. */
     function setIdsFromArray(array $ids)
     {
         $this->ids = $ids;
         return $this;
     }
+    
     function addToIds(string $ids)
     {
         if (!isset($this->ids))
@@ -51,6 +54,7 @@ class DeleteSynonymsRequest extends LicensedRequest
         array_push($this->ids, $ids);
         return $this;
     }
+    
     function setDeletedBy(string $deletedBy)
     {
         $this->deletedBy = $deletedBy;

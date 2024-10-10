@@ -48,32 +48,38 @@ class CategoryHierarchyFacetResultCategoryNode
         }
         return $result;
     }
+    
     function setCategory(CategoryResult $category)
     {
         $this->category = $category;
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setParentId(?string $parentId)
     {
         $this->parentId = $parentId;
         return $this;
     }
+    
     function setChildren(CategoryHierarchyFacetResultCategoryNode ... $children)
     {
         $this->children = $children;
         return $this;
     }
+    
     /** @param ?CategoryHierarchyFacetResultCategoryNode[] $children new value. */
     function setChildrenFromArray(array $children)
     {
         $this->children = $children;
         return $this;
     }
+    
     function addToChildren(CategoryHierarchyFacetResultCategoryNode $children)
     {
         if (!isset($this->children))
@@ -83,6 +89,7 @@ class CategoryHierarchyFacetResultCategoryNode
         array_push($this->children, $children);
         return $this;
     }
+    
     function setSelected(bool $selected)
     {
         $this->selected = $selected;

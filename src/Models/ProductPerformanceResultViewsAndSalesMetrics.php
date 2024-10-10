@@ -24,11 +24,13 @@ class ProductPerformanceResultViewsAndSalesMetrics
         }
         return $result;
     }
+    
     function setByViews(float $byViews)
     {
         $this->byViews = $byViews;
         return $this;
     }
+    
     function setBySales(float $bySales)
     {
         $this->bySales = $bySales;

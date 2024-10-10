@@ -24,17 +24,20 @@ class FilterCollection
         }
         return $result;
     }
+    
     function setItems(Filter ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param ?Filter[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(Filter $items)
     {
         if (!isset($this->items))

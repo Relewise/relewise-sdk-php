@@ -47,12 +47,14 @@ class ProductIdRelevanceModifier extends RelevanceModifier
         }
         return $result;
     }
+    
     /** The Ids of the Products that this RelevanceModifier will distinguish on. */
     function setProductIds(string ... $productIds)
     {
         $this->productIds = $productIds;
         return $this;
     }
+    
     /**
      * The Ids of the Products that this RelevanceModifier will distinguish on.
      * @param string[] $productIds new value.
@@ -62,6 +64,7 @@ class ProductIdRelevanceModifier extends RelevanceModifier
         $this->productIds = $productIds;
         return $this;
     }
+    
     /** The Ids of the Products that this RelevanceModifier will distinguish on. */
     function addToProductIds(string $productIds)
     {
@@ -72,18 +75,21 @@ class ProductIdRelevanceModifier extends RelevanceModifier
         array_push($this->productIds, $productIds);
         return $this;
     }
+    
     /** The weight that this RelevanceModifier will multiply relevant products with. */
     function setMultiplyWeightBy(float $multiplyWeightBy)
     {
         $this->multiplyWeightBy = $multiplyWeightBy;
         return $this;
     }
+    
     /** Determines whether this RelevanceModifier should apply to all the Products that don't match one of the specified ProductIds instead. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;

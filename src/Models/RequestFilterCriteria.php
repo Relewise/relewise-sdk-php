@@ -29,16 +29,19 @@ class RequestFilterCriteria
         }
         return $result;
     }
+    
     function setIncludes(FilterCollection $includes)
     {
         $this->includes = $includes;
         return $this;
     }
+    
     function setExcludes(FilterCollection $excludes)
     {
         $this->excludes = $excludes;
         return $this;
     }
+    
     function setCount(?intRange $count)
     {
         $this->count = $count;

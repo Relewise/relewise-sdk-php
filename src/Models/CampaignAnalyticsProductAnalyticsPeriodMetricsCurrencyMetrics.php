@@ -27,11 +27,13 @@ class CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics
         }
         return $result;
     }
+    
     function setCurrency(string $currency)
     {
         $this->currency = $currency;
         return $this;
     }
+    
     function setRevenue(float $revenue)
     {
         $this->revenue = $revenue;

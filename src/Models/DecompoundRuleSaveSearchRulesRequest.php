@@ -32,17 +32,20 @@ abstract class DecompoundRuleSaveSearchRulesRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setRules(DecompoundRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param DecompoundRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(DecompoundRule $rules)
     {
         if (!isset($this->rules))
@@ -52,6 +55,7 @@ abstract class DecompoundRuleSaveSearchRulesRequest extends LicensedRequest
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

@@ -19,6 +19,7 @@ class AbandonedCartTriggerResult
         }
         return $result;
     }
+    
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;

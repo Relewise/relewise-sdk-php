@@ -66,46 +66,55 @@ class SearchIndex implements JsonSerializable
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setDescription(string $description)
     {
         $this->description = $description;
         return $this;
     }
+    
     function setEnabled(bool $enabled)
     {
         $this->enabled = $enabled;
         return $this;
     }
+    
     function setIsDefault(bool $isDefault)
     {
         $this->isDefault = $isDefault;
         return $this;
     }
+    
     function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
+    
     function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
+    
     function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
+    
     function setConfiguration(IndexConfiguration $configuration)
     {
         $this->configuration = $configuration;

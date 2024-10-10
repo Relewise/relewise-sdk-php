@@ -26,11 +26,13 @@ class floatRange
         }
         return $result;
     }
+    
     function setLowerBoundInclusive(?float $lowerBoundInclusive)
     {
         $this->lowerBoundInclusive = $lowerBoundInclusive;
         return $this;
     }
+    
     function setUpperBoundInclusive(?float $upperBoundInclusive)
     {
         $this->upperBoundInclusive = $upperBoundInclusive;

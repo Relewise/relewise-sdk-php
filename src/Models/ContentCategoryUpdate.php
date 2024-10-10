@@ -22,11 +22,13 @@ class ContentCategoryUpdate extends CategoryUpdate
         }
         return $result;
     }
+    
     function setCategory(ContentCategory $category)
     {
         $this->category = $category;
         return $this;
     }
+    
     function setKind(CategoryUpdateUpdateKind $kind)
     {
         $this->kind = $kind;

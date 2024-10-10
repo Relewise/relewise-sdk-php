@@ -17,21 +17,25 @@ class ProductCategoryDataDoubleRangeFacet extends floatProductCategoryDataRangeF
         $result = floatProductCategoryDataRangeFacet::hydrateBase(new ProductCategoryDataDoubleRangeFacet(), $arr);
         return $result;
     }
+    
     function setSelected(?floatRange $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

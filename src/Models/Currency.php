@@ -21,6 +21,7 @@ class Currency
         }
         return $result;
     }
+    
     function setValue(string $value)
     {
         $this->value = $value;

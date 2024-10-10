@@ -47,26 +47,31 @@ class VariantChangeTriggerResultVariantChangeResultDetails implements JsonSerial
         }
         return $result;
     }
+    
     function setChangeTime(DateTime $changeTime)
     {
         $this->changeTime = $changeTime;
         return $this;
     }
+    
     function setOldValue(DataValue $oldValue)
     {
         $this->oldValue = $oldValue;
         return $this;
     }
+    
     function setNewValue(DataValue $newValue)
     {
         $this->newValue = $newValue;
         return $this;
     }
+    
     function setProduct(ProductResultDetails $product)
     {
         $this->product = $product;
         return $this;
     }
+    
     function setVariant(VariantResultDetails $variant)
     {
         $this->variant = $variant;

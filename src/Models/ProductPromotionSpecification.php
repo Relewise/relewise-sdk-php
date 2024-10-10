@@ -23,6 +23,7 @@ class ProductPromotionSpecification extends PromotionSpecification
         }
         return $result;
     }
+    
     /** Filters matching the products which may be promoted */
     function setPromotableProducts(?FilterCollection $promotableProducts)
     {

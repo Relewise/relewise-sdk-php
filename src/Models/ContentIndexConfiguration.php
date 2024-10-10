@@ -34,21 +34,25 @@ class ContentIndexConfiguration
         }
         return $result;
     }
+    
     function setId(FieldIndexConfiguration $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setDisplayName(FieldIndexConfiguration $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setCategory(CategoryIndexConfiguration $category)
     {
         $this->category = $category;
         return $this;
     }
+    
     function setData(DataIndexConfiguration $data)
     {
         $this->data = $data;

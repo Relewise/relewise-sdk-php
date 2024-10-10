@@ -27,17 +27,20 @@ abstract class SearchResultModifierRuleSaveSearchRulesResponse extends TimedResp
         }
         return $result;
     }
+    
     function setRules(SearchResultModifierRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param SearchResultModifierRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(SearchResultModifierRule $rules)
     {
         if (!isset($this->rules))
@@ -47,6 +50,7 @@ abstract class SearchResultModifierRuleSaveSearchRulesResponse extends TimedResp
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

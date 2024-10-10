@@ -24,17 +24,20 @@ class Multilingual
         }
         return $result;
     }
+    
     function setValues(MultilingualValue ... $values)
     {
         $this->values = $values;
         return $this;
     }
+    
     /** @param ?MultilingualValue[] $values new value. */
     function setValuesFromArray(array $values)
     {
         $this->values = $values;
         return $this;
     }
+    
     function addToValues(MultilingualValue $values)
     {
         if (!isset($this->values))

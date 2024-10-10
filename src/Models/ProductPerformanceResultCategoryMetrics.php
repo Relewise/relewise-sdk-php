@@ -29,16 +29,19 @@ class ProductPerformanceResultCategoryMetrics
         }
         return $result;
     }
+    
     function setCategory(CategoryNameAndIdResult $category)
     {
         $this->category = $category;
         return $this;
     }
+    
     function setImmediateParent(bool $immediateParent)
     {
         $this->immediateParent = $immediateParent;
         return $this;
     }
+    
     function setRank(ProductPerformanceResultViewsAndSalesMetrics $rank)
     {
         $this->rank = $rank;

@@ -16,11 +16,13 @@ class ContentPopularitySorting extends ContentSorting
         $result = ContentSorting::hydrateBase(new ContentPopularitySorting(), $arr);
         return $result;
     }
+    
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    
     function setThenBy(ContentSorting $thenBy)
     {
         $this->thenBy = $thenBy;

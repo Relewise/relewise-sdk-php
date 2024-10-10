@@ -22,6 +22,7 @@ class Language
         }
         return $result;
     }
+    
     /** Trimmed language name in lower-invariant. */
     function setValue(string $value)
     {

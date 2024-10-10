@@ -25,17 +25,20 @@ class BrandIdFilter extends Filter
         }
         return $result;
     }
+    
     function setBrandIds(string ... $brandIds)
     {
         $this->brandIds = $brandIds;
         return $this;
     }
+    
     /** @param string[] $brandIds new value. */
     function setBrandIdsFromArray(array $brandIds)
     {
         $this->brandIds = $brandIds;
         return $this;
     }
+    
     function addToBrandIds(string $brandIds)
     {
         if (!isset($this->brandIds))
@@ -45,11 +48,13 @@ class BrandIdFilter extends Filter
         array_push($this->brandIds, $brandIds);
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

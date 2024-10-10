@@ -24,17 +24,20 @@ class SearchIndexCollectionResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setIndexes(SearchIndex ... $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
+    
     /** @param SearchIndex[] $indexes new value. */
     function setIndexesFromArray(array $indexes)
     {
         $this->indexes = $indexes;
         return $this;
     }
+    
     function addToIndexes(SearchIndex $indexes)
     {
         if (!isset($this->indexes))
@@ -44,6 +47,7 @@ class SearchIndexCollectionResponse extends TimedResponse
         array_push($this->indexes, $indexes);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

@@ -26,11 +26,13 @@ class LocationsRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(LocationsRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

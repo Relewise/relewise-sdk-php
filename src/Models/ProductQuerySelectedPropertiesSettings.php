@@ -27,12 +27,14 @@ class ProductQuerySelectedPropertiesSettings
         }
         return $result;
     }
+    
     /** Settings for which properties should be mapped for the ProductResultDetails in the ProductDetailsCollectionResponse returned for the current ProductQuery. */
     function setSelectedProductDetailsProperties(?SelectedProductDetailsPropertiesSettings $selectedProductDetailsProperties)
     {
         $this->selectedProductDetailsProperties = $selectedProductDetailsProperties;
         return $this;
     }
+    
     /** Settings for which properties should be mapped for the VariantResultDetails in the ProductDetailsCollectionResponse returned for the current ProductQuery. */
     function setSelectedVariantDetailsProperties(?SelectedVariantDetailsPropertiesSettings $selectedVariantDetailsProperties)
     {

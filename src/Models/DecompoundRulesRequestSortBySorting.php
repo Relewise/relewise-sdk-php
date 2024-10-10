@@ -26,11 +26,13 @@ class DecompoundRulesRequestSortBySorting
         }
         return $result;
     }
+    
     function setSortBy(DecompoundRulesRequestSortBy $sortBy)
     {
         $this->sortBy = $sortBy;
         return $this;
     }
+    
     function setSortOrder(SortOrder $sortOrder)
     {
         $this->sortOrder = $sortOrder;

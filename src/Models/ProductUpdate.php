@@ -54,22 +54,26 @@ class ProductUpdate extends Trackable
         }
         return $result;
     }
+    
     function setProduct(Product $product)
     {
         $this->product = $product;
         return $this;
     }
+    
     function setVariants(ProductVariant ... $variants)
     {
         $this->variants = $variants;
         return $this;
     }
+    
     /** @param ProductVariant[] $variants new value. */
     function setVariantsFromArray(array $variants)
     {
         $this->variants = $variants;
         return $this;
     }
+    
     function addToVariants(ProductVariant $variants)
     {
         if (!isset($this->variants))
@@ -79,21 +83,25 @@ class ProductUpdate extends Trackable
         array_push($this->variants, $variants);
         return $this;
     }
+    
     function setProductUpdateKind(ProductUpdateUpdateKind $productUpdateKind)
     {
         $this->productUpdateKind = $productUpdateKind;
         return $this;
     }
+    
     function setVariantUpdateKind(ProductUpdateUpdateKind $variantUpdateKind)
     {
         $this->variantUpdateKind = $variantUpdateKind;
         return $this;
     }
+    
     function setReplaceExistingVariants(bool $replaceExistingVariants)
     {
         $this->replaceExistingVariants = $replaceExistingVariants;
         return $this;
     }
+    
     function setBrandUpdateKind(?BrandUpdateUpdateKind $brandUpdateKind)
     {
         $this->brandUpdateKind = $brandUpdateKind;

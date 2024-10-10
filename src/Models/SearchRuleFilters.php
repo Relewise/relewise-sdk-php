@@ -31,16 +31,19 @@ class SearchRuleFilters
         }
         return $result;
     }
+    
     function setTerm(?string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setApproved(?bool $approved)
     {
         $this->approved = $approved;
         return $this;
     }
+    
     function setId(?string $id)
     {
         $this->id = $id;

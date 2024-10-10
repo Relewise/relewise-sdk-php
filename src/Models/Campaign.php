@@ -52,46 +52,55 @@ class Campaign extends CampaignEntityStateCampaignMetadataValuesRetailMediaEntit
         }
         return $result;
     }
+    
     function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
+    
     function setSchedule(?ISchedule $schedule)
     {
         $this->schedule = $schedule;
         return $this;
     }
+    
     function setPromotions(PromotionCollection $promotions)
     {
         $this->promotions = $promotions;
         return $this;
     }
+    
     function setAdvertiserId(string $advertiserId)
     {
         $this->advertiserId = $advertiserId;
         return $this;
     }
+    
     function setBudget(Budget $budget)
     {
         $this->budget = $budget;
         return $this;
     }
+    
     function setStatus(CampaignStatusWithHistory $status)
     {
         $this->status = $status;
         return $this;
     }
+    
     function setState(CampaignEntityState $state)
     {
         $this->state = $state;
         return $this;
     }
+    
     function setMetadata(CampaignMetadataValues $metadata)
     {
         $this->metadata = $metadata;
         return $this;
     }
+    
     function setId(?string $id)
     {
         $this->id = $id;

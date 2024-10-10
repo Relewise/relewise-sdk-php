@@ -31,17 +31,20 @@ class BrandDetailsCollectionResponse extends TimedResponse
         }
         return $result;
     }
+    
     function setBrands(BrandResultDetails ... $brands)
     {
         $this->brands = $brands;
         return $this;
     }
+    
     /** @param BrandResultDetails[] $brands new value. */
     function setBrandsFromArray(array $brands)
     {
         $this->brands = $brands;
         return $this;
     }
+    
     function addToBrands(BrandResultDetails $brands)
     {
         if (!isset($this->brands))
@@ -51,11 +54,13 @@ class BrandDetailsCollectionResponse extends TimedResponse
         array_push($this->brands, $brands);
         return $this;
     }
+    
     function setTotalNumberOfResults(?int $totalNumberOfResults)
     {
         $this->totalNumberOfResults = $totalNumberOfResults;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

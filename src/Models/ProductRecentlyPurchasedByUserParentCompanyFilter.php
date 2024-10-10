@@ -32,23 +32,27 @@ class ProductRecentlyPurchasedByUserParentCompanyFilter extends Filter implement
         }
         return $result;
     }
+    
     /** The time from which a Product should have been bought by any of the companies to be included by the filter. */
     function setSinceUtc(?DateTime $sinceUtc)
     {
         $this->sinceUtc = $sinceUtc;
         return $this;
     }
+    
     /** The time in minutes from which a Product should have been viewed by any of the companies to be included by the filter. */
     function setSinceMinutesAgo(?int $sinceMinutesAgo)
     {
         $this->sinceMinutesAgo = $sinceMinutesAgo;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

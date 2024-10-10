@@ -23,27 +23,32 @@ class ProductAssortmentFacet extends AssortmentFacet
         }
         return $result;
     }
+    
     function setAssortmentSelectionStrategy(AssortmentSelectionStrategy $assortmentSelectionStrategy)
     {
         $this->assortmentSelectionStrategy = $assortmentSelectionStrategy;
         return $this;
     }
+    
     function setAssortmentFilterType(AssortmentFilterType $assortmentFilterType)
     {
         $this->assortmentFilterType = $assortmentFilterType;
         return $this;
     }
+    
     function setSelected(int ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param ?int[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(int $selected)
     {
         if (!isset($this->selected))
@@ -53,11 +58,13 @@ class ProductAssortmentFacet extends AssortmentFacet
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
         return $this;
     }
+    
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

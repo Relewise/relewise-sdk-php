@@ -29,11 +29,13 @@ class ScheduledPeriod implements JsonSerializable
         }
         return $result;
     }
+    
     function setFromUtc(?DateTime $fromUtc)
     {
         $this->fromUtc = $fromUtc;
         return $this;
     }
+    
     function setToUtc(?DateTime $toUtc)
     {
         $this->toUtc = $toUtc;

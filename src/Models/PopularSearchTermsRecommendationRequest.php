@@ -29,41 +29,49 @@ class PopularSearchTermsRecommendationRequest extends RecommendationRequest
         }
         return $result;
     }
+    
     function setTerm(?string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setSettings(?RecommendPopularSearchTermSettings $settings)
     {
         $this->settings = $settings;
         return $this;
     }
+    
     function setLanguage(?Language $language)
     {
         $this->language = $language;
         return $this;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setRelevanceModifiers(RelevanceModifierCollection $relevanceModifiers)
     {
         $this->relevanceModifiers = $relevanceModifiers;
         return $this;
     }
+    
     function setFilters(FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setDisplayedAtLocationType(string $displayedAtLocationType)
     {
         $this->displayedAtLocationType = $displayedAtLocationType;
         return $this;
     }
+    
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;

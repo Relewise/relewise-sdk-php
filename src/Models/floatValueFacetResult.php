@@ -30,17 +30,20 @@ abstract class floatValueFacetResult extends floatfloatValueFacetResult
         $result = floatfloatValueFacetResult::hydrateBase($result, $arr);
         return $result;
     }
+    
     function setSelected(float ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param float[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(float $selected)
     {
         if (!isset($this->selected))
@@ -50,17 +53,20 @@ abstract class floatValueFacetResult extends floatfloatValueFacetResult
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setAvailable(floatAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     /** @param floatAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function addToAvailable(floatAvailableFacetValue $available)
     {
         if (!isset($this->available))
@@ -70,6 +76,7 @@ abstract class floatValueFacetResult extends floatfloatValueFacetResult
         array_push($this->available, $available);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

@@ -51,86 +51,102 @@ abstract class ProductChangeTriggerResultProductChangeTriggerResultSettingsProdu
         }
         return $result;
     }
+    
     /** The selector used for choosing which property of the entity the trigger should look for change in. */
     function setEntityPropertySelector(?ProductPropertySelector $entityPropertySelector)
     {
         $this->entityPropertySelector = $entityPropertySelector;
         return $this;
     }
+    
     /** The filter that specifies which entities the trigger should track changes for. */
     function setBeforeChangeFilters(FilterCollection $beforeChangeFilters)
     {
         $this->beforeChangeFilters = $beforeChangeFilters;
         return $this;
     }
+    
     /** The filter for what state the tracked entities should have once they have changed to be included in the results. */
     function setAfterChangeFilters(FilterCollection $afterChangeFilters)
     {
         $this->afterChangeFilters = $afterChangeFilters;
         return $this;
     }
+    
     /** The type of change that should happen to the value selected by the EntityPropertySelector for an entity to be considered part of the results. */
     function setChange(IChange $change)
     {
         $this->change = $change;
         return $this;
     }
+    
     /** Settings for defining which properties should be included in the result of the trigger. */
     function setResultSettings(?ProductChangeTriggerResultSettings $resultSettings)
     {
         $this->resultSettings = $resultSettings;
         return $this;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
+    
     function setDescription(string $description)
     {
         $this->description = $description;
         return $this;
     }
+    
     function setGroup(string $group)
     {
         $this->group = $group;
         return $this;
     }
+    
     function setEnabled(bool $enabled)
     {
         $this->enabled = $enabled;
         return $this;
     }
+    
     function setCreated(DateTime $created)
     {
         $this->created = $created;
         return $this;
     }
+    
     function setCreatedBy(string $createdBy)
     {
         $this->createdBy = $createdBy;
         return $this;
     }
+    
     function setModified(DateTime $modified)
     {
         $this->modified = $modified;
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;
         return $this;
     }
+    
     function setWithinTimeSpanMinutes(int $withinTimeSpanMinutes)
     {
         $this->withinTimeSpanMinutes = $withinTimeSpanMinutes;
         return $this;
     }
+    
     function addToSettings(string $key, string $value)
     {
         if (!isset($this->settings))
@@ -140,12 +156,14 @@ abstract class ProductChangeTriggerResultProductChangeTriggerResultSettingsProdu
         $this->settings[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, string> $settings associative array. */
     function setSettingsFromAssociativeArray(array $settings)
     {
         $this->settings = $settings;
         return $this;
     }
+    
     function setUserConditions(UserConditionCollection $userConditions)
     {
         $this->userConditions = $userConditions;

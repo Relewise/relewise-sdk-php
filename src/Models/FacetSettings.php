@@ -24,11 +24,13 @@ class FacetSettings
         }
         return $result;
     }
+    
     function setAlwaysIncludeSelectedInAvailable(bool $alwaysIncludeSelectedInAvailable)
     {
         $this->alwaysIncludeSelectedInAvailable = $alwaysIncludeSelectedInAvailable;
         return $this;
     }
+    
     function setIncludeZeroHitsInAvailable(bool $includeZeroHitsInAvailable)
     {
         $this->includeZeroHitsInAvailable = $includeZeroHitsInAvailable;

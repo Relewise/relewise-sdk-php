@@ -27,6 +27,7 @@ class DataKeyPopularityMultiplierSelector extends PopularityMultiplierSelector
         }
         return $result;
     }
+    
     /** The data key that will be used to select a factor that is applied to the entities observed views or purchases. */
     function setKey(string $key)
     {

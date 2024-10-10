@@ -23,22 +23,26 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         }
         return $result;
     }
+    
     function setCategorySelectionStrategy(CategorySelectionStrategy $categorySelectionStrategy)
     {
         $this->categorySelectionStrategy = $categorySelectionStrategy;
         return $this;
     }
+    
     function setSelected(string ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param string[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(string $selected)
     {
         if (!isset($this->selected))
@@ -48,17 +52,20 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setAvailable(CategoryNameAndIdResultAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     /** @param CategoryNameAndIdResultAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function addToAvailable(CategoryNameAndIdResultAvailableFacetValue $available)
     {
         if (!isset($this->available))
@@ -68,6 +75,7 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         array_push($this->available, $available);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

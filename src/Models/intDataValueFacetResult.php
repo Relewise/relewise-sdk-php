@@ -32,27 +32,32 @@ abstract class intDataValueFacetResult extends intValueFacetResult
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setCollectionFilterType(?CollectionFilterType $collectionFilterType)
     {
         $this->collectionFilterType = $collectionFilterType;
         return $this;
     }
+    
     function setSelected(int ... $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     /** @param int[] $selected new value. */
     function setSelectedFromArray(array $selected)
     {
         $this->selected = $selected;
         return $this;
     }
+    
     function addToSelected(int $selected)
     {
         if (!isset($this->selected))
@@ -62,17 +67,20 @@ abstract class intDataValueFacetResult extends intValueFacetResult
         array_push($this->selected, $selected);
         return $this;
     }
+    
     function setAvailable(intAvailableFacetValue ... $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     /** @param intAvailableFacetValue[] $available new value. */
     function setAvailableFromArray(array $available)
     {
         $this->available = $available;
         return $this;
     }
+    
     function addToAvailable(intAvailableFacetValue $available)
     {
         if (!isset($this->available))
@@ -82,6 +90,7 @@ abstract class intDataValueFacetResult extends intValueFacetResult
         array_push($this->available, $available);
         return $this;
     }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;

@@ -24,17 +24,20 @@ class PromotionLocationPlacementCollection
         }
         return $result;
     }
+    
     function setItems(PromotionLocationPlacement ... $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     /** @param PromotionLocationPlacement[] $items new value. */
     function setItemsFromArray(array $items)
     {
         $this->items = $items;
         return $this;
     }
+    
     function addToItems(PromotionLocationPlacement $items)
     {
         if (!isset($this->items))

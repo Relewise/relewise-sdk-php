@@ -40,26 +40,31 @@ class SynonymsRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setSorting(SynonymsRequestSynonymSortingSorting $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
+    
     function setTake(int $take)
     {
         $this->take = $take;
         return $this;
     }
+    
     function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
+    
     function setTerm(string $term)
     {
         $this->term = $term;
         return $this;
     }
+    
     function setIsApproved(?bool $isApproved)
     {
         $this->isApproved = $isApproved;

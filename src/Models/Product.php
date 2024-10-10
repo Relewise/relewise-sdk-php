@@ -67,27 +67,32 @@ class Product
         }
         return $result;
     }
+    
     function setId(string $id)
     {
         $this->id = $id;
         return $this;
     }
+    
     function setDisplayName(?Multilingual $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setCategoryPaths(CategoryPath ... $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    
     /** @param ?CategoryPath[] $categoryPaths new value. */
     function setCategoryPathsFromArray(array $categoryPaths)
     {
         $this->categoryPaths = $categoryPaths;
         return $this;
     }
+    
     function addToCategoryPaths(CategoryPath $categoryPaths)
     {
         if (!isset($this->categoryPaths))
@@ -97,17 +102,20 @@ class Product
         array_push($this->categoryPaths, $categoryPaths);
         return $this;
     }
+    
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     /** @param ?int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -117,6 +125,7 @@ class Product
         array_push($this->assortments, $assortments);
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -126,22 +135,26 @@ class Product
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param ?array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {
         $this->data = $data;
         return $this;
     }
+    
     function setListPrice(?MultiCurrency $listPrice)
     {
         $this->listPrice = $listPrice;
         return $this;
     }
+    
     function setSalesPrice(?MultiCurrency $salesPrice)
     {
         $this->salesPrice = $salesPrice;
         return $this;
     }
+    
     function setBrand(?Brand $brand)
     {
         $this->brand = $brand;

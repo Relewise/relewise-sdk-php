@@ -41,21 +41,25 @@ class ProductChangeTriggerResultProductChangeResultDetails implements JsonSerial
         }
         return $result;
     }
+    
     function setChangeTimeUtc(DateTime $changeTimeUtc)
     {
         $this->changeTimeUtc = $changeTimeUtc;
         return $this;
     }
+    
     function setOldValue(DataValue $oldValue)
     {
         $this->oldValue = $oldValue;
         return $this;
     }
+    
     function setNewValue(DataValue $newValue)
     {
         $this->newValue = $newValue;
         return $this;
     }
+    
     function setProduct(ProductResultDetails $product)
     {
         $this->product = $product;

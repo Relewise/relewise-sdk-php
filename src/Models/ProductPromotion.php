@@ -24,17 +24,20 @@ class ProductPromotion extends Promotion
         }
         return $result;
     }
+    
     /** Filters matching the products to be promoted */
     function setFilters(?FilterCollection $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
+    
     function setLocations(?PromotionLocationCollection $locations)
     {
         $this->locations = $locations;

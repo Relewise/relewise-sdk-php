@@ -29,17 +29,20 @@ abstract class AdvertiserEntityStateAdvertiserMetadataValuesRetailMediaEntity ex
         }
         return $result;
     }
+    
     function setState(AdvertiserEntityState $state)
     {
         $this->state = $state;
         return $this;
     }
+    
     /** Managed server side only, manually setting this will have no effect */
     function setMetadata(AdvertiserMetadataValues $metadata)
     {
         $this->metadata = $metadata;
         return $this;
     }
+    
     function setId(?string $id)
     {
         $this->id = $id;

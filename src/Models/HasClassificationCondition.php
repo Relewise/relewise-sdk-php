@@ -27,16 +27,19 @@ class HasClassificationCondition extends UserCondition
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setValue(string $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

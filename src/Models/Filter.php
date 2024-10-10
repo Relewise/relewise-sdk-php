@@ -301,12 +301,14 @@ abstract class Filter
         }
         return $result;
     }
+    
     /** Defines whether the Filter should exclude the matching entities instead of including the matching entities. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

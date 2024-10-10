@@ -34,26 +34,31 @@ class ProductDataSorting extends ProductSorting
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setDataSelectionStrategy(DataSelectionStrategy $dataSelectionStrategy)
     {
         $this->dataSelectionStrategy = $dataSelectionStrategy;
         return $this;
     }
+    
     function setMode(SortMode $mode)
     {
         $this->mode = $mode;
         return $this;
     }
+    
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    
     function setThenBy(ProductSorting $thenBy)
     {
         $this->thenBy = $thenBy;

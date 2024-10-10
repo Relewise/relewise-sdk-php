@@ -27,11 +27,13 @@ abstract class Budget
         }
         return $result;
     }
+    
     function setMaxTotalCost(?float $maxTotalCost)
     {
         $this->maxTotalCost = $maxTotalCost;
         return $this;
     }
+    
     function setTotalCost(float $totalCost)
     {
         $this->totalCost = $totalCost;

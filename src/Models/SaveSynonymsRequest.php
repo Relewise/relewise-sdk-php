@@ -31,17 +31,20 @@ class SaveSynonymsRequest extends LicensedRequest
         }
         return $result;
     }
+    
     function setSynonyms(Synonym ... $synonyms)
     {
         $this->synonyms = $synonyms;
         return $this;
     }
+    
     /** @param Synonym[] $synonyms new value. */
     function setSynonymsFromArray(array $synonyms)
     {
         $this->synonyms = $synonyms;
         return $this;
     }
+    
     function addToSynonyms(Synonym $synonyms)
     {
         if (!isset($this->synonyms))
@@ -51,6 +54,7 @@ class SaveSynonymsRequest extends LicensedRequest
         array_push($this->synonyms, $synonyms);
         return $this;
     }
+    
     function setModifiedBy(string $modifiedBy)
     {
         $this->modifiedBy = $modifiedBy;

@@ -27,17 +27,20 @@ abstract class VariantChangeTriggerResultVariantChangeResultDetailsEntityChangeT
         }
         return $result;
     }
+    
     function setEntitiesWithChanges(VariantChangeTriggerResultVariantChangeResultDetails ... $entitiesWithChanges)
     {
         $this->entitiesWithChanges = $entitiesWithChanges;
         return $this;
     }
+    
     /** @param VariantChangeTriggerResultVariantChangeResultDetails[] $entitiesWithChanges new value. */
     function setEntitiesWithChangesFromArray(array $entitiesWithChanges)
     {
         $this->entitiesWithChanges = $entitiesWithChanges;
         return $this;
     }
+    
     function addToEntitiesWithChanges(VariantChangeTriggerResultVariantChangeResultDetails $entitiesWithChanges)
     {
         if (!isset($this->entitiesWithChanges))
@@ -47,6 +50,7 @@ abstract class VariantChangeTriggerResultVariantChangeResultDetailsEntityChangeT
         array_push($this->entitiesWithChanges, $entitiesWithChanges);
         return $this;
     }
+    
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;

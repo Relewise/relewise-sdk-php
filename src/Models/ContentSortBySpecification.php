@@ -19,6 +19,7 @@ class ContentSortBySpecification
         }
         return $result;
     }
+    
     function setValue(ContentSorting $value)
     {
         $this->value = $value;

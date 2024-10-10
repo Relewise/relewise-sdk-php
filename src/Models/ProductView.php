@@ -33,16 +33,19 @@ class ProductView extends Trackable
         }
         return $result;
     }
+    
     function setUser(?User $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setProduct(Product $product)
     {
         $this->product = $product;
         return $this;
     }
+    
     function setVariant(?ProductVariant $variant)
     {
         $this->variant = $variant;

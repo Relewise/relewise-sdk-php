@@ -26,11 +26,13 @@ class ContentCategoryRecommendationWeights
         }
         return $result;
     }
+    
     function setCategoryViews(float $categoryViews)
     {
         $this->categoryViews = $categoryViews;
         return $this;
     }
+    
     function setContentViews(float $contentViews)
     {
         $this->contentViews = $contentViews;

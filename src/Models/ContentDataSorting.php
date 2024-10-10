@@ -28,21 +28,25 @@ class ContentDataSorting extends ContentSorting
         }
         return $result;
     }
+    
     function setKey(string $key)
     {
         $this->key = $key;
         return $this;
     }
+    
     function setMode(SortMode $mode)
     {
         $this->mode = $mode;
         return $this;
     }
+    
     function setOrder(SortOrder $order)
     {
         $this->order = $order;
         return $this;
     }
+    
     function setThenBy(ContentSorting $thenBy)
     {
         $this->thenBy = $thenBy;

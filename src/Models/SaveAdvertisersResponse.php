@@ -15,17 +15,20 @@ class SaveAdvertisersResponse extends AdvertiserSaveEntitiesResponse
         $result = AdvertiserSaveEntitiesResponse::hydrateBase(new SaveAdvertisersResponse(), $arr);
         return $result;
     }
+    
     function setEntities(Advertiser ... $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     /** @param Advertiser[] $entities new value. */
     function setEntitiesFromArray(array $entities)
     {
         $this->entities = $entities;
         return $this;
     }
+    
     function addToEntities(Advertiser $entities)
     {
         if (!isset($this->entities))
@@ -35,6 +38,7 @@ class SaveAdvertisersResponse extends AdvertiserSaveEntitiesResponse
         array_push($this->entities, $entities);
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

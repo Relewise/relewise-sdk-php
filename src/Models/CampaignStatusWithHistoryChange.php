@@ -30,11 +30,13 @@ class CampaignStatusWithHistoryChange implements JsonSerializable
         }
         return $result;
     }
+    
     function setUtcTime(DateTime $utcTime)
     {
         $this->utcTime = $utcTime;
         return $this;
     }
+    
     function setStatus(CampaignStatusWithHistoryStatusName $status)
     {
         $this->status = $status;

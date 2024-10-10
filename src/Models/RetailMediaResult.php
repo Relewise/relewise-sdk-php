@@ -23,6 +23,7 @@ class RetailMediaResult
         }
         return $result;
     }
+    
     function addToPlacements(string $key, RetailMediaResultPlacement $value)
     {
         if (!isset($this->placements))
@@ -32,6 +33,7 @@ class RetailMediaResult
         $this->placements[$key] = $value;
         return $this;
     }
+    
     /** @param ?array<string, RetailMediaResultPlacement> $placements associative array. */
     function setPlacementsFromAssociativeArray(array $placements)
     {

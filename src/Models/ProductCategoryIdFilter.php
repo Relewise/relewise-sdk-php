@@ -17,17 +17,20 @@ class ProductCategoryIdFilter extends CategoryIdFilter
         $result = CategoryIdFilter::hydrateBase(new ProductCategoryIdFilter(), $arr);
         return $result;
     }
+    
     function setCategoryIds(string ... $categoryIds)
     {
         $this->categoryIds = $categoryIds;
         return $this;
     }
+    
     /** @param string[] $categoryIds new value. */
     function setCategoryIdsFromArray(array $categoryIds)
     {
         $this->categoryIds = $categoryIds;
         return $this;
     }
+    
     function addToCategoryIds(string $categoryIds)
     {
         if (!isset($this->categoryIds))
@@ -37,16 +40,19 @@ class ProductCategoryIdFilter extends CategoryIdFilter
         array_push($this->categoryIds, $categoryIds);
         return $this;
     }
+    
     function setEvaluationScope(CategoryScope $evaluationScope)
     {
         $this->evaluationScope = $evaluationScope;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;
         return $this;
     }
+    
     function setSettings(?FilterSettings $settings)
     {
         $this->settings = $settings;

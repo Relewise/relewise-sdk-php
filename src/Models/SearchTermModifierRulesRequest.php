@@ -19,21 +19,25 @@ class SearchTermModifierRulesRequest extends SearchTermModifierRulesRequestSortB
         $result = SearchTermModifierRulesRequestSortBySearchRulesRequest::hydrateBase(new SearchTermModifierRulesRequest(), $arr);
         return $result;
     }
+    
     function setFilters(SearchRuleFilters $filters)
     {
         $this->filters = $filters;
         return $this;
     }
+    
     function setSorting(SearchTermModifierRulesRequestSortBySorting $sorting)
     {
         $this->sorting = $sorting;
         return $this;
     }
+    
     function setSkip(int $skip)
     {
         $this->skip = $skip;
         return $this;
     }
+    
     function setTake(int $take)
     {
         $this->take = $take;

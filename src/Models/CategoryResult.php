@@ -68,37 +68,44 @@ abstract class CategoryResult
         }
         return $result;
     }
+    
     function setCategoryId(string $categoryId)
     {
         $this->categoryId = $categoryId;
         return $this;
     }
+    
     function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
+    
     function setRank(int $rank)
     {
         $this->rank = $rank;
         return $this;
     }
+    
     function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
         return $this;
     }
+    
     function setPaths(CategoryPathResult ... $paths)
     {
         $this->paths = $paths;
         return $this;
     }
+    
     /** @param CategoryPathResult[] $paths new value. */
     function setPathsFromArray(array $paths)
     {
         $this->paths = $paths;
         return $this;
     }
+    
     function addToPaths(CategoryPathResult $paths)
     {
         if (!isset($this->paths))
@@ -108,17 +115,20 @@ abstract class CategoryResult
         array_push($this->paths, $paths);
         return $this;
     }
+    
     function setAssortments(int ... $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     /** @param int[] $assortments new value. */
     function setAssortmentsFromArray(array $assortments)
     {
         $this->assortments = $assortments;
         return $this;
     }
+    
     function addToAssortments(int $assortments)
     {
         if (!isset($this->assortments))
@@ -128,6 +138,7 @@ abstract class CategoryResult
         array_push($this->assortments, $assortments);
         return $this;
     }
+    
     function addToData(string $key, DataValue $value)
     {
         if (!isset($this->data))
@@ -137,6 +148,7 @@ abstract class CategoryResult
         $this->data[$key] = $value;
         return $this;
     }
+    
     /** @param array<string, DataValue> $data associative array. */
     function setDataFromAssociativeArray(array $data)
     {

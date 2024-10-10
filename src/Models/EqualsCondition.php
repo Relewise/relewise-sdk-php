@@ -22,11 +22,13 @@ class EqualsCondition extends ValueCondition
         }
         return $result;
     }
+    
     function setValue(DataValue $value)
     {
         $this->value = $value;
         return $this;
     }
+    
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

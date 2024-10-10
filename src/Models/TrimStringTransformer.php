@@ -24,17 +24,20 @@ class TrimStringTransformer
         }
         return $result;
     }
+    
     function setValuesToTrim(string ... $valuesToTrim)
     {
         $this->valuesToTrim = $valuesToTrim;
         return $this;
     }
+    
     /** @param string[] $valuesToTrim new value. */
     function setValuesToTrimFromArray(array $valuesToTrim)
     {
         $this->valuesToTrim = $valuesToTrim;
         return $this;
     }
+    
     function addToValuesToTrim(string $valuesToTrim)
     {
         if (!isset($this->valuesToTrim))

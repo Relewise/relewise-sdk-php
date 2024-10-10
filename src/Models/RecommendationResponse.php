@@ -38,6 +38,7 @@ abstract class RecommendationResponse extends TimedResponse
         $result = TimedResponse::hydrateBase($result, $arr);
         return $result;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

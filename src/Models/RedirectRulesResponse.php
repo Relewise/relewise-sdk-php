@@ -17,17 +17,20 @@ class RedirectRulesResponse extends RedirectRuleSearchRulesResponse
         $result = RedirectRuleSearchRulesResponse::hydrateBase(new RedirectRulesResponse(), $arr);
         return $result;
     }
+    
     function setRules(RedirectRule ... $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     /** @param RedirectRule[] $rules new value. */
     function setRulesFromArray(array $rules)
     {
         $this->rules = $rules;
         return $this;
     }
+    
     function addToRules(RedirectRule $rules)
     {
         if (!isset($this->rules))
@@ -37,11 +40,13 @@ class RedirectRulesResponse extends RedirectRuleSearchRulesResponse
         array_push($this->rules, $rules);
         return $this;
     }
+    
     function setHits(int $hits)
     {
         $this->hits = $hits;
         return $this;
     }
+    
     function setStatistics(Statistics $statistics)
     {
         $this->statistics = $statistics;

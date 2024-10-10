@@ -28,22 +28,26 @@ class ContentCategoryInterestTriggerResult
         }
         return $result;
     }
+    
     function setUser(UserResultDetails $user)
     {
         $this->user = $user;
         return $this;
     }
+    
     function setCategories(ContentCategoryInterestTriggerResultCategory ... $categories)
     {
         $this->categories = $categories;
         return $this;
     }
+    
     /** @param ContentCategoryInterestTriggerResultCategory[] $categories new value. */
     function setCategoriesFromArray(array $categories)
     {
         $this->categories = $categories;
         return $this;
     }
+    
     function addToCategories(ContentCategoryInterestTriggerResultCategory $categories)
     {
         if (!isset($this->categories))
