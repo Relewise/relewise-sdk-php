@@ -33,7 +33,7 @@ class ProductPerformanceTest extends BaseTestCase
         /** @var ProductPerformanceResult $first */
         $first = $response->results[0];
         /** @var ProductPerformanceResult $second */
-        $fifth = $response->results[4]; // This might be flaky. It is just to check that some element lower down has a smaller 
+        $fifth = $response->results[4]; // This might be flaky. It is just to check that some element lower down has a smaller number of orders.
 
         self::assertTrue($first->classifications[0]->sales->orders > $fifth->classifications[0]->sales->orders);
     }
