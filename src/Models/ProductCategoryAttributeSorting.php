@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductCategoryAttributeSorting extends ProductCategorySorting
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.ProductCategory.ProductCategoryAttributeSorting, Relewise.Client";
+    
     public ProductCategoryAttributeSortingSortableAttribute $attribute;
     
     public SortMode $mode;

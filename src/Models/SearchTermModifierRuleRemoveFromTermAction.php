@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SearchTermModifierRuleRemoveFromTermAction extends SearchTermModifierRuleRuleAction
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchTermModifierRule+RemoveFromTermAction, Relewise.Client";
+    
     public string $words;
     
     public static function create(string $words) : SearchTermModifierRuleRemoveFromTermAction

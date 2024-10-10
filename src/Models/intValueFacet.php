@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class intValueFacet extends Facet
 {
     public string $typeDefinition = "";
+    
     public ?array $selected;
     
     

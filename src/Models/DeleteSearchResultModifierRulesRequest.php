@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class DeleteSearchResultModifierRulesRequest extends DeleteSearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.DeleteSearchResultModifierRulesRequest, Relewise.Client";
+    
     public static function create(string $deletedBy) : DeleteSearchResultModifierRulesRequest
     {
         $result = new DeleteSearchResultModifierRulesRequest();

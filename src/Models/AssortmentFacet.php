@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class AssortmentFacet extends intValueFacet
 {
     public string $typeDefinition = "";
+    
     public AssortmentFilterType $assortmentFilterType;
     
     

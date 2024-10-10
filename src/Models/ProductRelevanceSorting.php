@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductRelevanceSorting extends ProductSorting
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Product.ProductRelevanceSorting, Relewise.Client";
+    
     public static function create(SortOrder $order = SortOrder::Descending) : ProductRelevanceSorting
     {
         $result = new ProductRelevanceSorting();

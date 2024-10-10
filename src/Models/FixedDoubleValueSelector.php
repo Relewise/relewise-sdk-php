@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class FixedDoubleValueSelector extends ValueSelector
 {
     public string $typeDefinition = "Relewise.Client.Requests.ValueSelectors.FixedDoubleValueSelector, Relewise.Client";
+    
     public float $value;
     
     public static function create(float $value) : FixedDoubleValueSelector

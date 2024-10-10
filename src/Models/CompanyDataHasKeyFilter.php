@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class CompanyDataHasKeyFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.CompanyDataHasKeyFilter, Relewise.Client";
+    
     public string $key;
     
     public static function create(string $key, bool $negated = false) : CompanyDataHasKeyFilter

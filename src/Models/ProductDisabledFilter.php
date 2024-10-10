@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductDisabledFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductDisabledFilter, Relewise.Client";
+    
     public static function create(bool $negated = false) : ProductDisabledFilter
     {
         $result = new ProductDisabledFilter();

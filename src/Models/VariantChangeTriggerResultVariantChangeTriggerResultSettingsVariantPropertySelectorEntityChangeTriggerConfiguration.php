@@ -8,6 +8,7 @@ use JsonSerializable;
 abstract class VariantChangeTriggerResultVariantChangeTriggerResultSettingsVariantPropertySelectorEntityChangeTriggerConfiguration extends VariantChangeTriggerResultTriggerConfiguration implements JsonSerializable
 {
     public string $typeDefinition = "";
+    
     /** The selector used for choosing which property of the entity the trigger should look for change in. */
     public ?VariantPropertySelector $entityPropertySelector;
     

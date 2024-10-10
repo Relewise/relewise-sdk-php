@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductCategorySearchRequest extends PaginatedSearchRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.ProductCategorySearchRequest, Relewise.Client";
+    
     public ?string $term;
     
     public ?ProductCategorySearchSettings $settings;

@@ -6,6 +6,7 @@ namespace Relewise\Models;
 class BrandIdRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.BrandIdRelevanceModifier, Relewise.Client";
+    
     /** The Id of the Brand that this RelevanceModifier will distinguish on. */
     public string $brandId;
     

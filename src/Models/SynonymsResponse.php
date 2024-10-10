@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SynonymsResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.SynonymsResponse, Relewise.Client";
+    
     public array $values;
     
     public int $hits;

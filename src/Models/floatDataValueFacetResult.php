@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class floatDataValueFacetResult extends floatValueFacetResult
 {
     public string $typeDefinition = "";
+    
     public string $key;
     
     public ?CollectionFilterType $collectionFilterType;

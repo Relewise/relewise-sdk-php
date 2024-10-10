@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SimilarProductsRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.SimilarProductsRequest, Relewise.Client";
+    
     public ?ProductAndVariantId $existingProductId;
     
     public ?Product $productData;

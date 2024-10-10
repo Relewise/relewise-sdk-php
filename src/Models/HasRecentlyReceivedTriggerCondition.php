@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class HasRecentlyReceivedTriggerCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasRecentlyReceivedTriggerCondition, Relewise.Client";
+    
     public int $withinMinutes;
     
     public ?string $id;

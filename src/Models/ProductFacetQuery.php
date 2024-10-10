@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductFacetQuery extends FacetQuery
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ProductFacetQuery, Relewise.Client";
+    
     public array $items;
     
     public static function create() : ProductFacetQuery

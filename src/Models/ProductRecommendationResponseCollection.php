@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductRecommendationResponseCollection extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.ProductRecommendationResponseCollection, Relewise.Client";
+    
     public array $responses;
     
     public static function create(ProductRecommendationResponse ... $responses) : ProductRecommendationResponseCollection

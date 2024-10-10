@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ContentCategoryHasAncestorFilter extends HasAncestorCategoryFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentCategoryHasAncestorFilter, Relewise.Client";
+    
     public static function create(bool $negated = false) : ContentCategoryHasAncestorFilter
     {
         $result = new ContentCategoryHasAncestorFilter();

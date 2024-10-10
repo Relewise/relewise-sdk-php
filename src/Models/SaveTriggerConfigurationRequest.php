@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SaveTriggerConfigurationRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Triggers.SaveTriggerConfigurationRequest, Relewise.Client";
+    
     public TriggerConfiguration $configuration;
     
     public string $modifiedBy;

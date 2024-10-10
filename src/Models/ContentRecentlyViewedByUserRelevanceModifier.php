@@ -9,6 +9,7 @@ use JsonSerializable;
 class ContentRecentlyViewedByUserRelevanceModifier extends RecentlyViewedByUserRelevanceModifier implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ContentRecentlyViewedByUserRelevanceModifier, Relewise.Client";
+    
     public static function create(float $ifPreviouslyViewedByUserMultiplyWeightBy = 1, float $ifNotPreviouslyViewedByUserMultiplyWeightBy = 1) : ContentRecentlyViewedByUserRelevanceModifier
     {
         $result = new ContentRecentlyViewedByUserRelevanceModifier();

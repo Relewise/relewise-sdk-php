@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class Order extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Order, Relewise.Client";
+    
     public ?User $user;
     
     public Money $subtotal;

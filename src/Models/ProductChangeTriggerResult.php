@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductChangeTriggerResult extends ProductChangeTriggerResultProductChangeResultDetailsEntityChangeTriggerResult
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.ProductChangeTriggerResult, Relewise.Client";
+    
     public static function create(UserResultDetails $user, ProductChangeTriggerResultProductChangeResultDetails ... $entitiesWithChanges) : ProductChangeTriggerResult
     {
         $result = new ProductChangeTriggerResult();

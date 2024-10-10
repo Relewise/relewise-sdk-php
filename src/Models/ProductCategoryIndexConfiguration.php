@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductCategoryIndexConfiguration extends CategoryIndexConfiguration
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Configuration.ProductCategoryIndexConfiguration, Relewise.Client";
+    
     public static function create() : ProductCategoryIndexConfiguration
     {
         $result = new ProductCategoryIndexConfiguration();

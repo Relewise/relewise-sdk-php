@@ -8,6 +8,7 @@ use JsonSerializable;
 abstract class TriggerConfiguration implements JsonSerializable
 {
     public string $typeDefinition = "";
+    
     public string $id;
     
     public string $name;

@@ -8,6 +8,7 @@ use JsonSerializable;
 class LocationMetadataValues extends MetadataValues implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Location+MetadataValues, Relewise.Client";
+    
     public ?DateTime $inactivated;
     
     public ?string $inactivatedBy;

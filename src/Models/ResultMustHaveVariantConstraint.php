@@ -6,6 +6,7 @@ namespace Relewise\Models;
 class ResultMustHaveVariantConstraint extends ProductSearchResultConstraint
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.ResultMustHaveVariantConstraint, Relewise.Client";
+    
     /** Used to instruct the search engine that products which does not have any variants, will be returned anyway. */
     public bool $exceptWhenProductHasNoVariants;
     

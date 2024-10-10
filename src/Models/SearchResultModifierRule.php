@@ -8,6 +8,7 @@ use JsonSerializable;
 class SearchResultModifierRule extends SearchRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchResultModifierRule, Relewise.Client";
+    
     public SearchTermCondition $condition;
     
     public array $actions;

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class AdvertisersResponse extends AdvertiserAdvertiserEntityStateEntityResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.RetailMedia.AdvertisersResponse, Relewise.Client";
+    
     public static function create(int $hits, array $hitsPerState) : AdvertisersResponse
     {
         $result = new AdvertisersResponse();

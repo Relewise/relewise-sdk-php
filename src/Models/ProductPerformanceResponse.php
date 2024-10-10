@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductPerformanceResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Analyzers.ProductPerformanceResponse, Relewise.Client";
+    
     public array $results;
     
     public int $totalNumberOfResults;

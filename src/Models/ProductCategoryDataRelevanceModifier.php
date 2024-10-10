@@ -6,6 +6,7 @@ namespace Relewise\Models;
 class ProductCategoryDataRelevanceModifier extends DataRelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductCategoryDataRelevanceModifier, Relewise.Client";
+    
     public static function create(string $key, ValueSelector $multiplierSelector, bool $considerAsMatchIfKeyIsNotFound = false) : ProductCategoryDataRelevanceModifier
     {
         $result = new ProductCategoryDataRelevanceModifier();

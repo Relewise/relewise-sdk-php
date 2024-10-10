@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class floatRangeFacetResult extends FacetResult
 {
     public string $typeDefinition = "";
+    
     public ?floatRange $selected;
     
     public ?floatRangeAvailableFacetValue $available;

@@ -6,6 +6,7 @@ namespace Relewise\Models;
 class ObjectValueRelativeDateTimeCondition extends ObjectValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueRelativeDateTimeCondition, Relewise.Client";
+    
     /** Defines whether the compared value should be before or after the current time for the condition to evaluate true. */
     public RelativeTimeComparison $comparison;
     

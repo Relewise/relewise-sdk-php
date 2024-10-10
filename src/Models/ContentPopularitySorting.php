@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ContentPopularitySorting extends ContentSorting
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Content.ContentPopularitySorting, Relewise.Client";
+    
     public static function create(SortOrder $order = SortOrder::Descending) : ContentPopularitySorting
     {
         $result = new ContentPopularitySorting();

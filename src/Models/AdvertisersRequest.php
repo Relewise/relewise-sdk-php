@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class AdvertisersRequest extends AdvertiserEntityStateAdvertiserMetadataValuesAdvertisersRequestSortByAdvertisersRequestEntityFiltersEntitiesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.AdvertisersRequest, Relewise.Client";
+    
     public static function create(?AdvertisersRequestEntityFilters $filters, ?AdvertisersRequestSortBySorting $sorting, int $skip, int $take) : AdvertisersRequest
     {
         $result = new AdvertisersRequest();

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class PredictionRulesRequestSortBySearchRulesRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
+    
     public SearchRuleFilters $filters;
     
     public PredictionRulesRequestSortBySorting $sorting;

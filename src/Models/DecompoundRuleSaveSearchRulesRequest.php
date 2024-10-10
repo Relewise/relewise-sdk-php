@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class DecompoundRuleSaveSearchRulesRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
+    
     public array $rules;
     
     public string $modifiedBy;

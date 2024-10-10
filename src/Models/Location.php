@@ -6,6 +6,7 @@ namespace Relewise\Models;
 class Location extends LocationEntityStateLocationMetadataValuesRetailMediaEntity
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Location, Relewise.Client";
+    
     /** The name of this location, e.g. "Front page", "PDP", "Home screen" etc. */
     public string $name;
     

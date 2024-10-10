@@ -8,6 +8,7 @@ use JsonSerializable;
 class ContentCategoryRecentlyViewedByUserFilter extends Filter implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentCategoryRecentlyViewedByUserFilter, Relewise.Client";
+    
     public ?DateTime $sinceUtc;
     
     public ?int $sinceMinutesAgo;

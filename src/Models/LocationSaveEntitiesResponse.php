@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class LocationSaveEntitiesResponse extends TimedResponse
 {
     public string $typeDefinition = "";
+    
     public array $entities;
     
     

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class DeleteSynonymsRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.DeleteSynonymsRequest, Relewise.Client";
+    
     public array $ids;
     
     public string $deletedBy;

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SaveRedirectRulesRequest extends RedirectRuleSaveSearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SaveRedirectRulesRequest, Relewise.Client";
+    
     public static function create(string $modifiedBy) : SaveRedirectRulesRequest
     {
         $result = new SaveRedirectRulesRequest();

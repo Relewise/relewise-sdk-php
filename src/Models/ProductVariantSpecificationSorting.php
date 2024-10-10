@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductVariantSpecificationSorting extends ProductSorting
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Product.ProductVariantSpecificationSorting, Relewise.Client";
+    
     public string $key;
     
     public SortMode $mode;

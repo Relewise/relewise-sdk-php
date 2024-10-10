@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductHasCategoriesFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductHasCategoriesFilter, Relewise.Client";
+    
     public static function create(bool $negated) : ProductHasCategoriesFilter
     {
         $result = new ProductHasCategoriesFilter();

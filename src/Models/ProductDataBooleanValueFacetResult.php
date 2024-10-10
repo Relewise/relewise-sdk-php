@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductDataBooleanValueFacetResult extends boolProductDataValueFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ProductDataBooleanValueFacetResult, Relewise.Client";
+    
     public static function create(DataSelectionStrategy $dataSelectionStrategy, string $key, array $selected, ?CollectionFilterType $collectionFilterType, boolAvailableFacetValue ... $available) : ProductDataBooleanValueFacetResult
     {
         $result = new ProductDataBooleanValueFacetResult();

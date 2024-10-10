@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class PurchasedWithCurrentCartRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PurchasedWithCurrentCartRequest, Relewise.Client";
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user) : PurchasedWithCurrentCartRequest
     {
         $result = new PurchasedWithCurrentCartRequest();

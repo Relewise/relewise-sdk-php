@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SaveLocationsRequest extends LocationSaveEntitiesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.SaveLocationsRequest, Relewise.Client";
+    
     public static function create(string $modifiedBy) : SaveLocationsRequest
     {
         $result = new SaveLocationsRequest();

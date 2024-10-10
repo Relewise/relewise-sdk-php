@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class RelevanceModifier
 {
     public string $typeDefinition = "";
+    
     /** Filters which entities this relevance modifier can apply to. */
     public FilterCollection $filters;
     

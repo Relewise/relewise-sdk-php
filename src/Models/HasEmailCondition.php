@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class HasEmailCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasEmailCondition, Relewise.Client";
+    
     public static function create(bool $negated) : HasEmailCondition
     {
         $result = new HasEmailCondition();

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class AdvertiserSaveEntitiesRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
+    
     public array $entities;
     
     public string $modifiedBy;

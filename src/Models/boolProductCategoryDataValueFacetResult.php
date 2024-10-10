@@ -6,6 +6,7 @@ abstract class boolProductCategoryDataValueFacetResult extends boolDataValueFace
 {
     public string $typeDefinition = "";
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

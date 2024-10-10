@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class BrandDetailsCollectionResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.BrandDetailsCollectionResponse, Relewise.Client";
+    
     public array $brands;
     
     public ?int $totalNumberOfResults;

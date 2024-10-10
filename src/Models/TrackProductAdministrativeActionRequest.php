@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class TrackProductAdministrativeActionRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackProductAdministrativeActionRequest, Relewise.Client";
+    
     public ProductAdministrativeAction $administrativeAction;
     
     public static function create(ProductAdministrativeAction $administrativeAction) : TrackProductAdministrativeActionRequest

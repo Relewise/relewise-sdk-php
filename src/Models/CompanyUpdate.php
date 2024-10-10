@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class CompanyUpdate extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.CompanyUpdate, Relewise.Client";
+    
     public Company $company;
     
     public CompanyUpdateUpdateKind $kind;

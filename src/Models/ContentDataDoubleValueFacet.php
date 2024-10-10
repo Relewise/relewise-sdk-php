@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ContentDataDoubleValueFacet extends floatContentDataValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ContentDataDoubleValueFacet, Relewise.Client";
+    
     public static function create(string $key, ?array $selected, ?CollectionFilterType $collectionFilterType) : ContentDataDoubleValueFacet
     {
         $result = new ContentDataDoubleValueFacet();

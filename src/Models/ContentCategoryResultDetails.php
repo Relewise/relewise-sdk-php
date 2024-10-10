@@ -8,6 +8,7 @@ use JsonSerializable;
 class ContentCategoryResultDetails extends ContentCategoryResultDetailsCategoryResultDetails implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentCategoryResultDetails, Relewise.Client";
+    
     public static function create(string $categoryId) : ContentCategoryResultDetails
     {
         $result = new ContentCategoryResultDetails();

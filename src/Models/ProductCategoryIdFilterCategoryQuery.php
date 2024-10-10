@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class ProductCategoryIdFilterCategoryQuery extends LicensedRequest
 {
     public string $typeDefinition = "";
+    
     public FilterCollection $filters;
     
     public int $numberOfResults;

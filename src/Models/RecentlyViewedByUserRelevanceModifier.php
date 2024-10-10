@@ -8,6 +8,7 @@ use JsonSerializable;
 abstract class RecentlyViewedByUserRelevanceModifier extends RelevanceModifier implements JsonSerializable
 {
     public string $typeDefinition = "";
+    
     /** The start of the time period in which an entity will be considered relevant to the user if viewed previously by them. */
     public ?DateTime $sinceUtc;
     

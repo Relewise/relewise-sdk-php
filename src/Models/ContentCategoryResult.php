@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ContentCategoryResult extends CategoryResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentCategoryResult, Relewise.Client";
+    
     public static function create(string $categoryId, int $rank) : ContentCategoryResult
     {
         $result = new ContentCategoryResult();

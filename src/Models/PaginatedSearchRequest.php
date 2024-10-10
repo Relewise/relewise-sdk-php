@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class PaginatedSearchRequest extends SearchRequest
 {
     public string $typeDefinition = "";
+    
     public int $skip;
     
     public int $take;

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class Budget
 {
     public string $typeDefinition = "";
+    
     public ?float $maxTotalCost;
     
     public float $totalCost;

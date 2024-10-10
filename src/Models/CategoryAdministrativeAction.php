@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class CategoryAdministrativeAction extends Trackable
 {
     public string $typeDefinition = "";
+    
     public FilterCollection $filters;
     
     public ?Language $language;

@@ -6,6 +6,7 @@ namespace Relewise\Models;
 class ProductSalesPriceRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.ProductSalesPriceRelevanceModifier, Relewise.Client";
+    
     /** The range of sales prices that this RelevanceModifier will distinguish on. */
     public ?floatRange $range;
     

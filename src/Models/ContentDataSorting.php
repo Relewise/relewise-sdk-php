@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ContentDataSorting extends ContentSorting
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Content.ContentDataSorting, Relewise.Client";
+    
     public string $key;
     
     public SortMode $mode;

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ContainsCondition extends ValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Conditions.ContainsCondition, Relewise.Client";
+    
     public ?DataValue $value;
     
     public ContainsConditionCollectionArgumentEvaluationMode $valueCollectionEvaluationMode;

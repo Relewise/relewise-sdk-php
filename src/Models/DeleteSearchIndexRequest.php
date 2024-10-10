@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class DeleteSearchIndexRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.DeleteSearchIndexRequest, Relewise.Client";
+    
     public string $id;
     
     public string $deletedBy;

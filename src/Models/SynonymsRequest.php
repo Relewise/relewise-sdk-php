@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SynonymsRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.SynonymsRequest, Relewise.Client";
+    
     public SynonymsRequestSynonymSortingSorting $sorting;
     
     public int $take;

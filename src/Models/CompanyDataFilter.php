@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class CompanyDataFilter extends DataFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.CompanyDataFilter, Relewise.Client";
+    
     public static function create(string $key, bool $filterOutIfKeyIsNotFound = true, ?Language $language = Null, ?Currency $currency = Null) : CompanyDataFilter
     {
         $result = new CompanyDataFilter();

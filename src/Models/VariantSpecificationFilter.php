@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class VariantSpecificationFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.VariantSpecificationFilter, Relewise.Client";
+    
     public string $key;
     
     public bool $filterOutIfKeyIsNotFound;

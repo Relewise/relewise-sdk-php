@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class AndCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.AndCondition, Relewise.Client";
+    
     public UserConditionCollection $conditions;
     
     public static function create(UserConditionCollection $conditions, bool $negated) : AndCondition

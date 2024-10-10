@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SelectedContentCategoryPropertiesSettings extends SelectedCategoryPropertiesSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Shared.SelectedContentCategoryPropertiesSettings, Relewise.Client";
+    
     public static function create() : SelectedContentCategoryPropertiesSettings
     {
         $result = new SelectedContentCategoryPropertiesSettings();

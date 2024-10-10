@@ -6,6 +6,7 @@ namespace Relewise\Models;
 class VariantSpecificationsInCommonRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.VariantSpecificationsInCommonRelevanceModifier, Relewise.Client";
+    
     /** A collection of KeyMultiplier that each define a certain key and value that the relevance should be multiplied with if matching on this key. The default multiplier for keys not included, is 1.0. */
     public array $specificationKeysAndMultipliers;
     

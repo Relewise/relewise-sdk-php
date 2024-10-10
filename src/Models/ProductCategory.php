@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductCategory extends Category
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductCategory, Relewise.Client";
+    
     public static function create(string $id) : ProductCategory
     {
         $result = new ProductCategory();

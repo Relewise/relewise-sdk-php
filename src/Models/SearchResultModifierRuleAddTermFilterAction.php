@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SearchResultModifierRuleAddTermFilterAction extends SearchResultModifierRuleRuleAction
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.SearchResultModifierRule+AddTermFilterAction, Relewise.Client";
+    
     public string $term;
     
     public bool $negated;

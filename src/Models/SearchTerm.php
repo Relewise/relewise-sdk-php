@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SearchTerm extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.SearchTerm, Relewise.Client";
+    
     public Language $language;
     
     public User $user;

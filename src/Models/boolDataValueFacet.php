@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class boolDataValueFacet extends boolValueFacet
 {
     public string $typeDefinition = "";
+    
     public string $key;
     
     public ?CollectionFilterType $collectionFilterType;

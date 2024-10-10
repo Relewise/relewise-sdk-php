@@ -8,6 +8,7 @@ use JsonSerializable;
 abstract class MetadataValues implements JsonSerializable
 {
     public string $typeDefinition = "";
+    
     public DateTime $created;
     
     public string $createdBy;

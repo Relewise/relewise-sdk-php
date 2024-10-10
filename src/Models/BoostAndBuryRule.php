@@ -8,6 +8,7 @@ use JsonSerializable;
 class BoostAndBuryRule extends MerchandisingRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.Rules.BoostAndBuryRule, Relewise.Client";
+    
     public ValueSelector $multiplierSelector;
     
     public static function create(string $name, string $description, ValueSelector $multiplierSelector) : BoostAndBuryRule

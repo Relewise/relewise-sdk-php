@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class intDataValueFacet extends intValueFacet
 {
     public string $typeDefinition = "";
+    
     public string $key;
     
     public ?CollectionFilterType $collectionFilterType;

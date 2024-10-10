@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class PredictionRulesRequest extends PredictionRulesRequestSortBySearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.PredictionRulesRequest, Relewise.Client";
+    
     public static function create(SearchRuleFilters $filters, PredictionRulesRequestSortBySorting $sorting, int $skip, int $take) : PredictionRulesRequest
     {
         $result = new PredictionRulesRequest();

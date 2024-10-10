@@ -8,6 +8,7 @@ use JsonSerializable;
 class AdvertiserMetadataValues extends MetadataValues implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Advertiser+MetadataValues, Relewise.Client";
+    
     public ?DateTime $inactivated;
     
     public ?string $inactivatedBy;

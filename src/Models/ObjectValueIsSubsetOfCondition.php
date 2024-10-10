@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ObjectValueIsSubsetOfCondition extends ObjectValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueIsSubsetOfCondition, Relewise.Client";
+    
     public DataValue $value;
     
     public static function create(string $key, DataValue $value, bool $negated = false) : ObjectValueIsSubsetOfCondition

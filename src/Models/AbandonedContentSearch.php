@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class AbandonedContentSearch extends stringAbandonedSearch
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.AbandonedContentSearch, Relewise.Client";
+    
     public static function create() : AbandonedContentSearch
     {
         $result = new AbandonedContentSearch();

@@ -6,6 +6,7 @@ namespace Relewise\Models;
 class UserFavoriteProductRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.UserFavoriteProductRelevanceModifier, Relewise.Client";
+    
     /** The timespan in minutes up till now that a product should be considered relevant if it has been bought by the user. */
     public int $sinceMinutesAgo;
     

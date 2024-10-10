@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class PurchasedWithMultipleProductsRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PurchasedWithMultipleProductsRequest, Relewise.Client";
+    
     public array $productAndVariantIds;
     
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ... $productAndVariantIds) : PurchasedWithMultipleProductsRequest

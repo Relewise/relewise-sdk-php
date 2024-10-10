@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductIdFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductIdFilter, Relewise.Client";
+    
     public array $productIds;
     
     public static function create(bool $negated = false) : ProductIdFilter

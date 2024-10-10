@@ -6,6 +6,7 @@ abstract class SearchTermModifierRuleRuleAction
 {
     public string $typeDefinition = "";
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

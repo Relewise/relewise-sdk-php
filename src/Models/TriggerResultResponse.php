@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class TriggerResultResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.TriggerResultResponse, Relewise.Client";
+    
     public ITriggerResult $result;
     
     public static function create() : TriggerResultResponse

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductUpdate extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductUpdate, Relewise.Client";
+    
     public Product $product;
     
     public array $variants;

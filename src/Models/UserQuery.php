@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class UserQuery extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Queries.UserQuery, Relewise.Client";
+    
     public array $criteria;
     
     public ?Language $language;

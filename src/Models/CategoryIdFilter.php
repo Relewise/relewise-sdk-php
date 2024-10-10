@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class CategoryIdFilter extends Filter
 {
     public string $typeDefinition = "";
+    
     public array $categoryIds;
     
     public CategoryScope $evaluationScope;

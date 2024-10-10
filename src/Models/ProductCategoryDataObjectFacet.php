@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductCategoryDataObjectFacet extends DataObjectFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ProductCategoryDataObjectFacet, Relewise.Client";
+    
     public static function create(string $key) : ProductCategoryDataObjectFacet
     {
         $result = new ProductCategoryDataObjectFacet();

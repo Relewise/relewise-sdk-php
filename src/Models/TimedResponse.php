@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class TimedResponse
 {
     public string $typeDefinition = "";
+    
     public Statistics $statistics;
     
     

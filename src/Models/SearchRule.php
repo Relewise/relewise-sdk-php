@@ -8,6 +8,7 @@ use JsonSerializable;
 abstract class SearchRule implements JsonSerializable
 {
     public string $typeDefinition = "";
+    
     public string $id;
     
     public ?ApplicableIndexes $indexes;

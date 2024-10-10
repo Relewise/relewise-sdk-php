@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ContentView extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.ContentView, Relewise.Client";
+    
     public ?User $user;
     
     public Content $content;

@@ -8,6 +8,7 @@ use JsonSerializable;
 class DecompoundRule extends SearchRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.DecompoundRule, Relewise.Client";
+    
     public string $word;
     
     public ?string $head;

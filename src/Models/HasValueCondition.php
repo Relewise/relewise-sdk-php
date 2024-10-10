@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class HasValueCondition extends ValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Conditions.HasValueCondition, Relewise.Client";
+    
     public static function create(bool $negated = false) : HasValueCondition
     {
         $result = new HasValueCondition();

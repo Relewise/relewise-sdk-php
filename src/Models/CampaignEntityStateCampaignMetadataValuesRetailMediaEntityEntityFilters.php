@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class CampaignEntityStateCampaignMetadataValuesRetailMediaEntityEntityFilters
 {
     public string $typeDefinition = "";
+    
     public ?string $term;
     
     public ?array $states;

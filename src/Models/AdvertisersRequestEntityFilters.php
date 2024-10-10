@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class AdvertisersRequestEntityFilters extends AdvertiserEntityStateAdvertiserMetadataValuesRetailMediaEntityEntityFilters
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.AdvertisersRequest+EntityFilters, Relewise.Client";
+    
     public ?array $ids;
     
     public static function create() : AdvertisersRequestEntityFilters

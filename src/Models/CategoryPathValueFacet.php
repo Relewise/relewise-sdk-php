@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class CategoryPathValueFacet extends Facet
 {
     public string $typeDefinition = "";
+    
     public ?array $selected;
     
     

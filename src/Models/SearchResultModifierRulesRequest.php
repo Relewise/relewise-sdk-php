@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SearchResultModifierRulesRequest extends SearchResultModifierRulesRequestSortBySearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.SearchResultModifierRulesRequest, Relewise.Client";
+    
     public static function create(SearchRuleFilters $filters, SearchResultModifierRulesRequestSortBySorting $sorting, int $skip, int $take) : SearchResultModifierRulesRequest
     {
         $result = new SearchResultModifierRulesRequest();

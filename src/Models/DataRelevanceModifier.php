@@ -6,6 +6,7 @@ namespace Relewise\Models;
 abstract class DataRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "";
+    
     /** The data key that this RelevanceModifier will distinguish on. */
     public string $key;
     

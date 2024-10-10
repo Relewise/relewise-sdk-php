@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class AdvertiserEntityStateAdvertiserMetadataValuesRetailMediaEntity extends RetailMediaEntity
 {
     public string $typeDefinition = "";
+    
     public AdvertiserEntityState $state;
     
     /** Managed server side only, manually setting this will have no effect */

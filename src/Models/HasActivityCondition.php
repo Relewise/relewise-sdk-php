@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class HasActivityCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasActivityCondition, Relewise.Client";
+    
     public int $withinMinutes;
     
     public int $forAtLeastSeconds;

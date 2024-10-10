@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class DecompoundRuleSaveSearchRulesResponse extends TimedResponse
 {
     public string $typeDefinition = "";
+    
     public array $rules;
     
     

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class CategoryResult
 {
     public string $typeDefinition = "";
+    
     public string $categoryId;
     
     public string $displayName;

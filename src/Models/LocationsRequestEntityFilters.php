@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class LocationsRequestEntityFilters extends LocationEntityStateLocationMetadataValuesRetailMediaEntityEntityFilters
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.LocationsRequest+EntityFilters, Relewise.Client";
+    
     public ?array $ids;
     
     public ?array $keys;

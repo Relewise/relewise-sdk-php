@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductPromotion extends Promotion
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.ProductPromotion, Relewise.Client";
+    
     /** Filters matching the products to be promoted */
     public ?FilterCollection $filters;
     

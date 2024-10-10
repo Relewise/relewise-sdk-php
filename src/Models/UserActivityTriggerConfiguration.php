@@ -8,6 +8,7 @@ use JsonSerializable;
 class UserActivityTriggerConfiguration extends UserActivityTriggerResultTriggerConfiguration implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.UserActivityTriggerConfiguration, Relewise.Client";
+    
     public static function create(string $name, string $description) : UserActivityTriggerConfiguration
     {
         $result = new UserActivityTriggerConfiguration();

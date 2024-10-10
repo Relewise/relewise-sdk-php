@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class DataFilter extends Filter
 {
     public string $typeDefinition = "";
+    
     public string $key;
     
     public bool $filterOutIfKeyIsNotFound;

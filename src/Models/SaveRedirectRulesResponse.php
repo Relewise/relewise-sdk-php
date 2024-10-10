@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SaveRedirectRulesResponse extends RedirectRuleSaveSearchRulesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.SaveRedirectRulesResponse, Relewise.Client";
+    
     public static function create(RedirectRule ... $rules) : SaveRedirectRulesResponse
     {
         $result = new SaveRedirectRulesResponse();

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class Cart extends Trackable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Cart, Relewise.Client";
+    
     public ?User $user;
     
     public ?string $name;

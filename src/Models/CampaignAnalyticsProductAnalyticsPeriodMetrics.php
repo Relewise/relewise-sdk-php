@@ -8,6 +8,7 @@ use JsonSerializable;
 class CampaignAnalyticsProductAnalyticsPeriodMetrics implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.CampaignAnalytics+ProductAnalytics+PeriodMetrics, Relewise.Client";
+    
     public DateTime $periodFromUtc;
     
     public int $views;

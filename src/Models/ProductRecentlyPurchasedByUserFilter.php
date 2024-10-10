@@ -8,6 +8,7 @@ use JsonSerializable;
 class ProductRecentlyPurchasedByUserFilter extends Filter implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductRecentlyPurchasedByUserFilter, Relewise.Client";
+    
     public ?DateTime $sinceUtc;
     
     public ?int $sinceMinutesAgo;

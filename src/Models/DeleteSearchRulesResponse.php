@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class DeleteSearchRulesResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.DeleteSearchRulesResponse, Relewise.Client";
+    
     public static function create() : DeleteSearchRulesResponse
     {
         $result = new DeleteSearchRulesResponse();

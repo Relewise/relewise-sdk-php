@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class ProductCategoryRecommendationRequest extends RecommendationRequest
 {
     public string $typeDefinition = "";
+    
     public ProductCategoryRecommendationRequestSettings $settings;
     
     

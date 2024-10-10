@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class AnalyzerRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
+    
     public ?Language $language;
     
     public ?Currency $currency;

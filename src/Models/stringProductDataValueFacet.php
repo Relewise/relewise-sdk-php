@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class stringProductDataValueFacet extends stringDataValueFacet
 {
     public string $typeDefinition = "";
+    
     public DataSelectionStrategy $dataSelectionStrategy;
     
     

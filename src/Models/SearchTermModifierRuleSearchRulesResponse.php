@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class SearchTermModifierRuleSearchRulesResponse extends TimedResponse
 {
     public string $typeDefinition = "";
+    
     public array $rules;
     
     public int $hits;

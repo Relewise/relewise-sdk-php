@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class HasLineItemsInCartCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasLineItemsInCartCondition, Relewise.Client";
+    
     public ?intRange $numberOfItems;
     
     public string $cartName;

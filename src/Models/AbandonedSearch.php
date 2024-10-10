@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class AbandonedSearch
 {
     public string $typeDefinition = "";
+    
     public string $loweredSearchTerm;
     
     public int $hits;

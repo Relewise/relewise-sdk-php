@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class DeleteSynonymsResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.DeleteSynonymsResponse, Relewise.Client";
+    
     public static function create() : DeleteSynonymsResponse
     {
         $result = new DeleteSynonymsResponse();

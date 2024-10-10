@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class floatProductDataRangeFacet extends floatDataRangeFacet
 {
     public string $typeDefinition = "";
+    
     public DataSelectionStrategy $dataSelectionStrategy;
     
     

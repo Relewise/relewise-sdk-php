@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ContentAssortmentFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentAssortmentFilter, Relewise.Client";
+    
     public array $assortments;
     
     public static function create(bool $negated = false) : ContentAssortmentFilter

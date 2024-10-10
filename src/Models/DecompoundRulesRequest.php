@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class DecompoundRulesRequest extends DecompoundRulesRequestSortBySearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.DecompoundRulesRequest, Relewise.Client";
+    
     public static function create(SearchRuleFilters $filters, DecompoundRulesRequestSortBySorting $sorting, int $skip, int $take) : DecompoundRulesRequest
     {
         $result = new DecompoundRulesRequest();

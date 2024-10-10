@@ -8,6 +8,7 @@ use JsonSerializable;
 class RedirectRule extends SearchRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.RedirectRule, Relewise.Client";
+    
     public SearchTermCondition $condition;
     
     public ?string $destination;

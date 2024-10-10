@@ -6,6 +6,7 @@ namespace Relewise\Models;
 class ContentDataIntegerValueFacet extends intContentDataValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ContentDataIntegerValueFacet, Relewise.Client";
+    
     public static function create(string $key, ?array $selected, ?CollectionFilterType $collectionFilterType) : ContentDataIntegerValueFacet
     {
         $result = new ContentDataIntegerValueFacet();

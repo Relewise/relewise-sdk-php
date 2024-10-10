@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class boolValueFacet extends Facet
 {
     public string $typeDefinition = "";
+    
     public ?array $selected;
     
     

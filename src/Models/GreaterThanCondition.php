@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class GreaterThanCondition extends ValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Conditions.GreaterThanCondition, Relewise.Client";
+    
     public float $value;
     
     public static function create(float $value, bool $negated = false) : GreaterThanCondition

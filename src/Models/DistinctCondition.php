@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class DistinctCondition extends ValueCondition
 {
     public string $typeDefinition = "Relewise.Client.Requests.Conditions.DistinctCondition, Relewise.Client";
+    
     public int $numberOfOccurrencesAllowedWithTheSameValue;
     
     public static function create(int $numberOfOccurrencesAllowedWithTheSameValue = 1) : DistinctCondition

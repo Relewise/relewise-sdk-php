@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductDataSorting extends ProductSorting
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Sorting.Product.ProductDataSorting, Relewise.Client";
+    
     public string $key;
     
     public DataSelectionStrategy $dataSelectionStrategy;

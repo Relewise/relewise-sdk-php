@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class PersonalProductRecommendationRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PersonalProductRecommendationRequest, Relewise.Client";
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user) : PersonalProductRecommendationRequest
     {
         $result = new PersonalProductRecommendationRequest();

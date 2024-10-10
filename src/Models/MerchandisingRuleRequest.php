@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class MerchandisingRuleRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Merchandising.MerchandisingRuleRequest, Relewise.Client";
+    
     public string $id;
     
     public ?int $type;

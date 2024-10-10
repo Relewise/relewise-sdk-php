@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class ProductAndVariantIdAbandonedSearch extends AbandonedSearch
 {
     public string $typeDefinition = "";
+    
     public array $topResults;
     
     

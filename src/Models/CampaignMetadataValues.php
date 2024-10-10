@@ -8,6 +8,7 @@ use JsonSerializable;
 class CampaignMetadataValues extends MetadataValues implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Campaign+MetadataValues, Relewise.Client";
+    
     public ?DateTime $proposed;
     
     public ?string $proposedBy;

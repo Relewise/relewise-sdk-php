@@ -6,6 +6,7 @@ namespace Relewise\Models;
 class VariantDataRelevanceModifier extends DataRelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.VariantDataRelevanceModifier, Relewise.Client";
+    
     /**
      * Creates a RelevanceModifier that can change the relevance of a variant depending on matching conditions on a certain key.
      * @param string $key The data key that this RelevanceModifier will distinguish on.

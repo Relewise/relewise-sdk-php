@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SaveMerchandisingRuleRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Merchandising.SaveMerchandisingRuleRequest, Relewise.Client";
+    
     public MerchandisingRule $rule;
     
     public string $modifiedBy;

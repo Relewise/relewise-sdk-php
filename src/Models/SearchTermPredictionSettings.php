@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SearchTermPredictionSettings extends SearchSettings
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.SearchTermPredictionSettings, Relewise.Client";
+    
     public ?array $targetEntityTypes;
     
     public static function create() : SearchTermPredictionSettings

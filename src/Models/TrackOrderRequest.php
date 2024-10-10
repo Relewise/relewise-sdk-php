@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class TrackOrderRequest extends TrackingRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackOrderRequest, Relewise.Client";
+    
     public Order $order;
     
     public static function create(Order $order) : TrackOrderRequest

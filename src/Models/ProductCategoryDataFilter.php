@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductCategoryDataFilter extends DataFilter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductCategoryDataFilter, Relewise.Client";
+    
     public static function create(string $key, bool $filterOutIfKeyIsNotFound = true, ?Language $language = Null, ?Currency $currency = Null) : ProductCategoryDataFilter
     {
         $result = new ProductCategoryDataFilter();

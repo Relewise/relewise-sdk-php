@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class DecompoundRulesResponse extends DecompoundRuleSearchRulesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.DecompoundRulesResponse, Relewise.Client";
+    
     public static function create(array $rules, int $hits) : DecompoundRulesResponse
     {
         $result = new DecompoundRulesResponse();

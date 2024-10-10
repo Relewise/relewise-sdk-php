@@ -8,6 +8,7 @@ use JsonSerializable;
 abstract class MerchandisingRule implements JsonSerializable
 {
     public string $typeDefinition = "";
+    
     public string $id;
     
     public string $name;

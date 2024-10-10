@@ -8,6 +8,7 @@ use JsonSerializable;
 abstract class ProductChangeTriggerResultProductChangeTriggerResultSettingsProductPropertySelectorEntityChangeTriggerConfiguration extends ProductChangeTriggerResultTriggerConfiguration implements JsonSerializable
 {
     public string $typeDefinition = "";
+    
     /** The selector used for choosing which property of the entity the trigger should look for change in. */
     public ?ProductPropertySelector $entityPropertySelector;
     

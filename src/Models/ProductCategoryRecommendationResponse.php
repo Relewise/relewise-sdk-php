@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductCategoryRecommendationResponse extends RecommendationResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.ProductCategoryRecommendationResponse, Relewise.Client";
+    
     public array $recommendations;
     
     public static function create(ProductCategoryResult ... $recommendations) : ProductCategoryRecommendationResponse

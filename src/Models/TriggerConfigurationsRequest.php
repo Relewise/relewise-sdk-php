@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class TriggerConfigurationsRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Triggers.TriggerConfigurationsRequest, Relewise.Client";
+    
     public ?int $type;
     
     public static function create() : TriggerConfigurationsRequest

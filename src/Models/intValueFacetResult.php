@@ -6,6 +6,7 @@ abstract class intValueFacetResult extends intintValueFacetResult
 {
     public string $typeDefinition = "";
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

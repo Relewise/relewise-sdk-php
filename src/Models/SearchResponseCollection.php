@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SearchResponseCollection extends SearchResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.SearchResponseCollection, Relewise.Client";
+    
     public array $responses;
     
     public static function create() : SearchResponseCollection

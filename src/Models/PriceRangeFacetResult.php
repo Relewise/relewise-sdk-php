@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class PriceRangeFacetResult extends FacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.PriceRangeFacetResult, Relewise.Client";
+    
     public ?floatRange $selected;
     
     public floatRangeAvailableFacetValue $available;

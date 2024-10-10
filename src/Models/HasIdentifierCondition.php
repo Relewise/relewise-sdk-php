@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class HasIdentifierCondition extends UserCondition
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.UserConditions.HasIdentifierCondition, Relewise.Client";
+    
     public string $key;
     
     public static function create(string $key, bool $negated) : HasIdentifierCondition

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class RecommendationRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
+    
     public ?Language $language;
     
     public ?User $user;

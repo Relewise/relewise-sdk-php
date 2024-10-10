@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class VariantChangeTriggerResult extends VariantChangeTriggerResultVariantChangeResultDetailsEntityChangeTriggerResult
 {
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.VariantChangeTriggerResult, Relewise.Client";
+    
     public static function create(UserResultDetails $user, VariantChangeTriggerResultVariantChangeResultDetails ... $entitiesWithChanges) : VariantChangeTriggerResult
     {
         $result = new VariantChangeTriggerResult();

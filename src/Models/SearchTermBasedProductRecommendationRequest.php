@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SearchTermBasedProductRecommendationRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.SearchTermBasedProductRecommendationRequest, Relewise.Client";
+    
     public string $term;
     
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, string $term) : SearchTermBasedProductRecommendationRequest

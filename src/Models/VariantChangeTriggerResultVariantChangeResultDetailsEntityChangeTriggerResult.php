@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class VariantChangeTriggerResultVariantChangeResultDetailsEntityChangeTriggerResult extends EntityChangeTriggerResult
 {
     public string $typeDefinition = "";
+    
     public array $entitiesWithChanges;
     
     

@@ -9,6 +9,7 @@ use JsonSerializable;
 class ProductRecentlyViewedByCompanyFilter extends Filter implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductRecentlyViewedByCompanyFilter, Relewise.Client";
+    
     /** The time from which a Product should have been viewed by any of the companies to be included by the filter. */
     public ?DateTime $sinceUtc;
     

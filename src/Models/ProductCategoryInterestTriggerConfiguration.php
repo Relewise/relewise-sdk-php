@@ -8,6 +8,7 @@ use JsonSerializable;
 class ProductCategoryInterestTriggerConfiguration extends ProductCategoryInterestTriggerResultTriggerConfiguration implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.ProductCategoryInterestTriggerConfiguration, Relewise.Client";
+    
     public ?intRange $categoryViews;
     
     public ?intRange $productViews;

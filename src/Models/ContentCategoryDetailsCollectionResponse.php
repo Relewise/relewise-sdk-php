@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ContentCategoryDetailsCollectionResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.ContentCategoryDetailsCollectionResponse, Relewise.Client";
+    
     public array $categories;
     
     public ?int $totalNumberOfResults;

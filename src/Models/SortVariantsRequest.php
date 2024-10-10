@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SortVariantsRequest extends ProductRecommendationRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.SortVariantsRequest, Relewise.Client";
+    
     public string $productId;
     
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, string $productId) : SortVariantsRequest

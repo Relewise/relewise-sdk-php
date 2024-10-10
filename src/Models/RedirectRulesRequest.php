@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class RedirectRulesRequest extends RedirectRulesRequestSortBySearchRulesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Rules.RedirectRulesRequest, Relewise.Client";
+    
     public static function create(SearchRuleFilters $filters, RedirectRulesRequestSortBySorting $sorting, int $skip, int $take) : RedirectRulesRequest
     {
         $result = new RedirectRulesRequest();

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class DataObjectFacet extends Facet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.DataObjectFacet, Relewise.Client";
+    
     public string $key;
     
     public array $items;

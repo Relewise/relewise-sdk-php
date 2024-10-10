@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ContentCategoryQuery extends ContentCategoryIdFilterCategoryQuery
 {
     public string $typeDefinition = "Relewise.Client.Requests.Queries.ContentCategoryQuery, Relewise.Client";
+    
     public static function create(?Language $language = Null, ?Currency $currency = Null) : ContentCategoryQuery
     {
         $result = new ContentCategoryQuery();

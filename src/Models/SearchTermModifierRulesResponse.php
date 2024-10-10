@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SearchTermModifierRulesResponse extends SearchTermModifierRuleSearchRulesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.Rules.SearchTermModifierRulesResponse, Relewise.Client";
+    
     public static function create(array $rules, int $hits) : SearchTermModifierRulesResponse
     {
         $result = new SearchTermModifierRulesResponse();

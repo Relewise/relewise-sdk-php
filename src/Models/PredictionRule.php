@@ -8,6 +8,7 @@ use JsonSerializable;
 class PredictionRule extends SearchRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.PredictionRule, Relewise.Client";
+    
     public SearchTermCondition $condition;
     
     public PredictionRulePromotion $promote;

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductCategoryRecommendationRequestCollection extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ProductCategoryRecommendationRequestCollection, Relewise.Client";
+    
     public array $requests;
     
     public bool $requireDistinctCategoriesAcrossResults;

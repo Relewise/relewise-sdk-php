@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class RedirectRulesRequestSortBySearchRulesRequest extends LicensedRequest
 {
     public string $typeDefinition = "";
+    
     public SearchRuleFilters $filters;
     
     public RedirectRulesRequestSortBySorting $sorting;
