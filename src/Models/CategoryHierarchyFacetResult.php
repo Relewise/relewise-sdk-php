@@ -14,6 +14,7 @@ class CategoryHierarchyFacetResult extends FacetResult
         $result->nodes = $nodes;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryHierarchyFacetResult
     {
         $result = FacetResult::hydrateBase(new CategoryHierarchyFacetResult(), $arr);

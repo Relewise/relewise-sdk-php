@@ -21,6 +21,7 @@ class ContentQuery extends LicensedRequest
         $result->returnTotalNumberOfResults = false;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentQuery
     {
         $result = LicensedRequest::hydrateBase(new ContentQuery(), $arr);

@@ -12,6 +12,7 @@ class LocationsResponse extends LocationLocationEntityStateEntityResponse
         $result->hitsPerState = $hitsPerState;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LocationsResponse
     {
         $result = LocationLocationEntityStateEntityResponse::hydrateBase(new LocationsResponse(), $arr);

@@ -12,6 +12,7 @@ class TrackUserUpdateRequest extends TrackingRequest
         $result->userUpdate = $userUpdate;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackUserUpdateRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackUserUpdateRequest(), $arr);

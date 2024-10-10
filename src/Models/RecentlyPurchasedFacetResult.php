@@ -15,6 +15,7 @@ class RecentlyPurchasedFacetResult extends boolboolValueFacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RecentlyPurchasedFacetResult
     {
         $result = boolboolValueFacetResult::hydrateBase(new RecentlyPurchasedFacetResult(), $arr);

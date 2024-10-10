@@ -13,6 +13,7 @@ class CPMBudget extends Budget
         $result->maxTotalCost = $maxTotalCost;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CPMBudget
     {
         $result = Budget::hydrateBase(new CPMBudget(), $arr);

@@ -12,6 +12,7 @@ class ProductInCartFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductInCartFilter
     {
         $result = Filter::hydrateBase(new ProductInCartFilter(), $arr);

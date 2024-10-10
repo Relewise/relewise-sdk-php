@@ -6,6 +6,7 @@ abstract class boolProductDataValueFacetResult extends boolDataValueFacetResult
 {
     public string $typeDefinition = "";
     public DataSelectionStrategy $dataSelectionStrategy;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -14,6 +15,7 @@ abstract class boolProductDataValueFacetResult extends boolDataValueFacetResult
             return ProductDataBooleanValueFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = boolDataValueFacetResult::hydrateBase($result, $arr);

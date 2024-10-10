@@ -14,6 +14,7 @@ class DataObjectFacet extends Facet
         $result->key = $key;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataObjectFacet
     {
         $result = Facet::hydrateBase(new DataObjectFacet(), $arr);

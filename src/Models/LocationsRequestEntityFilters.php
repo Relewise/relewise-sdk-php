@@ -12,6 +12,7 @@ class LocationsRequestEntityFilters extends LocationEntityStateLocationMetadataV
         $result = new LocationsRequestEntityFilters();
         return $result;
     }
+    
     public static function hydrate(array $arr) : LocationsRequestEntityFilters
     {
         $result = LocationEntityStateLocationMetadataValuesRetailMediaEntityEntityFilters::hydrateBase(new LocationsRequestEntityFilters(), $arr);

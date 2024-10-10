@@ -20,6 +20,7 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails implements Json
     public bool $disabled;
     public array $childCategories;
     public array $parentCategories;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -28,6 +29,7 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails implements Json
             return ContentCategoryResultDetails::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("categoryId", $arr))

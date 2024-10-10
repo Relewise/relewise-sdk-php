@@ -27,6 +27,7 @@ class ProductPerformanceRequest extends AnalyzerRequest
         $result->skipNumberOfResults = $skipNumberOfResults;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceRequest
     {
         $result = AnalyzerRequest::hydrateBase(new ProductPerformanceRequest(), $arr);

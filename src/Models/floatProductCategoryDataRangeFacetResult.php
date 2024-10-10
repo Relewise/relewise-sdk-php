@@ -6,6 +6,7 @@ abstract class floatProductCategoryDataRangeFacetResult extends floatRangeFacetR
 {
     public string $typeDefinition = "";
     public string $key;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -14,6 +15,7 @@ abstract class floatProductCategoryDataRangeFacetResult extends floatRangeFacetR
             return ProductCategoryDataDoubleRangeFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = floatRangeFacetResult::hydrateBase($result, $arr);

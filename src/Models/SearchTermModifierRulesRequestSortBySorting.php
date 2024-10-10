@@ -13,6 +13,7 @@ class SearchTermModifierRulesRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermModifierRulesRequestSortBySorting
     {
         $result = new SearchTermModifierRulesRequestSortBySorting();

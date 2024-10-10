@@ -15,6 +15,7 @@ class ProductDataObjectFacetResult extends DataObjectFacetResult
         $result->filter = $filter;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDataObjectFacetResult
     {
         $result = new ProductDataObjectFacetResult();

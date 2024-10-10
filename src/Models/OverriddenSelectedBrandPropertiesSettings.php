@@ -14,6 +14,7 @@ class OverriddenSelectedBrandPropertiesSettings
         $result = new OverriddenSelectedBrandPropertiesSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : OverriddenSelectedBrandPropertiesSettings
     {
         $result = new OverriddenSelectedBrandPropertiesSettings();

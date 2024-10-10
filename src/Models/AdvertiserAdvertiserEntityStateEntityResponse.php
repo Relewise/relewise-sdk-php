@@ -8,6 +8,7 @@ abstract class AdvertiserAdvertiserEntityStateEntityResponse extends TimedRespon
     public array $entities;
     public int $hits;
     public array $hitsPerState;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -16,6 +17,7 @@ abstract class AdvertiserAdvertiserEntityStateEntityResponse extends TimedRespon
             return AdvertisersResponse::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = TimedResponse::hydrateBase($result, $arr);

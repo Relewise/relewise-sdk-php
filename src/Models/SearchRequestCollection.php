@@ -12,6 +12,7 @@ class SearchRequestCollection extends SearchRequest
         $result->requests = $requests;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchRequestCollection
     {
         $result = SearchRequest::hydrateBase(new SearchRequestCollection(), $arr);

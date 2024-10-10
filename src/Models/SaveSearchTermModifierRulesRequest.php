@@ -11,6 +11,7 @@ class SaveSearchTermModifierRulesRequest extends SearchTermModifierRuleSaveSearc
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveSearchTermModifierRulesRequest
     {
         $result = SearchTermModifierRuleSaveSearchRulesRequest::hydrateBase(new SaveSearchTermModifierRulesRequest(), $arr);

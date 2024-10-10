@@ -11,6 +11,7 @@ class VariantSearchSettings
         $result = new VariantSearchSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantSearchSettings
     {
         $result = new VariantSearchSettings();

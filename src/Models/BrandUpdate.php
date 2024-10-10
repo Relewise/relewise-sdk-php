@@ -14,6 +14,7 @@ class BrandUpdate extends Trackable
         $result->kind = $kind;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandUpdate
     {
         $result = Trackable::hydrateBase(new BrandUpdate(), $arr);

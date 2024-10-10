@@ -14,6 +14,7 @@ class PersonalContentRecommendationRequest extends ContentRecommendationRequest
         $result->user = $user;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PersonalContentRecommendationRequest
     {
         $result = ContentRecommendationRequest::hydrateBase(new PersonalContentRecommendationRequest(), $arr);

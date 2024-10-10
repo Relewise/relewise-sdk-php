@@ -17,6 +17,7 @@ class PersonalContentCategoryRecommendationRequest extends ContentCategoryRecomm
         $result->weights = $weights;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PersonalContentCategoryRecommendationRequest
     {
         $result = ContentCategoryRecommendationRequest::hydrateBase(new PersonalContentCategoryRecommendationRequest(), $arr);

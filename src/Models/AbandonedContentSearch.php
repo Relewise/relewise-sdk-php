@@ -10,6 +10,7 @@ class AbandonedContentSearch extends stringAbandonedSearch
         $result = new AbandonedContentSearch();
         return $result;
     }
+    
     public static function hydrate(array $arr) : AbandonedContentSearch
     {
         $result = stringAbandonedSearch::hydrateBase(new AbandonedContentSearch(), $arr);

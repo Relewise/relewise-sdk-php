@@ -12,6 +12,7 @@ class ContentCategoryIdFilter extends CategoryIdFilter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryIdFilter
     {
         $result = CategoryIdFilter::hydrateBase(new ContentCategoryIdFilter(), $arr);

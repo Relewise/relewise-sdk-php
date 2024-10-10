@@ -14,6 +14,7 @@ class DataObjectDoubleRangesFacetResult extends floatDataObjectRangesFacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataObjectDoubleRangesFacetResult
     {
         $result = floatDataObjectRangesFacetResult::hydrateBase(new DataObjectDoubleRangesFacetResult(), $arr);

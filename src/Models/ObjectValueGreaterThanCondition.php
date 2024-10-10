@@ -14,6 +14,7 @@ class ObjectValueGreaterThanCondition extends ObjectValueCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ObjectValueGreaterThanCondition
     {
         $result = ObjectValueCondition::hydrateBase(new ObjectValueGreaterThanCondition(), $arr);

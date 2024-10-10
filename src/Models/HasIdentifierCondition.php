@@ -13,6 +13,7 @@ class HasIdentifierCondition extends UserCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : HasIdentifierCondition
     {
         $result = UserCondition::hydrateBase(new HasIdentifierCondition(), $arr);

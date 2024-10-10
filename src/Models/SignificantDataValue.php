@@ -17,6 +17,7 @@ class SignificantDataValue
         $result->transformer = $transformer;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SignificantDataValue
     {
         $result = new SignificantDataValue();

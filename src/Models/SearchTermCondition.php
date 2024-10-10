@@ -14,6 +14,7 @@ class SearchTermCondition
         $result = new SearchTermCondition();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermCondition
     {
         $result = new SearchTermCondition();

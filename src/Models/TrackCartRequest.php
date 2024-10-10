@@ -12,6 +12,7 @@ class TrackCartRequest extends TrackingRequest
         $result->cart = $cart;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackCartRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackCartRequest(), $arr);

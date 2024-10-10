@@ -14,6 +14,7 @@ class ContentRecommendationRequestCollection extends LicensedRequest
         $result->requests = $requests;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentRecommendationRequestCollection
     {
         $result = LicensedRequest::hydrateBase(new ContentRecommendationRequestCollection(), $arr);

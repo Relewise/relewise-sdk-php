@@ -11,6 +11,7 @@ class TrimStringTransformer
         $result->valuesToTrim = $valuesToTrim;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrimStringTransformer
     {
         $result = new TrimStringTransformer();

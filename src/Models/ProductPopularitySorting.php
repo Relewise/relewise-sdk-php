@@ -11,6 +11,7 @@ class ProductPopularitySorting extends ProductSorting
         $result->order = $order;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPopularitySorting
     {
         $result = ProductSorting::hydrateBase(new ProductPopularitySorting(), $arr);

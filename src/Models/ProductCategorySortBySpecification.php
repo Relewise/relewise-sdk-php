@@ -10,6 +10,7 @@ class ProductCategorySortBySpecification
         $result = new ProductCategorySortBySpecification();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategorySortBySpecification
     {
         $result = new ProductCategorySortBySpecification();

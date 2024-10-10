@@ -15,6 +15,7 @@ class floatAvailableFacetValue
         $result->hits = $hits;
         return $result;
     }
+    
     public static function hydrate(array $arr) : floatAvailableFacetValue
     {
         $result = new floatAvailableFacetValue();

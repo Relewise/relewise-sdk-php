@@ -14,6 +14,7 @@ class ProductCategoryDataStringValueFacetResult extends stringProductCategoryDat
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryDataStringValueFacetResult
     {
         $result = stringProductCategoryDataValueFacetResult::hydrateBase(new ProductCategoryDataStringValueFacetResult(), $arr);

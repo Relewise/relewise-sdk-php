@@ -11,6 +11,7 @@ class ProductCategoryInterestTriggerResult
         $result = new ProductCategoryInterestTriggerResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryInterestTriggerResult
     {
         $result = new ProductCategoryInterestTriggerResult();

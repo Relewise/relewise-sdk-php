@@ -19,6 +19,7 @@ class ProductRecentlyPurchasedByUserParentCompanyFilter extends Filter implement
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductRecentlyPurchasedByUserParentCompanyFilter
     {
         $result = Filter::hydrateBase(new ProductRecentlyPurchasedByUserParentCompanyFilter(), $arr);

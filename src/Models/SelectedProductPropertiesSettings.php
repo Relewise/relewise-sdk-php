@@ -22,6 +22,7 @@ class SelectedProductPropertiesSettings
         $result = new SelectedProductPropertiesSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SelectedProductPropertiesSettings
     {
         $result = new SelectedProductPropertiesSettings();

@@ -13,6 +13,7 @@ class OrFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : OrFilter
     {
         $result = Filter::hydrateBase(new OrFilter(), $arr);

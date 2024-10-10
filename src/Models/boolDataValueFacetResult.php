@@ -7,6 +7,7 @@ abstract class boolDataValueFacetResult extends boolValueFacetResult
     public string $typeDefinition = "";
     public string $key;
     public ?CollectionFilterType $collectionFilterType;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -27,6 +28,7 @@ abstract class boolDataValueFacetResult extends boolValueFacetResult
             return ProductDataBooleanValueFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = boolValueFacetResult::hydrateBase($result, $arr);

@@ -21,6 +21,7 @@ class SearchTermModifierRule extends SearchRule implements JsonSerializable
         $result->actions = $actions;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermModifierRule
     {
         $result = SearchRule::hydrateBase(new SearchTermModifierRule(), $arr);

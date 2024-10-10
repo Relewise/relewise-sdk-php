@@ -15,6 +15,7 @@ class InputModifierRule extends MerchandisingRule implements JsonSerializable
         $result->description = $description;
         return $result;
     }
+    
     public static function hydrate(array $arr) : InputModifierRule
     {
         $result = MerchandisingRule::hydrateBase(new InputModifierRule(), $arr);

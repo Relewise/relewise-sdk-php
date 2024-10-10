@@ -11,6 +11,7 @@ class DeleteRedirectRulesRequest extends DeleteSearchRulesRequest
         $result->deletedBy = $deletedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DeleteRedirectRulesRequest
     {
         $result = DeleteSearchRulesRequest::hydrateBase(new DeleteRedirectRulesRequest(), $arr);

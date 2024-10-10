@@ -14,6 +14,7 @@ abstract class SearchRequest extends LicensedRequest
     public ?FilterCollection $filters;
     public ?SearchIndexSelector $indexSelector;
     public ?FilterCollection $postFilters;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -42,6 +43,7 @@ abstract class SearchRequest extends LicensedRequest
             return SearchTermPredictionRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);

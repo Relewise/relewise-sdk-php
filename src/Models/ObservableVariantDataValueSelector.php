@@ -12,6 +12,7 @@ class ObservableVariantDataValueSelector extends VariantPropertySelector
         $result->dataObjectValueSelector = $dataObjectValueSelector;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ObservableVariantDataValueSelector
     {
         $result = VariantPropertySelector::hydrateBase(new ObservableVariantDataValueSelector(), $arr);

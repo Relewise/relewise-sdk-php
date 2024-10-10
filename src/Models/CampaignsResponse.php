@@ -12,6 +12,7 @@ class CampaignsResponse extends CampaignCampaignEntityStateEntityResponse
         $result->hitsPerState = $hitsPerState;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignsResponse
     {
         $result = CampaignCampaignEntityStateEntityResponse::hydrateBase(new CampaignsResponse(), $arr);

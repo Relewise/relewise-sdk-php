@@ -17,6 +17,7 @@ class CampaignStatusWithHistoryChange implements JsonSerializable
         $result->status = $status;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignStatusWithHistoryChange
     {
         $result = new CampaignStatusWithHistoryChange();

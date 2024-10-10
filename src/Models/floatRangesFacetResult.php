@@ -8,6 +8,7 @@ abstract class floatRangesFacetResult extends FacetResult
     public ?float $expandedRangeSize;
     public array $selected;
     public array $available;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -28,6 +29,7 @@ abstract class floatRangesFacetResult extends FacetResult
             return ProductDataDoubleRangesFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = FacetResult::hydrateBase($result, $arr);

@@ -11,6 +11,7 @@ class SaveRedirectRulesResponse extends RedirectRuleSaveSearchRulesResponse
         $result->rules = $rules;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveRedirectRulesResponse
     {
         $result = RedirectRuleSaveSearchRulesResponse::hydrateBase(new SaveRedirectRulesResponse(), $arr);

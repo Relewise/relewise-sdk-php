@@ -14,6 +14,7 @@ class ProductCategoryDataDoubleRangesFacet extends floatProductCategoryDataRange
         $result->selected = $selected;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryDataDoubleRangesFacet
     {
         $result = floatProductCategoryDataRangesFacet::hydrateBase(new ProductCategoryDataDoubleRangesFacet(), $arr);

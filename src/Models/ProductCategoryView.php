@@ -14,6 +14,7 @@ class ProductCategoryView extends Trackable
         $result->idPath = $idPath;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryView
     {
         $result = Trackable::hydrateBase(new ProductCategoryView(), $arr);

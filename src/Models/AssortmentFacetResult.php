@@ -6,6 +6,7 @@ abstract class AssortmentFacetResult extends intintValueFacetResult
 {
     public string $typeDefinition = "";
     public AssortmentFilterType $assortmentFilterType;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -22,6 +23,7 @@ abstract class AssortmentFacetResult extends intintValueFacetResult
             return ProductCategoryAssortmentFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = intintValueFacetResult::hydrateBase($result, $arr);

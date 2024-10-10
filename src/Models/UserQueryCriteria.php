@@ -15,6 +15,7 @@ class UserQueryCriteria
         $result = new UserQueryCriteria();
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserQueryCriteria
     {
         $result = new UserQueryCriteria();

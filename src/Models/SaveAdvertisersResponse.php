@@ -10,6 +10,7 @@ class SaveAdvertisersResponse extends AdvertiserSaveEntitiesResponse
         $result = new SaveAdvertisersResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveAdvertisersResponse
     {
         $result = AdvertiserSaveEntitiesResponse::hydrateBase(new SaveAdvertisersResponse(), $arr);

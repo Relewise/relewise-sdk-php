@@ -11,6 +11,7 @@ class ContentCategoryHasAncestorFilter extends HasAncestorCategoryFilter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryHasAncestorFilter
     {
         $result = HasAncestorCategoryFilter::hydrateBase(new ContentCategoryHasAncestorFilter(), $arr);

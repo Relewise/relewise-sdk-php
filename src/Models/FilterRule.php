@@ -15,6 +15,7 @@ class FilterRule extends MerchandisingRule implements JsonSerializable
         $result->description = $description;
         return $result;
     }
+    
     public static function hydrate(array $arr) : FilterRule
     {
         $result = MerchandisingRule::hydrateBase(new FilterRule(), $arr);

@@ -14,6 +14,7 @@ class SearchTermModifierRuleReplaceWordsInTermAction extends SearchTermModifierR
         $result->replacement = $replacement;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermModifierRuleReplaceWordsInTermAction
     {
         $result = SearchTermModifierRuleRuleAction::hydrateBase(new SearchTermModifierRuleReplaceWordsInTermAction(), $arr);

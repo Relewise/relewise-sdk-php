@@ -7,6 +7,7 @@ abstract class stringstringValueFacetResult extends FacetResult
     public string $typeDefinition = "";
     public array $selected;
     public array $available;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -31,6 +32,7 @@ abstract class stringstringValueFacetResult extends FacetResult
             return VariantSpecificationFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = FacetResult::hydrateBase($result, $arr);

@@ -10,6 +10,7 @@ class FilterSettings
         $result = new FilterSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : FilterSettings
     {
         $result = new FilterSettings();

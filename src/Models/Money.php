@@ -13,6 +13,7 @@ class Money
         $result->amount = $amount;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Money
     {
         $result = new Money();

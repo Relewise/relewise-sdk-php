@@ -12,6 +12,7 @@ class SearchTermModifierRuleRemoveFromTermAction extends SearchTermModifierRuleR
         $result->words = $words;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermModifierRuleRemoveFromTermAction
     {
         $result = SearchTermModifierRuleRuleAction::hydrateBase(new SearchTermModifierRuleRemoveFromTermAction(), $arr);

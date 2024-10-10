@@ -14,6 +14,7 @@ class SearchResultModifierRulesRequest extends SearchResultModifierRulesRequestS
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchResultModifierRulesRequest
     {
         $result = SearchResultModifierRulesRequestSortBySearchRulesRequest::hydrateBase(new SearchResultModifierRulesRequest(), $arr);

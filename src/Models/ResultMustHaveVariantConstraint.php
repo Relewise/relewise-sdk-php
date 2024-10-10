@@ -13,6 +13,7 @@ class ResultMustHaveVariantConstraint extends ProductSearchResultConstraint
         $result = new ResultMustHaveVariantConstraint();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ResultMustHaveVariantConstraint
     {
         $result = ProductSearchResultConstraint::hydrateBase(new ResultMustHaveVariantConstraint(), $arr);

@@ -18,6 +18,7 @@ class CompanyUpdate extends Trackable
         $result->kind = $kind;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CompanyUpdate
     {
         $result = Trackable::hydrateBase(new CompanyUpdate(), $arr);

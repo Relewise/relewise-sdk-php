@@ -12,6 +12,7 @@ class VariantAssortmentFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantAssortmentFilter
     {
         $result = Filter::hydrateBase(new VariantAssortmentFilter(), $arr);

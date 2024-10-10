@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class SearchTermModifierRuleRuleAction
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -25,6 +26,7 @@ abstract class SearchTermModifierRuleRuleAction
             return SearchTermModifierRuleReplaceWordsInTermAction::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         return $result;

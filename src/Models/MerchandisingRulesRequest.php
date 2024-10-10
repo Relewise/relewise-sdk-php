@@ -11,6 +11,7 @@ class MerchandisingRulesRequest extends LicensedRequest
         $result = new MerchandisingRulesRequest();
         return $result;
     }
+    
     public static function hydrate(array $arr) : MerchandisingRulesRequest
     {
         $result = LicensedRequest::hydrateBase(new MerchandisingRulesRequest(), $arr);

@@ -16,6 +16,7 @@ class SortVariantsRequest extends ProductRecommendationRequest
         $result->productId = $productId;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SortVariantsRequest
     {
         $result = ProductRecommendationRequest::hydrateBase(new SortVariantsRequest(), $arr);

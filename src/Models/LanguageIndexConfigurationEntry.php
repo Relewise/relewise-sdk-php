@@ -16,6 +16,7 @@ class LanguageIndexConfigurationEntry
         $result->iSO639_1 = $iso639_1;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LanguageIndexConfigurationEntry
     {
         $result = new LanguageIndexConfigurationEntry();

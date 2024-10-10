@@ -22,6 +22,7 @@ class CartDetails implements JsonSerializable
         $result->data = $data;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CartDetails
     {
         $result = new CartDetails();

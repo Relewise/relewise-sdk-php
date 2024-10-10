@@ -12,6 +12,7 @@ class HasPlacedOrderCondition extends UserCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : HasPlacedOrderCondition
     {
         $result = UserCondition::hydrateBase(new HasPlacedOrderCondition(), $arr);

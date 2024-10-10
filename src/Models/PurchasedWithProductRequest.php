@@ -16,6 +16,7 @@ class PurchasedWithProductRequest extends ProductRecommendationRequest
         $result->productAndVariantId = $productAndVariantId;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PurchasedWithProductRequest
     {
         $result = ProductRecommendationRequest::hydrateBase(new PurchasedWithProductRequest(), $arr);

@@ -11,6 +11,7 @@ class SearchTermPredictionResponse extends SearchResponse
         $result = new SearchTermPredictionResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermPredictionResponse
     {
         $result = SearchResponse::hydrateBase(new SearchTermPredictionResponse(), $arr);

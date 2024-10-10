@@ -12,6 +12,7 @@ class TrackSearchTermRequest extends TrackingRequest
         $result->searchTerm = $searchTerm;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackSearchTermRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackSearchTermRequest(), $arr);

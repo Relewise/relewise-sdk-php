@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class ProductCategorySorting extends ProductCategorySortingSorting
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -25,6 +26,7 @@ abstract class ProductCategorySorting extends ProductCategorySortingSorting
             return ProductCategoryRelevanceSorting::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = ProductCategorySortingSorting::hydrateBase($result, $arr);

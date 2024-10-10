@@ -14,6 +14,7 @@ class ObjectValueLessThanCondition extends ObjectValueCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ObjectValueLessThanCondition
     {
         $result = ObjectValueCondition::hydrateBase(new ObjectValueLessThanCondition(), $arr);

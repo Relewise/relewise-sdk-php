@@ -17,6 +17,7 @@ class ProductVariant
         $result->id = $variantId;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductVariant
     {
         $result = new ProductVariant();

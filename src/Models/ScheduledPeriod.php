@@ -16,6 +16,7 @@ class ScheduledPeriod implements JsonSerializable
         $result->toUtc = $toUtc;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ScheduledPeriod
     {
         $result = new ScheduledPeriod();

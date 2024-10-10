@@ -11,6 +11,7 @@ class ContentCategory extends Category
         $result->id = $id;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategory
     {
         $result = Category::hydrateBase(new ContentCategory(), $arr);

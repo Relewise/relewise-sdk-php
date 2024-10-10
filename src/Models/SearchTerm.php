@@ -16,6 +16,7 @@ class SearchTerm extends Trackable
         $result->term = $term;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTerm
     {
         $result = Trackable::hydrateBase(new SearchTerm(), $arr);

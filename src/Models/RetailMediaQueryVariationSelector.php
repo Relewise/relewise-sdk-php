@@ -12,6 +12,7 @@ class RetailMediaQueryVariationSelector
         $result->key = $key;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RetailMediaQueryVariationSelector
     {
         $result = new RetailMediaQueryVariationSelector();

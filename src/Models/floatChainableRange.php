@@ -13,6 +13,7 @@ class floatChainableRange
         $result->upperBoundExclusive = $upperBoundExclusive;
         return $result;
     }
+    
     public static function hydrate(array $arr) : floatChainableRange
     {
         $result = new floatChainableRange();

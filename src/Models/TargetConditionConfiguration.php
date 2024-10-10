@@ -10,6 +10,7 @@ class TargetConditionConfiguration
         $result = new TargetConditionConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : TargetConditionConfiguration
     {
         $result = new TargetConditionConfiguration();

@@ -6,6 +6,7 @@ abstract class CategoryLevelFilter extends Filter
 {
     public string $typeDefinition = "";
     public array $levels;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -18,6 +19,7 @@ abstract class CategoryLevelFilter extends Filter
             return ProductCategoryLevelFilter::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = Filter::hydrateBase($result, $arr);

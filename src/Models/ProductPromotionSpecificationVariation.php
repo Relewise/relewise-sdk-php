@@ -14,6 +14,7 @@ class ProductPromotionSpecificationVariation extends PromotionSpecificationVaria
         $result->maxCount = $maxCount;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPromotionSpecificationVariation
     {
         $result = PromotionSpecificationVariation::hydrateBase(new ProductPromotionSpecificationVariation(), $arr);

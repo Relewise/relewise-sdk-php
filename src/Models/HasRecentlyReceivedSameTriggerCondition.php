@@ -12,6 +12,7 @@ class HasRecentlyReceivedSameTriggerCondition extends UserCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : HasRecentlyReceivedSameTriggerCondition
     {
         $result = UserCondition::hydrateBase(new HasRecentlyReceivedSameTriggerCondition(), $arr);

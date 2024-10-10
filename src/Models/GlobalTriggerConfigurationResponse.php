@@ -11,6 +11,7 @@ class GlobalTriggerConfigurationResponse extends TimedResponse
         $result = new GlobalTriggerConfigurationResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : GlobalTriggerConfigurationResponse
     {
         $result = TimedResponse::hydrateBase(new GlobalTriggerConfigurationResponse(), $arr);

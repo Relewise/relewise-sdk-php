@@ -14,6 +14,7 @@ class DataObjectStringValueFacetResult extends stringDataObjectValueFacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataObjectStringValueFacetResult
     {
         $result = stringDataObjectValueFacetResult::hydrateBase(new DataObjectStringValueFacetResult(), $arr);

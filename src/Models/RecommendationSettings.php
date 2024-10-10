@@ -11,6 +11,7 @@ class RecommendationSettings
         $result = new RecommendationSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : RecommendationSettings
     {
         $result = new RecommendationSettings();

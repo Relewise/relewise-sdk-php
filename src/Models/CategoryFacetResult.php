@@ -14,6 +14,7 @@ class CategoryFacetResult extends stringCategoryNameAndIdResultValueFacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryFacetResult
     {
         $result = stringCategoryNameAndIdResultValueFacetResult::hydrateBase(new CategoryFacetResult(), $arr);

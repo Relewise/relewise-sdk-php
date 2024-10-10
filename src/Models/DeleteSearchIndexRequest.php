@@ -14,6 +14,7 @@ class DeleteSearchIndexRequest extends LicensedRequest
         $result->deletedBy = $deletedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DeleteSearchIndexRequest
     {
         $result = LicensedRequest::hydrateBase(new DeleteSearchIndexRequest(), $arr);

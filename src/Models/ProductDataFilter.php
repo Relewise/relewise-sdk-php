@@ -15,6 +15,7 @@ class ProductDataFilter extends DataFilter
         $result->mustMatchAllConditions = true;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDataFilter
     {
         $result = DataFilter::hydrateBase(new ProductDataFilter(), $arr);

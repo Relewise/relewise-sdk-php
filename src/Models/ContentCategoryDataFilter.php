@@ -15,6 +15,7 @@ class ContentCategoryDataFilter extends DataFilter
         $result->mustMatchAllConditions = true;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryDataFilter
     {
         $result = DataFilter::hydrateBase(new ContentCategoryDataFilter(), $arr);

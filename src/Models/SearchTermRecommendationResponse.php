@@ -11,6 +11,7 @@ class SearchTermRecommendationResponse extends RecommendationResponse
         $result = new SearchTermRecommendationResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermRecommendationResponse
     {
         $result = RecommendationResponse::hydrateBase(new SearchTermRecommendationResponse(), $arr);

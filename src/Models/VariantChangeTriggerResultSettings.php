@@ -11,6 +11,7 @@ class VariantChangeTriggerResultSettings
         $result = new VariantChangeTriggerResultSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantChangeTriggerResultSettings
     {
         $result = new VariantChangeTriggerResultSettings();

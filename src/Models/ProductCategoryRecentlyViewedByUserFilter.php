@@ -16,6 +16,7 @@ class ProductCategoryRecentlyViewedByUserFilter extends Filter implements JsonSe
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryRecentlyViewedByUserFilter
     {
         $result = Filter::hydrateBase(new ProductCategoryRecentlyViewedByUserFilter(), $arr);

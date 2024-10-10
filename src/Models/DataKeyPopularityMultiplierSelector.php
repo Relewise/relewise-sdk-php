@@ -18,6 +18,7 @@ class DataKeyPopularityMultiplierSelector extends PopularityMultiplierSelector
         $result->key = $key;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataKeyPopularityMultiplierSelector
     {
         $result = PopularityMultiplierSelector::hydrateBase(new DataKeyPopularityMultiplierSelector(), $arr);

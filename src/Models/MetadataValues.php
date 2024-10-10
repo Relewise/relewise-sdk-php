@@ -12,6 +12,7 @@ abstract class MetadataValues implements JsonSerializable
     public string $createdBy;
     public DateTime $modified;
     public string $modifiedBy;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -28,6 +29,7 @@ abstract class MetadataValues implements JsonSerializable
             return LocationMetadataValues::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("created", $arr))

@@ -15,6 +15,7 @@ class ProductDataIntegerValueFacet extends intProductDataValueFacet
         $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDataIntegerValueFacet
     {
         $result = intProductDataValueFacet::hydrateBase(new ProductDataIntegerValueFacet(), $arr);

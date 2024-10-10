@@ -11,6 +11,7 @@ class ProductPerformanceResultViewsAndSalesMetrics
         $result = new ProductPerformanceResultViewsAndSalesMetrics();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResultViewsAndSalesMetrics
     {
         $result = new ProductPerformanceResultViewsAndSalesMetrics();

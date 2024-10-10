@@ -11,6 +11,7 @@ class DeleteDecompoundRulesRequest extends DeleteSearchRulesRequest
         $result->deletedBy = $deletedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DeleteDecompoundRulesRequest
     {
         $result = DeleteSearchRulesRequest::hydrateBase(new DeleteDecompoundRulesRequest(), $arr);

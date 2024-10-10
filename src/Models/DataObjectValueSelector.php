@@ -17,6 +17,7 @@ class DataObjectValueSelector
         $result->fallbackSelector = $fallbackSelector;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataObjectValueSelector
     {
         $result = new DataObjectValueSelector();

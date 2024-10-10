@@ -19,6 +19,7 @@ class Cart extends Trackable
         $result->name = $cartName;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Cart
     {
         $result = Trackable::hydrateBase(new Cart(), $arr);

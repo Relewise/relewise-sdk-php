@@ -18,6 +18,7 @@ abstract class SearchRule implements JsonSerializable
     public ?DateTime $approved;
     public string $approvedBy;
     public bool $isApproved;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -46,6 +47,7 @@ abstract class SearchRule implements JsonSerializable
             return StemmingRule::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("id", $arr))

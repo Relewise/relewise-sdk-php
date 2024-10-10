@@ -19,6 +19,7 @@ class CategoryNameAndId
         $result->displayName = $displayName;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryNameAndId
     {
         $result = new CategoryNameAndId();

@@ -15,6 +15,7 @@ class ProductDataDoubleRangesFacetResult extends floatProductDataRangesFacetResu
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDataDoubleRangesFacetResult
     {
         $result = floatProductDataRangesFacetResult::hydrateBase(new ProductDataDoubleRangesFacetResult(), $arr);

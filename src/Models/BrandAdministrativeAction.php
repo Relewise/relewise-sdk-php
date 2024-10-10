@@ -18,6 +18,7 @@ class BrandAdministrativeAction extends Trackable
         $result->kind = $kind;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandAdministrativeAction
     {
         $result = Trackable::hydrateBase(new BrandAdministrativeAction(), $arr);

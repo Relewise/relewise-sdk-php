@@ -13,6 +13,7 @@ class DecompoundRulesRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DecompoundRulesRequestSortBySorting
     {
         $result = new DecompoundRulesRequestSortBySorting();

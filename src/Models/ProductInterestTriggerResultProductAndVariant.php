@@ -12,6 +12,7 @@ class ProductInterestTriggerResultProductAndVariant
         $result = new ProductInterestTriggerResultProductAndVariant();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductInterestTriggerResultProductAndVariant
     {
         $result = new ProductInterestTriggerResultProductAndVariant();

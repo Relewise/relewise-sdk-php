@@ -12,6 +12,7 @@ class Currency
         $result->value = $name;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Currency
     {
         $result = new Currency();

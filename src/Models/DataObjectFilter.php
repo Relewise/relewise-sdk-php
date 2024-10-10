@@ -13,6 +13,7 @@ class DataObjectFilter
         $result->conditions = $conditions;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataObjectFilter
     {
         $result = new DataObjectFilter();

@@ -11,6 +11,7 @@ class ProductPerformanceResult
         $result = new ProductPerformanceResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResult
     {
         $result = new ProductPerformanceResult();

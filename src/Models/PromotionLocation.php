@@ -13,6 +13,7 @@ class PromotionLocation
         $result->placements = $placements;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PromotionLocation
     {
         $result = new PromotionLocation();

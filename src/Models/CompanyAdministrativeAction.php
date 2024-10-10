@@ -18,6 +18,7 @@ class CompanyAdministrativeAction extends Trackable
         $result->kind = $kind;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CompanyAdministrativeAction
     {
         $result = Trackable::hydrateBase(new CompanyAdministrativeAction(), $arr);

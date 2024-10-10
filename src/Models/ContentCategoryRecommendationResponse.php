@@ -12,6 +12,7 @@ class ContentCategoryRecommendationResponse extends RecommendationResponse
         $result->recommendations = $recommendations;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryRecommendationResponse
     {
         $result = RecommendationResponse::hydrateBase(new ContentCategoryRecommendationResponse(), $arr);

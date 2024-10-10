@@ -14,6 +14,7 @@ class ContentDataBooleanValueFacetResult extends boolContentDataValueFacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentDataBooleanValueFacetResult
     {
         $result = boolContentDataValueFacetResult::hydrateBase(new ContentDataBooleanValueFacetResult(), $arr);

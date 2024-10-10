@@ -18,6 +18,7 @@ abstract class ProductChangeTriggerResultProductChangeTriggerResultSettingsProdu
     public IChange $change;
     /** Settings for defining which properties should be included in the result of the trigger. */
     public ?ProductChangeTriggerResultSettings $resultSettings;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -26,6 +27,7 @@ abstract class ProductChangeTriggerResultProductChangeTriggerResultSettingsProdu
             return ProductChangeTriggerConfiguration::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = ProductChangeTriggerResultTriggerConfiguration::hydrateBase($result, $arr);

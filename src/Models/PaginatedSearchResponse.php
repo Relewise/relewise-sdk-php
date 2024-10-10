@@ -6,6 +6,7 @@ abstract class PaginatedSearchResponse extends SearchResponse
 {
     public string $typeDefinition = "";
     public int $hits;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -26,6 +27,7 @@ abstract class PaginatedSearchResponse extends SearchResponse
             return ProductSearchResponse::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = SearchResponse::hydrateBase($result, $arr);

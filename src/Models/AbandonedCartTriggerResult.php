@@ -10,6 +10,7 @@ class AbandonedCartTriggerResult
         $result = new AbandonedCartTriggerResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : AbandonedCartTriggerResult
     {
         $result = new AbandonedCartTriggerResult();

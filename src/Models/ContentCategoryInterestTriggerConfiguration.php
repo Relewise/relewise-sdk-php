@@ -21,6 +21,7 @@ class ContentCategoryInterestTriggerConfiguration extends ContentCategoryInteres
         $result->filters = $filters;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryInterestTriggerConfiguration
     {
         $result = ContentCategoryInterestTriggerResultTriggerConfiguration::hydrateBase(new ContentCategoryInterestTriggerConfiguration(), $arr);

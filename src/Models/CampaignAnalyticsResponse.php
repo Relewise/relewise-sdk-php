@@ -12,6 +12,7 @@ class CampaignAnalyticsResponse extends TimedResponse
         $result->analytics = $analytics;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignAnalyticsResponse
     {
         $result = TimedResponse::hydrateBase(new CampaignAnalyticsResponse(), $arr);

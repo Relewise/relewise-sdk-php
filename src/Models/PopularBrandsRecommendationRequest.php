@@ -17,6 +17,7 @@ class PopularBrandsRecommendationRequest extends BrandRecommendationRequest
         $result->weights = $weights;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PopularBrandsRecommendationRequest
     {
         $result = BrandRecommendationRequest::hydrateBase(new PopularBrandsRecommendationRequest(), $arr);

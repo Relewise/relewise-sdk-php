@@ -12,6 +12,7 @@ class ObjectValueMaxByCondition extends ObjectValueCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ObjectValueMaxByCondition
     {
         $result = ObjectValueCondition::hydrateBase(new ObjectValueMaxByCondition(), $arr);

@@ -19,6 +19,7 @@ class ContentCategorySearchRequest extends PaginatedSearchRequest
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategorySearchRequest
     {
         $result = PaginatedSearchRequest::hydrateBase(new ContentCategorySearchRequest(), $arr);

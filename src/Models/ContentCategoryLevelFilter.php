@@ -11,6 +11,7 @@ class ContentCategoryLevelFilter extends CategoryLevelFilter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryLevelFilter
     {
         $result = CategoryLevelFilter::hydrateBase(new ContentCategoryLevelFilter(), $arr);

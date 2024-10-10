@@ -17,6 +17,7 @@ class RedirectResult
         $result->data = $data;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RedirectResult
     {
         $result = new RedirectResult();

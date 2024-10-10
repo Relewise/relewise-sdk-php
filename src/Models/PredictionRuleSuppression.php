@@ -13,6 +13,7 @@ class PredictionRuleSuppression
         $result->values = $values;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PredictionRuleSuppression
     {
         $result = new PredictionRuleSuppression();

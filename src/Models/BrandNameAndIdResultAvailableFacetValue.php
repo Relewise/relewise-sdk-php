@@ -15,6 +15,7 @@ class BrandNameAndIdResultAvailableFacetValue
         $result->hits = $hits;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandNameAndIdResultAvailableFacetValue
     {
         $result = new BrandNameAndIdResultAvailableFacetValue();

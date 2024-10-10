@@ -13,6 +13,7 @@ class ProductCategoryAdministrativeAction extends CategoryAdministrativeAction
         $result->kind = $kind;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryAdministrativeAction
     {
         $result = CategoryAdministrativeAction::hydrateBase(new ProductCategoryAdministrativeAction(), $arr);

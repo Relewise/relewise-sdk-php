@@ -18,6 +18,7 @@ class CampaignAnalyticsRequest extends LicensedRequest
         $result->filters = $filters;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignAnalyticsRequest
     {
         $result = LicensedRequest::hydrateBase(new CampaignAnalyticsRequest(), $arr);

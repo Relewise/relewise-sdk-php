@@ -18,6 +18,7 @@ class VariantChangeTriggerConfiguration extends VariantChangeTriggerResultVarian
         $result->resultSettings = $resultSettings;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantChangeTriggerConfiguration
     {
         $result = VariantChangeTriggerResultVariantChangeTriggerResultSettingsVariantPropertySelectorEntityChangeTriggerConfiguration::hydrateBase(new VariantChangeTriggerConfiguration(), $arr);

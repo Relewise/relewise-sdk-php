@@ -14,6 +14,7 @@ class ProductDataStringValueFacet extends stringProductDataValueFacet
         $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDataStringValueFacet
     {
         $result = stringProductDataValueFacet::hydrateBase(new ProductDataStringValueFacet(), $arr);

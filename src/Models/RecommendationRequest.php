@@ -11,6 +11,7 @@ abstract class RecommendationRequest extends LicensedRequest
     public FilterCollection $filters;
     public string $displayedAtLocationType;
     public ?Currency $currency;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -119,6 +120,7 @@ abstract class RecommendationRequest extends LicensedRequest
             return SortVariantsRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);

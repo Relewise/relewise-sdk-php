@@ -12,6 +12,7 @@ class TrackProductViewRequest extends TrackingRequest
         $result->productView = $productView;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackProductViewRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackProductViewRequest(), $arr);

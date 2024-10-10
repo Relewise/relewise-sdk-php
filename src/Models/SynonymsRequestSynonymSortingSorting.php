@@ -13,6 +13,7 @@ class SynonymsRequestSynonymSortingSorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SynonymsRequestSynonymSortingSorting
     {
         $result = new SynonymsRequestSynonymSortingSorting();

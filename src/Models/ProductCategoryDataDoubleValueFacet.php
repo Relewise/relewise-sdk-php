@@ -13,6 +13,7 @@ class ProductCategoryDataDoubleValueFacet extends floatProductCategoryDataValueF
         $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryDataDoubleValueFacet
     {
         $result = floatProductCategoryDataValueFacet::hydrateBase(new ProductCategoryDataDoubleValueFacet(), $arr);

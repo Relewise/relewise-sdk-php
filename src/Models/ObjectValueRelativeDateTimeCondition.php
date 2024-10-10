@@ -22,6 +22,7 @@ class ObjectValueRelativeDateTimeCondition extends ObjectValueCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ObjectValueRelativeDateTimeCondition
     {
         $result = ObjectValueCondition::hydrateBase(new ObjectValueRelativeDateTimeCondition(), $arr);

@@ -17,6 +17,7 @@ class AbandonedCartTriggerConfiguration extends AbandonedCartTriggerResultTrigge
         $result->cartName = $cartName;
         return $result;
     }
+    
     public static function hydrate(array $arr) : AbandonedCartTriggerConfiguration
     {
         $result = AbandonedCartTriggerResultTriggerConfiguration::hydrateBase(new AbandonedCartTriggerConfiguration(), $arr);

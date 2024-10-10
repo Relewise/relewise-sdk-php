@@ -17,6 +17,7 @@ class PurchasedByUserCompanyInfo implements JsonSerializable
         $result->totalNumberOfTimesPurchased = $totalNumberOfTimesPurchased;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PurchasedByUserCompanyInfo
     {
         $result = new PurchasedByUserCompanyInfo();

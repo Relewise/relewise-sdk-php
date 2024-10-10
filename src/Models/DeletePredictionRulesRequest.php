@@ -11,6 +11,7 @@ class DeletePredictionRulesRequest extends DeleteSearchRulesRequest
         $result->deletedBy = $deletedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DeletePredictionRulesRequest
     {
         $result = DeleteSearchRulesRequest::hydrateBase(new DeletePredictionRulesRequest(), $arr);

@@ -12,6 +12,7 @@ class ContentRecommendationResponseCollection extends TimedResponse
         $result->responses = $responses;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentRecommendationResponseCollection
     {
         $result = TimedResponse::hydrateBase(new ContentRecommendationResponseCollection(), $arr);

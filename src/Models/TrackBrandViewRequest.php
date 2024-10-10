@@ -12,6 +12,7 @@ class TrackBrandViewRequest extends TrackingRequest
         $result->brandView = $brandView;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackBrandViewRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackBrandViewRequest(), $arr);

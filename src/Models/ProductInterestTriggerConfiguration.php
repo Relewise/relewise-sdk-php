@@ -20,6 +20,7 @@ class ProductInterestTriggerConfiguration extends ProductInterestTriggerResultTr
         $result->filters = $filters;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductInterestTriggerConfiguration
     {
         $result = ProductInterestTriggerResultTriggerConfiguration::hydrateBase(new ProductInterestTriggerConfiguration(), $arr);

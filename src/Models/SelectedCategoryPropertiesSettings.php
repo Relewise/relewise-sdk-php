@@ -11,6 +11,7 @@ abstract class SelectedCategoryPropertiesSettings
     public bool $viewedByUserInfo;
     public bool $allData;
     public array $dataKeys;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -23,6 +24,7 @@ abstract class SelectedCategoryPropertiesSettings
             return SelectedProductCategoryPropertiesSettings::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("displayName", $arr))

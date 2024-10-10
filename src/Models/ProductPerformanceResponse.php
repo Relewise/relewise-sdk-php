@@ -13,6 +13,7 @@ class ProductPerformanceResponse extends TimedResponse
         $result = new ProductPerformanceResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResponse
     {
         $result = TimedResponse::hydrateBase(new ProductPerformanceResponse(), $arr);

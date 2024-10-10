@@ -18,6 +18,7 @@ class VariantResultDetails
         $result->variantId = $variantId;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantResultDetails
     {
         $result = new VariantResultDetails();

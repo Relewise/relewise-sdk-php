@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class Trackable
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -93,6 +94,7 @@ abstract class Trackable
             return UserUpdate::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         return $result;

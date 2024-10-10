@@ -11,6 +11,7 @@ class SaveSearchTermModifierRulesResponse extends SearchTermModifierRuleSaveSear
         $result->rules = $rules;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveSearchTermModifierRulesResponse
     {
         $result = SearchTermModifierRuleSaveSearchRulesResponse::hydrateBase(new SaveSearchTermModifierRulesResponse(), $arr);

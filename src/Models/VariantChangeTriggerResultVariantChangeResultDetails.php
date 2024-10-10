@@ -22,6 +22,7 @@ class VariantChangeTriggerResultVariantChangeResultDetails implements JsonSerial
         $result->variant = $variant;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantChangeTriggerResultVariantChangeResultDetails
     {
         $result = new VariantChangeTriggerResultVariantChangeResultDetails();

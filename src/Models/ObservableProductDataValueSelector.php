@@ -12,6 +12,7 @@ class ObservableProductDataValueSelector extends ProductPropertySelector
         $result->dataObjectValueSelector = $dataObjectValueSelector;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ObservableProductDataValueSelector
     {
         $result = ProductPropertySelector::hydrateBase(new ObservableProductDataValueSelector(), $arr);

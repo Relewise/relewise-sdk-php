@@ -10,6 +10,7 @@ class RetailMediaResultPlacement
         $result = new RetailMediaResultPlacement();
         return $result;
     }
+    
     public static function hydrate(array $arr) : RetailMediaResultPlacement
     {
         $result = new RetailMediaResultPlacement();

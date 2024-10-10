@@ -6,6 +6,7 @@ abstract class floatProductDataRangesFacet extends floatDataRangesFacet
 {
     public string $typeDefinition = "";
     public DataSelectionStrategy $dataSelectionStrategy;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -14,6 +15,7 @@ abstract class floatProductDataRangesFacet extends floatDataRangesFacet
             return ProductDataDoubleRangesFacet::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = floatDataRangesFacet::hydrateBase($result, $arr);

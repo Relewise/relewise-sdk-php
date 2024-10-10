@@ -14,6 +14,7 @@ class RedirectRulesRequest extends RedirectRulesRequestSortBySearchRulesRequest
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RedirectRulesRequest
     {
         $result = RedirectRulesRequestSortBySearchRulesRequest::hydrateBase(new RedirectRulesRequest(), $arr);

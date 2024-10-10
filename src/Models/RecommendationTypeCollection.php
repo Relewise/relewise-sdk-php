@@ -10,6 +10,7 @@ class RecommendationTypeCollection
         $result = new RecommendationTypeCollection();
         return $result;
     }
+    
     public static function hydrate(array $arr) : RecommendationTypeCollection
     {
         $result = new RecommendationTypeCollection();

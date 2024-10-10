@@ -18,6 +18,7 @@ class LocationPlacement
         $result->variations = $variations;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LocationPlacement
     {
         $result = new LocationPlacement();

@@ -20,6 +20,7 @@ class ProductChangeTriggerResultProductChangeResultDetails implements JsonSerial
         $result->product = $product;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductChangeTriggerResultProductChangeResultDetails
     {
         $result = new ProductChangeTriggerResultProductChangeResultDetails();

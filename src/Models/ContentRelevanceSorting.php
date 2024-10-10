@@ -11,6 +11,7 @@ class ContentRelevanceSorting extends ContentSorting
         $result->order = $order;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentRelevanceSorting
     {
         $result = ContentSorting::hydrateBase(new ContentRelevanceSorting(), $arr);

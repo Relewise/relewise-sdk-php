@@ -16,6 +16,7 @@ class ContentsViewedAfterViewingContentRequest extends ContentRecommendationRequ
         $result->contentId = $contentId;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentsViewedAfterViewingContentRequest
     {
         $result = ContentRecommendationRequest::hydrateBase(new ContentsViewedAfterViewingContentRequest(), $arr);

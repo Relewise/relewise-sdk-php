@@ -30,6 +30,7 @@ class VariantListPriceRelevanceModifier extends RelevanceModifier
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantListPriceRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new VariantListPriceRelevanceModifier(), $arr);

@@ -11,6 +11,7 @@ class LocationPlacementCollection
         $result->items = $placements;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LocationPlacementCollection
     {
         $result = new LocationPlacementCollection();

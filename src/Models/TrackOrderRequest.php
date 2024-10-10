@@ -12,6 +12,7 @@ class TrackOrderRequest extends TrackingRequest
         $result->order = $order;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackOrderRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackOrderRequest(), $arr);

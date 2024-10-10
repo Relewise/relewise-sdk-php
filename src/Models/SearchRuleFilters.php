@@ -14,6 +14,7 @@ class SearchRuleFilters
         $result->approved = $approved;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchRuleFilters
     {
         $result = new SearchRuleFilters();

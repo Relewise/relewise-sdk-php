@@ -11,6 +11,7 @@ class FilterCollection
         $result->items = $filters;
         return $result;
     }
+    
     public static function hydrate(array $arr) : FilterCollection
     {
         $result = new FilterCollection();

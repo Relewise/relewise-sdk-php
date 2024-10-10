@@ -22,6 +22,7 @@ class VariantAssortmentRelevanceModifier extends RelevanceModifier
         $result->multiplyWeightBy = $multiplyWeightBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantAssortmentRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new VariantAssortmentRelevanceModifier(), $arr);

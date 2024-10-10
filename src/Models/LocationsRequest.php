@@ -14,6 +14,7 @@ class LocationsRequest extends LocationEntityStateLocationMetadataValuesLocation
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LocationsRequest
     {
         $result = LocationEntityStateLocationMetadataValuesLocationsRequestSortByLocationsRequestEntityFiltersEntitiesRequest::hydrateBase(new LocationsRequest(), $arr);

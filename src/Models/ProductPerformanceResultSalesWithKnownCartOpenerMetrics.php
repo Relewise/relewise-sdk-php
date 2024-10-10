@@ -12,6 +12,7 @@ class ProductPerformanceResultSalesWithKnownCartOpenerMetrics
         $result = new ProductPerformanceResultSalesWithKnownCartOpenerMetrics();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResultSalesWithKnownCartOpenerMetrics
     {
         $result = new ProductPerformanceResultSalesWithKnownCartOpenerMetrics();

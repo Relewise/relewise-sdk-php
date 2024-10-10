@@ -25,6 +25,7 @@ class BrandResultDetails implements JsonSerializable
         $result->brandId = $brandId;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandResultDetails
     {
         $result = new BrandResultDetails();

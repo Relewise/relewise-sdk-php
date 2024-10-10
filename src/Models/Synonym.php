@@ -27,6 +27,7 @@ class Synonym implements JsonSerializable
         $result = new Synonym();
         return $result;
     }
+    
     public static function hydrate(array $arr) : Synonym
     {
         $result = new Synonym();

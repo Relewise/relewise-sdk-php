@@ -12,6 +12,7 @@ class FixedDoubleValueSelector extends ValueSelector
         $result->value = $value;
         return $result;
     }
+    
     public static function hydrate(array $arr) : FixedDoubleValueSelector
     {
         $result = ValueSelector::hydrateBase(new FixedDoubleValueSelector(), $arr);

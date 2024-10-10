@@ -19,6 +19,7 @@ class CategoryHierarchyFacetResultCategoryNode
         $result->selected = $selected;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryHierarchyFacetResultCategoryNode
     {
         $result = new CategoryHierarchyFacetResultCategoryNode();

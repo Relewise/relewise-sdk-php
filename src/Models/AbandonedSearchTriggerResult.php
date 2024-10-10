@@ -12,6 +12,7 @@ class AbandonedSearchTriggerResult
         $result = new AbandonedSearchTriggerResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : AbandonedSearchTriggerResult
     {
         $result = new AbandonedSearchTriggerResult();

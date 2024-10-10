@@ -12,6 +12,7 @@ class TrackContentCategoryViewRequest extends TrackingRequest
         $result->contentCategoryView = $contentCategoryView;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackContentCategoryViewRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackContentCategoryViewRequest(), $arr);

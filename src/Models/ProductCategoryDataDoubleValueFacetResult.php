@@ -14,6 +14,7 @@ class ProductCategoryDataDoubleValueFacetResult extends floatProductCategoryData
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryDataDoubleValueFacetResult
     {
         $result = floatProductCategoryDataValueFacetResult::hydrateBase(new ProductCategoryDataDoubleValueFacetResult(), $arr);

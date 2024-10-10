@@ -12,6 +12,7 @@ class ProductCategoryAssortmentFacet extends AssortmentFacet
         $result->selected = $selected;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryAssortmentFacet
     {
         $result = AssortmentFacet::hydrateBase(new ProductCategoryAssortmentFacet(), $arr);

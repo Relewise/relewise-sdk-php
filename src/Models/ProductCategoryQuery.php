@@ -14,6 +14,7 @@ class ProductCategoryQuery extends ProductCategoryIdFilterCategoryQuery
         $result->returnTotalNumberOfResults = false;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryQuery
     {
         $result = ProductCategoryIdFilterCategoryQuery::hydrateBase(new ProductCategoryQuery(), $arr);

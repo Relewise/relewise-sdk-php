@@ -15,6 +15,7 @@ class boolAvailableFacetValue
         $result->hits = $hits;
         return $result;
     }
+    
     public static function hydrate(array $arr) : boolAvailableFacetValue
     {
         $result = new boolAvailableFacetValue();

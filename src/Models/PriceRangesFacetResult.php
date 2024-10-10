@@ -19,6 +19,7 @@ class PriceRangesFacetResult extends FacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PriceRangesFacetResult
     {
         $result = FacetResult::hydrateBase(new PriceRangesFacetResult(), $arr);

@@ -14,6 +14,7 @@ class ProductQuerySelectedPropertiesSettings
         $result = new ProductQuerySelectedPropertiesSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductQuerySelectedPropertiesSettings
     {
         $result = new ProductQuerySelectedPropertiesSettings();

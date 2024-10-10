@@ -17,6 +17,7 @@ class CustomProductRecommendationRequest extends ProductRecommendationRequest
         $result->recommendationType = $recommendationType;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CustomProductRecommendationRequest
     {
         $result = ProductRecommendationRequest::hydrateBase(new CustomProductRecommendationRequest(), $arr);

@@ -19,6 +19,7 @@ class AdvertiserMetadataValues extends MetadataValues implements JsonSerializabl
         $result = new AdvertiserMetadataValues();
         return $result;
     }
+    
     public static function hydrate(array $arr) : AdvertiserMetadataValues
     {
         $result = MetadataValues::hydrateBase(new AdvertiserMetadataValues(), $arr);

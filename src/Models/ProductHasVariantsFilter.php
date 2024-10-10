@@ -13,6 +13,7 @@ class ProductHasVariantsFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductHasVariantsFilter
     {
         $result = Filter::hydrateBase(new ProductHasVariantsFilter(), $arr);

@@ -20,6 +20,7 @@ class Advertiser extends AdvertiserEntityStateAdvertiserMetadataValuesRetailMedi
         $result->allowedLocations = $allowedLocations;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Advertiser
     {
         $result = AdvertiserEntityStateAdvertiserMetadataValuesRetailMediaEntity::hydrateBase(new Advertiser(), $arr);

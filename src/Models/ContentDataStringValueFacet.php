@@ -13,6 +13,7 @@ class ContentDataStringValueFacet extends stringContentDataValueFacet
         $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentDataStringValueFacet
     {
         $result = stringContentDataValueFacet::hydrateBase(new ContentDataStringValueFacet(), $arr);

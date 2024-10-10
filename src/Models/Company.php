@@ -13,6 +13,7 @@ class Company
         $result->id = $id;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Company
     {
         $result = new Company();

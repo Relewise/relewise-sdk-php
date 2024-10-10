@@ -14,6 +14,7 @@ class UserUpdate extends Trackable
         $result->kind = $updateKind;
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserUpdate
     {
         $result = Trackable::hydrateBase(new UserUpdate(), $arr);

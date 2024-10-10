@@ -6,6 +6,7 @@ abstract class ContentRecommendationRequest extends RecommendationRequest
 {
     public string $typeDefinition = "";
     public ContentRecommendationRequestSettings $settings;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -34,6 +35,7 @@ abstract class ContentRecommendationRequest extends RecommendationRequest
             return PopularContentsRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = RecommendationRequest::hydrateBase($result, $arr);

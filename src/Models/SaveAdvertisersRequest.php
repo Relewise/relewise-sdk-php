@@ -11,6 +11,7 @@ class SaveAdvertisersRequest extends AdvertiserSaveEntitiesRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveAdvertisersRequest
     {
         $result = AdvertiserSaveEntitiesRequest::hydrateBase(new SaveAdvertisersRequest(), $arr);

@@ -19,6 +19,7 @@ class ProductRecentlyViewedByUserParentCompanyFilter extends Filter implements J
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductRecentlyViewedByUserParentCompanyFilter
     {
         $result = Filter::hydrateBase(new ProductRecentlyViewedByUserParentCompanyFilter(), $arr);

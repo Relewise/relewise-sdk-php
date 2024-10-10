@@ -11,6 +11,7 @@ class ContentFacetQuery extends FacetQuery
         $result = new ContentFacetQuery();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentFacetQuery
     {
         $result = FacetQuery::hydrateBase(new ContentFacetQuery(), $arr);

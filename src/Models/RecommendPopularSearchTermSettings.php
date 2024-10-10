@@ -11,6 +11,7 @@ class RecommendPopularSearchTermSettings
         $result = new RecommendPopularSearchTermSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : RecommendPopularSearchTermSettings
     {
         $result = new RecommendPopularSearchTermSettings();

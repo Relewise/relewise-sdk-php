@@ -11,6 +11,7 @@ class DeleteSearchTermModifierRulesRequest extends DeleteSearchRulesRequest
         $result->deletedBy = $deletedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DeleteSearchTermModifierRulesRequest
     {
         $result = DeleteSearchRulesRequest::hydrateBase(new DeleteSearchTermModifierRulesRequest(), $arr);

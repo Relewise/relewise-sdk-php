@@ -10,6 +10,7 @@ class AbandonedProductSearch extends ProductAndVariantIdAbandonedSearch
         $result = new AbandonedProductSearch();
         return $result;
     }
+    
     public static function hydrate(array $arr) : AbandonedProductSearch
     {
         $result = ProductAndVariantIdAbandonedSearch::hydrateBase(new AbandonedProductSearch(), $arr);

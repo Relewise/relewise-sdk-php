@@ -12,6 +12,7 @@ class MixedRecommendationResponseCollection extends TimedResponse
         $result->responses = $responses;
         return $result;
     }
+    
     public static function hydrate(array $arr) : MixedRecommendationResponseCollection
     {
         $result = TimedResponse::hydrateBase(new MixedRecommendationResponseCollection(), $arr);

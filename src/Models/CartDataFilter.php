@@ -22,6 +22,7 @@ class CartDataFilter extends Filter
         $result->currency = $currency;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CartDataFilter
     {
         $result = Filter::hydrateBase(new CartDataFilter(), $arr);

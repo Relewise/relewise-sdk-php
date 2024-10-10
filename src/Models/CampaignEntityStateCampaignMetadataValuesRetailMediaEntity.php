@@ -8,6 +8,7 @@ abstract class CampaignEntityStateCampaignMetadataValuesRetailMediaEntity extend
     public CampaignEntityState $state;
     /** Managed server side only, manually setting this will have no effect */
     public CampaignMetadataValues $metadata;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -16,6 +17,7 @@ abstract class CampaignEntityStateCampaignMetadataValuesRetailMediaEntity extend
             return Campaign::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = RetailMediaEntity::hydrateBase($result, $arr);

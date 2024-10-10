@@ -16,6 +16,7 @@ class ProductDisplayNameFilter extends Filter
         $result->language = $language;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDisplayNameFilter
     {
         $result = Filter::hydrateBase(new ProductDisplayNameFilter(), $arr);

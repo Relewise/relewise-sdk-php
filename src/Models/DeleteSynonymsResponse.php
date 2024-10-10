@@ -10,6 +10,7 @@ class DeleteSynonymsResponse extends TimedResponse
         $result = new DeleteSynonymsResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : DeleteSynonymsResponse
     {
         $result = TimedResponse::hydrateBase(new DeleteSynonymsResponse(), $arr);

@@ -16,6 +16,7 @@ class SelectedVariantPropertiesSettings
         $result = new SelectedVariantPropertiesSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SelectedVariantPropertiesSettings
     {
         $result = new SelectedVariantPropertiesSettings();

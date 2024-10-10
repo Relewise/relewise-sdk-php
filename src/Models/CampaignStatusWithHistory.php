@@ -13,6 +13,7 @@ class CampaignStatusWithHistory
         $result->history = $history;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignStatusWithHistory
     {
         $result = new CampaignStatusWithHistory();

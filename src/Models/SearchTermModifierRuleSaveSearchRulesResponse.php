@@ -6,6 +6,7 @@ abstract class SearchTermModifierRuleSaveSearchRulesResponse extends TimedRespon
 {
     public string $typeDefinition = "";
     public array $rules;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -14,6 +15,7 @@ abstract class SearchTermModifierRuleSaveSearchRulesResponse extends TimedRespon
             return SaveSearchTermModifierRulesResponse::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = TimedResponse::hydrateBase($result, $arr);

@@ -15,6 +15,7 @@ class BrandRecommendationRequestSettings
         $result = new BrandRecommendationRequestSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandRecommendationRequestSettings
     {
         $result = new BrandRecommendationRequestSettings();

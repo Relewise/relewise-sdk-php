@@ -36,6 +36,7 @@ class ProductResultDetails implements JsonSerializable
         $result->productId = $productId;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductResultDetails
     {
         $result = new ProductResultDetails();

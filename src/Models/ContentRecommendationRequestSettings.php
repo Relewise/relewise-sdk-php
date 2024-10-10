@@ -15,6 +15,7 @@ class ContentRecommendationRequestSettings
         $result = new ContentRecommendationRequestSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentRecommendationRequestSettings
     {
         $result = new ContentRecommendationRequestSettings();

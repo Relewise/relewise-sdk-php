@@ -12,6 +12,7 @@ class DataDoubleSelector extends ValueSelector
         $result->key = $key;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataDoubleSelector
     {
         $result = ValueSelector::hydrateBase(new DataDoubleSelector(), $arr);

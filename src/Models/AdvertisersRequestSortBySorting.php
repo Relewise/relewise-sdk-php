@@ -13,6 +13,7 @@ class AdvertisersRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : AdvertisersRequestSortBySorting
     {
         $result = new AdvertisersRequestSortBySorting();

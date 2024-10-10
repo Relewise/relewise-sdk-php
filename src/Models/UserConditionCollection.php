@@ -11,6 +11,7 @@ class UserConditionCollection
         $result->items = $conditions;
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserConditionCollection
     {
         $result = new UserConditionCollection();

@@ -10,6 +10,7 @@ class SaveCampaignsResponse extends CampaignSaveEntitiesResponse
         $result = new SaveCampaignsResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveCampaignsResponse
     {
         $result = CampaignSaveEntitiesResponse::hydrateBase(new SaveCampaignsResponse(), $arr);

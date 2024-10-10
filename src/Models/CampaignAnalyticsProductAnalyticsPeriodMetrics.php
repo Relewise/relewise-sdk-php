@@ -21,6 +21,7 @@ class CampaignAnalyticsProductAnalyticsPeriodMetrics implements JsonSerializable
         $result->currencies = $currencies;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignAnalyticsProductAnalyticsPeriodMetrics
     {
         $result = new CampaignAnalyticsProductAnalyticsPeriodMetrics();

@@ -14,6 +14,7 @@ class PurchasedWithCurrentCartRequest extends ProductRecommendationRequest
         $result->user = $user;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PurchasedWithCurrentCartRequest
     {
         $result = ProductRecommendationRequest::hydrateBase(new PurchasedWithCurrentCartRequest(), $arr);

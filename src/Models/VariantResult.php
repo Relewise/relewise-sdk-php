@@ -19,6 +19,7 @@ class VariantResult
         $result->rank = $rank;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantResult
     {
         $result = new VariantResult();

@@ -29,6 +29,7 @@ class ProductQuery extends LicensedRequest
         $result->currency = $currency;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductQuery
     {
         $result = LicensedRequest::hydrateBase(new ProductQuery(), $arr);

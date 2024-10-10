@@ -12,6 +12,7 @@ class ProductCategoryResult extends CategoryResult
         $result->rank = $rank;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryResult
     {
         $result = CategoryResult::hydrateBase(new ProductCategoryResult(), $arr);

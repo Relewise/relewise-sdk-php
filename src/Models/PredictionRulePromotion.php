@@ -13,6 +13,7 @@ class PredictionRulePromotion
         $result->values = $values;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PredictionRulePromotion
     {
         $result = new PredictionRulePromotion();

@@ -17,6 +17,7 @@ class PopularContentCategoriesRecommendationRequest extends ContentCategoryRecom
         $result->weights = $weights;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PopularContentCategoriesRecommendationRequest
     {
         $result = ContentCategoryRecommendationRequest::hydrateBase(new PopularContentCategoriesRecommendationRequest(), $arr);

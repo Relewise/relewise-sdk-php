@@ -13,6 +13,7 @@ class StemmingRulesRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : StemmingRulesRequestSortBySorting
     {
         $result = new StemmingRulesRequestSortBySorting();

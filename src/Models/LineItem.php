@@ -18,6 +18,7 @@ class LineItem
         $result->lineTotal = $lineTotal;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LineItem
     {
         $result = new LineItem();

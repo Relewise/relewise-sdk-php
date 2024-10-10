@@ -13,6 +13,7 @@ class ContentCategoryDataHasKeyFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryDataHasKeyFilter
     {
         $result = Filter::hydrateBase(new ContentCategoryDataHasKeyFilter(), $arr);

@@ -12,6 +12,7 @@ class RetailMediaQuery
         $result->location = $location;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RetailMediaQuery
     {
         $result = new RetailMediaQuery();

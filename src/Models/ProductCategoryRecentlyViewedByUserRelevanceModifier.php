@@ -16,6 +16,7 @@ class ProductCategoryRecentlyViewedByUserRelevanceModifier extends RecentlyViewe
         $result->ifNotPreviouslyViewedByUserMultiplyWeightBy = $ifNotPreviouslyViewedByUserMultiplyWeightBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryRecentlyViewedByUserRelevanceModifier
     {
         $result = RecentlyViewedByUserRelevanceModifier::hydrateBase(new ProductCategoryRecentlyViewedByUserRelevanceModifier(), $arr);

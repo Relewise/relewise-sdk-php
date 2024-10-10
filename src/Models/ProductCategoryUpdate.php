@@ -13,6 +13,7 @@ class ProductCategoryUpdate extends CategoryUpdate
         $result->kind = $kind;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryUpdate
     {
         $result = CategoryUpdate::hydrateBase(new ProductCategoryUpdate(), $arr);

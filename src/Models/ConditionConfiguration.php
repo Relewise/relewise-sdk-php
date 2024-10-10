@@ -13,6 +13,7 @@ class ConditionConfiguration
         $result = new ConditionConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ConditionConfiguration
     {
         $result = new ConditionConfiguration();

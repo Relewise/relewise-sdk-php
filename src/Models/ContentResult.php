@@ -18,6 +18,7 @@ class ContentResult
         $result->rank = $rank;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentResult
     {
         $result = new ContentResult();

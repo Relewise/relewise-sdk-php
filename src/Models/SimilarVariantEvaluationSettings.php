@@ -15,6 +15,7 @@ class SimilarVariantEvaluationSettings
         $result = new SimilarVariantEvaluationSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SimilarVariantEvaluationSettings
     {
         $result = new SimilarVariantEvaluationSettings();

@@ -14,6 +14,7 @@ class SearchTermPredictionResult
         $result = new SearchTermPredictionResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermPredictionResult
     {
         $result = new SearchTermPredictionResult();

@@ -6,6 +6,7 @@ abstract class floatContentDataRangeFacetResult extends floatRangeFacetResult
 {
     public string $typeDefinition = "";
     public string $key;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -14,6 +15,7 @@ abstract class floatContentDataRangeFacetResult extends floatRangeFacetResult
             return ContentDataDoubleRangeFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = floatRangeFacetResult::hydrateBase($result, $arr);

@@ -12,6 +12,7 @@ class SearchResultModifierRuleAddFiltersAction extends SearchResultModifierRuleR
         $result->filters = $filters;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchResultModifierRuleAddFiltersAction
     {
         $result = SearchResultModifierRuleRuleAction::hydrateBase(new SearchResultModifierRuleAddFiltersAction(), $arr);

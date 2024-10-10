@@ -11,6 +11,7 @@ class LocationPlacementVariationCollection
         $result->items = $variations;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LocationPlacementVariationCollection
     {
         $result = new LocationPlacementVariationCollection();

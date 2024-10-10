@@ -11,6 +11,7 @@ class PromotionCollection
         $result->promotions = $promotions;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PromotionCollection
     {
         $result = new PromotionCollection();

@@ -7,6 +7,7 @@ abstract class AdvertiserEntityStateAdvertiserMetadataValuesRetailMediaEntityEnt
     public string $typeDefinition = "";
     public ?string $term;
     public ?array $states;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -15,6 +16,7 @@ abstract class AdvertiserEntityStateAdvertiserMetadataValuesRetailMediaEntityEnt
             return AdvertisersRequestEntityFilters::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("term", $arr))

@@ -11,6 +11,7 @@ class DataValue
         $result = new DataValue();
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataValue
     {
         $result = new DataValue();

@@ -11,6 +11,7 @@ class ContentCategoryHasChildFilter extends HasChildCategoryFilter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryHasChildFilter
     {
         $result = HasChildCategoryFilter::hydrateBase(new ContentCategoryHasChildFilter(), $arr);

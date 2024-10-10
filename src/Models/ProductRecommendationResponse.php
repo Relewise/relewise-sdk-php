@@ -12,6 +12,7 @@ class ProductRecommendationResponse extends RecommendationResponse
         $result->recommendations = $recommendations;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductRecommendationResponse
     {
         $result = RecommendationResponse::hydrateBase(new ProductRecommendationResponse(), $arr);

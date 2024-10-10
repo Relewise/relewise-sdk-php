@@ -13,6 +13,7 @@ class DataObjectStringValueFacet extends stringDataObjectValueFacet
         $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataObjectStringValueFacet
     {
         $result = stringDataObjectValueFacet::hydrateBase(new DataObjectStringValueFacet(), $arr);

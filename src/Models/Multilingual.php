@@ -11,6 +11,7 @@ class Multilingual
         $result->values = $translations;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Multilingual
     {
         $result = new Multilingual();

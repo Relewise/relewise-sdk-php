@@ -21,6 +21,7 @@ class PredictionRule extends SearchRule implements JsonSerializable
         $result->condition = $condition;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PredictionRule
     {
         $result = SearchRule::hydrateBase(new PredictionRule(), $arr);

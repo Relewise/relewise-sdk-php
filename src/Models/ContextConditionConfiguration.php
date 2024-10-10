@@ -10,6 +10,7 @@ class ContextConditionConfiguration
         $result = new ContextConditionConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContextConditionConfiguration
     {
         $result = new ContextConditionConfiguration();

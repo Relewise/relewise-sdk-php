@@ -21,6 +21,7 @@ class SimilarProductsEvaluationSettings
         $result = new SimilarProductsEvaluationSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SimilarProductsEvaluationSettings
     {
         $result = new SimilarProductsEvaluationSettings();

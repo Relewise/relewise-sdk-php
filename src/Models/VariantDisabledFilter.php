@@ -11,6 +11,7 @@ class VariantDisabledFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantDisabledFilter
     {
         $result = Filter::hydrateBase(new VariantDisabledFilter(), $arr);

@@ -23,6 +23,7 @@ class RedirectRule extends SearchRule implements JsonSerializable
         $result->data = $data;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RedirectRule
     {
         $result = SearchRule::hydrateBase(new RedirectRule(), $arr);

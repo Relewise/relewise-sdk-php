@@ -11,6 +11,7 @@ class TriggerConfigurationResponse extends TimedResponse
         $result = new TriggerConfigurationResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : TriggerConfigurationResponse
     {
         $result = TimedResponse::hydrateBase(new TriggerConfigurationResponse(), $arr);

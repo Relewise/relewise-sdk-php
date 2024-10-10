@@ -12,6 +12,7 @@ class ContentCategoryAssortmentFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryAssortmentFilter
     {
         $result = Filter::hydrateBase(new ContentCategoryAssortmentFilter(), $arr);

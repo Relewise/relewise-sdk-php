@@ -19,6 +19,7 @@ class FieldIndexConfiguration
         $result->matchTypeSettings = $matchTypeSettings;
         return $result;
     }
+    
     public static function hydrate(array $arr) : FieldIndexConfiguration
     {
         $result = new FieldIndexConfiguration();

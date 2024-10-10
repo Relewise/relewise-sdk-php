@@ -15,6 +15,7 @@ class ProductDataBooleanValueFacetResult extends boolProductDataValueFacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDataBooleanValueFacetResult
     {
         $result = boolProductDataValueFacetResult::hydrateBase(new ProductDataBooleanValueFacetResult(), $arr);

@@ -15,6 +15,7 @@ class stringAvailableFacetValue
         $result->hits = $hits;
         return $result;
     }
+    
     public static function hydrate(array $arr) : stringAvailableFacetValue
     {
         $result = new stringAvailableFacetValue();

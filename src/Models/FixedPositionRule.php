@@ -17,6 +17,7 @@ class FixedPositionRule extends MerchandisingRule implements JsonSerializable
         $result->position = $position;
         return $result;
     }
+    
     public static function hydrate(array $arr) : FixedPositionRule
     {
         $result = MerchandisingRule::hydrateBase(new FixedPositionRule(), $arr);

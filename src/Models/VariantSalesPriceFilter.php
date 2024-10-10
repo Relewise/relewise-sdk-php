@@ -15,6 +15,7 @@ class VariantSalesPriceFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantSalesPriceFilter
     {
         $result = Filter::hydrateBase(new VariantSalesPriceFilter(), $arr);

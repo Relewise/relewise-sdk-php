@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class PromotionSpecificationVariation
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -13,6 +14,7 @@ abstract class PromotionSpecificationVariation
             return ProductPromotionSpecificationVariation::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         return $result;

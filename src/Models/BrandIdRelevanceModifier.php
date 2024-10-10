@@ -26,6 +26,7 @@ class BrandIdRelevanceModifier extends RelevanceModifier
         $result->ifProductIsNotBrandMultiplyWeightBy = $ifProductIsNotBrandMultiplyWeightBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandIdRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new BrandIdRelevanceModifier(), $arr);

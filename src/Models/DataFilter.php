@@ -12,6 +12,7 @@ abstract class DataFilter extends Filter
     public ?Language $language;
     public ?Currency $currency;
     public ?array $objectPath;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -44,6 +45,7 @@ abstract class DataFilter extends Filter
             return VariantDataFilter::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = Filter::hydrateBase($result, $arr);

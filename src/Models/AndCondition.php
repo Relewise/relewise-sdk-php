@@ -13,6 +13,7 @@ class AndCondition extends UserCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : AndCondition
     {
         $result = UserCondition::hydrateBase(new AndCondition(), $arr);

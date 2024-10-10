@@ -11,6 +11,7 @@ class FilteredVariantsSettings
         $result = new FilteredVariantsSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : FilteredVariantsSettings
     {
         $result = new FilteredVariantsSettings();

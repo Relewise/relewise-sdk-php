@@ -11,6 +11,7 @@ class SearchTermPredictionSettings extends SearchSettings
         $result = new SearchTermPredictionSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermPredictionSettings
     {
         $result = SearchSettings::hydrateBase(new SearchTermPredictionSettings(), $arr);

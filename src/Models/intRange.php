@@ -13,6 +13,7 @@ class intRange
         $result->upperBoundInclusive = $upperBoundInclusive;
         return $result;
     }
+    
     public static function hydrate(array $arr) : intRange
     {
         $result = new intRange();

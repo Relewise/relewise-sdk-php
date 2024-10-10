@@ -12,6 +12,7 @@ class ContentCategorySearchSettings extends SearchSettings
         $result = new ContentCategorySearchSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategorySearchSettings
     {
         $result = SearchSettings::hydrateBase(new ContentCategorySearchSettings(), $arr);

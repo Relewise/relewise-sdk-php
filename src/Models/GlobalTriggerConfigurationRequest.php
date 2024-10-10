@@ -10,6 +10,7 @@ class GlobalTriggerConfigurationRequest extends LicensedRequest
         $result = new GlobalTriggerConfigurationRequest();
         return $result;
     }
+    
     public static function hydrate(array $arr) : GlobalTriggerConfigurationRequest
     {
         $result = LicensedRequest::hydrateBase(new GlobalTriggerConfigurationRequest(), $arr);

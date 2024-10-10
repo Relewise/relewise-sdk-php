@@ -19,6 +19,7 @@ class OverriddenProductRecommendationRequestSettings
         $result = new OverriddenProductRecommendationRequestSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : OverriddenProductRecommendationRequestSettings
     {
         $result = new OverriddenProductRecommendationRequestSettings();

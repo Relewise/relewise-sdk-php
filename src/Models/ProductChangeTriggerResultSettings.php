@@ -11,6 +11,7 @@ class ProductChangeTriggerResultSettings
         $result = new ProductChangeTriggerResultSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductChangeTriggerResultSettings
     {
         $result = new ProductChangeTriggerResultSettings();

@@ -15,6 +15,7 @@ class OverriddenContentRecommendationRequestSettings
         $result = new OverriddenContentRecommendationRequestSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : OverriddenContentRecommendationRequestSettings
     {
         $result = new OverriddenContentRecommendationRequestSettings();

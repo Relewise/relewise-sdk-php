@@ -21,6 +21,7 @@ abstract class MerchandisingRule implements JsonSerializable
     public RequestConfiguration $request;
     public float $priority;
     public array $settings;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -41,6 +42,7 @@ abstract class MerchandisingRule implements JsonSerializable
             return InputModifierRule::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("id", $arr))

@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class boolValueFacetResult extends boolboolValueFacetResult
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -25,6 +26,7 @@ abstract class boolValueFacetResult extends boolboolValueFacetResult
             return ProductDataBooleanValueFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = boolboolValueFacetResult::hydrateBase($result, $arr);

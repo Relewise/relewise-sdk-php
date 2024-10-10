@@ -6,6 +6,7 @@ abstract class stringProductDataValueFacet extends stringDataValueFacet
 {
     public string $typeDefinition = "";
     public DataSelectionStrategy $dataSelectionStrategy;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -14,6 +15,7 @@ abstract class stringProductDataValueFacet extends stringDataValueFacet
             return ProductDataStringValueFacet::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = stringDataValueFacet::hydrateBase($result, $arr);

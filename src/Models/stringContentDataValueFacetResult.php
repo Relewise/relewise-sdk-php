@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class stringContentDataValueFacetResult extends stringDataValueFacetResult
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -13,6 +14,7 @@ abstract class stringContentDataValueFacetResult extends stringDataValueFacetRes
             return ContentDataStringValueFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = stringDataValueFacetResult::hydrateBase($result, $arr);

@@ -7,6 +7,7 @@ use DateTime;
 /** This is actually an interface. */
 abstract class ISchedule
 {
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -15,6 +16,7 @@ abstract class ISchedule
             return ScheduledPeriod::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         return $result;

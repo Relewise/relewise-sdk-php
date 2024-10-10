@@ -14,6 +14,7 @@ class SaveSynonymsRequest extends LicensedRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveSynonymsRequest
     {
         $result = LicensedRequest::hydrateBase(new SaveSynonymsRequest(), $arr);

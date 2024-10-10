@@ -7,6 +7,7 @@ abstract class ValueCondition
     public string $typeDefinition = "";
     /** Whether the condition should be negated / inverted */
     public bool $negated;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -39,6 +40,7 @@ abstract class ValueCondition
             return RelativeDateTimeCondition::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("negated", $arr))

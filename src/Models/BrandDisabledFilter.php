@@ -11,6 +11,7 @@ class BrandDisabledFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandDisabledFilter
     {
         $result = Filter::hydrateBase(new BrandDisabledFilter(), $arr);

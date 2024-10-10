@@ -14,6 +14,7 @@ class RecentlyViewedProductsRequest extends ProductRecommendationRequest
         $result->user = $user;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RecentlyViewedProductsRequest
     {
         $result = ProductRecommendationRequest::hydrateBase(new RecentlyViewedProductsRequest(), $arr);

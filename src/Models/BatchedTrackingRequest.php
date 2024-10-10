@@ -12,6 +12,7 @@ class BatchedTrackingRequest extends TrackingRequest
         $result->items = $items;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BatchedTrackingRequest
     {
         $result = TrackingRequest::hydrateBase(new BatchedTrackingRequest(), $arr);

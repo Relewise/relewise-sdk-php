@@ -14,6 +14,7 @@ class Brand
         $result->id = $id;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Brand
     {
         $result = new Brand();

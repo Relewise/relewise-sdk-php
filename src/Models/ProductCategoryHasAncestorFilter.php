@@ -11,6 +11,7 @@ class ProductCategoryHasAncestorFilter extends HasAncestorCategoryFilter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryHasAncestorFilter
     {
         $result = HasAncestorCategoryFilter::hydrateBase(new ProductCategoryHasAncestorFilter(), $arr);

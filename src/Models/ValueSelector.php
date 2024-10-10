@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class ValueSelector
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -17,6 +18,7 @@ abstract class ValueSelector
             return FixedDoubleValueSelector::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         return $result;

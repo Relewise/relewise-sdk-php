@@ -12,6 +12,7 @@ class SearchIndexSelector
         $result->id = $id;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchIndexSelector
     {
         $result = new SearchIndexSelector();

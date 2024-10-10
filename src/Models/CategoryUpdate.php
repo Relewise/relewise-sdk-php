@@ -6,6 +6,7 @@ abstract class CategoryUpdate extends Trackable
 {
     public string $typeDefinition = "";
     public CategoryUpdateUpdateKind $kind;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -18,6 +19,7 @@ abstract class CategoryUpdate extends Trackable
             return ProductCategoryUpdate::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = Trackable::hydrateBase($result, $arr);

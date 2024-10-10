@@ -13,6 +13,7 @@ class RedirectRulesRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RedirectRulesRequestSortBySorting
     {
         $result = new RedirectRulesRequestSortBySorting();

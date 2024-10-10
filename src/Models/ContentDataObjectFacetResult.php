@@ -13,6 +13,7 @@ class ContentDataObjectFacetResult extends DataObjectFacetResult
         $result->filter = $filter;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentDataObjectFacetResult
     {
         $result = new ContentDataObjectFacetResult();

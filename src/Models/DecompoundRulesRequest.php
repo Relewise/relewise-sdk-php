@@ -14,6 +14,7 @@ class DecompoundRulesRequest extends DecompoundRulesRequestSortBySearchRulesRequ
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DecompoundRulesRequest
     {
         $result = DecompoundRulesRequestSortBySearchRulesRequest::hydrateBase(new DecompoundRulesRequest(), $arr);

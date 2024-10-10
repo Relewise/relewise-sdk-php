@@ -11,6 +11,7 @@ class BrandIndexConfiguration
         $result = new BrandIndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandIndexConfiguration
     {
         $result = new BrandIndexConfiguration();

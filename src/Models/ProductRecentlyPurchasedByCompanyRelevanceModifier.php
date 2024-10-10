@@ -27,6 +27,7 @@ class ProductRecentlyPurchasedByCompanyRelevanceModifier extends RelevanceModifi
         $result->elseIfNotPurchasedByCompanyMultiplyWeightBy = $elseIfNotPurchasedByCompanyMultiplyWeightBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductRecentlyPurchasedByCompanyRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new ProductRecentlyPurchasedByCompanyRelevanceModifier(), $arr);

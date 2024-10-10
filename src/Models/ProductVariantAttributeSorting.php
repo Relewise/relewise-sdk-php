@@ -15,6 +15,7 @@ class ProductVariantAttributeSorting extends ProductSorting
         $result->mode = $mode;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductVariantAttributeSorting
     {
         $result = ProductSorting::hydrateBase(new ProductVariantAttributeSorting(), $arr);

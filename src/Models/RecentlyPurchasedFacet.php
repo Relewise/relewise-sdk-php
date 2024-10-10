@@ -14,6 +14,7 @@ class RecentlyPurchasedFacet extends boolValueFacet
         $result->selected = $selected;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RecentlyPurchasedFacet
     {
         $result = boolValueFacet::hydrateBase(new RecentlyPurchasedFacet(), $arr);

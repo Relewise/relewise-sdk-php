@@ -10,6 +10,7 @@ class SearchIndexesRequest extends LicensedRequest
         $result = new SearchIndexesRequest();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchIndexesRequest
     {
         $result = LicensedRequest::hydrateBase(new SearchIndexesRequest(), $arr);

@@ -13,6 +13,7 @@ class AndFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : AndFilter
     {
         $result = Filter::hydrateBase(new AndFilter(), $arr);

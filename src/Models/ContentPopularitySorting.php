@@ -11,6 +11,7 @@ class ContentPopularitySorting extends ContentSorting
         $result->order = $order;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentPopularitySorting
     {
         $result = ContentSorting::hydrateBase(new ContentPopularitySorting(), $arr);

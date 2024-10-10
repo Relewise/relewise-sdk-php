@@ -12,6 +12,7 @@ class ApplicableLanguages
         $result->languages = $languages;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ApplicableLanguages
     {
         $result = new ApplicableLanguages();

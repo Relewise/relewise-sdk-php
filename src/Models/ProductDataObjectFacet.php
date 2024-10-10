@@ -13,6 +13,7 @@ class ProductDataObjectFacet extends DataObjectFacet
         $result->key = $key;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDataObjectFacet
     {
         $result = new ProductDataObjectFacet();

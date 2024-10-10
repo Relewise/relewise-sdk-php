@@ -14,6 +14,7 @@ class ContentCategoryView extends Trackable
         $result->idPath = $idPath;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryView
     {
         $result = Trackable::hydrateBase(new ContentCategoryView(), $arr);

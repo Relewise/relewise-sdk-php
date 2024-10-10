@@ -7,6 +7,7 @@ abstract class Budget
     public string $typeDefinition = "";
     public ?float $maxTotalCost;
     public float $totalCost;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -15,6 +16,7 @@ abstract class Budget
             return CPMBudget::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("maxTotalCost", $arr))

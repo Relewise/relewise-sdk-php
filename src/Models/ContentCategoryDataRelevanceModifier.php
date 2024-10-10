@@ -15,6 +15,7 @@ class ContentCategoryDataRelevanceModifier extends DataRelevanceModifier
         $result->mustMatchAllConditions = true;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryDataRelevanceModifier
     {
         $result = DataRelevanceModifier::hydrateBase(new ContentCategoryDataRelevanceModifier(), $arr);

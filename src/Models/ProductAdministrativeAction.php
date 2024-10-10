@@ -20,6 +20,7 @@ class ProductAdministrativeAction extends Trackable
         $result->variantUpdateKind = $variantUpdateKind;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductAdministrativeAction
     {
         $result = Trackable::hydrateBase(new ProductAdministrativeAction(), $arr);

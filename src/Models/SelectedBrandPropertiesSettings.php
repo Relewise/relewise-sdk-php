@@ -14,6 +14,7 @@ class SelectedBrandPropertiesSettings
         $result = new SelectedBrandPropertiesSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SelectedBrandPropertiesSettings
     {
         $result = new SelectedBrandPropertiesSettings();

@@ -29,6 +29,7 @@ class UserResultDetails implements JsonSerializable
         $result = new UserResultDetails();
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserResultDetails
     {
         $result = new UserResultDetails();

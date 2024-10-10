@@ -6,6 +6,7 @@ abstract class LocationSaveEntitiesResponse extends TimedResponse
 {
     public string $typeDefinition = "";
     public array $entities;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -14,6 +15,7 @@ abstract class LocationSaveEntitiesResponse extends TimedResponse
             return SaveLocationsResponse::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = TimedResponse::hydrateBase($result, $arr);

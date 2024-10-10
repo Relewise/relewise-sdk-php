@@ -16,6 +16,7 @@ class ProductView extends Trackable
         $result->variant = $variant;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductView
     {
         $result = Trackable::hydrateBase(new ProductView(), $arr);

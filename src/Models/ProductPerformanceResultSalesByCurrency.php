@@ -14,6 +14,7 @@ class ProductPerformanceResultSalesByCurrency
         $result = new ProductPerformanceResultSalesByCurrency();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResultSalesByCurrency
     {
         $result = new ProductPerformanceResultSalesByCurrency();

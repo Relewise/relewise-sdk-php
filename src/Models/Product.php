@@ -18,6 +18,7 @@ class Product
         $result->id = $id;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Product
     {
         $result = new Product();

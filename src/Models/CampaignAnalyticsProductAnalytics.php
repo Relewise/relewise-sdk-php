@@ -18,6 +18,7 @@ class CampaignAnalyticsProductAnalytics
         $result->promotedProducts = $promotedProducts;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignAnalyticsProductAnalytics
     {
         $result = new CampaignAnalyticsProductAnalytics();

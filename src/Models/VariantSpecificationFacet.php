@@ -13,6 +13,7 @@ class VariantSpecificationFacet extends stringValueFacet
         $result->selected = $selected;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantSpecificationFacet
     {
         $result = stringValueFacet::hydrateBase(new VariantSpecificationFacet(), $arr);

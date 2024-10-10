@@ -19,6 +19,7 @@ class CampaignMetadataValues extends MetadataValues implements JsonSerializable
         $result = new CampaignMetadataValues();
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignMetadataValues
     {
         $result = MetadataValues::hydrateBase(new CampaignMetadataValues(), $arr);

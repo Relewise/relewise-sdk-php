@@ -11,6 +11,7 @@ class SaveStemmingRulesResponse extends StemmingRuleSaveSearchRulesResponse
         $result->rules = $rules;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveStemmingRulesResponse
     {
         $result = StemmingRuleSaveSearchRulesResponse::hydrateBase(new SaveStemmingRulesResponse(), $arr);

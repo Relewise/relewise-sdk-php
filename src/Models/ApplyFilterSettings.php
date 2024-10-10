@@ -12,6 +12,7 @@ class ApplyFilterSettings extends FilterScopeSettings
         $result->apply = $apply;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ApplyFilterSettings
     {
         $result = FilterScopeSettings::hydrateBase(new ApplyFilterSettings(), $arr);

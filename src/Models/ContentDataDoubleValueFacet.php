@@ -13,6 +13,7 @@ class ContentDataDoubleValueFacet extends floatContentDataValueFacet
         $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentDataDoubleValueFacet
     {
         $result = floatContentDataValueFacet::hydrateBase(new ContentDataDoubleValueFacet(), $arr);

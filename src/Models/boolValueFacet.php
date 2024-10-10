@@ -6,6 +6,7 @@ abstract class boolValueFacet extends Facet
 {
     public string $typeDefinition = "";
     public ?array $selected;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -30,6 +31,7 @@ abstract class boolValueFacet extends Facet
             return RecentlyPurchasedFacet::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = Facet::hydrateBase($result, $arr);

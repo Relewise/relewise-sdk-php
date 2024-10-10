@@ -16,6 +16,7 @@ class ContentRecentlyViewedByUserRelevanceModifier extends RecentlyViewedByUserR
         $result->ifNotPreviouslyViewedByUserMultiplyWeightBy = $ifNotPreviouslyViewedByUserMultiplyWeightBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentRecentlyViewedByUserRelevanceModifier
     {
         $result = RecentlyViewedByUserRelevanceModifier::hydrateBase(new ContentRecentlyViewedByUserRelevanceModifier(), $arr);

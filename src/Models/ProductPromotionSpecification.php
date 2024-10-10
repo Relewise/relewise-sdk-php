@@ -14,6 +14,7 @@ class ProductPromotionSpecification extends PromotionSpecification
         $result->promotableProducts = $promotableProducts;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPromotionSpecification
     {
         $result = PromotionSpecification::hydrateBase(new ProductPromotionSpecification(), $arr);

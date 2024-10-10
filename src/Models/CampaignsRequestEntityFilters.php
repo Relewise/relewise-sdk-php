@@ -12,6 +12,7 @@ class CampaignsRequestEntityFilters extends CampaignEntityStateCampaignMetadataV
         $result = new CampaignsRequestEntityFilters();
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignsRequestEntityFilters
     {
         $result = CampaignEntityStateCampaignMetadataValuesRetailMediaEntityEntityFilters::hydrateBase(new CampaignsRequestEntityFilters(), $arr);

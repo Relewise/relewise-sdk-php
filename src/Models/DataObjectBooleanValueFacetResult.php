@@ -14,6 +14,7 @@ class DataObjectBooleanValueFacetResult extends boolDataObjectValueFacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataObjectBooleanValueFacetResult
     {
         $result = boolDataObjectValueFacetResult::hydrateBase(new DataObjectBooleanValueFacetResult(), $arr);

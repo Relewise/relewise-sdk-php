@@ -22,6 +22,7 @@ class ProductSearchRequest extends PaginatedSearchRequest
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductSearchRequest
     {
         $result = PaginatedSearchRequest::hydrateBase(new ProductSearchRequest(), $arr);

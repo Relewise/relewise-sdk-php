@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class stringValueFacetResult extends stringstringValueFacetResult
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -29,6 +30,7 @@ abstract class stringValueFacetResult extends stringstringValueFacetResult
             return VariantSpecificationFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = stringstringValueFacetResult::hydrateBase($result, $arr);

@@ -21,6 +21,7 @@ class BrandQuery extends LicensedRequest
         $result->returnTotalNumberOfResults = false;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandQuery
     {
         $result = LicensedRequest::hydrateBase(new BrandQuery(), $arr);

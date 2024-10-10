@@ -14,6 +14,7 @@ class BrandView extends Trackable
         $result->brand = $brand;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandView
     {
         $result = Trackable::hydrateBase(new BrandView(), $arr);

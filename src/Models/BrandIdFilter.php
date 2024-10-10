@@ -12,6 +12,7 @@ class BrandIdFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandIdFilter
     {
         $result = Filter::hydrateBase(new BrandIdFilter(), $arr);

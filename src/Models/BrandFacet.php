@@ -11,6 +11,7 @@ class BrandFacet extends stringValueFacet
         $result->selected = $selectedIds;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandFacet
     {
         $result = stringValueFacet::hydrateBase(new BrandFacet(), $arr);

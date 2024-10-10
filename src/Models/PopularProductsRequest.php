@@ -19,6 +19,7 @@ class PopularProductsRequest extends ProductRecommendationRequest
         $result->basedOn = $basedOn;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PopularProductsRequest
     {
         $result = ProductRecommendationRequest::hydrateBase(new PopularProductsRequest(), $arr);

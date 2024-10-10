@@ -17,6 +17,7 @@ class PersonalProductCategoryRecommendationRequest extends ProductCategoryRecomm
         $result->weights = $weights;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PersonalProductCategoryRecommendationRequest
     {
         $result = ProductCategoryRecommendationRequest::hydrateBase(new PersonalProductCategoryRecommendationRequest(), $arr);

@@ -22,6 +22,7 @@ class AbandonedSearchTriggerConfiguration extends AbandonedSearchTriggerResultTr
         $result->suppressOnEntityFromSearchResultViewed = $suppressOnEntityFromSearchResultViewed;
         return $result;
     }
+    
     public static function hydrate(array $arr) : AbandonedSearchTriggerConfiguration
     {
         $result = AbandonedSearchTriggerResultTriggerConfiguration::hydrateBase(new AbandonedSearchTriggerConfiguration(), $arr);

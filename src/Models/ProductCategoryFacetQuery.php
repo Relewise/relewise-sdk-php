@@ -11,6 +11,7 @@ class ProductCategoryFacetQuery extends FacetQuery
         $result = new ProductCategoryFacetQuery();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryFacetQuery
     {
         $result = FacetQuery::hydrateBase(new ProductCategoryFacetQuery(), $arr);

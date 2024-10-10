@@ -15,6 +15,7 @@ class PopularContentsRequest extends ContentRecommendationRequest
         $result->user = $user;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PopularContentsRequest
     {
         $result = ContentRecommendationRequest::hydrateBase(new PopularContentsRequest(), $arr);

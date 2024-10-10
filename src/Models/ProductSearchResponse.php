@@ -15,6 +15,7 @@ class ProductSearchResponse extends PaginatedSearchResponse
         $result = new ProductSearchResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductSearchResponse
     {
         $result = PaginatedSearchResponse::hydrateBase(new ProductSearchResponse(), $arr);

@@ -22,6 +22,7 @@ class Location extends LocationEntityStateLocationMetadataValuesRetailMediaEntit
         $result->name = $name;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Location
     {
         $result = LocationEntityStateLocationMetadataValuesRetailMediaEntity::hydrateBase(new Location(), $arr);

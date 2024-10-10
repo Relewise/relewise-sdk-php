@@ -13,6 +13,7 @@ class ContentCategoryRecommendationWeights
         $result->contentViews = $contentViews;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryRecommendationWeights
     {
         $result = new ContentCategoryRecommendationWeights();

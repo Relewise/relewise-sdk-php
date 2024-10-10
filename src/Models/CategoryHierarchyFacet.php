@@ -14,6 +14,7 @@ class CategoryHierarchyFacet extends CategoryPathValueFacet
         $result->selected = $selectedCategoryPath;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryHierarchyFacet
     {
         $result = CategoryPathValueFacet::hydrateBase(new CategoryHierarchyFacet(), $arr);

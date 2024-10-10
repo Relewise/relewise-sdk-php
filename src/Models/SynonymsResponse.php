@@ -14,6 +14,7 @@ class SynonymsResponse extends TimedResponse
         $result->hits = $hits;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SynonymsResponse
     {
         $result = TimedResponse::hydrateBase(new SynonymsResponse(), $arr);

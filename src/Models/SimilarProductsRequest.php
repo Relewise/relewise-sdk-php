@@ -20,6 +20,7 @@ class SimilarProductsRequest extends ProductRecommendationRequest
         $result->evaluationSettings = $evaluationSettings;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SimilarProductsRequest
     {
         $result = ProductRecommendationRequest::hydrateBase(new SimilarProductsRequest(), $arr);

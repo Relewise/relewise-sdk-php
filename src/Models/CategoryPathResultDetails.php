@@ -11,6 +11,7 @@ class CategoryPathResultDetails
         $result->breadcrumbPathStartingFromRoot = $breadcrumbPathStartingFromRoot;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryPathResultDetails
     {
         $result = new CategoryPathResultDetails();

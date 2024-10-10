@@ -15,6 +15,7 @@ class SynonymsRequest extends LicensedRequest
         $result = new SynonymsRequest();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SynonymsRequest
     {
         $result = LicensedRequest::hydrateBase(new SynonymsRequest(), $arr);

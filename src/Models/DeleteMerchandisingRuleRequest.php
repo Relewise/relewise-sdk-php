@@ -12,6 +12,7 @@ class DeleteMerchandisingRuleRequest extends LicensedRequest
         $result->id = $id;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DeleteMerchandisingRuleRequest
     {
         $result = LicensedRequest::hydrateBase(new DeleteMerchandisingRuleRequest(), $arr);

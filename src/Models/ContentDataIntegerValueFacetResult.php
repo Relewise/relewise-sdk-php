@@ -15,6 +15,7 @@ class ContentDataIntegerValueFacetResult extends intContentDataValueFacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentDataIntegerValueFacetResult
     {
         $result = intContentDataValueFacetResult::hydrateBase(new ContentDataIntegerValueFacetResult(), $arr);

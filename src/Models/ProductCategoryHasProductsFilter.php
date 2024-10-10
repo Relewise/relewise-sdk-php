@@ -11,6 +11,7 @@ class ProductCategoryHasProductsFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryHasProductsFilter
     {
         $result = Filter::hydrateBase(new ProductCategoryHasProductsFilter(), $arr);

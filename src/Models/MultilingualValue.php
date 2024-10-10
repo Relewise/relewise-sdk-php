@@ -13,6 +13,7 @@ class MultilingualValue
         $result->text = $text;
         return $result;
     }
+    
     public static function hydrate(array $arr) : MultilingualValue
     {
         $result = new MultilingualValue();

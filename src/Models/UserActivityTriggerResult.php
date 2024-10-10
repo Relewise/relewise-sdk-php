@@ -10,6 +10,7 @@ class UserActivityTriggerResult
         $result = new UserActivityTriggerResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserActivityTriggerResult
     {
         $result = new UserActivityTriggerResult();

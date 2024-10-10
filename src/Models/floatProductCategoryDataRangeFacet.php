@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class floatProductCategoryDataRangeFacet extends floatDataRangeFacet
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -13,6 +14,7 @@ abstract class floatProductCategoryDataRangeFacet extends floatDataRangeFacet
             return ProductCategoryDataDoubleRangeFacet::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = floatDataRangeFacet::hydrateBase($result, $arr);

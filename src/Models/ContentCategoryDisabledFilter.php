@@ -11,6 +11,7 @@ class ContentCategoryDisabledFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryDisabledFilter
     {
         $result = Filter::hydrateBase(new ContentCategoryDisabledFilter(), $arr);

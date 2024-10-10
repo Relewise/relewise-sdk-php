@@ -14,6 +14,7 @@ class ContentView extends Trackable
         $result->content = $content;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentView
     {
         $result = Trackable::hydrateBase(new ContentView(), $arr);

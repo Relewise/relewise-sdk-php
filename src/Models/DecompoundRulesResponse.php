@@ -12,6 +12,7 @@ class DecompoundRulesResponse extends DecompoundRuleSearchRulesResponse
         $result->hits = $hits;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DecompoundRulesResponse
     {
         $result = DecompoundRuleSearchRulesResponse::hydrateBase(new DecompoundRulesResponse(), $arr);

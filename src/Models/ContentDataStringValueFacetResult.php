@@ -14,6 +14,7 @@ class ContentDataStringValueFacetResult extends stringContentDataValueFacetResul
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentDataStringValueFacetResult
     {
         $result = stringContentDataValueFacetResult::hydrateBase(new ContentDataStringValueFacetResult(), $arr);

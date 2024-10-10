@@ -15,6 +15,7 @@ class ProductPromotion extends Promotion
         $result->locations = $locations;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPromotion
     {
         $result = Promotion::hydrateBase(new ProductPromotion(), $arr);

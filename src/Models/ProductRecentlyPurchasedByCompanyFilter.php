@@ -22,6 +22,7 @@ class ProductRecentlyPurchasedByCompanyFilter extends Filter implements JsonSeri
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductRecentlyPurchasedByCompanyFilter
     {
         $result = Filter::hydrateBase(new ProductRecentlyPurchasedByCompanyFilter(), $arr);

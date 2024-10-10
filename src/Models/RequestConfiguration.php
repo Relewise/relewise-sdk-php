@@ -13,6 +13,7 @@ class RequestConfiguration
         $result = new RequestConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : RequestConfiguration
     {
         $result = new RequestConfiguration();

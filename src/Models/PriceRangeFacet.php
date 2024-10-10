@@ -15,6 +15,7 @@ class PriceRangeFacet extends Facet
         $result->selected = $selected;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PriceRangeFacet
     {
         $result = Facet::hydrateBase(new PriceRangeFacet(), $arr);

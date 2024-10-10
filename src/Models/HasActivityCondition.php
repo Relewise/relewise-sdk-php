@@ -13,6 +13,7 @@ class HasActivityCondition extends UserCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : HasActivityCondition
     {
         $result = UserCondition::hydrateBase(new HasActivityCondition(), $arr);

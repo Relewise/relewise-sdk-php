@@ -17,6 +17,7 @@ class BrandResult
         $result->rank = $rank;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandResult
     {
         $result = new BrandResult();

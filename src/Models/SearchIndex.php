@@ -25,6 +25,7 @@ class SearchIndex implements JsonSerializable
         $result->enabled = $enabled;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchIndex
     {
         $result = new SearchIndex();

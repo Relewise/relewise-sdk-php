@@ -11,6 +11,7 @@ class SaveLocationsRequest extends LocationSaveEntitiesRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveLocationsRequest
     {
         $result = LocationSaveEntitiesRequest::hydrateBase(new SaveLocationsRequest(), $arr);

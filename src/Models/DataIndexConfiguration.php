@@ -11,6 +11,7 @@ class DataIndexConfiguration
         $result = new DataIndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataIndexConfiguration
     {
         $result = new DataIndexConfiguration();

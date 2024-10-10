@@ -14,6 +14,7 @@ class DataObjectDoubleValueFacetResult extends floatDataObjectValueFacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataObjectDoubleValueFacetResult
     {
         $result = floatDataObjectValueFacetResult::hydrateBase(new DataObjectDoubleValueFacetResult(), $arr);

@@ -10,6 +10,7 @@ class SearchTypeCollection
         $result = new SearchTypeCollection();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTypeCollection
     {
         $result = new SearchTypeCollection();

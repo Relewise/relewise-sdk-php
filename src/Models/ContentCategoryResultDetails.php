@@ -14,6 +14,7 @@ class ContentCategoryResultDetails extends ContentCategoryResultDetailsCategoryR
         $result->categoryId = $categoryId;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryResultDetails
     {
         $result = ContentCategoryResultDetailsCategoryResultDetails::hydrateBase(new ContentCategoryResultDetails(), $arr);

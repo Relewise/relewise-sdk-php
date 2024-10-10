@@ -11,6 +11,7 @@ class FilterScopes
         $result = new FilterScopes();
         return $result;
     }
+    
     public static function hydrate(array $arr) : FilterScopes
     {
         $result = new FilterScopes();

@@ -12,6 +12,7 @@ class CategoryPathResult
         $result->pathFromRoot = $pathFromRoot;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryPathResult
     {
         $result = new CategoryPathResult();

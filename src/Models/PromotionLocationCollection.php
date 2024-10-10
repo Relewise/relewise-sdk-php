@@ -11,6 +11,7 @@ class PromotionLocationCollection
         $result->items = $placements;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PromotionLocationCollection
     {
         $result = new PromotionLocationCollection();

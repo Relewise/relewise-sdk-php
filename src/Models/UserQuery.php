@@ -16,6 +16,7 @@ class UserQuery extends LicensedRequest
         $result->criteria = $criteria;
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserQuery
     {
         $result = LicensedRequest::hydrateBase(new UserQuery(), $arr);

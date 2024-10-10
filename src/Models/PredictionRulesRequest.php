@@ -14,6 +14,7 @@ class PredictionRulesRequest extends PredictionRulesRequestSortBySearchRulesRequ
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PredictionRulesRequest
     {
         $result = PredictionRulesRequestSortBySearchRulesRequest::hydrateBase(new PredictionRulesRequest(), $arr);

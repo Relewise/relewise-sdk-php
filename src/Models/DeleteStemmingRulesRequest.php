@@ -11,6 +11,7 @@ class DeleteStemmingRulesRequest extends DeleteSearchRulesRequest
         $result->deletedBy = $deletedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DeleteStemmingRulesRequest
     {
         $result = DeleteSearchRulesRequest::hydrateBase(new DeleteStemmingRulesRequest(), $arr);

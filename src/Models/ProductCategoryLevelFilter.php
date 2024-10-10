@@ -11,6 +11,7 @@ class ProductCategoryLevelFilter extends CategoryLevelFilter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryLevelFilter
     {
         $result = CategoryLevelFilter::hydrateBase(new ProductCategoryLevelFilter(), $arr);

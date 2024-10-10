@@ -12,6 +12,7 @@ class AdvertisersResponse extends AdvertiserAdvertiserEntityStateEntityResponse
         $result->hitsPerState = $hitsPerState;
         return $result;
     }
+    
     public static function hydrate(array $arr) : AdvertisersResponse
     {
         $result = AdvertiserAdvertiserEntityStateEntityResponse::hydrateBase(new AdvertisersResponse(), $arr);

@@ -6,6 +6,7 @@ namespace Relewise\Models;
 abstract class PopularityMultiplierSelector
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -14,6 +15,7 @@ abstract class PopularityMultiplierSelector
             return DataKeyPopularityMultiplierSelector::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         return $result;

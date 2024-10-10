@@ -12,6 +12,7 @@ class SearchTermModifierRulesResponse extends SearchTermModifierRuleSearchRulesR
         $result->hits = $hits;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermModifierRulesResponse
     {
         $result = SearchTermModifierRuleSearchRulesResponse::hydrateBase(new SearchTermModifierRulesResponse(), $arr);

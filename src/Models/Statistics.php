@@ -10,6 +10,7 @@ class Statistics
         $result = new Statistics();
         return $result;
     }
+    
     public static function hydrate(array $arr) : Statistics
     {
         $result = new Statistics();

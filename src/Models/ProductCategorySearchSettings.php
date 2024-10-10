@@ -12,6 +12,7 @@ class ProductCategorySearchSettings extends SearchSettings
         $result = new ProductCategorySearchSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategorySearchSettings
     {
         $result = SearchSettings::hydrateBase(new ProductCategorySearchSettings(), $arr);

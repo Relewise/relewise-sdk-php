@@ -7,6 +7,7 @@ abstract class DeleteSearchRulesRequest extends LicensedRequest
     public string $typeDefinition = "";
     public array $ids;
     public string $deletedBy;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -35,6 +36,7 @@ abstract class DeleteSearchRulesRequest extends LicensedRequest
             return DeleteStemmingRulesRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);

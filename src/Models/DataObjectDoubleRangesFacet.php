@@ -14,6 +14,7 @@ class DataObjectDoubleRangesFacet extends floatDataObjectRangesFacet
         $result->selected = $selected;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataObjectDoubleRangesFacet
     {
         $result = floatDataObjectRangesFacet::hydrateBase(new DataObjectDoubleRangesFacet(), $arr);

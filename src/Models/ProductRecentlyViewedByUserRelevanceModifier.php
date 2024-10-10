@@ -23,6 +23,7 @@ class ProductRecentlyViewedByUserRelevanceModifier extends RecentlyViewedByUserR
         $result->ifNotPreviouslyViewedByUserMultiplyWeightBy = $ifNotPreviouslyViewedByUserMultiplyWeightBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductRecentlyViewedByUserRelevanceModifier
     {
         $result = RecentlyViewedByUserRelevanceModifier::hydrateBase(new ProductRecentlyViewedByUserRelevanceModifier(), $arr);

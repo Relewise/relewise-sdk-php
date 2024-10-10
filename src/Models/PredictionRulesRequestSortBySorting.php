@@ -13,6 +13,7 @@ class PredictionRulesRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PredictionRulesRequestSortBySorting
     {
         $result = new PredictionRulesRequestSortBySorting();

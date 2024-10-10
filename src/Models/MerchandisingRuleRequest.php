@@ -13,6 +13,7 @@ class MerchandisingRuleRequest extends LicensedRequest
         $result->id = $id;
         return $result;
     }
+    
     public static function hydrate(array $arr) : MerchandisingRuleRequest
     {
         $result = LicensedRequest::hydrateBase(new MerchandisingRuleRequest(), $arr);

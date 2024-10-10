@@ -12,6 +12,7 @@ class VariantIdFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantIdFilter
     {
         $result = Filter::hydrateBase(new VariantIdFilter(), $arr);

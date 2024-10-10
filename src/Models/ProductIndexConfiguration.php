@@ -15,6 +15,7 @@ class ProductIndexConfiguration
         $result = new ProductIndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductIndexConfiguration
     {
         $result = new ProductIndexConfiguration();

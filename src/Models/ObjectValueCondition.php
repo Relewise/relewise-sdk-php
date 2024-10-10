@@ -11,6 +11,7 @@ abstract class ObjectValueCondition
     public string $key;
     /** An optional path to some nested object defined under the selected Key. */
     public ?array $objectPath;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -51,6 +52,7 @@ abstract class ObjectValueCondition
             return ObjectValueRelativeDateTimeCondition::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("negated", $arr))

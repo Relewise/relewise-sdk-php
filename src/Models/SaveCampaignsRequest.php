@@ -11,6 +11,7 @@ class SaveCampaignsRequest extends CampaignSaveEntitiesRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveCampaignsRequest
     {
         $result = CampaignSaveEntitiesRequest::hydrateBase(new SaveCampaignsRequest(), $arr);

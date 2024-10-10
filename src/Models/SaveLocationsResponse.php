@@ -10,6 +10,7 @@ class SaveLocationsResponse extends LocationSaveEntitiesResponse
         $result = new SaveLocationsResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveLocationsResponse
     {
         $result = LocationSaveEntitiesResponse::hydrateBase(new SaveLocationsResponse(), $arr);

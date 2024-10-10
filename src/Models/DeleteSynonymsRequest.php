@@ -14,6 +14,7 @@ class DeleteSynonymsRequest extends LicensedRequest
         $result->deletedBy = $deletedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DeleteSynonymsRequest
     {
         $result = LicensedRequest::hydrateBase(new DeleteSynonymsRequest(), $arr);

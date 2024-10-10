@@ -10,6 +10,7 @@ class PromotionSpecificationCollection
         $result = new PromotionSpecificationCollection();
         return $result;
     }
+    
     public static function hydrate(array $arr) : PromotionSpecificationCollection
     {
         $result = new PromotionSpecificationCollection();

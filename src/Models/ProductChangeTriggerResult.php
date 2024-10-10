@@ -12,6 +12,7 @@ class ProductChangeTriggerResult extends ProductChangeTriggerResultProductChange
         $result->entitiesWithChanges = $entitiesWithChanges;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductChangeTriggerResult
     {
         $result = ProductChangeTriggerResultProductChangeResultDetailsEntityChangeTriggerResult::hydrateBase(new ProductChangeTriggerResult(), $arr);

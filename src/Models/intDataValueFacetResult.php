@@ -7,6 +7,7 @@ abstract class intDataValueFacetResult extends intValueFacetResult
     public string $typeDefinition = "";
     public string $key;
     public ?CollectionFilterType $collectionFilterType;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -19,6 +20,7 @@ abstract class intDataValueFacetResult extends intValueFacetResult
             return ProductDataIntegerValueFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = intValueFacetResult::hydrateBase($result, $arr);

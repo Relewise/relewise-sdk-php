@@ -13,6 +13,7 @@ class floatRange
         $result->upperBoundInclusive = $upperBoundInclusive;
         return $result;
     }
+    
     public static function hydrate(array $arr) : floatRange
     {
         $result = new floatRange();

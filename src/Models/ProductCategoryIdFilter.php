@@ -12,6 +12,7 @@ class ProductCategoryIdFilter extends CategoryIdFilter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryIdFilter
     {
         $result = CategoryIdFilter::hydrateBase(new ProductCategoryIdFilter(), $arr);

@@ -9,6 +9,7 @@ abstract class LocationEntityStateLocationMetadataValuesLocationsRequestSortByLo
     public ?LocationsRequestSortBySorting $sorting;
     public int $skip;
     public int $take;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -17,6 +18,7 @@ abstract class LocationEntityStateLocationMetadataValuesLocationsRequestSortByLo
             return LocationsRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);

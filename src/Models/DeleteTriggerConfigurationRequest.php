@@ -12,6 +12,7 @@ class DeleteTriggerConfigurationRequest extends LicensedRequest
         $result->id = $id;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DeleteTriggerConfigurationRequest
     {
         $result = LicensedRequest::hydrateBase(new DeleteTriggerConfigurationRequest(), $arr);

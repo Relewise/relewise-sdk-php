@@ -12,6 +12,7 @@ class ProductPerformanceResultCategoryMetrics
         $result = new ProductPerformanceResultCategoryMetrics();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductPerformanceResultCategoryMetrics
     {
         $result = new ProductPerformanceResultCategoryMetrics();

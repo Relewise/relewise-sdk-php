@@ -12,6 +12,7 @@ class RetailMediaQueryPlacementSelector
         $result->key = $key;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RetailMediaQueryPlacementSelector
     {
         $result = new RetailMediaQueryPlacementSelector();

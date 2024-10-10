@@ -12,6 +12,7 @@ class SaveSynonymsResponse extends TimedResponse
         $result->values = $values;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveSynonymsResponse
     {
         $result = TimedResponse::hydrateBase(new SaveSynonymsResponse(), $arr);

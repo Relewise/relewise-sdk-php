@@ -11,6 +11,7 @@ class SearchIndexResponse extends TimedResponse
         $result = new SearchIndexResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchIndexResponse
     {
         $result = TimedResponse::hydrateBase(new SearchIndexResponse(), $arr);

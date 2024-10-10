@@ -12,6 +12,7 @@ class SearchTermModifierRuleAppendToTermAction extends SearchTermModifierRuleRul
         $result->words = $words;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermModifierRuleAppendToTermAction
     {
         $result = SearchTermModifierRuleRuleAction::hydrateBase(new SearchTermModifierRuleAppendToTermAction(), $arr);

@@ -16,6 +16,7 @@ class PopularSearchTermsRecommendationRequest extends RecommendationRequest
         $result->user = $user;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PopularSearchTermsRecommendationRequest
     {
         $result = RecommendationRequest::hydrateBase(new PopularSearchTermsRecommendationRequest(), $arr);

@@ -34,6 +34,7 @@ class VariantSpecificationValueRelevanceModifier extends RelevanceModifier
         $result->ifSpecificationKeyNotFoundApplyNotEqualMultiplier = $ifSpecificationKeyNotFoundApplyNotEqualMultiplier;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantSpecificationValueRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new VariantSpecificationValueRelevanceModifier(), $arr);

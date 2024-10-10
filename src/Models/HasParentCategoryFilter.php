@@ -6,6 +6,7 @@ abstract class HasParentCategoryFilter extends Filter
 {
     public string $typeDefinition = "";
     public array $categoryIds;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -18,6 +19,7 @@ abstract class HasParentCategoryFilter extends Filter
             return ProductCategoryHasParentFilter::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = Filter::hydrateBase($result, $arr);

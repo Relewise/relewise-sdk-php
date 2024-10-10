@@ -12,6 +12,7 @@ class ApplicableIndexes
         $result->indexes = $indexes;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ApplicableIndexes
     {
         $result = new ApplicableIndexes();

@@ -11,6 +11,7 @@ class FacetSettings
         $result = new FacetSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : FacetSettings
     {
         $result = new FacetSettings();

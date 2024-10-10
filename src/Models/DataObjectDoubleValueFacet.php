@@ -13,6 +13,7 @@ class DataObjectDoubleValueFacet extends floatDataObjectValueFacet
         $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataObjectDoubleValueFacet
     {
         $result = floatDataObjectValueFacet::hydrateBase(new DataObjectDoubleValueFacet(), $arr);

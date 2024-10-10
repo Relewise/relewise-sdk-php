@@ -21,6 +21,7 @@ class RelativeDateTimeCondition extends ValueCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RelativeDateTimeCondition
     {
         $result = ValueCondition::hydrateBase(new RelativeDateTimeCondition(), $arr);

@@ -14,6 +14,7 @@ class LocationPlacementVariation
         $result->supportedPromotions = $supportedPromotions;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LocationPlacementVariation
     {
         $result = new LocationPlacementVariation();

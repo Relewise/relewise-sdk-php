@@ -11,6 +11,7 @@ class ContentDataObjectFacet extends DataObjectFacet
         $result->key = $key;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentDataObjectFacet
     {
         $result = new ContentDataObjectFacet();

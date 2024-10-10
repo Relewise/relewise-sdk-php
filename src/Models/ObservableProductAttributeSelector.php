@@ -12,6 +12,7 @@ class ObservableProductAttributeSelector extends ProductPropertySelector
         $result->attribute = $attribute;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ObservableProductAttributeSelector
     {
         $result = ProductPropertySelector::hydrateBase(new ObservableProductAttributeSelector(), $arr);

@@ -15,6 +15,7 @@ class ProductCategoryRecommendationRequestSettings
         $result = new ProductCategoryRecommendationRequestSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryRecommendationRequestSettings
     {
         $result = new ProductCategoryRecommendationRequestSettings();

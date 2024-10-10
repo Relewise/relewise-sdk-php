@@ -10,6 +10,7 @@ abstract class Category
     public array $categoryPaths;
     public array $assortments;
     public array $data;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -22,6 +23,7 @@ abstract class Category
             return ProductCategory::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("id", $arr))

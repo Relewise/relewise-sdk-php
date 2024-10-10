@@ -14,6 +14,7 @@ class ProductCategoryDetailsCollectionResponse extends TimedResponse
         $result->totalNumberOfResults = $totalNumberOfResults;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryDetailsCollectionResponse
     {
         $result = TimedResponse::hydrateBase(new ProductCategoryDetailsCollectionResponse(), $arr);

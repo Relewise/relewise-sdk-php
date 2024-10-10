@@ -11,6 +11,7 @@ class SaveRedirectRulesRequest extends RedirectRuleSaveSearchRulesRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveRedirectRulesRequest
     {
         $result = RedirectRuleSaveSearchRulesRequest::hydrateBase(new SaveRedirectRulesRequest(), $arr);

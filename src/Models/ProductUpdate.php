@@ -21,6 +21,7 @@ class ProductUpdate extends Trackable
         $result->replaceExistingVariants = $replaceExistingVariants;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductUpdate
     {
         $result = Trackable::hydrateBase(new ProductUpdate(), $arr);

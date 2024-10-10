@@ -16,6 +16,7 @@ class ContentCategoryRecentlyViewedByUserFilter extends Filter implements JsonSe
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryRecentlyViewedByUserFilter
     {
         $result = Filter::hydrateBase(new ContentCategoryRecentlyViewedByUserFilter(), $arr);

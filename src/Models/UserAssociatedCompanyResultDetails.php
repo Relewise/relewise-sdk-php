@@ -18,6 +18,7 @@ class UserAssociatedCompanyResultDetails implements JsonSerializable
         $result->id = $id;
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserAssociatedCompanyResultDetails
     {
         $result = new UserAssociatedCompanyResultDetails();

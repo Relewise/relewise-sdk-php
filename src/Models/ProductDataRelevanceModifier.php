@@ -25,6 +25,7 @@ class ProductDataRelevanceModifier extends DataRelevanceModifier
         $result->mustMatchAllConditions = true;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDataRelevanceModifier
     {
         $result = DataRelevanceModifier::hydrateBase(new ProductDataRelevanceModifier(), $arr);

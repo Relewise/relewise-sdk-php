@@ -12,6 +12,7 @@ class VariantChangeTriggerResult extends VariantChangeTriggerResultVariantChange
         $result->entitiesWithChanges = $entitiesWithChanges;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantChangeTriggerResult
     {
         $result = VariantChangeTriggerResultVariantChangeResultDetailsEntityChangeTriggerResult::hydrateBase(new VariantChangeTriggerResult(), $arr);

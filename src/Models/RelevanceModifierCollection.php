@@ -17,6 +17,7 @@ class RelevanceModifierCollection
         $result->items = $relevanceModifiers;
         return $result;
     }
+    
     public static function hydrate(array $arr) : RelevanceModifierCollection
     {
         $result = new RelevanceModifierCollection();

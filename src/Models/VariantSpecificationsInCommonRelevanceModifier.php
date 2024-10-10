@@ -18,6 +18,7 @@ class VariantSpecificationsInCommonRelevanceModifier extends RelevanceModifier
         $result->specificationKeysAndMultipliers = $specificationKeysAndMultipliers;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantSpecificationsInCommonRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new VariantSpecificationsInCommonRelevanceModifier(), $arr);

@@ -7,6 +7,7 @@ abstract class floatDataValueFacetResult extends floatValueFacetResult
     public string $typeDefinition = "";
     public string $key;
     public ?CollectionFilterType $collectionFilterType;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -27,6 +28,7 @@ abstract class floatDataValueFacetResult extends floatValueFacetResult
             return ProductDataDoubleValueFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = floatValueFacetResult::hydrateBase($result, $arr);

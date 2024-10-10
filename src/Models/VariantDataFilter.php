@@ -15,6 +15,7 @@ class VariantDataFilter extends DataFilter
         $result->currency = $currency;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantDataFilter
     {
         $result = DataFilter::hydrateBase(new VariantDataFilter(), $arr);

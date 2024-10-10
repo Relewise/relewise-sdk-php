@@ -16,6 +16,7 @@ class SortProductsRequest extends ProductRecommendationRequest
         $result->productIds = $productIds;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SortProductsRequest
     {
         $result = ProductRecommendationRequest::hydrateBase(new SortProductsRequest(), $arr);

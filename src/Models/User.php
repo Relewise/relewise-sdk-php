@@ -43,6 +43,7 @@ class User
         $result->data = $data;
         return $result;
     }
+    
     public static function hydrate(array $arr) : User
     {
         $result = new User();

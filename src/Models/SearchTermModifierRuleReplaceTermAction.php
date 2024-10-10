@@ -12,6 +12,7 @@ class SearchTermModifierRuleReplaceTermAction extends SearchTermModifierRuleRule
         $result->replacement = $replacement;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermModifierRuleReplaceTermAction
     {
         $result = SearchTermModifierRuleRuleAction::hydrateBase(new SearchTermModifierRuleReplaceTermAction(), $arr);

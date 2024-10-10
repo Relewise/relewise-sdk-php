@@ -11,6 +11,7 @@ class ExpectedSearchTermResult
         $result = new ExpectedSearchTermResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ExpectedSearchTermResult
     {
         $result = new ExpectedSearchTermResult();

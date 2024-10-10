@@ -11,6 +11,7 @@ class TriggerConfigurationsRequest extends LicensedRequest
         $result = new TriggerConfigurationsRequest();
         return $result;
     }
+    
     public static function hydrate(array $arr) : TriggerConfigurationsRequest
     {
         $result = LicensedRequest::hydrateBase(new TriggerConfigurationsRequest(), $arr);

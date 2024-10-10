@@ -10,6 +10,7 @@ class HtmlParser extends Parser
         $result = new HtmlParser();
         return $result;
     }
+    
     public static function hydrate(array $arr) : HtmlParser
     {
         $result = Parser::hydrateBase(new HtmlParser(), $arr);

@@ -16,6 +16,7 @@ class DataObjectFacetResult extends FacetResult
         $result->filter = $filter;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataObjectFacetResult
     {
         $result = FacetResult::hydrateBase(new DataObjectFacetResult(), $arr);

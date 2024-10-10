@@ -11,6 +11,7 @@ class SpecificationsIndexConfiguration
         $result = new SpecificationsIndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SpecificationsIndexConfiguration
     {
         $result = new SpecificationsIndexConfiguration();

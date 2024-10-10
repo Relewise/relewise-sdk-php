@@ -16,6 +16,7 @@ class DateTimeRange implements JsonSerializable
         $result->upperBoundInclusive = $upperBoundInclusive;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DateTimeRange
     {
         $result = new DateTimeRange();

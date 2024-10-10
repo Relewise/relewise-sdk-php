@@ -15,6 +15,7 @@ class ContentAttributeSorting extends ContentSorting
         $result->mode = $mode;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentAttributeSorting
     {
         $result = ContentSorting::hydrateBase(new ContentAttributeSorting(), $arr);

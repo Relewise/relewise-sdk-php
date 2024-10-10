@@ -12,6 +12,7 @@ class TrackContentAdministrativeActionRequest extends TrackingRequest
         $result->administrativeAction = $administrativeAction;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackContentAdministrativeActionRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackContentAdministrativeActionRequest(), $arr);

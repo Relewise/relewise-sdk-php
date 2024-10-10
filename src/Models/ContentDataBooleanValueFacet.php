@@ -13,6 +13,7 @@ class ContentDataBooleanValueFacet extends boolContentDataValueFacet
         $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentDataBooleanValueFacet
     {
         $result = boolContentDataValueFacet::hydrateBase(new ContentDataBooleanValueFacet(), $arr);

@@ -7,6 +7,7 @@ use DateTime;
 /** This is actually an interface. */
 abstract class ITriggerResult
 {
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -43,6 +44,7 @@ abstract class ITriggerResult
             return VariantChangeTriggerResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         return $result;

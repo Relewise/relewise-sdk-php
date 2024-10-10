@@ -13,6 +13,7 @@ class OrCondition extends UserCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : OrCondition
     {
         $result = UserCondition::hydrateBase(new OrCondition(), $arr);

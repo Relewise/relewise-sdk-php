@@ -15,6 +15,7 @@ class Content
         $result->id = $id;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Content
     {
         $result = new Content();

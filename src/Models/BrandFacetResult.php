@@ -12,6 +12,7 @@ class BrandFacetResult extends stringBrandNameAndIdResultValueFacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BrandFacetResult
     {
         $result = stringBrandNameAndIdResultValueFacetResult::hydrateBase(new BrandFacetResult(), $arr);

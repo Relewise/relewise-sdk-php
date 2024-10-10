@@ -27,6 +27,7 @@ class ProductResult
         $result->rank = $rank;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductResult
     {
         $result = new ProductResult();

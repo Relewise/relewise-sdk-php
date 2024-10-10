@@ -13,6 +13,7 @@ class DataObjectBooleanValueFacet extends boolDataObjectValueFacet
         $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DataObjectBooleanValueFacet
     {
         $result = boolDataObjectValueFacet::hydrateBase(new DataObjectBooleanValueFacet(), $arr);

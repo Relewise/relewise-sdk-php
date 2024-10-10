@@ -10,6 +10,7 @@ class SelectedContentCategoryPropertiesSettings extends SelectedCategoryProperti
         $result = new SelectedContentCategoryPropertiesSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SelectedContentCategoryPropertiesSettings
     {
         $result = SelectedCategoryPropertiesSettings::hydrateBase(new SelectedContentCategoryPropertiesSettings(), $arr);

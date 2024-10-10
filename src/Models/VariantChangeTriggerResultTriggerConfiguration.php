@@ -8,6 +8,7 @@ use JsonSerializable;
 abstract class VariantChangeTriggerResultTriggerConfiguration extends TriggerConfiguration implements JsonSerializable
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -16,6 +17,7 @@ abstract class VariantChangeTriggerResultTriggerConfiguration extends TriggerCon
             return VariantChangeTriggerConfiguration::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = TriggerConfiguration::hydrateBase($result, $arr);

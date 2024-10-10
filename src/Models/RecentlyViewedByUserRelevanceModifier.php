@@ -16,6 +16,7 @@ abstract class RecentlyViewedByUserRelevanceModifier extends RelevanceModifier i
     public float $ifNotPreviouslyViewedByUserMultiplyWeightBy;
     /** The minutes since in which an entity will be considered relevant to the user if viewed previously by them. */
     public ?int $sinceMinutesAgo;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -36,6 +37,7 @@ abstract class RecentlyViewedByUserRelevanceModifier extends RelevanceModifier i
             return ProductRecentlyViewedByUserRelevanceModifier::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = RelevanceModifier::hydrateBase($result, $arr);

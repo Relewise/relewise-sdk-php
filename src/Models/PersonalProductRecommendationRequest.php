@@ -14,6 +14,7 @@ class PersonalProductRecommendationRequest extends ProductRecommendationRequest
         $result->user = $user;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PersonalProductRecommendationRequest
     {
         $result = ProductRecommendationRequest::hydrateBase(new PersonalProductRecommendationRequest(), $arr);

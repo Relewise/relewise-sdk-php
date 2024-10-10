@@ -15,6 +15,7 @@ class UserActivityTriggerConfiguration extends UserActivityTriggerResultTriggerC
         $result->description = $description;
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserActivityTriggerConfiguration
     {
         $result = UserActivityTriggerResultTriggerConfiguration::hydrateBase(new UserActivityTriggerConfiguration(), $arr);

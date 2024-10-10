@@ -6,10 +6,12 @@ abstract class TriggersResponse extends TimedResponse
 {
     public string $typeDefinition = "";
     public int $remainingResults;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = TimedResponse::hydrateBase($result, $arr);

@@ -11,6 +11,7 @@ class SaveDecompoundRulesResponse extends DecompoundRuleSaveSearchRulesResponse
         $result->rules = $rules;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveDecompoundRulesResponse
     {
         $result = DecompoundRuleSaveSearchRulesResponse::hydrateBase(new SaveDecompoundRulesResponse(), $arr);

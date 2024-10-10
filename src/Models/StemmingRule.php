@@ -21,6 +21,7 @@ class StemmingRule extends SearchRule implements JsonSerializable
         $result->stem = $stem;
         return $result;
     }
+    
     public static function hydrate(array $arr) : StemmingRule
     {
         $result = SearchRule::hydrateBase(new StemmingRule(), $arr);

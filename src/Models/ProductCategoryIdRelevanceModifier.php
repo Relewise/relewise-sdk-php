@@ -30,6 +30,7 @@ class ProductCategoryIdRelevanceModifier extends RelevanceModifier
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryIdRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new ProductCategoryIdRelevanceModifier(), $arr);

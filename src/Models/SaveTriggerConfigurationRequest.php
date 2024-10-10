@@ -14,6 +14,7 @@ class SaveTriggerConfigurationRequest extends LicensedRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveTriggerConfigurationRequest
     {
         $result = LicensedRequest::hydrateBase(new SaveTriggerConfigurationRequest(), $arr);

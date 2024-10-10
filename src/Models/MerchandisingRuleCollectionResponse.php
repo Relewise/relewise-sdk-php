@@ -11,6 +11,7 @@ class MerchandisingRuleCollectionResponse extends TimedResponse
         $result = new MerchandisingRuleCollectionResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : MerchandisingRuleCollectionResponse
     {
         $result = TimedResponse::hydrateBase(new MerchandisingRuleCollectionResponse(), $arr);

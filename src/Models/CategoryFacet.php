@@ -13,6 +13,7 @@ class CategoryFacet extends stringValueFacet
         $result->selected = $selectedIds;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryFacet
     {
         $result = stringValueFacet::hydrateBase(new CategoryFacet(), $arr);

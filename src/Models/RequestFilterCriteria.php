@@ -12,6 +12,7 @@ class RequestFilterCriteria
         $result = new RequestFilterCriteria();
         return $result;
     }
+    
     public static function hydrate(array $arr) : RequestFilterCriteria
     {
         $result = new RequestFilterCriteria();

@@ -18,6 +18,7 @@ class ProductChangeTriggerConfiguration extends ProductChangeTriggerResultProduc
         $result->resultSettings = $resultSettings;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductChangeTriggerConfiguration
     {
         $result = ProductChangeTriggerResultProductChangeTriggerResultSettingsProductPropertySelectorEntityChangeTriggerConfiguration::hydrateBase(new ProductChangeTriggerConfiguration(), $arr);

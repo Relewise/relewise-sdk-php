@@ -15,6 +15,7 @@ class SelectedContentPropertiesSettings
         $result = new SelectedContentPropertiesSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SelectedContentPropertiesSettings
     {
         $result = new SelectedContentPropertiesSettings();

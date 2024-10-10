@@ -16,6 +16,7 @@ class SearchTermBasedProductRecommendationRequest extends ProductRecommendationR
         $result->term = $term;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermBasedProductRecommendationRequest
     {
         $result = ProductRecommendationRequest::hydrateBase(new SearchTermBasedProductRecommendationRequest(), $arr);

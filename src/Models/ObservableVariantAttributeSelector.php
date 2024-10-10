@@ -12,6 +12,7 @@ class ObservableVariantAttributeSelector extends VariantPropertySelector
         $result->attribute = $attribute;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ObservableVariantAttributeSelector
     {
         $result = VariantPropertySelector::hydrateBase(new ObservableVariantAttributeSelector(), $arr);

@@ -14,6 +14,7 @@ class ContentCategoryQuery extends ContentCategoryIdFilterCategoryQuery
         $result->returnTotalNumberOfResults = false;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentCategoryQuery
     {
         $result = ContentCategoryIdFilterCategoryQuery::hydrateBase(new ContentCategoryQuery(), $arr);

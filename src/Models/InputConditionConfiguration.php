@@ -11,6 +11,7 @@ class InputConditionConfiguration
         $result = new InputConditionConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : InputConditionConfiguration
     {
         $result = new InputConditionConfiguration();

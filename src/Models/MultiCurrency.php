@@ -11,6 +11,7 @@ class MultiCurrency
         $result->values = $amounts;
         return $result;
     }
+    
     public static function hydrate(array $arr) : MultiCurrency
     {
         $result = new MultiCurrency();

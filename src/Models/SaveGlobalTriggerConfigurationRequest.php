@@ -14,6 +14,7 @@ class SaveGlobalTriggerConfigurationRequest extends LicensedRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveGlobalTriggerConfigurationRequest
     {
         $result = LicensedRequest::hydrateBase(new SaveGlobalTriggerConfigurationRequest(), $arr);

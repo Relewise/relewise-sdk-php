@@ -23,6 +23,7 @@ class Campaign extends CampaignEntityStateCampaignMetadataValuesRetailMediaEntit
         $result->promotions = $promotions;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Campaign
     {
         $result = CampaignEntityStateCampaignMetadataValuesRetailMediaEntity::hydrateBase(new Campaign(), $arr);

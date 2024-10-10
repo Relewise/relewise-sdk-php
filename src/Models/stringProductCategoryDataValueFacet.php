@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class stringProductCategoryDataValueFacet extends stringDataValueFacet
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -13,6 +14,7 @@ abstract class stringProductCategoryDataValueFacet extends stringDataValueFacet
             return ProductCategoryDataStringValueFacet::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = stringDataValueFacet::hydrateBase($result, $arr);

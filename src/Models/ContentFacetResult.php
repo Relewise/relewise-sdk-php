@@ -12,6 +12,7 @@ class ContentFacetResult extends ContentFacetResultExtractable
         $result = new ContentFacetResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentFacetResult
     {
         $result = new ContentFacetResult();

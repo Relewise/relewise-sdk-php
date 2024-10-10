@@ -13,6 +13,7 @@ class CompanyDataHasKeyFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CompanyDataHasKeyFilter
     {
         $result = Filter::hydrateBase(new CompanyDataHasKeyFilter(), $arr);

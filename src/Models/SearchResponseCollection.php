@@ -11,6 +11,7 @@ class SearchResponseCollection extends SearchResponse
         $result = new SearchResponseCollection();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchResponseCollection
     {
         $result = SearchResponse::hydrateBase(new SearchResponseCollection(), $arr);

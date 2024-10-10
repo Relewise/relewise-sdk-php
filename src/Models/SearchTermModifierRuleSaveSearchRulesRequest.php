@@ -7,6 +7,7 @@ abstract class SearchTermModifierRuleSaveSearchRulesRequest extends LicensedRequ
     public string $typeDefinition = "";
     public array $rules;
     public string $modifiedBy;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -15,6 +16,7 @@ abstract class SearchTermModifierRuleSaveSearchRulesRequest extends LicensedRequ
             return SaveSearchTermModifierRulesRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);

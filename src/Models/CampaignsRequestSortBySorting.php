@@ -13,6 +13,7 @@ class CampaignsRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignsRequestSortBySorting
     {
         $result = new CampaignsRequestSortBySorting();

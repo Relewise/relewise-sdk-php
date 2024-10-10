@@ -12,6 +12,7 @@ class TrackProductCategoryUpdateRequest extends TrackingRequest
         $result->productCategoryUpdate = $productCategoryUpdate;
         return $result;
     }
+    
     public static function hydrate(array $arr) : TrackProductCategoryUpdateRequest
     {
         $result = TrackingRequest::hydrateBase(new TrackProductCategoryUpdateRequest(), $arr);

@@ -17,6 +17,7 @@ class ProductDataSorting extends ProductSorting
         $result->mode = $mode;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDataSorting
     {
         $result = ProductSorting::hydrateBase(new ProductDataSorting(), $arr);

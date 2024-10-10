@@ -13,6 +13,7 @@ class LocationsRequestSortBySorting
         $result->sortOrder = $sortOrder;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LocationsRequestSortBySorting
     {
         $result = new LocationsRequestSortBySorting();

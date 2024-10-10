@@ -14,6 +14,7 @@ class HasClassificationCondition extends UserCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : HasClassificationCondition
     {
         $result = UserCondition::hydrateBase(new HasClassificationCondition(), $arr);

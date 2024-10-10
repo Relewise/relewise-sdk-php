@@ -14,6 +14,7 @@ class CampaignsRequest extends CampaignEntityStateCampaignMetadataValuesCampaign
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignsRequest
     {
         $result = CampaignEntityStateCampaignMetadataValuesCampaignsRequestSortByCampaignsRequestEntityFiltersEntitiesRequest::hydrateBase(new CampaignsRequest(), $arr);

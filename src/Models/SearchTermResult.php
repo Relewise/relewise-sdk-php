@@ -12,6 +12,7 @@ class SearchTermResult
         $result = new SearchTermResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermResult
     {
         $result = new SearchTermResult();

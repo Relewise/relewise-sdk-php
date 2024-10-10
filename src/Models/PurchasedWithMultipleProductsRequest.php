@@ -16,6 +16,7 @@ class PurchasedWithMultipleProductsRequest extends ProductRecommendationRequest
         $result->productAndVariantIds = $productAndVariantIds;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PurchasedWithMultipleProductsRequest
     {
         $result = ProductRecommendationRequest::hydrateBase(new PurchasedWithMultipleProductsRequest(), $arr);

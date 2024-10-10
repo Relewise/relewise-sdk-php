@@ -16,6 +16,7 @@ class ContentsViewedAfterViewingMultipleProductsRequest extends ContentRecommend
         $result->productAndVariantIds = $productAndVariantIds;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentsViewedAfterViewingMultipleProductsRequest
     {
         $result = ContentRecommendationRequest::hydrateBase(new ContentsViewedAfterViewingMultipleProductsRequest(), $arr);

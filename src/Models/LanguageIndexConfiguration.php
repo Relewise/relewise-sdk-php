@@ -10,6 +10,7 @@ class LanguageIndexConfiguration
         $result = new LanguageIndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : LanguageIndexConfiguration
     {
         $result = new LanguageIndexConfiguration();

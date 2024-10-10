@@ -14,6 +14,7 @@ class AdvertisersRequest extends AdvertiserEntityStateAdvertiserMetadataValuesAd
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : AdvertisersRequest
     {
         $result = AdvertiserEntityStateAdvertiserMetadataValuesAdvertisersRequestSortByAdvertisersRequestEntityFiltersEntitiesRequest::hydrateBase(new AdvertisersRequest(), $arr);

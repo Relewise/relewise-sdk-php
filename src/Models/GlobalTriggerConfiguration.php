@@ -19,6 +19,7 @@ class GlobalTriggerConfiguration implements JsonSerializable
         $result = new GlobalTriggerConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : GlobalTriggerConfiguration
     {
         $result = new GlobalTriggerConfiguration();

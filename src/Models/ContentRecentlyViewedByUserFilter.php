@@ -16,6 +16,7 @@ class ContentRecentlyViewedByUserFilter extends Filter implements JsonSerializab
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentRecentlyViewedByUserFilter
     {
         $result = Filter::hydrateBase(new ContentRecentlyViewedByUserFilter(), $arr);

@@ -7,6 +7,7 @@ abstract class ProductCategorySortingSorting
     public string $typeDefinition = "";
     public SortOrder $order;
     public ProductCategorySorting $thenBy;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -27,6 +28,7 @@ abstract class ProductCategorySortingSorting
             return ProductCategoryRelevanceSorting::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         if (array_key_exists("order", $arr))

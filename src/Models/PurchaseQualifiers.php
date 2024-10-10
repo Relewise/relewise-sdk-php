@@ -23,6 +23,7 @@ class PurchaseQualifiers
         $result->byUserParentCompany = $byUserParentCompany;
         return $result;
     }
+    
     public static function hydrate(array $arr) : PurchaseQualifiers
     {
         $result = new PurchaseQualifiers();

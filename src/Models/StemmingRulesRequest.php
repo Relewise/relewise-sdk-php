@@ -14,6 +14,7 @@ class StemmingRulesRequest extends StemmingRulesRequestSortBySearchRulesRequest
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : StemmingRulesRequest
     {
         $result = StemmingRulesRequestSortBySearchRulesRequest::hydrateBase(new StemmingRulesRequest(), $arr);

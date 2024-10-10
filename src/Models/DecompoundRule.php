@@ -23,6 +23,7 @@ class DecompoundRule extends SearchRule implements JsonSerializable
         $result->modifiers = $modifiers;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DecompoundRule
     {
         $result = SearchRule::hydrateBase(new DecompoundRule(), $arr);

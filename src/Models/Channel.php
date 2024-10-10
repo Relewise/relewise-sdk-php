@@ -12,6 +12,7 @@ class Channel
         $result->name = $name;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Channel
     {
         $result = new Channel();

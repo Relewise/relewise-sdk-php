@@ -11,6 +11,7 @@ class AdvertisersRequestEntityFilters extends AdvertiserEntityStateAdvertiserMet
         $result = new AdvertisersRequestEntityFilters();
         return $result;
     }
+    
     public static function hydrate(array $arr) : AdvertisersRequestEntityFilters
     {
         $result = AdvertiserEntityStateAdvertiserMetadataValuesRetailMediaEntityEntityFilters::hydrateBase(new AdvertisersRequestEntityFilters(), $arr);

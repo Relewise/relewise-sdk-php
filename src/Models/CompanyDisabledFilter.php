@@ -11,6 +11,7 @@ class CompanyDisabledFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CompanyDisabledFilter
     {
         $result = Filter::hydrateBase(new CompanyDisabledFilter(), $arr);

@@ -15,6 +15,7 @@ class OverriddenSelectedContentPropertiesSettings
         $result = new OverriddenSelectedContentPropertiesSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : OverriddenSelectedContentPropertiesSettings
     {
         $result = new OverriddenSelectedContentPropertiesSettings();

@@ -13,6 +13,7 @@ class ContentIndexConfiguration
         $result = new ContentIndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentIndexConfiguration
     {
         $result = new ContentIndexConfiguration();

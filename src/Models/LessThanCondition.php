@@ -13,6 +13,7 @@ class LessThanCondition extends ValueCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : LessThanCondition
     {
         $result = ValueCondition::hydrateBase(new LessThanCondition(), $arr);

@@ -14,6 +14,7 @@ class ContentDataIntegerValueFacet extends intContentDataValueFacet
         $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentDataIntegerValueFacet
     {
         $result = intContentDataValueFacet::hydrateBase(new ContentDataIntegerValueFacet(), $arr);

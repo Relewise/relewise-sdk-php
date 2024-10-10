@@ -17,6 +17,7 @@ class HasLineItemsInCartCondition extends UserCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : HasLineItemsInCartCondition
     {
         $result = UserCondition::hydrateBase(new HasLineItemsInCartCondition(), $arr);

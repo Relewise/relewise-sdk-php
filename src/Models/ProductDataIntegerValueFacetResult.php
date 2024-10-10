@@ -16,6 +16,7 @@ class ProductDataIntegerValueFacetResult extends intProductDataValueFacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDataIntegerValueFacetResult
     {
         $result = intProductDataValueFacetResult::hydrateBase(new ProductDataIntegerValueFacetResult(), $arr);

@@ -16,6 +16,7 @@ class OverriddenSelectedVariantPropertiesSettings
         $result = new OverriddenSelectedVariantPropertiesSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : OverriddenSelectedVariantPropertiesSettings
     {
         $result = new OverriddenSelectedVariantPropertiesSettings();

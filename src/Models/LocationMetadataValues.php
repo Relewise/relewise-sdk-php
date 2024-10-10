@@ -19,6 +19,7 @@ class LocationMetadataValues extends MetadataValues implements JsonSerializable
         $result = new LocationMetadataValues();
         return $result;
     }
+    
     public static function hydrate(array $arr) : LocationMetadataValues
     {
         $result = MetadataValues::hydrateBase(new LocationMetadataValues(), $arr);

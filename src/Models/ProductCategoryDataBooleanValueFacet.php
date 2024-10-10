@@ -13,6 +13,7 @@ class ProductCategoryDataBooleanValueFacet extends boolProductCategoryDataValueF
         $result->collectionFilterType = $collectionFilterType;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryDataBooleanValueFacet
     {
         $result = boolProductCategoryDataValueFacet::hydrateBase(new ProductCategoryDataBooleanValueFacet(), $arr);

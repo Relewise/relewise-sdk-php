@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class floatDataObjectValueFacetResult extends floatDataValueFacetResult
 {
     public string $typeDefinition = "";
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -13,6 +14,7 @@ abstract class floatDataObjectValueFacetResult extends floatDataValueFacetResult
             return DataObjectDoubleValueFacetResult::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = floatDataValueFacetResult::hydrateBase($result, $arr);

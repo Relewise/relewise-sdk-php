@@ -12,6 +12,7 @@ class ContentIdFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentIdFilter
     {
         $result = Filter::hydrateBase(new ContentIdFilter(), $arr);

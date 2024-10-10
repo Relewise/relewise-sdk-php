@@ -13,6 +13,7 @@ class VariantDataHasKeyFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantDataHasKeyFilter
     {
         $result = Filter::hydrateBase(new VariantDataHasKeyFilter(), $arr);

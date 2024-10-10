@@ -11,6 +11,7 @@ class SaveStemmingRulesRequest extends StemmingRuleSaveSearchRulesRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveStemmingRulesRequest
     {
         $result = StemmingRuleSaveSearchRulesRequest::hydrateBase(new SaveStemmingRulesRequest(), $arr);

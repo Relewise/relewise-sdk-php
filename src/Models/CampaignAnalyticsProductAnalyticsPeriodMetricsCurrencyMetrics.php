@@ -14,6 +14,7 @@ class CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics
         $result->revenue = $revenue;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics
     {
         $result = new CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics();

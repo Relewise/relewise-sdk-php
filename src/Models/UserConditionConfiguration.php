@@ -10,6 +10,7 @@ class UserConditionConfiguration
         $result = new UserConditionConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserConditionConfiguration
     {
         $result = new UserConditionConfiguration();

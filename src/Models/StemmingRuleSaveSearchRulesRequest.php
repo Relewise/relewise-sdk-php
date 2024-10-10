@@ -7,6 +7,7 @@ abstract class StemmingRuleSaveSearchRulesRequest extends LicensedRequest
     public string $typeDefinition = "";
     public array $rules;
     public string $modifiedBy;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -15,6 +16,7 @@ abstract class StemmingRuleSaveSearchRulesRequest extends LicensedRequest
             return SaveStemmingRulesRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);

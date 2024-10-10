@@ -16,6 +16,7 @@ class VariantSpecificationFilter extends Filter
         $result->filterOutIfKeyIsNotFound = $filterOutIfKeyIsNotFound;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantSpecificationFilter
     {
         $result = Filter::hydrateBase(new VariantSpecificationFilter(), $arr);

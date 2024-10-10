@@ -13,6 +13,7 @@ class VariantIndexConfiguration
         $result = new VariantIndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantIndexConfiguration
     {
         $result = new VariantIndexConfiguration();

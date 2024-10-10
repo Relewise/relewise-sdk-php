@@ -14,6 +14,7 @@ class SearchResultModifierRuleAddTermFilterAction extends SearchResultModifierRu
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchResultModifierRuleAddTermFilterAction
     {
         $result = SearchResultModifierRuleRuleAction::hydrateBase(new SearchResultModifierRuleAddTermFilterAction(), $arr);

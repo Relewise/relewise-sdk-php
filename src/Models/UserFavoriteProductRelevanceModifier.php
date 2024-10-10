@@ -30,6 +30,7 @@ class UserFavoriteProductRelevanceModifier extends RelevanceModifier
         $result->ifNotPurchasedBaseWeight = $ifNotPurchasedBaseWeight;
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserFavoriteProductRelevanceModifier
     {
         $result = RelevanceModifier::hydrateBase(new UserFavoriteProductRelevanceModifier(), $arr);

@@ -6,6 +6,7 @@ abstract class ProductAndVariantIdAbandonedSearch extends AbandonedSearch
 {
     public string $typeDefinition = "";
     public array $topResults;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -14,6 +15,7 @@ abstract class ProductAndVariantIdAbandonedSearch extends AbandonedSearch
             return AbandonedProductSearch::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = AbandonedSearch::hydrateBase($result, $arr);

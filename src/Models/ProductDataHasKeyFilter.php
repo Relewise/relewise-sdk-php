@@ -13,6 +13,7 @@ class ProductDataHasKeyFilter extends Filter
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductDataHasKeyFilter
     {
         $result = Filter::hydrateBase(new ProductDataHasKeyFilter(), $arr);

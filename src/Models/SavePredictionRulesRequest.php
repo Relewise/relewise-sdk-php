@@ -11,6 +11,7 @@ class SavePredictionRulesRequest extends PredictionRuleSaveSearchRulesRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SavePredictionRulesRequest
     {
         $result = PredictionRuleSaveSearchRulesRequest::hydrateBase(new SavePredictionRulesRequest(), $arr);

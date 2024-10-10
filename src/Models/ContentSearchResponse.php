@@ -13,6 +13,7 @@ class ContentSearchResponse extends PaginatedSearchResponse
         $result = new ContentSearchResponse();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentSearchResponse
     {
         $result = PaginatedSearchResponse::hydrateBase(new ContentSearchResponse(), $arr);

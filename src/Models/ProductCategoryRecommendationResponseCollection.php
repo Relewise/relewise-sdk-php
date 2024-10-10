@@ -12,6 +12,7 @@ class ProductCategoryRecommendationResponseCollection extends TimedResponse
         $result->responses = $responses;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryRecommendationResponseCollection
     {
         $result = TimedResponse::hydrateBase(new ProductCategoryRecommendationResponseCollection(), $arr);

@@ -15,6 +15,7 @@ class RequestContextFilter
         $result = new RequestContextFilter();
         return $result;
     }
+    
     public static function hydrate(array $arr) : RequestContextFilter
     {
         $result = new RequestContextFilter();

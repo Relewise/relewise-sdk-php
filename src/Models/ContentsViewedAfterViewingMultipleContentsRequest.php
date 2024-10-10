@@ -16,6 +16,7 @@ class ContentsViewedAfterViewingMultipleContentsRequest extends ContentRecommend
         $result->contentIds = $contentIds;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentsViewedAfterViewingMultipleContentsRequest
     {
         $result = ContentRecommendationRequest::hydrateBase(new ContentsViewedAfterViewingMultipleContentsRequest(), $arr);

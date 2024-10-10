@@ -10,6 +10,7 @@ class RetailMediaResult
         $result = new RetailMediaResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : RetailMediaResult
     {
         $result = new RetailMediaResult();

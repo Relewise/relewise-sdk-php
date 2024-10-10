@@ -14,6 +14,7 @@ class ObjectValueInRangeCondition extends ObjectValueCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ObjectValueInRangeCondition
     {
         $result = ObjectValueCondition::hydrateBase(new ObjectValueInRangeCondition(), $arr);

@@ -13,6 +13,7 @@ class Language
         $result->value = $name;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Language
     {
         $result = new Language();

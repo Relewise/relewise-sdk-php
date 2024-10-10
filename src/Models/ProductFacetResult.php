@@ -12,6 +12,7 @@ class ProductFacetResult extends ProductFacetResultExtractable
         $result = new ProductFacetResult();
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductFacetResult
     {
         $result = new ProductFacetResult();

@@ -19,6 +19,7 @@ class SearchTermPredictionRequest extends SearchRequest
         $result->take = $take;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SearchTermPredictionRequest
     {
         $result = SearchRequest::hydrateBase(new SearchTermPredictionRequest(), $arr);

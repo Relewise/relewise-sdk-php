@@ -14,6 +14,7 @@ class VariantSpecificationFacetResult extends stringValueFacetResult
         $result->available = $available;
         return $result;
     }
+    
     public static function hydrate(array $arr) : VariantSpecificationFacetResult
     {
         $result = stringValueFacetResult::hydrateBase(new VariantSpecificationFacetResult(), $arr);

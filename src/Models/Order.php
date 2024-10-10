@@ -21,6 +21,7 @@ class Order extends Trackable
         $result->cartName = $cartName;
         return $result;
     }
+    
     public static function hydrate(array $arr) : Order
     {
         $result = Trackable::hydrateBase(new Order(), $arr);

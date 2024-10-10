@@ -6,6 +6,7 @@ abstract class ProductRecommendationRequest extends RecommendationRequest
 {
     public string $typeDefinition = "";
     public ProductRecommendationRequestSettings $settings;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -62,6 +63,7 @@ abstract class ProductRecommendationRequest extends RecommendationRequest
             return SortVariantsRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = RecommendationRequest::hydrateBase($result, $arr);

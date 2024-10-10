@@ -9,6 +9,7 @@ abstract class CategoryAdministrativeAction extends Trackable
     public ?Language $language;
     public CategoryAdministrativeActionUpdateKind $kind;
     public ?Currency $currency;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -21,6 +22,7 @@ abstract class CategoryAdministrativeAction extends Trackable
             return ProductCategoryAdministrativeAction::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = Trackable::hydrateBase($result, $arr);

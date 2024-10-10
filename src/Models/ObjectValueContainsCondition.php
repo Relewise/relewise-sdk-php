@@ -16,6 +16,7 @@ class ObjectValueContainsCondition extends ObjectValueCondition
         $result->negated = $negated;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ObjectValueContainsCondition
     {
         $result = ObjectValueCondition::hydrateBase(new ObjectValueContainsCondition(), $arr);

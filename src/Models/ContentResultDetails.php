@@ -25,6 +25,7 @@ class ContentResultDetails implements JsonSerializable
         $result->contentId = $contentId;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ContentResultDetails
     {
         $result = new ContentResultDetails();

@@ -12,6 +12,7 @@ class CategoryIndexConfigurationEntry
         $result = new CategoryIndexConfigurationEntry();
         return $result;
     }
+    
     public static function hydrate(array $arr) : CategoryIndexConfigurationEntry
     {
         $result = new CategoryIndexConfigurationEntry();

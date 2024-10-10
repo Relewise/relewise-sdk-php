@@ -14,6 +14,7 @@ class SaveSearchIndexRequest extends LicensedRequest
         $result->modifiedBy = $modifiedBy;
         return $result;
     }
+    
     public static function hydrate(array $arr) : SaveSearchIndexRequest
     {
         $result = LicensedRequest::hydrateBase(new SaveSearchIndexRequest(), $arr);

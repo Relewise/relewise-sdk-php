@@ -17,6 +17,7 @@ class BoostAndBuryRule extends MerchandisingRule implements JsonSerializable
         $result->multiplierSelector = $multiplierSelector;
         return $result;
     }
+    
     public static function hydrate(array $arr) : BoostAndBuryRule
     {
         $result = MerchandisingRule::hydrateBase(new BoostAndBuryRule(), $arr);

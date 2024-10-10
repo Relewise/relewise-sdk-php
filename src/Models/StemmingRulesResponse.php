@@ -12,6 +12,7 @@ class StemmingRulesResponse extends StemmingRuleSearchRulesResponse
         $result->hits = $hits;
         return $result;
     }
+    
     public static function hydrate(array $arr) : StemmingRulesResponse
     {
         $result = StemmingRuleSearchRulesResponse::hydrateBase(new StemmingRulesResponse(), $arr);

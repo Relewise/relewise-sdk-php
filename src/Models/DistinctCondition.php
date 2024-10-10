@@ -12,6 +12,7 @@ class DistinctCondition extends ValueCondition
         $result->numberOfOccurrencesAllowedWithTheSameValue = $numberOfOccurrencesAllowedWithTheSameValue;
         return $result;
     }
+    
     public static function hydrate(array $arr) : DistinctCondition
     {
         $result = ValueCondition::hydrateBase(new DistinctCondition(), $arr);

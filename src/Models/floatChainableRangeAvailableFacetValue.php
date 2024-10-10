@@ -15,6 +15,7 @@ class floatChainableRangeAvailableFacetValue
         $result->hits = $hits;
         return $result;
     }
+    
     public static function hydrate(array $arr) : floatChainableRangeAvailableFacetValue
     {
         $result = new floatChainableRangeAvailableFacetValue();

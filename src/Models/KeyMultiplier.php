@@ -13,6 +13,7 @@ class KeyMultiplier
         $result->multiplier = $multiplier;
         return $result;
     }
+    
     public static function hydrate(array $arr) : KeyMultiplier
     {
         $result = new KeyMultiplier();

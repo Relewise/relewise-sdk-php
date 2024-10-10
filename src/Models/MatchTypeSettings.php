@@ -14,6 +14,7 @@ class MatchTypeSettings
         $result = new MatchTypeSettings();
         return $result;
     }
+    
     public static function hydrate(array $arr) : MatchTypeSettings
     {
         $result = new MatchTypeSettings();

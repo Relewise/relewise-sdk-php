@@ -15,6 +15,7 @@ class ProductCategoryRecommendationWeights
         $result->productPurchases = $productPurchases;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ProductCategoryRecommendationWeights
     {
         $result = new ProductCategoryRecommendationWeights();

@@ -16,6 +16,7 @@ class ViewedByUserInfo implements JsonSerializable
         $result->totalNumberOfTimesViewed = $totalNumberOfTimesViewed;
         return $result;
     }
+    
     public static function hydrate(array $arr) : ViewedByUserInfo
     {
         $result = new ViewedByUserInfo();

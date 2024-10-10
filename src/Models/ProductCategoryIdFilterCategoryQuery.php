@@ -14,6 +14,7 @@ abstract class ProductCategoryIdFilterCategoryQuery extends LicensedRequest
     public bool $includeDisabledCategories;
     public int $includeChildCategoriesToDepth;
     public int $includeParentCategoriesToDepth;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -22,6 +23,7 @@ abstract class ProductCategoryIdFilterCategoryQuery extends LicensedRequest
             return ProductCategoryQuery::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = LicensedRequest::hydrateBase($result, $arr);

@@ -6,6 +6,7 @@ abstract class BrandRecommendationRequest extends RecommendationRequest
 {
     public string $typeDefinition = "";
     public BrandRecommendationRequestSettings $settings;
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
@@ -18,6 +19,7 @@ abstract class BrandRecommendationRequest extends RecommendationRequest
             return PopularBrandsRecommendationRequest::hydrate($arr);
         }
     }
+    
     public static function hydrateBase(mixed $result, array $arr)
     {
         $result = RecommendationRequest::hydrateBase($result, $arr);

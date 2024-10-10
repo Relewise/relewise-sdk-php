@@ -13,6 +13,7 @@ class IndexConfiguration
         $result = new IndexConfiguration();
         return $result;
     }
+    
     public static function hydrate(array $arr) : IndexConfiguration
     {
         $result = new IndexConfiguration();

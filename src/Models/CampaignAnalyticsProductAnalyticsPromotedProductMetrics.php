@@ -14,6 +14,7 @@ class CampaignAnalyticsProductAnalyticsPromotedProductMetrics
         $result->promotions = $promotions;
         return $result;
     }
+    
     public static function hydrate(array $arr) : CampaignAnalyticsProductAnalyticsPromotedProductMetrics
     {
         $result = new CampaignAnalyticsProductAnalyticsPromotedProductMetrics();

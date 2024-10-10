@@ -12,6 +12,7 @@ class UserDetailsCollectionResponse extends TimedResponse
         $result->results = $results;
         return $result;
     }
+    
     public static function hydrate(array $arr) : UserDetailsCollectionResponse
     {
         $result = TimedResponse::hydrateBase(new UserDetailsCollectionResponse(), $arr);
