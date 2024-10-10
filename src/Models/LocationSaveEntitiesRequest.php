@@ -9,6 +9,7 @@ abstract class LocationSaveEntitiesRequest extends LicensedRequest
     public array $entities;
     public string $modifiedBy;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

@@ -8,6 +8,7 @@ class ContentCategorySearchRequest extends PaginatedSearchRequest
     
     public string $term;
     public ?ContentCategorySearchSettings $settings;
+    
     public static function create(?Language $language, ?Currency $currency, User $user, string $displayedAtLocation, string $term, int $skip, int $take) : ContentCategorySearchRequest
     {
         $result = new ContentCategorySearchRequest();

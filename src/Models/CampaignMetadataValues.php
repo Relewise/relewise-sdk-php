@@ -15,6 +15,7 @@ class CampaignMetadataValues extends MetadataValues implements JsonSerializable
     public ?string $approvedBy;
     public ?DateTime $archived;
     public ?string $archivedBy;
+    
     public static function create() : CampaignMetadataValues
     {
         $result = new CampaignMetadataValues();

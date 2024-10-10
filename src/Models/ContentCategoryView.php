@@ -8,6 +8,7 @@ class ContentCategoryView extends Trackable
     
     public ?User $user;
     public array $idPath;
+    
     public static function create(?User $user, string ... $idPath) : ContentCategoryView
     {
         $result = new ContentCategoryView();

@@ -19,6 +19,7 @@ class BrandResultDetails implements JsonSerializable
     public bool $disabled;
     public int $purchasedFromByDifferentNumberOfUsers;
     public PurchasedByUserInfo $purchasedByUser;
+    
     public static function create(string $brandId) : BrandResultDetails
     {
         $result = new BrandResultDetails();

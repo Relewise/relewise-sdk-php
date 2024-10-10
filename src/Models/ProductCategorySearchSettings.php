@@ -8,6 +8,7 @@ class ProductCategorySearchSettings extends SearchSettings
     
     public ?SelectedProductCategoryPropertiesSettings $selectedCategoryProperties;
     public RecommendationSettings $recommendations;
+    
     public static function create() : ProductCategorySearchSettings
     {
         $result = new ProductCategorySearchSettings();

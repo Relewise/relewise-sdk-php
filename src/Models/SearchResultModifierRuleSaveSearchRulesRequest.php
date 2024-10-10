@@ -9,6 +9,7 @@ abstract class SearchResultModifierRuleSaveSearchRulesRequest extends LicensedRe
     public array $rules;
     public string $modifiedBy;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

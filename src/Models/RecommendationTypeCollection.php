@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class RecommendationTypeCollection
 {
     public array $unionCodes;
+    
     public static function create() : RecommendationTypeCollection
     {
         $result = new RecommendationTypeCollection();

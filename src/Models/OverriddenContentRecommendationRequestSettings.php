@@ -10,6 +10,7 @@ class OverriddenContentRecommendationRequestSettings
     public OverriddenSelectedContentPropertiesSettings $selectedContentProperties;
     public ?bool $prioritizeDiversityBetweenRequests;
     public ?int $prioritizeResultsNotRecommendedWithinSeconds;
+    
     public static function create() : OverriddenContentRecommendationRequestSettings
     {
         $result = new OverriddenContentRecommendationRequestSettings();

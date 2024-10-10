@@ -12,6 +12,7 @@ class Order extends Trackable
     public string $orderNumber;
     public string $cartName;
     public ?array $data;
+    
     public static function create(User $user, Money $subtotal, string $orderNumber, array $lineItems, string $cartName = "default") : Order
     {
         $result = new Order();

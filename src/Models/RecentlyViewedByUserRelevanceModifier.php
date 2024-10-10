@@ -18,6 +18,7 @@ abstract class RecentlyViewedByUserRelevanceModifier extends RelevanceModifier i
     /** The minutes since in which an entity will be considered relevant to the user if viewed previously by them. */
     public ?int $sinceMinutesAgo;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

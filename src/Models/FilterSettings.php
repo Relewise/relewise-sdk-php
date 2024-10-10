@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class FilterSettings
 {
     public ?FilterScopes $scopes;
+    
     public static function create() : FilterSettings
     {
         $result = new FilterSettings();

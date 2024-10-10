@@ -8,6 +8,7 @@ class ObjectValueContainsCondition extends ObjectValueCondition
     
     public DataValue $value;
     public ObjectValueContainsConditionCompareMode $mode;
+    
     public static function create(string $key, DataValue $value, ObjectValueContainsConditionCompareMode $mode = ObjectValueContainsConditionCompareMode::All, bool $negated = false) : ObjectValueContainsCondition
     {
         $result = new ObjectValueContainsCondition();

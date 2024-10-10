@@ -8,6 +8,7 @@ class ContentDataSorting extends ContentSorting
     
     public string $key;
     public SortMode $mode;
+    
     public static function create(string $key, SortOrder $order, SortMode $mode = SortMode::Auto) : ContentDataSorting
     {
         $result = new ContentDataSorting();

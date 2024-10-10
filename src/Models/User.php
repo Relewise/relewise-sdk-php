@@ -21,6 +21,7 @@ class User
     public ?Channel $channel;
     /** Company the user is associated with in the current context (Note: Companies themselves can be associated with a parent company, if the current user is acting on the behalf of a hierarchical chain of up to 2 companies) */
     public ?Company $company;
+    
     /**
      * User DTO
      * @param ?string $authenticatedId A persistent Id for current user, e.g. a database-id

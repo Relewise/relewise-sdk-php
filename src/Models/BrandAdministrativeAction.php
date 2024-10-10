@@ -10,6 +10,7 @@ class BrandAdministrativeAction extends Trackable
     public ?Language $language;
     public BrandAdministrativeActionUpdateKind $kind;
     public ?Currency $currency;
+    
     public static function create(?Language $language, ?Currency $currency, FilterCollection $filters, BrandAdministrativeActionUpdateKind $kind) : BrandAdministrativeAction
     {
         $result = new BrandAdministrativeAction();

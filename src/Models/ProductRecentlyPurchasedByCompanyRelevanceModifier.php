@@ -20,6 +20,7 @@ class ProductRecentlyPurchasedByCompanyRelevanceModifier extends RelevanceModifi
     public float $elseIfNotPurchasedByCompanyMultiplyWeightBy;
     /** The minutes since in which a product will be considered relevant to the user if bought previously by them. */
     public ?int $sinceMinutesAgo;
+    
     public static function create(array $companyIds, float $ifPurchasedByCompanyMultiplyWeightBy = 1, float $elseIfNotPurchasedByCompanyMultiplyWeightBy = 1) : ProductRecentlyPurchasedByCompanyRelevanceModifier
     {
         $result = new ProductRecentlyPurchasedByCompanyRelevanceModifier();

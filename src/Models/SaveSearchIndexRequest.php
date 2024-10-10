@@ -8,6 +8,7 @@ class SaveSearchIndexRequest extends LicensedRequest
     
     public SearchIndex $index;
     public string $modifiedBy;
+    
     public static function create(SearchIndex $index, string $modifiedBy) : SaveSearchIndexRequest
     {
         $result = new SaveSearchIndexRequest();

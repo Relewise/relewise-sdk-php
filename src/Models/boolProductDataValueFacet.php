@@ -8,6 +8,7 @@ abstract class boolProductDataValueFacet extends boolDataValueFacet
     
     public DataSelectionStrategy $dataSelectionStrategy;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

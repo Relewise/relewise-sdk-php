@@ -6,6 +6,7 @@ class CampaignsRequestSortBySorting
 {
     public CampaignsRequestSortBy $sortBy;
     public SortOrder $sortOrder;
+    
     public static function create(CampaignsRequestSortBy $sortBy, SortOrder $sortOrder) : CampaignsRequestSortBySorting
     {
         $result = new CampaignsRequestSortBySorting();

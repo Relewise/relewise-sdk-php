@@ -8,6 +8,7 @@ class LocationsRequestEntityFilters extends LocationEntityStateLocationMetadataV
     
     public ?array $ids;
     public ?array $keys;
+    
     public static function create() : LocationsRequestEntityFilters
     {
         $result = new LocationsRequestEntityFilters();

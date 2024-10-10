@@ -16,6 +16,7 @@ abstract class ProductCategoryIdFilterCategoryQuery extends LicensedRequest
     public int $includeChildCategoriesToDepth;
     public int $includeParentCategoriesToDepth;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

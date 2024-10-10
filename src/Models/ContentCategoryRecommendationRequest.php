@@ -8,6 +8,7 @@ abstract class ContentCategoryRecommendationRequest extends RecommendationReques
     
     public ContentCategoryRecommendationRequestSettings $settings;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

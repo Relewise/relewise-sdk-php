@@ -10,6 +10,7 @@ abstract class AdvertiserEntityStateAdvertiserMetadataValuesRetailMediaEntity ex
     /** Managed server side only, manually setting this will have no effect */
     public AdvertiserMetadataValues $metadata;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

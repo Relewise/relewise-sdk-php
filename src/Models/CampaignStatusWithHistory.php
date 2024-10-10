@@ -6,6 +6,7 @@ class CampaignStatusWithHistory
 {
     public CampaignStatusWithHistoryStatusName $current;
     public array $history;
+    
     public static function create(CampaignStatusWithHistoryStatusName $current, CampaignStatusWithHistoryChange ... $history) : CampaignStatusWithHistory
     {
         $result = new CampaignStatusWithHistory();

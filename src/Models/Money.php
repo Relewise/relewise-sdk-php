@@ -6,6 +6,7 @@ class Money
 {
     public float $amount;
     public Currency $currency;
+    
     public static function create(Currency $currency, float $amount) : Money
     {
         $result = new Money();

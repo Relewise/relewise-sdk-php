@@ -11,6 +11,7 @@ class ProductAdministrativeAction extends Trackable
     public ProductAdministrativeActionUpdateKind $productUpdateKind;
     public ProductAdministrativeActionUpdateKind $variantUpdateKind;
     public ?Currency $currency;
+    
     public static function create(?Language $language, ?Currency $currency, FilterCollection $filters, ProductAdministrativeActionUpdateKind $productUpdateKind, ProductAdministrativeActionUpdateKind $variantUpdateKind) : ProductAdministrativeAction
     {
         $result = new ProductAdministrativeAction();

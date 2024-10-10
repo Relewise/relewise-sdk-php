@@ -7,6 +7,7 @@ class VariantSpecificationFacet extends stringValueFacet
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.VariantSpecificationFacet, Relewise.Client";
     
     public string $key;
+    
     public static function create(string $key, string ... $selected) : VariantSpecificationFacet
     {
         $result = new VariantSpecificationFacet();

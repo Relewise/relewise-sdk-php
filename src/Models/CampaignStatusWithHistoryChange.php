@@ -11,6 +11,7 @@ class CampaignStatusWithHistoryChange implements JsonSerializable
     
     public DateTime $utcTime;
     public CampaignStatusWithHistoryStatusName $status;
+    
     public static function create(DateTime $utcTime, CampaignStatusWithHistoryStatusName $status) : CampaignStatusWithHistoryChange
     {
         $result = new CampaignStatusWithHistoryChange();

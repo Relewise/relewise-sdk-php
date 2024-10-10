@@ -9,6 +9,7 @@ class CategoryHierarchyFacetResultCategoryNode
     public ?string $parentId;
     public ?array $children;
     public bool $selected;
+    
     public static function create(CategoryResult $category, int $hits, ?string $parentId, ?array $children, bool $selected) : CategoryHierarchyFacetResultCategoryNode
     {
         $result = new CategoryHierarchyFacetResultCategoryNode();

@@ -20,6 +20,7 @@ abstract class ProductChangeTriggerResultProductChangeTriggerResultSettingsProdu
     /** Settings for defining which properties should be included in the result of the trigger. */
     public ?ProductChangeTriggerResultSettings $resultSettings;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

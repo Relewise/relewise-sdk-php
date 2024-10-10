@@ -8,6 +8,7 @@ class SignificantDataValue
     public SignificantDataValueSignificantDataValueComparer $comparer;
     public float $significance;
     public ?TrimStringTransformer $transformer;
+    
     public static function create(string $key, SignificantDataValueSignificantDataValueComparer $comparer, float $significance = 1, ?TrimStringTransformer $transformer = Null) : SignificantDataValue
     {
         $result = new SignificantDataValue();

@@ -15,6 +15,7 @@ class ProductListPriceRelevanceModifier extends RelevanceModifier
     public float $multiplyWeightBy;
     /** Determines whether this RelevanceModifier should apply to all the Products that aren't contained within the specific Range instead. */
     public bool $negated;
+    
     /**
      * Creates a RelevanceModifier that can change the relevance of a Product depending on the list price falling within a specific Range.
      * @param ?floatRange $range The range of list prices that this RelevanceModifier will distinguish on.

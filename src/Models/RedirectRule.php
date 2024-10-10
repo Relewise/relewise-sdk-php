@@ -12,6 +12,7 @@ class RedirectRule extends SearchRule implements JsonSerializable
     public SearchTermCondition $condition;
     public ?string $destination;
     public ?array $data;
+    
     public static function create(string $id, ?ApplicableIndexes $indexes, ?ApplicableLanguages $languages, bool $isApproved, SearchTermCondition $condition, ?string $destination, ?array $data = Null) : RedirectRule
     {
         $result = new RedirectRule();

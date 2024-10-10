@@ -12,6 +12,7 @@ class Campaign extends CampaignEntityStateCampaignMetadataValuesRetailMediaEntit
     public string $advertiserId;
     public Budget $budget;
     public CampaignStatusWithHistory $status;
+    
     public static function create(?string $id, CampaignEntityState $state, string $name, string $advertiserId, Budget $budget, ?ISchedule $schedule, PromotionCollection $promotions) : Campaign
     {
         $result = new Campaign();

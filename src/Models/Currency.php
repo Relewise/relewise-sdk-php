@@ -6,6 +6,7 @@ class Currency
 {
     public string $value;
     const UNDEFINED = Null;
+    
     public static function create(string $name) : Currency
     {
         $result = new Currency();

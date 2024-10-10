@@ -6,6 +6,7 @@ class FacetSettings
 {
     public bool $alwaysIncludeSelectedInAvailable;
     public bool $includeZeroHitsInAvailable;
+    
     public static function create() : FacetSettings
     {
         $result = new FacetSettings();

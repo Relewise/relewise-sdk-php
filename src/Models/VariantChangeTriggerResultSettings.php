@@ -6,6 +6,7 @@ class VariantChangeTriggerResultSettings
 {
     public SelectedProductDetailsPropertiesSettings $selectedProductProperties;
     public SelectedVariantDetailsPropertiesSettings $selectedVariantProperties;
+    
     public static function create() : VariantChangeTriggerResultSettings
     {
         $result = new VariantChangeTriggerResultSettings();

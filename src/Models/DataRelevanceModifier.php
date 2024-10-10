@@ -20,6 +20,7 @@ abstract class DataRelevanceModifier extends RelevanceModifier
     /** The selector for the multiplier which the entities parsing the Conditions will be have their rank multiplied by. It can either be a FixedDoubleValueSelector taking a fixed value or a DataDoubleSelector that can take the multiplier from a data key containing a double. */
     public ValueSelector $multiplierSelector;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

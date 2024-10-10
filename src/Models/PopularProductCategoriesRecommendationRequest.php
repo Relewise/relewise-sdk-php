@@ -8,6 +8,7 @@ class PopularProductCategoriesRecommendationRequest extends ProductCategoryRecom
     
     public int $sinceMinutesAgo;
     public ProductCategoryRecommendationWeights $weights;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ProductCategoryRecommendationWeights $weights) : PopularProductCategoriesRecommendationRequest
     {
         $result = new PopularProductCategoriesRecommendationRequest();

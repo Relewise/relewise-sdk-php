@@ -9,6 +9,7 @@ abstract class PaginatedSearchRequest extends SearchRequest
     public int $skip;
     public int $take;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

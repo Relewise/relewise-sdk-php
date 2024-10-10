@@ -11,6 +11,7 @@ abstract class RedirectRulesRequestSortBySearchRulesRequest extends LicensedRequ
     public int $skip;
     public int $take;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

@@ -8,6 +8,7 @@ class ContentAttributeSorting extends ContentSorting
     
     public ContentAttributeSortingSortableAttribute $attribute;
     public SortMode $mode;
+    
     public static function create(ContentAttributeSortingSortableAttribute $attribute, SortOrder $order, SortMode $mode = SortMode::Auto) : ContentAttributeSorting
     {
         $result = new ContentAttributeSorting();

@@ -8,6 +8,7 @@ class DeleteSearchIndexRequest extends LicensedRequest
     
     public string $id;
     public string $deletedBy;
+    
     public static function create(string $id, string $deletedBy) : DeleteSearchIndexRequest
     {
         $result = new DeleteSearchIndexRequest();

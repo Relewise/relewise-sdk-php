@@ -8,6 +8,7 @@ class CategoryHierarchyFacetResult extends FacetResult
     
     public CategorySelectionStrategy $categorySelectionStrategy;
     public array $nodes;
+    
     public static function create(CategorySelectionStrategy $categorySelectionStrategy, CategoryHierarchyFacetResultCategoryNode ... $nodes) : CategoryHierarchyFacetResult
     {
         $result = new CategoryHierarchyFacetResult();

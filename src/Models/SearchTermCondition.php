@@ -9,6 +9,7 @@ class SearchTermCondition
     public ?array $andConditions;
     public ?array $orConditions;
     public ?int $minimumLength;
+    
     public static function create() : SearchTermCondition
     {
         $result = new SearchTermCondition();

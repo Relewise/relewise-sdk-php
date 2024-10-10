@@ -8,6 +8,7 @@ class CampaignsRequestEntityFilters extends CampaignEntityStateCampaignMetadataV
     
     public ?array $ids;
     public ?array $advertiserIds;
+    
     public static function create() : CampaignsRequestEntityFilters
     {
         $result = new CampaignsRequestEntityFilters();

@@ -7,6 +7,7 @@ class ProductInterestTriggerResultProductAndVariant
     public ProductResultDetails $product;
     public VariantResultDetails $variant;
     public int $views;
+    
     public static function create() : ProductInterestTriggerResultProductAndVariant
     {
         $result = new ProductInterestTriggerResultProductAndVariant();

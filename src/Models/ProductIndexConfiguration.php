@@ -10,6 +10,7 @@ class ProductIndexConfiguration
     public BrandIndexConfiguration $brand;
     public DataIndexConfiguration $data;
     public VariantIndexConfiguration $variants;
+    
     public static function create() : ProductIndexConfiguration
     {
         $result = new ProductIndexConfiguration();

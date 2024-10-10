@@ -9,6 +9,7 @@ class ProductPerformanceResponse extends TimedResponse
     public array $results;
     public int $totalNumberOfResults;
     public int $remainingNumberOfResults;
+    
     public static function create() : ProductPerformanceResponse
     {
         $result = new ProductPerformanceResponse();

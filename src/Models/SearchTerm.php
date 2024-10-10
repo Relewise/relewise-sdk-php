@@ -9,6 +9,7 @@ class SearchTerm extends Trackable
     public Language $language;
     public User $user;
     public string $term;
+    
     public static function create(Language $language, User $user, string $term) : SearchTerm
     {
         $result = new SearchTerm();

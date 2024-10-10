@@ -14,6 +14,7 @@ class OverriddenProductRecommendationRequestSettings
     public ?bool $allowProductsCurrentlyInCart;
     public OverriddenSelectedBrandPropertiesSettings $selectedBrandProperties;
     public ?int $prioritizeResultsNotRecommendedWithinSeconds;
+    
     public static function create() : OverriddenProductRecommendationRequestSettings
     {
         $result = new OverriddenProductRecommendationRequestSettings();

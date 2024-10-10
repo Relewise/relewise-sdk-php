@@ -9,6 +9,7 @@ abstract class stringDataValueFacet extends stringValueFacet
     public string $key;
     public ?CollectionFilterType $collectionFilterType;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

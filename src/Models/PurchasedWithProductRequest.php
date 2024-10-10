@@ -7,6 +7,7 @@ class PurchasedWithProductRequest extends ProductRecommendationRequest
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PurchasedWithProductRequest, Relewise.Client";
     
     public ProductAndVariantId $productAndVariantId;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ProductAndVariantId $productAndVariantId) : PurchasedWithProductRequest
     {
         $result = new PurchasedWithProductRequest();

@@ -11,6 +11,7 @@ class ProductRecentlyPurchasedByUserFilter extends Filter implements JsonSeriali
     
     public ?DateTime $sinceUtc;
     public ?int $sinceMinutesAgo;
+    
     public static function create(DateTime $sinceUtc, bool $negated = false) : ProductRecentlyPurchasedByUserFilter
     {
         $result = new ProductRecentlyPurchasedByUserFilter();

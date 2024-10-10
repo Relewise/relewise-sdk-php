@@ -7,6 +7,7 @@ class MerchandisingRuleCollectionResponse extends TimedResponse
     public string $typeDefinition = "Relewise.Client.Responses.Merchandising.MerchandisingRuleCollectionResponse, Relewise.Client";
     
     public array $rules;
+    
     public static function create() : MerchandisingRuleCollectionResponse
     {
         $result = new MerchandisingRuleCollectionResponse();

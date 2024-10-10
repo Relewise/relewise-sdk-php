@@ -9,6 +9,7 @@ abstract class LocationEntityStateLocationMetadataValuesRetailMediaEntityEntityF
     public ?string $term;
     public ?array $states;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

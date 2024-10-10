@@ -7,6 +7,7 @@ class CPMBudget extends Budget
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.CPMBudget, Relewise.Client";
     
     public float $costPerMille;
+    
     public static function create(float $costPerMille, ?float $maxTotalCost) : CPMBudget
     {
         $result = new CPMBudget();

@@ -8,6 +8,7 @@ class PersonalContentCategoryRecommendationRequest extends ContentCategoryRecomm
     
     public int $sinceMinutesAgo;
     public ContentCategoryRecommendationWeights $weights;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ContentCategoryRecommendationWeights $weights) : PersonalContentCategoryRecommendationRequest
     {
         $result = new PersonalContentCategoryRecommendationRequest();

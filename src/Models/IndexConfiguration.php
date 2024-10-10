@@ -8,6 +8,7 @@ class IndexConfiguration
     public ProductIndexConfiguration $product;
     public ContentIndexConfiguration $content;
     public ProductCategoryIndexConfiguration $productCategory;
+    
     public static function create() : IndexConfiguration
     {
         $result = new IndexConfiguration();

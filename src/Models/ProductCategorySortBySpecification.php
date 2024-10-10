@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class ProductCategorySortBySpecification
 {
     public ProductCategorySorting $value;
+    
     public static function create() : ProductCategorySortBySpecification
     {
         $result = new ProductCategorySortBySpecification();

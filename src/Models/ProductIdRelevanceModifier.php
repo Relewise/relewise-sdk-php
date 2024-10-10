@@ -13,6 +13,7 @@ class ProductIdRelevanceModifier extends RelevanceModifier
     public float $multiplyWeightBy;
     /** Determines whether this RelevanceModifier should apply to all the Products that don't match one of the specified ProductIds instead. */
     public bool $negated;
+    
     /**
      * Creates a RelevanceModifier that can change the relevance of a Product depending on whether it is contained in a set of ProductIds.
      * @param string[] $productIds The Ids of the Products that this RelevanceModifier will distinguish on.

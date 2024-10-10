@@ -8,6 +8,7 @@ class UserUpdate extends Trackable
     
     public User $user;
     public UserUpdateUpdateKind $kind;
+    
     public static function create(User $user, UserUpdateUpdateKind $updateKind = UserUpdateUpdateKind::UpdateAndAppend) : UserUpdate
     {
         $result = new UserUpdate();

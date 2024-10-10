@@ -16,6 +16,7 @@ class SearchIndex implements JsonSerializable
     public DateTime $modified;
     public string $modifiedBy;
     public IndexConfiguration $configuration;
+    
     public static function create(string $id, string $description, bool $isDefault, bool $enabled = true) : SearchIndex
     {
         $result = new SearchIndex();

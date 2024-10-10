@@ -20,6 +20,7 @@ class ProductRecentlyViewedByCompanyRelevanceModifier extends RelevanceModifier 
     public float $elseIfNotViewedByCompanyMultiplyWeightBy;
     /** The minutes since in which a product will be considered relevant to the user if viewed previously by them. */
     public ?int $sinceMinutesAgo;
+    
     public static function create(array $companyIds, float $ifViewedByCompanyMultiplyWeightBy = 1, float $elseIfNotViewedByCompanyMultiplyWeightBy = 1) : ProductRecentlyViewedByCompanyRelevanceModifier
     {
         $result = new ProductRecentlyViewedByCompanyRelevanceModifier();

@@ -10,6 +10,7 @@ class CampaignAnalyticsProductAnalytics
     public int $promotions;
     /** How many times each individual product was promoted. */
     public array $promotedProducts;
+    
     public static function create(array $timeSeries, int $promotions, CampaignAnalyticsProductAnalyticsPromotedProductMetrics ... $promotedProducts) : CampaignAnalyticsProductAnalytics
     {
         $result = new CampaignAnalyticsProductAnalytics();

@@ -8,6 +8,7 @@ abstract class CampaignSaveEntitiesResponse extends TimedResponse
     
     public array $entities;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

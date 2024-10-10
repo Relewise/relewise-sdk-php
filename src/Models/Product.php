@@ -12,6 +12,7 @@ class Product
     public ?MultiCurrency $listPrice;
     public ?MultiCurrency $salesPrice;
     public ?Brand $brand;
+    
     public static function create(string $id) : Product
     {
         $result = new Product();

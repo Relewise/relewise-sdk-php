@@ -9,6 +9,7 @@ class ScheduledPeriod implements JsonSerializable
 {
     public ?DateTime $fromUtc;
     public ?DateTime $toUtc;
+    
     public static function create(?DateTime $fromUtc, ?DateTime $toUtc) : ScheduledPeriod
     {
         $result = new ScheduledPeriod();

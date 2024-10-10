@@ -7,6 +7,7 @@ class Language
     /** Trimmed language name in lower-invariant. */
     public string $value;
     const UNDEFINED = Null;
+    
     public static function create(string $name) : Language
     {
         $result = new Language();

@@ -9,6 +9,7 @@ abstract class Promotion
     public string $name;
     public ?PromotionLocationCollection $locations;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

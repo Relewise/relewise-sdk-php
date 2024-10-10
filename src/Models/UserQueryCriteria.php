@@ -10,6 +10,7 @@ class UserQueryCriteria
     public ?Language $language;
     public ?Currency $currency;
     public ?array $identifiers;
+    
     public static function create() : UserQueryCriteria
     {
         $result = new UserQueryCriteria();

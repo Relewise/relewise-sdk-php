@@ -19,6 +19,7 @@ class ContentResultDetails implements JsonSerializable
     public int $viewedByDifferentNumberOfUsers;
     public bool $disabled;
     public bool $deleted;
+    
     public static function create(string $contentId) : ContentResultDetails
     {
         $result = new ContentResultDetails();

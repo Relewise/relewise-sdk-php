@@ -11,6 +11,7 @@ class ProductVariant
     public ?array $data;
     public ?MultiCurrency $listPrice;
     public ?MultiCurrency $salesPrice;
+    
     public static function create(string $variantId) : ProductVariant
     {
         $result = new ProductVariant();

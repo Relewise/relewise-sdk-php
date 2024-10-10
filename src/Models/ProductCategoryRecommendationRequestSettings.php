@@ -10,6 +10,7 @@ class ProductCategoryRecommendationRequestSettings
     public bool $prioritizeDiversityBetweenRequests;
     public SelectedProductCategoryPropertiesSettings $selectedProductCategoryProperties;
     public ?int $prioritizeResultsNotRecommendedWithinSeconds;
+    
     public static function create() : ProductCategoryRecommendationRequestSettings
     {
         $result = new ProductCategoryRecommendationRequestSettings();

@@ -15,6 +15,7 @@ class AdvertiserMetadataValues extends MetadataValues implements JsonSerializabl
     public ?string $activatedBy;
     public ?DateTime $archived;
     public ?string $archivedBy;
+    
     public static function create() : AdvertiserMetadataValues
     {
         $result = new AdvertiserMetadataValues();

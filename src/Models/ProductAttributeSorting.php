@@ -8,6 +8,7 @@ class ProductAttributeSorting extends ProductSorting
     
     public ProductAttributeSortingSortableAttribute $attribute;
     public SortMode $mode;
+    
     public static function create(ProductAttributeSortingSortableAttribute $attribute, SortOrder $order, SortMode $mode = SortMode::Auto) : ProductAttributeSorting
     {
         $result = new ProductAttributeSorting();

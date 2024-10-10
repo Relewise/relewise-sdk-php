@@ -9,6 +9,7 @@ class LineItem
     public int $quantity;
     public float $lineTotal;
     public ?array $data;
+    
     public static function create(Product $product, ?ProductVariant $variant, int $quantity, float $lineTotal) : LineItem
     {
         $result = new LineItem();

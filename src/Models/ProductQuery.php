@@ -23,6 +23,7 @@ class ProductQuery extends LicensedRequest
     public ?int $pageSize;
     /** Settings for which properties should be included for the entities in the response. If settings are not set they default to include everything. */
     public ?ProductQuerySelectedPropertiesSettings $resultSettings;
+    
     public static function create(?Language $language = Null, ?Currency $currency = Null) : ProductQuery
     {
         $result = new ProductQuery();

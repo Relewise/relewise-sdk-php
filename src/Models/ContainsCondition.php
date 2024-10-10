@@ -9,6 +9,7 @@ class ContainsCondition extends ValueCondition
     public ?DataValue $value;
     public ContainsConditionCollectionArgumentEvaluationMode $valueCollectionEvaluationMode;
     public ?DataObjectFilter $objectFilter;
+    
     public static function create(bool $negated = false) : ContainsCondition
     {
         $result = new ContainsCondition();

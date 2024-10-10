@@ -8,6 +8,7 @@ abstract class RedirectRuleSaveSearchRulesResponse extends TimedResponse
     
     public array $rules;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

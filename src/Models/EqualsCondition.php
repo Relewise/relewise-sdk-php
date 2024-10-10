@@ -7,6 +7,7 @@ class EqualsCondition extends ValueCondition
     public string $typeDefinition = "Relewise.Client.Requests.Conditions.EqualsCondition, Relewise.Client";
     
     public DataValue $value;
+    
     public static function create(DataValue $value, bool $negated = false) : EqualsCondition
     {
         $result = new EqualsCondition();

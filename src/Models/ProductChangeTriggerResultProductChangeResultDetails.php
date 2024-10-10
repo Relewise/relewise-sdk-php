@@ -11,6 +11,7 @@ class ProductChangeTriggerResultProductChangeResultDetails implements JsonSerial
     public DataValue $oldValue;
     public DataValue $newValue;
     public ProductResultDetails $product;
+    
     public static function create(DateTime $changeTimeUtc, DataValue $oldValue, DataValue $newValue, ProductResultDetails $product) : ProductChangeTriggerResultProductChangeResultDetails
     {
         $result = new ProductChangeTriggerResultProductChangeResultDetails();

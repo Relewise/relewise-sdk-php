@@ -15,6 +15,7 @@ class Location extends LocationEntityStateLocationMetadataValuesRetailMediaEntit
     public ?LocationPlacementCollection $placements;
     /** Defines what kinds of promotions are supported by this location */
     public ?PromotionSpecificationCollection $supportedPromotions;
+    
     public static function create(?string $id, LocationEntityState $state, string $name) : Location
     {
         $result = new Location();

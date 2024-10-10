@@ -11,6 +11,7 @@ abstract class PredictionRulesRequestSortBySearchRulesRequest extends LicensedRe
     public int $skip;
     public int $take;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

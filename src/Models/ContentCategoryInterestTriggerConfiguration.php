@@ -12,6 +12,7 @@ class ContentCategoryInterestTriggerConfiguration extends ContentCategoryInteres
     public ?intRange $categoryViews;
     public ?intRange $contentViews;
     public FilterCollection $filters;
+    
     public static function create(string $name, string $description, ?intRange $categoryViews, ?intRange $contentViews, FilterCollection $filters = Null) : ContentCategoryInterestTriggerConfiguration
     {
         $result = new ContentCategoryInterestTriggerConfiguration();

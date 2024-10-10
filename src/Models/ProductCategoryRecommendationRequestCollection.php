@@ -8,6 +8,7 @@ class ProductCategoryRecommendationRequestCollection extends LicensedRequest
     
     public array $requests;
     public bool $requireDistinctCategoriesAcrossResults;
+    
     public static function create(bool $requireDistinctCategoriesesAcrossResults, ProductCategoryRecommendationRequest ... $requests) : ProductCategoryRecommendationRequestCollection
     {
         $result = new ProductCategoryRecommendationRequestCollection();

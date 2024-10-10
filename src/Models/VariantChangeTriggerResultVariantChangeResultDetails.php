@@ -12,6 +12,7 @@ class VariantChangeTriggerResultVariantChangeResultDetails implements JsonSerial
     public DataValue $newValue;
     public ProductResultDetails $product;
     public VariantResultDetails $variant;
+    
     public static function create(DateTime $changeTime, DataValue $oldValue, DataValue $newValue, ProductResultDetails $product, VariantResultDetails $variant) : VariantChangeTriggerResultVariantChangeResultDetails
     {
         $result = new VariantChangeTriggerResultVariantChangeResultDetails();

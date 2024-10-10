@@ -10,6 +10,7 @@ class SimilarVariantEvaluationSettings
     public ?float $significanceOfCommonDataKeys;
     public ?float $significanceOfIdenticalDataValues;
     public ?array $significantDataFields;
+    
     public static function create() : SimilarVariantEvaluationSettings
     {
         $result = new SimilarVariantEvaluationSettings();

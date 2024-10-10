@@ -10,6 +10,7 @@ class SelectedContentPropertiesSettings
     public bool $allData;
     public bool $viewedByUserInfo;
     public ?array $dataKeys;
+    
     public static function create() : SelectedContentPropertiesSettings
     {
         $result = new SelectedContentPropertiesSettings();

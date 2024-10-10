@@ -7,6 +7,7 @@ class TrackProductCategoryViewRequest extends TrackingRequest
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackProductCategoryViewRequest, Relewise.Client";
     
     public ProductCategoryView $productCategoryView;
+    
     public static function create(ProductCategoryView $productCategoryView) : TrackProductCategoryViewRequest
     {
         $result = new TrackProductCategoryViewRequest();

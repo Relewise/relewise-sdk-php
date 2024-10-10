@@ -9,6 +9,7 @@ class PriceRangeFacetResult extends FacetResult
     public ?floatRange $selected;
     public floatRangeAvailableFacetValue $available;
     public PriceSelectionStrategy $priceSelectionStrategy;
+    
     public static function create(FacetingField $field, PriceSelectionStrategy $priceSelectionStrategy, ?floatRange $selected, floatRangeAvailableFacetValue $available) : PriceRangeFacetResult
     {
         $result = new PriceRangeFacetResult();

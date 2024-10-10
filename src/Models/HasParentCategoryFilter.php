@@ -8,6 +8,7 @@ abstract class HasParentCategoryFilter extends Filter
     
     public array $categoryIds;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

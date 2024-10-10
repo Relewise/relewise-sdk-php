@@ -8,6 +8,7 @@ class MerchandisingRuleRequest extends LicensedRequest
     
     public string $id;
     public ?int $type;
+    
     public static function create(string $id) : MerchandisingRuleRequest
     {
         $result = new MerchandisingRuleRequest();

@@ -7,6 +7,7 @@ class TrackContentViewRequest extends TrackingRequest
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackContentViewRequest, Relewise.Client";
     
     public ContentView $contentView;
+    
     public static function create(ContentView $contentView) : TrackContentViewRequest
     {
         $result = new TrackContentViewRequest();

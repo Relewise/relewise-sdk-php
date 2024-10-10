@@ -8,6 +8,7 @@ class SaveMerchandisingRuleRequest extends LicensedRequest
     
     public MerchandisingRule $rule;
     public string $modifiedBy;
+    
     public static function create(MerchandisingRule $rule, string $modifiedBy) : SaveMerchandisingRuleRequest
     {
         $result = new SaveMerchandisingRuleRequest();

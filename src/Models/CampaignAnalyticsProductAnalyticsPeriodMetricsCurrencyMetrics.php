@@ -8,6 +8,7 @@ class CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics
     
     public string $currency;
     public float $revenue;
+    
     public static function create(string $currency, float $revenue) : CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics
     {
         $result = new CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics();

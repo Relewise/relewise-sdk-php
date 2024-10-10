@@ -6,6 +6,7 @@ class floatRange
 {
     public ?float $lowerBoundInclusive;
     public ?float $upperBoundInclusive;
+    
     public static function create(?float $lowerBoundInclusive, ?float $upperBoundInclusive) : floatRange
     {
         $result = new floatRange();

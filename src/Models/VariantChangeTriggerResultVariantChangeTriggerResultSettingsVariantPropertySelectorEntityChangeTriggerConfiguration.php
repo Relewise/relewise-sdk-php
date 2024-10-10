@@ -20,6 +20,7 @@ abstract class VariantChangeTriggerResultVariantChangeTriggerResultSettingsVaria
     /** Settings for defining which properties should be included in the result of the trigger. */
     public ?VariantChangeTriggerResultSettings $resultSettings;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

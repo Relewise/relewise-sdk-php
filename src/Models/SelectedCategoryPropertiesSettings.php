@@ -13,6 +13,7 @@ abstract class SelectedCategoryPropertiesSettings
     public bool $allData;
     public array $dataKeys;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

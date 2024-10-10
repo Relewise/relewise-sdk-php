@@ -14,6 +14,7 @@ class ProductRecentlyPurchasedByUserCompanyFilter extends Filter implements Json
     public ?DateTime $sinceUtc;
     /** The time in minutes from which a Product should have been viewed by any of the companies to be included by the filter. */
     public ?int $sinceMinutesAgo;
+    
     /**
      * Creates a Filter that can filter on the products recently purchased by the Company associated to the User used in this query.
      * @param DateTime $sinceUtc The time from which a Product should have been bought by any of the companies to be included by the filter.

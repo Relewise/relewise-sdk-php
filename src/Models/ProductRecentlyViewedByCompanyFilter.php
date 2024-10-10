@@ -16,6 +16,7 @@ class ProductRecentlyViewedByCompanyFilter extends Filter implements JsonSeriali
     public array $companyIds;
     /** The time in minutes from which a Product should have been viewed by any of the companies to be included by the filter. */
     public ?int $sinceMinutesAgo;
+    
     public static function create(DateTime $sinceUtc, bool $negated = false) : ProductRecentlyViewedByCompanyFilter
     {
         $result = new ProductRecentlyViewedByCompanyFilter();

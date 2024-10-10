@@ -8,6 +8,7 @@ class ContentRecommendationRequestCollection extends LicensedRequest
     
     public array $requests;
     public bool $requireDistinctContentsAcrossResults;
+    
     public static function create(bool $requireDistinctContentsAcrossResults, ContentRecommendationRequest ... $requests) : ContentRecommendationRequestCollection
     {
         $result = new ContentRecommendationRequestCollection();

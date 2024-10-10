@@ -11,6 +11,7 @@ class SelectedVariantDetailsPropertiesSettings
     public bool $allData;
     public ?array $dataKeys;
     public ?array $specificationKeys;
+    
     public static function create() : SelectedVariantDetailsPropertiesSettings
     {
         $result = new SelectedVariantDetailsPropertiesSettings();

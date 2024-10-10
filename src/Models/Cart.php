@@ -11,6 +11,7 @@ class Cart extends Trackable
     public ?Money $subtotal;
     public ?array $lineItems;
     public ?array $data;
+    
     public static function create(?User $user, Money $subtotal, ?array $lineItems, string $cartName = "default") : Cart
     {
         $result = new Cart();

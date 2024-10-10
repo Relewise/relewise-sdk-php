@@ -6,6 +6,7 @@ class PredictionRulePromotion
 {
     public PredictionRulePromotionPosition $to;
     public array $values;
+    
     public static function create(PredictionRulePromotionPosition $toPosition, string ... $values) : PredictionRulePromotion
     {
         $result = new PredictionRulePromotion();

@@ -8,6 +8,7 @@ abstract class AssortmentFacetResult extends intintValueFacetResult
     
     public AssortmentFilterType $assortmentFilterType;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

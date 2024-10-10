@@ -9,6 +9,7 @@ class ProductDisplayNameFilter extends Filter
     public ?Language $language;
     public ?ValueConditionCollection $conditions;
     public bool $mustMatchAllConditions;
+    
     public static function create(ValueConditionCollection $conditions, bool $mustMatchAllConditions = true, ?Language $language = Null) : ProductDisplayNameFilter
     {
         $result = new ProductDisplayNameFilter();

@@ -11,6 +11,7 @@ class SynonymsRequest extends LicensedRequest
     public int $skip;
     public string $term;
     public ?bool $isApproved;
+    
     public static function create() : SynonymsRequest
     {
         $result = new SynonymsRequest();

@@ -9,6 +9,7 @@ class DataObjectFacet extends Facet
     public string $key;
     public array $items;
     public DataObjectFilter $filter;
+    
     public static function create(string $key) : DataObjectFacet
     {
         $result = new DataObjectFacet();

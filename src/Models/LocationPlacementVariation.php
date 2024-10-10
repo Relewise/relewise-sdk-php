@@ -7,6 +7,7 @@ class LocationPlacementVariation
     public string $name;
     public ?string $key;
     public ?PromotionSpecificationVariationCollection $supportedPromotions;
+    
     public static function create(string $name, ?PromotionSpecificationVariationCollection $supportedPromotions) : LocationPlacementVariation
     {
         $result = new LocationPlacementVariation();

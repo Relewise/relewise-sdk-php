@@ -8,6 +8,7 @@ class ProductSalesPriceFilter extends Filter
     
     public ?floatRange $range;
     public ?Currency $currency;
+    
     public static function create(?floatRange $range, ?Currency $currency = Null, bool $negated = false) : ProductSalesPriceFilter
     {
         $result = new ProductSalesPriceFilter();

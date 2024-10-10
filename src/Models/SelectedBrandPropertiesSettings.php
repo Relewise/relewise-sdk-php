@@ -9,6 +9,7 @@ class SelectedBrandPropertiesSettings
     public bool $viewedByUserInfo;
     public bool $allData;
     public ?array $dataKeys;
+    
     public static function create() : SelectedBrandPropertiesSettings
     {
         $result = new SelectedBrandPropertiesSettings();

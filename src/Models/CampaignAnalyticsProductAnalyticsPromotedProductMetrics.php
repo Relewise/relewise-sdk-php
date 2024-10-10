@@ -8,6 +8,7 @@ class CampaignAnalyticsProductAnalyticsPromotedProductMetrics
     
     public string $productId;
     public int $promotions;
+    
     public static function create(string $productId, int $promotions) : CampaignAnalyticsProductAnalyticsPromotedProductMetrics
     {
         $result = new CampaignAnalyticsProductAnalyticsPromotedProductMetrics();

@@ -22,6 +22,7 @@ class Synonym implements JsonSerializable
     public int $usages;
     public bool $isApproved;
     public bool $allowInPredictions;
+    
     public static function create() : Synonym
     {
         $result = new Synonym();

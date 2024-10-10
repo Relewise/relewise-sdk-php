@@ -6,6 +6,7 @@ class ExpectedSearchTermResult
 {
     public int $estimatedHits;
     public EntityType $type;
+    
     public static function create() : ExpectedSearchTermResult
     {
         $result = new ExpectedSearchTermResult();

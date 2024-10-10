@@ -7,6 +7,7 @@ class ProductCategoryUpdate extends CategoryUpdate
     public string $typeDefinition = "Relewise.Client.DataTypes.ProductCategoryUpdate, Relewise.Client";
     
     public ProductCategory $category;
+    
     public static function create(ProductCategory $category, CategoryUpdateUpdateKind $kind = CategoryUpdateUpdateKind::UpdateAndAppend) : ProductCategoryUpdate
     {
         $result = new ProductCategoryUpdate();

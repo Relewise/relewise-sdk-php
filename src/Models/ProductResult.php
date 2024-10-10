@@ -20,6 +20,7 @@ class ProductResult
     public PurchasedByUserCompanyInfo $purchasedByUserCompany;
     public ViewedByUserCompanyInfo $viewedByUserCompany;
     public array $filteredVariants;
+    
     public static function create(string $productId, int $rank) : ProductResult
     {
         $result = new ProductResult();

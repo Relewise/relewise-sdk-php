@@ -13,6 +13,7 @@ class AbandonedSearchTriggerConfiguration extends AbandonedSearchTriggerResultTr
     public ?SearchTermCondition $searchTermCondition;
     public bool $suppressOnEntityFromSearchResultViewed;
     public int $considerAbandonedAfterMinutes;
+    
     public static function create(string $name, string $description, array $searchTypesInPrioritizedOrder, ?SearchTermCondition $searchTermCondition = Null, bool $suppressOnEntityFromSearchResultViewed = true) : AbandonedSearchTriggerConfiguration
     {
         $result = new AbandonedSearchTriggerConfiguration();

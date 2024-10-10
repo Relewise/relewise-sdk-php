@@ -23,6 +23,7 @@ abstract class MerchandisingRule implements JsonSerializable
     public float $priority;
     public array $settings;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

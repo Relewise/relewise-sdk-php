@@ -10,6 +10,7 @@ class RetailMediaQueryLocationSelector
     public RetailMediaQueryVariationSelector $variation;
     /** The placements on the specified location. */
     public array $placements;
+    
     public static function create(string $key, RetailMediaQueryVariationSelector $variation, RetailMediaQueryPlacementSelector ... $placements) : RetailMediaQueryLocationSelector
     {
         $result = new RetailMediaQueryLocationSelector();

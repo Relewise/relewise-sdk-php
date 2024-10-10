@@ -11,6 +11,7 @@ abstract class Filter
     public bool $negated;
     public ?FilterSettings $settings;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

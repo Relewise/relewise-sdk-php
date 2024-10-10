@@ -13,6 +13,7 @@ class RelativeDateTimeCondition extends ValueCondition
     public TimeUnit $unit;
     /** Defines an offset that is added to the current time when making the specified Comparison. This is specified in the unit defined by the Unit property. */
     public int $currentTimeOffset;
+    
     public static function create(RelativeTimeComparison $comparison, TimeUnit $unit, int $currentTimeOffset = 0, bool $negated = false) : RelativeDateTimeCondition
     {
         $result = new RelativeDateTimeCondition();

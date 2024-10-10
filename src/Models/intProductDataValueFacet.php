@@ -8,6 +8,7 @@ abstract class intProductDataValueFacet extends intDataValueFacet
     
     public DataSelectionStrategy $dataSelectionStrategy;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

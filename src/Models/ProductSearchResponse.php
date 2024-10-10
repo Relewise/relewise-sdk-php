@@ -11,6 +11,7 @@ class ProductSearchResponse extends PaginatedSearchResponse
     public array $recommendations;
     public array $redirects;
     public RetailMediaResult $retailMedia;
+    
     public static function create() : ProductSearchResponse
     {
         $result = new ProductSearchResponse();

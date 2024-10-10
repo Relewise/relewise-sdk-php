@@ -16,6 +16,7 @@ class SimilarProductsEvaluationSettings
     public float $significanceOfSimilarSalesPrice;
     public float $significanceOfSimilarBrand;
     public ?SimilarVariantEvaluationSettings $variantEvaluationSettings;
+    
     public static function create() : SimilarProductsEvaluationSettings
     {
         $result = new SimilarProductsEvaluationSettings();

@@ -11,6 +11,7 @@ class LocationPlacement
     public ?string $key;
     /** The variations of this placement, e.g. to support multiple different views, like Mobile, Tablet, Desktop, Email template etc. If null or empty, no promotions will be shown for this placement */
     public ?LocationPlacementVariationCollection $variations;
+    
     public static function create(string $name, ?LocationPlacementVariationCollection $variations) : LocationPlacement
     {
         $result = new LocationPlacement();

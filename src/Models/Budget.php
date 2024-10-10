@@ -9,6 +9,7 @@ abstract class Budget
     public ?float $maxTotalCost;
     public float $totalCost;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

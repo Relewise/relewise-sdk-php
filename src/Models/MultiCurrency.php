@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class MultiCurrency
 {
     public ?array $values;
+    
     public static function create(Money ... $amounts) : MultiCurrency
     {
         $result = new MultiCurrency();

@@ -9,6 +9,7 @@ class SearchTermPredictionRequest extends SearchRequest
     public string $term;
     public int $take;
     public ?SearchTermPredictionSettings $settings;
+    
     public static function create(?Language $language, ?Currency $currency, User $user, string $displayedAtLocation, string $term, int $take) : SearchTermPredictionRequest
     {
         $result = new SearchTermPredictionRequest();

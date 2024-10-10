@@ -7,6 +7,7 @@ class ProductRecommendationResponse extends RecommendationResponse
     public string $typeDefinition = "Relewise.Client.Responses.ProductRecommendationResponse, Relewise.Client";
     
     public array $recommendations;
+    
     public static function create(ProductResult ... $recommendations) : ProductRecommendationResponse
     {
         $result = new ProductRecommendationResponse();

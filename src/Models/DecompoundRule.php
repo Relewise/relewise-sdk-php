@@ -12,6 +12,7 @@ class DecompoundRule extends SearchRule implements JsonSerializable
     public string $word;
     public ?string $head;
     public ?array $modifiers;
+    
     public static function create(string $id, ?ApplicableIndexes $indexes, ?ApplicableLanguages $languages, bool $isApproved, string $word, ?string $head, string ... $modifiers) : DecompoundRule
     {
         $result = new DecompoundRule();

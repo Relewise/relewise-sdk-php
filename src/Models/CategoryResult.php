@@ -14,6 +14,7 @@ abstract class CategoryResult
     public array $assortments;
     public array $data;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

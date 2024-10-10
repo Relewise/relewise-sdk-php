@@ -12,6 +12,7 @@ class VariantResultDetails
     public MultiCurrency $listPrice;
     public MultiCurrency $salesPrice;
     public bool $disabled;
+    
     public static function create(string $variantId) : VariantResultDetails
     {
         $result = new VariantResultDetails();

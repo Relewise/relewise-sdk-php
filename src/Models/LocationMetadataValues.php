@@ -15,6 +15,7 @@ class LocationMetadataValues extends MetadataValues implements JsonSerializable
     public ?string $activatedBy;
     public ?DateTime $archived;
     public ?string $archivedBy;
+    
     public static function create() : LocationMetadataValues
     {
         $result = new LocationMetadataValues();

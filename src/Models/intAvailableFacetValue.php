@@ -7,6 +7,7 @@ class intAvailableFacetValue
     public int $value;
     public int $hits;
     public bool $selected;
+    
     public static function create(int $value, bool $selected, int $hits) : intAvailableFacetValue
     {
         $result = new intAvailableFacetValue();

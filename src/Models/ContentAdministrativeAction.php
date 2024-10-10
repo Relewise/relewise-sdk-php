@@ -10,6 +10,7 @@ class ContentAdministrativeAction extends Trackable
     public ?Language $language;
     public ContentAdministrativeActionUpdateKind $kind;
     public ?Currency $currency;
+    
     public static function create(?Language $language, ?Currency $currency, FilterCollection $filters, ContentAdministrativeActionUpdateKind $kind) : ContentAdministrativeAction
     {
         $result = new ContentAdministrativeAction();

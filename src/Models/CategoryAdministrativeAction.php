@@ -11,6 +11,7 @@ abstract class CategoryAdministrativeAction extends Trackable
     public CategoryAdministrativeActionUpdateKind $kind;
     public ?Currency $currency;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

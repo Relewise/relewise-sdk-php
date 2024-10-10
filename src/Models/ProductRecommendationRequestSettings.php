@@ -14,6 +14,7 @@ class ProductRecommendationRequestSettings
     public ?bool $allowProductsCurrentlyInCart;
     public ?SelectedBrandPropertiesSettings $selectedBrandProperties;
     public ?int $prioritizeResultsNotRecommendedWithinSeconds;
+    
     public static function create() : ProductRecommendationRequestSettings
     {
         $result = new ProductRecommendationRequestSettings();

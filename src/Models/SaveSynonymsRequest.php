@@ -8,6 +8,7 @@ class SaveSynonymsRequest extends LicensedRequest
     
     public array $synonyms;
     public string $modifiedBy;
+    
     public static function create(array $synonyms, string $modifiedBy) : SaveSynonymsRequest
     {
         $result = new SaveSynonymsRequest();

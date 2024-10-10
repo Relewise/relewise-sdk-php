@@ -12,6 +12,7 @@ class UserAssociatedCompanyResultDetails implements JsonSerializable
     public ?array $data;
     public DateTime $createdUtc;
     public DateTime $lastAccessedUtc;
+    
     public static function create(string $id) : UserAssociatedCompanyResultDetails
     {
         $result = new UserAssociatedCompanyResultDetails();

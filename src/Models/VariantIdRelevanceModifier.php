@@ -13,6 +13,7 @@ class VariantIdRelevanceModifier extends RelevanceModifier
     public float $multiplyWeightBy;
     /** Determines whether this RelevanceModifier should apply to all the Variants that don't match one of the specified VariantIds instead. */
     public bool $negated;
+    
     /**
      * Creates a RelevanceModifier that can change the relevance of a Variant depending on whether it is contained in a set of VariantIds.
      * @param string[] $variantIds The Ids of the Variants that this RelevanceModifier will distinguish on.

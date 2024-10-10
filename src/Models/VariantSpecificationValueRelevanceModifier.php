@@ -17,6 +17,7 @@ class VariantSpecificationValueRelevanceModifier extends RelevanceModifier
     public float $ifNotIdenticalMultiplyWeightBy;
     /** Determines whether specification keys that are not found should count as the value not being equal i.e. multiplying by IfNotIdenticalMultiplyWeightBy. Alternatively the rank will not be modified in any way by this modifier. */
     public bool $ifSpecificationKeyNotFoundApplyNotEqualMultiplier;
+    
     /**
      * Creates a RelevanceModifier that can change the relevance of a Variant depending on whether a certain specification Key has a certain Value.
      * @param string $key The specification key that this RelevanceModifier will distinguish on.

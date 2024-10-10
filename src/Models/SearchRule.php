@@ -20,6 +20,7 @@ abstract class SearchRule implements JsonSerializable
     public string $approvedBy;
     public bool $isApproved;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

@@ -8,6 +8,7 @@ class CategoryHierarchyFacet extends CategoryPathValueFacet
     
     public CategorySelectionStrategy $categorySelectionStrategy;
     public ?SelectedCategoryPropertiesSettings $selectedPropertiesSettings;
+    
     public static function create(CategorySelectionStrategy $categorySelectionStrategy, CategoryPath ... $selectedCategoryPath) : CategoryHierarchyFacet
     {
         $result = new CategoryHierarchyFacet();

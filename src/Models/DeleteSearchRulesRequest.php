@@ -9,6 +9,7 @@ abstract class DeleteSearchRulesRequest extends LicensedRequest
     public array $ids;
     public string $deletedBy;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

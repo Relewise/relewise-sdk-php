@@ -7,6 +7,7 @@ class ProductHasVariantsFilter extends Filter
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductHasVariantsFilter, Relewise.Client";
     
     public ?intRange $numberOfVariants;
+    
     public static function create(?intRange $numberOfVariants, bool $negated = false) : ProductHasVariantsFilter
     {
         $result = new ProductHasVariantsFilter();

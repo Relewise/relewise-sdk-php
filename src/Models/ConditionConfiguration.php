@@ -8,6 +8,7 @@ class ConditionConfiguration
     public InputConditionConfiguration $input;
     public TargetConditionConfiguration $target;
     public ContextConditionConfiguration $context;
+    
     public static function create() : ConditionConfiguration
     {
         $result = new ConditionConfiguration();

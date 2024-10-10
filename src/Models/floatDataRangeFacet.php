@@ -9,6 +9,7 @@ abstract class floatDataRangeFacet extends Facet
     public ?floatRange $selected;
     public string $key;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

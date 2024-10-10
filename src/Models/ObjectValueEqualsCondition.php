@@ -7,6 +7,7 @@ class ObjectValueEqualsCondition extends ObjectValueCondition
     public string $typeDefinition = "Relewise.Client.Requests.Filters.DataObjects.Conditions.ObjectValueEqualsCondition, Relewise.Client";
     
     public DataValue $value;
+    
     public static function create(string $key, DataValue $value, bool $negated = false) : ObjectValueEqualsCondition
     {
         $result = new ObjectValueEqualsCondition();

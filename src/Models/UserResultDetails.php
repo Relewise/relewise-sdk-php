@@ -24,6 +24,7 @@ class UserResultDetails implements JsonSerializable
     public array $temporaryIds;
     public ?Channel $channel;
     public ?UserAssociatedCompanyResultDetails $company;
+    
     public static function create() : UserResultDetails
     {
         $result = new UserResultDetails();

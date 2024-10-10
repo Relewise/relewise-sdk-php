@@ -8,6 +8,7 @@ class SearchTermModifierRuleReplaceWordsInTermAction extends SearchTermModifierR
     
     public string $words;
     public ?string $replacement;
+    
     public static function create(string $words, ?string $replacement) : SearchTermModifierRuleReplaceWordsInTermAction
     {
         $result = new SearchTermModifierRuleReplaceWordsInTermAction();

@@ -8,6 +8,7 @@ abstract class TimedResponse
     
     public Statistics $statistics;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

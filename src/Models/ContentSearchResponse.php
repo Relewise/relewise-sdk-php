@@ -9,6 +9,7 @@ class ContentSearchResponse extends PaginatedSearchResponse
     public array $results;
     public ContentFacetResult $facets;
     public array $recommendations;
+    
     public static function create() : ContentSearchResponse
     {
         $result = new ContentSearchResponse();

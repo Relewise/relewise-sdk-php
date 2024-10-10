@@ -12,6 +12,7 @@ class VariantResult
     public int $rank;
     public ?float $listPrice;
     public ?float $salesPrice;
+    
     public static function create(string $variantId, int $rank) : VariantResult
     {
         $result = new VariantResult();

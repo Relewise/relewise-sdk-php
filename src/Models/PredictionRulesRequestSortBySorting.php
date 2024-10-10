@@ -6,6 +6,7 @@ class PredictionRulesRequestSortBySorting
 {
     public PredictionRulesRequestSortBy $sortBy;
     public SortOrder $sortOrder;
+    
     public static function create(PredictionRulesRequestSortBy $sortBy, SortOrder $sortOrder) : PredictionRulesRequestSortBySorting
     {
         $result = new PredictionRulesRequestSortBySorting();

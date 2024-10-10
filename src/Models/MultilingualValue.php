@@ -6,6 +6,7 @@ class MultilingualValue
 {
     public Language $language;
     public ?string $text;
+    
     public static function create(Language $language, ?string $text) : MultilingualValue
     {
         $result = new MultilingualValue();

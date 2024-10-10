@@ -9,6 +9,7 @@ abstract class floatfloatValueFacetResult extends FacetResult
     public array $selected;
     public array $available;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

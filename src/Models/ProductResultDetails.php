@@ -30,6 +30,7 @@ class ProductResultDetails implements JsonSerializable
     public MultiCurrency $salesPrice;
     public BrandResultDetails $brand;
     public array $filteredVariants;
+    
     public static function create(string $productId) : ProductResultDetails
     {
         $result = new ProductResultDetails();

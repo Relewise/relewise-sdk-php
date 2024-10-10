@@ -8,6 +8,7 @@ class BrandDetailsCollectionResponse extends TimedResponse
     
     public array $brands;
     public ?int $totalNumberOfResults;
+    
     public static function create(array $brands, ?int $totalNumberOfResults) : BrandDetailsCollectionResponse
     {
         $result = new BrandDetailsCollectionResponse();

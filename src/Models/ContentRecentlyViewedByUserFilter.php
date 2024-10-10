@@ -11,6 +11,7 @@ class ContentRecentlyViewedByUserFilter extends Filter implements JsonSerializab
     
     public ?DateTime $sinceUtc;
     public ?int $sinceMinutesAgo;
+    
     public static function create(bool $negated = false) : ContentRecentlyViewedByUserFilter
     {
         $result = new ContentRecentlyViewedByUserFilter();

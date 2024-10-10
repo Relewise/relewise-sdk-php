@@ -9,6 +9,7 @@ class DataKeyPopularityMultiplierSelector extends PopularityMultiplierSelector
     
     /** The data key that will be used to select a factor that is applied to the entities observed views or purchases. */
     public string $key;
+    
     /**
      * Creates a selector that uses a Key to pick a value from an entity's data to change the weighing of an observed view or purchase when making a PopularProductsRequest.
      * @param string $key The data key that will be used to select a factor that is applied to the entities observed views or purchases.

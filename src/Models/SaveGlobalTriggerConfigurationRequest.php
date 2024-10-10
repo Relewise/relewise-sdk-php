@@ -8,6 +8,7 @@ class SaveGlobalTriggerConfigurationRequest extends LicensedRequest
     
     public GlobalTriggerConfiguration $configuration;
     public string $modifiedBy;
+    
     public static function create(GlobalTriggerConfiguration $configuration, string $modifiedBy) : SaveGlobalTriggerConfigurationRequest
     {
         $result = new SaveGlobalTriggerConfigurationRequest();

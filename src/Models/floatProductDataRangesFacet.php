@@ -8,6 +8,7 @@ abstract class floatProductDataRangesFacet extends floatDataRangesFacet
     
     public DataSelectionStrategy $dataSelectionStrategy;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

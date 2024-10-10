@@ -10,6 +10,7 @@ abstract class CampaignCampaignEntityStateEntityResponse extends TimedResponse
     public int $hits;
     public array $hitsPerState;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

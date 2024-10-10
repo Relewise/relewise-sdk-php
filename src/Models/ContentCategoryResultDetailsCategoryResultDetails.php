@@ -22,6 +22,7 @@ abstract class ContentCategoryResultDetailsCategoryResultDetails implements Json
     public array $childCategories;
     public array $parentCategories;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

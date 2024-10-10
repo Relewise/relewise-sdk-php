@@ -7,6 +7,7 @@ class VariantIdFilter extends Filter
     public string $typeDefinition = "Relewise.Client.Requests.Filters.VariantIdFilter, Relewise.Client";
     
     public array $variantIds;
+    
     public static function create(bool $negated = false) : VariantIdFilter
     {
         $result = new VariantIdFilter();

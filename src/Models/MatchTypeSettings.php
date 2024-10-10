@@ -9,6 +9,7 @@ class MatchTypeSettings
     public bool $startsWith;
     public bool $endsWith;
     public bool $fuzzy;
+    
     public static function create() : MatchTypeSettings
     {
         $result = new MatchTypeSettings();

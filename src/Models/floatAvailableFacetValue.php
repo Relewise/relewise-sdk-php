@@ -7,6 +7,7 @@ class floatAvailableFacetValue
     public float $value;
     public int $hits;
     public bool $selected;
+    
     public static function create(float $value, bool $selected, int $hits) : floatAvailableFacetValue
     {
         $result = new floatAvailableFacetValue();

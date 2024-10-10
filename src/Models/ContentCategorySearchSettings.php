@@ -8,6 +8,7 @@ class ContentCategorySearchSettings extends SearchSettings
     
     public ?int $numberOfRecommendations;
     public ?bool $onlyIncludeRecommendationsForEmptyResults;
+    
     public static function create() : ContentCategorySearchSettings
     {
         $result = new ContentCategorySearchSettings();

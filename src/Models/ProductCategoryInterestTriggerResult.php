@@ -6,6 +6,7 @@ class ProductCategoryInterestTriggerResult
 {
     public UserResultDetails $user;
     public array $categories;
+    
     public static function create() : ProductCategoryInterestTriggerResult
     {
         $result = new ProductCategoryInterestTriggerResult();

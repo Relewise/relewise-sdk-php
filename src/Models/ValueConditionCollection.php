@@ -7,6 +7,7 @@ class ValueConditionCollection
 {
     /** The items that this collection holds. */
     public ?array $items;
+    
     /**
      * Creates a collection that contains multiple ValueConditions in its inner list Items.
      * @param ValueCondition[] $conditions The items that this collection holds.

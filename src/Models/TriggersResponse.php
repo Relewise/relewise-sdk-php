@@ -8,6 +8,7 @@ abstract class TriggersResponse extends TimedResponse
     
     public int $remainingResults;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

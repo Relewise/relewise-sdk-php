@@ -10,6 +10,7 @@ abstract class LocationEntityStateLocationMetadataValuesRetailMediaEntity extend
     /** Managed server side only, manually setting this will have no effect */
     public LocationMetadataValues $metadata;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

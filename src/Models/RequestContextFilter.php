@@ -10,6 +10,7 @@ class RequestContextFilter
     public array $languages;
     public array $currencies;
     public RequestFilterCriteria $filters;
+    
     public static function create() : RequestContextFilter
     {
         $result = new RequestContextFilter();

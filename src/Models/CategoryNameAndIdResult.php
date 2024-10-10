@@ -6,6 +6,7 @@ class CategoryNameAndIdResult
 {
     public string $id;
     public string $displayName;
+    
     public static function create(string $id, string $displayName) : CategoryNameAndIdResult
     {
         $result = new CategoryNameAndIdResult();

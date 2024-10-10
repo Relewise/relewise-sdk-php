@@ -9,6 +9,7 @@ class ProductCategorySearchResponse extends PaginatedSearchResponse
     public array $results;
     public ProductCategoryFacetResult $facets;
     public array $recommendations;
+    
     public static function create() : ProductCategorySearchResponse
     {
         $result = new ProductCategorySearchResponse();

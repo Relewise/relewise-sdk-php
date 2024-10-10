@@ -10,6 +10,7 @@ class BrandResult
     public ViewedByUserInfo $viewedByUser;
     public array $assortments;
     public array $data;
+    
     public static function create(string $id, int $rank) : BrandResult
     {
         $result = new BrandResult();

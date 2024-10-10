@@ -10,6 +10,7 @@ class ContentSearchRequest extends PaginatedSearchRequest
     public ?ContentFacetQuery $facets;
     public ?ContentSearchSettings $settings;
     public ?ContentSortBySpecification $sorting;
+    
     public static function create(?Language $language, ?Currency $currency, User $user, string $displayedAtLocation, ?string $term, int $skip, int $take) : ContentSearchRequest
     {
         $result = new ContentSearchRequest();

@@ -9,6 +9,7 @@ abstract class AnalyzerRequest extends LicensedRequest
     public ?Language $language;
     public ?Currency $currency;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

@@ -10,6 +10,7 @@ class CompanyAdministrativeAction extends Trackable
     public ?Language $language;
     public CompanyAdministrativeActionUpdateKind $kind;
     public ?Currency $currency;
+    
     public static function create(?Language $language, ?Currency $currency, FilterCollection $filters, CompanyAdministrativeActionUpdateKind $kind) : CompanyAdministrativeAction
     {
         $result = new CompanyAdministrativeAction();

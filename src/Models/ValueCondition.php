@@ -9,6 +9,7 @@ abstract class ValueCondition
     /** Whether the condition should be negated / inverted */
     public bool $negated;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

@@ -6,6 +6,7 @@ class FilteredVariantsSettings
 {
     public ?FilterCollection $filters;
     public ?bool $inheritFiltersFromRequest;
+    
     public static function create() : FilteredVariantsSettings
     {
         $result = new FilteredVariantsSettings();

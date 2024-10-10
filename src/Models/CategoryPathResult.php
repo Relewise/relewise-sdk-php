@@ -6,6 +6,7 @@ class CategoryPathResult
 {
     public array $pathFromRoot;
     public int $rank;
+    
     public static function create(CategoryNameAndIdResult ... $pathFromRoot) : CategoryPathResult
     {
         $result = new CategoryPathResult();

@@ -15,6 +15,7 @@ class ProductSearchSettings extends SearchSettings
     public ?VariantSearchSettings $variantSettings;
     /** Used to define constraints which must be honoured to be a valid results. The difference between this and Filters, is that filters are evaluated per product and variant, constraints could be acting on the result of such filter evaluations or a combination of factors, such as whether the product has any variants which matched the provided filters etc. */
     public ?ProductSearchResultConstraint $resultConstraint;
+    
     public static function create() : ProductSearchSettings
     {
         $result = new ProductSearchSettings();

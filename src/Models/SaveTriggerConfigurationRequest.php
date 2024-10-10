@@ -8,6 +8,7 @@ class SaveTriggerConfigurationRequest extends LicensedRequest
     
     public TriggerConfiguration $configuration;
     public string $modifiedBy;
+    
     public static function create(TriggerConfiguration $configuration, string $modifiedBy) : SaveTriggerConfigurationRequest
     {
         $result = new SaveTriggerConfigurationRequest();

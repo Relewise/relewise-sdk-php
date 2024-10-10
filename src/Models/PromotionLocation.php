@@ -6,6 +6,7 @@ class PromotionLocation
 {
     public string $key;
     public ?PromotionLocationPlacementCollection $placements;
+    
     public static function create(string $key, ?PromotionLocationPlacementCollection $placements = Null) : PromotionLocation
     {
         $result = new PromotionLocation();

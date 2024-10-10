@@ -13,6 +13,7 @@ abstract class ObjectValueCondition
     /** An optional path to some nested object defined under the selected Key. */
     public ?array $objectPath;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

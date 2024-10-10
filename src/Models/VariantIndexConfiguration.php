@@ -8,6 +8,7 @@ class VariantIndexConfiguration
     public FieldIndexConfiguration $displayName;
     public SpecificationsIndexConfiguration $specifications;
     public DataIndexConfiguration $data;
+    
     public static function create() : VariantIndexConfiguration
     {
         $result = new VariantIndexConfiguration();

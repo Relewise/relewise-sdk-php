@@ -8,6 +8,7 @@ class ContentIndexConfiguration
     public FieldIndexConfiguration $displayName;
     public CategoryIndexConfiguration $category;
     public DataIndexConfiguration $data;
+    
     public static function create() : ContentIndexConfiguration
     {
         $result = new ContentIndexConfiguration();

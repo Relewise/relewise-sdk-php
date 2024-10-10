@@ -7,6 +7,7 @@ class OrFilter extends Filter
     public string $typeDefinition = "Relewise.Client.Requests.Filters.OrFilter, Relewise.Client";
     
     public array $filters;
+    
     public static function create(array $filters, bool $negated = false) : OrFilter
     {
         $result = new OrFilter();

@@ -9,6 +9,7 @@ class ResultMustHaveVariantConstraint extends ProductSearchResultConstraint
     
     /** Used to instruct the search engine that products which does not have any variants, will be returned anyway. */
     public bool $exceptWhenProductHasNoVariants;
+    
     public static function create() : ResultMustHaveVariantConstraint
     {
         $result = new ResultMustHaveVariantConstraint();

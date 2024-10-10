@@ -11,6 +11,7 @@ class SearchTermModifierRule extends SearchRule implements JsonSerializable
     
     public SearchTermCondition $condition;
     public array $actions;
+    
     public static function create(string $id, ?ApplicableIndexes $indexes, ?ApplicableLanguages $languages, bool $isApproved, SearchTermCondition $condition, SearchTermModifierRuleRuleAction ... $actions) : SearchTermModifierRule
     {
         $result = new SearchTermModifierRule();

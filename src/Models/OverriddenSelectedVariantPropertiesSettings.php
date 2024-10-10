@@ -11,6 +11,7 @@ class OverriddenSelectedVariantPropertiesSettings
     public ?bool $allData;
     public array $dataKeys;
     public array $specificationKeys;
+    
     public static function create() : OverriddenSelectedVariantPropertiesSettings
     {
         $result = new OverriddenSelectedVariantPropertiesSettings();

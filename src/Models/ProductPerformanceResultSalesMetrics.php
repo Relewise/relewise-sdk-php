@@ -8,6 +8,7 @@ class ProductPerformanceResultSalesMetrics
     public float $averageNoOfLineItems;
     public array $currencies;
     public ProductPerformanceResultSalesWithKnownCartOpenerMetrics $withKnownCartOpener;
+    
     public static function create() : ProductPerformanceResultSalesMetrics
     {
         $result = new ProductPerformanceResultSalesMetrics();

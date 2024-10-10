@@ -8,6 +8,7 @@ class PopularBrandsRecommendationRequest extends BrandRecommendationRequest
     
     public int $sinceMinutesAgo;
     public BrandRecommendationWeights $weights;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, BrandRecommendationWeights $weights) : PopularBrandsRecommendationRequest
     {
         $result = new PopularBrandsRecommendationRequest();

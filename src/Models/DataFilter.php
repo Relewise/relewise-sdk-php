@@ -14,6 +14,7 @@ abstract class DataFilter extends Filter
     public ?Currency $currency;
     public ?array $objectPath;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

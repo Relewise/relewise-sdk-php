@@ -22,6 +22,7 @@ abstract class TriggerConfiguration implements JsonSerializable
     public array $settings;
     public UserConditionCollection $userConditions;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

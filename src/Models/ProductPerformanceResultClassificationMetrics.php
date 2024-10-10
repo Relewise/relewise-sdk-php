@@ -9,6 +9,7 @@ class ProductPerformanceResultClassificationMetrics
     public ProductPerformanceResultSalesMetrics $sales;
     public ProductPerformanceResultCartMetrics $carts;
     public ProductPerformanceResultRankMetrics $rank;
+    
     public static function create() : ProductPerformanceResultClassificationMetrics
     {
         $result = new ProductPerformanceResultClassificationMetrics();

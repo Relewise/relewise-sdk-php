@@ -8,6 +8,7 @@ class ContentSearchSettings extends SearchSettings
     
     public ?SelectedContentPropertiesSettings $selectedContentProperties;
     public RecommendationSettings $recommendations;
+    
     public static function create() : ContentSearchSettings
     {
         $result = new ContentSearchSettings();

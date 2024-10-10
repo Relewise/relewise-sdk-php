@@ -8,6 +8,7 @@ class HasModifiedCartCondition extends UserCondition
     
     public int $withinMinutes;
     public string $cartName;
+    
     public static function create(string $cartName = Null, bool $negated = false) : HasModifiedCartCondition
     {
         $result = new HasModifiedCartCondition();

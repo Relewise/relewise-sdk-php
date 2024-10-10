@@ -8,6 +8,7 @@ abstract class FacetResult
     
     public FacetingField $field;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

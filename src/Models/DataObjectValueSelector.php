@@ -8,6 +8,7 @@ class DataObjectValueSelector
     public ?DataObjectFilter $filter;
     public ?DataObjectValueSelector $childSelector;
     public ?DataObjectValueSelector $fallbackSelector;
+    
     public static function create(string $key, ?DataObjectFilter $filter, ?DataObjectValueSelector $childSelector, ?DataObjectValueSelector $fallbackSelector) : DataObjectValueSelector
     {
         $result = new DataObjectValueSelector();

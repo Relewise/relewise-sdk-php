@@ -10,6 +10,7 @@ class ContentCategoryRecommendationRequestSettings
     public bool $prioritizeDiversityBetweenRequests;
     public SelectedContentCategoryPropertiesSettings $selectedContentCategoryProperties;
     public ?int $prioritizeResultsNotRecommendedWithinSeconds;
+    
     public static function create() : ContentCategoryRecommendationRequestSettings
     {
         $result = new ContentCategoryRecommendationRequestSettings();

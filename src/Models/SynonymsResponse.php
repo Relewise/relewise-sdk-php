@@ -8,6 +8,7 @@ class SynonymsResponse extends TimedResponse
     
     public array $values;
     public int $hits;
+    
     public static function create(array $values, int $hits) : SynonymsResponse
     {
         $result = new SynonymsResponse();

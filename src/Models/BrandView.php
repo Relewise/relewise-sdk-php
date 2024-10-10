@@ -8,6 +8,7 @@ class BrandView extends Trackable
     
     public ?User $user;
     public Brand $brand;
+    
     public static function create(?User $user, Brand $brand) : BrandView
     {
         $result = new BrandView();

@@ -8,6 +8,7 @@ class ContentUpdate extends Trackable
     
     public Content $content;
     public ContentUpdateUpdateKind $kind;
+    
     public static function create(Content $content, ContentUpdateUpdateKind $kind = ContentUpdateUpdateKind::UpdateAndAppend) : ContentUpdate
     {
         $result = new ContentUpdate();

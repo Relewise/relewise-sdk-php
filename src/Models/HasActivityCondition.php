@@ -8,6 +8,7 @@ class HasActivityCondition extends UserCondition
     
     public int $withinMinutes;
     public int $forAtLeastSeconds;
+    
     public static function create(bool $negated) : HasActivityCondition
     {
         $result = new HasActivityCondition();

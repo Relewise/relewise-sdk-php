@@ -8,6 +8,7 @@ class PopularSearchTermsRecommendationRequest extends RecommendationRequest
     
     public ?string $term;
     public ?RecommendPopularSearchTermSettings $settings;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user) : PopularSearchTermsRecommendationRequest
     {
         $result = new PopularSearchTermsRecommendationRequest();

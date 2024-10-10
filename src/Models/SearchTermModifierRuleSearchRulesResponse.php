@@ -9,6 +9,7 @@ abstract class SearchTermModifierRuleSearchRulesResponse extends TimedResponse
     public array $rules;
     public int $hits;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

@@ -6,6 +6,7 @@ class VariantSearchSettings
 {
     /** @deprecated Use ProductSearchSettings.ResultConstraint instead */
     public bool $excludeResultsWithoutVariant;
+    
     public static function create() : VariantSearchSettings
     {
         $result = new VariantSearchSettings();

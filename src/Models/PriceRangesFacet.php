@@ -10,6 +10,7 @@ class PriceRangesFacet extends Facet
     public ?float $expandedRangeSize;
     public ?array $selected;
     public PriceSelectionStrategy $priceSelectionStrategy;
+    
     public static function create(FacetingField $field, PriceSelectionStrategy $priceSelectionStrategy, ?array $predefinedRanges, ?float $expandedRangeSize, ?floatChainableRange ... $selected) : PriceRangesFacet
     {
         $result = new PriceRangesFacet();

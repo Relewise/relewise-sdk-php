@@ -14,6 +14,7 @@ class GlobalTriggerConfiguration implements JsonSerializable
     public ?int $minimumCooldownSameTrigger;
     public ?int $minimumCooldownSameGroup;
     public array $settings;
+    
     public static function create() : GlobalTriggerConfiguration
     {
         $result = new GlobalTriggerConfiguration();

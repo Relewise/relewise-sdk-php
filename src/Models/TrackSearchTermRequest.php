@@ -7,6 +7,7 @@ class TrackSearchTermRequest extends TrackingRequest
     public string $typeDefinition = "Relewise.Client.Requests.Tracking.TrackSearchTermRequest, Relewise.Client";
     
     public SearchTerm $searchTerm;
+    
     public static function create(SearchTerm $searchTerm) : TrackSearchTermRequest
     {
         $result = new TrackSearchTermRequest();

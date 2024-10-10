@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class CategoryIndexConfiguration
 {
     public CategoryIndexConfigurationEntry $unspecified;
+    
     public static function create() : CategoryIndexConfiguration
     {
         $result = new CategoryIndexConfiguration();

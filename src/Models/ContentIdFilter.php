@@ -7,6 +7,7 @@ class ContentIdFilter extends Filter
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ContentIdFilter, Relewise.Client";
     
     public array $contentIds;
+    
     public static function create(bool $negated = false) : ContentIdFilter
     {
         $result = new ContentIdFilter();

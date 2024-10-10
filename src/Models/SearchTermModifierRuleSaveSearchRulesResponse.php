@@ -8,6 +8,7 @@ abstract class SearchTermModifierRuleSaveSearchRulesResponse extends TimedRespon
     
     public array $rules;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

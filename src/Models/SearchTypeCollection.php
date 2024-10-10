@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class SearchTypeCollection
 {
     public array $unionCodes;
+    
     public static function create() : SearchTypeCollection
     {
         $result = new SearchTypeCollection();

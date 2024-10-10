@@ -8,6 +8,7 @@ class ProductCategoryDetailsCollectionResponse extends TimedResponse
     
     public array $categories;
     public ?int $totalNumberOfResults;
+    
     public static function create(array $categories, ?int $totalNumberOfResults) : ProductCategoryDetailsCollectionResponse
     {
         $result = new ProductCategoryDetailsCollectionResponse();

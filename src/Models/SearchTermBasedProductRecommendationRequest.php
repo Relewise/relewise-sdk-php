@@ -7,6 +7,7 @@ class SearchTermBasedProductRecommendationRequest extends ProductRecommendationR
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.SearchTermBasedProductRecommendationRequest, Relewise.Client";
     
     public string $term;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, string $term) : SearchTermBasedProductRecommendationRequest
     {
         $result = new SearchTermBasedProductRecommendationRequest();

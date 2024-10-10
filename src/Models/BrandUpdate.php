@@ -8,6 +8,7 @@ class BrandUpdate extends Trackable
     
     public Brand $brand;
     public BrandUpdateUpdateKind $kind;
+    
     public static function create(Brand $brand, BrandUpdateUpdateKind $kind = BrandUpdateUpdateKind::UpdateAndAppend) : BrandUpdate
     {
         $result = new BrandUpdate();

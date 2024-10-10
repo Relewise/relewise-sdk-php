@@ -14,6 +14,7 @@ class ProductRecentlyPurchasedByUserParentCompanyFilter extends Filter implement
     public ?DateTime $sinceUtc;
     /** The time in minutes from which a Product should have been viewed by any of the companies to be included by the filter. */
     public ?int $sinceMinutesAgo;
+    
     public static function create(bool $negated = false) : ProductRecentlyPurchasedByUserParentCompanyFilter
     {
         $result = new ProductRecentlyPurchasedByUserParentCompanyFilter();

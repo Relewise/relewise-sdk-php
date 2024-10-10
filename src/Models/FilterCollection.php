@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class FilterCollection
 {
     public ?array $items;
+    
     public static function create(Filter ... $filters) : FilterCollection
     {
         $result = new FilterCollection();

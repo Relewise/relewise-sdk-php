@@ -9,6 +9,7 @@ class ProductQuerySelectedPropertiesSettings
     public ?SelectedProductDetailsPropertiesSettings $selectedProductDetailsProperties;
     /** Settings for which properties should be mapped for the VariantResultDetails in the ProductDetailsCollectionResponse returned for the current ProductQuery. */
     public ?SelectedVariantDetailsPropertiesSettings $selectedVariantDetailsProperties;
+    
     public static function create() : ProductQuerySelectedPropertiesSettings
     {
         $result = new ProductQuerySelectedPropertiesSettings();

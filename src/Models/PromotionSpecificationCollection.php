@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class PromotionSpecificationCollection
 {
     public ?ProductPromotionSpecification $productPromotion;
+    
     public static function create() : PromotionSpecificationCollection
     {
         $result = new PromotionSpecificationCollection();

@@ -8,6 +8,7 @@ class ProductCategoryView extends Trackable
     
     public ?User $user;
     public array $idPath;
+    
     public static function create(?User $user, string ... $idPath) : ProductCategoryView
     {
         $result = new ProductCategoryView();

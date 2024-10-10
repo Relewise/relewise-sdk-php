@@ -13,6 +13,7 @@ abstract class RecommendationRequest extends LicensedRequest
     public string $displayedAtLocationType;
     public ?Currency $currency;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

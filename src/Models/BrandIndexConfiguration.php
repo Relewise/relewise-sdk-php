@@ -6,6 +6,7 @@ class BrandIndexConfiguration
 {
     public FieldIndexConfiguration $id;
     public FieldIndexConfiguration $displayName;
+    
     public static function create() : BrandIndexConfiguration
     {
         $result = new BrandIndexConfiguration();

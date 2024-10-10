@@ -7,6 +7,7 @@ class CategoryIndexConfigurationEntry
     public FieldIndexConfiguration $id;
     public FieldIndexConfiguration $displayName;
     public DataIndexConfiguration $data;
+    
     public static function create() : CategoryIndexConfigurationEntry
     {
         $result = new CategoryIndexConfigurationEntry();

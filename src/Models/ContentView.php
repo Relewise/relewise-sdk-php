@@ -8,6 +8,7 @@ class ContentView extends Trackable
     
     public ?User $user;
     public Content $content;
+    
     public static function create(?User $user, Content $content) : ContentView
     {
         $result = new ContentView();

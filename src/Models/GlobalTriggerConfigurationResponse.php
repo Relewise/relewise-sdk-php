@@ -7,6 +7,7 @@ class GlobalTriggerConfigurationResponse extends TimedResponse
     public string $typeDefinition = "Relewise.Client.Responses.Triggers.GlobalTriggerConfigurationResponse, Relewise.Client";
     
     public GlobalTriggerConfiguration $configuration;
+    
     public static function create() : GlobalTriggerConfigurationResponse
     {
         $result = new GlobalTriggerConfigurationResponse();

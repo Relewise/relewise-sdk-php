@@ -12,6 +12,7 @@ class PredictionRule extends SearchRule implements JsonSerializable
     public SearchTermCondition $condition;
     public PredictionRulePromotion $promote;
     public PredictionRuleSuppression $suppress;
+    
     public static function create(string $id, ?ApplicableIndexes $indexes, ?ApplicableLanguages $languages, bool $isApproved, SearchTermCondition $condition) : PredictionRule
     {
         $result = new PredictionRule();

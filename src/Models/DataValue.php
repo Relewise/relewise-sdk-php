@@ -6,6 +6,7 @@ class DataValue
 {
     public DataValueDataValueTypes $type;
     public mixed $value;
+    
     public static function create() : DataValue
     {
         $result = new DataValue();

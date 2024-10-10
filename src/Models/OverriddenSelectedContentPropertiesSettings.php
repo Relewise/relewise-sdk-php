@@ -10,6 +10,7 @@ class OverriddenSelectedContentPropertiesSettings
     public ?bool $allData;
     public ?bool $viewedByUserInfo;
     public array $dataKeys;
+    
     public static function create() : OverriddenSelectedContentPropertiesSettings
     {
         $result = new OverriddenSelectedContentPropertiesSettings();

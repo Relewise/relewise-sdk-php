@@ -14,6 +14,7 @@ class OverriddenSelectedProductPropertiesSettings
     public ?bool $brand;
     public ?bool $allVariants;
     public array $dataKeys;
+    
     public static function create() : OverriddenSelectedProductPropertiesSettings
     {
         $result = new OverriddenSelectedProductPropertiesSettings();

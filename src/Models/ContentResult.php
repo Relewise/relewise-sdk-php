@@ -11,6 +11,7 @@ class ContentResult
     public array $data;
     public array $categoryPaths;
     public ViewedByUserInfo $viewedByUser;
+    
     public static function create(string $contentId, int $rank) : ContentResult
     {
         $result = new ContentResult();

@@ -8,6 +8,7 @@ class ContentDetailsCollectionResponse extends TimedResponse
     
     public array $contents;
     public ?int $totalNumberOfResults;
+    
     public static function create(array $contents, ?int $totalNumberOfResults) : ContentDetailsCollectionResponse
     {
         $result = new ContentDetailsCollectionResponse();

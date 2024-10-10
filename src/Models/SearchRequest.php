@@ -16,6 +16,7 @@ abstract class SearchRequest extends LicensedRequest
     public ?SearchIndexSelector $indexSelector;
     public ?FilterCollection $postFilters;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

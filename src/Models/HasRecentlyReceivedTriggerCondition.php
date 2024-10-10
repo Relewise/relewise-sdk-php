@@ -10,6 +10,7 @@ class HasRecentlyReceivedTriggerCondition extends UserCondition
     public ?string $id;
     public string $group;
     public ?int $type;
+    
     public static function create(?string $id, string $group, bool $negated) : HasRecentlyReceivedTriggerCondition
     {
         $result = new HasRecentlyReceivedTriggerCondition();

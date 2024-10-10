@@ -6,6 +6,7 @@ class ProductInterestTriggerResultResultSettings
 {
     public SelectedProductDetailsPropertiesSettings $selectedProductProperties;
     public SelectedVariantDetailsPropertiesSettings $selectedVariantProperties;
+    
     public static function create() : ProductInterestTriggerResultResultSettings
     {
         $result = new ProductInterestTriggerResultResultSettings();

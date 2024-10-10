@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class LanguageIndexConfiguration
 {
     public array $languages;
+    
     public static function create() : LanguageIndexConfiguration
     {
         $result = new LanguageIndexConfiguration();

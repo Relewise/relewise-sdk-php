@@ -6,6 +6,7 @@ class RecommendationSettings
 {
     public ?int $take;
     public ?int $onlyIncludeRecommendationsWhenLessResultsThan;
+    
     public static function create() : RecommendationSettings
     {
         $result = new RecommendationSettings();

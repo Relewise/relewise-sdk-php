@@ -9,6 +9,7 @@ class ProductPerformanceResultSalesByCurrency
     public float $averageSubtotal;
     public float $units;
     public float $revenue;
+    
     public static function create() : ProductPerformanceResultSalesByCurrency
     {
         $result = new ProductPerformanceResultSalesByCurrency();

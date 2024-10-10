@@ -11,6 +11,7 @@ class SimilarProductsRequest extends ProductRecommendationRequest
     public bool $considerAlreadyKnownInformationAboutProduct;
     public ?SimilarProductsEvaluationSettings $evaluationSettings;
     public ?int $explodedVariants;
+    
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ?SimilarProductsEvaluationSettings $evaluationSettings = Null) : SimilarProductsRequest
     {
         $result = new SimilarProductsRequest();

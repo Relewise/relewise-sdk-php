@@ -8,6 +8,7 @@ class Brand
     public ?string $displayName;
     public ?array $assortments;
     public ?array $data;
+    
     public static function create(string $id) : Brand
     {
         $result = new Brand();

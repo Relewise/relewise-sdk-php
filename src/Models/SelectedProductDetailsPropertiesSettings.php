@@ -17,6 +17,7 @@ class SelectedProductDetailsPropertiesSettings
     public bool $viewedByUserCompanyInfo;
     public bool $purchasedByUserCompanyInfo;
     public ?FilteredVariantsSettings $filteredVariants;
+    
     public static function create() : SelectedProductDetailsPropertiesSettings
     {
         $result = new SelectedProductDetailsPropertiesSettings();

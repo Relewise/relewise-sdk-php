@@ -10,6 +10,7 @@ class BrandRecommendationRequestSettings
     public bool $prioritizeDiversityBetweenRequests;
     public ?SelectedBrandPropertiesSettings $selectedBrandProperties;
     public ?int $prioritizeResultsNotRecommendedWithinSeconds;
+    
     public static function create() : BrandRecommendationRequestSettings
     {
         $result = new BrandRecommendationRequestSettings();

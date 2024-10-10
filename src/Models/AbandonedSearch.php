@@ -10,6 +10,7 @@ abstract class AbandonedSearch
     public int $hits;
     public ?Language $language;
     
+    
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];

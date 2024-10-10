@@ -15,6 +15,7 @@ class VariantSalesPriceRelevanceModifier extends RelevanceModifier
     public float $multiplyWeightBy;
     /** Determines whether this RelevanceModifier should apply to all the Products that aren't contained within the specific Range instead. */
     public bool $negated;
+    
     /**
      * Creates a RelevanceModifier that can change the relevance of a Variant depending on the sales price falling within a specific Range.
      * @param ?floatRange $range The range of sales prices that this RelevanceModifier will distinguish on.

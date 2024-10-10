@@ -9,6 +9,7 @@ class SearchTermPredictionResult
     public array $expectedResultTypes;
     public SearchTermPredictionResultPredictionType $type;
     public array $correctedWordsMask;
+    
     public static function create() : SearchTermPredictionResult
     {
         $result = new SearchTermPredictionResult();
