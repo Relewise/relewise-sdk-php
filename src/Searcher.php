@@ -18,7 +18,7 @@ use Relewise\Models\SearchResponseCollection;
 
 class Searcher extends RelewiseClient
 {
-    public function __construct(private string $datasetId, private string $apiKey, private int $timeout = 3)
+    public function __construct(private string $datasetId, private string $apiKey, private int $timeout = 5)
     {
         parent::__construct($datasetId, $apiKey, $timeout);
     }

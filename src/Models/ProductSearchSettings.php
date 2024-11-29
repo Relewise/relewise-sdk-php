@@ -14,6 +14,7 @@ class ProductSearchSettings extends SearchSettings
     public ?VariantSearchSettings $variantSettings;
     /** Used to define constraints which must be honoured to be a valid results. The difference between this and Filters, is that filters are evaluated per product and variant, constraints could be acting on the result of such filter evaluations or a combination of factors, such as whether the product has any variants which matched the provided filters etc. */
     public ?ProductSearchResultConstraint $resultConstraint;
+    public ?ProductSearchSettingsHighlightSettings $highlight;
     
     public static function create() : ProductSearchSettings
     {
@@ -51,6 +52,10 @@ class ProductSearchSettings extends SearchSettings
         if (array_key_exists("resultConstraint", $arr))
         {
             $result->resultConstraint = ProductSearchResultConstraint::hydrate($arr["resultConstraint"]);
+        }
+        if (array_key_exists("highlight", $arr))
+        {
+            $result->highlight = ProductSearchSettingsHighlightSettings::hydrate($arr["highlight"]);
         }
         return $result;
     }
@@ -96,6 +101,12 @@ class ProductSearchSettings extends SearchSettings
     function setResultConstraint(?ProductSearchResultConstraint $resultConstraint)
     {
         $this->resultConstraint = $resultConstraint;
+        return $this;
+    }
+    
+    function setHighlight(?ProductSearchSettingsHighlightSettings $highlight)
+    {
+        $this->highlight = $highlight;
         return $this;
     }
 }
