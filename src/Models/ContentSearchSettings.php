@@ -7,6 +7,7 @@ class ContentSearchSettings extends SearchSettings
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.ContentSearchSettings, Relewise.Client";
     public ?SelectedContentPropertiesSettings $selectedContentProperties;
     public RecommendationSettings $recommendations;
+    public ?ContentSearchSettingsHighlightSettings $highlight;
     
     public static function create() : ContentSearchSettings
     {
@@ -25,6 +26,10 @@ class ContentSearchSettings extends SearchSettings
         {
             $result->recommendations = RecommendationSettings::hydrate($arr["recommendations"]);
         }
+        if (array_key_exists("highlight", $arr))
+        {
+            $result->highlight = ContentSearchSettingsHighlightSettings::hydrate($arr["highlight"]);
+        }
         return $result;
     }
     
@@ -37,6 +42,12 @@ class ContentSearchSettings extends SearchSettings
     function setRecommendations(RecommendationSettings $recommendations)
     {
         $this->recommendations = $recommendations;
+        return $this;
+    }
+    
+    function setHighlight(?ContentSearchSettingsHighlightSettings $highlight)
+    {
+        $this->highlight = $highlight;
         return $this;
     }
 }

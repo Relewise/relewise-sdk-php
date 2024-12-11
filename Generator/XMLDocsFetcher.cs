@@ -32,7 +32,7 @@ public static class XMLDocsFetcher
         {
             seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? seeReference.GetAttribute("langword")?.Split(".").Last() ?? string.Empty;
         }
-        
+
         foreach (var member in document.GetElementsByTagName("doc")[0].Children[1].Children)
         {
             foreach (var child in member.Children)
@@ -54,6 +54,11 @@ public static class XMLDocsFetcher
                     foreach (var exampleWrapper in child.Children.Where(c => c.TagName == "EXAMPLE"))
                     {
                         exampleWrapper.OuterHtml = exampleWrapper.InnerHtml.Trim();
+                    }
+                    foreach (var exampleWrapper in child.Children.Where(c => c.TagName == "SEEALSO"))
+                    {
+                        // We intentionally remove these tags entirely as there is no good way to present them in PHP. This is the same as saying that we don't support them in PHP.
+                        exampleWrapper.OuterHtml = "";
                     }
 
                     result.Summaries.TryAdd(member.GetAttribute("name")!, HttpUtility.HtmlDecode(JoinInOneLine(child.InnerHtml)));

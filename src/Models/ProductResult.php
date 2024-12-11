@@ -20,6 +20,7 @@ class ProductResult
     public PurchasedByUserCompanyInfo $purchasedByUserCompany;
     public ViewedByUserCompanyInfo $viewedByUserCompany;
     public array $filteredVariants;
+    public ?HighlightResult $highlight;
     
     public static function create(string $productId, int $rank) : ProductResult
     {
@@ -115,6 +116,10 @@ class ProductResult
             {
                 array_push($result->filteredVariants, VariantResult::hydrate($value));
             }
+        }
+        if (array_key_exists("highlight", $arr))
+        {
+            $result->highlight = HighlightResult::hydrate($arr["highlight"]);
         }
         return $result;
     }
@@ -291,6 +296,12 @@ class ProductResult
             $this->filteredVariants = array();
         }
         array_push($this->filteredVariants, $filteredVariants);
+        return $this;
+    }
+    
+    function setHighlight(?HighlightResult $highlight)
+    {
+        $this->highlight = $highlight;
         return $this;
     }
 }

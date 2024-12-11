@@ -11,6 +11,7 @@ class ContentResult
     public array $data;
     public array $categoryPaths;
     public ViewedByUserInfo $viewedByUser;
+    public ?HighlightResult $highlight;
     
     public static function create(string $contentId, int $rank) : ContentResult
     {
@@ -62,6 +63,10 @@ class ContentResult
         if (array_key_exists("viewedByUser", $arr))
         {
             $result->viewedByUser = ViewedByUserInfo::hydrate($arr["viewedByUser"]);
+        }
+        if (array_key_exists("highlight", $arr))
+        {
+            $result->highlight = HighlightResult::hydrate($arr["highlight"]);
         }
         return $result;
     }
@@ -150,6 +155,12 @@ class ContentResult
     function setViewedByUser(ViewedByUserInfo $viewedByUser)
     {
         $this->viewedByUser = $viewedByUser;
+        return $this;
+    }
+    
+    function setHighlight(?HighlightResult $highlight)
+    {
+        $this->highlight = $highlight;
         return $this;
     }
 }
