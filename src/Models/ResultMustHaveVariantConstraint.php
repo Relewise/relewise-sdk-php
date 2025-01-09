@@ -6,7 +6,7 @@ namespace Relewise\Models;
 class ResultMustHaveVariantConstraint extends ProductSearchResultConstraint
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.ResultMustHaveVariantConstraint, Relewise.Client";
-    /** Used to instruct the search engine that products which does not have any variants, will be returned anyway. */
+    /** Instructs the search engine that products that do not have any <b>enabled</b> variants, will be returned anyway. */
     public bool $exceptWhenProductHasNoVariants;
     
     public static function create() : ResultMustHaveVariantConstraint
@@ -25,7 +25,7 @@ class ResultMustHaveVariantConstraint extends ProductSearchResultConstraint
         return $result;
     }
     
-    /** Used to instruct the search engine that products which does not have any variants, will be returned anyway. */
+    /** Instructs the search engine that products that do not have any <b>enabled</b> variants, will be returned anyway. */
     function setExceptWhenProductHasNoVariants(bool $exceptWhenProductHasNoVariants)
     {
         $this->exceptWhenProductHasNoVariants = $exceptWhenProductHasNoVariants;
