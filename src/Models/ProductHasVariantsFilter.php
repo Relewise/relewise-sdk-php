@@ -6,12 +6,14 @@ class ProductHasVariantsFilter extends Filter
 {
     public string $typeDefinition = "Relewise.Client.Requests.Filters.ProductHasVariantsFilter, Relewise.Client";
     public ?intRange $numberOfVariants;
+    /** Should disabled variants be considered when evaluating if a product has any variants? */
+    public bool $includeDisabled;
     
     public static function create(?intRange $numberOfVariants, bool $negated = false) : ProductHasVariantsFilter
     {
         $result = new ProductHasVariantsFilter();
         $result->numberOfVariants = $numberOfVariants;
-        $result->negated = $negated;
+        $result->includeDisabled = $negated;
         return $result;
     }
     
@@ -22,12 +24,23 @@ class ProductHasVariantsFilter extends Filter
         {
             $result->numberOfVariants = intRange::hydrate($arr["numberOfVariants"]);
         }
+        if (array_key_exists("includeDisabled", $arr))
+        {
+            $result->includeDisabled = $arr["includeDisabled"];
+        }
         return $result;
     }
     
     function setNumberOfVariants(?intRange $numberOfVariants)
     {
         $this->numberOfVariants = $numberOfVariants;
+        return $this;
+    }
+    
+    /** Should disabled variants be considered when evaluating if a product has any variants? */
+    function setIncludeDisabled(bool $includeDisabled)
+    {
+        $this->includeDisabled = $includeDisabled;
         return $this;
     }
     
