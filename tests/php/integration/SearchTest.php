@@ -27,6 +27,7 @@ use Relewise\Models\RelevanceModifierCollection;
 use Relewise\Models\TrackProductUpdateRequest;
 use Relewise\Searcher;
 use Relewise\Tracker;
+use Relewise\Models\ProductProductHighlightPropsHighlightSettingsOffsetSettings;
 
 class SearchTest extends BaseTestCase
 {
@@ -151,7 +152,9 @@ class SearchTest extends BaseTestCase
                         ->addToDataKeys("Description")
                     )
                     ->setShape(ProductProductHighlightPropsHighlightSettingsResponseShape::create()
-                        ->setIncludeOffsets(true)
+                        ->setOffsets(ProductProductHighlightPropsHighlightSettingsOffsetSettings::create()
+                            ->setInclude(true)     
+                        )
                     )
                 )
         );
@@ -174,3 +177,4 @@ class SearchTest extends BaseTestCase
         self::assertEquals(28, $productResult->highlight->offsets->data[0]["value"][0]["upperBoundInclusive"]);
     }
 }
+
