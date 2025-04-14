@@ -7,11 +7,11 @@ class Score
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Score, Relewise.Client";
     /** The base score is a number between 0 and 100 that has not been manipulated by relevance modifiers and merchandising rules. Greater values indicate better results. */
-    public int $base;
+    public float $base;
     /** The adjusted score is based on the base score but with relevance modifiers and merchandising rules applied. */
-    public int $adjusted;
+    public float $adjusted;
     
-    public static function create(int $baseScore, int $adjustedScore) : Score
+    public static function create(float $baseScore, float $adjustedScore) : Score
     {
         $result = new Score();
         $result->base = $baseScore;
@@ -34,14 +34,14 @@ class Score
     }
     
     /** The base score is a number between 0 and 100 that has not been manipulated by relevance modifiers and merchandising rules. Greater values indicate better results. */
-    function setBase(int $base)
+    function setBase(float $base)
     {
         $this->base = $base;
         return $this;
     }
     
     /** The adjusted score is based on the base score but with relevance modifiers and merchandising rules applied. */
-    function setAdjusted(int $adjusted)
+    function setAdjusted(float $adjusted)
     {
         $this->adjusted = $adjusted;
         return $this;
