@@ -19,8 +19,8 @@ public class PhpTypeResolver
     public string ResolveType(Type type) => type.Name switch
     {
         "String" or "Guid" => "string",
-        "Int32" or "Int64" or "UInt16" or "Single" or "Byte" => "int",
-        "Float" or "Double" or "Decimal" => "float",
+        "Int32" or "Int64" or "UInt16" or "Byte" => "int",
+        "Float" or "Double" or "Decimal" or "Single" => "float",
         "Boolean" => "bool",
         "Object" => "mixed",
         "DateTimeOffset" or "DateTime" => "DateTime",
