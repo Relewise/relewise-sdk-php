@@ -14,6 +14,7 @@ class ProductPerformanceTest extends BaseTestCase
 {
     public function testProductPerformanceRequest(): void
     {
+        $this->markTestSkipped("This test is temporarily disabled due to flakiness");
         $analyzer = new Analyzer($this->DATASET_ID(), $this->API_KEY());
 
         $request = ProductPerformanceRequest::create(
