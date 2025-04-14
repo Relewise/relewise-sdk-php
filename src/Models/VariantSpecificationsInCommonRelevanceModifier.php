@@ -6,12 +6,12 @@ namespace Relewise\Models;
 class VariantSpecificationsInCommonRelevanceModifier extends RelevanceModifier
 {
     public string $typeDefinition = "Relewise.Client.Requests.RelevanceModifiers.VariantSpecificationsInCommonRelevanceModifier, Relewise.Client";
-    /** A collection of KeyMultiplier that each define a certain key and value that the relevance should be multiplied with if matching on this key. The default multiplier for keys not included, is 1.0. */
+    /** A collection of KeyMultipliers that each define a certain key and value that the relevance should be multiplied with if matching on this key. */
     public array $specificationKeysAndMultipliers;
     
     /**
      * Creates a RelevanceModifier that can change the relevance of a Variant depending on whether certain SpecificationKeysAndMultipliers match with a specific variant.
-     * @param KeyMultiplier[] $specificationKeysAndMultipliers A collection of KeyMultiplier that each define a certain key and value that the relevance should be multiplied with if matching on this key. The default multiplier for keys not included, is 1.0.
+     * @param KeyMultiplier[] $specificationKeysAndMultipliers A collection of KeyMultipliers that each define a certain key and value that the relevance should be multiplied with if matching on this key.
      */
     public static function create(KeyMultiplier ... $specificationKeysAndMultipliers) : VariantSpecificationsInCommonRelevanceModifier
     {
@@ -34,7 +34,7 @@ class VariantSpecificationsInCommonRelevanceModifier extends RelevanceModifier
         return $result;
     }
     
-    /** A collection of KeyMultiplier that each define a certain key and value that the relevance should be multiplied with if matching on this key. The default multiplier for keys not included, is 1.0. */
+    /** A collection of KeyMultipliers that each define a certain key and value that the relevance should be multiplied with if matching on this key. */
     function setSpecificationKeysAndMultipliers(KeyMultiplier ... $specificationKeysAndMultipliers)
     {
         $this->specificationKeysAndMultipliers = $specificationKeysAndMultipliers;
@@ -42,7 +42,7 @@ class VariantSpecificationsInCommonRelevanceModifier extends RelevanceModifier
     }
     
     /**
-     * A collection of KeyMultiplier that each define a certain key and value that the relevance should be multiplied with if matching on this key. The default multiplier for keys not included, is 1.0.
+     * A collection of KeyMultipliers that each define a certain key and value that the relevance should be multiplied with if matching on this key.
      * @param KeyMultiplier[] $specificationKeysAndMultipliers new value.
      */
     function setSpecificationKeysAndMultipliersFromArray(array $specificationKeysAndMultipliers)
@@ -51,7 +51,7 @@ class VariantSpecificationsInCommonRelevanceModifier extends RelevanceModifier
         return $this;
     }
     
-    /** A collection of KeyMultiplier that each define a certain key and value that the relevance should be multiplied with if matching on this key. The default multiplier for keys not included, is 1.0. */
+    /** A collection of KeyMultipliers that each define a certain key and value that the relevance should be multiplied with if matching on this key. */
     function addToSpecificationKeysAndMultipliers(KeyMultiplier $specificationKeysAndMultipliers)
     {
         if (!isset($this->specificationKeysAndMultipliers))

@@ -7,6 +7,7 @@ class SearchTermPredictionResult
     public string $term;
     public int $rank;
     public array $expectedResultTypes;
+    /** @deprecated No longer in use */
     public SearchTermPredictionResultPredictionType $type;
     public array $correctedWordsMask;
     
@@ -85,6 +86,7 @@ class SearchTermPredictionResult
         return $this;
     }
     
+    /** @deprecated No longer in use */
     function setType(SearchTermPredictionResultPredictionType $type)
     {
         $this->type = $type;

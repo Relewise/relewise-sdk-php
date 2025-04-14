@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-/** Performs facetting based on if product is known to be purchased recently (within !: SinceMinutesAgo), applicable only for product searches. Requires <b>at least one</b> level of selection, whether !:ByUser, or !:ByUserCompany, or !:ByUserParentCompany. */
+/** Performs faceting based on if product is known to be purchased recently (within SinceMinutesAgo), applicable only for product searches. Requires <b>at least one</b> level of selection, whether ByUser, or ByUserCompany, or ByUserParentCompany. */
 class RecentlyPurchasedFacet extends boolValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.RecentlyPurchasedFacet, Relewise.Client";

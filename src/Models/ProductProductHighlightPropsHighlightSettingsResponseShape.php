@@ -2,12 +2,13 @@
 
 namespace Relewise\Models;
 
+/** Indicates how the highlight result should be shaped or presented. */
 class ProductProductHighlightPropsHighlightSettingsResponseShape
 {
-    /** If highlights should be presented as offsets/indices within inspected data values. */
-    public bool $includeOffsets;
-    /** If highlights should be presented as text fragment within inspected data values; and if so, additional configuration on how to. */
-    public ?ProductProductHighlightPropsHighlightSettingsTextSnippetsSettings $textSnippets;
+    /** Whether to return match positions (offsets) within fields. */
+    public ?ProductProductHighlightPropsHighlightSettingsOffsetSettings $offsets;
+    /** Controls whether to return context-based text snippets; can include further snippet configuration. */
+    public ?ProductProductHighlightPropsHighlightSettingsSnippetsSettings $snippets;
     
     public static function create() : ProductProductHighlightPropsHighlightSettingsResponseShape
     {
@@ -18,28 +19,28 @@ class ProductProductHighlightPropsHighlightSettingsResponseShape
     public static function hydrate(array $arr) : ProductProductHighlightPropsHighlightSettingsResponseShape
     {
         $result = new ProductProductHighlightPropsHighlightSettingsResponseShape();
-        if (array_key_exists("includeOffsets", $arr))
+        if (array_key_exists("offsets", $arr))
         {
-            $result->includeOffsets = $arr["includeOffsets"];
+            $result->offsets = ProductProductHighlightPropsHighlightSettingsOffsetSettings::hydrate($arr["offsets"]);
         }
-        if (array_key_exists("textSnippets", $arr))
+        if (array_key_exists("snippets", $arr))
         {
-            $result->textSnippets = ProductProductHighlightPropsHighlightSettingsTextSnippetsSettings::hydrate($arr["textSnippets"]);
+            $result->snippets = ProductProductHighlightPropsHighlightSettingsSnippetsSettings::hydrate($arr["snippets"]);
         }
         return $result;
     }
     
-    /** If highlights should be presented as offsets/indices within inspected data values. */
-    function setIncludeOffsets(bool $includeOffsets)
+    /** Whether to return match positions (offsets) within fields. */
+    function setOffsets(?ProductProductHighlightPropsHighlightSettingsOffsetSettings $offsets)
     {
-        $this->includeOffsets = $includeOffsets;
+        $this->offsets = $offsets;
         return $this;
     }
     
-    /** If highlights should be presented as text fragment within inspected data values; and if so, additional configuration on how to. */
-    function setTextSnippets(?ProductProductHighlightPropsHighlightSettingsTextSnippetsSettings $textSnippets)
+    /** Controls whether to return context-based text snippets; can include further snippet configuration. */
+    function setSnippets(?ProductProductHighlightPropsHighlightSettingsSnippetsSettings $snippets)
     {
-        $this->textSnippets = $textSnippets;
+        $this->snippets = $snippets;
         return $this;
     }
 }

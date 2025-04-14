@@ -4,6 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** @deprecated Replaced by PredictionConfiguration */
 enum PredictionSourceType : string
 {
     case Disabled = 'Disabled';

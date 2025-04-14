@@ -4,6 +4,7 @@ namespace Relewise\Models;
 
 use DateTime;
 
+/** @deprecated No longer in use */
 enum SearchTermPredictionResultPredictionType : string
 {
     case Match = 'Match';
