@@ -281,7 +281,28 @@ public class PhpCreatorMethodWriter
 
     private string DefaultValueSetter(ParameterInfo parameter)
     {
-        return parameter.HasDefaultValue && parameter.DefaultValue is null ? " = Null" : parameter.DefaultValue is { } defaultValue && (defaultValue.GetType().IsValueType || defaultValue is string) ? $" = {LiteralValueExpression(defaultValue)}" : "";
+        bool isGenericList = parameter.ParameterType.IsGenericType 
+                            && parameter.ParameterType.GetGenericTypeDefinition() == typeof(List<>)
+                            && parameter.ParameterType.GenericTypeArguments is [_];
+
+        if (parameter.HasDefaultValue && parameter.DefaultValue is null)
+        {
+            // Optional generic lists cannot have a default value
+            if (isGenericList && parameter.IsOptional)
+            {
+                return "";
+            }
+
+            return " = Null";
+        }
+
+        if (parameter.DefaultValue is { } defaultValue &&
+            (defaultValue.GetType().IsValueType || defaultValue is string))
+        {
+            return $" = {LiteralValueExpression(defaultValue)}";
+        }
+
+        return "";
     }
 
     private string LiteralValueExpression(object obj)
