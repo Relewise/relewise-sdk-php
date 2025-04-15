@@ -179,7 +179,7 @@ class SearchTest extends BaseTestCase
         self::assertEquals(28, $productResult->highlight->offsets->data[0]["value"][0]["upperBoundInclusive"]);
     }
     
-    public function testRecentlyPurchasedFacetDoesNotWork(): void
+    public function testRecentlyPurchasedFacetDoesCanBuild(): void
     {
         $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
 
