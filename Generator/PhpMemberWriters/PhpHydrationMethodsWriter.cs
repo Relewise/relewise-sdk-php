@@ -151,7 +151,9 @@ public class PhpHydrationMethodsWriter
             type == typeof(object) ||
             type == typeof(decimal) ||
             type.IsArray ||
-            (type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(List<>) || type.GetGenericTypeDefinition() == typeof(Dictionary<,>))))
+            (type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(List<>) ||
+                                    type.GetGenericTypeDefinition() == typeof(Dictionary<,>) ||
+                                    type.GetGenericTypeDefinition() == typeof(KeyValuePair<,>))))
         {
             return jsonValue;
         }
