@@ -2,7 +2,6 @@
 
 namespace Relewise\Tests\Integration;
 
-use \PHPUnit\Framework\TestCase;
 use Relewise\Factory\DataValueFactory;
 use Relewise\Factory\UserFactory;
 use Relewise\Models\CategoryScope;
@@ -16,6 +15,7 @@ use Relewise\Models\Product;
 use Relewise\Models\ProductCategoryIdFilter;
 use Relewise\Models\ProductCategorySearchRequest;
 use Relewise\Models\ProductDataRelevanceModifier;
+use Relewise\Models\ProductFacetQuery;
 use Relewise\Models\ProductHighlightProps;
 use Relewise\Models\ProductProductHighlightPropsHighlightSettingsLimits;
 use Relewise\Models\ProductProductHighlightPropsHighlightSettingsResponseShape;
@@ -28,6 +28,8 @@ use Relewise\Models\TrackProductUpdateRequest;
 use Relewise\Searcher;
 use Relewise\Tracker;
 use Relewise\Models\ProductProductHighlightPropsHighlightSettingsOffsetSettings;
+use Relewise\Models\PurchaseQualifiers;
+use Relewise\Models\RecentlyPurchasedFacet;
 
 class SearchTest extends BaseTestCase
 {
@@ -175,6 +177,32 @@ class SearchTest extends BaseTestCase
         self::assertNotNull($productResult->highlight->offsets->data[0]["value"][0]);
         self::assertEquals(17, $productResult->highlight->offsets->data[0]["value"][0]["lowerBoundInclusive"]);
         self::assertEquals(28, $productResult->highlight->offsets->data[0]["value"][0]["upperBoundInclusive"]);
+    }
+    
+    public function testRecentlyPurchasedFacetDoesNotWork(): void
+    {
+        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+
+        $productSearch = ProductSearchRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            UserFactory::byTemporaryId("t-Id"),
+            "integration test",
+            term: Null,
+            skip: 0,
+            take: 20
+        )->setFacets(
+            ProductFacetQuery::create()
+                ->addToItems(
+                    RecentlyPurchasedFacet::create(
+                        PurchaseQualifiers::create(100, true, false, false)
+                )
+            )
+        );
+
+        $response = $searcher->productSearch($productSearch);
+
+        self::assertNotNull($response);
     }
 }
 
