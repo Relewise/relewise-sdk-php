@@ -73,7 +73,7 @@ class RebuildStatus implements JsonSerializable
         }
         if (array_key_exists("lastRebuildDuration", $arr))
         {
-            $result->lastRebuildDuration = $arr["lastRebuildDuration"];
+            $result->lastRebuildDuration = TimeSpan::hydrate($arr["lastRebuildDuration"]);
         }
         if (array_key_exists("isBuilt", $arr))
         {
@@ -89,11 +89,11 @@ class RebuildStatus implements JsonSerializable
         }
         if (array_key_exists("staleDuration", $arr))
         {
-            $result->staleDuration = $arr["staleDuration"];
+            $result->staleDuration = TimeSpan::hydrate($arr["staleDuration"]);
         }
         if (array_key_exists("lastStaleDuration", $arr))
         {
-            $result->lastStaleDuration = $arr["lastStaleDuration"];
+            $result->lastStaleDuration = TimeSpan::hydrate($arr["lastStaleDuration"]);
         }
         return $result;
     }

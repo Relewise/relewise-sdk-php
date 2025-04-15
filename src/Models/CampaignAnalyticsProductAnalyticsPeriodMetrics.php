@@ -43,7 +43,7 @@ class CampaignAnalyticsProductAnalyticsPeriodMetrics implements JsonSerializable
             $result->currencies = array();
             foreach($arr["currencies"] as &$value)
             {
-                array_push($result->currencies, $value);
+                array_push($result->currencies, CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics::hydrate($value));
             }
         }
         return $result;

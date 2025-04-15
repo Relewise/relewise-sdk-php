@@ -21,7 +21,7 @@ class RecentlyPurchasedFacet extends boolValueFacet
         $result = boolValueFacet::hydrateBase(new RecentlyPurchasedFacet(), $arr);
         if (array_key_exists("purchaseQualifiers", $arr))
         {
-            $result->purchaseQualifiers = $arr["purchaseQualifiers"];
+            $result->purchaseQualifiers = PurchaseQualifiers::hydrate($arr["purchaseQualifiers"]);
         }
         return $result;
     }

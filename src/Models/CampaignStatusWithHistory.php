@@ -27,7 +27,7 @@ class CampaignStatusWithHistory
             $result->history = array();
             foreach($arr["history"] as &$value)
             {
-                array_push($result->history, $value);
+                array_push($result->history, CampaignStatusWithHistoryChange::hydrate($value));
             }
         }
         return $result;

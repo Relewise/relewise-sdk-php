@@ -23,11 +23,11 @@ class DateTimeRange implements JsonSerializable
         $result = new DateTimeRange();
         if (array_key_exists("lowerBoundInclusive", $arr))
         {
-            $result->lowerBoundInclusive = $arr["lowerBoundInclusive"];
+            $result->lowerBoundInclusive = new DateTime($arr["lowerBoundInclusive"]);
         }
         if (array_key_exists("upperBoundInclusive", $arr))
         {
-            $result->upperBoundInclusive = $arr["upperBoundInclusive"];
+            $result->upperBoundInclusive = new DateTime($arr["upperBoundInclusive"]);
         }
         return $result;
     }

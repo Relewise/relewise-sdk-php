@@ -126,7 +126,7 @@ class ProductResult
         }
         if (array_key_exists("score", $arr))
         {
-            $result->score = $arr["score"];
+            $result->score = Score::hydrate($arr["score"]);
         }
         return $result;
     }
