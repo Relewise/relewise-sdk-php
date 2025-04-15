@@ -10,7 +10,8 @@ public class PhpClassWriter : IPhpTypeWriter
 {
     private static readonly Type[] ExtractableFacetResultTypes = { typeof(ProductFacetResult), typeof(ContentFacetResult), typeof(ProductCategoryFacetResult) };
     private static readonly string[] IgnoredProperties = new[] { "Channel", "SubChannel", "TrackingNumber" };
-
+    
+    private static readonly Type[] CustomTypes = [typeof(TimeSpan)]; 
     private readonly PhpWriter phpWriter;
 
     public PhpClassWriter(PhpWriter phpWriter)
@@ -72,13 +73,20 @@ public class PhpClassWriter : IPhpTypeWriter
             writer.WriteLine("use DateTime;");
         }
 
-        bool hasDateIntervalsProperty = gettableProperties.Any(p => p.propertyTypeName is "TimeSpan");
-        if (hasDateIntervalsProperty)
+        IEnumerable<Type?> customClassesUsed = gettableProperties
+            .Select(p => CustomTypes.FirstOrDefault(x => x.Name == p.propertyTypeName))
+            .Where(t => t != null)
+            .Distinct();
+
+        foreach (Type? customType in customClassesUsed)
         {
-            writer.WriteLine(@"use Relewise\NonGeneratedModels\TimeSpan;");
+            if (customType != null)
+            {
+                writer.WriteLine(@$"use Relewise\NonGeneratedModels\{customType.Name};");
+            }
         }
 
-        if (hasDateTimeOrDateTimeOffsetProperty || hasDateIntervalsProperty)
+        if (hasDateTimeOrDateTimeOffsetProperty)
         {
             writer.WriteLine("use JsonSerializable;");
             writer.WriteLine();
@@ -112,7 +120,7 @@ public class PhpClassWriter : IPhpTypeWriter
         {
             writer.Write($" extends {baseTypeName}");
         }
-        if (hasDateTimeOrDateTimeOffsetProperty || hasDateIntervalsProperty)
+        if (hasDateTimeOrDateTimeOffsetProperty)
         {
             writer.Write(" implements JsonSerializable");
         }
