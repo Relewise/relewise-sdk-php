@@ -11,7 +11,7 @@ use Relewise\Models\IndexConfiguration;
 use Relewise\Models\Language;
 use Relewise\Models\LanguageIndexConfiguration;
 use Relewise\Models\LanguageIndexConfigurationEntry;
-use Relewise\Models\PredictionSourceType;
+use Relewise\Models\PredictionConfiguration;
 use Relewise\Models\ProductIndexConfiguration;
 use Relewise\Models\SaveSearchIndexRequest;
 use Relewise\Models\SearchIndex;
@@ -35,12 +35,20 @@ class SearchAdministratorTest extends BaseTestCase
                             )
                         )
                         ->setProduct(ProductIndexConfiguration::create()
-                            ->setId(FieldIndexConfiguration::create(true, 1, PredictionSourceType::Disabled, ClearTextParser::create()))
-                            ->setDisplayName(FieldIndexConfiguration::create(true, 9, PredictionSourceType::PartialWordSequences, ClearTextParser::create()))
+                            ->setId(FieldIndexConfiguration::create(true, 1, PredictionConfiguration::create()
+                                  ->setIncludeInPredictions(true)
+                            , ClearTextParser::create()))
+                            ->setDisplayName(FieldIndexConfiguration::create(true, 9, PredictionConfiguration::create()
+                                  ->setIncludeInPredictions(true)
+                            , ClearTextParser::create()))
                             ->setData(
                                 DataIndexConfiguration::create()
-                                    ->addToKeys("Tags", FieldIndexConfiguration::create(true, 8, PredictionSourceType::IndividualWords, ClearTextParser::create()))
-                                    ->addToKeys("Description", FieldIndexConfiguration::create(true, 5, PredictionSourceType::PartialWordSequences, HtmlParser::create()))
+                                    ->addToKeys("Tags", FieldIndexConfiguration::create(true, 8, PredictionConfiguration::create()
+                                  ->setIncludeInPredictions(true)
+                            , ClearTextParser::create()))
+                                    ->addToKeys("Description", FieldIndexConfiguration::create(true, 5, PredictionConfiguration::create()
+                                  ->setIncludeInPredictions(true)
+                            , HtmlParser::create()))
                             )
                         )
                 ),
