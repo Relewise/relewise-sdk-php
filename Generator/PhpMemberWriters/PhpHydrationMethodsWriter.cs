@@ -145,7 +145,13 @@ public class PhpHydrationMethodsWriter
         {
             return $"new DateTime({jsonValue})";
         }
-        if (type.IsValueType || type == typeof(string) || type == typeof(Guid) || type == typeof(object) || type.IsArray || (type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(List<>) || type.GetGenericTypeDefinition() == typeof(Dictionary<,>))))
+        if (type.IsPrimitive ||
+            type == typeof(string) ||
+            type == typeof(Guid) ||
+            type == typeof(object) ||
+            type == typeof(decimal) ||
+            type.IsArray ||
+            (type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(List<>) || type.GetGenericTypeDefinition() == typeof(Dictionary<,>))))
         {
             return jsonValue;
         }
