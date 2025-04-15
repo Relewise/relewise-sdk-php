@@ -141,7 +141,7 @@ public class PhpHydrationMethodsWriter
         {
             return $"{phpWriter.PhpTypeName(type)}::from({jsonValue})";
         }
-        if (type == typeof(DateTimeOffset))
+        if (type == typeof(DateTimeOffset) || type == typeof(DateTime))
         {
             return $"new DateTime({jsonValue})";
         }
