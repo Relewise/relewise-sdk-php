@@ -70,6 +70,16 @@ public class PhpClassWriter : IPhpTypeWriter
         if (hasDateTimeOrDateTimeOffsetProperty)
         {
             writer.WriteLine("use DateTime;");
+        }
+
+        bool hasDateIntervalsProperty = gettableProperties.Any(p => p.propertyTypeName is "TimeSpan");
+        if (hasDateIntervalsProperty)
+        {
+            writer.WriteLine(@"use Relewise\NonGeneratedModels\TimeSpan;");
+        }
+
+        if (hasDateTimeOrDateTimeOffsetProperty || hasDateIntervalsProperty)
+        {
             writer.WriteLine("use JsonSerializable;");
             writer.WriteLine();
         }
@@ -102,7 +112,7 @@ public class PhpClassWriter : IPhpTypeWriter
         {
             writer.Write($" extends {baseTypeName}");
         }
-        if (hasDateTimeOrDateTimeOffsetProperty)
+        if (hasDateTimeOrDateTimeOffsetProperty || hasDateIntervalsProperty)
         {
             writer.Write(" implements JsonSerializable");
         }

@@ -145,6 +145,10 @@ public class PhpHydrationMethodsWriter
         {
             return $"new DateTime({jsonValue})";
         }
+        if (type == typeof(TimeSpan))
+        {
+            return $"new TimeSpan({jsonValue})";
+        }
         if (type.IsPrimitive ||
             type == typeof(string) ||
             type == typeof(Guid) ||

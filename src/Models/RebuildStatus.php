@@ -3,6 +3,7 @@
 namespace Relewise\Models;
 
 use DateTime;
+use Relewise\NonGeneratedModels\TimeSpan;
 use JsonSerializable;
 
 /** Contains information about the status of the rebuild process for a search index, these values are set server side, any values set from client is ignored */
@@ -73,7 +74,7 @@ class RebuildStatus implements JsonSerializable
         }
         if (array_key_exists("lastRebuildDuration", $arr))
         {
-            $result->lastRebuildDuration = TimeSpan::hydrate($arr["lastRebuildDuration"]);
+            $result->lastRebuildDuration = new TimeSpan($arr["lastRebuildDuration"]);
         }
         if (array_key_exists("isBuilt", $arr))
         {
@@ -89,11 +90,11 @@ class RebuildStatus implements JsonSerializable
         }
         if (array_key_exists("staleDuration", $arr))
         {
-            $result->staleDuration = TimeSpan::hydrate($arr["staleDuration"]);
+            $result->staleDuration = new TimeSpan($arr["staleDuration"]);
         }
         if (array_key_exists("lastStaleDuration", $arr))
         {
-            $result->lastStaleDuration = TimeSpan::hydrate($arr["lastStaleDuration"]);
+            $result->lastStaleDuration = new TimeSpan($arr["lastStaleDuration"]);
         }
         return $result;
     }
