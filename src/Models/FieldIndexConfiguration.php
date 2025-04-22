@@ -12,12 +12,12 @@ class FieldIndexConfiguration
     public ?MatchTypeSettings $matchTypeSettings;
     public ?PredictionConfiguration $predictionConfiguration;
     
-    public static function create(bool $included, int $weight, PredictionConfiguration $predictionConfiguration, Parser $parser, ?MatchTypeSettings $matchTypeSettings = Null) : FieldIndexConfiguration
+    public static function create(bool $included, int $weight, PredictionSourceType $predictionSourceType, Parser $parser, ?MatchTypeSettings $matchTypeSettings = Null) : FieldIndexConfiguration
     {
         $result = new FieldIndexConfiguration();
         $result->included = $included;
         $result->weight = $weight;
-        $result->predictionConfiguration = $predictionConfiguration;
+        $result->predictionSourceType = $predictionSourceType;
         $result->parser = $parser;
         $result->matchTypeSettings = $matchTypeSettings;
         return $result;
