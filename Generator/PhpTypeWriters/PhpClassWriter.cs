@@ -10,8 +10,16 @@ public class PhpClassWriter : IPhpTypeWriter
 {
     private static readonly Type[] ExtractableFacetResultTypes = { typeof(ProductFacetResult), typeof(ContentFacetResult), typeof(ProductCategoryFacetResult) };
     private static readonly string[] IgnoredProperties = new[] { "Channel", "SubChannel", "TrackingNumber" };
-    
-    private static readonly Type[] CustomTypes = [typeof(TimeSpan)]; 
+
+    private static readonly Dictionary<string, string[]> TypesWithCustomUsings = new()
+    {
+        { "DateInterval",
+            [
+                "use DateInterval;",
+                @"use Relewise\Factory\DateIntervalFactory;"
+            ]
+        }
+    };
     private readonly PhpWriter phpWriter;
 
     public PhpClassWriter(PhpWriter phpWriter)
@@ -73,16 +81,15 @@ public class PhpClassWriter : IPhpTypeWriter
             writer.WriteLine("use DateTime;");
         }
 
-        IEnumerable<Type?> customClassesUsed = gettableProperties
-            .Select(p => CustomTypes.FirstOrDefault(x => x.Name == p.propertyTypeName))
-            .Where(t => t != null)
+        IEnumerable<string?> customUsings = gettableProperties
+            .SelectMany(p => TypesWithCustomUsings.GetValueOrDefault(p.propertyTypeName) ?? [])
             .Distinct();
 
-        foreach (Type? customType in customClassesUsed)
+        foreach (string? customUsing in customUsings)
         {
-            if (customType != null)
+            if (customUsing != null)
             {
-                writer.WriteLine(@$"use Relewise\NonGeneratedModels\{customType.Name};");
+                writer.WriteLine(customUsing);
             }
         }
 

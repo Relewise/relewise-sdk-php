@@ -24,7 +24,7 @@ public class PhpTypeResolver
         "Boolean" => "bool",
         "Object" => "mixed",
         "DateTimeOffset" or "DateTime" => "DateTime",
-        "TimeSpan" => "TimeSpan",
+        "TimeSpan" => "DateInterval",
         var value when value.StartsWith("Nullable") => $"?{ResolveType(type.GetGenericArguments()[0])}",
         var value when value.StartsWith("List") || value.StartsWith("Dictionary") || value.EndsWith("[]") || value.StartsWith("IEnumerable") => AddCollectionTypeDefinition(type),
         _ when type.IsGenericType => GetGenericTypeDefinition(type),
@@ -56,7 +56,7 @@ public class PhpTypeResolver
         while (typeToPrependToName is not null)
         {
             name = typeToPrependToName.Name + name;
-            
+
             typeToPrependToName = typeToPrependToName.DeclaringType;
         }
 

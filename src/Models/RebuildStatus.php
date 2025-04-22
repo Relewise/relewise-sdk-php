@@ -3,7 +3,8 @@
 namespace Relewise\Models;
 
 use DateTime;
-use Relewise\NonGeneratedModels\TimeSpan;
+use DateInterval;
+use Relewise\Factory\DateIntervalFactory;
 use JsonSerializable;
 
 /** Contains information about the status of the rebuild process for a search index, these values are set server side, any values set from client is ignored */
@@ -20,7 +21,7 @@ class RebuildStatus implements JsonSerializable
     /** The timestamp representing the last time this index had an opportunity to perform a rebuild This property is set server-side during modification. Any value sent from the client will be ignored. */
     public DateTime $lastRebuildOpportunity;
     /** The duration of the last rebuild. This property is set server-side during modification. Any value sent from the client will be ignored. */
-    public TimeSpan $lastRebuildDuration;
+    public DateInterval $lastRebuildDuration;
     /** Indicates whether the index have been built and is in a ready state to support searches. This property is set server-side. Any value sent from the client will be ignored. */
     public bool $isBuilt;
     /** Indicates whether the index is a partially built index. The initial build of an index is always partial to minimize the time it takes before the index becomes ready to support searches As soon as an initial partial index is built, a full non-partial index is queued for re-indexing immediately to replace the partial built one asap. This property is set server-side. Any value sent from the client will be ignored. */
@@ -28,11 +29,11 @@ class RebuildStatus implements JsonSerializable
     /** The timestamp representing the last time this index has been marked as stale, meaning it requires a rebuild. This property is set server-side. Any value sent from the client will be ignored. */
     public DateTime $lastMarkedAsStale;
     /** The duration of how long the index has currently been marked as stale, waiting for a rebuild to be performed. Will be zero if the index is not currently stale This property is set server-side. Any value sent from the client will be ignored. */
-    public TimeSpan $staleDuration;
+    public DateInterval $staleDuration;
     /** The duration of how long the index was previously marked as stale before it was rebuilt. This property is set server-side. Any value sent from the client will be ignored. */
-    public TimeSpan $lastStaleDuration;
+    public DateInterval $lastStaleDuration;
     
-    public static function create(bool $isBuilt, bool $isPartial, bool $isRebuilding, bool $isStale, DateTime $lastRebuildStarted, DateTime $lastRebuildCompleted, DateTime $lastRebuildOpportunity, TimeSpan $lastRebuildDuration, DateTime $lastMarkedAsStale, TimeSpan $staleDuration, TimeSpan $lastStaleDuration) : RebuildStatus
+    public static function create(bool $isBuilt, bool $isPartial, bool $isRebuilding, bool $isStale, DateTime $lastRebuildStarted, DateTime $lastRebuildCompleted, DateTime $lastRebuildOpportunity, DateInterval $lastRebuildDuration, DateTime $lastMarkedAsStale, DateInterval $staleDuration, DateInterval $lastStaleDuration) : RebuildStatus
     {
         $result = new RebuildStatus();
         $result->isBuilt = $isBuilt;
@@ -74,7 +75,7 @@ class RebuildStatus implements JsonSerializable
         }
         if (array_key_exists("lastRebuildDuration", $arr))
         {
-            $result->lastRebuildDuration = new TimeSpan($arr["lastRebuildDuration"]);
+            $result->lastRebuildDuration = DateIntervalFactory::fromTimeSpanString($arr["lastRebuildDuration"]);
         }
         if (array_key_exists("isBuilt", $arr))
         {
@@ -90,11 +91,11 @@ class RebuildStatus implements JsonSerializable
         }
         if (array_key_exists("staleDuration", $arr))
         {
-            $result->staleDuration = new TimeSpan($arr["staleDuration"]);
+            $result->staleDuration = DateIntervalFactory::fromTimeSpanString($arr["staleDuration"]);
         }
         if (array_key_exists("lastStaleDuration", $arr))
         {
-            $result->lastStaleDuration = new TimeSpan($arr["lastStaleDuration"]);
+            $result->lastStaleDuration = DateIntervalFactory::fromTimeSpanString($arr["lastStaleDuration"]);
         }
         return $result;
     }
@@ -135,7 +136,7 @@ class RebuildStatus implements JsonSerializable
     }
     
     /** The duration of the last rebuild. This property is set server-side during modification. Any value sent from the client will be ignored. */
-    function setLastRebuildDuration(TimeSpan $lastRebuildDuration)
+    function setLastRebuildDuration(DateInterval $lastRebuildDuration)
     {
         $this->lastRebuildDuration = $lastRebuildDuration;
         return $this;
@@ -163,14 +164,14 @@ class RebuildStatus implements JsonSerializable
     }
     
     /** The duration of how long the index has currently been marked as stale, waiting for a rebuild to be performed. Will be zero if the index is not currently stale This property is set server-side. Any value sent from the client will be ignored. */
-    function setStaleDuration(TimeSpan $staleDuration)
+    function setStaleDuration(DateInterval $staleDuration)
     {
         $this->staleDuration = $staleDuration;
         return $this;
     }
     
     /** The duration of how long the index was previously marked as stale before it was rebuilt. This property is set server-side. Any value sent from the client will be ignored. */
-    function setLastStaleDuration(TimeSpan $lastStaleDuration)
+    function setLastStaleDuration(DateInterval $lastStaleDuration)
     {
         $this->lastStaleDuration = $lastStaleDuration;
         return $this;

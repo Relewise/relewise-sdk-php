@@ -147,7 +147,7 @@ public class PhpHydrationMethodsWriter
         }
         if (type == typeof(TimeSpan))
         {
-            return $"new TimeSpan({jsonValue})";
+            return $"DateIntervalFactory::fromTimeSpanString({jsonValue})";
         }
         if (type.IsPrimitive ||
             type == typeof(string) ||
