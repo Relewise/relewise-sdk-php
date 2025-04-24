@@ -2,59 +2,33 @@
 
 namespace Relewise\Models;
 
-class SearchTermCondition
+class RetailMediaSearchTermCondition extends SearchTermCondition
 {
-    public ?SearchTermConditionConditionKind $kind;
-    public ?string $value;
-    public ?array $andConditions;
-    public ?array $orConditions;
-    public ?int $minimumLength;
-    /** Negates only direct Kind and Value condition. Requires Kind to be supplied in case 'negate' logic is requested. */
-    public bool $negated;
+    public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.RetailMediaSearchTermCondition, Relewise.Client";
+    public Language $language;
     
-    public static function create() : SearchTermCondition
+    public static function create(Language $language) : RetailMediaSearchTermCondition
     {
-        $result = new SearchTermCondition();
+        $result = new RetailMediaSearchTermCondition();
+        $result->language = $language;
         $result->negated = false;
         return $result;
     }
     
-    public static function hydrate(array $arr) : SearchTermCondition
+    public static function hydrate(array $arr) : RetailMediaSearchTermCondition
     {
-        $result = new SearchTermCondition();
-        if (array_key_exists("kind", $arr))
+        $result = new RetailMediaSearchTermCondition();
+        if (array_key_exists("language", $arr))
         {
-            $result->kind = SearchTermConditionConditionKind::from($arr["kind"]);
-        }
-        if (array_key_exists("value", $arr))
-        {
-            $result->value = $arr["value"];
-        }
-        if (array_key_exists("andConditions", $arr))
-        {
-            $result->andConditions = array();
-            foreach($arr["andConditions"] as &$value)
-            {
-                array_push($result->andConditions, SearchTermCondition::hydrate($value));
-            }
-        }
-        if (array_key_exists("orConditions", $arr))
-        {
-            $result->orConditions = array();
-            foreach($arr["orConditions"] as &$value)
-            {
-                array_push($result->orConditions, SearchTermCondition::hydrate($value));
-            }
-        }
-        if (array_key_exists("minimumLength", $arr))
-        {
-            $result->minimumLength = $arr["minimumLength"];
-        }
-        if (array_key_exists("negated", $arr))
-        {
-            $result->negated = $arr["negated"];
+            $result->language = Language::hydrate($arr["language"]);
         }
         return $result;
+    }
+    
+    function setLanguage(Language $language)
+    {
+        $this->language = $language;
+        return $this;
     }
     
     function setKind(?SearchTermConditionConditionKind $kind)
@@ -121,7 +95,6 @@ class SearchTermCondition
         return $this;
     }
     
-    /** Negates only direct Kind and Value condition. Requires Kind to be supplied in case 'negate' logic is requested. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

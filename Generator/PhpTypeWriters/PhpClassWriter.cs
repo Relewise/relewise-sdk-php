@@ -11,6 +11,15 @@ public class PhpClassWriter : IPhpTypeWriter
     private static readonly Type[] ExtractableFacetResultTypes = { typeof(ProductFacetResult), typeof(ContentFacetResult), typeof(ProductCategoryFacetResult) };
     private static readonly string[] IgnoredProperties = new[] { "Channel", "SubChannel", "TrackingNumber" };
 
+    private static readonly Dictionary<string, string[]> TypesWithCustomUsings = new()
+    {
+        { "DateInterval",
+            [
+                "use DateInterval;",
+                @"use Relewise\Factory\DateIntervalFactory;"
+            ]
+        }
+    };
     private readonly PhpWriter phpWriter;
 
     public PhpClassWriter(PhpWriter phpWriter)
@@ -70,6 +79,22 @@ public class PhpClassWriter : IPhpTypeWriter
         if (hasDateTimeOrDateTimeOffsetProperty)
         {
             writer.WriteLine("use DateTime;");
+        }
+
+        IEnumerable<string?> customUsings = gettableProperties
+            .SelectMany(p => TypesWithCustomUsings.GetValueOrDefault(p.propertyTypeName) ?? [])
+            .Distinct();
+
+        foreach (string? customUsing in customUsings)
+        {
+            if (customUsing != null)
+            {
+                writer.WriteLine(customUsing);
+            }
+        }
+
+        if (hasDateTimeOrDateTimeOffsetProperty)
+        {
             writer.WriteLine("use JsonSerializable;");
             writer.WriteLine();
         }

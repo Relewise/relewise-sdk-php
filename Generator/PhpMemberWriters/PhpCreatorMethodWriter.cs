@@ -2,6 +2,8 @@
 using System.CodeDom.Compiler;
 using System.Globalization;
 using System.Reflection;
+using Relewise.Client.DataTypes.Search.Configuration;
+using Relewise.Client.DataTypes.Search.Configuration.Parsers;
 using Relewise.Client.Requests;
 using Relewise.Client.Requests.RelevanceModifiers;
 using Relewise.Client.Requests.Conditions;
@@ -24,6 +26,10 @@ public class PhpCreatorMethodWriter
         [typeof(ProductRecentlyViewedByUserRelevanceModifier)] = typeof(ProductRecentlyViewedByUserRelevanceModifier).GetConstructor(new[] { typeof(DateTimeOffset), typeof(double), typeof(double) })!,
         // For backwards compatibility remove in next major release.
         [typeof(VariantDataRelevanceModifier)] = typeof(VariantDataRelevanceModifier).GetConstructor(new[] { typeof(string), typeof(List<ValueCondition>), typeof(ValueSelector), typeof(bool), typeof(bool) })!,
+        // For backwards compatibility remove in next major release.
+#pragma warning disable CS0618 // Type or member is obsolete
+        [typeof(FieldIndexConfiguration)] = typeof(FieldIndexConfiguration).GetConstructor(new[] { typeof(bool), typeof(byte), typeof(PredictionSourceType), typeof(Parser), typeof(MatchTypeSettings) })!,
+#pragma warning restore CS0618 // Type or member is obsolete
     };
 
     /// <summary>
@@ -281,7 +287,28 @@ public class PhpCreatorMethodWriter
 
     private string DefaultValueSetter(ParameterInfo parameter)
     {
-        return parameter.HasDefaultValue && parameter.DefaultValue is null ? " = Null" : parameter.DefaultValue is { } defaultValue && (defaultValue.GetType().IsValueType || defaultValue is string) ? $" = {LiteralValueExpression(defaultValue)}" : "";
+        bool isGenericList = parameter.ParameterType.IsGenericType 
+                            && parameter.ParameterType.GetGenericTypeDefinition() == typeof(List<>)
+                            && parameter.ParameterType.GenericTypeArguments is [_];
+
+        if (parameter.HasDefaultValue && parameter.DefaultValue is null)
+        {
+            // Optional generic lists cannot have a default value
+            if (isGenericList && parameter.IsOptional)
+            {
+                return "";
+            }
+
+            return " = Null";
+        }
+
+        if (parameter.DefaultValue is { } defaultValue &&
+            (defaultValue.GetType().IsValueType || defaultValue is string))
+        {
+            return $" = {LiteralValueExpression(defaultValue)}";
+        }
+
+        return "";
     }
 
     private string LiteralValueExpression(object obj)

@@ -8,11 +8,9 @@ class HighlightResultSnippet
     public array $displayName;
     public array $data;
     
-    public static function create(array $displayName, stringarrayKeyValuePair ... $data) : HighlightResultSnippet
+    public static function create() : HighlightResultSnippet
     {
         $result = new HighlightResultSnippet();
-        $result->displayName = $displayName;
-        $result->data = $data;
         return $result;
     }
     
@@ -24,7 +22,7 @@ class HighlightResultSnippet
             $result->displayName = array();
             foreach($arr["displayName"] as &$value)
             {
-                array_push($result->displayName, $value);
+                array_push($result->displayName, HighlightResultSnippetDisplayNameSnippetMatch::hydrate($value));
             }
         }
         if (array_key_exists("data", $arr))
@@ -38,20 +36,20 @@ class HighlightResultSnippet
         return $result;
     }
     
-    function setDisplayName(string ... $displayName)
+    function setDisplayName(HighlightResultSnippetDisplayNameSnippetMatch ... $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
     
-    /** @param string[] $displayName new value. */
+    /** @param HighlightResultSnippetDisplayNameSnippetMatch[] $displayName new value. */
     function setDisplayNameFromArray(array $displayName)
     {
         $this->displayName = $displayName;
         return $this;
     }
     
-    function addToDisplayName(string $displayName)
+    function addToDisplayName(HighlightResultSnippetDisplayNameSnippetMatch $displayName)
     {
         if (!isset($this->displayName))
         {

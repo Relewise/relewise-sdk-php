@@ -141,11 +141,23 @@ public class PhpHydrationMethodsWriter
         {
             return $"{phpWriter.PhpTypeName(type)}::from({jsonValue})";
         }
-        if (type == typeof(DateTimeOffset))
+        if (type == typeof(DateTimeOffset) || type == typeof(DateTime))
         {
             return $"new DateTime({jsonValue})";
         }
-        if (type.IsValueType || type == typeof(string) || type == typeof(Guid) || type == typeof(object) || type.IsArray || (type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(List<>) || type.GetGenericTypeDefinition() == typeof(Dictionary<,>))))
+        if (type == typeof(TimeSpan))
+        {
+            return $"DateIntervalFactory::fromTimeSpanString({jsonValue})";
+        }
+        if (type.IsPrimitive ||
+            type == typeof(string) ||
+            type == typeof(Guid) ||
+            type == typeof(object) ||
+            type == typeof(decimal) ||
+            type.IsArray ||
+            (type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(List<>) ||
+                                    type.GetGenericTypeDefinition() == typeof(Dictionary<,>) ||
+                                    type.GetGenericTypeDefinition() == typeof(KeyValuePair<,>))))
         {
             return jsonValue;
         }

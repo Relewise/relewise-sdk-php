@@ -28,7 +28,7 @@ class CampaignAnalyticsProductAnalytics
             $result->timeSeries = array();
             foreach($arr["timeSeries"] as &$value)
             {
-                array_push($result->timeSeries, $value);
+                array_push($result->timeSeries, CampaignAnalyticsProductAnalyticsPeriodMetrics::hydrate($value));
             }
         }
         if (array_key_exists("promotions", $arr))
@@ -40,7 +40,7 @@ class CampaignAnalyticsProductAnalytics
             $result->promotedProducts = array();
             foreach($arr["promotedProducts"] as &$value)
             {
-                array_push($result->promotedProducts, $value);
+                array_push($result->promotedProducts, CampaignAnalyticsProductAnalyticsPromotedProductMetrics::hydrate($value));
             }
         }
         return $result;

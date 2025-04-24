@@ -9,8 +9,8 @@ class PredictionRule extends SearchRule implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Rules.PredictionRule, Relewise.Client";
     public SearchTermCondition $condition;
-    public PredictionRulePromotion $promote;
-    public PredictionRuleSuppression $suppress;
+    public ?PredictionRulePromotion $promote;
+    public ?PredictionRuleSuppression $suppress;
     
     public static function create(string $id, ?ApplicableIndexes $indexes, ?ApplicableLanguages $languages, bool $isApproved, SearchTermCondition $condition) : PredictionRule
     {
@@ -47,13 +47,13 @@ class PredictionRule extends SearchRule implements JsonSerializable
         return $this;
     }
     
-    function setPromote(PredictionRulePromotion $promote)
+    function setPromote(?PredictionRulePromotion $promote)
     {
         $this->promote = $promote;
         return $this;
     }
     
-    function setSuppress(PredictionRuleSuppression $suppress)
+    function setSuppress(?PredictionRuleSuppression $suppress)
     {
         $this->suppress = $suppress;
         return $this;

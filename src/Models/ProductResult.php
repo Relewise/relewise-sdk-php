@@ -21,12 +21,15 @@ class ProductResult
     public ViewedByUserCompanyInfo $viewedByUserCompany;
     public array $filteredVariants;
     public ?HighlightResult $highlight;
+    /** Holds information about how good this product result is. */
+    public Score $score;
     
-    public static function create(string $productId, int $rank) : ProductResult
+    public static function create(string $productId, int $rank, Score $score) : ProductResult
     {
         $result = new ProductResult();
         $result->productId = $productId;
         $result->rank = $rank;
+        $result->score = $score;
         return $result;
     }
     
@@ -120,6 +123,10 @@ class ProductResult
         if (array_key_exists("highlight", $arr))
         {
             $result->highlight = HighlightResult::hydrate($arr["highlight"]);
+        }
+        if (array_key_exists("score", $arr))
+        {
+            $result->score = Score::hydrate($arr["score"]);
         }
         return $result;
     }
@@ -302,6 +309,13 @@ class ProductResult
     function setHighlight(?HighlightResult $highlight)
     {
         $this->highlight = $highlight;
+        return $this;
+    }
+    
+    /** Holds information about how good this product result is. */
+    function setScore(Score $score)
+    {
+        $this->score = $score;
         return $this;
     }
 }

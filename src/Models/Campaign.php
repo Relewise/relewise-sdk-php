@@ -11,6 +11,7 @@ class Campaign extends CampaignEntityStateCampaignMetadataValuesRetailMediaEntit
     public string $advertiserId;
     public Budget $budget;
     public CampaignStatusWithHistory $status;
+    public ?CampaignCampaignConditions $conditions;
     
     public static function create(?string $id, CampaignEntityState $state, string $name, string $advertiserId, Budget $budget, ?ISchedule $schedule, PromotionCollection $promotions) : Campaign
     {
@@ -52,6 +53,10 @@ class Campaign extends CampaignEntityStateCampaignMetadataValuesRetailMediaEntit
         {
             $result->status = CampaignStatusWithHistory::hydrate($arr["status"]);
         }
+        if (array_key_exists("conditions", $arr))
+        {
+            $result->conditions = CampaignCampaignConditions::hydrate($arr["conditions"]);
+        }
         return $result;
     }
     
@@ -88,6 +93,12 @@ class Campaign extends CampaignEntityStateCampaignMetadataValuesRetailMediaEntit
     function setStatus(CampaignStatusWithHistory $status)
     {
         $this->status = $status;
+        return $this;
+    }
+    
+    function setConditions(?CampaignCampaignConditions $conditions)
+    {
+        $this->conditions = $conditions;
         return $this;
     }
     

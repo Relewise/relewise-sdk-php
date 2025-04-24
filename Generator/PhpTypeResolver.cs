@@ -19,11 +19,12 @@ public class PhpTypeResolver
     public string ResolveType(Type type) => type.Name switch
     {
         "String" or "Guid" => "string",
-        "Int32" or "Int64" or "UInt16" or "Single" or "Byte" => "int",
-        "Float" or "Double" or "Decimal" => "float",
+        "Int32" or "Int64" or "UInt16" or "Byte" => "int",
+        "Float" or "Double" or "Decimal" or "Single" => "float",
         "Boolean" => "bool",
         "Object" => "mixed",
         "DateTimeOffset" or "DateTime" => "DateTime",
+        "TimeSpan" => "DateInterval",
         var value when value.StartsWith("Nullable") => $"?{ResolveType(type.GetGenericArguments()[0])}",
         var value when value.StartsWith("List") || value.StartsWith("Dictionary") || value.EndsWith("[]") || value.StartsWith("IEnumerable") => AddCollectionTypeDefinition(type),
         _ when type.IsGenericType => GetGenericTypeDefinition(type),
@@ -55,7 +56,7 @@ public class PhpTypeResolver
         while (typeToPrependToName is not null)
         {
             name = typeToPrependToName.Name + name;
-            
+
             typeToPrependToName = typeToPrependToName.DeclaringType;
         }
 

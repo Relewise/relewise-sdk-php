@@ -6,11 +6,11 @@ class LineItem
 {
     public Product $product;
     public ?ProductVariant $variant;
-    public int $quantity;
+    public float $quantity;
     public float $lineTotal;
     public ?array $data;
     
-    public static function create(Product $product, ?ProductVariant $variant, int $quantity, float $lineTotal) : LineItem
+    public static function create(Product $product, ?ProductVariant $variant, float $quantity, float $lineTotal) : LineItem
     {
         $result = new LineItem();
         $result->product = $product;
@@ -62,7 +62,7 @@ class LineItem
         return $this;
     }
     
-    function setQuantity(int $quantity)
+    function setQuantity(float $quantity)
     {
         $this->quantity = $quantity;
         return $this;

@@ -6,9 +6,11 @@ class FieldIndexConfiguration
 {
     public bool $included;
     public int $weight;
+    /** @deprecated Use PredictionConfiguration instead */
     public PredictionSourceType $predictionSourceType;
     public ?Parser $parser;
     public ?MatchTypeSettings $matchTypeSettings;
+    public ?PredictionConfiguration $predictionConfiguration;
     
     public static function create(bool $included, int $weight, PredictionSourceType $predictionSourceType, Parser $parser, ?MatchTypeSettings $matchTypeSettings = Null) : FieldIndexConfiguration
     {
@@ -44,6 +46,10 @@ class FieldIndexConfiguration
         {
             $result->matchTypeSettings = MatchTypeSettings::hydrate($arr["matchTypeSettings"]);
         }
+        if (array_key_exists("predictionConfiguration", $arr))
+        {
+            $result->predictionConfiguration = PredictionConfiguration::hydrate($arr["predictionConfiguration"]);
+        }
         return $result;
     }
     
@@ -59,6 +65,7 @@ class FieldIndexConfiguration
         return $this;
     }
     
+    /** @deprecated Use PredictionConfiguration instead */
     function setPredictionSourceType(PredictionSourceType $predictionSourceType)
     {
         $this->predictionSourceType = $predictionSourceType;
@@ -74,6 +81,12 @@ class FieldIndexConfiguration
     function setMatchTypeSettings(?MatchTypeSettings $matchTypeSettings)
     {
         $this->matchTypeSettings = $matchTypeSettings;
+        return $this;
+    }
+    
+    function setPredictionConfiguration(?PredictionConfiguration $predictionConfiguration)
+    {
+        $this->predictionConfiguration = $predictionConfiguration;
         return $this;
     }
 }

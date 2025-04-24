@@ -2,13 +2,13 @@
 
 namespace Relewise\Models;
 
-/** Performs facetting based on if product is known to be purchased recently (within !: SinceMinutesAgo), applicable only for product searches. Requires <b>at least one</b> level of selection, whether !:ByUser, or !:ByUserCompany, or !:ByUserParentCompany. */
+/** Performs faceting based on if product is known to be purchased recently (within SinceMinutesAgo), applicable only for product searches. Requires <b>at least one</b> level of selection, whether ByUser, or ByUserCompany, or ByUserParentCompany. */
 class RecentlyPurchasedFacet extends boolValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.RecentlyPurchasedFacet, Relewise.Client";
     public PurchaseQualifiers $purchaseQualifiers;
     
-    public static function create(PurchaseQualifiers $purchaseQualifiers, bool ... $selected = Null) : RecentlyPurchasedFacet
+    public static function create(PurchaseQualifiers $purchaseQualifiers, bool ... $selected) : RecentlyPurchasedFacet
     {
         $result = new RecentlyPurchasedFacet();
         $result->purchaseQualifiers = $purchaseQualifiers;
@@ -21,7 +21,7 @@ class RecentlyPurchasedFacet extends boolValueFacet
         $result = boolValueFacet::hydrateBase(new RecentlyPurchasedFacet(), $arr);
         if (array_key_exists("purchaseQualifiers", $arr))
         {
-            $result->purchaseQualifiers = $arr["purchaseQualifiers"];
+            $result->purchaseQualifiers = PurchaseQualifiers::hydrate($arr["purchaseQualifiers"]);
         }
         return $result;
     }

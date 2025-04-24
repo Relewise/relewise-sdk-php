@@ -22,7 +22,7 @@ class RecentlyPurchasedFacetResult extends boolboolValueFacetResult
         $result = boolboolValueFacetResult::hydrateBase(new RecentlyPurchasedFacetResult(), $arr);
         if (array_key_exists("purchaseQualifiers", $arr))
         {
-            $result->purchaseQualifiers = $arr["purchaseQualifiers"];
+            $result->purchaseQualifiers = PurchaseQualifiers::hydrate($arr["purchaseQualifiers"]);
         }
         return $result;
     }
