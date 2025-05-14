@@ -5,26 +5,23 @@ namespace Relewise\Models;
 /** Holds scores for a result. */
 class Score
 {
-    public string $typeDefinition = "Relewise.Client.DataTypes.Score, Relewise.Client";
-    /** The base score is a number between 0 and 100 that has not been manipulated by relevance modifiers and merchandising rules. Greater values indicate better results. */
-    public float $base;
-    /** The adjusted score is based on the base score but with relevance modifiers and merchandising rules applied. */
-    public float $adjusted;
+    /** The relevance score is a number between 0 and 100 that has not been manipulated by relevance modifiers and merchandising rules. Greater values indicate better results. */
+    public ?float $relevance;
+    /** The adjusted score is based on the relevance score but with relevance modifiers and merchandising rules applied. */
+    public ?float $adjusted;
     
-    public static function create(float $baseScore, float $adjustedScore) : Score
+    public static function create() : Score
     {
         $result = new Score();
-        $result->base = $baseScore;
-        $result->adjusted = $adjustedScore;
         return $result;
     }
     
     public static function hydrate(array $arr) : Score
     {
         $result = new Score();
-        if (array_key_exists("base", $arr))
+        if (array_key_exists("relevance", $arr))
         {
-            $result->base = $arr["base"];
+            $result->relevance = $arr["relevance"];
         }
         if (array_key_exists("adjusted", $arr))
         {
@@ -33,15 +30,15 @@ class Score
         return $result;
     }
     
-    /** The base score is a number between 0 and 100 that has not been manipulated by relevance modifiers and merchandising rules. Greater values indicate better results. */
-    function setBase(float $base)
+    /** The relevance score is a number between 0 and 100 that has not been manipulated by relevance modifiers and merchandising rules. Greater values indicate better results. */
+    function setRelevance(?float $relevance)
     {
-        $this->base = $base;
+        $this->relevance = $relevance;
         return $this;
     }
     
-    /** The adjusted score is based on the base score but with relevance modifiers and merchandising rules applied. */
-    function setAdjusted(float $adjusted)
+    /** The adjusted score is based on the relevance score but with relevance modifiers and merchandising rules applied. */
+    function setAdjusted(?float $adjusted)
     {
         $this->adjusted = $adjusted;
         return $this;

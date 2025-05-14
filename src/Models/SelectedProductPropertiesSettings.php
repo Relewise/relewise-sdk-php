@@ -17,6 +17,8 @@ class SelectedProductPropertiesSettings
     public bool $viewedByUserCompanyInfo;
     public bool $purchasedByUserCompanyInfo;
     public ?FilteredVariantsSettings $filteredVariants;
+    /** Defines what Score properties will be included for the Score. */
+    public ?SelectedScorePropertiesSettings $score;
     
     public static function create() : SelectedProductPropertiesSettings
     {
@@ -82,6 +84,10 @@ class SelectedProductPropertiesSettings
         if (array_key_exists("filteredVariants", $arr))
         {
             $result->filteredVariants = FilteredVariantsSettings::hydrate($arr["filteredVariants"]);
+        }
+        if (array_key_exists("score", $arr))
+        {
+            $result->score = SelectedScorePropertiesSettings::hydrate($arr["score"]);
         }
         return $result;
     }
@@ -178,6 +184,13 @@ class SelectedProductPropertiesSettings
     function setFilteredVariants(?FilteredVariantsSettings $filteredVariants)
     {
         $this->filteredVariants = $filteredVariants;
+        return $this;
+    }
+    
+    /** Defines what Score properties will be included for the Score. */
+    function setScore(?SelectedScorePropertiesSettings $score)
+    {
+        $this->score = $score;
         return $this;
     }
 }

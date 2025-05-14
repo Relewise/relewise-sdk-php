@@ -14,6 +14,7 @@ class OverriddenSelectedProductPropertiesSettings
     public ?bool $brand;
     public ?bool $allVariants;
     public array $dataKeys;
+    public ?SelectedScorePropertiesSettings $score;
     
     public static function create() : OverriddenSelectedProductPropertiesSettings
     {
@@ -67,6 +68,10 @@ class OverriddenSelectedProductPropertiesSettings
             {
                 array_push($result->dataKeys, $value);
             }
+        }
+        if (array_key_exists("score", $arr))
+        {
+            $result->score = SelectedScorePropertiesSettings::hydrate($arr["score"]);
         }
         return $result;
     }
@@ -145,6 +150,12 @@ class OverriddenSelectedProductPropertiesSettings
             $this->dataKeys = array();
         }
         array_push($this->dataKeys, $dataKeys);
+        return $this;
+    }
+    
+    function setScore(?SelectedScorePropertiesSettings $score)
+    {
+        $this->score = $score;
         return $this;
     }
 }
