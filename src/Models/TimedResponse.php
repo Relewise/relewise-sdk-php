@@ -203,6 +203,10 @@ abstract class TimedResponse
         {
             return CampaignsResponse::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Responses.RetailMedia.GlobalRetailMediaConfigurationResponse, Relewise.Client")
+        {
+            return GlobalRetailMediaConfigurationResponse::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Responses.RetailMedia.LocationsResponse, Relewise.Client")
         {
             return LocationsResponse::hydrate($arr);

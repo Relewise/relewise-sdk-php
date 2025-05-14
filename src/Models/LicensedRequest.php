@@ -261,6 +261,10 @@ abstract class LicensedRequest
         {
             return CampaignsRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.RetailMedia.GlobalRetailMediaConfigurationRequest, Relewise.Client")
+        {
+            return GlobalRetailMediaConfigurationRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.RetailMedia.LocationsRequest, Relewise.Client")
         {
             return LocationsRequest::hydrate($arr);
@@ -272,6 +276,10 @@ abstract class LicensedRequest
         if ($type=="Relewise.Client.Requests.RetailMedia.SaveCampaignsRequest, Relewise.Client")
         {
             return SaveCampaignsRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RetailMedia.SaveGlobalRetailMediaConfigurationRequest, Relewise.Client")
+        {
+            return SaveGlobalRetailMediaConfigurationRequest::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.RetailMedia.SaveLocationsRequest, Relewise.Client")
         {

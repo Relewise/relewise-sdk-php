@@ -11,6 +11,8 @@ class LocationPlacement
     public ?string $key;
     /** The variations of this placement, e.g. to support multiple different views, like Mobile, Tablet, Desktop, Email template etc. If null or empty, no promotions will be shown for this placement */
     public ?LocationPlacementVariationCollection $variations;
+    /** The minimum relevancy required by this Placement for results to be promoted. */
+    public ?ScoreThresholds $thresholds;
     
     public static function create(string $name, ?LocationPlacementVariationCollection $variations) : LocationPlacement
     {
@@ -35,6 +37,10 @@ class LocationPlacement
         {
             $result->variations = LocationPlacementVariationCollection::hydrate($arr["variations"]);
         }
+        if (array_key_exists("thresholds", $arr))
+        {
+            $result->thresholds = ScoreThresholds::hydrate($arr["thresholds"]);
+        }
         return $result;
     }
     
@@ -56,6 +62,13 @@ class LocationPlacement
     function setVariations(?LocationPlacementVariationCollection $variations)
     {
         $this->variations = $variations;
+        return $this;
+    }
+    
+    /** The minimum relevancy required by this Placement for results to be promoted. */
+    function setThresholds(?ScoreThresholds $thresholds)
+    {
+        $this->thresholds = $thresholds;
         return $this;
     }
 }

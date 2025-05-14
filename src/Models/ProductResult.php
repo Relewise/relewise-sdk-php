@@ -21,15 +21,14 @@ class ProductResult
     public ViewedByUserCompanyInfo $viewedByUserCompany;
     public array $filteredVariants;
     public ?HighlightResult $highlight;
-    /** Holds information about how good this product result is. */
-    public Score $score;
+    /** Holds information about how good this product result is. This will only be populated if specifically requested which is currently only possible for term-based product search requests. */
+    public ?Score $score;
     
-    public static function create(string $productId, int $rank, Score $score) : ProductResult
+    public static function create(string $productId, int $rank) : ProductResult
     {
         $result = new ProductResult();
         $result->productId = $productId;
         $result->rank = $rank;
-        $result->score = $score;
         return $result;
     }
     
@@ -312,8 +311,8 @@ class ProductResult
         return $this;
     }
     
-    /** Holds information about how good this product result is. */
-    function setScore(Score $score)
+    /** Holds information about how good this product result is. This will only be populated if specifically requested which is currently only possible for term-based product search requests. */
+    function setScore(?Score $score)
     {
         $this->score = $score;
         return $this;
