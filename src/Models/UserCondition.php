@@ -5,6 +5,7 @@ namespace Relewise\Models;
 abstract class UserCondition
 {
     public string $typeDefinition = "";
+    /** Whether the UserCondition should have opposite effect. */
     public bool $negated;
     
     
@@ -26,6 +27,10 @@ abstract class UserCondition
         if ($type=="Relewise.Client.DataTypes.UserConditions.HasClassificationCondition, Relewise.Client")
         {
             return HasClassificationCondition::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.UserConditions.HasDataCondition, Relewise.Client")
+        {
+            return HasDataCondition::hydrate($arr);
         }
         if ($type=="Relewise.Client.DataTypes.UserConditions.HasEmailCondition, Relewise.Client")
         {
@@ -70,6 +75,7 @@ abstract class UserCondition
         return $result;
     }
     
+    /** Whether the UserCondition should have opposite effect. */
     function setNegated(bool $negated)
     {
         $this->negated = $negated;

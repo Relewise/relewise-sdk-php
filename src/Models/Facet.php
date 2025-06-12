@@ -6,6 +6,7 @@ abstract class Facet
 {
     public string $typeDefinition = "";
     public FacetingField $field;
+    /** Can be used for controlling whether the selected values should always be a part of the available values and the same for values with zero hits. You can also limit how many available values you want back and specify a sorting for them. */
     public ?FacetSettings $settings;
     
     
@@ -177,6 +178,7 @@ abstract class Facet
         return $this;
     }
     
+    /** Can be used for controlling whether the selected values should always be a part of the available values and the same for values with zero hits. You can also limit how many available values you want back and specify a sorting for them. */
     function setSettings(?FacetSettings $settings)
     {
         $this->settings = $settings;

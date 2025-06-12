@@ -2,18 +2,16 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
-/** This is actually an interface. */
-abstract class ISchedule
+abstract class FacetSorting
 {
+    public string $typeDefinition = "";
     
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
-        if ($type=="Relewise.Client.DataTypes.Scheduling.ScheduledPeriod, Relewise.Client")
+        if ($type=="Relewise.Client.DataTypes.Search.Facets.Sorting.ByHitsFacetSorting, Relewise.Client")
         {
-            return ScheduledPeriod::hydrate($arr);
+            return ByHitsFacetSorting::hydrate($arr);
         }
     }
     

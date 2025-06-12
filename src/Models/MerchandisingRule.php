@@ -21,6 +21,8 @@ abstract class MerchandisingRule implements JsonSerializable
     public RequestConfiguration $request;
     public float $priority;
     public array $settings;
+    public ?ISchedule $schedule;
+    public ?MerchandisingRuleStatusName $status;
     
     
     public static function hydrate(array $arr)
@@ -101,6 +103,14 @@ abstract class MerchandisingRule implements JsonSerializable
             {
                 $result->settings[$key] = $value;
             }
+        }
+        if (array_key_exists("schedule", $arr))
+        {
+            $result->schedule = ISchedule::hydrate($arr["schedule"]);
+        }
+        if (array_key_exists("status", $arr))
+        {
+            $result->status = MerchandisingRuleStatusName::from($arr["status"]);
         }
         return $result;
     }
@@ -194,6 +204,18 @@ abstract class MerchandisingRule implements JsonSerializable
         return $this;
     }
     
+    function setSchedule(?ISchedule $schedule)
+    {
+        $this->schedule = $schedule;
+        return $this;
+    }
+    
+    function setStatus(?MerchandisingRuleStatusName $status)
+    {
+        $this->status = $status;
+        return $this;
+    }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();
@@ -248,6 +270,14 @@ abstract class MerchandisingRule implements JsonSerializable
         if (isset($this->settings))
         {
             $result["settings"] = $this->settings;
+        }
+        if (isset($this->schedule))
+        {
+            $result["schedule"] = $this->schedule;
+        }
+        if (isset($this->status))
+        {
+            $result["status"] = $this->status;
         }
         return $result;
     }
