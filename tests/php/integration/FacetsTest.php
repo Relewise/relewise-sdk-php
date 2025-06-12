@@ -13,6 +13,7 @@ use Relewise\Models\CollectionFilterType;
 use Relewise\Models\Currency;
 use Relewise\Models\DataSelectionStrategy;
 use Relewise\Models\FacetingField;
+use Relewise\Models\FacetSettings;
 use Relewise\Models\floatRange;
 use Relewise\Models\Language;
 use Relewise\Models\PriceRangeFacet;
@@ -22,6 +23,7 @@ use Relewise\Models\ProductDataStringValueFacet;
 use Relewise\Models\ProductDataStringValueFacetResult;
 use Relewise\Models\ProductFacetQuery;
 use Relewise\Models\ProductSearchRequest;
+use Relewise\Models\ByHitsFacetSorting;
 use Relewise\Searcher;
 
 class FacetsTest extends BaseTestCase
@@ -162,5 +164,46 @@ class FacetsTest extends BaseTestCase
         self::assertTrue($response->facets->items[0] instanceof CategoryFacetResult);
         self::assertEquals(FacetingField::Category, $response->facets->category(CategorySelectionStrategy::ImmediateParent)->field);
         self::assertNull($response->facets->dataBoolean(DataSelectionStrategy::Product, "dataKey"));
+    }
+
+    public function testFacetSorting(): void
+    {
+        $datasetId = getenv('DATASET_ID') ?: $_ENV['DATASET_ID'];
+        $apiKey = getenv('API_KEY') ?: $_ENV['API_KEY'];
+
+        $searcher = new Searcher($datasetId, $apiKey);
+
+        $productSearch = ProductSearchRequest::create(
+            Language::create("en-US"),
+            Currency::create("USD"),
+            UserFactory::anonymous(),
+            "integration test",
+            Null,
+            0,
+            0
+        )->setFacets(
+            ProductFacetQuery::create()
+                ->setItems(
+                    CategoryFacet::create(CategorySelectionStrategy::ImmediateParent)
+                        ->setField(FacetingField::Category)
+                        ->setSettings(
+                            FacetSettings::create()
+                            ->setSorting(ByHitsFacetSorting::create())
+                            ->setTake(4))
+                )
+        );
+
+        $response = $searcher->productSearch($productSearch);
+
+        self::assertNotNull($response);
+        self::assertNotNull($response->facets);
+        self::assertNotNull($response->facets->items);
+        self::assertNotEmpty($response->facets->items);
+        self::assertEquals(4, count($response->facets->category(CategorySelectionStrategy::ImmediateParent)->available));
+
+        self::assertTrue(
+            $response->facets->items[0] instanceof CategoryFacetResult &&
+            $response->facets->items[0]->available[0]->hits > $response->facets->items[0]->available[3]->hits
+        );
     }
 }
