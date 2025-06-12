@@ -6,6 +6,10 @@ class FacetSettings
 {
     public bool $alwaysIncludeSelectedInAvailable;
     public bool $includeZeroHitsInAvailable;
+    /** Defines how to sort the returned available facets Supported sorting are: null (default) or ByHitsFacetSorting */
+    public ?FacetSorting $sorting;
+    /** Limits how many available values can be returned for this facet. If this is used together with a Sorting then it will take the first values after the available values have been sorted. Note: 'Selected' values are always included in the available values, even if they exceed the Take limit, this is to ensure that the selected value is always visible to the user and avoid filtering by hidden facets */
+    public ?int $take;
     
     public static function create() : FacetSettings
     {
@@ -24,6 +28,14 @@ class FacetSettings
         {
             $result->includeZeroHitsInAvailable = $arr["includeZeroHitsInAvailable"];
         }
+        if (array_key_exists("sorting", $arr))
+        {
+            $result->sorting = FacetSorting::hydrate($arr["sorting"]);
+        }
+        if (array_key_exists("take", $arr))
+        {
+            $result->take = $arr["take"];
+        }
         return $result;
     }
     
@@ -36,6 +48,20 @@ class FacetSettings
     function setIncludeZeroHitsInAvailable(bool $includeZeroHitsInAvailable)
     {
         $this->includeZeroHitsInAvailable = $includeZeroHitsInAvailable;
+        return $this;
+    }
+    
+    /** Defines how to sort the returned available facets Supported sorting are: null (default) or ByHitsFacetSorting */
+    function setSorting(?FacetSorting $sorting)
+    {
+        $this->sorting = $sorting;
+        return $this;
+    }
+    
+    /** Limits how many available values can be returned for this facet. If this is used together with a Sorting then it will take the first values after the available values have been sorted. Note: 'Selected' values are always included in the available values, even if they exceed the Take limit, this is to ensure that the selected value is always visible to the user and avoid filtering by hidden facets */
+    function setTake(?int $take)
+    {
+        $this->take = $take;
         return $this;
     }
 }

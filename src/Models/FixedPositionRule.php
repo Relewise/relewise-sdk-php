@@ -124,6 +124,18 @@ class FixedPositionRule extends MerchandisingRule implements JsonSerializable
         return $this;
     }
     
+    function setSchedule(?ISchedule $schedule)
+    {
+        $this->schedule = $schedule;
+        return $this;
+    }
+    
+    function setStatus(?MerchandisingRuleStatusName $status)
+    {
+        $this->status = $status;
+        return $this;
+    }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();
@@ -183,6 +195,14 @@ class FixedPositionRule extends MerchandisingRule implements JsonSerializable
         if (isset($this->settings))
         {
             $result["settings"] = $this->settings;
+        }
+        if (isset($this->schedule))
+        {
+            $result["schedule"] = $this->schedule;
+        }
+        if (isset($this->status))
+        {
+            $result["status"] = $this->status;
         }
         return $result;
     }
