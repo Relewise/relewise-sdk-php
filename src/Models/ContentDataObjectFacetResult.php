@@ -17,7 +17,7 @@ class ContentDataObjectFacetResult extends DataObjectFacetResult
     
     public static function hydrate(array $arr) : ContentDataObjectFacetResult
     {
-        $result = new ContentDataObjectFacetResult();
+        $result = FacetResult::hydrateBase(new ContentDataObjectFacetResult(), $arr);
         if (array_key_exists("key", $arr))
         {
             $result->key = $arr["key"];

@@ -14,7 +14,7 @@ class ProductCategoryDataObjectFacet extends DataObjectFacet
     
     public static function hydrate(array $arr) : ProductCategoryDataObjectFacet
     {
-        $result = new ProductCategoryDataObjectFacet();
+        $result = Facet::hydrateBase(new ProductCategoryDataObjectFacet(), $arr);
         if (array_key_exists("key", $arr))
         {
             $result->key = $arr["key"];
