@@ -11,6 +11,7 @@ use Relewise\Models\CategoryFacetResult;
 use Relewise\Models\CategorySelectionStrategy;
 use Relewise\Models\CollectionFilterType;
 use Relewise\Models\Currency;
+use Relewise\Models\DataObjectStringValueFacet;
 use Relewise\Models\DataSelectionStrategy;
 use Relewise\Models\FacetingField;
 use Relewise\Models\FacetSettings;
@@ -24,6 +25,9 @@ use Relewise\Models\ProductDataStringValueFacetResult;
 use Relewise\Models\ProductFacetQuery;
 use Relewise\Models\ProductSearchRequest;
 use Relewise\Models\ByHitsFacetSorting;
+use Relewise\Models\FacetEvaluationMode;
+use Relewise\Models\ProductDataObjectFacet;
+use Relewise\Models\stringValueFacet;
 use Relewise\Searcher;
 
 class FacetsTest extends BaseTestCase
@@ -205,5 +209,38 @@ class FacetsTest extends BaseTestCase
             $response->facets->items[0] instanceof CategoryFacetResult &&
             $response->facets->items[0]->available[0]->hits > $response->facets->items[0]->available[3]->hits
         );
+    }
+
+    public function testDataObjectFacetEvaluationMode(): void
+    {
+        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+
+        $productSearch = ProductSearchRequest::create(
+            Language::create("da-dk"),
+            Currency::create("DKK"),
+            UserFactory::anonymous(),
+            "integration test",
+            Null,
+            0,
+            1
+        )->setFacets(
+            ProductFacetQuery::create()
+                ->setItems(
+                    ProductDataObjectFacet::create(
+                        "SomeObject",
+                    )->addToItems(DataObjectStringValueFacet::create("SomeString", null, CollectionFilterType::Or))
+                    ->setDataSelectionStrategy(DataSelectionStrategy::Product)
+                    ->setEvaluationMode(FacetEvaluationMode::And)
+                )
+        );
+
+        $response = $searcher->productSearch($productSearch);
+
+        self::assertNotNull($response);
+        self::assertNotNull($response->facets);
+        self::assertNotNull($response->facets->items);
+        self::assertNotEmpty($response->facets->items);
+
+        self::assertEquals(FacetEvaluationMode::And, $response->facets->dataObject(DataSelectionStrategy::Product, "SomeObject")->evaluationMode);
     }
 }
