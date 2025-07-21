@@ -11,6 +11,8 @@ using Relewise.Client.Requests.ValueSelectors;
 using Relewise.Client.Requests.Filters;
 using Relewise.Client.DataTypes.Search.Facets.Queries;
 using Relewise.Client.DataTypes.Search.Facets.Enums;
+using Relewise.Client.DataTypes.Search.Facets.Result;
+using Relewise.Client.Requests.Filters.DataObjects;
 
 namespace Generator.PhpMemberWriters;
 
@@ -52,6 +54,7 @@ public class PhpCreatorMethodWriter
         [typeof(ProductRecentlyViewedByCompanyFilter)] = (typeof(ProductRecentlyViewedByCompanyFilter).GetConstructor(new[] { typeof(DateTimeOffset), typeof(string), typeof(bool) })!, new[] { "sinceUtc", "negated" }),
         
         [typeof(ProductDataObjectFacet)] = (typeof(ProductDataObjectFacet).GetConstructor(new[] { typeof(DataSelectionStrategy), typeof(string) })!, new[] { "key" }),
+        [typeof(ProductDataObjectFacetResult)] = (typeof(ProductDataObjectFacetResult).GetConstructor(new[] { typeof(DataSelectionStrategy), typeof(string), typeof(List<FacetResult>), typeof(DataObjectFilter), typeof(FacetEvaluationMode) })!, new[] { "key", "items", "filter", "evaluationMode" }),
     };
 
     private readonly PhpWriter phpWriter;
