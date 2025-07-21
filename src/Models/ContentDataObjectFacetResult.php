@@ -5,12 +5,13 @@ namespace Relewise\Models;
 class ContentDataObjectFacetResult extends DataObjectFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ContentDataObjectFacetResult, Relewise.Client";
-    public static function create(string $key, array $items, DataObjectFilter $filter) : ContentDataObjectFacetResult
+    public static function create(string $key, array $items, DataObjectFilter $filter, FacetEvaluationMode $evaluationMode) : ContentDataObjectFacetResult
     {
         $result = new ContentDataObjectFacetResult();
         $result->key = $key;
         $result->items = $items;
         $result->filter = $filter;
+        $result->evaluationMode = $evaluationMode;
         return $result;
     }
     
@@ -52,6 +53,12 @@ class ContentDataObjectFacetResult extends DataObjectFacetResult
     function setFilter(DataObjectFilter $filter)
     {
         $this->filter = $filter;
+        return $this;
+    }
+    
+    function setEvaluationMode(FacetEvaluationMode $evaluationMode)
+    {
+        $this->evaluationMode = $evaluationMode;
         return $this;
     }
     

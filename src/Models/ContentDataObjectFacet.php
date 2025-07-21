@@ -53,6 +53,12 @@ class ContentDataObjectFacet extends DataObjectFacet
         return $this;
     }
     
+    function setEvaluationMode(?FacetEvaluationMode $evaluationMode)
+    {
+        $this->evaluationMode = $evaluationMode;
+        return $this;
+    }
+    
     function setField(FacetingField $field)
     {
         $this->field = $field;
