@@ -7,10 +7,9 @@ class ProductDataObjectFacet extends DataObjectFacet
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ProductDataObjectFacet, Relewise.Client";
     public DataSelectionStrategy $dataSelectionStrategy;
     
-    public static function create(DataSelectionStrategy $dataSelectionStrategy, string $key) : ProductDataObjectFacet
+    public static function create(string $key) : ProductDataObjectFacet
     {
         $result = new ProductDataObjectFacet();
-        $result->dataSelectionStrategy = $dataSelectionStrategy;
         $result->key = $key;
         return $result;
     }

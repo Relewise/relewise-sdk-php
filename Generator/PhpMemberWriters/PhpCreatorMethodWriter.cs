@@ -9,6 +9,8 @@ using Relewise.Client.Requests.RelevanceModifiers;
 using Relewise.Client.Requests.Conditions;
 using Relewise.Client.Requests.ValueSelectors;
 using Relewise.Client.Requests.Filters;
+using Relewise.Client.DataTypes.Search.Facets.Queries;
+using Relewise.Client.DataTypes.Search.Facets.Enums;
 
 namespace Generator.PhpMemberWriters;
 
@@ -48,6 +50,8 @@ public class PhpCreatorMethodWriter
         [typeof(ProductRecentlyPurchasedByUserRelevanceModifier)] = (typeof(ProductRecentlyPurchasedByUserRelevanceModifier).GetConstructor(new[] { typeof(DateTimeOffset), typeof(double), typeof(double) })!, new[] { "sinceUtc", "ifPreviouslyPurchasedByUserMultiplyWeightBy", "ifNotPreviouslyPurchasedByUserMultiplyWeightBy" }),
         // For backwards compatibility remove in next major release.
         [typeof(ProductRecentlyViewedByCompanyFilter)] = (typeof(ProductRecentlyViewedByCompanyFilter).GetConstructor(new[] { typeof(DateTimeOffset), typeof(string), typeof(bool) })!, new[] { "sinceUtc", "negated" }),
+        
+        [typeof(ProductDataObjectFacet)] = (typeof(ProductDataObjectFacet).GetConstructor(new[] { typeof(DataSelectionStrategy), typeof(string) })!, new[] { "key" }),
     };
 
     private readonly PhpWriter phpWriter;
