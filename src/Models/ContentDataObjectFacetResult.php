@@ -18,6 +18,26 @@ class ContentDataObjectFacetResult extends DataObjectFacetResult
     public static function hydrate(array $arr) : ContentDataObjectFacetResult
     {
         $result = new ContentDataObjectFacetResult();
+        if (array_key_exists("key", $arr))
+        {
+            $result->key = $arr["key"];
+        }
+        if (array_key_exists("items", $arr))
+        {
+            $result->items = array();
+            foreach($arr["items"] as &$value)
+            {
+                array_push($result->items, FacetResult::hydrate($value));
+            }
+        }
+        if (array_key_exists("filter", $arr))
+        {
+            $result->filter = DataObjectFilter::hydrate($arr["filter"]);
+        }
+        if (array_key_exists("evaluationMode", $arr))
+        {
+            $result->evaluationMode = FacetEvaluationMode::from($arr["evaluationMode"]);
+        }
         return $result;
     }
     

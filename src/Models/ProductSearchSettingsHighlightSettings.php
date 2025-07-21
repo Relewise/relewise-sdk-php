@@ -14,6 +14,22 @@ class ProductSearchSettingsHighlightSettings extends ProductProductHighlightProp
     public static function hydrate(array $arr) : ProductSearchSettingsHighlightSettings
     {
         $result = new ProductSearchSettingsHighlightSettings();
+        if (array_key_exists("enabled", $arr))
+        {
+            $result->enabled = $arr["enabled"];
+        }
+        if (array_key_exists("limit", $arr))
+        {
+            $result->limit = ProductProductHighlightPropsHighlightSettingsLimits::hydrate($arr["limit"]);
+        }
+        if (array_key_exists("highlightable", $arr))
+        {
+            $result->highlightable = ProductHighlightProps::hydrate($arr["highlightable"]);
+        }
+        if (array_key_exists("shape", $arr))
+        {
+            $result->shape = ProductProductHighlightPropsHighlightSettingsResponseShape::hydrate($arr["shape"]);
+        }
         return $result;
     }
     

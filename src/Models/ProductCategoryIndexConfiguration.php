@@ -14,6 +14,10 @@ class ProductCategoryIndexConfiguration extends CategoryIndexConfiguration
     public static function hydrate(array $arr) : ProductCategoryIndexConfiguration
     {
         $result = new ProductCategoryIndexConfiguration();
+        if (array_key_exists("unspecified", $arr))
+        {
+            $result->unspecified = CategoryIndexConfigurationEntry::hydrate($arr["unspecified"]);
+        }
         return $result;
     }
     

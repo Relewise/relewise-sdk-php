@@ -1,5 +1,6 @@
 ﻿using System.CodeDom.Compiler;
 using System.Reflection;
+using Generator.Extensions;
 
 namespace Generator.PhpMemberWriters;
 
@@ -74,6 +75,17 @@ public class PhpHydrationMethodsWriter
             {
                 writer.WriteLine($"$result = new {typeName}();");
             }
+
+            // In this case the base type won't expose a hydrate method we can use
+            // We need to handle the base type's props manually
+            if (type is { IsAbstract: false, BaseType: not null } && type.BaseType.IsAbstract != true)
+            {
+                foreach (PropertyInfo props in type.BaseType.FindOwnedPropertyInfos())
+                {
+                    WriteHydrationSetter(writer, props.PropertyType, props.Name.ToCamelCase());
+                }
+            }
+
             foreach (var (info, _, _, lowerCaseName) in propertyInformations)
             {
                 WriteHydrationSetter(writer, info.PropertyType, lowerCaseName);

@@ -18,6 +18,38 @@ class RetailMediaSearchTermCondition extends SearchTermCondition
     public static function hydrate(array $arr) : RetailMediaSearchTermCondition
     {
         $result = new RetailMediaSearchTermCondition();
+        if (array_key_exists("kind", $arr))
+        {
+            $result->kind = SearchTermConditionConditionKind::from($arr["kind"]);
+        }
+        if (array_key_exists("value", $arr))
+        {
+            $result->value = $arr["value"];
+        }
+        if (array_key_exists("andConditions", $arr))
+        {
+            $result->andConditions = array();
+            foreach($arr["andConditions"] as &$value)
+            {
+                array_push($result->andConditions, SearchTermCondition::hydrate($value));
+            }
+        }
+        if (array_key_exists("orConditions", $arr))
+        {
+            $result->orConditions = array();
+            foreach($arr["orConditions"] as &$value)
+            {
+                array_push($result->orConditions, SearchTermCondition::hydrate($value));
+            }
+        }
+        if (array_key_exists("minimumLength", $arr))
+        {
+            $result->minimumLength = $arr["minimumLength"];
+        }
+        if (array_key_exists("negated", $arr))
+        {
+            $result->negated = $arr["negated"];
+        }
         if (array_key_exists("language", $arr))
         {
             $result->language = Language::hydrate($arr["language"]);
