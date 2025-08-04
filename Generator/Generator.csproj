@@ -9,7 +9,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="AngleSharp.Xml" Version="1.0.0" />
-		<PackageReference Include="Relewise.Client" Version="1.220.0" />
+		<PackageReference Include="Relewise.Client" Version="1.228.1" />
 	</ItemGroup>
 
 </Project>

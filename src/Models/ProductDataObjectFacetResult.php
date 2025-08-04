@@ -7,19 +7,39 @@ class ProductDataObjectFacetResult extends DataObjectFacetResult
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ProductDataObjectFacetResult, Relewise.Client";
     public DataSelectionStrategy $dataSelectionStrategy;
     
-    public static function create(DataSelectionStrategy $dataSelectionStrategy, string $key, array $items, DataObjectFilter $filter) : ProductDataObjectFacetResult
+    public static function create(string $key, array $items, DataObjectFilter $filter, FacetEvaluationMode $evaluationMode) : ProductDataObjectFacetResult
     {
         $result = new ProductDataObjectFacetResult();
-        $result->dataSelectionStrategy = $dataSelectionStrategy;
         $result->key = $key;
         $result->items = $items;
         $result->filter = $filter;
+        $result->evaluationMode = $evaluationMode;
         return $result;
     }
     
     public static function hydrate(array $arr) : ProductDataObjectFacetResult
     {
-        $result = new ProductDataObjectFacetResult();
+        $result = FacetResult::hydrateBase(new ProductDataObjectFacetResult(), $arr);
+        if (array_key_exists("key", $arr))
+        {
+            $result->key = $arr["key"];
+        }
+        if (array_key_exists("items", $arr))
+        {
+            $result->items = array();
+            foreach($arr["items"] as &$value)
+            {
+                array_push($result->items, FacetResult::hydrate($value));
+            }
+        }
+        if (array_key_exists("filter", $arr))
+        {
+            $result->filter = DataObjectFilter::hydrate($arr["filter"]);
+        }
+        if (array_key_exists("evaluationMode", $arr))
+        {
+            $result->evaluationMode = FacetEvaluationMode::from($arr["evaluationMode"]);
+        }
         if (array_key_exists("dataSelectionStrategy", $arr))
         {
             $result->dataSelectionStrategy = DataSelectionStrategy::from($arr["dataSelectionStrategy"]);
@@ -65,6 +85,12 @@ class ProductDataObjectFacetResult extends DataObjectFacetResult
     function setFilter(DataObjectFilter $filter)
     {
         $this->filter = $filter;
+        return $this;
+    }
+    
+    function setEvaluationMode(FacetEvaluationMode $evaluationMode)
+    {
+        $this->evaluationMode = $evaluationMode;
         return $this;
     }
     

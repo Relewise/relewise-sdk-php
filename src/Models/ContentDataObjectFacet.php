@@ -14,7 +14,27 @@ class ContentDataObjectFacet extends DataObjectFacet
     
     public static function hydrate(array $arr) : ContentDataObjectFacet
     {
-        $result = new ContentDataObjectFacet();
+        $result = Facet::hydrateBase(new ContentDataObjectFacet(), $arr);
+        if (array_key_exists("key", $arr))
+        {
+            $result->key = $arr["key"];
+        }
+        if (array_key_exists("items", $arr))
+        {
+            $result->items = array();
+            foreach($arr["items"] as &$value)
+            {
+                array_push($result->items, Facet::hydrate($value));
+            }
+        }
+        if (array_key_exists("filter", $arr))
+        {
+            $result->filter = DataObjectFilter::hydrate($arr["filter"]);
+        }
+        if (array_key_exists("evaluationMode", $arr))
+        {
+            $result->evaluationMode = FacetEvaluationMode::from($arr["evaluationMode"]);
+        }
         return $result;
     }
     
@@ -50,6 +70,12 @@ class ContentDataObjectFacet extends DataObjectFacet
     function setFilter(DataObjectFilter $filter)
     {
         $this->filter = $filter;
+        return $this;
+    }
+    
+    function setEvaluationMode(?FacetEvaluationMode $evaluationMode)
+    {
+        $this->evaluationMode = $evaluationMode;
         return $this;
     }
     

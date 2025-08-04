@@ -8,6 +8,7 @@ class DataObjectFacet extends Facet
     public string $key;
     public array $items;
     public DataObjectFilter $filter;
+    public ?FacetEvaluationMode $evaluationMode;
     
     public static function create(string $key) : DataObjectFacet
     {
@@ -34,6 +35,10 @@ class DataObjectFacet extends Facet
         if (array_key_exists("filter", $arr))
         {
             $result->filter = DataObjectFilter::hydrate($arr["filter"]);
+        }
+        if (array_key_exists("evaluationMode", $arr))
+        {
+            $result->evaluationMode = FacetEvaluationMode::from($arr["evaluationMode"]);
         }
         return $result;
     }
@@ -70,6 +75,12 @@ class DataObjectFacet extends Facet
     function setFilter(DataObjectFilter $filter)
     {
         $this->filter = $filter;
+        return $this;
+    }
+    
+    function setEvaluationMode(?FacetEvaluationMode $evaluationMode)
+    {
+        $this->evaluationMode = $evaluationMode;
         return $this;
     }
     

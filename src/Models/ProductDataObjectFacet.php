@@ -7,17 +7,36 @@ class ProductDataObjectFacet extends DataObjectFacet
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.ProductDataObjectFacet, Relewise.Client";
     public DataSelectionStrategy $dataSelectionStrategy;
     
-    public static function create(DataSelectionStrategy $dataSelectionStrategy, string $key) : ProductDataObjectFacet
+    public static function create(string $key) : ProductDataObjectFacet
     {
         $result = new ProductDataObjectFacet();
-        $result->dataSelectionStrategy = $dataSelectionStrategy;
         $result->key = $key;
         return $result;
     }
     
     public static function hydrate(array $arr) : ProductDataObjectFacet
     {
-        $result = new ProductDataObjectFacet();
+        $result = Facet::hydrateBase(new ProductDataObjectFacet(), $arr);
+        if (array_key_exists("key", $arr))
+        {
+            $result->key = $arr["key"];
+        }
+        if (array_key_exists("items", $arr))
+        {
+            $result->items = array();
+            foreach($arr["items"] as &$value)
+            {
+                array_push($result->items, Facet::hydrate($value));
+            }
+        }
+        if (array_key_exists("filter", $arr))
+        {
+            $result->filter = DataObjectFilter::hydrate($arr["filter"]);
+        }
+        if (array_key_exists("evaluationMode", $arr))
+        {
+            $result->evaluationMode = FacetEvaluationMode::from($arr["evaluationMode"]);
+        }
         if (array_key_exists("dataSelectionStrategy", $arr))
         {
             $result->dataSelectionStrategy = DataSelectionStrategy::from($arr["dataSelectionStrategy"]);
@@ -63,6 +82,12 @@ class ProductDataObjectFacet extends DataObjectFacet
     function setFilter(DataObjectFilter $filter)
     {
         $this->filter = $filter;
+        return $this;
+    }
+    
+    function setEvaluationMode(?FacetEvaluationMode $evaluationMode)
+    {
+        $this->evaluationMode = $evaluationMode;
         return $this;
     }
     

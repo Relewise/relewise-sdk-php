@@ -5,18 +5,39 @@ namespace Relewise\Models;
 class ProductCategoryDataObjectFacetResult extends DataObjectFacetResult
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Result.ProductCategoryDataObjectFacetResult, Relewise.Client";
-    public static function create(string $key, array $items, DataObjectFilter $filter) : ProductCategoryDataObjectFacetResult
+    public static function create(string $key, array $items, DataObjectFilter $filter, FacetEvaluationMode $evaluationMode) : ProductCategoryDataObjectFacetResult
     {
         $result = new ProductCategoryDataObjectFacetResult();
         $result->key = $key;
         $result->items = $items;
         $result->filter = $filter;
+        $result->evaluationMode = $evaluationMode;
         return $result;
     }
     
     public static function hydrate(array $arr) : ProductCategoryDataObjectFacetResult
     {
-        $result = new ProductCategoryDataObjectFacetResult();
+        $result = FacetResult::hydrateBase(new ProductCategoryDataObjectFacetResult(), $arr);
+        if (array_key_exists("key", $arr))
+        {
+            $result->key = $arr["key"];
+        }
+        if (array_key_exists("items", $arr))
+        {
+            $result->items = array();
+            foreach($arr["items"] as &$value)
+            {
+                array_push($result->items, FacetResult::hydrate($value));
+            }
+        }
+        if (array_key_exists("filter", $arr))
+        {
+            $result->filter = DataObjectFilter::hydrate($arr["filter"]);
+        }
+        if (array_key_exists("evaluationMode", $arr))
+        {
+            $result->evaluationMode = FacetEvaluationMode::from($arr["evaluationMode"]);
+        }
         return $result;
     }
     
@@ -52,6 +73,12 @@ class ProductCategoryDataObjectFacetResult extends DataObjectFacetResult
     function setFilter(DataObjectFilter $filter)
     {
         $this->filter = $filter;
+        return $this;
+    }
+    
+    function setEvaluationMode(FacetEvaluationMode $evaluationMode)
+    {
+        $this->evaluationMode = $evaluationMode;
         return $this;
     }
     

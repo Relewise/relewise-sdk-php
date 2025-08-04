@@ -1,5 +1,6 @@
 ﻿using System.CodeDom.Compiler;
 using System.Reflection;
+using Generator.Extensions;
 
 namespace Generator.PhpMemberWriters;
 
@@ -70,10 +71,28 @@ public class PhpHydrationMethodsWriter
             {
                 writer.WriteLine($"$result = {phpWriter.PhpTypeName(abstractBase).Replace("?", "")}::hydrateBase(new {typeName}(), $arr);");
             }
+            // In this case the base type won't expose a hydrate method we can use
+            // We need to handle the base type's props manually
+            else if (type.BaseType != typeof(ValueType)
+                    && type.BaseType != typeof(object)
+                    && type is { IsAbstract: false, BaseType.IsAbstract: false })
+            {
+                // If the base class has a base class we need to reuse that class' hydrateBase method
+                writer.WriteLine(type.BaseType.BaseType != null &&
+                                 type.BaseType.BaseType != typeof(object)
+                    ? $"$result = {phpWriter.PhpTypeName(type.BaseType.BaseType).Replace("?", "")}::hydrateBase(new {typeName}(), $arr);"
+                    : $"$result = new {typeName}();");
+
+                foreach (PropertyInfo props in type.BaseType.FindOwnedPropertyInfos())
+                { 
+                    WriteHydrationSetter(writer, props.PropertyType, props.Name.ToCamelCase());
+                }
+            }
             else
             {
                 writer.WriteLine($"$result = new {typeName}();");
             }
+
             foreach (var (info, _, _, lowerCaseName) in propertyInformations)
             {
                 WriteHydrationSetter(writer, info.PropertyType, lowerCaseName);

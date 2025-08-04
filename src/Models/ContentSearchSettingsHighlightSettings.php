@@ -14,6 +14,22 @@ class ContentSearchSettingsHighlightSettings extends ContentContentHighlightProp
     public static function hydrate(array $arr) : ContentSearchSettingsHighlightSettings
     {
         $result = new ContentSearchSettingsHighlightSettings();
+        if (array_key_exists("enabled", $arr))
+        {
+            $result->enabled = $arr["enabled"];
+        }
+        if (array_key_exists("limit", $arr))
+        {
+            $result->limit = ContentContentHighlightPropsHighlightSettingsLimits::hydrate($arr["limit"]);
+        }
+        if (array_key_exists("highlightable", $arr))
+        {
+            $result->highlightable = ContentHighlightProps::hydrate($arr["highlightable"]);
+        }
+        if (array_key_exists("shape", $arr))
+        {
+            $result->shape = ContentContentHighlightPropsHighlightSettingsResponseShape::hydrate($arr["shape"]);
+        }
         return $result;
     }
     
