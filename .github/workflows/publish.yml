@@ -35,3 +35,6 @@ jobs:
 
       - name: Publish to Packagist
         run: composer publish relewise ${{ secrets.packagist_token }}
+
+      - name: Ingest new data in MCP server
+        run: curl -X PUT -H "x-api-key:${{ secrets.MCP_INGESTION_API_KEY }}" -H "content-length:0" https://mcp.relewise.com/IngestDataSource/Php  
