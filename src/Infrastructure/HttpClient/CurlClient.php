@@ -64,10 +64,6 @@ class CurlClient implements Client
 
         curl_reset($this->curl);
 
-        if (!array_filter($header, fn ($h) => stripos($h, 'Connection:') === 0)) {
-            $header[] = 'Connection: keep-alive';
-        }
-
         curl_setopt($this->curl, CURLOPT_URL, $url);
         curl_setopt($this->curl, CURLOPT_POST, 1);
         curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
