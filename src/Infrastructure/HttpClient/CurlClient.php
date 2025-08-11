@@ -15,6 +15,25 @@ class CurlClient implements Client
         self::METHOD_POST,
     ];
 
+    /** @var \CurlHandle|null */
+    private $curl;
+
+    public function __construct()
+    {
+        if (!\function_exists('curl_init')) {
+            throw new ClientException('curl not loaded');
+        }
+
+        $this->curl = curl_init();
+    }
+
+    public function __destruct()
+    {
+        if ($this->curl instanceof \CurlHandle) {
+            curl_close($this->curl);
+        }
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -35,10 +54,6 @@ class CurlClient implements Client
      */
     private function call($url, $method = self::METHOD_GET, array $header = [], $data = null, int $timeout = 3, int $httpVersion = CURL_HTTP_VERSION_NONE): Response
     {
-        if (!\function_exists('curl_init')) {
-            throw new ClientException('curl not loaded');
-        }
-
         if (!\in_array($method, $this->validMethods, true)) {
             throw new ClientException('Invalid HTTP-METHOD: ' . $method);
         }
@@ -47,24 +62,24 @@ class CurlClient implements Client
             throw new ClientException('Invalid URL given');
         }
 
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);           
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $timeout); 
-        curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
-        curl_setopt($curl, CURLOPT_HTTP_VERSION, $httpVersion);
+        curl_reset($this->curl);
 
-        $content = curl_exec($curl);
+        curl_setopt($this->curl, CURLOPT_URL, $url);
+        curl_setopt($this->curl, CURLOPT_POST, 1);
+        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($this->curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($this->curl, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, $timeout);
+        curl_setopt($this->curl, CURLOPT_TIMEOUT, $timeout);
+        curl_setopt($this->curl, CURLOPT_HTTP_VERSION, $httpVersion);
 
-        $error = curl_errno($curl);
-        $errmsg = curl_error($curl);
-        $httpCode = curl_getinfo($curl, \CURLINFO_HTTP_CODE);
-        $contentType = curl_getinfo($curl, \CURLINFO_CONTENT_TYPE);
+        $content = curl_exec($this->curl);
 
-        curl_close($curl);
+        $error = curl_errno($this->curl);
+        $errmsg = curl_error($this->curl);
+        $httpCode = curl_getinfo($this->curl, \CURLINFO_HTTP_CODE);
+        $contentType = curl_getinfo($this->curl, \CURLINFO_CONTENT_TYPE);
+
         if ($content === false && $error == 28) {
             throw new RequestTimeoutException($errmsg, $error);
         }
