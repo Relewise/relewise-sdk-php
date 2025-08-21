@@ -32,6 +32,21 @@ public static class XMLDocsFetcher
         {
             seeReference.OuterHtml = seeReference.GetAttribute("cref")?.Split(".").Last() ?? seeReference.GetAttribute("langword")?.Split(".").Last() ?? string.Empty;
         }
+        foreach (var paramReference in document.QuerySelectorAll("paramref"))
+        {
+            if (paramReference.GetAttribute("name") is { } paramName)
+            {
+                paramReference.OuterHtml = paramName;
+            }
+            else
+            {
+                paramReference.OuterHtml = string.Empty;
+            }
+        }
+        foreach (var remarks in document.QuerySelectorAll("remarks"))
+        {
+            remarks.OuterHtml = remarks.InnerHtml;
+        }
 
         foreach (var member in document.GetElementsByTagName("doc")[0].Children[1].Children)
         {

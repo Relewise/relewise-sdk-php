@@ -16,9 +16,9 @@ class ProductQuery extends LicensedRequest
     public bool $includeDisabledProducts;
     public bool $includeDisabledVariants;
     public bool $excludeProductsWithNoVariants;
-    /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests. <remarks>Should a wrong/unexisting token be supplied, a 'Validation' exception shall be returned.</remarks> */
+    /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests. Should a wrong/unexisting token be supplied, a 'Validation' exception shall be returned. */
     public ?string $nextPageToken;
-    /** The size of the page requested. <remarks>Maximum allowed value is 1000.</remarks> */
+    /** The size of the page requested. Maximum allowed value is 1000. */
     public ?int $pageSize;
     /** Settings for which properties should be included for the entities in the response. If settings are not set they default to include everything. */
     public ?ProductQuerySelectedPropertiesSettings $resultSettings;
@@ -141,14 +141,14 @@ class ProductQuery extends LicensedRequest
         return $this;
     }
     
-    /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests. <remarks>Should a wrong/unexisting token be supplied, a 'Validation' exception shall be returned.</remarks> */
+    /** The identifier for the ProductQuery paged cursor, to consume results in PageSize batches. Leave as null for retrieving the first page, and set to the value returned in NextPageToken for any subsequent page requests. Should a wrong/unexisting token be supplied, a 'Validation' exception shall be returned. */
     function setNextPageToken(?string $nextPageToken)
     {
         $this->nextPageToken = $nextPageToken;
         return $this;
     }
     
-    /** The size of the page requested. <remarks>Maximum allowed value is 1000.</remarks> */
+    /** The size of the page requested. Maximum allowed value is 1000. */
     function setPageSize(?int $pageSize)
     {
         $this->pageSize = $pageSize;
