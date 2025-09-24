@@ -36,7 +36,20 @@ class Tracker extends RelewiseClient
     
     public function batchedTracking(BatchedTrackingRequest $trackingRequest)
     {
-        return $this->requestAndValidate("BatchedTrackingRequest", $trackingRequest);
+        if (!isset($trackingRequest->items) || count($trackingRequest->items) === 0)
+        {
+            return;
+        }
+        $chunks = count($trackingRequest->items) > $this->batchSize
+            ? array_chunk($trackingRequest->items, $this->batchSize)
+            : array($trackingRequest->items);
+        foreach ($chunks as $chunk)
+        {
+            $chunkedRequest = clone $trackingRequest;
+            $chunkedRequest->items = $chunk;
+            $this->requestAndValidate("BatchedTrackingRequest", $chunkedRequest);
+        }
+        return;
     }
     
     public function trackBrandAdministrativeAction(TrackBrandAdministrativeActionRequest $trackingRequest)

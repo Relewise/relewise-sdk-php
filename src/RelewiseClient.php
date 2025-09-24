@@ -23,6 +23,7 @@ abstract class RelewiseClient
     private string $clientName = "RelewisePHPClient";
     private string $clientVersion;
     private Client $client;
+    protected int $batchSize = 100;
 
     public function __construct(private string $datasetId, private string $apiKey, private int $timeout)
     {
@@ -32,6 +33,20 @@ abstract class RelewiseClient
         }
         $this->clientVersion = \Composer\InstalledVersions::getRootPackage()["version"];
         $this->client = new CurlClient();
+    }
+
+    public function setBatchSize(int $batchSize)
+    {
+        if ($batchSize < 1)
+        {
+            throw new InvalidArgumentException("batchSize must be greater than 0.");
+        }
+        $this->batchSize = $batchSize;
+    }
+
+    public function getBatchSize(): int
+    {
+        return $this->batchSize;
     }
 
     public function request(string $endpoint, LicensedRequest $request): Response

@@ -75,11 +75,43 @@ class Searcher extends RelewiseClient
     
     public function batchsearch(SearchRequestCollection $request) : ?SearchResponseCollection
     {
-        $response = $this->requestAndValidate("SearchRequestCollection", $request);
-        if ($response == Null)
+        if (!isset($request->requests) || count($request->requests) === 0)
         {
             return Null;
         }
-        return SearchResponseCollection::hydrate($response);
+        $chunks = count($request->requests) > $this->batchSize
+            ? array_chunk($request->requests, $this->batchSize)
+            : array($request->requests);
+        $aggregatedResponse = Null;
+        foreach ($chunks as $chunk)
+        {
+            $chunkedRequest = clone $request;
+            $chunkedRequest->requests = $chunk;
+            $chunkResponse = $this->requestAndValidate("SearchRequestCollection", $chunkedRequest);
+            if ($chunkResponse == Null)
+            {
+                continue;
+            }
+            $hydratedChunkResponse = SearchResponseCollection::hydrate($chunkResponse);
+            if ($aggregatedResponse == Null)
+            {
+                $aggregatedResponse = $hydratedChunkResponse;
+            }
+            else
+            {
+                if (isset($hydratedChunkResponse->responses))
+                {
+                    if (!isset($aggregatedResponse->responses))
+                    {
+                        $aggregatedResponse->responses = array();
+                    }
+                    $aggregatedResponse->responses = array_merge(
+                        $aggregatedResponse->responses,
+                        $hydratedChunkResponse->responses
+                    );
+                }
+            }
+        }
+        return $aggregatedResponse;
     }
 }
