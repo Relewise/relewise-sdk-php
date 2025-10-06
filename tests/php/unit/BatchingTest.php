@@ -186,10 +186,10 @@ class BatchingTest extends TestCase
     private function createSearchResponseCollectionPayload(array $hits): array
     {
         return [
-            '\$type' => 'Relewise.Client.Responses.Search.SearchResponseCollection, Relewise.Client',
+            '$type' => 'Relewise.Client.Responses.Search.SearchResponseCollection, Relewise.Client',
             'responses' => array_map(
                 fn (int $hit) => [
-                    '\$type' => 'Relewise.Client.Responses.Search.ProductSearchResponse, Relewise.Client',
+                    '$type' => 'Relewise.Client.Responses.Search.ProductSearchResponse, Relewise.Client',
                     'hits' => $hit,
                     'results' => [],
                 ],
@@ -204,10 +204,10 @@ class BatchingTest extends TestCase
     private function createProductRecommendationResponseCollectionPayload(array $ids): array
     {
         return [
-            '\$type' => 'Relewise.Client.Responses.ProductRecommendationResponseCollection, Relewise.Client',
+            '$type' => 'Relewise.Client.Responses.ProductRecommendationResponseCollection, Relewise.Client',
             'responses' => array_map(
                 fn (int $id) => [
-                    '\$type' => 'Relewise.Client.Responses.ProductRecommendationResponse, Relewise.Client',
+                    '$type' => 'Relewise.Client.Responses.ProductRecommendationResponse, Relewise.Client',
                     'recommendations' => [
                         [
                             'productId' => 'product-' . $id,
