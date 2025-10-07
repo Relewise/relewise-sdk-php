@@ -2,7 +2,6 @@
 
 namespace Relewise;
 
-use Relewise\Infrastructure\HttpClient\Response;
 use Relewise\Models\BatchedTrackingRequest;
 use Relewise\Models\TrackBrandAdministrativeActionRequest;
 use Relewise\Models\TrackBrandUpdateRequest;
@@ -40,7 +39,8 @@ class Tracker extends RelewiseClient
         {
             return;
         }
-        foreach ($this->createBatches($trackingRequest->items) as $chunk)
+        $chunks = $this->createBatches($trackingRequest->items);
+        foreach ($chunks as $chunk)
         {
             $chunkedRequest = clone $trackingRequest;
             $chunkedRequest->items = $chunk;

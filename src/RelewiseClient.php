@@ -31,7 +31,14 @@ abstract class RelewiseClient
         {
             throw new InvalidArgumentException($this->apiKeyNotDefinedMessage);
         }
-        $this->clientVersion = \Composer\InstalledVersions::getRootPackage()["version"];
+        if (class_exists(\Composer\InstalledVersions::class))
+        {
+            $this->clientVersion = \Composer\InstalledVersions::getRootPackage()["version"];
+        }
+        else
+        {
+            $this->clientVersion = "dev";
+        }
         $this->client = new CurlClient();
     }
 

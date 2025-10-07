@@ -329,7 +329,8 @@ class Recommender extends RelewiseClient
             return Null;
         }
         $aggregatedResponse = Null;
-        foreach ($this->createBatches($request->requests) as $chunk)
+        $chunks = $this->createBatches($request->requests);
+        foreach ($chunks as $chunk)
         {
             $chunkedRequest = clone $request;
             $chunkedRequest->requests = $chunk;
@@ -368,7 +369,8 @@ class Recommender extends RelewiseClient
             return Null;
         }
         $aggregatedResponse = Null;
-        foreach ($this->createBatches($request->requests) as $chunk)
+        $chunks = $this->createBatches($request->requests);
+        foreach ($chunks as $chunk)
         {
             $chunkedRequest = clone $request;
             $chunkedRequest->requests = $chunk;
