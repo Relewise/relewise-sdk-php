@@ -322,24 +322,36 @@ class Recommender extends RelewiseClient
         return BrandRecommendationResponse::hydrate($response);
     }
     
-    public function batchproductRecommendation(ProductRecommendationRequestCollection $request) : ?ProductRecommendationResponseCollection
+    public function batchproductRecommendation(ProductRecommendationRequestCollection $request)
     {
-        $response = $this->requestAndValidate("ProductRecommendationRequestCollection", $request);
-        if ($response == Null)
+        if (!isset($request->requests) || count($request->requests) === 0)
         {
-            return Null;
+            return;
         }
-        return ProductRecommendationResponseCollection::hydrate($response);
+        $chunks = $this->createBatches($request->requests);
+        foreach ($chunks as $chunk)
+        {
+            $chunkedRequest = clone $request;
+            $chunkedRequest->requests = $chunk;
+            $this->requestAndValidate("ProductRecommendationRequestCollection", $chunkedRequest);
+        }
+        return;
     }
-    
-    public function batchcontentRecommendation(ContentRecommendationRequestCollection $request) : ?ContentRecommendationResponseCollection
+
+    public function batchcontentRecommendation(ContentRecommendationRequestCollection $request)
     {
-        $response = $this->requestAndValidate("ContentRecommendationRequestCollection", $request);
-        if ($response == Null)
+        if (!isset($request->requests) || count($request->requests) === 0)
         {
-            return Null;
+            return;
         }
-        return ContentRecommendationResponseCollection::hydrate($response);
+        $chunks = $this->createBatches($request->requests);
+        foreach ($chunks as $chunk)
+        {
+            $chunkedRequest = clone $request;
+            $chunkedRequest->requests = $chunk;
+            $this->requestAndValidate("ContentRecommendationRequestCollection", $chunkedRequest);
+        }
+        return;
     }
     
     public function productRecommendation(ProductRecommendationRequest $request) : ?ProductRecommendationResponse

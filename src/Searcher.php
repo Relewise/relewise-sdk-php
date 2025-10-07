@@ -73,13 +73,19 @@ class Searcher extends RelewiseClient
         return SearchTermPredictionResponse::hydrate($response);
     }
     
-    public function batchsearch(SearchRequestCollection $request) : ?SearchResponseCollection
+    public function batchsearch(SearchRequestCollection $request)
     {
-        $response = $this->requestAndValidate("SearchRequestCollection", $request);
-        if ($response == Null)
+        if (!isset($request->requests) || count($request->requests) === 0)
         {
-            return Null;
+            return;
         }
-        return SearchResponseCollection::hydrate($response);
+        $chunks = $this->createBatches($request->requests);
+        foreach ($chunks as $chunk)
+        {
+            $chunkedRequest = clone $request;
+            $chunkedRequest->requests = $chunk;
+            $this->requestAndValidate("SearchRequestCollection", $chunkedRequest);
+        }
+        return;
     }
 }
