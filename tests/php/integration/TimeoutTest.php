@@ -44,7 +44,7 @@ class TimeoutTest extends BaseTestCase
 
         $threwTimeoutException = false;
         try {
-            $tracker->batchedTracking($batchedTracking);
+            $tracker->batch($batchedTracking);
         }
         catch (RequestTimeoutException) {
             $threwTimeoutException = true;

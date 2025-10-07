@@ -33,7 +33,7 @@ class Tracker extends RelewiseClient
         parent::__construct($datasetId, $apiKey, $timeout);
     }
     
-    public function batchedTracking(BatchedTrackingRequest $trackingRequest)
+    public function batch(BatchedTrackingRequest $trackingRequest)
     {
         if (!isset($trackingRequest->items) || count($trackingRequest->items) === 0)
         {

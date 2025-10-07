@@ -41,7 +41,7 @@ class BatchingTest extends TestCase
         $request = new BatchedTrackingRequest();
         $request->items = $items;
 
-        $tracker->batchedTracking($request);
+        $tracker->batch($request);
 
         self::assertCount(3, $tracker->calls);
         self::assertSame('BatchedTrackingRequest', $tracker->calls[0]['endpoint']);
@@ -86,7 +86,7 @@ class BatchingTest extends TestCase
         $searcher->queueResponse($this->createSearchResponseCollectionPayload([1, 2]));
         $searcher->queueResponse($this->createSearchResponseCollectionPayload([3]));
 
-        $searcher->batchsearch($request);
+        $searcher->batch($request);
         self::assertCount(2, $searcher->calls);
         self::assertSame('SearchRequestCollection', $searcher->calls[0]['endpoint']);
         self::assertSame('SearchRequestCollection', $searcher->calls[1]['endpoint']);
@@ -128,7 +128,7 @@ class BatchingTest extends TestCase
         $recommender->queueResponse($this->createProductRecommendationResponseCollectionPayload([1, 2]));
         $recommender->queueResponse($this->createProductRecommendationResponseCollectionPayload([3]));
 
-        $recommender->batchproductRecommendation($requestCollection);
+        $recommender->batch($requestCollection);
         self::assertCount(2, $recommender->calls);
         self::assertSame('ProductRecommendationRequestCollection', $recommender->calls[0]['endpoint']);
         self::assertSame('ProductRecommendationRequestCollection', $recommender->calls[1]['endpoint']);

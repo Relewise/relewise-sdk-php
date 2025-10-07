@@ -73,7 +73,7 @@ class Searcher extends RelewiseClient
         return SearchTermPredictionResponse::hydrate($response);
     }
     
-    public function batchsearch(SearchRequestCollection $request)
+    public function batch(SearchRequestCollection $request)
     {
         if (!isset($request->requests) || count($request->requests) === 0)
         {

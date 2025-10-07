@@ -322,34 +322,37 @@ class Recommender extends RelewiseClient
         return BrandRecommendationResponse::hydrate($response);
     }
     
-    public function batchproductRecommendation(ProductRecommendationRequestCollection $request)
+    public function batch(ProductRecommendationRequestCollection|ContentRecommendationRequestCollection $request)
     {
-        if (!isset($request->requests) || count($request->requests) === 0)
+        if ($request instanceof ProductRecommendationRequestCollection)
         {
+            if (!isset($request->requests) || count($request->requests) === 0)
+            {
+                return;
+            }
+            $chunks = $this->createBatches($request->requests);
+            foreach ($chunks as $chunk)
+            {
+                $chunkedRequest = clone $request;
+                $chunkedRequest->requests = $chunk;
+                $this->requestAndValidate("ProductRecommendationRequestCollection", $chunkedRequest);
+            }
             return;
         }
-        $chunks = $this->createBatches($request->requests);
-        foreach ($chunks as $chunk)
+        elseif ($request instanceof ContentRecommendationRequestCollection)
         {
-            $chunkedRequest = clone $request;
-            $chunkedRequest->requests = $chunk;
-            $this->requestAndValidate("ProductRecommendationRequestCollection", $chunkedRequest);
-        }
-        return;
-    }
-
-    public function batchcontentRecommendation(ContentRecommendationRequestCollection $request)
-    {
-        if (!isset($request->requests) || count($request->requests) === 0)
-        {
+            if (!isset($request->requests) || count($request->requests) === 0)
+            {
+                return;
+            }
+            $chunks = $this->createBatches($request->requests);
+            foreach ($chunks as $chunk)
+            {
+                $chunkedRequest = clone $request;
+                $chunkedRequest->requests = $chunk;
+                $this->requestAndValidate("ContentRecommendationRequestCollection", $chunkedRequest);
+            }
             return;
-        }
-        $chunks = $this->createBatches($request->requests);
-        foreach ($chunks as $chunk)
-        {
-            $chunkedRequest = clone $request;
-            $chunkedRequest->requests = $chunk;
-            $this->requestAndValidate("ContentRecommendationRequestCollection", $chunkedRequest);
         }
         return;
     }
