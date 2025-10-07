@@ -23,7 +23,7 @@ abstract class RelewiseClient
     private string $clientName = "RelewisePHPClient";
     private string $clientVersion;
     private Client $client;
-    protected int $batchSize = 100;
+    protected int $batchSize = 1000;
 
     public function __construct(private string $datasetId, private string $apiKey, private int $timeout)
     {

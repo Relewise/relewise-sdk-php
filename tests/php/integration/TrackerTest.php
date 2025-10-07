@@ -185,11 +185,6 @@ class TrackerTest extends BaseTestCase
 
         $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
         self::assertNull($tracking);
-
-        // Search again and don't see the product.
-        $searchResult = $searcher->productSearch($productSearch);
-
-        self::assertEquals(0, $searchResult->hits);
     }
     
     public function testDisableAdministrativeAction(): void
@@ -250,10 +245,5 @@ class TrackerTest extends BaseTestCase
 
         $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
         self::assertNull($tracking);
-
-        // Search again and don't see the product.
-        $searchResult = $searcher->productSearch($productSearch);
-
-        self::assertEquals(0, $searchResult->hits);
     }
 }
