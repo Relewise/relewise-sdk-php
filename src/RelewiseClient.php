@@ -49,6 +49,31 @@ abstract class RelewiseClient
         return $this->batchSize;
     }
 
+    /**
+     * @param array<int, mixed> $items
+     * @return array<int, array<int, mixed>>
+     */
+    protected function createBatches(array $items): array
+    {
+        $count = count($items);
+        if ($count === 0)
+        {
+            return array();
+        }
+        if ($count <= $this->batchSize)
+        {
+            return array($items);
+        }
+
+        $chunks = array();
+        for ($offset = 0; $offset < $count; $offset += $this->batchSize)
+        {
+            $chunks[] = \array_slice($items, $offset, $this->batchSize);
+        }
+
+        return $chunks;
+    }
+
     public function request(string $endpoint, LicensedRequest $request): Response
     {
         return $this->client->post(

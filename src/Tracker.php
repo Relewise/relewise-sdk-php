@@ -40,10 +40,7 @@ class Tracker extends RelewiseClient
         {
             return;
         }
-        $chunks = count($trackingRequest->items) > $this->batchSize
-            ? array_chunk($trackingRequest->items, $this->batchSize)
-            : array($trackingRequest->items);
-        foreach ($chunks as $chunk)
+        foreach ($this->createBatches($trackingRequest->items) as $chunk)
         {
             $chunkedRequest = clone $trackingRequest;
             $chunkedRequest->items = $chunk;
