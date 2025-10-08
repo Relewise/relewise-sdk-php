@@ -22,7 +22,6 @@ class VariantDataRelevanceModifier extends DataRelevanceModifier
         $result->multiplierSelector = $multiplierSelector;
         $result->mustMatchAllConditions = $mustMatchAllConditions;
         $result->considerAsMatchIfKeyIsNotFound = $considerAsMatchIfKeyIsNotFound;
-        $result->mustMatchAllConditions = true;
         return $result;
     }
     
