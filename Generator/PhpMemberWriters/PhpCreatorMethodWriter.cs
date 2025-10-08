@@ -114,9 +114,13 @@ public class PhpCreatorMethodWriter
             )
             .ToArray();
 
+        ParameterInfo[]? selectedParameters = null;
+
         if (overrideDefaultConstructors.TryGetValue(type, out ConstructorInfo? defaultConstructor))
         {
             var parameters = defaultConstructor.GetParameters();
+
+            selectedParameters = parameters;
 
             writer.WriteCommentBlock(
                 parameters.Select(p => phpWriter.XmlDocumentation.GetConstructorParam(typeName, parameters, p))
@@ -143,6 +147,8 @@ public class PhpCreatorMethodWriter
         {
             var parameters = overriden.defaultConstructor.GetParameters().Where(p => overriden.parameters.Contains(p.Name)).ToArray();
 
+            selectedParameters = parameters;
+
             writer.WriteCommentBlock(
                 parameters.Select(p => phpWriter.XmlDocumentation.GetConstructorParam(typeName, parameters, p))
                     .Prepend(phpWriter.XmlDocumentation.GetConstructorSummary(typeName, parameters))
@@ -166,6 +172,7 @@ public class PhpCreatorMethodWriter
         }
         else if (coveringUniqueTypeMappableConstructorParameters?.Length > 0)
         {
+            selectedParameters = coveringUniqueTypeMappableConstructorParameters;
             writer.WriteCommentBlock(
                 coveringUniqueTypeMappableConstructorParameters.Select(p => phpWriter.XmlDocumentation.GetConstructorParam(typeName, coveringUniqueTypeMappableConstructorParameters, p))
                     .Prepend(phpWriter.XmlDocumentation.GetConstructorSummary(typeName, coveringUniqueTypeMappableConstructorParameters))
@@ -188,6 +195,7 @@ public class PhpCreatorMethodWriter
         }
         else if (coveringTypeAndNameMappableConstructorParameters?.Length > 0)
         {
+            selectedParameters = coveringTypeAndNameMappableConstructorParameters;
             writer.WriteCommentBlock(
                 coveringTypeAndNameMappableConstructorParameters.Select(p => phpWriter.XmlDocumentation.GetConstructorParam(typeName, coveringTypeAndNameMappableConstructorParameters, p))
                     .Prepend(phpWriter.XmlDocumentation.GetConstructorSummary(typeName, coveringTypeAndNameMappableConstructorParameters))
@@ -210,6 +218,7 @@ public class PhpCreatorMethodWriter
         }
         else if (allConstructorParametersIntersectionWithMappableNamesAndTypes?.Length > 0)
         {
+            selectedParameters = allConstructorParametersIntersectionWithMappableNamesAndTypes;
             writer.WriteLine($"public static function create({ParameterList(allConstructorParametersIntersectionWithMappableNamesAndTypes)}) : {typeName}");
             writer.WriteLine("{");
             writer.Indent++;
@@ -236,10 +245,16 @@ public class PhpCreatorMethodWriter
             writer.WriteLine("{");
             writer.Indent++;
             writer.WriteLine($"$result = new {typeName}();");
+
+            selectedParameters = Array.Empty<ParameterInfo>();
         }
 
         IEnumerable<string?> coveredParameterNames;
-        if (coveringUniqueTypeMappableConstructorParameters?.Length > 0)
+        if (selectedParameters is { Length: > 0 })
+        {
+            coveredParameterNames = selectedParameters.Select(parameter => parameter.Name);
+        }
+        else if (coveringUniqueTypeMappableConstructorParameters?.Length > 0)
         {
             coveredParameterNames = coveringUniqueTypeMappableConstructorParameters.Select(parameter => parameter.Name);
         }
