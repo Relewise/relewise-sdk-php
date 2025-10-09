@@ -328,8 +328,8 @@ class Recommender extends RelewiseClient
         {
             return Null;
         }
-        $aggregatedResponse = Null;
         $chunks = $this->createBatches($request->requests);
+        $aggregatedResponse = Null;
         foreach ($chunks as $chunk)
         {
             $chunkedRequest = clone $request;
@@ -361,15 +361,15 @@ class Recommender extends RelewiseClient
         }
         return $aggregatedResponse;
     }
-
+    
     public function batchcontentRecommendation(ContentRecommendationRequestCollection $request) : ?ContentRecommendationResponseCollection
     {
         if (!isset($request->requests) || count($request->requests) === 0)
         {
             return Null;
         }
-        $aggregatedResponse = Null;
         $chunks = $this->createBatches($request->requests);
+        $aggregatedResponse = Null;
         foreach ($chunks as $chunk)
         {
             $chunkedRequest = clone $request;

@@ -2,6 +2,7 @@
 
 namespace Relewise;
 
+use Relewise\Infrastructure\HttpClient\Response;
 use Relewise\Models\BatchedTrackingRequest;
 use Relewise\Models\TrackBrandAdministrativeActionRequest;
 use Relewise\Models\TrackBrandUpdateRequest;

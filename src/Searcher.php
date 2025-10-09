@@ -79,8 +79,8 @@ class Searcher extends RelewiseClient
         {
             return Null;
         }
-        $aggregatedResponse = Null;
         $chunks = $this->createBatches($request->requests);
+        $aggregatedResponse = Null;
         foreach ($chunks as $chunk)
         {
             $chunkedRequest = clone $request;
