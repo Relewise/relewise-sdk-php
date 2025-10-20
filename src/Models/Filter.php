@@ -118,6 +118,10 @@ abstract class Filter
         {
             return ContentDisabledFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.ContentEngagementFilter, Relewise.Client")
+        {
+            return ContentEngagementFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.ContentHasCategoriesFilter, Relewise.Client")
         {
             return ContentHasCategoriesFilter::hydrate($arr);
@@ -129,6 +133,18 @@ abstract class Filter
         if ($type=="Relewise.Client.Requests.Filters.ContentRecentlyViewedByUserFilter, Relewise.Client")
         {
             return ContentRecentlyViewedByUserFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.DisplayAdDataFilter, Relewise.Client")
+        {
+            return DisplayAdDataFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.DisplayAdIdFilter, Relewise.Client")
+        {
+            return DisplayAdIdFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.DisplayAdTemplateIdFilter, Relewise.Client")
+        {
+            return DisplayAdTemplateIdFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.OrFilter, Relewise.Client")
         {
@@ -202,6 +218,10 @@ abstract class Filter
         {
             return ProductDisplayNameFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.ProductEngagementFilter, Relewise.Client")
+        {
+            return ProductEngagementFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.ProductHasCategoriesFilter, Relewise.Client")
         {
             return ProductHasCategoriesFilter::hydrate($arr);
@@ -273,6 +293,10 @@ abstract class Filter
         if ($type=="Relewise.Client.Requests.Filters.VariantDisabledFilter, Relewise.Client")
         {
             return VariantDisabledFilter::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Filters.VariantEngagementFilter, Relewise.Client")
+        {
+            return VariantEngagementFilter::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Filters.VariantIdFilter, Relewise.Client")
         {

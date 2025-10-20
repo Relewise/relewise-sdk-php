@@ -13,6 +13,7 @@ class LocationPlacement
     public ?LocationPlacementVariationCollection $variations;
     /** The minimum relevancy required by this Placement for results to be promoted. */
     public ?ScoreThresholds $thresholds;
+    public ?FilterCollection $displayAdTemplateFilters;
     
     public static function create(string $name, ?LocationPlacementVariationCollection $variations) : LocationPlacement
     {
@@ -40,6 +41,10 @@ class LocationPlacement
         if (array_key_exists("thresholds", $arr))
         {
             $result->thresholds = ScoreThresholds::hydrate($arr["thresholds"]);
+        }
+        if (array_key_exists("displayAdTemplateFilters", $arr))
+        {
+            $result->displayAdTemplateFilters = FilterCollection::hydrate($arr["displayAdTemplateFilters"]);
         }
         return $result;
     }
@@ -69,6 +74,12 @@ class LocationPlacement
     function setThresholds(?ScoreThresholds $thresholds)
     {
         $this->thresholds = $thresholds;
+        return $this;
+    }
+    
+    function setDisplayAdTemplateFilters(?FilterCollection $displayAdTemplateFilters)
+    {
+        $this->displayAdTemplateFilters = $displayAdTemplateFilters;
         return $this;
     }
 }

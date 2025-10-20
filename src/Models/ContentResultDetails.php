@@ -19,6 +19,8 @@ class ContentResultDetails implements JsonSerializable
     public int $viewedByDifferentNumberOfUsers;
     public bool $disabled;
     public bool $deleted;
+    /** Contains engagement signals (sentiment and favorite state) recorded for the current user on this content item. Populated only when the request sets UserEngagement to true. */
+    public ?ContentEngagementData $userEngagement;
     
     public static function create(string $contentId) : ContentResultDetails
     {
@@ -89,6 +91,10 @@ class ContentResultDetails implements JsonSerializable
         if (array_key_exists("deleted", $arr))
         {
             $result->deleted = $arr["deleted"];
+        }
+        if (array_key_exists("userEngagement", $arr))
+        {
+            $result->userEngagement = ContentEngagementData::hydrate($arr["userEngagement"]);
         }
         return $result;
     }
@@ -210,6 +216,13 @@ class ContentResultDetails implements JsonSerializable
         return $this;
     }
     
+    /** Contains engagement signals (sentiment and favorite state) recorded for the current user on this content item. Populated only when the request sets UserEngagement to true. */
+    function setUserEngagement(?ContentEngagementData $userEngagement)
+    {
+        $this->userEngagement = $userEngagement;
+        return $this;
+    }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();
@@ -260,6 +273,10 @@ class ContentResultDetails implements JsonSerializable
         if (isset($this->deleted))
         {
             $result["deleted"] = $this->deleted;
+        }
+        if (isset($this->userEngagement))
+        {
+            $result["userEngagement"] = $this->userEngagement;
         }
         return $result;
     }

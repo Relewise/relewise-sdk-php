@@ -28,6 +28,10 @@ abstract class RelevanceModifier
         {
             return ContentDataRelevanceModifier::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.RelevanceModifiers.ContentEngagementRelevanceModifier, Relewise.Client")
+        {
+            return ContentEngagementRelevanceModifier::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.RelevanceModifiers.ContentRecentlyViewedByUserRelevanceModifier, Relewise.Client")
         {
             return ContentRecentlyViewedByUserRelevanceModifier::hydrate($arr);
@@ -51,6 +55,10 @@ abstract class RelevanceModifier
         if ($type=="Relewise.Client.Requests.RelevanceModifiers.ProductDataRelevanceModifier, Relewise.Client")
         {
             return ProductDataRelevanceModifier::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RelevanceModifiers.ProductEngagementRelevanceModifier, Relewise.Client")
+        {
+            return ProductEngagementRelevanceModifier::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.RelevanceModifiers.ProductIdRelevanceModifier, Relewise.Client")
         {
@@ -99,6 +107,10 @@ abstract class RelevanceModifier
         if ($type=="Relewise.Client.Requests.RelevanceModifiers.VariantDataRelevanceModifier, Relewise.Client")
         {
             return VariantDataRelevanceModifier::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RelevanceModifiers.VariantEngagementRelevanceModifier, Relewise.Client")
+        {
+            return VariantEngagementRelevanceModifier::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.RelevanceModifiers.VariantIdRelevanceModifier, Relewise.Client")
         {

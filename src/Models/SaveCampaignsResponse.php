@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-class SaveCampaignsResponse extends CampaignSaveEntitiesResponse
+class SaveCampaignsResponse extends CampaignstringSaveEntitiesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.RetailMedia.SaveCampaignsResponse, Relewise.Client";
     public static function create() : SaveCampaignsResponse
@@ -13,7 +13,7 @@ class SaveCampaignsResponse extends CampaignSaveEntitiesResponse
     
     public static function hydrate(array $arr) : SaveCampaignsResponse
     {
-        $result = CampaignSaveEntitiesResponse::hydrateBase(new SaveCampaignsResponse(), $arr);
+        $result = CampaignstringSaveEntitiesResponse::hydrateBase(new SaveCampaignsResponse(), $arr);
         return $result;
     }
     

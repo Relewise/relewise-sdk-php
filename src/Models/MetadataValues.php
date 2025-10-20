@@ -29,6 +29,14 @@ abstract class MetadataValues implements JsonSerializable
         {
             return LocationMetadataValues::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.RetailMedia.Entities.DisplayAd+MetadataValues, Relewise.Client")
+        {
+            return DisplayAdMetadataValues::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.RetailMedia.Entities.DisplayAdTemplate+MetadataValues, Relewise.Client")
+        {
+            return DisplayAdTemplateMetadataValues::hydrate($arr);
+        }
     }
     
     public static function hydrateBase(mixed $result, array $arr)

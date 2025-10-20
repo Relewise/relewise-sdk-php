@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-class LocationsRequest extends LocationEntityStateLocationMetadataValuesLocationsRequestSortByLocationsRequestEntityFiltersEntitiesRequest
+class LocationsRequest extends LocationEntityStatestringLocationMetadataValuesLocationsRequestSortByLocationsRequestEntityFiltersEntitiesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.LocationsRequest, Relewise.Client";
     public static function create(?LocationsRequestEntityFilters $filters, ?LocationsRequestSortBySorting $sorting, int $skip, int $take) : LocationsRequest
@@ -17,7 +17,7 @@ class LocationsRequest extends LocationEntityStateLocationMetadataValuesLocation
     
     public static function hydrate(array $arr) : LocationsRequest
     {
-        $result = LocationEntityStateLocationMetadataValuesLocationsRequestSortByLocationsRequestEntityFiltersEntitiesRequest::hydrateBase(new LocationsRequest(), $arr);
+        $result = LocationEntityStatestringLocationMetadataValuesLocationsRequestSortByLocationsRequestEntityFiltersEntitiesRequest::hydrateBase(new LocationsRequest(), $arr);
         return $result;
     }
     

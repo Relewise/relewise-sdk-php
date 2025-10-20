@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-class Campaign extends CampaignEntityStateCampaignMetadataValuesRetailMediaEntity
+class Campaign extends CampaignEntityStatestringCampaignMetadataValuesRetailMediaEntity
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Campaign, Relewise.Client";
     public string $name;
@@ -28,7 +28,7 @@ class Campaign extends CampaignEntityStateCampaignMetadataValuesRetailMediaEntit
     
     public static function hydrate(array $arr) : Campaign
     {
-        $result = CampaignEntityStateCampaignMetadataValuesRetailMediaEntity::hydrateBase(new Campaign(), $arr);
+        $result = CampaignEntityStatestringCampaignMetadataValuesRetailMediaEntity::hydrateBase(new Campaign(), $arr);
         if (array_key_exists("name", $arr))
         {
             $result->name = $arr["name"];

@@ -17,6 +17,8 @@ class SelectedProductDetailsPropertiesSettings
     public bool $viewedByUserCompanyInfo;
     public bool $purchasedByUserCompanyInfo;
     public ?FilteredVariantsSettings $filteredVariants;
+    /** Determines whether UserEngagement should be populated when result details are mapped. */
+    public bool $userEngagement;
     
     public static function create() : SelectedProductDetailsPropertiesSettings
     {
@@ -82,6 +84,10 @@ class SelectedProductDetailsPropertiesSettings
         if (array_key_exists("filteredVariants", $arr))
         {
             $result->filteredVariants = FilteredVariantsSettings::hydrate($arr["filteredVariants"]);
+        }
+        if (array_key_exists("userEngagement", $arr))
+        {
+            $result->userEngagement = $arr["userEngagement"];
         }
         return $result;
     }
@@ -178,6 +184,13 @@ class SelectedProductDetailsPropertiesSettings
     function setFilteredVariants(?FilteredVariantsSettings $filteredVariants)
     {
         $this->filteredVariants = $filteredVariants;
+        return $this;
+    }
+    
+    /** Determines whether UserEngagement should be populated when result details are mapped. */
+    function setUserEngagement(bool $userEngagement)
+    {
+        $this->userEngagement = $userEngagement;
         return $this;
     }
 }

@@ -9,6 +9,7 @@ class AbandonedCartTriggerConfiguration extends AbandonedCartTriggerResultTrigge
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Triggers.Configurations.AbandonedCartTriggerConfiguration, Relewise.Client";
     public string $cartName;
+    public ?AbandonedCartTriggerConfigurationPropertySelectionSettings $selectedProperties;
     
     public static function create(string $name, string $description, string $cartName = Null) : AbandonedCartTriggerConfiguration
     {
@@ -26,12 +27,22 @@ class AbandonedCartTriggerConfiguration extends AbandonedCartTriggerResultTrigge
         {
             $result->cartName = $arr["cartName"];
         }
+        if (array_key_exists("selectedProperties", $arr))
+        {
+            $result->selectedProperties = AbandonedCartTriggerConfigurationPropertySelectionSettings::hydrate($arr["selectedProperties"]);
+        }
         return $result;
     }
     
     function setCartName(string $cartName)
     {
         $this->cartName = $cartName;
+        return $this;
+    }
+    
+    function setSelectedProperties(?AbandonedCartTriggerConfigurationPropertySelectionSettings $selectedProperties)
+    {
+        $this->selectedProperties = $selectedProperties;
         return $this;
     }
     
@@ -125,6 +136,10 @@ class AbandonedCartTriggerConfiguration extends AbandonedCartTriggerResultTrigge
         if (isset($this->cartName))
         {
             $result["cartName"] = $this->cartName;
+        }
+        if (isset($this->selectedProperties))
+        {
+            $result["selectedProperties"] = $this->selectedProperties;
         }
         if (isset($this->id))
         {

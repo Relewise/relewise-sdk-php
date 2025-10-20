@@ -10,6 +10,8 @@ class OverriddenSelectedContentPropertiesSettings
     public ?bool $allData;
     public ?bool $viewedByUserInfo;
     public array $dataKeys;
+    /** When set, overrides whether UserEngagement should be populated when results are mapped. */
+    public ?bool $userEngagement;
     
     public static function create() : OverriddenSelectedContentPropertiesSettings
     {
@@ -47,6 +49,10 @@ class OverriddenSelectedContentPropertiesSettings
             {
                 array_push($result->dataKeys, $value);
             }
+        }
+        if (array_key_exists("userEngagement", $arr))
+        {
+            $result->userEngagement = $arr["userEngagement"];
         }
         return $result;
     }
@@ -101,6 +107,13 @@ class OverriddenSelectedContentPropertiesSettings
             $this->dataKeys = array();
         }
         array_push($this->dataKeys, $dataKeys);
+        return $this;
+    }
+    
+    /** When set, overrides whether UserEngagement should be populated when results are mapped. */
+    function setUserEngagement(?bool $userEngagement)
+    {
+        $this->userEngagement = $userEngagement;
         return $this;
     }
 }

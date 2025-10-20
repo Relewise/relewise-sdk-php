@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-class SaveLocationsResponse extends LocationSaveEntitiesResponse
+class SaveLocationsResponse extends LocationstringSaveEntitiesResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.RetailMedia.SaveLocationsResponse, Relewise.Client";
     public static function create() : SaveLocationsResponse
@@ -13,7 +13,7 @@ class SaveLocationsResponse extends LocationSaveEntitiesResponse
     
     public static function hydrate(array $arr) : SaveLocationsResponse
     {
-        $result = LocationSaveEntitiesResponse::hydrateBase(new SaveLocationsResponse(), $arr);
+        $result = LocationstringSaveEntitiesResponse::hydrateBase(new SaveLocationsResponse(), $arr);
         return $result;
     }
     

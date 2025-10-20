@@ -13,6 +13,10 @@ abstract class PromotionSpecificationVariation
         {
             return ProductPromotionSpecificationVariation::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.RetailMedia.Promotion+VariationPromotion, Relewise.Client")
+        {
+            return PromotionVariationPromotion::hydrate($arr);
+        }
     }
     
     public static function hydrateBase(mixed $result, array $arr)

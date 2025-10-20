@@ -15,6 +15,8 @@ class OverriddenSelectedProductPropertiesSettings
     public ?bool $allVariants;
     public array $dataKeys;
     public ?SelectedScorePropertiesSettings $score;
+    /** When set, overrides whether UserEngagement should be populated when results are mapped. */
+    public ?bool $userEngagement;
     
     public static function create() : OverriddenSelectedProductPropertiesSettings
     {
@@ -72,6 +74,10 @@ class OverriddenSelectedProductPropertiesSettings
         if (array_key_exists("score", $arr))
         {
             $result->score = SelectedScorePropertiesSettings::hydrate($arr["score"]);
+        }
+        if (array_key_exists("userEngagement", $arr))
+        {
+            $result->userEngagement = $arr["userEngagement"];
         }
         return $result;
     }
@@ -156,6 +162,13 @@ class OverriddenSelectedProductPropertiesSettings
     function setScore(?SelectedScorePropertiesSettings $score)
     {
         $this->score = $score;
+        return $this;
+    }
+    
+    /** When set, overrides whether UserEngagement should be populated when results are mapped. */
+    function setUserEngagement(?bool $userEngagement)
+    {
+        $this->userEngagement = $userEngagement;
         return $this;
     }
 }
