@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-class LocationsResponse extends LocationLocationEntityStateEntityResponse
+class LocationsResponse extends LocationstringLocationEntityStateEntityResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.RetailMedia.LocationsResponse, Relewise.Client";
     public static function create(int $hits, array $hitsPerState) : LocationsResponse
@@ -15,7 +15,7 @@ class LocationsResponse extends LocationLocationEntityStateEntityResponse
     
     public static function hydrate(array $arr) : LocationsResponse
     {
-        $result = LocationLocationEntityStateEntityResponse::hydrateBase(new LocationsResponse(), $arr);
+        $result = LocationstringLocationEntityStateEntityResponse::hydrateBase(new LocationsResponse(), $arr);
         return $result;
     }
     

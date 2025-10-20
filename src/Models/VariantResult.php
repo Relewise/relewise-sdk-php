@@ -12,6 +12,8 @@ class VariantResult
     public int $rank;
     public ?float $listPrice;
     public ?float $salesPrice;
+    /** Contains engagement signals recorded for the current user on this variant. Populated when requested via UserEngagement. */
+    public ?ProductEngagementData $userEngagement;
     
     public static function create(string $variantId, int $rank) : VariantResult
     {
@@ -67,6 +69,10 @@ class VariantResult
         if (array_key_exists("salesPrice", $arr))
         {
             $result->salesPrice = $arr["salesPrice"];
+        }
+        if (array_key_exists("userEngagement", $arr))
+        {
+            $result->userEngagement = ProductEngagementData::hydrate($arr["userEngagement"]);
         }
         return $result;
     }
@@ -155,6 +161,13 @@ class VariantResult
     function setSalesPrice(?float $salesPrice)
     {
         $this->salesPrice = $salesPrice;
+        return $this;
+    }
+    
+    /** Contains engagement signals recorded for the current user on this variant. Populated when requested via UserEngagement. */
+    function setUserEngagement(?ProductEngagementData $userEngagement)
+    {
+        $this->userEngagement = $userEngagement;
         return $this;
     }
 }

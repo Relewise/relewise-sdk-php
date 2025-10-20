@@ -30,6 +30,8 @@ class ProductResultDetails implements JsonSerializable
     public MultiCurrency $salesPrice;
     public BrandResultDetails $brand;
     public array $filteredVariants;
+    /** Contains engagement signals (sentiment and favorite state) recorded for the current user on this product. Populated only when the request sets UserEngagement to true. */
+    public ?ProductEngagementData $userEngagement;
     
     public static function create(string $productId) : ProductResultDetails
     {
@@ -148,6 +150,10 @@ class ProductResultDetails implements JsonSerializable
             {
                 array_push($result->filteredVariants, VariantResultDetails::hydrate($value));
             }
+        }
+        if (array_key_exists("userEngagement", $arr))
+        {
+            $result->userEngagement = ProductEngagementData::hydrate($arr["userEngagement"]);
         }
         return $result;
     }
@@ -364,6 +370,13 @@ class ProductResultDetails implements JsonSerializable
         return $this;
     }
     
+    /** Contains engagement signals (sentiment and favorite state) recorded for the current user on this product. Populated only when the request sets UserEngagement to true. */
+    function setUserEngagement(?ProductEngagementData $userEngagement)
+    {
+        $this->userEngagement = $userEngagement;
+        return $this;
+    }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();
@@ -454,6 +467,10 @@ class ProductResultDetails implements JsonSerializable
         if (isset($this->filteredVariants))
         {
             $result["filteredVariants"] = $this->filteredVariants;
+        }
+        if (isset($this->userEngagement))
+        {
+            $result["userEngagement"] = $this->userEngagement;
         }
         return $result;
     }

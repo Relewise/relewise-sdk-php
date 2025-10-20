@@ -10,6 +10,8 @@ class SelectedContentPropertiesSettings
     public bool $allData;
     public bool $viewedByUserInfo;
     public ?array $dataKeys;
+    /** Determines whether UserEngagement should be populated when results are mapped. */
+    public bool $userEngagement;
     
     public static function create() : SelectedContentPropertiesSettings
     {
@@ -47,6 +49,10 @@ class SelectedContentPropertiesSettings
             {
                 array_push($result->dataKeys, $value);
             }
+        }
+        if (array_key_exists("userEngagement", $arr))
+        {
+            $result->userEngagement = $arr["userEngagement"];
         }
         return $result;
     }
@@ -101,6 +107,13 @@ class SelectedContentPropertiesSettings
             $this->dataKeys = array();
         }
         array_push($this->dataKeys, $dataKeys);
+        return $this;
+    }
+    
+    /** Determines whether UserEngagement should be populated when results are mapped. */
+    function setUserEngagement(bool $userEngagement)
+    {
+        $this->userEngagement = $userEngagement;
         return $this;
     }
 }

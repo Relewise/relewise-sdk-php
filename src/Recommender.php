@@ -29,6 +29,8 @@ use Relewise\Models\PopularProductCategoriesRecommendationRequest;
 use Relewise\Models\PersonalProductCategoryRecommendationRequest;
 use Relewise\Models\PopularBrandsRecommendationRequest;
 use Relewise\Models\PersonalBrandRecommendationRequest;
+use Relewise\Models\FeedRecommendationInitializationRequest;
+use Relewise\Models\FeedRecommendationNextItemsRequest;
 use Relewise\Models\BrandRecommendationRequest;
 use Relewise\Models\ProductRecommendationRequestCollection;
 use Relewise\Models\ContentRecommendationRequestCollection;
@@ -42,6 +44,7 @@ use Relewise\Models\ContentRecommendationResponse;
 use Relewise\Models\ContentCategoryRecommendationResponse;
 use Relewise\Models\ProductCategoryRecommendationResponse;
 use Relewise\Models\BrandRecommendationResponse;
+use Relewise\Models\FeedRecommendationResponse;
 use Relewise\Models\ProductRecommendationResponseCollection;
 use Relewise\Models\ContentRecommendationResponseCollection;
 
@@ -310,6 +313,26 @@ class Recommender extends RelewiseClient
             return Null;
         }
         return BrandRecommendationResponse::hydrate($response);
+    }
+    
+    public function feedRecommendationInitialization(FeedRecommendationInitializationRequest $request) : ?FeedRecommendationResponse
+    {
+        $response = $this->requestAndValidate("FeedRecommendationInitializationRequest", $request);
+        if ($response == Null)
+        {
+            return Null;
+        }
+        return FeedRecommendationResponse::hydrate($response);
+    }
+    
+    public function feedRecommendationNextItems(FeedRecommendationNextItemsRequest $request) : ?FeedRecommendationResponse
+    {
+        $response = $this->requestAndValidate("FeedRecommendationNextItemsRequest", $request);
+        if ($response == Null)
+        {
+            return Null;
+        }
+        return FeedRecommendationResponse::hydrate($response);
     }
     
     public function brandRecommendation(BrandRecommendationRequest $request) : ?BrandRecommendationResponse

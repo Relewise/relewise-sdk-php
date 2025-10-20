@@ -10,6 +10,7 @@ class RequestContextFilter
     public array $languages;
     public array $currencies;
     public RequestFilterCriteria $filters;
+    public ?SearchTermConditionByLanguageCollection $searchTerms;
     
     public static function create() : RequestContextFilter
     {
@@ -55,6 +56,10 @@ class RequestContextFilter
         if (array_key_exists("filters", $arr))
         {
             $result->filters = RequestFilterCriteria::hydrate($arr["filters"]);
+        }
+        if (array_key_exists("searchTerms", $arr))
+        {
+            $result->searchTerms = SearchTermConditionByLanguageCollection::hydrate($arr["searchTerms"]);
         }
         return $result;
     }
@@ -143,6 +148,12 @@ class RequestContextFilter
     function setFilters(RequestFilterCriteria $filters)
     {
         $this->filters = $filters;
+        return $this;
+    }
+    
+    function setSearchTerms(?SearchTermConditionByLanguageCollection $searchTerms)
+    {
+        $this->searchTerms = $searchTerms;
         return $this;
     }
 }

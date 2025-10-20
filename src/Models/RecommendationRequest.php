@@ -120,6 +120,10 @@ abstract class RecommendationRequest extends LicensedRequest
         {
             return SortVariantsRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Recommendations.Feed.FeedRecommendationInitializationRequest, Relewise.Client")
+        {
+            return FeedRecommendationInitializationRequest::hydrate($arr);
+        }
     }
     
     public static function hydrateBase(mixed $result, array $arr)

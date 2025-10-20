@@ -21,6 +21,10 @@ abstract class RecommendationResponse extends TimedResponse
         {
             return ContentRecommendationResponse::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Responses.FeedRecommendationResponse, Relewise.Client")
+        {
+            return FeedRecommendationResponse::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Responses.ProductCategoryRecommendationResponse, Relewise.Client")
         {
             return ProductCategoryRecommendationResponse::hydrate($arr);

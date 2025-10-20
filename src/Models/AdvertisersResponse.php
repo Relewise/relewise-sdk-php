@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-class AdvertisersResponse extends AdvertiserAdvertiserEntityStateEntityResponse
+class AdvertisersResponse extends AdvertiserstringAdvertiserEntityStateEntityResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.RetailMedia.AdvertisersResponse, Relewise.Client";
     public static function create(int $hits, array $hitsPerState) : AdvertisersResponse
@@ -15,7 +15,7 @@ class AdvertisersResponse extends AdvertiserAdvertiserEntityStateEntityResponse
     
     public static function hydrate(array $arr) : AdvertisersResponse
     {
-        $result = AdvertiserAdvertiserEntityStateEntityResponse::hydrateBase(new AdvertisersResponse(), $arr);
+        $result = AdvertiserstringAdvertiserEntityStateEntityResponse::hydrateBase(new AdvertisersResponse(), $arr);
         return $result;
     }
     

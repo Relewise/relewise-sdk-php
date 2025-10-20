@@ -49,6 +49,10 @@ abstract class Trackable
         {
             return ContentCategoryView::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.ContentEngagement, Relewise.Client")
+        {
+            return ContentEngagement::hydrate($arr);
+        }
         if ($type=="Relewise.Client.DataTypes.ContentUpdate, Relewise.Client")
         {
             return ContentUpdate::hydrate($arr);
@@ -56,6 +60,10 @@ abstract class Trackable
         if ($type=="Relewise.Client.DataTypes.ContentView, Relewise.Client")
         {
             return ContentView::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.DisplayAdClick, Relewise.Client")
+        {
+            return DisplayAdClick::hydrate($arr);
         }
         if ($type=="Relewise.Client.DataTypes.Order, Relewise.Client")
         {
@@ -77,6 +85,10 @@ abstract class Trackable
         {
             return ProductCategoryView::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.ProductEngagement, Relewise.Client")
+        {
+            return ProductEngagement::hydrate($arr);
+        }
         if ($type=="Relewise.Client.DataTypes.ProductUpdate, Relewise.Client")
         {
             return ProductUpdate::hydrate($arr);
@@ -92,6 +104,18 @@ abstract class Trackable
         if ($type=="Relewise.Client.DataTypes.UserUpdate, Relewise.Client")
         {
             return UserUpdate::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.Feed.FeedDwell, Relewise.Client")
+        {
+            return FeedDwell::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.Feed.FeedItemClick, Relewise.Client")
+        {
+            return FeedItemClick::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.Feed.FeedItemPreview, Relewise.Client")
+        {
+            return FeedItemPreview::hydrate($arr);
         }
     }
     

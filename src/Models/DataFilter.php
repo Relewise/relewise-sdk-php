@@ -33,6 +33,10 @@ abstract class DataFilter extends Filter
         {
             return ContentDataFilter::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Filters.DisplayAdDataFilter, Relewise.Client")
+        {
+            return DisplayAdDataFilter::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Filters.ProductCategoryDataFilter, Relewise.Client")
         {
             return ProductCategoryDataFilter::hydrate($arr);

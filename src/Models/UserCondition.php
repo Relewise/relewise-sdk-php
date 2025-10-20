@@ -28,6 +28,10 @@ abstract class UserCondition
         {
             return HasClassificationCondition::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.UserConditions.HasCompanyDataCondition, Relewise.Client")
+        {
+            return HasCompanyDataCondition::hydrate($arr);
+        }
         if ($type=="Relewise.Client.DataTypes.UserConditions.HasDataCondition, Relewise.Client")
         {
             return HasDataCondition::hydrate($arr);

@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-class CampaignsRequest extends CampaignEntityStateCampaignMetadataValuesCampaignsRequestSortByCampaignsRequestEntityFiltersEntitiesRequest
+class CampaignsRequest extends CampaignEntityStatestringCampaignMetadataValuesCampaignsRequestSortByCampaignsRequestEntityFiltersEntitiesRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.CampaignsRequest, Relewise.Client";
     public static function create(?CampaignsRequestEntityFilters $filters, ?CampaignsRequestSortBySorting $sorting, int $skip, int $take) : CampaignsRequest
@@ -17,7 +17,7 @@ class CampaignsRequest extends CampaignEntityStateCampaignMetadataValuesCampaign
     
     public static function hydrate(array $arr) : CampaignsRequest
     {
-        $result = CampaignEntityStateCampaignMetadataValuesCampaignsRequestSortByCampaignsRequestEntityFiltersEntitiesRequest::hydrateBase(new CampaignsRequest(), $arr);
+        $result = CampaignEntityStatestringCampaignMetadataValuesCampaignsRequestSortByCampaignsRequestEntityFiltersEntitiesRequest::hydrateBase(new CampaignsRequest(), $arr);
         return $result;
     }
     

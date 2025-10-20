@@ -9,14 +9,16 @@ class CampaignAnalyticsRequest extends LicensedRequest
     /** The campaign to provide analytics for. */
     public string $id;
     public DateTimeRange $periodUtc;
-    public ?FilterCollection $filters;
+    public ?FilterCollection $productFilters;
+    public ?FilterCollection $displayAdFilters;
     
-    public static function create(string $id, DateTimeRange $periodUtc, ?FilterCollection $filters) : CampaignAnalyticsRequest
+    public static function create(string $id, DateTimeRange $periodUtc, ?FilterCollection $productFilters, ?FilterCollection $displayAdFilters) : CampaignAnalyticsRequest
     {
         $result = new CampaignAnalyticsRequest();
         $result->id = $id;
         $result->periodUtc = $periodUtc;
-        $result->filters = $filters;
+        $result->productFilters = $productFilters;
+        $result->displayAdFilters = $displayAdFilters;
         return $result;
     }
     
@@ -31,9 +33,13 @@ class CampaignAnalyticsRequest extends LicensedRequest
         {
             $result->periodUtc = DateTimeRange::hydrate($arr["periodUtc"]);
         }
-        if (array_key_exists("filters", $arr))
+        if (array_key_exists("productFilters", $arr))
         {
-            $result->filters = FilterCollection::hydrate($arr["filters"]);
+            $result->productFilters = FilterCollection::hydrate($arr["productFilters"]);
+        }
+        if (array_key_exists("displayAdFilters", $arr))
+        {
+            $result->displayAdFilters = FilterCollection::hydrate($arr["displayAdFilters"]);
         }
         return $result;
     }
@@ -51,9 +57,15 @@ class CampaignAnalyticsRequest extends LicensedRequest
         return $this;
     }
     
-    function setFilters(?FilterCollection $filters)
+    function setProductFilters(?FilterCollection $productFilters)
     {
-        $this->filters = $filters;
+        $this->productFilters = $productFilters;
+        return $this;
+    }
+    
+    function setDisplayAdFilters(?FilterCollection $displayAdFilters)
+    {
+        $this->displayAdFilters = $displayAdFilters;
         return $this;
     }
 }
