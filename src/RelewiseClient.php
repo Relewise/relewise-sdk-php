@@ -23,6 +23,7 @@ abstract class RelewiseClient
     private string $clientName = "RelewisePHPClient";
     private string $clientVersion;
     private Client $client;
+    protected int $batchSize = 1000;
 
     public function __construct(private string $datasetId, private string $apiKey, private int $timeout)
     {
@@ -30,8 +31,54 @@ abstract class RelewiseClient
         {
             throw new InvalidArgumentException($this->apiKeyNotDefinedMessage);
         }
-        $this->clientVersion = \Composer\InstalledVersions::getRootPackage()["version"];
+        if (class_exists(\Composer\InstalledVersions::class))
+        {
+            $this->clientVersion = \Composer\InstalledVersions::getRootPackage()["version"];
+        }
+        else
+        {
+            $this->clientVersion = "dev";
+        }
         $this->client = new CurlClient();
+    }
+
+    public function setBatchSize(int $batchSize)
+    {
+        if ($batchSize < 1)
+        {
+            throw new InvalidArgumentException("batchSize must be greater than 0.");
+        }
+        $this->batchSize = $batchSize;
+    }
+
+    public function getBatchSize(): int
+    {
+        return $this->batchSize;
+    }
+
+    /**
+     * @param array<int, mixed> $items
+     * @return array<int, array<int, mixed>>
+     */
+    protected function createBatches(array $items): array
+    {
+        $count = count($items);
+        if ($count === 0)
+        {
+            return array();
+        }
+        if ($count <= $this->batchSize)
+        {
+            return array($items);
+        }
+
+        $chunks = array();
+        for ($offset = 0; $offset < $count; $offset += $this->batchSize)
+        {
+            $chunks[] = \array_slice($items, $offset, $this->batchSize);
+        }
+
+        return $chunks;
     }
 
     public function request(string $endpoint, LicensedRequest $request): Response

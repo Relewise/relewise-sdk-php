@@ -347,22 +347,82 @@ class Recommender extends RelewiseClient
     
     public function batchproductRecommendation(ProductRecommendationRequestCollection $request) : ?ProductRecommendationResponseCollection
     {
-        $response = $this->requestAndValidate("ProductRecommendationRequestCollection", $request);
-        if ($response == Null)
+        if (!isset($request->requests) || count($request->requests) === 0)
         {
             return Null;
         }
-        return ProductRecommendationResponseCollection::hydrate($response);
+        $chunks = $this->createBatches($request->requests);
+        $aggregatedResponse = Null;
+        foreach ($chunks as $chunk)
+        {
+            $chunkedRequest = clone $request;
+            $chunkedRequest->requests = $chunk;
+            $chunkResponse = $this->requestAndValidate("ProductRecommendationRequestCollection", $chunkedRequest);
+            if ($chunkResponse == Null)
+            {
+                continue;
+            }
+            $hydratedChunkResponse = ProductRecommendationResponseCollection::hydrate($chunkResponse);
+            if ($aggregatedResponse == Null)
+            {
+                $aggregatedResponse = $hydratedChunkResponse;
+            }
+            else
+            {
+                if (isset($hydratedChunkResponse->responses))
+                {
+                    if (!isset($aggregatedResponse->responses))
+                    {
+                        $aggregatedResponse->responses = array();
+                    }
+                    $aggregatedResponse->responses = array_merge(
+                        $aggregatedResponse->responses,
+                        $hydratedChunkResponse->responses
+                    );
+                }
+            }
+        }
+        return $aggregatedResponse;
     }
     
     public function batchcontentRecommendation(ContentRecommendationRequestCollection $request) : ?ContentRecommendationResponseCollection
     {
-        $response = $this->requestAndValidate("ContentRecommendationRequestCollection", $request);
-        if ($response == Null)
+        if (!isset($request->requests) || count($request->requests) === 0)
         {
             return Null;
         }
-        return ContentRecommendationResponseCollection::hydrate($response);
+        $chunks = $this->createBatches($request->requests);
+        $aggregatedResponse = Null;
+        foreach ($chunks as $chunk)
+        {
+            $chunkedRequest = clone $request;
+            $chunkedRequest->requests = $chunk;
+            $chunkResponse = $this->requestAndValidate("ContentRecommendationRequestCollection", $chunkedRequest);
+            if ($chunkResponse == Null)
+            {
+                continue;
+            }
+            $hydratedChunkResponse = ContentRecommendationResponseCollection::hydrate($chunkResponse);
+            if ($aggregatedResponse == Null)
+            {
+                $aggregatedResponse = $hydratedChunkResponse;
+            }
+            else
+            {
+                if (isset($hydratedChunkResponse->responses))
+                {
+                    if (!isset($aggregatedResponse->responses))
+                    {
+                        $aggregatedResponse->responses = array();
+                    }
+                    $aggregatedResponse->responses = array_merge(
+                        $aggregatedResponse->responses,
+                        $hydratedChunkResponse->responses
+                    );
+                }
+            }
+        }
+        return $aggregatedResponse;
     }
     
     public function productRecommendation(ProductRecommendationRequest $request) : ?ProductRecommendationResponse
