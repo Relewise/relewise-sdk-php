@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-class LocationsRequestEntityFilters extends LocationEntityStateLocationMetadataValuesRetailMediaEntityEntityFilters
+class LocationsRequestEntityFilters extends LocationEntityStatestringLocationMetadataValuesRetailMediaEntityEntityFilters
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.LocationsRequest+EntityFilters, Relewise.Client";
     public ?array $ids;
@@ -16,7 +16,7 @@ class LocationsRequestEntityFilters extends LocationEntityStateLocationMetadataV
     
     public static function hydrate(array $arr) : LocationsRequestEntityFilters
     {
-        $result = LocationEntityStateLocationMetadataValuesRetailMediaEntityEntityFilters::hydrateBase(new LocationsRequestEntityFilters(), $arr);
+        $result = LocationEntityStatestringLocationMetadataValuesRetailMediaEntityEntityFilters::hydrateBase(new LocationsRequestEntityFilters(), $arr);
         if (array_key_exists("ids", $arr))
         {
             $result->ids = array();

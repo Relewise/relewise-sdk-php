@@ -11,6 +11,8 @@ class SelectedVariantDetailsPropertiesSettings
     public bool $allData;
     public ?array $dataKeys;
     public ?array $specificationKeys;
+    /** Determines whether UserEngagement should be populated when result details are mapped. */
+    public bool $userEngagement;
     
     public static function create() : SelectedVariantDetailsPropertiesSettings
     {
@@ -56,6 +58,10 @@ class SelectedVariantDetailsPropertiesSettings
             {
                 array_push($result->specificationKeys, $value);
             }
+        }
+        if (array_key_exists("userEngagement", $arr))
+        {
+            $result->userEngagement = $arr["userEngagement"];
         }
         return $result;
     }
@@ -133,6 +139,13 @@ class SelectedVariantDetailsPropertiesSettings
             $this->specificationKeys = array();
         }
         array_push($this->specificationKeys, $specificationKeys);
+        return $this;
+    }
+    
+    /** Determines whether UserEngagement should be populated when result details are mapped. */
+    function setUserEngagement(bool $userEngagement)
+    {
+        $this->userEngagement = $userEngagement;
         return $this;
     }
 }

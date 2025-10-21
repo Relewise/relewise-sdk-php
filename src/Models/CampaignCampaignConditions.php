@@ -5,7 +5,7 @@ namespace Relewise\Models;
 class CampaignCampaignConditions extends RetailMediaConditions
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Campaign+CampaignConditions, Relewise.Client";
-    public ?RetailMediaSearchTermConditionCollection $searchTerm;
+    public ?SearchTermConditionByLanguageCollection $searchTerm;
     
     public static function create() : CampaignCampaignConditions
     {
@@ -18,12 +18,12 @@ class CampaignCampaignConditions extends RetailMediaConditions
         $result = RetailMediaConditions::hydrateBase(new CampaignCampaignConditions(), $arr);
         if (array_key_exists("searchTerm", $arr))
         {
-            $result->searchTerm = RetailMediaSearchTermConditionCollection::hydrate($arr["searchTerm"]);
+            $result->searchTerm = SearchTermConditionByLanguageCollection::hydrate($arr["searchTerm"]);
         }
         return $result;
     }
     
-    function setSearchTerm(?RetailMediaSearchTermConditionCollection $searchTerm)
+    function setSearchTerm(?SearchTermConditionByLanguageCollection $searchTerm)
     {
         $this->searchTerm = $searchTerm;
         return $this;

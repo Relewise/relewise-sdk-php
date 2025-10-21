@@ -7,8 +7,8 @@ namespace Generator;
 
 public class PhpWriter
 {
-    private readonly List<IPhpTypeWriter> phpTypeWriters;
-    private readonly PhpTypeResolver phpTypeResolver;
+    private readonly List<IPhpTypeWriter> _phpTypeWriters;
+    private readonly PhpTypeResolver _phpTypeResolver;
 
     public HashSet<Type> MissingTypeDefinitions { get; set; } = new();
     public Assembly Assembly { get; }
@@ -23,8 +23,8 @@ public class PhpWriter
 
     public PhpWriter(Assembly assembly, string basePath, XmlDocumentation xmlDocumentation)
     {
-        phpTypeWriters = new List<IPhpTypeWriter>() { new PhpInterfaceWriter(this), new PhpEnumWriter(this), new PhpKeyValuePairWriter(this), new PhpClassWriter(this) };
-        phpTypeResolver = new PhpTypeResolver(assembly);
+        _phpTypeWriters = new List<IPhpTypeWriter> { new PhpInterfaceWriter(this), new PhpEnumWriter(this), new PhpKeyValuePairWriter(this), new PhpClassWriter(this) };
+        _phpTypeResolver = new PhpTypeResolver(assembly);
         Assembly = assembly;
         BasePath = basePath;
         XmlDocumentation = xmlDocumentation;
@@ -39,32 +39,30 @@ public class PhpWriter
 
     public void WritePhpTypes(IEnumerable<Type> types)
     {
-        foreach (var type in types)
+        foreach (Type type in types)
         {
-            phpTypeResolver.TypesToGenerate.Enqueue(type);
+            _phpTypeResolver.TypesToGenerate.Enqueue(type);
         }
 
-        while (phpTypeResolver.TypesToGenerate.Count > 0)
+        while (_phpTypeResolver.TypesToGenerate.Count > 0)
         {
-            var type = phpTypeResolver.TypesToGenerate.Dequeue();
+            Type type = _phpTypeResolver.TypesToGenerate.Dequeue();
 
             if (type == typeof(object) || type == typeof(ValueType) || type == typeof(Enum))
                 continue;
 
-            var potentialNullableTypeName = PhpTypeName(type);
-            var typeName = potentialNullableTypeName[0] is '?' ? potentialNullableTypeName[1..] : potentialNullableTypeName;
+            string potentialNullableTypeName = PhpTypeName(type);
+            string typeName = potentialNullableTypeName.Replace("?", string.Empty);
 
-            if (phpTypeResolver.IsWritten(typeName)) continue;
+            if (_phpTypeResolver.IsWritten(typeName)) continue;
 
             if ((type.IsGenericTypeDefinition || type.IsGenericTypeParameter || typeName.Contains("d__")))
-            {
                 continue;
-            }
 
-            using var streamWriter = File.CreateText($"{BasePath}/{Constants.GenerationFolderPath}/{typeName}.php");
+            using StreamWriter streamWriter = File.CreateText($"{BasePath}/{Constants.GenerationFolderPath}/{typeName}.php");
             using var writer = new IndentedTextWriter(streamWriter);
 
-            var phpTypeWriter = phpTypeWriters.FirstOrDefault(writer => writer.CanWrite(type));
+            IPhpTypeWriter? phpTypeWriter = _phpTypeWriters.FirstOrDefault(w => w.CanWrite(type));
             if (phpTypeWriter is null)
             {
                 MissingTypeDefinitions.Add(type);
@@ -72,12 +70,12 @@ public class PhpWriter
             else
             {
                 phpTypeWriter.Write(writer, type, typeName);
-                phpTypeResolver.HasWritten(typeName);
+                _phpTypeResolver.HasWritten(typeName);
             }
         }
     }
 
-    public string PhpTypeName(Type type) => phpTypeResolver.ResolveType(type);
+    public string PhpTypeName(Type type) => _phpTypeResolver.ResolveType(type);
 
     public string PhpTypeName(PropertyInfo property)
     {

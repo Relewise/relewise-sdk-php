@@ -14,18 +14,24 @@ use Relewise\Models\TrackContentAdministrativeActionRequest;
 use Relewise\Models\TrackContentCategoryAdministrativeActionRequest;
 use Relewise\Models\TrackContentCategoryUpdateRequest;
 use Relewise\Models\TrackContentCategoryViewRequest;
+use Relewise\Models\TrackContentEngagementRequest;
 use Relewise\Models\TrackContentUpdateRequest;
 use Relewise\Models\TrackContentViewRequest;
+use Relewise\Models\TrackDisplayAdClickRequest;
 use Relewise\Models\TrackingRequest;
 use Relewise\Models\TrackOrderRequest;
 use Relewise\Models\TrackProductAdministrativeActionRequest;
 use Relewise\Models\TrackProductCategoryAdministrativeActionRequest;
 use Relewise\Models\TrackProductCategoryUpdateRequest;
 use Relewise\Models\TrackProductCategoryViewRequest;
+use Relewise\Models\TrackProductEngagementRequest;
 use Relewise\Models\TrackProductUpdateRequest;
 use Relewise\Models\TrackProductViewRequest;
 use Relewise\Models\TrackSearchTermRequest;
 use Relewise\Models\TrackUserUpdateRequest;
+use Relewise\Models\TrackFeedDwellRequest;
+use Relewise\Models\TrackFeedItemClickRequest;
+use Relewise\Models\TrackFeedItemPreviewRequest;
 
 class Tracker extends RelewiseClient
 {
@@ -100,6 +106,11 @@ class Tracker extends RelewiseClient
         return $this->requestAndValidate("TrackContentCategoryViewRequest", $trackingRequest);
     }
     
+    public function trackContentEngagement(TrackContentEngagementRequest $trackingRequest)
+    {
+        return $this->requestAndValidate("TrackContentEngagementRequest", $trackingRequest);
+    }
+    
     public function trackContentUpdate(TrackContentUpdateRequest $trackingRequest)
     {
         return $this->requestAndValidate("TrackContentUpdateRequest", $trackingRequest);
@@ -108,6 +119,11 @@ class Tracker extends RelewiseClient
     public function trackContentView(TrackContentViewRequest $trackingRequest)
     {
         return $this->requestAndValidate("TrackContentViewRequest", $trackingRequest);
+    }
+    
+    public function trackDisplayAdClick(TrackDisplayAdClickRequest $trackingRequest)
+    {
+        return $this->requestAndValidate("TrackDisplayAdClickRequest", $trackingRequest);
     }
     
     public function tracking(TrackingRequest $trackingRequest)
@@ -140,6 +156,11 @@ class Tracker extends RelewiseClient
         return $this->requestAndValidate("TrackProductCategoryViewRequest", $trackingRequest);
     }
     
+    public function trackProductEngagement(TrackProductEngagementRequest $trackingRequest)
+    {
+        return $this->requestAndValidate("TrackProductEngagementRequest", $trackingRequest);
+    }
+    
     public function trackProductUpdate(TrackProductUpdateRequest $trackingRequest)
     {
         return $this->requestAndValidate("TrackProductUpdateRequest", $trackingRequest);
@@ -158,5 +179,20 @@ class Tracker extends RelewiseClient
     public function trackUserUpdate(TrackUserUpdateRequest $trackingRequest)
     {
         return $this->requestAndValidate("TrackUserUpdateRequest", $trackingRequest);
+    }
+    
+    public function trackFeedDwell(TrackFeedDwellRequest $trackingRequest)
+    {
+        return $this->requestAndValidate("TrackFeedDwellRequest", $trackingRequest);
+    }
+    
+    public function trackFeedItemClick(TrackFeedItemClickRequest $trackingRequest)
+    {
+        return $this->requestAndValidate("TrackFeedItemClickRequest", $trackingRequest);
+    }
+    
+    public function trackFeedItemPreview(TrackFeedItemPreviewRequest $trackingRequest)
+    {
+        return $this->requestAndValidate("TrackFeedItemPreviewRequest", $trackingRequest);
     }
 }

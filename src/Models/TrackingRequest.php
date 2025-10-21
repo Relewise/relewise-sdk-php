@@ -53,6 +53,10 @@ abstract class TrackingRequest extends LicensedRequest
         {
             return TrackContentCategoryViewRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Tracking.TrackContentEngagementRequest, Relewise.Client")
+        {
+            return TrackContentEngagementRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Tracking.TrackContentUpdateRequest, Relewise.Client")
         {
             return TrackContentUpdateRequest::hydrate($arr);
@@ -60,6 +64,10 @@ abstract class TrackingRequest extends LicensedRequest
         if ($type=="Relewise.Client.Requests.Tracking.TrackContentViewRequest, Relewise.Client")
         {
             return TrackContentViewRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Tracking.TrackDisplayAdClickRequest, Relewise.Client")
+        {
+            return TrackDisplayAdClickRequest::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Tracking.TrackOrderRequest, Relewise.Client")
         {
@@ -81,6 +89,10 @@ abstract class TrackingRequest extends LicensedRequest
         {
             return TrackProductCategoryViewRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Tracking.TrackProductEngagementRequest, Relewise.Client")
+        {
+            return TrackProductEngagementRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Tracking.TrackProductUpdateRequest, Relewise.Client")
         {
             return TrackProductUpdateRequest::hydrate($arr);
@@ -96,6 +108,18 @@ abstract class TrackingRequest extends LicensedRequest
         if ($type=="Relewise.Client.Requests.Tracking.TrackUserUpdateRequest, Relewise.Client")
         {
             return TrackUserUpdateRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Tracking.Feed.TrackFeedDwellRequest, Relewise.Client")
+        {
+            return TrackFeedDwellRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Tracking.Feed.TrackFeedItemClickRequest, Relewise.Client")
+        {
+            return TrackFeedItemClickRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Tracking.Feed.TrackFeedItemPreviewRequest, Relewise.Client")
+        {
+            return TrackFeedItemPreviewRequest::hydrate($arr);
         }
     }
     

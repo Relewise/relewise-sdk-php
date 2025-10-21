@@ -14,6 +14,10 @@ abstract class RetailMediaConditions
         {
             return CampaignCampaignConditions::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.RetailMedia.DisplayAdPromotion+PromotionConditions, Relewise.Client")
+        {
+            return DisplayAdPromotionPromotionConditions::hydrate($arr);
+        }
         if ($type=="Relewise.Client.DataTypes.RetailMedia.ProductPromotion+PromotionConditions, Relewise.Client")
         {
             return ProductPromotionPromotionConditions::hydrate($arr);

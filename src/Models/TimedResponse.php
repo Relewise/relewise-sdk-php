@@ -43,6 +43,10 @@ abstract class TimedResponse
         {
             return ContentRecommendationResponseCollection::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Responses.FeedRecommendationResponse, Relewise.Client")
+        {
+            return FeedRecommendationResponse::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Responses.MixedRecommendationResponseCollection, Relewise.Client")
         {
             return MixedRecommendationResponseCollection::hydrate($arr);
@@ -203,6 +207,14 @@ abstract class TimedResponse
         {
             return CampaignsResponse::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Responses.RetailMedia.DisplayAdsResponse, Relewise.Client")
+        {
+            return DisplayAdsResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.RetailMedia.DisplayAdTemplatesResponse, Relewise.Client")
+        {
+            return DisplayAdTemplatesResponse::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Responses.RetailMedia.GlobalRetailMediaConfigurationResponse, Relewise.Client")
         {
             return GlobalRetailMediaConfigurationResponse::hydrate($arr);
@@ -218,6 +230,14 @@ abstract class TimedResponse
         if ($type=="Relewise.Client.Responses.RetailMedia.SaveCampaignsResponse, Relewise.Client")
         {
             return SaveCampaignsResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.RetailMedia.SaveDisplayAdsResponse, Relewise.Client")
+        {
+            return SaveDisplayAdsResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.RetailMedia.SaveDisplayAdTemplatesResponse, Relewise.Client")
+        {
+            return SaveDisplayAdTemplatesResponse::hydrate($arr);
         }
         if ($type=="Relewise.Client.Responses.RetailMedia.SaveLocationsResponse, Relewise.Client")
         {

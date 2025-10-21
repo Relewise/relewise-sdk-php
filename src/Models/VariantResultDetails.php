@@ -12,6 +12,8 @@ class VariantResultDetails
     public MultiCurrency $listPrice;
     public MultiCurrency $salesPrice;
     public bool $disabled;
+    /** Contains engagement signals (sentiment and favorite state) recorded for the current user on this variant. Populated only when the request sets UserEngagement to true. */
+    public ?ProductEngagementData $userEngagement;
     
     public static function create(string $variantId) : VariantResultDetails
     {
@@ -66,6 +68,10 @@ class VariantResultDetails
         if (array_key_exists("disabled", $arr))
         {
             $result->disabled = $arr["disabled"];
+        }
+        if (array_key_exists("userEngagement", $arr))
+        {
+            $result->userEngagement = ProductEngagementData::hydrate($arr["userEngagement"]);
         }
         return $result;
     }
@@ -154,6 +160,13 @@ class VariantResultDetails
     function setDisabled(bool $disabled)
     {
         $this->disabled = $disabled;
+        return $this;
+    }
+    
+    /** Contains engagement signals (sentiment and favorite state) recorded for the current user on this variant. Populated only when the request sets UserEngagement to true. */
+    function setUserEngagement(?ProductEngagementData $userEngagement)
+    {
+        $this->userEngagement = $userEngagement;
         return $this;
     }
 }

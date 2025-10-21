@@ -3,7 +3,7 @@
 namespace Relewise\Models;
 
 /** Represents a location in the system where promotions can be shown, like 'Front Page', as well as Placements (like 'main zone', or 'power action'). */
-class Location extends LocationEntityStateLocationMetadataValuesRetailMediaEntity
+class Location extends LocationEntityStatestringLocationMetadataValuesRetailMediaEntity
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.Location, Relewise.Client";
     /** The name of this location, e.g. "Front page", "PDP", "Home screen" etc. */
@@ -26,7 +26,7 @@ class Location extends LocationEntityStateLocationMetadataValuesRetailMediaEntit
     
     public static function hydrate(array $arr) : Location
     {
-        $result = LocationEntityStateLocationMetadataValuesRetailMediaEntity::hydrateBase(new Location(), $arr);
+        $result = LocationEntityStatestringLocationMetadataValuesRetailMediaEntity::hydrateBase(new Location(), $arr);
         if (array_key_exists("name", $arr))
         {
             $result->name = $arr["name"];

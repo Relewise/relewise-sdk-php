@@ -81,6 +81,10 @@ abstract class LicensedRequest
         {
             return TrackContentCategoryViewRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Tracking.TrackContentEngagementRequest, Relewise.Client")
+        {
+            return TrackContentEngagementRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Tracking.TrackContentUpdateRequest, Relewise.Client")
         {
             return TrackContentUpdateRequest::hydrate($arr);
@@ -88,6 +92,10 @@ abstract class LicensedRequest
         if ($type=="Relewise.Client.Requests.Tracking.TrackContentViewRequest, Relewise.Client")
         {
             return TrackContentViewRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Tracking.TrackDisplayAdClickRequest, Relewise.Client")
+        {
+            return TrackDisplayAdClickRequest::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Tracking.TrackOrderRequest, Relewise.Client")
         {
@@ -109,6 +117,10 @@ abstract class LicensedRequest
         {
             return TrackProductCategoryViewRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Tracking.TrackProductEngagementRequest, Relewise.Client")
+        {
+            return TrackProductEngagementRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Tracking.TrackProductUpdateRequest, Relewise.Client")
         {
             return TrackProductUpdateRequest::hydrate($arr);
@@ -124,6 +136,18 @@ abstract class LicensedRequest
         if ($type=="Relewise.Client.Requests.Tracking.TrackUserUpdateRequest, Relewise.Client")
         {
             return TrackUserUpdateRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Tracking.Feed.TrackFeedDwellRequest, Relewise.Client")
+        {
+            return TrackFeedDwellRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Tracking.Feed.TrackFeedItemClickRequest, Relewise.Client")
+        {
+            return TrackFeedItemClickRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Tracking.Feed.TrackFeedItemPreviewRequest, Relewise.Client")
+        {
+            return TrackFeedItemPreviewRequest::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Search.ContentCategorySearchRequest, Relewise.Client")
         {
@@ -261,6 +285,14 @@ abstract class LicensedRequest
         {
             return CampaignsRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.RetailMedia.DisplayAdsRequest, Relewise.Client")
+        {
+            return DisplayAdsRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RetailMedia.DisplayAdTemplatesRequest, Relewise.Client")
+        {
+            return DisplayAdTemplatesRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.RetailMedia.GlobalRetailMediaConfigurationRequest, Relewise.Client")
         {
             return GlobalRetailMediaConfigurationRequest::hydrate($arr);
@@ -276,6 +308,14 @@ abstract class LicensedRequest
         if ($type=="Relewise.Client.Requests.RetailMedia.SaveCampaignsRequest, Relewise.Client")
         {
             return SaveCampaignsRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RetailMedia.SaveDisplayAdsRequest, Relewise.Client")
+        {
+            return SaveDisplayAdsRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.RetailMedia.SaveDisplayAdTemplatesRequest, Relewise.Client")
+        {
+            return SaveDisplayAdTemplatesRequest::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.RetailMedia.SaveGlobalRetailMediaConfigurationRequest, Relewise.Client")
         {
@@ -404,6 +444,14 @@ abstract class LicensedRequest
         if ($type=="Relewise.Client.Requests.Recommendations.SortVariantsRequest, Relewise.Client")
         {
             return SortVariantsRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Recommendations.Feed.FeedRecommendationInitializationRequest, Relewise.Client")
+        {
+            return FeedRecommendationInitializationRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Recommendations.Feed.FeedRecommendationNextItemsRequest, Relewise.Client")
+        {
+            return FeedRecommendationNextItemsRequest::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Queries.BrandQuery, Relewise.Client")
         {

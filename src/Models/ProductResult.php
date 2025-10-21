@@ -23,6 +23,8 @@ class ProductResult
     public ?HighlightResult $highlight;
     /** Holds information about how good this product result is. This will only be populated if specifically requested which is currently only possible for term-based product search requests. */
     public ?Score $score;
+    /** Contains engagement signals (sentiment, favorite) recorded for the current user on this product. Populated only when explicitly requested via UserEngagement. */
+    public ?ProductEngagementData $userEngagement;
     
     public static function create(string $productId, int $rank) : ProductResult
     {
@@ -126,6 +128,10 @@ class ProductResult
         if (array_key_exists("score", $arr))
         {
             $result->score = Score::hydrate($arr["score"]);
+        }
+        if (array_key_exists("userEngagement", $arr))
+        {
+            $result->userEngagement = ProductEngagementData::hydrate($arr["userEngagement"]);
         }
         return $result;
     }
@@ -315,6 +321,13 @@ class ProductResult
     function setScore(?Score $score)
     {
         $this->score = $score;
+        return $this;
+    }
+    
+    /** Contains engagement signals (sentiment, favorite) recorded for the current user on this product. Populated only when explicitly requested via UserEngagement. */
+    function setUserEngagement(?ProductEngagementData $userEngagement)
+    {
+        $this->userEngagement = $userEngagement;
         return $this;
     }
 }

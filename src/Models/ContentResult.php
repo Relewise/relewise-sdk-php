@@ -12,6 +12,8 @@ class ContentResult
     public array $categoryPaths;
     public ViewedByUserInfo $viewedByUser;
     public ?HighlightResult $highlight;
+    /** Contains engagement signals recorded for the current user on this content item. Populated only when explicitly requested via UserEngagement. */
+    public ?ContentEngagementData $userEngagement;
     
     public static function create(string $contentId, int $rank) : ContentResult
     {
@@ -67,6 +69,10 @@ class ContentResult
         if (array_key_exists("highlight", $arr))
         {
             $result->highlight = HighlightResult::hydrate($arr["highlight"]);
+        }
+        if (array_key_exists("userEngagement", $arr))
+        {
+            $result->userEngagement = ContentEngagementData::hydrate($arr["userEngagement"]);
         }
         return $result;
     }
@@ -161,6 +167,13 @@ class ContentResult
     function setHighlight(?HighlightResult $highlight)
     {
         $this->highlight = $highlight;
+        return $this;
+    }
+    
+    /** Contains engagement signals recorded for the current user on this content item. Populated only when explicitly requested via UserEngagement. */
+    function setUserEngagement(?ContentEngagementData $userEngagement)
+    {
+        $this->userEngagement = $userEngagement;
         return $this;
     }
 }

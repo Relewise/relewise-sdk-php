@@ -5,6 +5,7 @@ namespace Relewise\Models;
 class RetailMediaResultPlacementResultEntity
 {
     public ?RetailMediaResultPlacementResultEntityProduct $promotedProduct;
+    public ?RetailMediaResultPlacementResultEntityDisplayAd $promotedDisplayAd;
     
     public static function create() : RetailMediaResultPlacementResultEntity
     {
@@ -19,12 +20,22 @@ class RetailMediaResultPlacementResultEntity
         {
             $result->promotedProduct = RetailMediaResultPlacementResultEntityProduct::hydrate($arr["promotedProduct"]);
         }
+        if (array_key_exists("promotedDisplayAd", $arr))
+        {
+            $result->promotedDisplayAd = RetailMediaResultPlacementResultEntityDisplayAd::hydrate($arr["promotedDisplayAd"]);
+        }
         return $result;
     }
     
     function setPromotedProduct(?RetailMediaResultPlacementResultEntityProduct $promotedProduct)
     {
         $this->promotedProduct = $promotedProduct;
+        return $this;
+    }
+    
+    function setPromotedDisplayAd(?RetailMediaResultPlacementResultEntityDisplayAd $promotedDisplayAd)
+    {
+        $this->promotedDisplayAd = $promotedDisplayAd;
         return $this;
     }
 }

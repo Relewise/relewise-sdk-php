@@ -8,7 +8,7 @@ class CampaignAnalyticsProductAnalytics
     public array $timeSeries;
     /** Number of times products are being promoted by the Campaign. */
     public int $promotions;
-    /** How many times each individual product was promoted. */
+    /** How many times each product was promoted. */
     public array $promotedProducts;
     
     public static function create(array $timeSeries, int $promotions, CampaignAnalyticsProductAnalyticsPromotedProductMetrics ... $promotedProducts) : CampaignAnalyticsProductAnalytics
@@ -76,7 +76,7 @@ class CampaignAnalyticsProductAnalytics
         return $this;
     }
     
-    /** How many times each individual product was promoted. */
+    /** How many times each product was promoted. */
     function setPromotedProducts(CampaignAnalyticsProductAnalyticsPromotedProductMetrics ... $promotedProducts)
     {
         $this->promotedProducts = $promotedProducts;
@@ -84,7 +84,7 @@ class CampaignAnalyticsProductAnalytics
     }
     
     /**
-     * How many times each individual product was promoted.
+     * How many times each product was promoted.
      * @param CampaignAnalyticsProductAnalyticsPromotedProductMetrics[] $promotedProducts new value.
      */
     function setPromotedProductsFromArray(array $promotedProducts)
@@ -93,7 +93,7 @@ class CampaignAnalyticsProductAnalytics
         return $this;
     }
     
-    /** How many times each individual product was promoted. */
+    /** How many times each product was promoted. */
     function addToPromotedProducts(CampaignAnalyticsProductAnalyticsPromotedProductMetrics $promotedProducts)
     {
         if (!isset($this->promotedProducts))

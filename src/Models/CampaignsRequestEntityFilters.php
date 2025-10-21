@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-class CampaignsRequestEntityFilters extends CampaignEntityStateCampaignMetadataValuesRetailMediaEntityEntityFilters
+class CampaignsRequestEntityFilters extends CampaignEntityStatestringCampaignMetadataValuesRetailMediaEntityEntityFilters
 {
     public string $typeDefinition = "Relewise.Client.Requests.RetailMedia.CampaignsRequest+EntityFilters, Relewise.Client";
     public ?array $ids;
@@ -16,7 +16,7 @@ class CampaignsRequestEntityFilters extends CampaignEntityStateCampaignMetadataV
     
     public static function hydrate(array $arr) : CampaignsRequestEntityFilters
     {
-        $result = CampaignEntityStateCampaignMetadataValuesRetailMediaEntityEntityFilters::hydrateBase(new CampaignsRequestEntityFilters(), $arr);
+        $result = CampaignEntityStatestringCampaignMetadataValuesRetailMediaEntityEntityFilters::hydrateBase(new CampaignsRequestEntityFilters(), $arr);
         if (array_key_exists("ids", $arr))
         {
             $result->ids = array();
