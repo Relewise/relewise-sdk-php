@@ -9,10 +9,6 @@ abstract class PromotionSpecification
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
-        if ($type=="Relewise.Client.DataTypes.RetailMedia.DisplayAdPromotion+Specification, Relewise.Client")
-        {
-            return DisplayAdPromotionSpecification::hydrate($arr);
-        }
         if ($type=="Relewise.Client.DataTypes.RetailMedia.ProductPromotion+Specification, Relewise.Client")
         {
             return ProductPromotionSpecification::hydrate($arr);

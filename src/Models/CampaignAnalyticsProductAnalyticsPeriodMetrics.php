@@ -12,14 +12,16 @@ class CampaignAnalyticsProductAnalyticsPeriodMetrics implements JsonSerializable
     public int $views;
     public int $salesQuantity;
     public array $currencies;
+    public int $promotions;
     
-    public static function create(DateTime $periodFromUtc, int $views, int $salesQuantity, CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics ... $currencies) : CampaignAnalyticsProductAnalyticsPeriodMetrics
+    public static function create(DateTime $periodFromUtc, int $views, int $salesQuantity, array $currencies, int $promotions) : CampaignAnalyticsProductAnalyticsPeriodMetrics
     {
         $result = new CampaignAnalyticsProductAnalyticsPeriodMetrics();
         $result->periodFromUtc = $periodFromUtc;
         $result->views = $views;
         $result->salesQuantity = $salesQuantity;
         $result->currencies = $currencies;
+        $result->promotions = $promotions;
         return $result;
     }
     
@@ -45,6 +47,10 @@ class CampaignAnalyticsProductAnalyticsPeriodMetrics implements JsonSerializable
             {
                 array_push($result->currencies, CampaignAnalyticsProductAnalyticsPeriodMetricsCurrencyMetrics::hydrate($value));
             }
+        }
+        if (array_key_exists("promotions", $arr))
+        {
+            $result->promotions = $arr["promotions"];
         }
         return $result;
     }
@@ -90,6 +96,12 @@ class CampaignAnalyticsProductAnalyticsPeriodMetrics implements JsonSerializable
         return $this;
     }
     
+    function setPromotions(int $promotions)
+    {
+        $this->promotions = $promotions;
+        return $this;
+    }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();
@@ -109,6 +121,10 @@ class CampaignAnalyticsProductAnalyticsPeriodMetrics implements JsonSerializable
         if (isset($this->currencies))
         {
             $result["currencies"] = $this->currencies;
+        }
+        if (isset($this->promotions))
+        {
+            $result["promotions"] = $this->promotions;
         }
         return $result;
     }

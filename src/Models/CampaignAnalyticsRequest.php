@@ -11,6 +11,10 @@ class CampaignAnalyticsRequest extends LicensedRequest
     public DateTimeRange $periodUtc;
     public ?FilterCollection $productFilters;
     public ?FilterCollection $displayAdFilters;
+    public ?Language $language;
+    public ?Currency $currency;
+    public ?SelectedProductPropertiesSettings $selectedProductProperties;
+    public ?SelectedDisplayAdPropertiesSettings $selectedDisplayAdProperties;
     
     public static function create(string $id, DateTimeRange $periodUtc, ?FilterCollection $productFilters, ?FilterCollection $displayAdFilters) : CampaignAnalyticsRequest
     {
@@ -41,6 +45,22 @@ class CampaignAnalyticsRequest extends LicensedRequest
         {
             $result->displayAdFilters = FilterCollection::hydrate($arr["displayAdFilters"]);
         }
+        if (array_key_exists("language", $arr))
+        {
+            $result->language = Language::hydrate($arr["language"]);
+        }
+        if (array_key_exists("currency", $arr))
+        {
+            $result->currency = Currency::hydrate($arr["currency"]);
+        }
+        if (array_key_exists("selectedProductProperties", $arr))
+        {
+            $result->selectedProductProperties = SelectedProductPropertiesSettings::hydrate($arr["selectedProductProperties"]);
+        }
+        if (array_key_exists("selectedDisplayAdProperties", $arr))
+        {
+            $result->selectedDisplayAdProperties = SelectedDisplayAdPropertiesSettings::hydrate($arr["selectedDisplayAdProperties"]);
+        }
         return $result;
     }
     
@@ -66,6 +86,30 @@ class CampaignAnalyticsRequest extends LicensedRequest
     function setDisplayAdFilters(?FilterCollection $displayAdFilters)
     {
         $this->displayAdFilters = $displayAdFilters;
+        return $this;
+    }
+    
+    function setLanguage(?Language $language)
+    {
+        $this->language = $language;
+        return $this;
+    }
+    
+    function setCurrency(?Currency $currency)
+    {
+        $this->currency = $currency;
+        return $this;
+    }
+    
+    function setSelectedProductProperties(?SelectedProductPropertiesSettings $selectedProductProperties)
+    {
+        $this->selectedProductProperties = $selectedProductProperties;
+        return $this;
+    }
+    
+    function setSelectedDisplayAdProperties(?SelectedDisplayAdPropertiesSettings $selectedDisplayAdProperties)
+    {
+        $this->selectedDisplayAdProperties = $selectedDisplayAdProperties;
         return $this;
     }
 }
