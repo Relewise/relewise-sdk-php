@@ -9,14 +9,14 @@ class CampaignAnalyticsDisplayAdAnalyticsPeriodMetrics implements JsonSerializab
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.RetailMedia.CampaignAnalytics+DisplayAdAnalytics+PeriodMetrics, Relewise.Client";
     public DateTime $periodFromUtc;
-    public int $views;
+    public int $promotions;
     public int $clicks;
     
-    public static function create(DateTime $periodFromUtc, int $views, int $clicks) : CampaignAnalyticsDisplayAdAnalyticsPeriodMetrics
+    public static function create(DateTime $periodFromUtc, int $promotions, int $clicks) : CampaignAnalyticsDisplayAdAnalyticsPeriodMetrics
     {
         $result = new CampaignAnalyticsDisplayAdAnalyticsPeriodMetrics();
         $result->periodFromUtc = $periodFromUtc;
-        $result->views = $views;
+        $result->promotions = $promotions;
         $result->clicks = $clicks;
         return $result;
     }
@@ -28,9 +28,9 @@ class CampaignAnalyticsDisplayAdAnalyticsPeriodMetrics implements JsonSerializab
         {
             $result->periodFromUtc = new DateTime($arr["periodFromUtc"]);
         }
-        if (array_key_exists("views", $arr))
+        if (array_key_exists("promotions", $arr))
         {
-            $result->views = $arr["views"];
+            $result->promotions = $arr["promotions"];
         }
         if (array_key_exists("clicks", $arr))
         {
@@ -45,9 +45,9 @@ class CampaignAnalyticsDisplayAdAnalyticsPeriodMetrics implements JsonSerializab
         return $this;
     }
     
-    function setViews(int $views)
+    function setPromotions(int $promotions)
     {
-        $this->views = $views;
+        $this->promotions = $promotions;
         return $this;
     }
     
@@ -65,9 +65,9 @@ class CampaignAnalyticsDisplayAdAnalyticsPeriodMetrics implements JsonSerializab
         {
             $result["periodFromUtc"] = $this->periodFromUtc->format(DATE_ATOM);
         }
-        if (isset($this->views))
+        if (isset($this->promotions))
         {
-            $result["views"] = $this->views;
+            $result["promotions"] = $this->promotions;
         }
         if (isset($this->clicks))
         {

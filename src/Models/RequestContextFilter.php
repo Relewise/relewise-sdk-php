@@ -10,7 +10,9 @@ class RequestContextFilter
     public array $languages;
     public array $currencies;
     public RequestFilterCriteria $filters;
+    /** @deprecated Use SearchTermCriteria instead */
     public ?SearchTermConditionByLanguageCollection $searchTerms;
+    public ?SearchTermCriteria $searchTermCriteria;
     
     public static function create() : RequestContextFilter
     {
@@ -60,6 +62,10 @@ class RequestContextFilter
         if (array_key_exists("searchTerms", $arr))
         {
             $result->searchTerms = SearchTermConditionByLanguageCollection::hydrate($arr["searchTerms"]);
+        }
+        if (array_key_exists("searchTermCriteria", $arr))
+        {
+            $result->searchTermCriteria = SearchTermCriteria::hydrate($arr["searchTermCriteria"]);
         }
         return $result;
     }
@@ -151,9 +157,16 @@ class RequestContextFilter
         return $this;
     }
     
+    /** @deprecated Use SearchTermCriteria instead */
     function setSearchTerms(?SearchTermConditionByLanguageCollection $searchTerms)
     {
         $this->searchTerms = $searchTerms;
+        return $this;
+    }
+    
+    function setSearchTermCriteria(?SearchTermCriteria $searchTermCriteria)
+    {
+        $this->searchTermCriteria = $searchTermCriteria;
         return $this;
     }
 }

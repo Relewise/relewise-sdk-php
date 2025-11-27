@@ -12,8 +12,6 @@ class Location extends LocationEntityStatestringLocationMetadataValuesRetailMedi
     public ?string $key;
     /** The placements where promotions may be displayed at this location If null or empty, no promotions will be shown at this location */
     public ?LocationPlacementCollection $placements;
-    /** Defines what kinds of promotions are supported by this location */
-    public ?PromotionSpecificationCollection $supportedPromotions;
     
     public static function create(?string $id, LocationEntityState $state, string $name) : Location
     {
@@ -39,10 +37,6 @@ class Location extends LocationEntityStatestringLocationMetadataValuesRetailMedi
         {
             $result->placements = LocationPlacementCollection::hydrate($arr["placements"]);
         }
-        if (array_key_exists("supportedPromotions", $arr))
-        {
-            $result->supportedPromotions = PromotionSpecificationCollection::hydrate($arr["supportedPromotions"]);
-        }
         return $result;
     }
     
@@ -64,13 +58,6 @@ class Location extends LocationEntityStatestringLocationMetadataValuesRetailMedi
     function setPlacements(?LocationPlacementCollection $placements)
     {
         $this->placements = $placements;
-        return $this;
-    }
-    
-    /** Defines what kinds of promotions are supported by this location */
-    function setSupportedPromotions(?PromotionSpecificationCollection $supportedPromotions)
-    {
-        $this->supportedPromotions = $supportedPromotions;
         return $this;
     }
     

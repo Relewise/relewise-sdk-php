@@ -9,6 +9,7 @@ class CampaignAnalyticsDisplayAdAnalyticsPromotedDisplayAdMetrics
     public int $promotions;
     public int $lastClickedUnixMinutes;
     public int $numberOfTimesClicked;
+    public DisplayAdResult $displayAd;
     
     public static function create(string $displayAdId, int $promotions, int $lastClickedUnixMinutes, int $numberOfTimesClicked) : CampaignAnalyticsDisplayAdAnalyticsPromotedDisplayAdMetrics
     {
@@ -39,6 +40,10 @@ class CampaignAnalyticsDisplayAdAnalyticsPromotedDisplayAdMetrics
         {
             $result->numberOfTimesClicked = $arr["numberOfTimesClicked"];
         }
+        if (array_key_exists("displayAd", $arr))
+        {
+            $result->displayAd = DisplayAdResult::hydrate($arr["displayAd"]);
+        }
         return $result;
     }
     
@@ -63,6 +68,12 @@ class CampaignAnalyticsDisplayAdAnalyticsPromotedDisplayAdMetrics
     function setNumberOfTimesClicked(int $numberOfTimesClicked)
     {
         $this->numberOfTimesClicked = $numberOfTimesClicked;
+        return $this;
+    }
+    
+    function setDisplayAd(DisplayAdResult $displayAd)
+    {
+        $this->displayAd = $displayAd;
         return $this;
     }
 }
