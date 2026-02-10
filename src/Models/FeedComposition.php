@@ -19,13 +19,17 @@ class FeedComposition
     public ?string $name;
     /** Determines whether to include empty results for this composition element. Useful in combination with Name if you need to show a placeholder or alternative content when no results are found for this composition element. The default is false, meaning empty results will not be included in recommendation responses. */
     public bool $includeEmptyResults;
-    /** If specified, this composition will only be included in the rotation the specified number of times. Any subsequent rotations will exclude this composition element. */
+    /** If specified, this composition will only be included in the rotation the specified number of times. Any subsequent rotations will exclude this composition element. Leave null to apply no limit. */
     public ?int $rotationLimit;
+    /** If specified (minimum 1), this composition will only be included in the rotation the specified number of times per request. Any subsequent rotations within the same request will exclude this composition element. Leave null to apply no per-request limit. */
+    public ?int $rotationLimitPerRequest;
+    /** If true, the entire composition element will be skipped if the requested count cannot be met. Example: If true: Requesting 3-5 results, but only 2 are available, then those 2 will be dropped as the lower bound of 3 cannot be met. Example: If false (default): Requesting 3-5 results, but only 2 are available, then those 2 will still be returned. */
+    public bool $skipEntirelyIfUnableToMeetCount;
     
     /**
      * Initializes a new instance of the FeedComposition class.
      * @param FeedCompositionEntityType $type The type of the entity represented by this composition element.
-     * @param intRange $count The desired range of counts for the entity. The lower bound must be greater than or equal to 0, and the upper bound must be greater than or equal to the lower bound.
+     * @param intRange $count The desired range of counts for the entity. The lower bound must be greater than or equal to 0, and the upper bound must be at least 1 and greater than or equal to the lower bound.
      */
     public static function create(FeedCompositionEntityType $type, intRange $count) : FeedComposition
     {
@@ -69,6 +73,14 @@ class FeedComposition
         if (array_key_exists("rotationLimit", $arr))
         {
             $result->rotationLimit = $arr["rotationLimit"];
+        }
+        if (array_key_exists("rotationLimitPerRequest", $arr))
+        {
+            $result->rotationLimitPerRequest = $arr["rotationLimitPerRequest"];
+        }
+        if (array_key_exists("skipEntirelyIfUnableToMeetCount", $arr))
+        {
+            $result->skipEntirelyIfUnableToMeetCount = $arr["skipEntirelyIfUnableToMeetCount"];
         }
         return $result;
     }
@@ -122,10 +134,24 @@ class FeedComposition
         return $this;
     }
     
-    /** If specified, this composition will only be included in the rotation the specified number of times. Any subsequent rotations will exclude this composition element. */
+    /** If specified, this composition will only be included in the rotation the specified number of times. Any subsequent rotations will exclude this composition element. Leave null to apply no limit. */
     function setRotationLimit(?int $rotationLimit)
     {
         $this->rotationLimit = $rotationLimit;
+        return $this;
+    }
+    
+    /** If specified (minimum 1), this composition will only be included in the rotation the specified number of times per request. Any subsequent rotations within the same request will exclude this composition element. Leave null to apply no per-request limit. */
+    function setRotationLimitPerRequest(?int $rotationLimitPerRequest)
+    {
+        $this->rotationLimitPerRequest = $rotationLimitPerRequest;
+        return $this;
+    }
+    
+    /** If true, the entire composition element will be skipped if the requested count cannot be met. Example: If true: Requesting 3-5 results, but only 2 are available, then those 2 will be dropped as the lower bound of 3 cannot be met. Example: If false (default): Requesting 3-5 results, but only 2 are available, then those 2 will still be returned. */
+    function setSkipEntirelyIfUnableToMeetCount(bool $skipEntirelyIfUnableToMeetCount)
+    {
+        $this->skipEntirelyIfUnableToMeetCount = $skipEntirelyIfUnableToMeetCount;
         return $this;
     }
 }

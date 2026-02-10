@@ -28,6 +28,7 @@ use Relewise\Models\TrackProductEngagementRequest;
 use Relewise\Models\TrackProductUpdateRequest;
 use Relewise\Models\TrackProductViewRequest;
 use Relewise\Models\TrackSearchTermRequest;
+use Relewise\Models\TrackUserAdministrativeActionRequest;
 use Relewise\Models\TrackUserUpdateRequest;
 use Relewise\Models\TrackFeedDwellRequest;
 use Relewise\Models\TrackFeedItemClickRequest;
@@ -174,6 +175,11 @@ class Tracker extends RelewiseClient
     public function trackSearchTerm(TrackSearchTermRequest $trackingRequest)
     {
         return $this->requestAndValidate("TrackSearchTermRequest", $trackingRequest);
+    }
+    
+    public function trackUserAdministrativeAction(TrackUserAdministrativeActionRequest $trackingRequest)
+    {
+        return $this->requestAndValidate("TrackUserAdministrativeActionRequest", $trackingRequest);
     }
     
     public function trackUserUpdate(TrackUserUpdateRequest $trackingRequest)

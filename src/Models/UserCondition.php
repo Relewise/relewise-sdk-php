@@ -16,6 +16,14 @@ abstract class UserCondition
         {
             return AndCondition::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.UserConditions.AuthenticatedIdCondition, Relewise.Client")
+        {
+            return AuthenticatedIdCondition::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.UserConditions.EmailCondition, Relewise.Client")
+        {
+            return EmailCondition::hydrate($arr);
+        }
         if ($type=="Relewise.Client.DataTypes.UserConditions.HasActivityCondition, Relewise.Client")
         {
             return HasActivityCondition::hydrate($arr);
@@ -63,6 +71,10 @@ abstract class UserCondition
         if ($type=="Relewise.Client.DataTypes.UserConditions.HasRecentlyReceivedTriggerCondition, Relewise.Client")
         {
             return HasRecentlyReceivedTriggerCondition::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.DataTypes.UserConditions.IdentifierCondition, Relewise.Client")
+        {
+            return IdentifierCondition::hydrate($arr);
         }
         if ($type=="Relewise.Client.DataTypes.UserConditions.OrCondition, Relewise.Client")
         {

@@ -10,14 +10,14 @@ class FeedDwell extends Trackable
     public ?User $user;
     /** The unique identifier of the feed where the dwell occurred. This corresponds to the InitializedFeedId from a feed recommendation response. */
     public string $feedId;
-    /** The total time in milliseconds that the user spent viewing the visible items. Must be greater than 0. */
+    /** The total time in milliseconds that the user spent viewing the visible items. Must be at least 1. */
     public int $dwellTimeMilliseconds;
     /** The collection of feed items that were visible to the user during the dwell period. Must contain at least one item. */
     public array $visibleItems;
     
     /**
      * Initializes a new instance of the FeedDwell class.
-     * @param User $user The user who was viewing the feed items. Must be an authenticated user.
+     * @param User $user The user who was viewing the feed items.
      * @param string $feedId The unique identifier of the feed where the dwell occurred.
      * @param int $dwellTimeMilliseconds The total time in milliseconds that the user spent viewing the visible items.
      * @param FeedItem[] $visibleItems The collection of feed items that were visible to the user during the dwell period.
@@ -72,7 +72,7 @@ class FeedDwell extends Trackable
         return $this;
     }
     
-    /** The total time in milliseconds that the user spent viewing the visible items. Must be greater than 0. */
+    /** The total time in milliseconds that the user spent viewing the visible items. Must be at least 1. */
     function setDwellTimeMilliseconds(int $dwellTimeMilliseconds)
     {
         $this->dwellTimeMilliseconds = $dwellTimeMilliseconds;

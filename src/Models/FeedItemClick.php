@@ -15,7 +15,7 @@ class FeedItemClick extends Trackable
     
     /**
      * Initializes a new instance of the FeedItemClick class.
-     * @param User $user The user who clicked the feed item. Must be an authenticated user.
+     * @param User $user The user who clicked the feed item.
      * @param string $feedId The unique identifier of the feed where the click occurred.
      * @param FeedItem $item The specific feed item that was clicked.
      */
