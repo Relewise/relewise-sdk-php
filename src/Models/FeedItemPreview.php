@@ -15,7 +15,7 @@ class FeedItemPreview extends Trackable
     
     /**
      * Initializes a new instance of the FeedItemPreview class.
-     * @param User $user The user who previewed the feed item. Must be an authenticated user.
+     * @param User $user The user who previewed the feed item.
      * @param string $feedId The unique identifier of the feed where the preview occurred.
      * @param FeedItem $item The specific feed item that was previewed.
      */

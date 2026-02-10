@@ -133,6 +133,10 @@ abstract class LicensedRequest
         {
             return TrackSearchTermRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Tracking.TrackUserAdministrativeActionRequest, Relewise.Client")
+        {
+            return TrackUserAdministrativeActionRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Tracking.TrackUserUpdateRequest, Relewise.Client")
         {
             return TrackUserUpdateRequest::hydrate($arr);

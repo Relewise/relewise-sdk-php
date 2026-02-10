@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-/** Defines the settings for seeding the feed with specific products or content. Useful, for example, when you want to show a feed based on specific product(s) or content, such as for a feed on a PDP/CDP, a shopping cart, or an order. */
+/** Defines the settings for seeding the feed with specific products or content. Useful, for example, when you want to show a feed based on specific product(s) or content, such as for a feed on a PDP/CDP, a shopping cart, or an order. When provided, at least one of ProductAndVariantIds or ContentIds must be provided. */
 class FeedSeed
 {
     /** Optionally used to seed the feed with specific product IDs (optionally also with variant IDs), e.g., a single product for a PDP or one to many products for a shopping cart or order. */

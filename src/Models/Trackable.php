@@ -101,6 +101,10 @@ abstract class Trackable
         {
             return SearchTerm::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.UserAdministrativeAction, Relewise.Client")
+        {
+            return UserAdministrativeAction::hydrate($arr);
+        }
         if ($type=="Relewise.Client.DataTypes.UserUpdate, Relewise.Client")
         {
             return UserUpdate::hydrate($arr);

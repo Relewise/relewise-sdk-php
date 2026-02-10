@@ -13,6 +13,10 @@ abstract class ValueSelector
         {
             return DataDoubleSelector::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.ValueSelectors.DataObjectDoubleSelector, Relewise.Client")
+        {
+            return DataObjectDoubleSelector::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.ValueSelectors.FixedDoubleValueSelector, Relewise.Client")
         {
             return FixedDoubleValueSelector::hydrate($arr);
