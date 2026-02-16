@@ -6,7 +6,7 @@ This document describes the process for running this application on your local c
 
 This project uses .NET to automatically generate the models used in the PHP client.
 
-To run the generator you need to have .NET 7 or newer installed on your machine. [Download .NET 7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
+To run the generator you need to have .NET 10 or newer installed on your machine. [Download .NET 10](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 
 Then to generate the models and clients of the SDK run `generate.ps1` if you're on Windows, else run `generate.sh`.
 
