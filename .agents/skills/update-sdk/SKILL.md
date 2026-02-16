@@ -135,8 +135,9 @@ git push -u origin $branchName
 Preferred flow with GitHub CLI:
 ```powershell
 $prBodyPath = ".\\update-sdk-pr-body.md"
-@"
-$TrelloCardUrl
+$prBodyTemplate = @'
+__TRELLO_CARD_URL__
+
 
 ## Summary
 - Regenerated PHP SDK code via Generator
@@ -150,7 +151,9 @@ $TrelloCardUrl
 
 ## Notes
 - <known issues or limitations>
-"@ | Set-Content $prBodyPath
+'@
+$prBody = $prBodyTemplate -replace '__TRELLO_CARD_URL__', $TrelloCardUrl
+Set-Content -Path $prBodyPath -Value $prBody -Encoding utf8
 
 $prUrl = gh pr create --base main --head $branchName --title "chore(php): update sdk generation ($stamp)" --body-file $prBodyPath
 if ($LASTEXITCODE -ne 0) { throw 'gh pr create failed.' }
@@ -166,6 +169,7 @@ Write-Host "PR body file: $prBodyPath"
 ```
 
 Keep the Trello URL as the first line of the PR description.
+Write the PR body file as UTF-8 to avoid symbol corruption in GitHub-rendered text.
 
 ## Output Expectations
 Provide a final summary with:
