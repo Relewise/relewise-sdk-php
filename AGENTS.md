@@ -14,6 +14,12 @@ The repository is a PHP SDK with generated client/models and integration-heavy t
 - `composer.json`: package metadata and PHP/test dependencies.
 - `DEVELOPMENT.md`: local development notes.
 
+## Repository Skills
+- `update-sdk`:
+  - Location: `.agents/skills/update-sdk/SKILL.md`
+  - Use when asked to regenerate generated SDK code from `Generator`.
+  - This skill enforces Trello URL pre-requisite, clean-main preflight checks, timestamped chore branch creation, validation commands, and Trello-first PR descriptions.
+
 ## Core Working Conventions
 - Run commands from repository root unless explicitly noted.
 - Keep changes minimal and directly related to the task.
@@ -82,6 +88,15 @@ vendor/bin/phpunit tests/php/unit --configuration tests/phpunit.xml
   - Include integration-oriented coverage when credentials are available.
 - For workflow/tooling changes:
   - Validate relevant command paths still run locally.
+
+## SDK Update Guidance
+For generation-driven SDK refresh tasks, prefer using the `update-sdk` skill:
+
+```text
+$update-sdk
+```
+
+Use `update-sdk` when the goal is regenerating PHP SDK code and opening a branch/PR flow tied to a Trello card.
 
 ## PR Expectations
 Each PR should include:

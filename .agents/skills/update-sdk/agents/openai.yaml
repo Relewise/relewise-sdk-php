@@ -1,0 +1,4 @@
+interface:
+  display_name: "Update SDK"
+  short_description: "Regenerate relewise-sdk-php code and open Trello-linked PR"
+  default_prompt: "Use $update-sdk to regenerate relewise-sdk-php, validate tests, and create a branch and PR with the Trello URL as the first line."
