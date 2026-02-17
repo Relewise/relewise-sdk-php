@@ -59,6 +59,8 @@ public class PhpWriter
             if ((type.IsGenericTypeDefinition || type.IsGenericTypeParameter || typeName.Contains("d__")))
                 continue;
 
+            DiscoverReferencedTypesFromSignatures(type);
+
             using StreamWriter streamWriter = File.CreateText($"{BasePath}/{Constants.GenerationFolderPath}/{typeName}.php");
             using var writer = new IndentedTextWriter(streamWriter);
 
@@ -73,6 +75,103 @@ public class PhpWriter
                 _phpTypeResolver.HasWritten(typeName);
             }
         }
+    }
+
+    private void DiscoverReferencedTypesFromSignatures(Type type)
+    {
+        const BindingFlags flags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
+
+        foreach (var constructor in type.GetConstructors(flags))
+        {
+            foreach (var parameter in constructor.GetParameters())
+            {
+                DiscoverReferencedType(parameter.ParameterType);
+            }
+        }
+
+        foreach (var method in type.GetMethods(flags))
+        {
+            // Keep property/event accessors out of traversal, but include conversion operators.
+            if (method.IsSpecialName && method.Name is not "op_Implicit" and not "op_Explicit")
+            {
+                continue;
+            }
+            if (method.IsGenericMethodDefinition || method.ContainsGenericParameters)
+            {
+                continue;
+            }
+
+            DiscoverReferencedType(method.ReturnType);
+
+            foreach (var parameter in method.GetParameters())
+            {
+                DiscoverReferencedType(parameter.ParameterType);
+            }
+        }
+    }
+
+    private void DiscoverReferencedType(Type type)
+    {
+        if (type == typeof(void))
+        {
+            return;
+        }
+        if (type.ContainsGenericParameters)
+        {
+            return;
+        }
+
+        if (type.IsByRef || type.IsPointer)
+        {
+            if (type.GetElementType() is { } elementType)
+            {
+                DiscoverReferencedType(elementType);
+            }
+            return;
+        }
+
+        if (type.IsArray)
+        {
+            if (type.GetElementType() is { } elementType)
+            {
+                DiscoverReferencedType(elementType);
+            }
+            return;
+        }
+
+        if (type.IsGenericType || type.IsGenericTypeDefinition)
+        {
+            foreach (var genericArgument in type.GetGenericArguments())
+            {
+                if (genericArgument.IsGenericParameter)
+                {
+                    foreach (var constraint in genericArgument.GetGenericParameterConstraints())
+                    {
+                        DiscoverReferencedType(constraint);
+                    }
+                }
+                else
+                {
+                    DiscoverReferencedType(genericArgument);
+                }
+            }
+        }
+
+        if (type.IsGenericParameter)
+        {
+            foreach (var constraint in type.GetGenericParameterConstraints())
+            {
+                DiscoverReferencedType(constraint);
+            }
+            return;
+        }
+
+        if (type.IsGenericTypeDefinition || type.Assembly != Assembly)
+        {
+            return;
+        }
+
+        PhpTypeName(type);
     }
 
     public string PhpTypeName(Type type) => _phpTypeResolver.ResolveType(type);

@@ -9,39 +9,70 @@ use Relewise\Models\Multilingual;
 use Relewise\Models\MultilingualValue;
 
 class DataValueFactory {
-    /** This method takes a string. */
+    /**
+     * Creates a string DataValue.
+     *
+     * @param string $value String value.
+     * @return DataValue
+     */
     public static function string(string $value) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::String)
             ->setValue($value);
     }
 
-    /** This method takes a float. */
+    /**
+     * Creates a floating-point DataValue.
+     *
+     * @param float $value Floating-point value.
+     * @return DataValue
+     */
     public static function float(float $value) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::Double)
             ->setValue($value);
     }
     
-    /** This method takes a bool. */
+    /**
+     * Creates a boolean DataValue.
+     *
+     * @param bool $value Boolean value.
+     * @return DataValue
+     */
     public static function boolean(bool $value) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::Boolean)
             ->setValue($value);
     }
 
-    /** This method takes a Money object. */
+    /**
+     * Creates a money DataValue.
+     *
+     * @param Money $value Money value.
+     * @return DataValue
+     */
     public static function money(Money $value) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::Money)
             ->setValue($value);
     }
 
-    /** This method takes any number of Money objects. */
+    /**
+     * Creates a multi-currency DataValue from multiple Money values.
+     *
+     * @param Money ...$moneyValues Money values.
+     * @return DataValue
+     */
     public static function multiCurrencyFromMultipleMoney(Money ... $moneyValues) : DataValue {
         return DataValueFactory::multiCurrencyFromMoneyArray($moneyValues);
     }
-    /** This method takes an array of Money objects. */
+
+    /**
+     * Creates a multi-currency DataValue from an array of Money values.
+     *
+     * @param Money[] $moneyValues Money values.
+     * @return DataValue
+     */
     public static function multiCurrencyFromMoneyArray(array $moneyValues) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::MultiCurrency)
@@ -53,11 +84,22 @@ class DataValueFactory {
             );
     }
 
-    /** This method takes any number of strings. */
+    /**
+     * Creates a string-list DataValue from multiple strings.
+     *
+     * @param string ...$values String values.
+     * @return DataValue
+     */
     public static function stringList(string ... $values) : DataValue {
         return DataValueFactory::stringListFromArray($values);
     }
-    /** This method takes an array of strings. */
+
+    /**
+     * Creates a string-list DataValue from an array of strings.
+     *
+     * @param string[] $values String values.
+     * @return DataValue
+     */
     public static function stringListFromArray(array $values) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::StringList)
@@ -69,11 +111,22 @@ class DataValueFactory {
             );
     }
 
-    /** This method takes any number of floats. */
+    /**
+     * Creates a float-list DataValue from multiple floating-point values.
+     *
+     * @param float ...$values Floating-point values.
+     * @return DataValue
+     */
     public static function floatList(float ... $values) : DataValue {
         return DataValueFactory::floatListFromArray($values);
     }
-    /** This method takes an array of floats. */
+
+    /**
+     * Creates a float-list DataValue from an array of floating-point values.
+     *
+     * @param float[] $values Floating-point values.
+     * @return DataValue
+     */
     public static function floatListFromArray(array $values) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::DoubleList)
@@ -85,11 +138,22 @@ class DataValueFactory {
             );
     }
 
-    /** This method takes any number of bools. */
+    /**
+     * Creates a boolean-list DataValue from multiple boolean values.
+     *
+     * @param bool ...$values Boolean values.
+     * @return DataValue
+     */
     public static function booleanList(bool ... $values) : DataValue {
         return DataValueFactory::booleanListFromArray($values);
     }
-    /** This method takes an array of bools. */
+
+    /**
+     * Creates a boolean-list DataValue from an array of booleans.
+     *
+     * @param bool[] $values Boolean values.
+     * @return DataValue
+     */
     public static function booleanListFromArray(array $values) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::BooleanList)
@@ -101,7 +165,12 @@ class DataValueFactory {
             );
     }
 
-    /** This method takes a Multilingual. */
+    /**
+     * Creates a multilingual DataValue.
+     *
+     * @param Multilingual $value Multilingual value.
+     * @return DataValue
+     */
     public static function multilingual(Multilingual $value) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::Multilingual)
@@ -113,11 +182,24 @@ class DataValueFactory {
             );
     }
 
-    /** This method takes a Language and any number of strings. */
+    /**
+     * Creates a multilingual collection DataValue for a single language from multiple strings.
+     *
+     * @param Language $language Language for all values.
+     * @param string ...$values String values for the language.
+     * @return DataValue
+     */
     public static function multilingualCollectionWithSingleLanguage(Language $language, string ... $values) : DataValue {
         return DataValueFactory::multilingualCollectionWithSingleLanguageFromArray($language, $values);
     }
-    /** This method takes a Language and an array of strings. */
+
+    /**
+     * Creates a multilingual collection DataValue for a single language from an array of strings.
+     *
+     * @param Language $language Language for all values.
+     * @param string[] $values String values for the language.
+     * @return DataValue
+     */
     public static function multilingualCollectionWithSingleLanguageFromArray(Language $language, array $values) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::MultilingualCollection)
@@ -133,10 +215,12 @@ class DataValueFactory {
                 ));
     }
 
-    /** This method takes an array of arrays with two keys "Language" being a Language and "Values" being an array of strings.
-     * Example:
-     * array(array("Language" => Language::create("da"), "Values" => array("Hallo")), array("Language" => Language::create("en"), "Values" => array("Hello")))
-    */
+    /**
+     * Creates a multilingual collection DataValue.
+     *
+     * @param array<int, array{Language: Language, Values: string[]}> $values Language/value entries.
+     * @return DataValue
+     */
     public static function multilingualCollection(array $values) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::MultilingualCollection)
@@ -147,7 +231,12 @@ class DataValueFactory {
                 ));
     }
 
-    /** This method takes an array of key value pairs. */
+    /**
+     * Creates an object DataValue from arbitrary data.
+     *
+     * @param mixed $data Data payload, typically an associative array.
+     * @return DataValue
+     */
     public static function object(mixed $data) : DataValue {
         return DataValue::create()
             ->setType(DataValueDataValueTypes::Object)
@@ -158,11 +247,22 @@ class DataValueFactory {
                 ));
     }
 
-    /** This method takes multiple arrays within, each with key value pairs. */ 
+    /**
+     * Creates an object-list DataValue from multiple object payloads.
+     *
+     * @param mixed ...$objects Object payloads.
+     * @return DataValue
+     */
     public static function objectList(mixed ... $objects) : DataValue {
         return DataValueFactory::objectListFromArray($objects);
     }
-    /** This method takes an arrray with multiple arrays within, each with key value pairs. */ 
+
+    /**
+     * Creates an object-list DataValue from an array of object payloads.
+     *
+     * @param mixed[] $objects Object payloads.
+     * @return DataValue
+     */
     public static function objectListFromArray(array $objects) : DataValue {
         $values = array();
         foreach ($objects as $object) {
