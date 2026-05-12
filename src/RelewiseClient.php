@@ -108,7 +108,16 @@ abstract class RelewiseClient
         }
         if ($response->code == 401)
         {
-            throw new UnauthorizedException(json_encode($response->body), $response->code);
+            $message = is_string($response->body)
+                ? $response->body
+                : ($response->body === null ? null : json_encode($response->body));
+
+            if ($message === null || $message === false || $message === "")
+            {
+                $message = "Unauthorized";
+            }
+            
+            throw new UnauthorizedException($message, $response->code);
         }
         if ($response->code == 503)
         {
