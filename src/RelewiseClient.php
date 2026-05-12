@@ -17,6 +17,7 @@ use Relewise\Models\LicensedRequest;
 abstract class RelewiseClient
 {
     private string $apiKeyNotDefinedMessage = "apiKey must not be empty.";
+    private string $unauthorizedMessage = "Unauthorized. Verify that:";
     public string $serverUrl = "https://api.relewise.com";
     private int $httpVersion = CURL_HTTP_VERSION_NONE;
     private string $apiVersion = "v1";
@@ -108,16 +109,7 @@ abstract class RelewiseClient
         }
         if ($response->code == 401)
         {
-            $message = is_string($response->body)
-                ? $response->body
-                : ($response->body === null ? null : json_encode($response->body));
-
-            if ($message === null || $message === false || $message === "")
-            {
-                $message = "Unauthorized";
-            }
-            
-            throw new UnauthorizedException($message, $response->code);
+            throw new UnauthorizedException($this->createUnauthorizedMessage($endpoint, $response->body), $response->code);
         }
         if ($response->code == 503)
         {
@@ -162,5 +154,22 @@ abstract class RelewiseClient
         return str_ends_with($baseUrl, "/")
             ? $baseUrl . $joinedSegments
             : $baseUrl . "/" . $joinedSegments;
+    }
+
+    private function createUnauthorizedMessage(string $endpoint, mixed $responseBody): string
+    {
+        $responseMessage = is_string($responseBody)
+            ? $responseBody
+            : ($responseBody === null ? null : json_encode($responseBody));
+
+        if ($responseMessage !== null && $responseMessage !== false && $responseMessage !== "")
+        {
+            return $responseMessage;
+        }
+
+        return $this->unauthorizedMessage . PHP_EOL
+            . "- a valid API key has been provided" . PHP_EOL
+            . "- the API key has permission to call " . $endpoint . PHP_EOL
+            . "- the datasetId and serverUrl are correct for the API key, including matching the intended environment";
     }
 }
