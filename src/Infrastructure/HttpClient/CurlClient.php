@@ -89,6 +89,9 @@ class CurlClient implements Client
         }
 
         $body = json_decode($content, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            $body = $content === '' ? null : $content;
+        }
 
         return new Response($body, $httpCode, $contentType ? $contentType : null);
     }
