@@ -7,6 +7,7 @@ class ProductSearchSettings extends SearchSettings
     public string $typeDefinition = "Relewise.Client.Requests.Search.Settings.ProductSearchSettings, Relewise.Client";
     public ?SelectedProductPropertiesSettings $selectedProductProperties;
     public ?SelectedVariantPropertiesSettings $selectedVariantProperties;
+    /** @deprecated Use VariantRequestSettings.MaxVariantsPerProduct instead. */
     public ?int $explodedVariants;
     /** @deprecated Not currently in use */
     public RecommendationSettings $recommendations;
@@ -15,6 +16,7 @@ class ProductSearchSettings extends SearchSettings
     /** Used to define constraints which must be honoured to be a valid results. The difference between this and Filters, is that filters are evaluated per product and variant, constraints could be acting on the result of such filter evaluations or a combination of factors, such as whether the product has any variants which matched the provided filters etc. */
     public ?ProductSearchResultConstraint $resultConstraint;
     public ?ProductSearchSettingsHighlightSettings $highlight;
+    public ?VariantSearchRequestSettings $variantRequestSettings;
     
     public static function create() : ProductSearchSettings
     {
@@ -57,6 +59,10 @@ class ProductSearchSettings extends SearchSettings
         {
             $result->highlight = ProductSearchSettingsHighlightSettings::hydrate($arr["highlight"]);
         }
+        if (array_key_exists("variantRequestSettings", $arr))
+        {
+            $result->variantRequestSettings = VariantSearchRequestSettings::hydrate($arr["variantRequestSettings"]);
+        }
         return $result;
     }
     
@@ -72,6 +78,7 @@ class ProductSearchSettings extends SearchSettings
         return $this;
     }
     
+    /** @deprecated Use VariantRequestSettings.MaxVariantsPerProduct instead. */
     function setExplodedVariants(?int $explodedVariants)
     {
         $this->explodedVariants = $explodedVariants;
@@ -107,6 +114,12 @@ class ProductSearchSettings extends SearchSettings
     function setHighlight(?ProductSearchSettingsHighlightSettings $highlight)
     {
         $this->highlight = $highlight;
+        return $this;
+    }
+    
+    function setVariantRequestSettings(?VariantSearchRequestSettings $variantRequestSettings)
+    {
+        $this->variantRequestSettings = $variantRequestSettings;
         return $this;
     }
 }

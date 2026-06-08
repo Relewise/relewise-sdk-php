@@ -25,6 +25,8 @@ class ProductResult
     public ?Score $score;
     /** Contains engagement signals (sentiment, favorite) recorded for the current user on this product. Populated only when explicitly requested via UserEngagement. */
     public ?ProductEngagementData $userEngagement;
+    /** Explains how Variant got selected for this product result. Populated only when explicitly requested via VariantResolution. */
+    public ?VariantResolutionInfo $variantResolution;
     
     public static function create(string $productId, int $rank) : ProductResult
     {
@@ -132,6 +134,10 @@ class ProductResult
         if (array_key_exists("userEngagement", $arr))
         {
             $result->userEngagement = ProductEngagementData::hydrate($arr["userEngagement"]);
+        }
+        if (array_key_exists("variantResolution", $arr))
+        {
+            $result->variantResolution = VariantResolutionInfo::hydrate($arr["variantResolution"]);
         }
         return $result;
     }
@@ -328,6 +334,13 @@ class ProductResult
     function setUserEngagement(?ProductEngagementData $userEngagement)
     {
         $this->userEngagement = $userEngagement;
+        return $this;
+    }
+    
+    /** Explains how Variant got selected for this product result. Populated only when explicitly requested via VariantResolution. */
+    function setVariantResolution(?VariantResolutionInfo $variantResolution)
+    {
+        $this->variantResolution = $variantResolution;
         return $this;
     }
 }

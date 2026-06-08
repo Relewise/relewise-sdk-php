@@ -1,0 +1,11 @@
+<?php declare(strict_types=1);
+
+namespace Relewise\Models;
+
+use DateTime;
+
+enum FeedConfigurationEntityState : string
+{
+    case Active = 'Active';
+    case Inactive = 'Inactive';
+}

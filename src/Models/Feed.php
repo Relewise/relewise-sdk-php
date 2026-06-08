@@ -21,6 +21,8 @@ class Feed
     public ?bool $recommendVariant;
     /** Defines if products should be excluded if they are currently present in the users Cart */
     public ?bool $allowProductsCurrentlyInCart;
+    /** Selects the stored feed configuration to use when the feed is initialized. When omitted, the default feed configuration is used. */
+    public ?string $configurationKey;
     
     /**
      * Initializes a new instance of the Feed class.
@@ -75,6 +77,10 @@ class Feed
         if (array_key_exists("allowProductsCurrentlyInCart", $arr))
         {
             $result->allowProductsCurrentlyInCart = $arr["allowProductsCurrentlyInCart"];
+        }
+        if (array_key_exists("configurationKey", $arr))
+        {
+            $result->configurationKey = $arr["configurationKey"];
         }
         return $result;
     }
@@ -153,6 +159,13 @@ class Feed
     function setAllowProductsCurrentlyInCart(?bool $allowProductsCurrentlyInCart)
     {
         $this->allowProductsCurrentlyInCart = $allowProductsCurrentlyInCart;
+        return $this;
+    }
+    
+    /** Selects the stored feed configuration to use when the feed is initialized. When omitted, the default feed configuration is used. */
+    function setConfigurationKey(?string $configurationKey)
+    {
+        $this->configurationKey = $configurationKey;
         return $this;
     }
 }

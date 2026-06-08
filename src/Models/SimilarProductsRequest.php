@@ -9,6 +9,7 @@ class SimilarProductsRequest extends ProductRecommendationRequest
     public ?Product $productData;
     public bool $considerAlreadyKnownInformationAboutProduct;
     public ?SimilarProductsEvaluationSettings $evaluationSettings;
+    /** @deprecated Use Settings.VariantRequestSettings.MaxVariantsPerProduct instead. */
     public ?int $explodedVariants;
     
     public static function create(?Language $language, ?Currency $currency, string $displayedAtLocationType, User $user, ?SimilarProductsEvaluationSettings $evaluationSettings = Null) : SimilarProductsRequest
@@ -72,6 +73,7 @@ class SimilarProductsRequest extends ProductRecommendationRequest
         return $this;
     }
     
+    /** @deprecated Use Settings.VariantRequestSettings.MaxVariantsPerProduct instead. */
     function setExplodedVariants(?int $explodedVariants)
     {
         $this->explodedVariants = $explodedVariants;
