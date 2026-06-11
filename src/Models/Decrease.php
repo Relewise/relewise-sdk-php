@@ -3,7 +3,7 @@
 namespace Relewise\Models;
 
 /** Indicates that some property should change by decreasing in value. */
-class Decrease
+class Decrease implements IChange
 {
     public static function create() : Decrease
     {

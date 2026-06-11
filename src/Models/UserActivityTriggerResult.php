@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-class UserActivityTriggerResult
+class UserActivityTriggerResult implements ITriggerResult
 {
     public UserResultDetails $user;
     

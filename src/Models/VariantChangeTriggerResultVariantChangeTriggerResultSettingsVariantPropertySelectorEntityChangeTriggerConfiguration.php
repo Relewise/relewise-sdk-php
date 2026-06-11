@@ -46,7 +46,7 @@ abstract class VariantChangeTriggerResultVariantChangeTriggerResultSettingsVaria
         }
         if (array_key_exists("change", $arr))
         {
-            $result->change = IChange::hydrate($arr["change"]);
+            $result->change = Internal\IChangeHydrator::hydrate($arr["change"]);
         }
         if (array_key_exists("resultSettings", $arr))
         {

@@ -35,7 +35,7 @@ class Campaign extends CampaignEntityStatestringCampaignMetadataValuesRetailMedi
         }
         if (array_key_exists("schedule", $arr))
         {
-            $result->schedule = ISchedule::hydrate($arr["schedule"]);
+            $result->schedule = Internal\IScheduleHydrator::hydrate($arr["schedule"]);
         }
         if (array_key_exists("promotions", $arr))
         {

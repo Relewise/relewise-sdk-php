@@ -18,7 +18,7 @@ class TriggerResultResponse extends TimedResponse
         $result = TimedResponse::hydrateBase(new TriggerResultResponse(), $arr);
         if (array_key_exists("result", $arr))
         {
-            $result->result = ITriggerResult::hydrate($arr["result"]);
+            $result->result = Internal\ITriggerResultHydrator::hydrate($arr["result"]);
         }
         return $result;
     }
