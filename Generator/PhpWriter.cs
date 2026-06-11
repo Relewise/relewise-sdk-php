@@ -1,6 +1,7 @@
 ﻿using Generator.PhpMemberWriters;
 using Generator.PhpTypeWriters;
 using System.CodeDom.Compiler;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace Generator;
@@ -9,6 +10,7 @@ public class PhpWriter
 {
     private readonly List<IPhpTypeWriter> _phpTypeWriters;
     private readonly PhpTypeResolver _phpTypeResolver;
+    private readonly HashSet<Type> _processedTypes = new();
 
     public HashSet<Type> MissingTypeDefinitions { get; set; } = new();
     public Assembly Assembly { get; }
@@ -23,7 +25,7 @@ public class PhpWriter
 
     public PhpWriter(Assembly assembly, string basePath, XmlDocumentation xmlDocumentation)
     {
-        _phpTypeWriters = new List<IPhpTypeWriter> { new PhpInterfaceWriter(this), new PhpEnumWriter(this), new PhpKeyValuePairWriter(this), new PhpClassWriter(this) };
+        _phpTypeWriters = new List<IPhpTypeWriter> { new PhpInterfaceWriter(this), new PhpInterfaceHydratorWriter(this), new PhpEnumWriter(this), new PhpKeyValuePairWriter(this), new PhpClassWriter(this) };
         _phpTypeResolver = new PhpTypeResolver(assembly);
         Assembly = assembly;
         BasePath = basePath;
@@ -59,20 +61,34 @@ public class PhpWriter
             if ((type.IsGenericTypeDefinition || type.IsGenericTypeParameter || typeName.Contains("d__")))
                 continue;
 
+            if (!_processedTypes.Add(type))
+            {
+                continue;
+            }
+
             DiscoverReferencedTypesFromSignatures(type);
 
-            using StreamWriter streamWriter = File.CreateText($"{BasePath}/{Constants.GenerationFolderPath}/{typeName}.php");
-            using var writer = new IndentedTextWriter(streamWriter);
-
-            IPhpTypeWriter? phpTypeWriter = _phpTypeWriters.FirstOrDefault(w => w.CanWrite(type));
-            if (phpTypeWriter is null)
+            var phpTypeWriters = _phpTypeWriters.Where(w => w.CanWrite(type)).ToArray();
+            if (phpTypeWriters.Length == 0)
             {
                 MissingTypeDefinitions.Add(type);
             }
             else
             {
-                phpTypeWriter.Write(writer, type, typeName);
-                _phpTypeResolver.HasWritten(typeName);
+                foreach (var phpTypeWriter in phpTypeWriters)
+                {
+                    string fileName = phpTypeWriter.GetFileName(type, typeName);
+                    if (_phpTypeResolver.IsWritten(fileName))
+                    {
+                        continue;
+                    }
+
+                    using StreamWriter streamWriter = File.CreateText($"{BasePath}/{Constants.GenerationFolderPath}/{fileName}");
+                    using var writer = new IndentedTextWriter(streamWriter);
+
+                    phpTypeWriter.Write(writer, type, typeName);
+                    _phpTypeResolver.HasWritten(fileName);
+                }
             }
         }
     }
@@ -187,6 +203,10 @@ public class PhpWriter
         var typeName = PhpTypeName(property.ParameterType);
         return PrependNullableIfApplicable(typeName, new NullabilityInfoContext().Create(property));
     }
+
+    public bool TryGetKnownTypeName(Type type, [NotNullWhen(true)] out string? typeName) => _phpTypeResolver.TryGetKnownTypeName(type, out typeName);
+
+    public string HydratorTypeName(Type type) => $"{PhpTypeName(type).Replace("?", string.Empty)}Hydrator";
 
     private static string PrependNullableIfApplicable(string typeName, NullabilityInfo nullabilityInfo)
     {

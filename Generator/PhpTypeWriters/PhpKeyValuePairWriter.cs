@@ -13,6 +13,8 @@ internal class PhpKeyValuePairWriter : IPhpTypeWriter
 
     public bool CanWrite(Type type) => type.IsGenericType && type.GetGenericTypeDefinition() == typeof(KeyValuePair<,>);
 
+    public string GetFileName(Type type, string typeName) => $"{typeName}.php";
+
     public void Write(IndentedTextWriter writer, Type type, string typeName)
     {
         writer.WriteLine($"""

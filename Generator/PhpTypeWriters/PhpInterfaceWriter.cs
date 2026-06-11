@@ -1,4 +1,4 @@
-﻿using Generator.Extensions;
+using Generator.Extensions;
 using System.CodeDom.Compiler;
 using System.Reflection;
 
@@ -15,14 +15,14 @@ internal class PhpInterfaceWriter : IPhpTypeWriter
 
     public bool CanWrite(Type type) => type.IsInterface;
 
+    public string GetFileName(Type type, string typeName) => $"{typeName}.php";
+
     public void Write(IndentedTextWriter writer, Type type, string typeName)
     {
         writer.WriteLine($"""
 <?php declare(strict_types=1);
 
 namespace {Constants.Namespace};
-
-use DateTime;
 
 """);
         var deprecationComment = type.GetCustomAttribute(typeof(ObsoleteAttribute)) is ObsoleteAttribute { } obsolete ? $"@deprecated {obsolete.Message}" : null;
@@ -33,10 +33,9 @@ use DateTime;
             deprecationComment
         );
 
-        writer.WriteLine($"abstract class {typeName}");
+        writer.WriteLine($"interface {typeName}");
         writer.WriteLine("{");
         writer.Indent++;
-        phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, Array.Empty<(PropertyInfo, string, string, string)>());
         writer.Indent--;
         writer.WriteLine("}");
     }

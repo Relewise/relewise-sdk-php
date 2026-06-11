@@ -168,6 +168,10 @@ public class PhpHydrationMethodsWriter
         {
             return $"DateIntervalFactory::fromTimeSpanString({jsonValue})";
         }
+        if (type.IsInterface)
+        {
+            return $"{phpWriter.HydratorTypeName(type)}::hydrate({jsonValue})";
+        }
         if (type.IsPrimitive ||
             type == typeof(string) ||
             type == typeof(Guid) ||

@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace Generator;
@@ -33,6 +34,17 @@ public class PhpTypeResolver
 
     public bool IsWritten(string typeName) => GeneratedFileNames.Contains(typeName);
     public void HasWritten(string typeName) => GeneratedFileNames.Add(typeName);
+
+    public bool TryGetKnownTypeName(Type type, [NotNullWhen(true)] out string? typeName)
+    {
+        if (typeDefintions.TryGetValue(type, out typeName!))
+        {
+            return true;
+        }
+
+        typeName = null;
+        return false;
+    }
 
     private string GetOrAddTypeDefinition(Type type)
     {

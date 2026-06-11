@@ -27,6 +27,8 @@ public class PhpClassWriter : IPhpTypeWriter
 
     public bool CanWrite(Type type) => IsClass(type) || IsAnyStruct(type);
 
+    public string GetFileName(Type type, string typeName) => $"{typeName}.php";
+
     private bool IsClass(Type type) => type.IsClass;
 
     private bool IsReadonlyStruct(Type type) => type.IsValueType && type.GetProperties().All(p => !p.CanWrite);
@@ -96,6 +98,18 @@ public class PhpClassWriter : IPhpTypeWriter
             baseTypeName = $"{type.Name}Extractable";
         }
 
+        var implementedInterfaces = type.GetInterfaces()
+            .Where(interfaceType => interfaceType.Assembly == type.Assembly && interfaceType.IsInterface)
+            .Select(interfaceType =>
+                phpWriter.TryGetKnownTypeName(interfaceType, out var knownTypeName)
+                    ? knownTypeName.Replace("?", string.Empty)
+                    : null)
+            .Where(interfaceName => interfaceName is not null)
+            .Select(interfaceName => interfaceName!)
+            .Distinct()
+            .OrderBy(interfaceName => interfaceName)
+            .ToArray();
+
         var deprecationComment = type.GetCustomAttribute(typeof(ObsoleteAttribute)) is ObsoleteAttribute { } obsolete ? $"@deprecated {obsolete.Message}" : null;
 
         writer.WriteCommentBlock(
@@ -112,9 +126,11 @@ public class PhpClassWriter : IPhpTypeWriter
         {
             writer.Write($" extends {baseTypeName}");
         }
-        if (hasDateTimeOrDateTimeOffsetProperty)
+        if (implementedInterfaces.Length > 0 || hasDateTimeOrDateTimeOffsetProperty)
         {
-            writer.Write(" implements JsonSerializable");
+            writer.Write(" implements ");
+            var implementedTypes = implementedInterfaces.Concat(hasDateTimeOrDateTimeOffsetProperty ? ["JsonSerializable"] : Array.Empty<string>());
+            writer.Write(string.Join(", ", implementedTypes));
         }
         writer.WriteLine();
 

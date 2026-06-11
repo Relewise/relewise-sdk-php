@@ -1,21 +1,21 @@
-﻿using System.CodeDom.Compiler;
-using System.Reflection;
 using Generator.Extensions;
+using System.CodeDom.Compiler;
+using System.Reflection;
 
 namespace Generator.PhpTypeWriters;
 
-internal class PhpEnumWriter : IPhpTypeWriter
+internal class PhpInterfaceHydratorWriter : IPhpTypeWriter
 {
     private readonly PhpWriter phpWriter;
 
-    public PhpEnumWriter(PhpWriter phpWriter)
+    public PhpInterfaceHydratorWriter(PhpWriter phpWriter)
     {
         this.phpWriter = phpWriter;
     }
 
-    public bool CanWrite(Type type) => type.IsEnum;
+    public bool CanWrite(Type type) => type.IsInterface;
 
-    public string GetFileName(Type type, string typeName) => $"{typeName}.php";
+    public string GetFileName(Type type, string typeName) => $"{phpWriter.HydratorTypeName(type)}.php";
 
     public void Write(IndentedTextWriter writer, Type type, string typeName)
     {
@@ -23,27 +23,21 @@ internal class PhpEnumWriter : IPhpTypeWriter
 <?php declare(strict_types=1);
 
 namespace {Constants.Namespace};
-
-use DateTime;
-
 """);
+        writer.WriteLine();
 
         var deprecationComment = type.GetCustomAttribute(typeof(ObsoleteAttribute)) is ObsoleteAttribute { } obsolete ? $"@deprecated {obsolete.Message}" : null;
 
         writer.WriteCommentBlock(
             phpWriter.XmlDocumentation.GetSummary(type),
+            "Hydrator helper for this interface.",
             deprecationComment
         );
 
-        writer.WriteLine($"enum {typeName} : string");
+        writer.WriteLine($"class {phpWriter.HydratorTypeName(type)}");
         writer.WriteLine("{");
         writer.Indent++;
-        foreach (var enumMember in type.GetMembers().Where(propertyInfo => propertyInfo.DeclaringType is { IsEnum: true } && propertyInfo.Name is not "__value" and not "value__"))
-        {
-            writer.WriteCommentBlock(phpWriter.XmlDocumentation.GetSummary(type, enumMember.Name));
-
-            writer.WriteLine($"case {enumMember.Name} = '{enumMember.Name}';");
-        }
+        phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, []);
         writer.Indent--;
         writer.WriteLine("}");
     }
