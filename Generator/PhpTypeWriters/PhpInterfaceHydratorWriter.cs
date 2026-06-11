@@ -22,7 +22,9 @@ internal class PhpInterfaceHydratorWriter : IPhpTypeWriter
         writer.WriteLine($"""
 <?php declare(strict_types=1);
 
-namespace {Constants.Namespace};
+namespace {Constants.InternalNamespace};
+
+use Relewise\Models;
 """);
         writer.WriteLine();
 
@@ -37,7 +39,7 @@ namespace {Constants.Namespace};
         writer.WriteLine($"class {phpWriter.HydratorTypeName(type)}");
         writer.WriteLine("{");
         writer.Indent++;
-        phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, []);
+        phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, [], internalContext: true);
         writer.Indent--;
         writer.WriteLine("}");
     }

@@ -83,7 +83,14 @@ public class PhpWriter
                         continue;
                     }
 
-                    using StreamWriter streamWriter = File.CreateText($"{BasePath}/{Constants.GenerationFolderPath}/{fileName}");
+                    var generationFolderPath = phpTypeWriter is PhpInterfaceHydratorWriter
+                        ? Constants.InternalGenerationFolderPath
+                        : Constants.GenerationFolderPath;
+
+                    var outputDirectory = Path.Combine(BasePath, generationFolderPath);
+                    Directory.CreateDirectory(outputDirectory);
+
+                    using StreamWriter streamWriter = File.CreateText(Path.Combine(outputDirectory, fileName));
                     using var writer = new IndentedTextWriter(streamWriter);
 
                     phpTypeWriter.Write(writer, type, typeName);
