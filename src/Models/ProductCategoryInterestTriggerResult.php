@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-class ProductCategoryInterestTriggerResult
+class ProductCategoryInterestTriggerResult implements ITriggerResult
 {
     public UserResultDetails $user;
     public array $categories;

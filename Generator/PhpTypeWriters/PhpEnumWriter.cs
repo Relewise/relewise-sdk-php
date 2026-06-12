@@ -15,6 +15,8 @@ internal class PhpEnumWriter : IPhpTypeWriter
 
     public bool CanWrite(Type type) => type.IsEnum;
 
+    public string GetFileName(Type type, string typeName) => $"{typeName}.php";
+
     public void Write(IndentedTextWriter writer, Type type, string typeName)
     {
         writer.WriteLine($"""

@@ -106,7 +106,7 @@ abstract class MerchandisingRule implements JsonSerializable
         }
         if (array_key_exists("schedule", $arr))
         {
-            $result->schedule = ISchedule::hydrate($arr["schedule"]);
+            $result->schedule = Internal\IScheduleHydrator::hydrate($arr["schedule"]);
         }
         if (array_key_exists("status", $arr))
         {
