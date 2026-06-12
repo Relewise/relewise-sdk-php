@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-class AbandonedCartTriggerResult
+class AbandonedCartTriggerResult implements ITriggerResult
 {
     public UserResultDetails $user;
     

@@ -2,23 +2,7 @@
 
 namespace Relewise\Models;
 
-use DateTime;
-
 /** This is actually an interface. */
-abstract class ISchedule
+interface ISchedule
 {
-    
-    public static function hydrate(array $arr)
-    {
-        $type = $arr["\$type"];
-        if ($type=="Relewise.Client.DataTypes.Scheduling.ScheduledPeriod, Relewise.Client")
-        {
-            return ScheduledPeriod::hydrate($arr);
-        }
-    }
-    
-    public static function hydrateBase(mixed $result, array $arr)
-    {
-        return $result;
-    }
 }

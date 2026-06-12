@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-class AbandonedSearchTriggerResult
+class AbandonedSearchTriggerResult implements ITriggerResult
 {
     public UserResultDetails $user;
     public SearchType $type;

@@ -13,7 +13,7 @@ public class PhpHydrationMethodsWriter
         this.phpWriter = phpWriter;
     }
 
-    public void Write(IndentedTextWriter writer, Type type, string typeName, (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations)
+    public void Write(IndentedTextWriter writer, Type type, string typeName, (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations, bool internalContext = false)
     {
         if (type.IsAbstract || type.IsInterface)
         {
@@ -37,7 +37,7 @@ public class PhpHydrationMethodsWriter
                 writer.WriteLine($"if ($type==\"{derivedType.FullName}, {type.Assembly.FullName?.Split(",")[0]}\")");
                 writer.WriteLine("{");
                 writer.Indent++;
-                writer.WriteLine($"return {phpWriter.PhpTypeName(derivedType)}::hydrate($arr);");
+                writer.WriteLine($"return {ModelTypeReference(derivedType, internalContext)}::hydrate($arr);");
                 writer.Indent--;
                 writer.WriteLine("}");
             }
@@ -51,11 +51,11 @@ public class PhpHydrationMethodsWriter
             writer.Indent++;
             if (type.BaseType is { IsAbstract: true } abstractBase)
             {
-                writer.WriteLine($"$result = {phpWriter.PhpTypeName(abstractBase).Replace("?", "")}::hydrateBase($result, $arr);");
+                writer.WriteLine($"$result = {ModelTypeReference(abstractBase, internalContext)}::hydrateBase($result, $arr);");
             }
             foreach (var (info, _, _, lowerCaseName) in propertyInformations)
             {
-                WriteHydrationSetter(writer, info.PropertyType, lowerCaseName);
+                WriteHydrationSetter(writer, info.PropertyType, lowerCaseName, internalContext);
             }
             writer.WriteLine("return $result;");
             writer.Indent--;
@@ -69,7 +69,7 @@ public class PhpHydrationMethodsWriter
             writer.Indent++;
             if (type.BaseType != typeof(ValueType) && type.BaseType is { IsAbstract: true } abstractBase)
             {
-                writer.WriteLine($"$result = {phpWriter.PhpTypeName(abstractBase).Replace("?", "")}::hydrateBase(new {typeName}(), $arr);");
+                writer.WriteLine($"$result = {ModelTypeReference(abstractBase, internalContext)}::hydrateBase(new {typeName}(), $arr);");
             }
             // In this case the base type won't expose a hydrate method we can use
             // We need to handle the base type's props manually
@@ -80,12 +80,12 @@ public class PhpHydrationMethodsWriter
                 // If the base class has a base class we need to reuse that class' hydrateBase method
                 writer.WriteLine(type.BaseType.BaseType != null &&
                                  type.BaseType.BaseType != typeof(object)
-                    ? $"$result = {phpWriter.PhpTypeName(type.BaseType.BaseType).Replace("?", "")}::hydrateBase(new {typeName}(), $arr);"
+                    ? $"$result = {ModelTypeReference(type.BaseType.BaseType, internalContext)}::hydrateBase(new {typeName}(), $arr);"
                     : $"$result = new {typeName}();");
 
                 foreach (PropertyInfo props in type.BaseType.FindOwnedPropertyInfos())
                 { 
-                    WriteHydrationSetter(writer, props.PropertyType, props.Name.ToCamelCase());
+                    WriteHydrationSetter(writer, props.PropertyType, props.Name.ToCamelCase(), internalContext);
                 }
             }
             else
@@ -95,7 +95,7 @@ public class PhpHydrationMethodsWriter
 
             foreach (var (info, _, _, lowerCaseName) in propertyInformations)
             {
-                WriteHydrationSetter(writer, info.PropertyType, lowerCaseName);
+                WriteHydrationSetter(writer, info.PropertyType, lowerCaseName, internalContext);
             }
             writer.WriteLine($"return $result;");
             writer.Indent--;
@@ -103,62 +103,62 @@ public class PhpHydrationMethodsWriter
         }
     }
 
-    private void WriteHydrationSetter(IndentedTextWriter writer, Type propertyType, string lowerCaseName)
+    private void WriteHydrationSetter(IndentedTextWriter writer, Type propertyType, string lowerCaseName, bool internalContext)
     {
         writer.WriteLine($"if (array_key_exists(\"{lowerCaseName}\", $arr))");
         writer.WriteLine("{");
         writer.Indent++;
         if (propertyType.IsArray && propertyType.GetElementType() is { } elementType)
         {
-            WriteArrayLikeHydrationSetter(writer, elementType, lowerCaseName);
+            WriteArrayLikeHydrationSetter(writer, elementType, lowerCaseName, internalContext);
         }
         else if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(List<>))
         {
-            WriteArrayLikeHydrationSetter(writer, propertyType.GenericTypeArguments.Single(), lowerCaseName);
+            WriteArrayLikeHydrationSetter(writer, propertyType.GenericTypeArguments.Single(), lowerCaseName, internalContext);
         }
         else if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof(Dictionary<,>))
         {
-            WriteDictionaryHydrationSetter(writer, propertyType.GenericTypeArguments[0], propertyType.GenericTypeArguments[1], lowerCaseName);
+            WriteDictionaryHydrationSetter(writer, propertyType.GenericTypeArguments[0], propertyType.GenericTypeArguments[1], lowerCaseName, internalContext);
         }
         else
         {
-            writer.WriteLine($"$result->{lowerCaseName} = {HydrationExpression(propertyType, $"$arr[\"{lowerCaseName}\"]")};");
+            writer.WriteLine($"$result->{lowerCaseName} = {HydrationExpression(propertyType, $"$arr[\"{lowerCaseName}\"]", internalContext)};");
         }
         writer.Indent--;
         writer.WriteLine("}");
     }
 
-    private void WriteArrayLikeHydrationSetter(IndentedTextWriter writer, Type elementType, string lowerCaseName)
+    private void WriteArrayLikeHydrationSetter(IndentedTextWriter writer, Type elementType, string lowerCaseName, bool internalContext)
     {
         writer.WriteLine($"$result->{lowerCaseName} = array();");
         writer.WriteLine($"foreach($arr[\"{lowerCaseName}\"] as &$value)");
         writer.WriteLine("{");
         writer.Indent++;
-        writer.WriteLine($"array_push($result->{lowerCaseName}, {HydrationExpression(elementType, "$value")});");
+        writer.WriteLine($"array_push($result->{lowerCaseName}, {HydrationExpression(elementType, "$value", internalContext)});");
         writer.Indent--;
         writer.WriteLine("}");
     }
 
-    private void WriteDictionaryHydrationSetter(IndentedTextWriter writer, Type keyType, Type valueType, string lowerCaseName)
+    private void WriteDictionaryHydrationSetter(IndentedTextWriter writer, Type keyType, Type valueType, string lowerCaseName, bool internalContext)
     {
         writer.WriteLine($"$result->{lowerCaseName} = array();");
         writer.WriteLine($"foreach($arr[\"{lowerCaseName}\"] as $key => $value)");
         writer.WriteLine("{");
         writer.Indent++;
-        writer.WriteLine($"$result->{lowerCaseName}[{HydrationExpression(keyType, "$key")}] = {HydrationExpression(valueType, "$value")};");
+        writer.WriteLine($"$result->{lowerCaseName}[{HydrationExpression(keyType, "$key", internalContext)}] = {HydrationExpression(valueType, "$value", internalContext)};");
         writer.Indent--;
         writer.WriteLine("}");
     }
 
-    private string HydrationExpression(Type type, string jsonValue)
+    private string HydrationExpression(Type type, string jsonValue, bool internalContext)
     {
         if (Nullable.GetUnderlyingType(type) is { } underlyingType)
         {
-            return HydrationExpression(underlyingType, jsonValue);
+            return HydrationExpression(underlyingType, jsonValue, internalContext);
         }
         if (type.IsEnum)
         {
-            return $"{phpWriter.PhpTypeName(type)}::from({jsonValue})";
+            return $"{ModelTypeReference(type, internalContext)}::from({jsonValue})";
         }
         if (type == typeof(DateTimeOffset) || type == typeof(DateTime))
         {
@@ -167,6 +167,10 @@ public class PhpHydrationMethodsWriter
         if (type == typeof(TimeSpan))
         {
             return $"DateIntervalFactory::fromTimeSpanString({jsonValue})";
+        }
+        if (type.IsInterface)
+        {
+            return $"{InternalTypeReference(type, internalContext)}::hydrate({jsonValue})";
         }
         if (type.IsPrimitive ||
             type == typeof(string) ||
@@ -180,6 +184,18 @@ public class PhpHydrationMethodsWriter
         {
             return jsonValue;
         }
-        return $"{phpWriter.PhpTypeName(type).Replace("?", "")}::hydrate({jsonValue})";
+        return $"{ModelTypeReference(type, internalContext)}::hydrate({jsonValue})";
+    }
+
+    private string ModelTypeReference(Type type, bool internalContext)
+    {
+        var typeName = phpWriter.PhpTypeName(type).Replace("?", string.Empty);
+        return internalContext ? $"Models\\{typeName}" : typeName;
+    }
+
+    private string InternalTypeReference(Type type, bool internalContext)
+    {
+        var typeName = phpWriter.HydratorTypeName(type);
+        return internalContext ? typeName : $"Internal\\{typeName}";
     }
 }

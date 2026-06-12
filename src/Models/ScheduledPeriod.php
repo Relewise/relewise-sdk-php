@@ -5,7 +5,7 @@ namespace Relewise\Models;
 use DateTime;
 use JsonSerializable;
 
-class ScheduledPeriod implements JsonSerializable
+class ScheduledPeriod implements ISchedule, JsonSerializable
 {
     public ?DateTime $fromUtc;
     public ?DateTime $toUtc;

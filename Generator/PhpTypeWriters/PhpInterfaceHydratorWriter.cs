@@ -4,38 +4,42 @@ using System.Reflection;
 
 namespace Generator.PhpTypeWriters;
 
-internal class PhpInterfaceWriter : IPhpTypeWriter
+internal class PhpInterfaceHydratorWriter : IPhpTypeWriter
 {
     private readonly PhpWriter phpWriter;
 
-    public PhpInterfaceWriter(PhpWriter phpWriter)
+    public PhpInterfaceHydratorWriter(PhpWriter phpWriter)
     {
         this.phpWriter = phpWriter;
     }
 
     public bool CanWrite(Type type) => type.IsInterface;
 
-    public string GetFileName(Type type, string typeName) => $"{typeName}.php";
+    public string GetFileName(Type type, string typeName) => $"{phpWriter.HydratorTypeName(type)}.php";
 
     public void Write(IndentedTextWriter writer, Type type, string typeName)
     {
         writer.WriteLine($"""
 <?php declare(strict_types=1);
 
-namespace {Constants.Namespace};
+namespace {Constants.InternalNamespace};
 
+use Relewise\Models;
 """);
+        writer.WriteLine();
+
         var deprecationComment = type.GetCustomAttribute(typeof(ObsoleteAttribute)) is ObsoleteAttribute { } obsolete ? $"@deprecated {obsolete.Message}" : null;
 
         writer.WriteCommentBlock(
             phpWriter.XmlDocumentation.GetSummary(type),
-            "This is actually an interface.",
+            "Hydrator helper for this interface.",
             deprecationComment
         );
 
-        writer.WriteLine($"interface {typeName}");
+        writer.WriteLine($"class {phpWriter.HydratorTypeName(type)}");
         writer.WriteLine("{");
         writer.Indent++;
+        phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, [], internalContext: true);
         writer.Indent--;
         writer.WriteLine("}");
     }

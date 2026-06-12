@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-abstract class EntityChangeTriggerResult
+abstract class EntityChangeTriggerResult implements ITriggerResult
 {
     public string $typeDefinition = "";
     public UserResultDetails $user;
