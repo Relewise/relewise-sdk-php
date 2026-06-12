@@ -3,7 +3,7 @@
 namespace Relewise\Models;
 
 /** Produces content that is commonly viewed after the products configured by ProductAndVariantIds.  Use this feed source to show related content items in feeds on product pages, cart pages or power steps. */
-class ContentsViewedAfterProductSeedFeedSource extends EntityBySeedFeedSource
+class ContentsViewedAfterProductSeedFeedSource extends EntityBySeedFeedSource implements IContentFeedSource
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Feed.Sources.ContentsViewedAfterProductSeedFeedSource, Relewise.Client";
     public static function create(FeedSourceSelectionPolicy $selectionPolicy, int $maxSeedItems, int $randomizationWindow) : ContentsViewedAfterProductSeedFeedSource

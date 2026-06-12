@@ -3,7 +3,7 @@
 namespace Relewise\Models;
 
 /** Produces products that are commonly viewed after the products configured by ProductAndVariantIds. */
-class ProductsViewedAfterProductSeedFeedSource extends EntityBySeedFeedSource
+class ProductsViewedAfterProductSeedFeedSource extends EntityBySeedFeedSource implements IProductFeedSource
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Feed.Sources.ProductsViewedAfterProductSeedFeedSource, Relewise.Client";
     public static function create(FeedSourceSelectionPolicy $selectionPolicy, int $maxSeedItems, int $randomizationWindow) : ProductsViewedAfterProductSeedFeedSource

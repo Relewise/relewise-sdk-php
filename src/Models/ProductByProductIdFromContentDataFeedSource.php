@@ -3,7 +3,7 @@
 namespace Relewise\Models;
 
 /** Shows products referenced by content items that were recently shown in the feed, when combined with a feed source that shows content.  Use this feed source to inject related products into a feed of content items such as short promotional videos. */
-class ProductByProductIdFromContentDataFeedSource extends FeedSource
+class ProductByProductIdFromContentDataFeedSource extends FeedSource implements IProductFeedSource
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Feed.Sources.ProductByProductIdFromContentDataFeedSource, Relewise.Client";
     /** The content data key that contains product ids. */

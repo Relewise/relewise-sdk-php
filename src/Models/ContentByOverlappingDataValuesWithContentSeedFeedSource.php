@@ -3,7 +3,7 @@
 namespace Relewise\Models;
 
 /** Produces content by scoring overlap between seeded content data values and candidate content data values.  Use this feed source to show content with similar attributes, such as color or tags, as the seed, for example, on a content page. */
-class ContentByOverlappingDataValuesWithContentSeedFeedSource extends EntityBySeedFeedSource
+class ContentByOverlappingDataValuesWithContentSeedFeedSource extends EntityBySeedFeedSource implements IContentFeedSource
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Feed.Sources.ContentByOverlappingDataValuesWithContentSeedFeedSource, Relewise.Client";
     /** The content data keys whose values should be compared between the feed seed and each candidate. */

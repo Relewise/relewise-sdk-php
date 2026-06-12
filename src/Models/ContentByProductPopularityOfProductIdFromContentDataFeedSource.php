@@ -3,7 +3,7 @@
 namespace Relewise\Models;
 
 /** Produces content by scoring product popularity for products referenced by product ids on the content items.  Use this feed source to create a dynamic personalized feed that shows content related to popular products and products with which the user has recently interacted. To use this content source, content items must contain ids of the related products (for example, products featured in a video) in data key referenced by ContentDataKey. The output will be ranked by popularity of the referenced products, combined with the user's recent interaction with the products in the feed. */
-class ContentByProductPopularityOfProductIdFromContentDataFeedSource extends FeedSource
+class ContentByProductPopularityOfProductIdFromContentDataFeedSource extends FeedSource implements IContentFeedSource
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Feed.Sources.ContentByProductPopularityOfProductIdFromContentDataFeedSource, Relewise.Client";
     /** The content data key that contains related product ids. */

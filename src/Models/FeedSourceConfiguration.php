@@ -24,7 +24,7 @@ class FeedSourceConfiguration
             $result->products = array();
             foreach($arr["products"] as &$value)
             {
-                array_push($result->products, IProductFeedSource::hydrate($value));
+                array_push($result->products, Internal\IProductFeedSourceHydrator::hydrate($value));
             }
         }
         if (array_key_exists("content", $arr))
@@ -32,7 +32,7 @@ class FeedSourceConfiguration
             $result->content = array();
             foreach($arr["content"] as &$value)
             {
-                array_push($result->content, IContentFeedSource::hydrate($value));
+                array_push($result->content, Internal\IContentFeedSourceHydrator::hydrate($value));
             }
         }
         return $result;

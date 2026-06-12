@@ -3,7 +3,7 @@
 namespace Relewise\Models;
 
 /** Produces most popular content for the configured time window. */
-class ContentByPopularityFeedSource extends FeedSource
+class ContentByPopularityFeedSource extends FeedSource implements IContentFeedSource
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Feed.Sources.ContentByPopularityFeedSource, Relewise.Client";
     /** The time window in minutes used when reading the popularity source. */

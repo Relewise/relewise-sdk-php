@@ -3,7 +3,7 @@
 namespace Relewise\Models;
 
 /** Produces a feed of most purchased products for the configured time window. */
-class ProductByPurchasePopularityFeedSource extends ProductByPopularityFeedSource
+class ProductByPurchasePopularityFeedSource extends ProductByPopularityFeedSource implements IProductFeedSource
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Feed.Sources.ProductByPurchasePopularityFeedSource, Relewise.Client";
     public static function create(FeedSourceSelectionPolicy $selectionPolicy, int $popularityWindowMinutes, int $randomizationWindow) : ProductByPurchasePopularityFeedSource

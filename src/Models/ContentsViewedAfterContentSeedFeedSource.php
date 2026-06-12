@@ -3,7 +3,7 @@
 namespace Relewise\Models;
 
 /** Produces content that is commonly viewed after the content configured by ContentIds.  Use this feed source to show related content items in feeds on content pages. */
-class ContentsViewedAfterContentSeedFeedSource extends EntityBySeedFeedSource
+class ContentsViewedAfterContentSeedFeedSource extends EntityBySeedFeedSource implements IContentFeedSource
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Feed.Sources.ContentsViewedAfterContentSeedFeedSource, Relewise.Client";
     public static function create(FeedSourceSelectionPolicy $selectionPolicy, int $maxSeedItems, int $randomizationWindow) : ContentsViewedAfterContentSeedFeedSource

@@ -3,7 +3,7 @@
 namespace Relewise\Models;
 
 /** Produces products that are commonly purchased with the products configured by ProductAndVariantIds. */
-class ProductsPurchasedWithProductSeedFeedSource extends EntityBySeedFeedSource
+class ProductsPurchasedWithProductSeedFeedSource extends EntityBySeedFeedSource implements IProductFeedSource
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Feed.Sources.ProductsPurchasedWithProductSeedFeedSource, Relewise.Client";
     public static function create(FeedSourceSelectionPolicy $selectionPolicy, int $maxSeedItems, int $randomizationWindow) : ProductsPurchasedWithProductSeedFeedSource
