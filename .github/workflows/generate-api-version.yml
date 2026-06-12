@@ -15,7 +15,7 @@ permissions:
   pull-requests: write
 
 env:
-  REVIEWERS: __GITHUB_REVIEWER_1__,__GITHUB_REVIEWER_2__
+  REVIEWERS: mzanoni,soe-relewise
 
 jobs:
   generate-api-version:
