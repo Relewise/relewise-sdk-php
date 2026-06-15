@@ -2,11 +2,13 @@
 
 namespace Relewise\Models;
 
+/** Controls how product recommendation requests should shape and trim the returned product and variant output. */
 class ProductRecommendationRequestSettings
 {
     public int $numberOfRecommendations;
     public bool $allowFillIfNecessaryToReachNumberOfRecommendations;
     public bool $allowReplacingOfRecentlyShownRecommendations;
+    /** @deprecated Use VariantRequestSettings.MaxVariantsPerProduct instead. Setting VariantRequestSettings.MaxVariantsPerProduct = 1 is the same as RecommendVariant = true. */
     public bool $recommendVariant;
     public ?SelectedProductPropertiesSettings $selectedProductProperties;
     public ?SelectedVariantPropertiesSettings $selectedVariantProperties;
@@ -14,6 +16,8 @@ class ProductRecommendationRequestSettings
     public ?bool $allowProductsCurrentlyInCart;
     public ?SelectedBrandPropertiesSettings $selectedBrandProperties;
     public ?int $prioritizeResultsNotRecommendedWithinSeconds;
+    /** Controls whether recommendation results may include concrete variants, and how many variants may be returned per product. Use MaxVariantsPerProduct to switch between product-only output and variant-inclusive output. */
+    public ?VariantRecommendationRequestSettings $variantRequestSettings;
     
     public static function create() : ProductRecommendationRequestSettings
     {
@@ -64,6 +68,10 @@ class ProductRecommendationRequestSettings
         {
             $result->prioritizeResultsNotRecommendedWithinSeconds = $arr["prioritizeResultsNotRecommendedWithinSeconds"];
         }
+        if (array_key_exists("variantRequestSettings", $arr))
+        {
+            $result->variantRequestSettings = VariantRecommendationRequestSettings::hydrate($arr["variantRequestSettings"]);
+        }
         return $result;
     }
     
@@ -85,6 +93,7 @@ class ProductRecommendationRequestSettings
         return $this;
     }
     
+    /** @deprecated Use VariantRequestSettings.MaxVariantsPerProduct instead. Setting VariantRequestSettings.MaxVariantsPerProduct = 1 is the same as RecommendVariant = true. */
     function setRecommendVariant(bool $recommendVariant)
     {
         $this->recommendVariant = $recommendVariant;
@@ -124,6 +133,13 @@ class ProductRecommendationRequestSettings
     function setPrioritizeResultsNotRecommendedWithinSeconds(?int $prioritizeResultsNotRecommendedWithinSeconds)
     {
         $this->prioritizeResultsNotRecommendedWithinSeconds = $prioritizeResultsNotRecommendedWithinSeconds;
+        return $this;
+    }
+    
+    /** Controls whether recommendation results may include concrete variants, and how many variants may be returned per product. Use MaxVariantsPerProduct to switch between product-only output and variant-inclusive output. */
+    function setVariantRequestSettings(?VariantRecommendationRequestSettings $variantRequestSettings)
+    {
+        $this->variantRequestSettings = $variantRequestSettings;
         return $this;
     }
 }

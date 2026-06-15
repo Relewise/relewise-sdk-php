@@ -21,6 +21,8 @@ class SelectedProductPropertiesSettings
     public ?SelectedScorePropertiesSettings $score;
     /** Determines whether UserEngagement should be populated when results are mapped. */
     public bool $userEngagement;
+    /** Determines whether VariantResolution should be populated for product search results. */
+    public bool $variantResolution;
     
     public static function create() : SelectedProductPropertiesSettings
     {
@@ -94,6 +96,10 @@ class SelectedProductPropertiesSettings
         if (array_key_exists("userEngagement", $arr))
         {
             $result->userEngagement = $arr["userEngagement"];
+        }
+        if (array_key_exists("variantResolution", $arr))
+        {
+            $result->variantResolution = $arr["variantResolution"];
         }
         return $result;
     }
@@ -204,6 +210,13 @@ class SelectedProductPropertiesSettings
     function setUserEngagement(bool $userEngagement)
     {
         $this->userEngagement = $userEngagement;
+        return $this;
+    }
+    
+    /** Determines whether VariantResolution should be populated for product search results. */
+    function setVariantResolution(bool $variantResolution)
+    {
+        $this->variantResolution = $variantResolution;
         return $this;
     }
 }

@@ -251,6 +251,14 @@ abstract class TimedResponse
         {
             return MerchandisingRuleResponse::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Responses.Feed.FeedConfigurationResponse, Relewise.Client")
+        {
+            return FeedConfigurationResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.Feed.FeedConfigurationsResponse, Relewise.Client")
+        {
+            return FeedConfigurationsResponse::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Responses.Analyzers.ProductPerformanceResponse, Relewise.Client")
         {
             return ProductPerformanceResponse::hydrate($arr);
