@@ -449,6 +449,18 @@ abstract class LicensedRequest
         {
             return SortVariantsRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Recommendations.Feed.DeleteFeedConfigurationRequest, Relewise.Client")
+        {
+            return DeleteFeedConfigurationRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Recommendations.Feed.FeedConfigurationRequest, Relewise.Client")
+        {
+            return FeedConfigurationRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Recommendations.Feed.FeedConfigurationsRequest, Relewise.Client")
+        {
+            return FeedConfigurationsRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Recommendations.Feed.FeedRecommendationInitializationRequest, Relewise.Client")
         {
             return FeedRecommendationInitializationRequest::hydrate($arr);
@@ -456,6 +468,10 @@ abstract class LicensedRequest
         if ($type=="Relewise.Client.Requests.Recommendations.Feed.FeedRecommendationNextItemsRequest, Relewise.Client")
         {
             return FeedRecommendationNextItemsRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Recommendations.Feed.SaveFeedConfigurationRequest, Relewise.Client")
+        {
+            return SaveFeedConfigurationRequest::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.Queries.BrandQuery, Relewise.Client")
         {

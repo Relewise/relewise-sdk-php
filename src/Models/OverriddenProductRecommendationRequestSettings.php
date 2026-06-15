@@ -2,11 +2,13 @@
 
 namespace Relewise\Models;
 
+/** Partial overrides that can be merged into an existing ProductRecommendationRequestSettings instance. */
 class OverriddenProductRecommendationRequestSettings
 {
     public ?int $numberOfRecommendations;
     public ?bool $allowFillIfNecessaryToReachNumberOfRecommendations;
     public ?bool $allowReplacingOfRecentlyShownRecommendations;
+    /** @deprecated Use VariantRequestSettings.MaxVariantsPerProduct instead. */
     public ?bool $recommendVariant;
     public OverriddenSelectedProductPropertiesSettings $selectedProductProperties;
     public OverriddenSelectedVariantPropertiesSettings $selectedVariantProperties;
@@ -14,6 +16,8 @@ class OverriddenProductRecommendationRequestSettings
     public ?bool $allowProductsCurrentlyInCart;
     public OverriddenSelectedBrandPropertiesSettings $selectedBrandProperties;
     public ?int $prioritizeResultsNotRecommendedWithinSeconds;
+    /** Overrides variant-inclusion behavior for product recommendation requests. Use this to replace the effective VariantRequestSettings for the overridden request. MaxVariantsPerProduct. */
+    public ?VariantRecommendationRequestSettings $variantRequestSettings;
     
     public static function create() : OverriddenProductRecommendationRequestSettings
     {
@@ -64,6 +68,10 @@ class OverriddenProductRecommendationRequestSettings
         {
             $result->prioritizeResultsNotRecommendedWithinSeconds = $arr["prioritizeResultsNotRecommendedWithinSeconds"];
         }
+        if (array_key_exists("variantRequestSettings", $arr))
+        {
+            $result->variantRequestSettings = VariantRecommendationRequestSettings::hydrate($arr["variantRequestSettings"]);
+        }
         return $result;
     }
     
@@ -85,6 +93,7 @@ class OverriddenProductRecommendationRequestSettings
         return $this;
     }
     
+    /** @deprecated Use VariantRequestSettings.MaxVariantsPerProduct instead. */
     function setRecommendVariant(?bool $recommendVariant)
     {
         $this->recommendVariant = $recommendVariant;
@@ -124,6 +133,13 @@ class OverriddenProductRecommendationRequestSettings
     function setPrioritizeResultsNotRecommendedWithinSeconds(?int $prioritizeResultsNotRecommendedWithinSeconds)
     {
         $this->prioritizeResultsNotRecommendedWithinSeconds = $prioritizeResultsNotRecommendedWithinSeconds;
+        return $this;
+    }
+    
+    /** Overrides variant-inclusion behavior for product recommendation requests. Use this to replace the effective VariantRequestSettings for the overridden request. MaxVariantsPerProduct. */
+    function setVariantRequestSettings(?VariantRecommendationRequestSettings $variantRequestSettings)
+    {
+        $this->variantRequestSettings = $variantRequestSettings;
         return $this;
     }
 }

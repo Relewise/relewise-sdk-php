@@ -4,10 +4,10 @@ namespace Relewise\Models;
 
 class ConditionConfiguration
 {
-    public UserConditionConfiguration $user;
-    public InputConditionConfiguration $input;
-    public TargetConditionConfiguration $target;
-    public ContextConditionConfiguration $context;
+    public ?UserConditionConfiguration $user;
+    public ?InputConditionConfiguration $input;
+    public ?TargetConditionConfiguration $target;
+    public ?ContextConditionConfiguration $context;
     
     public static function create() : ConditionConfiguration
     {
@@ -37,25 +37,25 @@ class ConditionConfiguration
         return $result;
     }
     
-    function setUser(UserConditionConfiguration $user)
+    function setUser(?UserConditionConfiguration $user)
     {
         $this->user = $user;
         return $this;
     }
     
-    function setInput(InputConditionConfiguration $input)
+    function setInput(?InputConditionConfiguration $input)
     {
         $this->input = $input;
         return $this;
     }
     
-    function setTarget(TargetConditionConfiguration $target)
+    function setTarget(?TargetConditionConfiguration $target)
     {
         $this->target = $target;
         return $this;
     }
     
-    function setContext(ContextConditionConfiguration $context)
+    function setContext(?ContextConditionConfiguration $context)
     {
         $this->context = $context;
         return $this;
