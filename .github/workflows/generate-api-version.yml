@@ -1,11 +1,15 @@
 name: Generate API Version
 
 on:
-  repository_dispatch:
-    types: [generate-api-version]
+  workflow_call:
+    inputs:
+      trello-card-url:
+        description: Trello card URL
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
-      trello_card_url:
+      trello-card-url:
         description: Trello card URL
         required: true
         type: string
@@ -22,20 +26,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Validate dispatch payload
+      - name: Validate workflow input
         shell: pwsh
         env:
-          TRELLO_CARD_URL_INPUT: ${{ github.event.client_payload.trello_card_url }}
-          TRELLO_CARD_URL_WORKFLOW_INPUT: ${{ inputs.trello_card_url }}
+          TRELLO_CARD_URL_INPUT: ${{ inputs['trello-card-url'] }}
         run: |
           $trelloCardUrl = $env:TRELLO_CARD_URL_INPUT
 
           if ([string]::IsNullOrWhiteSpace($trelloCardUrl)) {
-            $trelloCardUrl = $env:TRELLO_CARD_URL_WORKFLOW_INPUT
-          }
-
-          if ([string]::IsNullOrWhiteSpace($trelloCardUrl)) {
-            throw 'A Trello card URL is required. For repository_dispatch, include client_payload.trello_card_url. For workflow_dispatch, provide the trello_card_url input.'
+            throw 'A Trello card URL is required. Provide the trello-card-url input.'
           }
 
           "TRELLO_CARD_URL=$trelloCardUrl" >> $env:GITHUB_ENV
