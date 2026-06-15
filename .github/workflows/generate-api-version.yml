@@ -1,0 +1,145 @@
+name: Generate API Version
+
+on:
+  workflow_call:
+    inputs:
+      trello-card-url:
+        description: Trello card URL
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      trello-card-url:
+        description: Trello card URL
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  REVIEWERS: mzanoni,soe-relewise
+
+jobs:
+  generate-api-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate workflow input
+        shell: pwsh
+        env:
+          TRELLO_CARD_URL_INPUT: ${{ inputs['trello-card-url'] }}
+        run: |
+          $trelloCardUrl = $env:TRELLO_CARD_URL_INPUT
+
+          if ([string]::IsNullOrWhiteSpace($trelloCardUrl)) {
+            throw 'A Trello card URL is required. Provide the trello-card-url input.'
+          }
+
+          "TRELLO_CARD_URL=$trelloCardUrl" >> $env:GITHUB_ENV
+
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore generator
+        run: dotnet restore Generator/Generator.csproj
+
+      - name: Build generator
+        run: dotnet build Generator/Generator.csproj --configuration Release --no-restore
+
+      - name: Resolve Relewise.Client version
+        shell: pwsh
+        run: |
+          $assetsPath = 'Generator/obj/project.assets.json'
+          $assets = Get-Content $assetsPath -Raw | ConvertFrom-Json
+          $package = $assets.libraries.PSObject.Properties.Name |
+            Where-Object { $_ -like 'Relewise.Client/*' } |
+            Select-Object -First 1
+
+          if ([string]::IsNullOrWhiteSpace($package)) {
+            throw "Could not find Relewise.Client in $assetsPath."
+          }
+
+          $version = $package.Split('/', 2)[1]
+
+          if ([string]::IsNullOrWhiteSpace($version)) {
+            throw "Could not extract Relewise.Client version from '$package'."
+          }
+
+          "API_VERSION=$version" >> $env:GITHUB_ENV
+          "Resolved Relewise.Client version $version." >> $env:GITHUB_STEP_SUMMARY
+
+      - name: Install PHP dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Generate PHP classes
+        shell: pwsh
+        run: ./generate.ps1
+
+      - name: PHPUnit Tests
+        env:
+          DATASET_ID: ${{ secrets.INTEGRATIONTESTS_DATASET_ID }}
+          API_KEY: ${{ secrets.INTEGRATIONTESTS_API_KEY }}
+          XDEBUG_MODE: coverage
+        run: vendor/bin/phpunit --configuration tests/phpunit.xml --testsuite Unit
+
+      - name: Check generated changes
+        id: changes
+        shell: pwsh
+        run: |
+          $changes = git status --porcelain -- src
+
+          if ([string]::IsNullOrWhiteSpace($changes)) {
+            "has_changes=false" >> $env:GITHUB_OUTPUT
+            "No generated PHP changes were produced for API version $env:API_VERSION. No pull request was created." >> $env:GITHUB_STEP_SUMMARY
+          } else {
+            "has_changes=true" >> $env:GITHUB_OUTPUT
+            "Generated PHP changes were produced for API version $env:API_VERSION." >> $env:GITHUB_STEP_SUMMARY
+          }
+
+      - name: Create pull request
+        if: steps.changes.outputs.has_changes == 'true'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $branch = "chore/update-sdk-api-$env:API_VERSION-${{ github.run_number }}"
+          $commitMessage = "chore(php): update SDK for API version $env:API_VERSION"
+          $title = "feat: API version $env:API_VERSION"
+          $bodyPath = Join-Path $env:RUNNER_TEMP 'generate-api-version-pr-body.md'
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -c $branch
+          git add -A src
+          git commit -m $commitMessage
+          git push --set-upstream origin $branch
+
+          @(
+            $env:TRELLO_CARD_URL
+            ''
+            '## Summary'
+            "- Generated PHP SDK code for Relewise.Client $env:API_VERSION."
+            ''
+            '## Validation'
+            '- dotnet restore Generator/Generator.csproj'
+            '- dotnet build Generator/Generator.csproj --configuration Release --no-restore'
+            '- pwsh ./generate.ps1'
+            '- vendor/bin/phpunit --configuration tests/phpunit.xml --testsuite Unit'
+          ) | Set-Content -Path $bodyPath
+
+          gh pr create `
+            --base main `
+            --head $branch `
+            --title $title `
+            --body-file $bodyPath `
+            --reviewer $env:REVIEWERS
+
+          "Created pull request '$title' from '$branch'." >> $env:GITHUB_STEP_SUMMARY
