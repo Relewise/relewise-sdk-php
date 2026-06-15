@@ -85,6 +85,10 @@ jobs:
         run: ./generate.ps1
 
       - name: PHPUnit Tests
+        env:
+          DATASET_ID: ${{ secrets.INTEGRATIONTESTS_DATASET_ID }}
+          API_KEY: ${{ secrets.INTEGRATIONTESTS_API_KEY }}
+          XDEBUG_MODE: coverage
         run: vendor/bin/phpunit --configuration tests/phpunit.xml --testsuite Unit
 
       - name: Check generated changes
