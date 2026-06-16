@@ -1,4 +1,5 @@
 name: Generate API Version
+run-name: Generate API Version - ${{ inputs['dispatch-id'] || github.run_id }}
 
 on:
   workflow_call:
@@ -7,12 +8,22 @@ on:
         description: Trello card URL
         required: true
         type: string
+      dispatch-id:
+        description: Unique id used by callers to find this workflow run
+        required: false
+        type: string
+        default: ''
   workflow_dispatch:
     inputs:
       trello-card-url:
         description: Trello card URL
         required: true
         type: string
+      dispatch-id:
+        description: Unique id used by callers to find this workflow run
+        required: false
+        type: string
+        default: ''
 
 permissions:
   contents: write
