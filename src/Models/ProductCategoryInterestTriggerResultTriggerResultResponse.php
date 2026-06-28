@@ -4,7 +4,7 @@ namespace Relewise\Models;
 
 class ProductCategoryInterestTriggerResultTriggerResultResponse extends TimedResponse
 {
-    public string $typeDefinition = "Relewise.Client.Responses.Triggers.TriggerResultResponse`1[[Relewise.Client.Responses.Triggers.Results.ProductCategoryInterestTriggerResult, Relewise.Client, Version=1.299.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
+    public string $typeDefinition = "Relewise.Client.Responses.Triggers.TriggerResultResponse`1[[Relewise.Client.Responses.Triggers.Results.ProductCategoryInterestTriggerResult, Relewise.Client, Version=1.303.0.0, Culture=neutral, PublicKeyToken=null]], Relewise.Client";
     public ProductCategoryInterestTriggerResult $result;
     
     public static function create() : ProductCategoryInterestTriggerResultTriggerResultResponse

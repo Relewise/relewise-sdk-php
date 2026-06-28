@@ -2,8 +2,9 @@
 
 namespace Relewise\Models;
 
-class ProductCategoryInterestTriggerResult implements ITriggerResult
+class ProductCategoryInterestTriggerResult extends TriggerResultBase implements ITriggerResult
 {
+    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.ProductCategoryInterestTriggerResult, Relewise.Client";
     public UserResultDetails $user;
     public array $categories;
     
@@ -15,7 +16,7 @@ class ProductCategoryInterestTriggerResult implements ITriggerResult
     
     public static function hydrate(array $arr) : ProductCategoryInterestTriggerResult
     {
-        $result = new ProductCategoryInterestTriggerResult();
+        $result = TriggerResultBase::hydrateBase(new ProductCategoryInterestTriggerResult(), $arr);
         if (array_key_exists("user", $arr))
         {
             $result->user = UserResultDetails::hydrate($arr["user"]);
