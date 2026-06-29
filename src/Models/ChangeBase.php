@@ -1,30 +1,25 @@
 <?php declare(strict_types=1);
 
-namespace Relewise\Models\Internal;
+namespace Relewise\Models;
 
-use Relewise\Models;
-
-/**
- * Marker interface for classes describing property changes.
- * Hydrator helper for this interface.
- */
-class IChangeHydrator
+abstract class ChangeBase
 {
+    public string $typeDefinition = "";
     
     public static function hydrate(array $arr)
     {
         $type = $arr["\$type"];
         if ($type=="Relewise.Client.DataTypes.Changes.Change, Relewise.Client")
         {
-            return Models\Change::hydrate($arr);
+            return Change::hydrate($arr);
         }
         if ($type=="Relewise.Client.DataTypes.Changes.Decrease, Relewise.Client")
         {
-            return Models\Decrease::hydrate($arr);
+            return Decrease::hydrate($arr);
         }
         if ($type=="Relewise.Client.DataTypes.Changes.Increase, Relewise.Client")
         {
-            return Models\Increase::hydrate($arr);
+            return Increase::hydrate($arr);
         }
     }
     

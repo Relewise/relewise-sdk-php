@@ -2,7 +2,10 @@
 
 namespace Relewise\Models;
 
-/** This is actually an interface. */
+/**
+ * Marker interface for classes describing property changes.
+ * This is actually an interface.
+ */
 interface IChange
 {
 }

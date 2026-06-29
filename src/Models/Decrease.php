@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 /** Indicates that some property should change by decreasing in value. */
-class Decrease implements IChange
+class Decrease extends ChangeBase implements IChange
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Changes.Decrease, Relewise.Client";
     public static function create() : Decrease
     {
         $result = new Decrease();
@@ -13,7 +14,7 @@ class Decrease implements IChange
     
     public static function hydrate(array $arr) : Decrease
     {
-        $result = new Decrease();
+        $result = ChangeBase::hydrateBase(new Decrease(), $arr);
         return $result;
     }
 }

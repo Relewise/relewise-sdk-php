@@ -5,8 +5,9 @@ namespace Relewise\Models;
 use DateTime;
 use JsonSerializable;
 
-class ScheduledPeriod implements ISchedule, JsonSerializable
+class ScheduledPeriod extends ScheduleBase implements ISchedule, JsonSerializable
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Scheduling.ScheduledPeriod, Relewise.Client";
     public ?DateTime $fromUtc;
     public ?DateTime $toUtc;
     
@@ -20,7 +21,7 @@ class ScheduledPeriod implements ISchedule, JsonSerializable
     
     public static function hydrate(array $arr) : ScheduledPeriod
     {
-        $result = new ScheduledPeriod();
+        $result = ScheduleBase::hydrateBase(new ScheduledPeriod(), $arr);
         if (array_key_exists("fromUtc", $arr))
         {
             $result->fromUtc = new DateTime($arr["fromUtc"]);
@@ -47,6 +48,7 @@ class ScheduledPeriod implements ISchedule, JsonSerializable
     public function jsonSerialize(): mixed
     {
         $result = array();
+        $result["typeDefinition"] = $this->typeDefinition;
         if (isset($this->fromUtc))
         {
             $result["fromUtc"] = $this->fromUtc->format(DATE_ATOM);

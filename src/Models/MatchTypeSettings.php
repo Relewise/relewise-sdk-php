@@ -9,6 +9,7 @@ class MatchTypeSettings
     public bool $startsWith;
     public bool $endsWith;
     public bool $fuzzy;
+    public bool $semantic;
     
     public static function create() : MatchTypeSettings
     {
@@ -38,6 +39,10 @@ class MatchTypeSettings
         if (array_key_exists("fuzzy", $arr))
         {
             $result->fuzzy = $arr["fuzzy"];
+        }
+        if (array_key_exists("semantic", $arr))
+        {
+            $result->semantic = $arr["semantic"];
         }
         return $result;
     }
@@ -69,6 +74,12 @@ class MatchTypeSettings
     function setFuzzy(bool $fuzzy)
     {
         $this->fuzzy = $fuzzy;
+        return $this;
+    }
+    
+    function setSemantic(bool $semantic)
+    {
+        $this->semantic = $semantic;
         return $this;
     }
 }

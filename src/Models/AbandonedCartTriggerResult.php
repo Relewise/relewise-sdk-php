@@ -2,8 +2,9 @@
 
 namespace Relewise\Models;
 
-class AbandonedCartTriggerResult implements ITriggerResult
+class AbandonedCartTriggerResult extends TriggerResultBase implements ITriggerResult
 {
+    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.AbandonedCartTriggerResult, Relewise.Client";
     public UserResultDetails $user;
     
     public static function create() : AbandonedCartTriggerResult
@@ -14,7 +15,7 @@ class AbandonedCartTriggerResult implements ITriggerResult
     
     public static function hydrate(array $arr) : AbandonedCartTriggerResult
     {
-        $result = new AbandonedCartTriggerResult();
+        $result = TriggerResultBase::hydrateBase(new AbandonedCartTriggerResult(), $arr);
         if (array_key_exists("user", $arr))
         {
             $result->user = UserResultDetails::hydrate($arr["user"]);

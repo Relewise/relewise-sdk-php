@@ -2,8 +2,9 @@
 
 namespace Relewise\Models;
 
-class UserActivityTriggerResult implements ITriggerResult
+class UserActivityTriggerResult extends TriggerResultBase implements ITriggerResult
 {
+    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.UserActivityTriggerResult, Relewise.Client";
     public UserResultDetails $user;
     
     public static function create() : UserActivityTriggerResult
@@ -14,7 +15,7 @@ class UserActivityTriggerResult implements ITriggerResult
     
     public static function hydrate(array $arr) : UserActivityTriggerResult
     {
-        $result = new UserActivityTriggerResult();
+        $result = TriggerResultBase::hydrateBase(new UserActivityTriggerResult(), $arr);
         if (array_key_exists("user", $arr))
         {
             $result->user = UserResultDetails::hydrate($arr["user"]);
