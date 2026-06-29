@@ -83,6 +83,57 @@ jobs:
         shell: pwsh
         run: ./generate.ps1
 
+      - name: Wake up API
+        env:
+          DATASET_ID: ${{ secrets.INTEGRATIONTESTS_DATASET_ID }}
+          API_KEY: ${{ secrets.INTEGRATIONTESTS_API_KEY }}
+        run: |
+          php <<'PHP'
+          <?php
+
+          require 'vendor/autoload.php';
+
+          use Relewise\Factory\UserFactory;
+          use Relewise\Infrastructure\HttpClient\RequestTimeoutException;
+          use Relewise\Infrastructure\HttpClient\ServiceUnavailableException;
+          use Relewise\Models\Currency;
+          use Relewise\Models\Language;
+          use Relewise\Models\ProductSearchRequest;
+          use Relewise\Searcher;
+
+          $datasetId = getenv('DATASET_ID');
+          $apiKey = getenv('API_KEY');
+
+          if ($datasetId === false || trim($datasetId) === '') {
+              throw new RuntimeException('DATASET_ID must be configured.');
+          }
+
+          if ($apiKey === false || trim($apiKey) === '') {
+              throw new RuntimeException('API_KEY must be configured.');
+          }
+
+          $searcher = new Searcher($datasetId, $apiKey, 30);
+          $request = ProductSearchRequest::create(
+              Language::create('en-US'),
+              Currency::create('USD'),
+              UserFactory::byTemporaryId('github-actions-api-wakeup'),
+              'github-actions-api-wakeup',
+              'api-wakeup',
+              0,
+              1
+          );
+
+          try {
+              $searcher->productSearch($request);
+              echo "API wake-up request completed.\n";
+          } catch (ServiceUnavailableException | RequestTimeoutException $exception) {
+              fwrite(STDERR, "API wake-up request returned a transient response: {$exception->getMessage()}\n");
+          }
+          PHP
+
+      - name: Wait for API warm-up
+        run: sleep 60
+
       - name: PHPUnit Tests
         env:
           DATASET_ID: ${{ secrets.INTEGRATIONTESTS_DATASET_ID }}
@@ -132,6 +183,8 @@ jobs:
             '- dotnet restore Generator/Generator.csproj'
             '- dotnet build Generator/Generator.csproj --configuration Release --no-restore'
             '- pwsh ./generate.ps1'
+            '- API wake-up request with integration dataset credentials'
+            '- sleep 60'
             '- vendor/bin/phpunit --configuration tests/phpunit.xml --testsuite Unit'
           ) | Set-Content -Path $bodyPath
 
