@@ -27,6 +27,8 @@ class SearchIndex implements JsonSerializable
     public IndexConfiguration $configuration;
     /** Details about the current rebuild status of the index These values are set server side, any values set from client is ignored */
     public RebuildStatus $rebuildStatus;
+    /** Details about the current semantic index status, if semantic indexing has produced runtime metadata for this index. These values are set server side, any values set from client is ignored */
+    public ?SemanticIndexInfo $semanticIndex;
     
     public static function create(string $id, string $description, bool $isDefault, bool $enabled = true) : SearchIndex
     {
@@ -80,6 +82,10 @@ class SearchIndex implements JsonSerializable
         if (array_key_exists("rebuildStatus", $arr))
         {
             $result->rebuildStatus = RebuildStatus::hydrate($arr["rebuildStatus"]);
+        }
+        if (array_key_exists("semanticIndex", $arr))
+        {
+            $result->semanticIndex = SemanticIndexInfo::hydrate($arr["semanticIndex"]);
         }
         return $result;
     }
@@ -154,6 +160,13 @@ class SearchIndex implements JsonSerializable
         return $this;
     }
     
+    /** Details about the current semantic index status, if semantic indexing has produced runtime metadata for this index. These values are set server side, any values set from client is ignored */
+    function setSemanticIndex(?SemanticIndexInfo $semanticIndex)
+    {
+        $this->semanticIndex = $semanticIndex;
+        return $this;
+    }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();
@@ -196,6 +209,10 @@ class SearchIndex implements JsonSerializable
         if (isset($this->rebuildStatus))
         {
             $result["rebuildStatus"] = $this->rebuildStatus;
+        }
+        if (isset($this->semanticIndex))
+        {
+            $result["semanticIndex"] = $this->semanticIndex;
         }
         return $result;
     }

@@ -2,7 +2,7 @@
 
 namespace Relewise\Models;
 
-abstract class EntityChangeTriggerResult implements ITriggerResult
+abstract class EntityChangeTriggerResult extends TriggerResultBase implements ITriggerResult
 {
     public string $typeDefinition = "";
     public UserResultDetails $user;
@@ -23,6 +23,7 @@ abstract class EntityChangeTriggerResult implements ITriggerResult
     
     public static function hydrateBase(mixed $result, array $arr)
     {
+        $result = TriggerResultBase::hydrateBase($result, $arr);
         if (array_key_exists("user", $arr))
         {
             $result->user = UserResultDetails::hydrate($arr["user"]);

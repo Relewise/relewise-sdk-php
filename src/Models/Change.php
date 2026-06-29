@@ -3,8 +3,9 @@
 namespace Relewise\Models;
 
 /** Indicates that some property should change by having a new value which is still of the same type. */
-class Change implements IChange
+class Change extends ChangeBase implements IChange
 {
+    public string $typeDefinition = "Relewise.Client.DataTypes.Changes.Change, Relewise.Client";
     public static function create() : Change
     {
         $result = new Change();
@@ -13,7 +14,7 @@ class Change implements IChange
     
     public static function hydrate(array $arr) : Change
     {
-        $result = new Change();
+        $result = ChangeBase::hydrateBase(new Change(), $arr);
         return $result;
     }
 }

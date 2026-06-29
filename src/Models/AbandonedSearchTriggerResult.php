@@ -2,8 +2,9 @@
 
 namespace Relewise\Models;
 
-class AbandonedSearchTriggerResult implements ITriggerResult
+class AbandonedSearchTriggerResult extends TriggerResultBase implements ITriggerResult
 {
+    public string $typeDefinition = "Relewise.Client.Responses.Triggers.Results.AbandonedSearchTriggerResult, Relewise.Client";
     public UserResultDetails $user;
     public SearchType $type;
     public array $searches;
@@ -16,7 +17,7 @@ class AbandonedSearchTriggerResult implements ITriggerResult
     
     public static function hydrate(array $arr) : AbandonedSearchTriggerResult
     {
-        $result = new AbandonedSearchTriggerResult();
+        $result = TriggerResultBase::hydrateBase(new AbandonedSearchTriggerResult(), $arr);
         if (array_key_exists("user", $arr))
         {
             $result->user = UserResultDetails::hydrate($arr["user"]);
