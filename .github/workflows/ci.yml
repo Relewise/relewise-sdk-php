@@ -22,7 +22,7 @@ jobs:
 
       - name: PHPUnit Unit Tests
         if: ${{ github.actor == 'dependabot[bot]' }}
-        uses: php-actions/phpunit@v3
+        uses: php-actions/phpunit@v4
         with:
           bootstrap: vendor/autoload.php
           configuration: tests/phpunit.xml
@@ -33,7 +33,7 @@ jobs:
 
       - name: PHPUnit Tests
         if: ${{ github.actor != 'dependabot[bot]' }}
-        uses: php-actions/phpunit@v3
+        uses: php-actions/phpunit@v4
         with:
           bootstrap: vendor/autoload.php
           configuration: tests/phpunit.xml

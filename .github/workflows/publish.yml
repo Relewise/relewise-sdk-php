@@ -22,7 +22,7 @@ jobs:
         run: ./generate.sh
 
       - name: PHPUnit Tests
-        uses: php-actions/phpunit@v3
+        uses: php-actions/phpunit@v4
         with:
           bootstrap: vendor/autoload.php
           configuration: tests/phpunit.xml
