@@ -64,7 +64,7 @@ Generate SDK code:
 Run all tests configured by CI:
 
 ```powershell
-vendor/bin/phpunit --configuration tests/phpunit.xml --testsuite Unit
+vendor/bin/phpunit --configuration tests/phpunit.xml
 ```
 
 Run unit-only folder (optional fast loop):
@@ -107,6 +107,6 @@ Each PR should include:
 
 ## Known Pitfalls
 - Manual edits to generated code will drift from generator output.
-- `tests/phpunit.xml` points at `tests/php`, so default suite includes both unit and integration folders.
+- The `Integration` PHPUnit suite requires `DATASET_ID` and `API_KEY`; CI skips it for Dependabot-triggered builds.
 - Tests depending on `DATASET_ID`/`API_KEY` fail fast when env is missing.
 - Keep runtime assumptions aligned with `composer.json` (`php: ^8.1`).

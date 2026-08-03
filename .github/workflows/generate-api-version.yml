@@ -139,7 +139,7 @@ jobs:
           DATASET_ID: ${{ secrets.INTEGRATIONTESTS_DATASET_ID }}
           API_KEY: ${{ secrets.INTEGRATIONTESTS_API_KEY }}
           XDEBUG_MODE: coverage
-        run: vendor/bin/phpunit --configuration tests/phpunit.xml --testsuite Unit
+        run: vendor/bin/phpunit --configuration tests/phpunit.xml
 
       - name: Check generated changes
         id: changes
@@ -185,7 +185,7 @@ jobs:
             '- pwsh ./generate.ps1'
             '- API wake-up request with integration dataset credentials'
             '- sleep 60'
-            '- vendor/bin/phpunit --configuration tests/phpunit.xml --testsuite Unit'
+            '- vendor/bin/phpunit --configuration tests/phpunit.xml'
           ) | Set-Content -Path $bodyPath
 
           gh pr create `

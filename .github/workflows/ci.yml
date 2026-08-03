@@ -20,13 +20,24 @@ jobs:
       - name: Generate PHP classes
         run: ./generate.sh
 
-      - name: PHPUnit Tests
+      - name: PHPUnit Unit Tests
+        if: ${{ github.actor == 'dependabot[bot]' }}
         uses: php-actions/phpunit@v3
         with:
           bootstrap: vendor/autoload.php
           configuration: tests/phpunit.xml
           test_suffix: .php
           testsuite: Unit
+          version: 10.0.19
+          php_extensions: "xdebug"
+
+      - name: PHPUnit Tests
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        uses: php-actions/phpunit@v3
+        with:
+          bootstrap: vendor/autoload.php
+          configuration: tests/phpunit.xml
+          test_suffix: .php
           version: 10.0.19
           php_extensions: "xdebug"
         env:

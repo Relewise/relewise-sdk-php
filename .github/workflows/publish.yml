@@ -27,7 +27,6 @@ jobs:
           bootstrap: vendor/autoload.php
           configuration: tests/phpunit.xml
           test_suffix: .php
-          testsuite: Unit
           version: 9.5.28
         env:
           DATASET_ID: ${{secrets.INTEGRATIONTESTS_DATASET_ID}}
