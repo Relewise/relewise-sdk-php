@@ -66,10 +66,16 @@ class FiltersTest extends BaseTestCase
                 )
         );
 
-        $response = $searcher->productSearch($productSearchRequest);
+        $response = $this->assertEventually(
+            static fn () => $searcher->productSearch($productSearchRequest),
+            static fn ($candidate): bool => count($candidate->results) === 1
+                && $candidate->results[0]->productId === '1',
+            'fixture product 1 is returned by the product ID filter'
+        );
 
         self::assertNotNull($response);
         self::assertEquals(1, count($response->results));
+        self::assertEquals('1', $response->results[0]->productId);
     }
 
     public function testProductRecentlyViewedByUserFilter(): void

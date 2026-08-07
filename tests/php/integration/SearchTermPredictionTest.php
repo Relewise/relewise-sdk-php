@@ -29,7 +29,11 @@ class SearchTermPredictionTest extends BaseTestCase
                 ->setTargetEntityTypes(EntityType::Product, EntityType::Content)
         );
 
-        $response = $searcher->searchTermPrediction($searchTermPrediction);
+        $response = $this->assertEventually(
+            static fn () => $searcher->searchTermPrediction($searchTermPrediction),
+            static fn ($candidate): bool => count($candidate->predictions) > 0,
+            'the integration dataset returns predictions for fixture term 1'
+        );
 
         self::assertNotNull($response);
         self::assertNotEmpty($response->predictions);

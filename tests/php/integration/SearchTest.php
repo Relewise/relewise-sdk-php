@@ -58,7 +58,11 @@ class SearchTest extends BaseTestCase
             )
         );
 
-        $response = $searcher->productSearch($productSearch);
+        $response = $this->assertEventually(
+            static fn () => $searcher->productSearch($productSearch),
+            static fn ($candidate): bool => $candidate->hits > 0 && count($candidate->results) > 0,
+            'fixture product p-1 is searchable'
+        );
 
         self::assertNotNull($response);
         self::assertGreaterThan(0, $response->hits);
@@ -87,7 +91,11 @@ class SearchTest extends BaseTestCase
             )
         );
 
-        $response = $searcher->productCategorySearch($productCategorySearch);
+        $response = $this->assertEventually(
+            static fn () => $searcher->productCategorySearch($productCategorySearch),
+            static fn ($candidate): bool => $candidate->hits > 0 && count($candidate->results) > 0,
+            'the integration dataset contains searchable product categories'
+        );
 
         self::assertNotNull($response);
         self::assertGreaterThan(0, $response->hits);
@@ -113,7 +121,11 @@ class SearchTest extends BaseTestCase
             )
         );
 
-        $response = $searcher->productSearch($productSearch);
+        $response = $this->assertEventually(
+            static fn () => $searcher->productSearch($productSearch),
+            static fn ($candidate): bool => $candidate->hits > 0 && count($candidate->results) > 0,
+            'fixture category c-1 contains searchable products'
+        );
 
         self::assertNotNull($response);
         self::assertGreaterThan(0, $response->hits);
