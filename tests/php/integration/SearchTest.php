@@ -2,7 +2,6 @@
 
 namespace Relewise\Tests\Integration;
 
-use Relewise\Factory\DataValueFactory;
 use Relewise\Factory\UserFactory;
 use Relewise\Models\CategoryNameAndId;
 use Relewise\Models\CategoryPath;
@@ -165,13 +164,16 @@ class SearchTest extends BaseTestCase
     {
         $tracker = $this->tracker();
         $productId = $this->uniqueEntityId('highlight-product');
+        $language = Language::create($this->TEST_LANGUAGE());
 
         $tracker->trackProductUpdate(TrackProductUpdateRequest::create(
             ProductUpdate::create(
                 Product::create($productId)
-                    ->addToData("Description", DataValueFactory::multilingual(
-                        Multilingual::create(MultilingualValue::create(Language::create("en-US"), "the last word is highlighted"))
-                    )),
+                    ->setDisplayName(
+                        Multilingual::create(
+                            MultilingualValue::create($language, "the last word is highlighted")
+                        )
+                    ),
                 array()
             )
         ));
@@ -179,7 +181,7 @@ class SearchTest extends BaseTestCase
         $searcher = $this->searcher();
 
         $productSearch = ProductSearchRequest::create(
-            Language::create("en-US"),
+            $language,
             Currency::create("USD"),
             UserFactory::anonymous(),
             "integration test",
@@ -196,7 +198,7 @@ class SearchTest extends BaseTestCase
                         ->setMaxEntryLimit(1)
                     )
                     ->setHighlightable(ProductHighlightProps::create()
-                        ->addToDataKeys("Description")
+                        ->setDisplayName(true)
                     )
                     ->setShape(ProductProductHighlightPropsHighlightSettingsResponseShape::create()
                         ->setOffsets(ProductProductHighlightPropsHighlightSettingsOffsetSettings::create()
@@ -215,8 +217,8 @@ class SearchTest extends BaseTestCase
                 static fn () => $searcher->productSearch($productSearch),
                 static fn ($candidate): bool => $candidate->hits > 0
                     && count($candidate->results) > 0
-                    && $candidate->results[0]->highlight?->offsets?->data !== null
-                    && count($candidate->results[0]->highlight->offsets->data) > 0,
+                    && isset($candidate->results[0]->highlight?->offsets?->displayName)
+                    && count($candidate->results[0]->highlight->offsets->displayName) > 0,
                 sprintf('product %s is searchable with highlight offsets', $productId)
             );
 
@@ -227,14 +229,10 @@ class SearchTest extends BaseTestCase
 
             self::assertNotNull($productResult->highlight);
             self::assertNotNull($productResult->highlight->offsets);
-            self::assertNotNull($productResult->highlight->offsets->data);
-            self::assertGreaterThan(0, count($productResult->highlight->offsets->data));
-            self::assertNotNull($productResult->highlight->offsets->data[0]);
-            self::assertEquals("Description", $productResult->highlight->offsets->data[0]["key"]);
-            self::assertNotNull($productResult->highlight->offsets->data[0]["value"]);
-            self::assertNotNull($productResult->highlight->offsets->data[0]["value"][0]);
-            self::assertEquals(17, $productResult->highlight->offsets->data[0]["value"][0]["lowerBoundInclusive"]);
-            self::assertEquals(28, $productResult->highlight->offsets->data[0]["value"][0]["upperBoundInclusive"]);
+            self::assertNotNull($productResult->highlight->offsets->displayName);
+            self::assertGreaterThan(0, count($productResult->highlight->offsets->displayName));
+            self::assertEquals(17, $productResult->highlight->offsets->displayName[0]->lowerBoundInclusive);
+            self::assertEquals(28, $productResult->highlight->offsets->displayName[0]->upperBoundInclusive);
         } finally {
             $this->deleteProduct($tracker, $productId);
         }

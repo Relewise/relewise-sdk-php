@@ -52,6 +52,11 @@ class BaseTestCase extends TestCase
         return rtrim($serverUrl, '/');
     }
 
+    public function TEST_LANGUAGE(): string
+    {
+        return getenv('TEST_LANGUAGE') ?: 'en-US';
+    }
+
     protected function searcher(int $timeout = 5): Searcher
     {
         return $this->configureClient(new Searcher($this->DATASET_ID(), $this->API_KEY(), $timeout));

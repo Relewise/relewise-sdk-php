@@ -80,6 +80,22 @@ class IntegrationBaseTestCaseTest extends TestCase
         self::assertSame('https://sandbox-api.relewise.com', $searcher->serverUrl);
     }
 
+    public function testIntegrationLanguageCanBeConfigured(): void
+    {
+        $originalLanguage = getenv('TEST_LANGUAGE');
+        putenv('TEST_LANGUAGE=en-GB');
+
+        try {
+            $language = $this->testCase()->TEST_LANGUAGE();
+        } finally {
+            $originalLanguage === false
+                ? putenv('TEST_LANGUAGE')
+                : putenv('TEST_LANGUAGE=' . $originalLanguage);
+        }
+
+        self::assertSame('en-GB', $language);
+    }
+
     private function testCase(): object
     {
         return new class('integration-helper') extends BaseTestCase {
