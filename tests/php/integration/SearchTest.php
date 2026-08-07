@@ -19,6 +19,7 @@ use Relewise\Models\ProductCategorySearchRequest;
 use Relewise\Models\ProductDataRelevanceModifier;
 use Relewise\Models\ProductFacetQuery;
 use Relewise\Models\ProductHighlightProps;
+use Relewise\Models\ProductIdFilter;
 use Relewise\Models\ProductProductHighlightPropsHighlightSettingsLimits;
 use Relewise\Models\ProductProductHighlightPropsHighlightSettingsResponseShape;
 use Relewise\Models\ProductSearchRequest;
