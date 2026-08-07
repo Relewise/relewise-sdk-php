@@ -68,10 +68,12 @@ class TrackerTest extends BaseTestCase
     {
         // Create Product by tracking it.
         $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+        $productId = $this->uniqueEntityId('product-with-variant');
+        $variantId = $this->uniqueEntityId('variant');
 
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
-                Product::create("p-1")
+                Product::create($productId)
                     ->setDisplayName(
                         Multilingual::create()
                             ->setValues(
@@ -88,7 +90,7 @@ class TrackerTest extends BaseTestCase
                     ->addToData("SomeStringList", DataValueFactory::stringList("FirstString", "SecondString"))
                     ->addToData("SomeBooleanList", DataValueFactory::booleanList(true, true, false)),
                 array(
-                    ProductVariant::create("v-1")
+                    ProductVariant::create($variantId)
                         ->setDisplayName(
                             Multilingual::create(
                                 MultilingualValue::create(Language::create("da-dk"), "MyVariant1")
@@ -125,28 +127,42 @@ class TrackerTest extends BaseTestCase
                 )
                 ->setExplodedVariants(1)
         )->setFilters(FilterCollection::create(
-            ProductIdFilter::create()->setProductIds("p-1"),
-            VariantIdFilter::create()->setVariantIds("v-1")
+            ProductIdFilter::create()->setProductIds($productId),
+            VariantIdFilter::create()->setVariantIds($variantId)
         ));
 
-        $searchResult = $searcher->productSearch($productSearch);
+        try {
+            $searchResult = $this->assertEventually(
+                static fn () => $searcher->productSearch($productSearch),
+                static fn ($candidate): bool => $candidate->hits === 1
+                    && count($candidate->results) === 1
+                    && $candidate->results[0]->productId === $productId
+                    && $candidate->results[0]->displayName === 'MyProduct1'
+                    && $candidate->results[0]->variant?->variantId === $variantId
+                    && $candidate->results[0]->variant->displayName === 'MyVariant1',
+                sprintf('product %s and variant %s are searchable with their updated properties', $productId, $variantId)
+            );
 
-        self::assertEquals(1, $searchResult->hits);
-        self::assertNotEmpty($searchResult->results);
-        self::assertEquals("p-1", $searchResult->results[0]->productId);
-        self::assertEquals("MyProduct1", $searchResult->results[0]->displayName);
-        self::assertEquals("v-1", $searchResult->results[0]->variant->variantId);
-        self::assertEquals("MyVariant1", $searchResult->results[0]->variant->displayName);
+            self::assertEquals(1, $searchResult->hits);
+            self::assertNotEmpty($searchResult->results);
+            self::assertEquals($productId, $searchResult->results[0]->productId);
+            self::assertEquals("MyProduct1", $searchResult->results[0]->displayName);
+            self::assertEquals($variantId, $searchResult->results[0]->variant->variantId);
+            self::assertEquals("MyVariant1", $searchResult->results[0]->variant->displayName);
+        } finally {
+            $this->deleteProduct($tracker, $productId);
+        }
     }
     
     public function testDeleteAdministrativeAction(): void
     {
-        // Create Product by tracking it.
         $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $productId = $this->uniqueEntityId('delete-product');
 
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
-                Product::create("unique_delete_test"),
+                Product::create($productId),
                 array(),
                 ProductUpdateUpdateKind::ReplaceProvidedProperties
             )
@@ -155,47 +171,34 @@ class TrackerTest extends BaseTestCase
         $tracking = $tracker->trackProductUpdate($productUpdate);
         self::assertNull($tracking);
 
-        // Does not work as there is a delay before the product is searchable.
-        // // Validate that the product was created with search.
-        // $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
-
-        // $productSearch = ProductSearchRequest::create(
-        //     Language::UNDEFINED,
-        //     Currency::UNDEFINED,
-        //     UserFactory::anonymous(),
-        //     "integration test",
-        //     null,
-        //     0,
-        //     1
-        // )->setFilters(FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_delete_test")));
-
-        // $searchResult = $searcher->productSearch($productSearch);
-
-        // self::assertEquals(1, $searchResult->hits);
-
-        // Delete product
-        $administrativeActionRequest = TrackProductAdministrativeActionRequest::create(
-            ProductAdministrativeAction::create(
-                Language::UNDEFINED,
-                Currency::UNDEFINED,
-                FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_delete_test")),
-                ProductAdministrativeActionUpdateKind::Delete,
-                ProductAdministrativeActionUpdateKind::None
-            )
+        $productSearch = ProductSearchRequest::create(
+            Language::UNDEFINED,
+            Currency::UNDEFINED,
+            UserFactory::anonymous(),
+            "integration test",
+            null,
+            0,
+            1
+        )->setFilters(
+            FilterCollection::create(ProductIdFilter::create()->setProductIds($productId))
         );
 
-        $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
-        self::assertNull($tracking);
+        $this->assertProductSearchHits($searcher, $productSearch, 1, sprintf('product %s is searchable before deletion', $productId));
+
+        $this->deleteProduct($tracker, $productId);
+
+        $this->assertProductSearchHits($searcher, $productSearch, 0, sprintf('product %s is no longer searchable after deletion', $productId));
     }
     
     public function testDisableAdministrativeAction(): void
     {
-        // Create Product by tracking it.
         $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $productId = $this->uniqueEntityId('disable-product');
 
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
-                Product::create("unique_disable_test"),
+                Product::create($productId),
                 array(),
                 ProductUpdateUpdateKind::ReplaceProvidedProperties
             )
@@ -204,48 +207,81 @@ class TrackerTest extends BaseTestCase
         $tracking = $tracker->trackProductUpdate($productUpdate);
         self::assertNull($tracking);
 
-        // Ensure that it is enabled
         $administrativeActionRequest = TrackProductAdministrativeActionRequest::create(
             ProductAdministrativeAction::create(
                 Language::UNDEFINED,
                 Currency::UNDEFINED,
-                FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_disable_test")),
+                FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
                 ProductAdministrativeActionUpdateKind::Enable,
                 ProductAdministrativeActionUpdateKind::None
             )
         );
         $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
+        self::assertNull($tracking);
 
-        // Does not work as there is a delay before the product is searchable.
-        // Validate that the product was created with search.
-        // $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $productSearch = ProductSearchRequest::create(
+            Language::UNDEFINED,
+            Currency::UNDEFINED,
+            UserFactory::anonymous(),
+            "integration test",
+            null,
+            0,
+            1
+        )->setFilters(
+            FilterCollection::create(ProductIdFilter::create()->setProductIds($productId))
+        );
 
-        // $productSearch = ProductSearchRequest::create(
-        //     Language::UNDEFINED,
-        //     Currency::UNDEFINED,
-        //     UserFactory::anonymous(),
-        //     "integration test",
-        //     null,
-        //     0,
-        //     1
-        // )->setFilters(FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_disable_test")));
+        try {
+            $this->assertProductSearchHits($searcher, $productSearch, 1, sprintf('product %s is searchable while enabled', $productId));
 
-        // $searchResult = $searcher->productSearch($productSearch);
+            $administrativeActionRequest = TrackProductAdministrativeActionRequest::create(
+                ProductAdministrativeAction::create(
+                    Language::UNDEFINED,
+                    Currency::UNDEFINED,
+                    FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
+                    ProductAdministrativeActionUpdateKind::Disable,
+                    ProductAdministrativeActionUpdateKind::None
+                )
+            );
 
-        // self::assertEquals(1, $searchResult->hits);
+            $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
+            self::assertNull($tracking);
 
-        // Disable product
-        $administrativeActionRequest = TrackProductAdministrativeActionRequest::create(
-            ProductAdministrativeAction::create(
-                Language::UNDEFINED,
-                Currency::UNDEFINED,
-                FilterCollection::create(ProductIdFilter::create()->setProductIds("unique_disable_test")),
-                ProductAdministrativeActionUpdateKind::Disable,
-                ProductAdministrativeActionUpdateKind::None
+            $this->assertProductSearchHits($searcher, $productSearch, 0, sprintf('product %s is no longer searchable after disabling', $productId));
+        } finally {
+            $this->deleteProduct($tracker, $productId);
+        }
+    }
+
+    private function assertProductSearchHits(
+        Searcher $searcher,
+        ProductSearchRequest $request,
+        int $expectedHits,
+        string $description
+    ): void {
+        $response = $this->assertEventually(
+            static fn () => $searcher->productSearch($request),
+            static fn ($candidate): bool => $candidate->hits === $expectedHits,
+            $description
+        );
+
+        self::assertSame($expectedHits, $response->hits);
+    }
+
+    private function deleteProduct(Tracker $tracker, string $productId): void
+    {
+        $tracking = $tracker->trackProductAdministrativeAction(
+            TrackProductAdministrativeActionRequest::create(
+                ProductAdministrativeAction::create(
+                    Language::UNDEFINED,
+                    Currency::UNDEFINED,
+                    FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
+                    ProductAdministrativeActionUpdateKind::Delete,
+                    ProductAdministrativeActionUpdateKind::None
+                )
             )
         );
 
-        $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
         self::assertNull($tracking);
     }
 }

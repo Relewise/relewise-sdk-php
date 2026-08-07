@@ -77,7 +77,7 @@ class FiltersTest extends BaseTestCase
         $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
         $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
 
-        $user = UserFactory::byTemporaryId("t-" . rand());
+        $user = UserFactory::byTemporaryId($this->uniqueEntityId('recently-viewed-user'));
 
         $viewTracking = TrackProductViewRequest::create(
             ProductView::create($user, Product::create("p12813"))
@@ -100,9 +100,11 @@ class FiltersTest extends BaseTestCase
             FilterCollection::create(ProductRecentlyViewedByUserFilter::create($since))
         );
 
-        fwrite(STDOUT, json_encode($productSearchRequest));
-
-        $response = $searcher->productSearch($productSearchRequest);
+        $response = $this->assertEventually(
+            static fn () => $searcher->productSearch($productSearchRequest),
+            static fn ($candidate): bool => count($candidate->results) === 1,
+            'the tracked product view is available to the recently-viewed filter'
+        );
 
         self::assertNotNull($response);
         self::assertEquals(1, count($response->results));

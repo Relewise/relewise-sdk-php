@@ -12,6 +12,8 @@ use Relewise\Models\Language;
 use Relewise\Models\Multilingual;
 use Relewise\Models\MultilingualValue;
 use Relewise\Models\Product;
+use Relewise\Models\ProductAdministrativeAction;
+use Relewise\Models\ProductAdministrativeActionUpdateKind;
 use Relewise\Models\ProductCategoryIdFilter;
 use Relewise\Models\ProductCategorySearchRequest;
 use Relewise\Models\ProductDataRelevanceModifier;
@@ -25,6 +27,7 @@ use Relewise\Models\ProductSearchSettingsHighlightSettings;
 use Relewise\Models\ProductUpdate;
 use Relewise\Models\RelevanceModifierCollection;
 use Relewise\Models\TrackProductUpdateRequest;
+use Relewise\Models\TrackProductAdministrativeActionRequest;
 use Relewise\Searcher;
 use Relewise\Tracker;
 use Relewise\Models\ProductProductHighlightPropsHighlightSettingsOffsetSettings;
@@ -120,10 +123,11 @@ class SearchTest extends BaseTestCase
     public function testProductSearchWithHighlight(): void
     {
         $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+        $productId = $this->uniqueEntityId('highlight-product');
 
         $tracker->trackProductUpdate(TrackProductUpdateRequest::create(
             ProductUpdate::create(
-                Product::create("p-1")
+                Product::create($productId)
                     ->addToData("Description", DataValueFactory::multilingual(
                         Multilingual::create(MultilingualValue::create(Language::create("en-US"), "the last word is highlighted"))
                     )),
@@ -159,24 +163,50 @@ class SearchTest extends BaseTestCase
                         )
                     )
                 )
+        )->setFilters(
+            FilterCollection::create(
+                ProductIdFilter::create()->setProductIds($productId)
+            )
         );
 
-        $response = $searcher->productSearch($productSearch);
-        self::assertNotNull($response);
-        self::assertGreaterThan(0, $response->hits);
+        try {
+            $response = $this->assertEventually(
+                static fn () => $searcher->productSearch($productSearch),
+                static fn ($candidate): bool => $candidate->hits > 0
+                    && count($candidate->results) > 0
+                    && $candidate->results[0]->highlight?->offsets?->data !== null
+                    && count($candidate->results[0]->highlight->offsets->data) > 0,
+                sprintf('product %s is searchable with highlight offsets', $productId)
+            );
 
-        $productResult = $response->results[0];
+            self::assertNotNull($response);
+            self::assertGreaterThan(0, $response->hits);
 
-        self::assertNotNull($productResult->highlight);
-        self::assertNotNull($productResult->highlight->offsets);
-        self::assertNotNull($productResult->highlight->offsets->data);
-        self::assertGreaterThan(0, count($productResult->highlight->offsets->data));
-        self::assertNotNull($productResult->highlight->offsets->data[0]);
-        self::assertEquals("Description", $productResult->highlight->offsets->data[0]["key"]);
-        self::assertNotNull($productResult->highlight->offsets->data[0]["value"]);
-        self::assertNotNull($productResult->highlight->offsets->data[0]["value"][0]);
-        self::assertEquals(17, $productResult->highlight->offsets->data[0]["value"][0]["lowerBoundInclusive"]);
-        self::assertEquals(28, $productResult->highlight->offsets->data[0]["value"][0]["upperBoundInclusive"]);
+            $productResult = $response->results[0];
+
+            self::assertNotNull($productResult->highlight);
+            self::assertNotNull($productResult->highlight->offsets);
+            self::assertNotNull($productResult->highlight->offsets->data);
+            self::assertGreaterThan(0, count($productResult->highlight->offsets->data));
+            self::assertNotNull($productResult->highlight->offsets->data[0]);
+            self::assertEquals("Description", $productResult->highlight->offsets->data[0]["key"]);
+            self::assertNotNull($productResult->highlight->offsets->data[0]["value"]);
+            self::assertNotNull($productResult->highlight->offsets->data[0]["value"][0]);
+            self::assertEquals(17, $productResult->highlight->offsets->data[0]["value"][0]["lowerBoundInclusive"]);
+            self::assertEquals(28, $productResult->highlight->offsets->data[0]["value"][0]["upperBoundInclusive"]);
+        } finally {
+            $tracker->trackProductAdministrativeAction(
+                TrackProductAdministrativeActionRequest::create(
+                    ProductAdministrativeAction::create(
+                        Language::UNDEFINED,
+                        Currency::UNDEFINED,
+                        FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
+                        ProductAdministrativeActionUpdateKind::Delete,
+                        ProductAdministrativeActionUpdateKind::None
+                    )
+                )
+            );
+        }
     }
     
     public function testRecentlyPurchasedFacetCanBuild(): void
