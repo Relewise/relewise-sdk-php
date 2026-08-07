@@ -4,6 +4,8 @@ namespace Relewise\Tests\Integration;
 
 use Relewise\Factory\DataValueFactory;
 use Relewise\Factory\UserFactory;
+use Relewise\Models\CategoryNameAndId;
+use Relewise\Models\CategoryPath;
 use Relewise\Models\CategoryScope;
 use Relewise\Models\Currency;
 use Relewise\Models\DataDoubleSelector;
@@ -103,6 +105,28 @@ class SearchTest extends BaseTestCase
     public function testProductSearchWithCategoryFilter(): void
     {
         $searcher = $this->searcher();
+        $tracker = $this->tracker();
+        $productId = $this->uniqueEntityId('category-filter-product');
+        $categoryId = $this->uniqueEntityId('category-filter-category');
+
+        $tracking = $tracker->trackProductUpdate(
+            TrackProductUpdateRequest::create(
+                ProductUpdate::create(
+                    Product::create($productId)->setCategoryPaths(
+                        CategoryPath::create(
+                            CategoryNameAndId::create(
+                                $categoryId,
+                                Multilingual::create(
+                                    MultilingualValue::create(Language::create("en-US"), "Integration test category")
+                                )
+                            )
+                        )
+                    ),
+                    array()
+                )
+            )
+        );
+        self::assertNull($tracking);
 
         $productSearch = ProductSearchRequest::create(
             Language::create("en-US"),
@@ -115,19 +139,26 @@ class SearchTest extends BaseTestCase
         )->setFilters(
             FilterCollection::create(
                 ProductCategoryIdFilter::create(CategoryScope::Ancestor)
-                    ->setCategoryIds("c-1")
+                    ->setCategoryIds($categoryId),
+                ProductIdFilter::create()->setProductIds($productId)
             )
         );
 
-        $response = $this->assertEventually(
-            static fn () => $searcher->productSearch($productSearch),
-            static fn ($candidate): bool => $candidate->hits > 0 && count($candidate->results) > 0,
-            'fixture category c-1 contains searchable products'
-        );
+        try {
+            $response = $this->assertEventually(
+                static fn () => $searcher->productSearch($productSearch),
+                static fn ($candidate): bool => count($candidate->results) === 1
+                    && $candidate->results[0]->productId === $productId,
+                sprintf('temporary product %s is returned by category %s', $productId, $categoryId)
+            );
 
-        self::assertNotNull($response);
-        self::assertGreaterThan(0, $response->hits);
-        self::assertNotEmpty($response->results);
+            self::assertNotNull($response);
+            self::assertSame(1, $response->hits);
+            self::assertSame($productId, $response->results[0]->productId);
+        } finally {
+            $this->deleteProduct($tracker, $productId);
+            $this->deleteProductCategory($tracker, $categoryId);
+        }
     }
 
     public function testProductSearchWithHighlight(): void

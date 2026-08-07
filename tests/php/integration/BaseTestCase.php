@@ -10,12 +10,17 @@ use Relewise\SearchAdministrator;
 use Relewise\Searcher;
 use Relewise\Tracker;
 use Relewise\Models\Currency;
+use Relewise\Models\CategoryAdministrativeActionUpdateKind;
+use Relewise\Models\CategoryScope;
 use Relewise\Models\FilterCollection;
 use Relewise\Models\Language;
 use Relewise\Models\ProductAdministrativeAction;
 use Relewise\Models\ProductAdministrativeActionUpdateKind;
+use Relewise\Models\ProductCategoryAdministrativeAction;
+use Relewise\Models\ProductCategoryIdFilter;
 use Relewise\Models\ProductIdFilter;
 use Relewise\Models\TrackProductAdministrativeActionRequest;
+use Relewise\Models\TrackProductCategoryAdministrativeActionRequest;
 use Throwable;
 
 class BaseTestCase extends TestCase
@@ -82,6 +87,25 @@ class BaseTestCase extends TestCase
                     FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
                     ProductAdministrativeActionUpdateKind::Delete,
                     ProductAdministrativeActionUpdateKind::None
+                )
+            )
+        );
+
+        self::assertNull($tracking);
+    }
+
+    protected function deleteProductCategory(Tracker $tracker, string $categoryId): void
+    {
+        $tracking = $tracker->trackProductCategoryAdministrativeAction(
+            TrackProductCategoryAdministrativeActionRequest::create(
+                ProductCategoryAdministrativeAction::create(
+                    Language::UNDEFINED,
+                    Currency::UNDEFINED,
+                    CategoryAdministrativeActionUpdateKind::Delete
+                )->setFilters(
+                    FilterCollection::create(
+                        ProductCategoryIdFilter::create(CategoryScope::Ancestor)->setCategoryIds($categoryId)
+                    )
                 )
             )
         );
