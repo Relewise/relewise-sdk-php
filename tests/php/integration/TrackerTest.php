@@ -47,7 +47,7 @@ class TrackerTest extends BaseTestCase
 {
     public function testProductView(): void
     {
-        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+        $tracker = $this->tracker();
 
         $user = UserFactory::byTemporaryId("t-Id")
             ->setChannel(Channel::create("Channel-1"));
@@ -67,7 +67,7 @@ class TrackerTest extends BaseTestCase
     public function testProductUpdateWithVariant(): void
     {
         // Create Product by tracking it.
-        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+        $tracker = $this->tracker();
         $productId = $this->uniqueEntityId('product-with-variant');
         $variantId = $this->uniqueEntityId('variant');
 
@@ -105,7 +105,7 @@ class TrackerTest extends BaseTestCase
         self::assertNull($tracking);
 
         // Validate that the product was created with search.
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
 
         $productSearch = ProductSearchRequest::create(
             Language::create("da-dk"),
@@ -156,8 +156,8 @@ class TrackerTest extends BaseTestCase
     
     public function testDeleteAdministrativeAction(): void
     {
-        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $tracker = $this->tracker();
+        $searcher = $this->searcher();
         $productId = $this->uniqueEntityId('delete-product');
 
         $productUpdate = TrackProductUpdateRequest::create(
@@ -192,8 +192,8 @@ class TrackerTest extends BaseTestCase
     
     public function testDisableAdministrativeAction(): void
     {
-        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $tracker = $this->tracker();
+        $searcher = $this->searcher();
         $productId = $this->uniqueEntityId('disable-product');
 
         $productUpdate = TrackProductUpdateRequest::create(

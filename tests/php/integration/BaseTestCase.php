@@ -3,6 +3,12 @@
 namespace Relewise\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
+use Relewise\Analyzer;
+use Relewise\Recommender;
+use Relewise\RelewiseClient;
+use Relewise\SearchAdministrator;
+use Relewise\Searcher;
+use Relewise\Tracker;
 use Throwable;
 
 class BaseTestCase extends TestCase
@@ -25,6 +31,38 @@ class BaseTestCase extends TestCase
     public function API_KEY() : string
     {
         return getenv('API_KEY') ?: $_ENV['API_KEY'];
+    }
+
+    public function SERVER_URL(): string
+    {
+        $serverUrl = getenv('SERVER_URL') ?: 'https://api.relewise.com';
+
+        return rtrim($serverUrl, '/');
+    }
+
+    protected function searcher(int $timeout = 5): Searcher
+    {
+        return $this->configureClient(new Searcher($this->DATASET_ID(), $this->API_KEY(), $timeout));
+    }
+
+    protected function tracker(int $timeout = 5): Tracker
+    {
+        return $this->configureClient(new Tracker($this->DATASET_ID(), $this->API_KEY(), $timeout));
+    }
+
+    protected function recommender(int $timeout = 5): Recommender
+    {
+        return $this->configureClient(new Recommender($this->DATASET_ID(), $this->API_KEY(), $timeout));
+    }
+
+    protected function analyzer(int $timeout = 5): Analyzer
+    {
+        return $this->configureClient(new Analyzer($this->DATASET_ID(), $this->API_KEY(), $timeout));
+    }
+
+    protected function searchAdministrator(int $timeout = 5): SearchAdministrator
+    {
+        return $this->configureClient(new SearchAdministrator($this->DATASET_ID(), $this->API_KEY(), $timeout));
     }
 
     protected function uniqueEntityId(string $prefix): string
@@ -117,5 +155,17 @@ class BaseTestCase extends TestCase
         $summary = $encoded === false ? get_debug_type($value) : $encoded;
 
         return strlen($summary) > 1_000 ? substr($summary, 0, 997) . '...' : $summary;
+    }
+
+    /**
+     * @template TClient of RelewiseClient
+     * @param TClient $client
+     * @return TClient
+     */
+    private function configureClient(RelewiseClient $client): RelewiseClient
+    {
+        $client->serverUrl = $this->SERVER_URL();
+
+        return $client;
     }
 }

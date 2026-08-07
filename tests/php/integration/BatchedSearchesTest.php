@@ -15,7 +15,7 @@ class BatchedSearchesTest extends BaseTestCase
 {
     public function testBatchedSearch(): void
     {
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
 
         $searchRequestCollection = SearchRequestCollection::create(
 

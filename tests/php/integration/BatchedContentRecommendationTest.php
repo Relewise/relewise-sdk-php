@@ -15,7 +15,7 @@ class BatchedContentRecommendationTest extends BaseTestCase
 {
     public function testBatchedContentRecommendations(): void
     {
-        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
+        $recommender = $this->recommender();
 
         $contentRecommendationRequestCollection = ContentRecommendationRequestCollection::create(
             false,

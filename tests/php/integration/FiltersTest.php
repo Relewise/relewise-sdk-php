@@ -22,7 +22,7 @@ class FiltersTest extends BaseTestCase
 {
     public function testProductAssortmentFilter(): void
     {
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
 
         $productSearchRequest = ProductSearchRequest::create(
             Language::create("en-US"),
@@ -48,7 +48,7 @@ class FiltersTest extends BaseTestCase
 
     public function testProductIdFilter(): void
     {
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
 
         $productSearchRequest = ProductSearchRequest::create(
             Language::create("en-US"),
@@ -80,8 +80,8 @@ class FiltersTest extends BaseTestCase
 
     public function testProductRecentlyViewedByUserFilter(): void
     {
-        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $tracker = $this->tracker();
+        $searcher = $this->searcher();
 
         $user = UserFactory::byTemporaryId($this->uniqueEntityId('recently-viewed-user'));
 

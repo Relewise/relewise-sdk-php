@@ -15,7 +15,7 @@ class SearchTermPredictionTest extends BaseTestCase
 {
     public function testSearchTermPrediction(): void
     {
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
 
         $searchTermPrediction = SearchTermPredictionRequest::create(
             Language::create("en-US"),

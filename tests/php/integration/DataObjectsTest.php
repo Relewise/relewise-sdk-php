@@ -20,7 +20,7 @@ class DataObjectsTest extends BaseTestCase
 {
     public function testDataObjectsCanBeDeserialized(): void
     {
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
 
         $productSearch = ProductSearchRequest::create(
             Language::create("da-dk"),

@@ -23,7 +23,7 @@ class SearchAdministratorTest extends BaseTestCase
 {
     public function testSaveSimpleSearchIndex(): void
     {
-        $searchAdministrator = new SearchAdministrator($this->DATASET_ID(), $this->API_KEY());
+        $searchAdministrator = $this->searchAdministrator();
 
         $request = SaveSearchIndexRequest::create(
             SearchIndex::create("simple", "a simple test index that is not default", false)
@@ -69,7 +69,7 @@ class SearchAdministratorTest extends BaseTestCase
 
     public function testSaveGetUpdateAndDeleteSearchIndex(): void
     {
-        $searchAdministrator = new SearchAdministrator($this->DATASET_ID(), $this->API_KEY());
+        $searchAdministrator = $this->searchAdministrator();
 
         // Create
         $saveRequest = SaveSearchIndexRequest::create(

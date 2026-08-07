@@ -16,7 +16,7 @@ class BatchedProductRecommendationTest extends BaseTestCase
 {
     public function testBatchedProductRecommendations(): void
     {
-        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
+        $recommender = $this->recommender();
 
         $productRecommendationRequestCollection = ProductRecommendationRequestCollection::create(
             false,

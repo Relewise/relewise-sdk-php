@@ -38,7 +38,7 @@ class SearchTest extends BaseTestCase
 {
     public function testProductSearchWithNoConditions(): void
     {
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
 
         $productSearch = ProductSearchRequest::create(
             Language::create("en-US"),
@@ -71,7 +71,7 @@ class SearchTest extends BaseTestCase
 
     public function testProductCategorySearchWithNoConditions(): void
     {
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
 
         $productCategorySearch = ProductCategorySearchRequest::create(
             Language::create("en-US"),
@@ -104,7 +104,7 @@ class SearchTest extends BaseTestCase
 
     public function testProductSearchWithCategoryFilter(): void
     {
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
 
         $productSearch = ProductSearchRequest::create(
             Language::create("en-US"),
@@ -134,7 +134,7 @@ class SearchTest extends BaseTestCase
 
     public function testProductSearchWithHighlight(): void
     {
-        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+        $tracker = $this->tracker();
         $productId = $this->uniqueEntityId('highlight-product');
 
         $tracker->trackProductUpdate(TrackProductUpdateRequest::create(
@@ -147,7 +147,7 @@ class SearchTest extends BaseTestCase
             )
         ));
 
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
 
         $productSearch = ProductSearchRequest::create(
             Language::create("en-US"),
@@ -223,7 +223,7 @@ class SearchTest extends BaseTestCase
     
     public function testRecentlyPurchasedFacetCanBuild(): void
     {
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
 
         $productSearch = ProductSearchRequest::create(
             Language::create("en-US"),

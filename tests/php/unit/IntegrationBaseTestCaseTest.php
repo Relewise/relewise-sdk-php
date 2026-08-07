@@ -64,9 +64,40 @@ class IntegrationBaseTestCaseTest extends TestCase
         );
     }
 
+    public function testConfiguredServerUrlIsAppliedToIntegrationClients(): void
+    {
+        $originalServerUrl = getenv('SERVER_URL');
+        putenv('SERVER_URL=https://sandbox-api.relewise.com/');
+
+        try {
+            $searcher = $this->testCase()->createSearcher();
+        } finally {
+            $originalServerUrl === false
+                ? putenv('SERVER_URL')
+                : putenv('SERVER_URL=' . $originalServerUrl);
+        }
+
+        self::assertSame('https://sandbox-api.relewise.com', $searcher->serverUrl);
+    }
+
     private function testCase(): object
     {
         return new class('integration-helper') extends BaseTestCase {
+            public function DATASET_ID(): string
+            {
+                return 'dataset-id';
+            }
+
+            public function API_KEY(): string
+            {
+                return 'api-key';
+            }
+
+            public function createSearcher(): \Relewise\Searcher
+            {
+                return $this->searcher();
+            }
+
             public function createUniqueEntityId(string $prefix): string
             {
                 return $this->uniqueEntityId($prefix);

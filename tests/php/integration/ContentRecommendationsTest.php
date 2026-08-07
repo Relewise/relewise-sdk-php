@@ -14,7 +14,7 @@ class ContentRecommendationsTest extends BaseTestCase
 {
     public function testContentsViewedAfterViewing(): void
     {
-        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
+        $recommender = $this->recommender();
 
         $contentsViewedAfterViewingContent = ContentsViewedAfterViewingContentRequest::create(
             Language::create("en-US"),
@@ -32,7 +32,7 @@ class ContentRecommendationsTest extends BaseTestCase
 
     public function testPopularContent(): void
     {
-        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
+        $recommender = $this->recommender();
 
         $popularContents = PopularContentsRequest::create(
             Language::create("en-US"),

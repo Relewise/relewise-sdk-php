@@ -28,7 +28,7 @@ class ProductRecommendationsTest extends BaseTestCase
 {
     public function testPurchasedWithProduct(): void
     {
-        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
+        $recommender = $this->recommender();
 
         $purchasedWtihProduct = PurchasedWithProductRequest::create(
             Language::create("en-US"),
@@ -46,7 +46,7 @@ class ProductRecommendationsTest extends BaseTestCase
 
     public function testPopularProductsWithFilter(): void
     {
-        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
+        $recommender = $this->recommender();
 
         $purchasedWtihProduct = PopularProductsRequest::create(
             Language::create("en-US"),
@@ -69,7 +69,7 @@ class ProductRecommendationsTest extends BaseTestCase
     
     public function testProductsViewedAfterViewingProduct(): void
     {
-        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
+        $recommender = $this->recommender();
 
         $productsViewedAfterViewingProduct = ProductsViewedAfterViewingProductRequest::create(
             Language::create("en-US"),
@@ -87,7 +87,7 @@ class ProductRecommendationsTest extends BaseTestCase
 
     public function testProductsViewedAfterViewingProductWithAllConditions(): void
     {
-        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
+        $recommender = $this->recommender();
 
         $productsViewedAfterViewingProduct = ProductsViewedAfterViewingProductRequest::create(
             Language::create("en-US"),
