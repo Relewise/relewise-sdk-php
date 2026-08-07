@@ -3,6 +3,7 @@
 namespace Relewise\Tests\Integration;
 
 use \PHPUnit\Framework\TestCase;
+use Relewise\Factory\DataValueFactory;
 use Relewise\Factory\UserFactory;
 use Relewise\Models\BrandFacet;
 use Relewise\Models\BrandFacetResult;
@@ -15,6 +16,7 @@ use Relewise\Models\DataObjectStringValueFacet;
 use Relewise\Models\DataSelectionStrategy;
 use Relewise\Models\FacetingField;
 use Relewise\Models\FacetSettings;
+use Relewise\Models\FilterCollection;
 use Relewise\Models\floatRange;
 use Relewise\Models\Language;
 use Relewise\Models\PriceRangeFacet;
@@ -23,7 +25,11 @@ use Relewise\Models\PriceSelectionStrategy;
 use Relewise\Models\ProductDataStringValueFacet;
 use Relewise\Models\ProductDataStringValueFacetResult;
 use Relewise\Models\ProductFacetQuery;
+use Relewise\Models\Product;
+use Relewise\Models\ProductIdFilter;
 use Relewise\Models\ProductSearchRequest;
+use Relewise\Models\ProductUpdate;
+use Relewise\Models\TrackProductUpdateRequest;
 use Relewise\Models\ByHitsFacetSorting;
 use Relewise\Models\FacetEvaluationMode;
 use Relewise\Models\ProductDataObjectFacet;
@@ -104,6 +110,21 @@ class FacetsTest extends BaseTestCase
     public function testProductDataFacet(): void
     {
         $searcher = $this->searcher();
+        $tracker = $this->tracker();
+        $productId = $this->uniqueEntityId('product-data-facet');
+
+        $tracking = $tracker->trackProductUpdate(
+            TrackProductUpdateRequest::create(
+                ProductUpdate::create(
+                    Product::create($productId)->addToData(
+                        "ShortDescription",
+                        DataValueFactory::string("data_key_1")
+                    ),
+                    array()
+                )
+            )
+        );
+        self::assertNull($tracking);
 
         $productSearch = ProductSearchRequest::create(
             Language::create("en-US"),
@@ -123,17 +144,34 @@ class FacetsTest extends BaseTestCase
                         CollectionFilterType::And
                     )->setField(FacetingField::Data)
                 )
+        )->setFilters(
+            FilterCollection::create(
+                ProductIdFilter::create()->setProductIds($productId)
+            )
         );
 
-        $response = $searcher->productSearch($productSearch);
+        try {
+            $response = $this->assertEventually(
+                static fn () => $searcher->productSearch($productSearch),
+                static function ($candidate): bool {
+                    $facet = $candidate->facets?->dataString(DataSelectionStrategy::Product, "ShortDescription");
 
-        self::assertNotNull($response);
-        self::assertNotNull($response->facets);
-        self::assertNotNull($response->facets->items);
-        self::assertNotEmpty($response->facets->items);
-        self::assertTrue($response->facets->items[0] instanceof ProductDataStringValueFacetResult);
-        self::assertEquals(FacetingField::Data, $response->facets->dataString(DataSelectionStrategy::Product, "ShortDescription")->field);
-        self::assertNull($response->facets->dataBoolean(DataSelectionStrategy::Product, "dataKey"));
+                    return $facet instanceof ProductDataStringValueFacetResult
+                        && count($facet->available) > 0;
+                },
+                sprintf('temporary product %s contributes to the product data facet', $productId)
+            );
+
+            self::assertNotNull($response);
+            self::assertNotNull($response->facets);
+            self::assertNotNull($response->facets->items);
+            self::assertNotEmpty($response->facets->items);
+            self::assertTrue($response->facets->items[0] instanceof ProductDataStringValueFacetResult);
+            self::assertEquals(FacetingField::Data, $response->facets->dataString(DataSelectionStrategy::Product, "ShortDescription")->field);
+            self::assertNull($response->facets->dataBoolean(DataSelectionStrategy::Product, "dataKey"));
+        } finally {
+            $this->deleteProduct($tracker, $productId);
+        }
     }
 
     public function testCategoryFacet(): void
