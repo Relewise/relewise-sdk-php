@@ -9,6 +9,13 @@ use Relewise\RelewiseClient;
 use Relewise\SearchAdministrator;
 use Relewise\Searcher;
 use Relewise\Tracker;
+use Relewise\Models\Currency;
+use Relewise\Models\FilterCollection;
+use Relewise\Models\Language;
+use Relewise\Models\ProductAdministrativeAction;
+use Relewise\Models\ProductAdministrativeActionUpdateKind;
+use Relewise\Models\ProductIdFilter;
+use Relewise\Models\TrackProductAdministrativeActionRequest;
 use Throwable;
 
 class BaseTestCase extends TestCase
@@ -63,6 +70,23 @@ class BaseTestCase extends TestCase
     protected function searchAdministrator(int $timeout = 5): SearchAdministrator
     {
         return $this->configureClient(new SearchAdministrator($this->DATASET_ID(), $this->API_KEY(), $timeout));
+    }
+
+    protected function deleteProduct(Tracker $tracker, string $productId): void
+    {
+        $tracking = $tracker->trackProductAdministrativeAction(
+            TrackProductAdministrativeActionRequest::create(
+                ProductAdministrativeAction::create(
+                    Language::UNDEFINED,
+                    Currency::UNDEFINED,
+                    FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
+                    ProductAdministrativeActionUpdateKind::Delete,
+                    ProductAdministrativeActionUpdateKind::None
+                )
+            )
+        );
+
+        self::assertNull($tracking);
     }
 
     protected function uniqueEntityId(string $prefix): string

@@ -268,20 +268,4 @@ class TrackerTest extends BaseTestCase
         self::assertSame($expectedHits, $response->hits);
     }
 
-    private function deleteProduct(Tracker $tracker, string $productId): void
-    {
-        $tracking = $tracker->trackProductAdministrativeAction(
-            TrackProductAdministrativeActionRequest::create(
-                ProductAdministrativeAction::create(
-                    Language::UNDEFINED,
-                    Currency::UNDEFINED,
-                    FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
-                    ProductAdministrativeActionUpdateKind::Delete,
-                    ProductAdministrativeActionUpdateKind::None
-                )
-            )
-        );
-
-        self::assertNull($tracking);
-    }
 }

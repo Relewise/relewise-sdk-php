@@ -13,7 +13,10 @@ use Relewise\Models\ProductAssortmentFilter;
 use Relewise\Models\ProductIdFilter;
 use Relewise\Models\ProductRecentlyViewedByUserFilter;
 use Relewise\Models\ProductSearchRequest;
+use Relewise\Models\ProductUpdate;
+use Relewise\Models\ProductUpdateUpdateKind;
 use Relewise\Models\ProductView;
+use Relewise\Models\TrackProductUpdateRequest;
 use Relewise\Models\TrackProductViewRequest;
 use Relewise\Searcher;
 use Relewise\Tracker;
@@ -49,33 +52,50 @@ class FiltersTest extends BaseTestCase
     public function testProductIdFilter(): void
     {
         $searcher = $this->searcher();
+        $tracker = $this->tracker();
+        $productId = $this->uniqueEntityId('product-id-filter');
+
+        $tracking = $tracker->trackProductUpdate(
+            TrackProductUpdateRequest::create(
+                ProductUpdate::create(
+                    Product::create($productId),
+                    array(),
+                    ProductUpdateUpdateKind::ReplaceProvidedProperties
+                )
+            )
+        );
+        self::assertNull($tracking);
 
         $productSearchRequest = ProductSearchRequest::create(
             Language::create("en-US"),
             Currency::create("USD"),
             UserFactory::byTemporaryId("t-Id"),
             "integration test",
-            "1",
+            null,
             0,
             20
         )->setFilters(
             FilterCollection::create()
                 ->setItems(
                     ProductIdFilter::create()
-                        ->setProductIds("1")
+                        ->setProductIds($productId)
                 )
         );
 
-        $response = $this->assertEventually(
-            static fn () => $searcher->productSearch($productSearchRequest),
-            static fn ($candidate): bool => count($candidate->results) === 1
-                && $candidate->results[0]->productId === '1',
-            'fixture product 1 is returned by the product ID filter'
-        );
+        try {
+            $response = $this->assertEventually(
+                static fn () => $searcher->productSearch($productSearchRequest),
+                static fn ($candidate): bool => count($candidate->results) === 1
+                    && $candidate->results[0]->productId === $productId,
+                sprintf('temporary product %s is returned by the product ID filter', $productId)
+            );
 
-        self::assertNotNull($response);
-        self::assertEquals(1, count($response->results));
-        self::assertEquals('1', $response->results[0]->productId);
+            self::assertNotNull($response);
+            self::assertEquals(1, count($response->results));
+            self::assertEquals($productId, $response->results[0]->productId);
+        } finally {
+            $this->deleteProduct($tracker, $productId);
+        }
     }
 
     public function testProductRecentlyViewedByUserFilter(): void

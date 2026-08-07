@@ -12,8 +12,6 @@ use Relewise\Models\Language;
 use Relewise\Models\Multilingual;
 use Relewise\Models\MultilingualValue;
 use Relewise\Models\Product;
-use Relewise\Models\ProductAdministrativeAction;
-use Relewise\Models\ProductAdministrativeActionUpdateKind;
 use Relewise\Models\ProductCategoryIdFilter;
 use Relewise\Models\ProductCategorySearchRequest;
 use Relewise\Models\ProductDataRelevanceModifier;
@@ -28,7 +26,6 @@ use Relewise\Models\ProductSearchSettingsHighlightSettings;
 use Relewise\Models\ProductUpdate;
 use Relewise\Models\RelevanceModifierCollection;
 use Relewise\Models\TrackProductUpdateRequest;
-use Relewise\Models\TrackProductAdministrativeActionRequest;
 use Relewise\Searcher;
 use Relewise\Tracker;
 use Relewise\Models\ProductProductHighlightPropsHighlightSettingsOffsetSettings;
@@ -208,17 +205,7 @@ class SearchTest extends BaseTestCase
             self::assertEquals(17, $productResult->highlight->offsets->data[0]["value"][0]["lowerBoundInclusive"]);
             self::assertEquals(28, $productResult->highlight->offsets->data[0]["value"][0]["upperBoundInclusive"]);
         } finally {
-            $tracker->trackProductAdministrativeAction(
-                TrackProductAdministrativeActionRequest::create(
-                    ProductAdministrativeAction::create(
-                        Language::UNDEFINED,
-                        Currency::UNDEFINED,
-                        FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
-                        ProductAdministrativeActionUpdateKind::Delete,
-                        ProductAdministrativeActionUpdateKind::None
-                    )
-                )
-            );
+            $this->deleteProduct($tracker, $productId);
         }
     }
     
