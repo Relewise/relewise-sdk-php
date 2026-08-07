@@ -14,6 +14,11 @@ on:
         required: true
         type: string
 
+concurrency:
+  group: relewise-sdk-php-integration-dataset
+  cancel-in-progress: false
+  queue: max
+
 permissions:
   contents: write
   pull-requests: write

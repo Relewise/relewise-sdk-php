@@ -4,6 +4,11 @@ on:
   release:
     types: [published]
 
+concurrency:
+  group: relewise-sdk-php-integration-dataset
+  cancel-in-progress: false
+  queue: max
+
 jobs:
   build-test:
     runs-on: ubuntu-latest
