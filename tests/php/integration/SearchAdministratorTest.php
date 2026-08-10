@@ -27,7 +27,6 @@ class SearchAdministratorTest extends BaseTestCase
     {
         $searchAdministrator = $this->searchAdministrator();
         $indexId = $this->fixtureId('search-administrator-simple-index');
-        $created = false;
 
         $request = SaveSearchIndexRequest::create(
             SearchIndex::create($indexId, "a simple test index that is not default", false)
@@ -66,16 +65,9 @@ class SearchAdministratorTest extends BaseTestCase
             "PHP Integration test"
             );
 
-        try {
-            $response = $this->saveSearchIndexOrSkip($searchAdministrator, $request);
-            $created = $response !== null;
+        $response = $this->saveSearchIndexOrSkip($searchAdministrator, $request);
 
-            self::assertNotNull($response);
-        } finally {
-            if ($created) {
-                $this->deleteSearchIndex($searchAdministrator, $indexId);
-            }
-        }
+        self::assertNotNull($response);
     }
 
     public function testSaveGetUpdateAndDeleteSearchIndex(): void
