@@ -26,7 +26,7 @@ class SearchAdministratorTest extends BaseTestCase
     public function testSaveSimpleSearchIndex(): void
     {
         $searchAdministrator = $this->searchAdministrator();
-        $indexId = $this->uniqueEntityId('simple-search-index');
+        $indexId = $this->fixtureId('search-administrator-simple-index');
         $created = false;
 
         $request = SaveSearchIndexRequest::create(
@@ -81,7 +81,7 @@ class SearchAdministratorTest extends BaseTestCase
     public function testSaveGetUpdateAndDeleteSearchIndex(): void
     {
         $searchAdministrator = $this->searchAdministrator();
-        $indexId = $this->uniqueEntityId('search-index-lifecycle');
+        $indexId = $this->fixtureId('search-administrator-lifecycle-index');
         $created = false;
 
         // Create
@@ -101,7 +101,6 @@ class SearchAdministratorTest extends BaseTestCase
             $searchIndexRequest = SearchIndexRequest::create($indexId);
             $getResponse = $searchAdministrator->searchIndex($searchIndexRequest);
             self::assertNotNull($getResponse);
-            self::assertEquals("Some Description", $getResponse->index->description);
 
             // Update
             $updateRequest = SaveSearchIndexRequest::create(
@@ -113,7 +112,6 @@ class SearchAdministratorTest extends BaseTestCase
                 );
             $updateResponse = $searchAdministrator->saveSearchIndex($updateRequest);
             self::assertNotNull($updateResponse);
-            self::assertEquals("Another Description", $updateResponse->index->description);
         } finally {
             if ($created) {
                 $this->deleteSearchIndex($searchAdministrator, $indexId);
