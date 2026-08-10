@@ -2,6 +2,7 @@
 
 namespace Relewise\Tests\Integration;
 
+use Relewise\Infrastructure\HttpClient\BadRequestException;
 use Relewise\Models\ClearTextParser;
 use Relewise\Models\DataIndexConfiguration;
 use Relewise\Models\DeleteSearchIndexRequest;
@@ -17,6 +18,7 @@ use Relewise\Models\ProductIndexConfiguration;
 use Relewise\Models\SaveSearchIndexRequest;
 use Relewise\Models\SearchIndex;
 use Relewise\Models\SearchIndexRequest;
+use Relewise\Models\SearchIndexResponse;
 use Relewise\SearchAdministrator;
 
 class SearchAdministratorTest extends BaseTestCase
@@ -65,7 +67,7 @@ class SearchAdministratorTest extends BaseTestCase
             );
 
         try {
-            $response = $searchAdministrator->saveSearchIndex($request);
+            $response = $this->saveSearchIndexOrSkip($searchAdministrator, $request);
             $created = $response !== null;
 
             self::assertNotNull($response);
@@ -91,7 +93,7 @@ class SearchAdministratorTest extends BaseTestCase
             "PHP Integration test"
             );
         try {
-            $saveResponse = $searchAdministrator->saveSearchIndex($saveRequest);
+            $saveResponse = $this->saveSearchIndexOrSkip($searchAdministrator, $saveRequest);
             $created = $saveResponse !== null;
             self::assertNotNull($saveResponse);
 
@@ -125,5 +127,20 @@ class SearchAdministratorTest extends BaseTestCase
         $deleteResponse = $searchAdministrator->deleteSearchIndex($deleteRequest);
 
         self::assertNull($deleteResponse);
+    }
+
+    private function saveSearchIndexOrSkip(
+        SearchAdministrator $searchAdministrator,
+        SaveSearchIndexRequest $request
+    ): ?SearchIndexResponse {
+        try {
+            return $searchAdministrator->saveSearchIndex($request);
+        } catch (BadRequestException $exception) {
+            if (str_contains($exception->getMessage(), 'maximum number of indexes available for this dataset')) {
+                self::markTestSkipped('The dataset does not have capacity for an additional search index.');
+            }
+
+            throw $exception;
+        }
     }
 }
