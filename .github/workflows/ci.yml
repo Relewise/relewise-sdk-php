@@ -31,7 +31,6 @@ jobs:
           bootstrap: vendor/autoload.php
           configuration: tests/phpunit.xml
           test_suffix: .php
-          version: 10.0.19
           php_extensions: "xdebug"
         env:
           DATASET_ID: ${{secrets.INTEGRATIONTESTS_DATASET_ID}}
