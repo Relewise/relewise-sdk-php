@@ -13,7 +13,7 @@ class HttpVersionTest extends BaseTestCase
 {
     public function testHttpVersionNone(): void
     {
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
         $searcher->setHttpVersion(CURL_HTTP_VERSION_NONE);
 
         $productSearch = ProductSearchRequest::create(
@@ -33,7 +33,7 @@ class HttpVersionTest extends BaseTestCase
 
     public function testHttpVersion1_1(): void
     {
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
         $searcher->setHttpVersion(CURL_HTTP_VERSION_1_1);
 
         $productSearch = ProductSearchRequest::create(
@@ -53,7 +53,7 @@ class HttpVersionTest extends BaseTestCase
 
     public function testHttpVersion2_0(): void
     {
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
         $searcher->setHttpVersion(CURL_HTTP_VERSION_2_0);
 
         $productSearch = ProductSearchRequest::create(
@@ -73,7 +73,7 @@ class HttpVersionTest extends BaseTestCase
 
     public function testHttpVersion2TLS(): void
     {
-        $searcher = new Searcher($this->DATASET_ID(), $this->API_KEY());
+        $searcher = $this->searcher();
         $searcher->setHttpVersion(CURL_HTTP_VERSION_2TLS);
 
         $productSearch = ProductSearchRequest::create(

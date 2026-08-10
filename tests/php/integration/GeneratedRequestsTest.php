@@ -18,7 +18,7 @@ class GeneratedRequestsTest extends BaseTestCase
 {
     public function testTrackOrderRequestWithBuilderPatternAndCreatorMethod(): void
     {
-        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+        $tracker = $this->tracker();
 
         $trackOrderRequest = TrackOrderRequest::create(
             Order::create(
@@ -39,7 +39,7 @@ class GeneratedRequestsTest extends BaseTestCase
     // This is a regression test to test that we can still new-up classes without the create method. Don't use this style in real scenarios.
     public function testTrackOrderRequestWithBuilderPattern(): void
     {
-        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+        $tracker = $this->tracker();
 
         $trackOrderRequest = (new TrackOrderRequest())
             ->setOrder((new Order())
@@ -61,7 +61,7 @@ class GeneratedRequestsTest extends BaseTestCase
     // This is a regression test to test that we can still new-up classes without the create method. Don't use this style in real scenarios.
     public function testTrackOrderRequest(): void
     {
-        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+        $tracker = $this->tracker();
 
         $money = new Money();
         $money->amount = 100;
@@ -85,7 +85,7 @@ class GeneratedRequestsTest extends BaseTestCase
     // This is a regression test to test that we can use the create method of the User instead of using the factory. Don't use this style in real scenarios.
     public function testTrackOrderRequestWithUserCreateMethod(): void
     {
-        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY());
+        $tracker = $this->tracker();
 
         $money = new Money();
         $money->amount = 100;

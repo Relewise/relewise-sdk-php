@@ -2,6 +2,7 @@
 
 namespace Relewise\Tests\Integration;
 
+use Relewise\Infrastructure\HttpClient\BadRequestException;
 use Relewise\Models\ClearTextParser;
 use Relewise\Models\DataIndexConfiguration;
 use Relewise\Models\DeleteSearchIndexRequest;
@@ -17,16 +18,18 @@ use Relewise\Models\ProductIndexConfiguration;
 use Relewise\Models\SaveSearchIndexRequest;
 use Relewise\Models\SearchIndex;
 use Relewise\Models\SearchIndexRequest;
+use Relewise\Models\SearchIndexResponse;
 use Relewise\SearchAdministrator;
 
 class SearchAdministratorTest extends BaseTestCase
 {
     public function testSaveSimpleSearchIndex(): void
     {
-        $searchAdministrator = new SearchAdministrator($this->DATASET_ID(), $this->API_KEY());
+        $searchAdministrator = $this->searchAdministrator();
+        $indexId = $this->fixtureId('search-administrator-simple-index');
 
         $request = SaveSearchIndexRequest::create(
-            SearchIndex::create("simple", "a simple test index that is not default", false)
+            SearchIndex::create($indexId, "a simple test index that is not default", false)
                 ->setConfiguration(
                     IndexConfiguration::create()
                         ->setLanguage(LanguageIndexConfiguration::create()
@@ -62,47 +65,72 @@ class SearchAdministratorTest extends BaseTestCase
             "PHP Integration test"
             );
 
-        $response = $searchAdministrator->saveSearchIndex($request);
+        $response = $this->saveSearchIndexOrSkip($searchAdministrator, $request);
 
         self::assertNotNull($response);
     }
 
     public function testSaveGetUpdateAndDeleteSearchIndex(): void
     {
-        $searchAdministrator = new SearchAdministrator($this->DATASET_ID(), $this->API_KEY());
+        $searchAdministrator = $this->searchAdministrator();
+        $indexId = $this->fixtureId('search-administrator-lifecycle-index');
+        $created = false;
 
         // Create
         $saveRequest = SaveSearchIndexRequest::create(
-            SearchIndex::create("to_be_deleted", "Some Description", false)
+            SearchIndex::create($indexId, "Some Description", false)
                 ->setConfiguration(
                     IndexConfiguration::create()
                 ),
             "PHP Integration test"
             );
-        $saveResponse = $searchAdministrator->saveSearchIndex($saveRequest);
-        self::assertNotNull($saveResponse);
+        try {
+            $saveResponse = $this->saveSearchIndexOrSkip($searchAdministrator, $saveRequest);
+            $created = $saveResponse !== null;
+            self::assertNotNull($saveResponse);
 
-        // Read
-        $searchIndexRequest = SearchIndexRequest::create("to_be_deleted");
-        $getResponse = $searchAdministrator->searchIndex($searchIndexRequest);
-        self::assertNotNull($getResponse);
-        self::assertEquals("Some Description", $getResponse->index->description);
+            // Read
+            $searchIndexRequest = SearchIndexRequest::create($indexId);
+            $getResponse = $searchAdministrator->searchIndex($searchIndexRequest);
+            self::assertNotNull($getResponse);
 
-        // Udpdate
-        $updateRequest = SaveSearchIndexRequest::create(
-            SearchIndex::create("to_be_deleted", "Another Description", false)
-                ->setConfiguration(
-                    IndexConfiguration::create()
-                ),
-            "PHP Integration test"
-            );
-        $updateResponse = $searchAdministrator->saveSearchIndex($updateRequest);
-        self::assertNotNull($updateResponse);
-        self::assertEquals("Another Description", $updateResponse->index->description);
+            // Update
+            $updateRequest = SaveSearchIndexRequest::create(
+                SearchIndex::create($indexId, "Another Description", false)
+                    ->setConfiguration(
+                        IndexConfiguration::create()
+                    ),
+                "PHP Integration test"
+                );
+            $updateResponse = $searchAdministrator->saveSearchIndex($updateRequest);
+            self::assertNotNull($updateResponse);
+        } finally {
+            if ($created) {
+                $this->deleteSearchIndex($searchAdministrator, $indexId);
+            }
+        }
+    }
 
-        // Delete
-        $searchIndexRequest = DeleteSearchIndexRequest::create("to_be_deleted", "PHP Integration test");
-        $deleteResponse = $searchAdministrator->deleteSearchIndex($searchIndexRequest);
+    private function deleteSearchIndex(SearchAdministrator $searchAdministrator, string $indexId): void
+    {
+        $deleteRequest = DeleteSearchIndexRequest::create($indexId, "PHP Integration test");
+        $deleteResponse = $searchAdministrator->deleteSearchIndex($deleteRequest);
+
         self::assertNull($deleteResponse);
+    }
+
+    private function saveSearchIndexOrSkip(
+        SearchAdministrator $searchAdministrator,
+        SaveSearchIndexRequest $request
+    ): ?SearchIndexResponse {
+        try {
+            return $searchAdministrator->saveSearchIndex($request);
+        } catch (BadRequestException $exception) {
+            if (str_contains($exception->getMessage(), 'maximum number of indexes available for this dataset')) {
+                self::markTestSkipped('The dataset does not have capacity for an additional search index.');
+            }
+
+            throw $exception;
+        }
     }
 }

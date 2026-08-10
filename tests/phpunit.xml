@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" colors="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" bootstrap="Bootstrap_phpunit.php">
-	<coverage>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" colors="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd" bootstrap="Bootstrap_phpunit.php">
+	<testsuites>
+		<testsuite name="Unit">
+			<directory suffix=".php">./php/unit</directory>
+		</testsuite>
+		<testsuite name="Integration">
+			<directory suffix=".php">./php/integration</directory>
+		</testsuite>
+	</testsuites>
+	<source>
 		<include>
 			<directory suffix=".php">../../src</directory>
 		</include>
-	</coverage>
-	<testsuites>
-		<testsuite name="Unit">
-			<directory suffix=".php">./php/</directory>
-		</testsuite>
-	</testsuites>
+	</source>
 </phpunit>

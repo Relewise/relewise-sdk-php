@@ -67,7 +67,7 @@ class DateIntervalFactoryTest extends TestCase
         DateIntervalFactory::fromTimeSpanString($invalidTimeSpan);
     }
 
-    public function invalidTimeSpanProvider(): array 
+    public static function invalidTimeSpanProvider(): array
     {
         return [
             'empty string' => [''],

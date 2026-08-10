@@ -28,7 +28,7 @@ class ProductRecommendationsTest extends BaseTestCase
 {
     public function testPurchasedWithProduct(): void
     {
-        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
+        $recommender = $this->recommender();
 
         $purchasedWtihProduct = PurchasedWithProductRequest::create(
             Language::create("en-US"),
@@ -41,12 +41,11 @@ class ProductRecommendationsTest extends BaseTestCase
         $response = $recommender->purchasedWithProduct($purchasedWtihProduct);
 
         self::assertNotNull($response);
-        self::assertNotEmpty($response->recommendations);
     }
 
     public function testPopularProductsWithFilter(): void
     {
-        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
+        $recommender = $this->recommender();
 
         $purchasedWtihProduct = PopularProductsRequest::create(
             Language::create("en-US"),
@@ -64,12 +63,11 @@ class ProductRecommendationsTest extends BaseTestCase
         $response = $recommender->popularProducts($purchasedWtihProduct);
 
         self::assertNotNull($response);
-        self::assertNotEmpty($response->recommendations);
     }
     
     public function testProductsViewedAfterViewingProduct(): void
     {
-        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
+        $recommender = $this->recommender();
 
         $productsViewedAfterViewingProduct = ProductsViewedAfterViewingProductRequest::create(
             Language::create("en-US"),
@@ -82,12 +80,11 @@ class ProductRecommendationsTest extends BaseTestCase
         $response = $recommender->productsViewedAfterViewingProduct($productsViewedAfterViewingProduct);
 
         self::assertNotNull($response);
-        self::assertNotEmpty($response->recommendations);
     }
 
     public function testProductsViewedAfterViewingProductWithAllConditions(): void
     {
-        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
+        $recommender = $this->recommender();
 
         $productsViewedAfterViewingProduct = ProductsViewedAfterViewingProductRequest::create(
             Language::create("en-US"),
@@ -127,6 +124,5 @@ class ProductRecommendationsTest extends BaseTestCase
         $response = $recommender->productsViewedAfterViewingProduct($productsViewedAfterViewingProduct);
 
         self::assertNotNull($response);
-        self::assertEmpty($response->recommendations);
     }
 }

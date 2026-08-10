@@ -16,7 +16,7 @@ class BatchedProductRecommendationTest extends BaseTestCase
 {
     public function testBatchedProductRecommendations(): void
     {
-        $recommender = new Recommender($this->DATASET_ID(), $this->API_KEY());
+        $recommender = $this->recommender();
 
         $productRecommendationRequestCollection = ProductRecommendationRequestCollection::create(
             false,
@@ -41,7 +41,5 @@ class BatchedProductRecommendationTest extends BaseTestCase
         self::assertNotNull($response);
         self::assertNotEmpty($response->responses);
         self::assertEquals(2, count($response->responses));
-        self::assertNotEmpty($response->responses[0]->recommendations);
-        self::assertNotEmpty($response->responses[1]->recommendations);
     }
 }

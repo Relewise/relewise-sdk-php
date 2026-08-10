@@ -22,7 +22,7 @@ class TimeoutTest extends BaseTestCase
 {
     public function testTooLowTimeout(): void
     {
-        $tracker = new Tracker($this->DATASET_ID(), $this->API_KEY(), 1);
+        $tracker = $this->tracker(1);
 
         $data = array();
         for ($i = 1; $i < 10000; $i++) {
