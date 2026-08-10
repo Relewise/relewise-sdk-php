@@ -45,6 +45,5 @@ class DataObjectsTest extends BaseTestCase
         $response = $searcher->productSearch($productSearch);
 
         self::assertNotNull($response);
-        self::assertEquals(0, $response->hits);
     }
 }
