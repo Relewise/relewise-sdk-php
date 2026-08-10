@@ -115,7 +115,7 @@ class FacetsTest extends BaseTestCase
     {
         $searcher = $this->searcher();
         $tracker = $this->tracker();
-        $productId = $this->uniqueEntityId('product-data-facet');
+        $productId = $this->fixtureId('facets-product-data-product');
 
         $tracking = $tracker->trackProductUpdate(
             TrackProductUpdateRequest::create(
@@ -154,28 +154,24 @@ class FacetsTest extends BaseTestCase
             )
         );
 
-        try {
-            $response = $this->assertEventually(
-                static fn () => $searcher->productSearch($productSearch),
-                static function ($candidate): bool {
-                    $facet = $candidate->facets?->dataString(DataSelectionStrategy::Product, "ShortDescription");
+        $response = $this->assertEventually(
+            static fn () => $searcher->productSearch($productSearch),
+            static function ($candidate): bool {
+                $facet = $candidate->facets?->dataString(DataSelectionStrategy::Product, "ShortDescription");
 
-                    return $facet instanceof ProductDataStringValueFacetResult
-                        && count($facet->available) > 0;
-                },
-                sprintf('temporary product %s contributes to the product data facet', $productId)
-            );
+                return $facet instanceof ProductDataStringValueFacetResult
+                    && count($facet->available) > 0;
+            },
+            sprintf('fixed fixture product %s contributes to the product data facet', $productId)
+        );
 
-            self::assertNotNull($response);
-            self::assertNotNull($response->facets);
-            self::assertNotNull($response->facets->items);
-            self::assertNotEmpty($response->facets->items);
-            self::assertTrue($response->facets->items[0] instanceof ProductDataStringValueFacetResult);
-            self::assertEquals(FacetingField::Data, $response->facets->dataString(DataSelectionStrategy::Product, "ShortDescription")->field);
-            self::assertNull($response->facets->dataBoolean(DataSelectionStrategy::Product, "dataKey"));
-        } finally {
-            $this->deleteProduct($tracker, $productId);
-        }
+        self::assertNotNull($response);
+        self::assertNotNull($response->facets);
+        self::assertNotNull($response->facets->items);
+        self::assertNotEmpty($response->facets->items);
+        self::assertTrue($response->facets->items[0] instanceof ProductDataStringValueFacetResult);
+        self::assertEquals(FacetingField::Data, $response->facets->dataString(DataSelectionStrategy::Product, "ShortDescription")->field);
+        self::assertNull($response->facets->dataBoolean(DataSelectionStrategy::Product, "dataKey"));
     }
 
     public function testCategoryFacet(): void
@@ -215,101 +211,89 @@ class FacetsTest extends BaseTestCase
         $tracker = $this->tracker();
         $language = Language::create($this->TEST_LANGUAGE());
         $productIds = array();
-        $categoryIds = array();
+        foreach (array(4, 3, 2, 1) as $categoryNumber => $productCount) {
+            $categoryId = $this->fixtureId(sprintf('facets-sorting-category-%d', $categoryNumber));
 
-        try {
-            foreach (array(4, 3, 2, 1) as $categoryNumber => $productCount) {
-                $categoryId = $this->uniqueEntityId(sprintf('facet-sorting-category-%d', $categoryNumber));
-                $categoryIds[] = $categoryId;
+            for ($productNumber = 0; $productNumber < $productCount; $productNumber++) {
+                $productId = $this->fixtureId(sprintf('facets-sorting-product-%d-%d', $categoryNumber, $productNumber));
+                $productIds[] = $productId;
 
-                for ($productNumber = 0; $productNumber < $productCount; $productNumber++) {
-                    $productId = $this->uniqueEntityId(sprintf('facet-sorting-product-%d-%d', $categoryNumber, $productNumber));
-                    $productIds[] = $productId;
-
-                    $tracking = $tracker->trackProductUpdate(
-                        TrackProductUpdateRequest::create(
-                            ProductUpdate::create(
-                                Product::create($productId)->setCategoryPaths(
-                                    CategoryPath::create(
-                                        CategoryNameAndId::create(
-                                            $categoryId,
-                                            Multilingual::create(
-                                                MultilingualValue::create($language, sprintf('Facet sorting category %d', $categoryNumber))
-                                            )
+                $tracking = $tracker->trackProductUpdate(
+                    TrackProductUpdateRequest::create(
+                        ProductUpdate::create(
+                            Product::create($productId)->setCategoryPaths(
+                                CategoryPath::create(
+                                    CategoryNameAndId::create(
+                                        $categoryId,
+                                        Multilingual::create(
+                                            MultilingualValue::create($language, sprintf('Facet sorting category %d', $categoryNumber))
                                         )
                                     )
-                                ),
-                                array()
-                            )
+                                )
+                            ),
+                            array()
                         )
-                    );
-                    self::assertNull($tracking);
-                }
-            }
-
-            $productSearch = ProductSearchRequest::create(
-                $language,
-                Currency::create("USD"),
-                UserFactory::anonymous(),
-                "integration test",
-                Null,
-                0,
-                0
-            )->setFacets(
-                ProductFacetQuery::create()
-                    ->setItems(
-                        CategoryFacet::create(CategorySelectionStrategy::ImmediateParent)
-                            ->setField(FacetingField::Category)
-                            ->setSettings(
-                                FacetSettings::create()
-                                ->setSorting(ByHitsFacetSorting::create())
-                                ->setTake(4))
                     )
-            )->setFilters(
-                FilterCollection::create(
-                    ProductIdFilter::create()->setProductIdsFromArray($productIds)
-                )
-            );
-
-            $response = $this->assertEventually(
-                static fn () => $searcher->productSearch($productSearch),
-                static function ($candidate): bool {
-                    $facet = $candidate->facets?->category(CategorySelectionStrategy::ImmediateParent);
-                    if (!$facet instanceof CategoryFacetResult || count($facet->available) !== 4) {
-                        return false;
-                    }
-
-                    for ($index = 1; $index < count($facet->available); $index++) {
-                        if ($facet->available[$index - 1]->hits <= $facet->available[$index]->hits) {
-                            return false;
-                        }
-                    }
-
-                    return true;
-                },
-                'four temporary categories are sorted by descending product hits'
-            );
-
-            self::assertNotNull($response);
-            self::assertNotNull($response->facets);
-            self::assertNotNull($response->facets->items);
-            self::assertNotEmpty($response->facets->items);
-            self::assertEquals(4, count($response->facets->category(CategorySelectionStrategy::ImmediateParent)->available));
-            self::assertSame(
-                array(4, 3, 2, 1),
-                array_map(
-                    static fn ($available): int => $available->hits,
-                    $response->facets->category(CategorySelectionStrategy::ImmediateParent)->available
-                )
-            );
-        } finally {
-            foreach ($productIds as $productId) {
-                $this->deleteProduct($tracker, $productId);
-            }
-            foreach ($categoryIds as $categoryId) {
-                $this->deleteProductCategory($tracker, $categoryId);
+                );
+                self::assertNull($tracking);
             }
         }
+
+        $productSearch = ProductSearchRequest::create(
+            $language,
+            Currency::create("USD"),
+            UserFactory::anonymous(),
+            "integration test",
+            Null,
+            0,
+            0
+        )->setFacets(
+            ProductFacetQuery::create()
+                ->setItems(
+                    CategoryFacet::create(CategorySelectionStrategy::ImmediateParent)
+                        ->setField(FacetingField::Category)
+                        ->setSettings(
+                            FacetSettings::create()
+                            ->setSorting(ByHitsFacetSorting::create())
+                            ->setTake(4))
+                )
+        )->setFilters(
+            FilterCollection::create(
+                ProductIdFilter::create()->setProductIdsFromArray($productIds)
+            )
+        );
+
+        $response = $this->assertEventually(
+            static fn () => $searcher->productSearch($productSearch),
+            static function ($candidate): bool {
+                $facet = $candidate->facets?->category(CategorySelectionStrategy::ImmediateParent);
+                if (!$facet instanceof CategoryFacetResult || count($facet->available) !== 4) {
+                    return false;
+                }
+
+                for ($index = 1; $index < count($facet->available); $index++) {
+                    if ($facet->available[$index - 1]->hits <= $facet->available[$index]->hits) {
+                        return false;
+                    }
+                }
+
+                return true;
+            },
+            'four fixed fixture categories are sorted by descending product hits'
+        );
+
+        self::assertNotNull($response);
+        self::assertNotNull($response->facets);
+        self::assertNotNull($response->facets->items);
+        self::assertNotEmpty($response->facets->items);
+        self::assertEquals(4, count($response->facets->category(CategorySelectionStrategy::ImmediateParent)->available));
+        self::assertSame(
+            array(4, 3, 2, 1),
+            array_map(
+                static fn ($available): int => $available->hits,
+                $response->facets->category(CategorySelectionStrategy::ImmediateParent)->available
+            )
+        );
     }
 
     public function testDataObjectFacetEvaluationMode(): void

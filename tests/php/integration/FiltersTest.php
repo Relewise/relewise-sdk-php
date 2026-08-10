@@ -53,7 +53,7 @@ class FiltersTest extends BaseTestCase
     {
         $searcher = $this->searcher();
         $tracker = $this->tracker();
-        $productId = $this->uniqueEntityId('product-id-filter');
+        $productId = $this->fixtureId('filters-product-id-product');
 
         $tracking = $tracker->trackProductUpdate(
             TrackProductUpdateRequest::create(
@@ -82,20 +82,16 @@ class FiltersTest extends BaseTestCase
                 )
         );
 
-        try {
-            $response = $this->assertEventually(
-                static fn () => $searcher->productSearch($productSearchRequest),
-                static fn ($candidate): bool => count($candidate->results) === 1
-                    && $candidate->results[0]->productId === $productId,
-                sprintf('temporary product %s is returned by the product ID filter', $productId)
-            );
+        $response = $this->assertEventually(
+            static fn () => $searcher->productSearch($productSearchRequest),
+            static fn ($candidate): bool => count($candidate->results) === 1
+                && $candidate->results[0]->productId === $productId,
+            sprintf('fixed fixture product %s is returned by the product ID filter', $productId)
+        );
 
-            self::assertNotNull($response);
-            self::assertEquals(1, count($response->results));
-            self::assertEquals($productId, $response->results[0]->productId);
-        } finally {
-            $this->deleteProduct($tracker, $productId);
-        }
+        self::assertNotNull($response);
+        self::assertEquals(1, count($response->results));
+        self::assertEquals($productId, $response->results[0]->productId);
     }
 
     public function testProductRecentlyViewedByUserFilter(): void
@@ -103,7 +99,7 @@ class FiltersTest extends BaseTestCase
         $tracker = $this->tracker();
         $searcher = $this->searcher();
 
-        $user = UserFactory::byTemporaryId($this->uniqueEntityId('recently-viewed-user'));
+        $user = UserFactory::byTemporaryId($this->fixtureId('filters-recently-viewed-user'));
 
         $viewTracking = TrackProductViewRequest::create(
             ProductView::create($user, Product::create("p12813"))

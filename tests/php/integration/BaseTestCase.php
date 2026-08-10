@@ -10,17 +10,12 @@ use Relewise\SearchAdministrator;
 use Relewise\Searcher;
 use Relewise\Tracker;
 use Relewise\Models\Currency;
-use Relewise\Models\CategoryAdministrativeActionUpdateKind;
-use Relewise\Models\CategoryScope;
 use Relewise\Models\FilterCollection;
 use Relewise\Models\Language;
 use Relewise\Models\ProductAdministrativeAction;
 use Relewise\Models\ProductAdministrativeActionUpdateKind;
-use Relewise\Models\ProductCategoryAdministrativeAction;
-use Relewise\Models\ProductCategoryIdFilter;
 use Relewise\Models\ProductIdFilter;
 use Relewise\Models\TrackProductAdministrativeActionRequest;
-use Relewise\Models\TrackProductCategoryAdministrativeActionRequest;
 use Throwable;
 
 class BaseTestCase extends TestCase
@@ -99,25 +94,6 @@ class BaseTestCase extends TestCase
         self::assertNull($tracking);
     }
 
-    protected function deleteProductCategory(Tracker $tracker, string $categoryId): void
-    {
-        $tracking = $tracker->trackProductCategoryAdministrativeAction(
-            TrackProductCategoryAdministrativeActionRequest::create(
-                ProductCategoryAdministrativeAction::create(
-                    Language::UNDEFINED,
-                    Currency::UNDEFINED,
-                    CategoryAdministrativeActionUpdateKind::Delete
-                )->setFilters(
-                    FilterCollection::create(
-                        ProductCategoryIdFilter::create(CategoryScope::Ancestor)->setCategoryIds($categoryId)
-                    )
-                )
-            )
-        );
-
-        self::assertNull($tracking);
-    }
-
     protected function uniqueEntityId(string $prefix): string
     {
         $normalizedPrefix = $this->normalizeIdentifierPart($prefix, 60);
@@ -125,6 +101,11 @@ class BaseTestCase extends TestCase
         $normalizedRunId = $this->normalizeIdentifierPart($runId, 40);
 
         return sprintf('%s-%s-%s', $normalizedPrefix, $normalizedRunId, bin2hex(random_bytes(6)));
+    }
+
+    protected function fixtureId(string $name): string
+    {
+        return sprintf('php-sdk-integration-%s-v1', $this->normalizeIdentifierPart($name, 80));
     }
 
     /**

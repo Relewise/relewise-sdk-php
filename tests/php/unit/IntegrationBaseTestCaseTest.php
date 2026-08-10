@@ -29,6 +29,20 @@ class IntegrationBaseTestCaseTest extends TestCase
         self::assertNotSame($first, $second);
     }
 
+    public function testFixtureIdsAreStableAndNamespaced(): void
+    {
+        $testCase = $this->testCase();
+
+        self::assertSame(
+            'php-sdk-integration-highlight-product-v1',
+            $testCase->createFixtureId('Highlight Product')
+        );
+        self::assertSame(
+            $testCase->createFixtureId('Highlight Product'),
+            $testCase->createFixtureId('Highlight Product')
+        );
+    }
+
     public function testAssertEventuallyReturnsTheFirstMatchingObservation(): void
     {
         $attempts = 0;
@@ -117,6 +131,11 @@ class IntegrationBaseTestCaseTest extends TestCase
             public function createUniqueEntityId(string $prefix): string
             {
                 return $this->uniqueEntityId($prefix);
+            }
+
+            public function createFixtureId(string $name): string
+            {
+                return $this->fixtureId($name);
             }
 
             public function eventually(
