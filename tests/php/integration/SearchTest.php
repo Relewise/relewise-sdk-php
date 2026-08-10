@@ -3,6 +3,7 @@
 namespace Relewise\Tests\Integration;
 
 use Relewise\Factory\UserFactory;
+use Relewise\Infrastructure\HttpClient\BadRequestException;
 use Relewise\Models\CategoryNameAndId;
 use Relewise\Models\CategoryPath;
 use Relewise\Models\CategoryScope;
@@ -259,7 +260,15 @@ class SearchTest extends BaseTestCase
             )
         );
 
-        $response = $searcher->productSearch($productSearch);
+        try {
+            $response = $searcher->productSearch($productSearch);
+        } catch (BadRequestException $exception) {
+            if (str_contains($exception->getMessage(), "The feature: 'RecentlyPurchasedFacet' is not yet enabled")) {
+                self::markTestSkipped('The RecentlyPurchasedFacet feature is not enabled for the dataset.');
+            }
+
+            throw $exception;
+        }
 
         self::assertNotNull($response);
     }
