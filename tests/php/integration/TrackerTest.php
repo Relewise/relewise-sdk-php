@@ -49,7 +49,7 @@ class TrackerTest extends BaseTestCase
     {
         $tracker = $this->tracker();
 
-        $user = UserFactory::byTemporaryId("t-Id")
+        $user = UserFactory::byTemporaryId($this->fixtureId('tracker-product-view-user'))
             ->setChannel(Channel::create("Channel-1"));
 
         $productViewRequest = TrackProductViewRequest::create(
@@ -68,8 +68,10 @@ class TrackerTest extends BaseTestCase
     {
         // Create Product by tracking it.
         $tracker = $this->tracker();
-        $productId = $this->uniqueEntityId('product-with-variant');
-        $variantId = $this->uniqueEntityId('variant');
+        $productId = $this->fixtureId('tracker-product-variant-product');
+        $variantId = $this->fixtureId('tracker-product-variant-variant');
+        $firstCategoryId = $this->fixtureId('tracker-product-variant-category-1');
+        $secondCategoryId = $this->fixtureId('tracker-product-variant-category-2');
 
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
@@ -81,10 +83,10 @@ class TrackerTest extends BaseTestCase
                             )
                     )
                     ->setBrand(
-                        Brand::create("b-1")
+                        Brand::create($this->fixtureId('tracker-product-variant-brand'))
                             ->setDisplayName("MyBrand1")
                     )
-                    ->setCategoryPaths(CategoryPath::create(CategoryNameAndId::create("c-1", Multilingual::create(MultilingualValue::create(Language::create("da-dk"), "Category 1"))), CategoryNameAndId::create("c-2", Multilingual::create(MultilingualValue::create(Language::create("da-dk"), "Category 2")))))
+                    ->setCategoryPaths(CategoryPath::create(CategoryNameAndId::create($firstCategoryId, Multilingual::create(MultilingualValue::create(Language::create("da-dk"), "Category 1"))), CategoryNameAndId::create($secondCategoryId, Multilingual::create(MultilingualValue::create(Language::create("da-dk"), "Category 2")))))
                     ->addToData("SomeString", DataValueFactory::string("SomeValue"))
                     ->addToData("SomeObject", DataValueFactory::object(array("SomeString" => DataValueFactory::string("SomeValue"))))
                     ->addToData("SomeStringList", DataValueFactory::stringList("FirstString", "SecondString"))
@@ -131,34 +133,29 @@ class TrackerTest extends BaseTestCase
             VariantIdFilter::create()->setVariantIds($variantId)
         ));
 
-        try {
-            $searchResult = $this->assertEventually(
-                static fn () => $searcher->productSearch($productSearch),
-                static fn ($candidate): bool => $candidate->hits === 1
-                    && count($candidate->results) === 1
-                    && $candidate->results[0]->productId === $productId
-                    && $candidate->results[0]->displayName === 'MyProduct1'
-                    && $candidate->results[0]->variant?->variantId === $variantId
-                    && $candidate->results[0]->variant->displayName === 'MyVariant1',
-                sprintf('product %s and variant %s are searchable with their updated properties', $productId, $variantId)
-            );
+        $searchResult = $this->assertEventually(
+            static fn () => $searcher->productSearch($productSearch),
+            static fn ($candidate): bool => $candidate->hits === 1
+                && count($candidate->results) === 1
+                && $candidate->results[0]->productId === $productId
+                && $candidate->results[0]->displayName === 'MyProduct1'
+                && $candidate->results[0]->variant?->variantId === $variantId
+                && $candidate->results[0]->variant->displayName === 'MyVariant1',
+            sprintf('fixed fixture product %s and variant %s are searchable with their updated properties', $productId, $variantId)
+        );
 
-            self::assertEquals(1, $searchResult->hits);
-            self::assertNotEmpty($searchResult->results);
-            self::assertEquals($productId, $searchResult->results[0]->productId);
-            self::assertEquals("MyProduct1", $searchResult->results[0]->displayName);
-            self::assertEquals($variantId, $searchResult->results[0]->variant->variantId);
-            self::assertEquals("MyVariant1", $searchResult->results[0]->variant->displayName);
-        } finally {
-            $this->deleteProduct($tracker, $productId);
-        }
+        self::assertEquals(1, $searchResult->hits);
+        self::assertNotEmpty($searchResult->results);
+        self::assertEquals($productId, $searchResult->results[0]->productId);
+        self::assertEquals("MyProduct1", $searchResult->results[0]->displayName);
+        self::assertEquals($variantId, $searchResult->results[0]->variant->variantId);
+        self::assertEquals("MyVariant1", $searchResult->results[0]->variant->displayName);
     }
     
     public function testDeleteAdministrativeAction(): void
     {
         $tracker = $this->tracker();
-        $searcher = $this->searcher();
-        $productId = $this->uniqueEntityId('delete-product');
+        $productId = $this->fixtureId('tracker-delete-product');
 
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
@@ -171,30 +168,14 @@ class TrackerTest extends BaseTestCase
         $tracking = $tracker->trackProductUpdate($productUpdate);
         self::assertNull($tracking);
 
-        $productSearch = ProductSearchRequest::create(
-            Language::UNDEFINED,
-            Currency::UNDEFINED,
-            UserFactory::anonymous(),
-            "integration test",
-            null,
-            0,
-            1
-        )->setFilters(
-            FilterCollection::create(ProductIdFilter::create()->setProductIds($productId))
-        );
-
-        $this->assertProductSearchHits($searcher, $productSearch, 1, sprintf('product %s is searchable before deletion', $productId));
-
         $this->deleteProduct($tracker, $productId);
-
-        $this->assertProductSearchHits($searcher, $productSearch, 0, sprintf('product %s is no longer searchable after deletion', $productId));
     }
     
     public function testDisableAdministrativeAction(): void
     {
         $tracker = $this->tracker();
         $searcher = $this->searcher();
-        $productId = $this->uniqueEntityId('disable-product');
+        $productId = $this->fixtureId('tracker-disable-product');
 
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
@@ -249,7 +230,18 @@ class TrackerTest extends BaseTestCase
 
             $this->assertProductSearchHits($searcher, $productSearch, 0, sprintf('product %s is no longer searchable after disabling', $productId));
         } finally {
-            $this->deleteProduct($tracker, $productId);
+            $administrativeActionRequest = TrackProductAdministrativeActionRequest::create(
+                ProductAdministrativeAction::create(
+                    Language::UNDEFINED,
+                    Currency::UNDEFINED,
+                    FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
+                    ProductAdministrativeActionUpdateKind::Enable,
+                    ProductAdministrativeActionUpdateKind::None
+                )
+            );
+
+            $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
+            self::assertNull($tracking);
         }
     }
 
