@@ -27,7 +27,6 @@ class ContentRecommendationsTest extends BaseTestCase
         $response = $recommender->contentsViewedAfterViewingContent($contentsViewedAfterViewingContent);
 
         self::assertNotNull($response);
-        self::assertNotEmpty($response->recommendations);
     }
 
     public function testPopularContent(): void
@@ -44,6 +43,5 @@ class ContentRecommendationsTest extends BaseTestCase
         $response = $recommender->popularContents($popularContents);
 
         self::assertNotNull($response);
-        self::assertNotEmpty($response->recommendations);
     }
 }

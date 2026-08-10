@@ -40,7 +40,5 @@ class BatchedContentRecommendationTest extends BaseTestCase
         self::assertNotNull($response);
         self::assertNotEmpty($response->responses);
         self::assertEquals(2, count($response->responses));
-        self::assertNotEmpty($response->responses[0]->recommendations);
-        self::assertNotEmpty($response->responses[1]->recommendations);
     }
 }

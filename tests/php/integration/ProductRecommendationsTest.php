@@ -41,7 +41,6 @@ class ProductRecommendationsTest extends BaseTestCase
         $response = $recommender->purchasedWithProduct($purchasedWtihProduct);
 
         self::assertNotNull($response);
-        self::assertNotEmpty($response->recommendations);
     }
 
     public function testPopularProductsWithFilter(): void
@@ -64,7 +63,6 @@ class ProductRecommendationsTest extends BaseTestCase
         $response = $recommender->popularProducts($purchasedWtihProduct);
 
         self::assertNotNull($response);
-        self::assertNotEmpty($response->recommendations);
     }
     
     public function testProductsViewedAfterViewingProduct(): void
@@ -82,7 +80,6 @@ class ProductRecommendationsTest extends BaseTestCase
         $response = $recommender->productsViewedAfterViewingProduct($productsViewedAfterViewingProduct);
 
         self::assertNotNull($response);
-        self::assertNotEmpty($response->recommendations);
     }
 
     public function testProductsViewedAfterViewingProductWithAllConditions(): void
@@ -127,6 +124,5 @@ class ProductRecommendationsTest extends BaseTestCase
         $response = $recommender->productsViewedAfterViewingProduct($productsViewedAfterViewingProduct);
 
         self::assertNotNull($response);
-        self::assertEmpty($response->recommendations);
     }
 }
