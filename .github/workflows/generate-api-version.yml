@@ -43,6 +43,10 @@ jobs:
           }
 
           "TRELLO_CARD_URL=$trelloCardUrl" >> $env:GITHUB_ENV
+          
+      - name: Wait for NuGet package to be published
+        if: github.event_name != 'workflow_dispatch'
+        run: sleep 600
 
       - uses: actions/checkout@v7
         with:
@@ -201,3 +205,12 @@ jobs:
             --reviewer $env:REVIEWERS
 
           "Created pull request '$title' from '$branch'." >> $env:GITHUB_STEP_SUMMARY
+
+      - name: Move Card to "Review"
+        id: move-trello-card
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: 'https://hub.relewise.com/api/v1/trello/cards'
+          method: 'POST'
+          customHeaders: '{"X-Api-Key": "${{ secrets.HUB_API_READ_WRITE }}", "Content-Type": "application/json"}'
+          data: '{"title": "PHP SDK: Update with new features from release ${{ steps.get-latest-tag.outputs.tag }}", "listId": "63bd377b9f0b5a017740b8d8", "labelIds": ["62547bf8c1f9f669438d8b00"], "description": "A new version of the .NET SDK was released. Consider making a release for the PHP SDK. An overview of the changes introduced in the API can be found here: [https://relewise.github.io/relewise-tools-blazor-apps/Versions/?compareToPreviousVersion=${{ steps.get-latest-tag.outputs.tag }}](https://relewise.github.io/relewise-tools-blazor-apps/Versions/?compareToPreviousVersion=${{ steps.get-latest-tag.outputs.tag }})"}'
