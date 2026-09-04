@@ -47,6 +47,10 @@ abstract class SearchRule implements JsonSerializable
         {
             return StemmingRule::hydrate($arr);
         }
+        if ($type=="Relewise.Client.DataTypes.Search.Rules.SynonymRule, Relewise.Client")
+        {
+            return SynonymRule::hydrate($arr);
+        }
     }
     
     public static function hydrateBase(mixed $result, array $arr)

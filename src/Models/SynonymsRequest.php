@@ -2,6 +2,7 @@
 
 namespace Relewise\Models;
 
+/** @deprecated Use SynonymRulesRequest and SearchAdministrator.Load(SynonymRulesRequest) instead. */
 class SynonymsRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.SynonymsRequest, Relewise.Client";

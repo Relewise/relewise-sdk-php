@@ -2,6 +2,7 @@
 
 namespace Relewise\Models;
 
+/** @deprecated Use DeleteSearchRulesResponse returned by DeleteSynonymRulesRequest instead. */
 class DeleteSynonymsResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.DeleteSynonymsResponse, Relewise.Client";

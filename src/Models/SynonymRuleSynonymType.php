@@ -4,8 +4,8 @@ namespace Relewise\Models;
 
 use DateTime;
 
-/** @deprecated Use Relewise.Client.DataTypes.Search.Rules.SynonymRule.SynonymType instead. */
-enum SynonymType : string
+/** Defines the direction in which a synonym relation is applied. */
+enum SynonymRuleSynonymType : string
 {
     case OneWay = 'OneWay';
     case Multidirectional = 'Multidirectional';

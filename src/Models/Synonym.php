@@ -5,6 +5,7 @@ namespace Relewise\Models;
 use DateTime;
 use JsonSerializable;
 
+/** @deprecated Use Relewise.Client.DataTypes.Search.Rules.SynonymRule instead. */
 class Synonym implements JsonSerializable
 {
     public string $id;
