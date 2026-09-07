@@ -183,6 +183,10 @@ abstract class TimedResponse
         {
             return SaveStemmingRulesResponse::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Responses.Search.Rules.SaveSynonymRulesResponse, Relewise.Client")
+        {
+            return SaveSynonymRulesResponse::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Responses.Search.Rules.SearchResultModifierRulesResponse, Relewise.Client")
         {
             return SearchResultModifierRulesResponse::hydrate($arr);
@@ -194,6 +198,10 @@ abstract class TimedResponse
         if ($type=="Relewise.Client.Responses.Search.Rules.StemmingRulesResponse, Relewise.Client")
         {
             return StemmingRulesResponse::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Responses.Search.Rules.SynonymRulesResponse, Relewise.Client")
+        {
+            return SynonymRulesResponse::hydrate($arr);
         }
         if ($type=="Relewise.Client.Responses.RetailMedia.AdvertisersResponse, Relewise.Client")
         {

@@ -233,6 +233,10 @@ abstract class LicensedRequest
         {
             return DeleteStemmingRulesRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Search.Rules.DeleteSynonymRulesRequest, Relewise.Client")
+        {
+            return DeleteSynonymRulesRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Search.Rules.PredictionRulesRequest, Relewise.Client")
         {
             return PredictionRulesRequest::hydrate($arr);
@@ -265,6 +269,10 @@ abstract class LicensedRequest
         {
             return SaveStemmingRulesRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Search.Rules.SaveSynonymRulesRequest, Relewise.Client")
+        {
+            return SaveSynonymRulesRequest::hydrate($arr);
+        }
         if ($type=="Relewise.Client.Requests.Search.Rules.SearchResultModifierRulesRequest, Relewise.Client")
         {
             return SearchResultModifierRulesRequest::hydrate($arr);
@@ -276,6 +284,10 @@ abstract class LicensedRequest
         if ($type=="Relewise.Client.Requests.Search.Rules.StemmingRulesRequest, Relewise.Client")
         {
             return StemmingRulesRequest::hydrate($arr);
+        }
+        if ($type=="Relewise.Client.Requests.Search.Rules.SynonymRulesRequest, Relewise.Client")
+        {
+            return SynonymRulesRequest::hydrate($arr);
         }
         if ($type=="Relewise.Client.Requests.RetailMedia.AdvertisersRequest, Relewise.Client")
         {

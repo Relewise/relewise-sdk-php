@@ -36,6 +36,10 @@ abstract class DeleteSearchRulesRequest extends LicensedRequest
         {
             return DeleteStemmingRulesRequest::hydrate($arr);
         }
+        if ($type=="Relewise.Client.Requests.Search.Rules.DeleteSynonymRulesRequest, Relewise.Client")
+        {
+            return DeleteSynonymRulesRequest::hydrate($arr);
+        }
     }
     
     public static function hydrateBase(mixed $result, array $arr)

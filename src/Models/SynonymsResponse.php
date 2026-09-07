@@ -2,6 +2,7 @@
 
 namespace Relewise\Models;
 
+/** @deprecated Use SynonymRulesResponse returned by SynonymRulesRequest instead. */
 class SynonymsResponse extends TimedResponse
 {
     public string $typeDefinition = "Relewise.Client.Responses.Search.SynonymsResponse, Relewise.Client";

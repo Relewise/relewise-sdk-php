@@ -10,6 +10,9 @@ use Relewise\Models\SearchIndexesRequest;
 use Relewise\Models\SynonymsRequest;
 use Relewise\Models\SaveSynonymsRequest;
 use Relewise\Models\DeleteSynonymsRequest;
+use Relewise\Models\SynonymRulesRequest;
+use Relewise\Models\SaveSynonymRulesRequest;
+use Relewise\Models\DeleteSynonymRulesRequest;
 use Relewise\Models\RedirectRulesRequest;
 use Relewise\Models\SaveRedirectRulesRequest;
 use Relewise\Models\DeleteRedirectRulesRequest;
@@ -29,9 +32,11 @@ use Relewise\Models\SearchIndexResponse;
 use Relewise\Models\SearchIndexCollectionResponse;
 use Relewise\Models\SynonymsResponse;
 use Relewise\Models\DeleteSynonymsResponse;
+use Relewise\Models\SynonymRulesResponse;
+use Relewise\Models\SaveSynonymRulesResponse;
+use Relewise\Models\DeleteSearchRulesResponse;
 use Relewise\Models\RedirectRulesResponse;
 use Relewise\Models\SaveRedirectRulesResponse;
-use Relewise\Models\DeleteSearchRulesResponse;
 use Relewise\Models\DecompoundRulesResponse;
 use Relewise\Models\SaveDecompoundRulesResponse;
 use Relewise\Models\StemmingRulesResponse;
@@ -111,6 +116,36 @@ class SearchAdministrator extends RelewiseClient
             return Null;
         }
         return DeleteSynonymsResponse::hydrate($response);
+    }
+    
+    public function synonymRules(SynonymRulesRequest $request) : ?SynonymRulesResponse
+    {
+        $response = $this->requestAndValidate("SynonymRulesRequest", $request);
+        if ($response == Null)
+        {
+            return Null;
+        }
+        return SynonymRulesResponse::hydrate($response);
+    }
+    
+    public function saveSynonymRules(SaveSynonymRulesRequest $request) : ?SaveSynonymRulesResponse
+    {
+        $response = $this->requestAndValidate("SaveSynonymRulesRequest", $request);
+        if ($response == Null)
+        {
+            return Null;
+        }
+        return SaveSynonymRulesResponse::hydrate($response);
+    }
+    
+    public function deleteSynonymRules(DeleteSynonymRulesRequest $request) : ?DeleteSearchRulesResponse
+    {
+        $response = $this->requestAndValidate("DeleteSynonymRulesRequest", $request);
+        if ($response == Null)
+        {
+            return Null;
+        }
+        return DeleteSearchRulesResponse::hydrate($response);
     }
     
     public function redirectRules(RedirectRulesRequest $request) : ?RedirectRulesResponse

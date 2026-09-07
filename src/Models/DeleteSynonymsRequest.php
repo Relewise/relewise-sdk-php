@@ -2,6 +2,7 @@
 
 namespace Relewise\Models;
 
+/** @deprecated Use DeleteSynonymRulesRequest and SearchAdministrator.Delete(DeleteSynonymRulesRequest) instead. */
 class DeleteSynonymsRequest extends LicensedRequest
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.DeleteSynonymsRequest, Relewise.Client";

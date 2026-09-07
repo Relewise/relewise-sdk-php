@@ -4,8 +4,8 @@ namespace Relewise\Models;
 
 use DateTime;
 
-/** @deprecated Use SynonymRulesRequest.SortBy instead. */
-enum SynonymsRequestSynonymSorting : string
+/** Defines the fields by which synonym rules can be sorted. */
+enum SynonymRulesRequestSortBy : string
 {
     case Created = 'Created';
     case CreatedBy = 'CreatedBy';
@@ -13,7 +13,6 @@ enum SynonymsRequestSynonymSorting : string
     case ModifiedBy = 'ModifiedBy';
     case Approved = 'Approved';
     case ApprovedBy = 'ApprovedBy';
-    case Usages = 'Usages';
     case Type = 'Type';
     case Predictable = 'Predictable';
 }
