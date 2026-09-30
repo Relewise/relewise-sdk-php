@@ -16,9 +16,83 @@ use Relewise\Models\ProductAdministrativeAction;
 use Relewise\Models\ProductAdministrativeActionUpdateKind;
 use Relewise\Models\ProductIdFilter;
 use Relewise\Models\TrackProductAdministrativeActionRequest;
+use Relewise\Models\AuthenticatedIdCondition;
+use Relewise\Models\TrackUserAdministrativeActionRequest;
+use Relewise\Models\UserAdministrativeAction;
+use Relewise\Models\UserAdministrativeActionDeleteUser;
+use Relewise\Models\UserConditionCollection;
+use Relewise\Models\BrandAdministrativeAction;
+use Relewise\Models\BrandAdministrativeActionUpdateKind;
+use Relewise\Models\BrandIdFilter;
+use Relewise\Models\CategoryAdministrativeActionUpdateKind;
+use Relewise\Models\CategoryScope;
+use Relewise\Models\ProductCategoryAdministrativeAction;
+use Relewise\Models\ProductCategoryIdFilter;
+use Relewise\Models\TrackBrandAdministrativeActionRequest;
+use Relewise\Models\TrackProductCategoryAdministrativeActionRequest;
 
 class BaseTestCase extends TestCase
 {
+    /** @var string[] */
+    private array $productsToDelete = [];
+    /** @var string[] */
+    private array $productCategoriesToDelete = [];
+    /** @var string[] */
+    private array $brandsToDelete = [];
+    /** @var string[] */
+    private array $usersToDelete = [];
+
+    protected function tearDown(): void
+    {
+        try {
+            try {
+                if ($this->productsToDelete !== []) {
+                    $this->deleteProducts($this->tracker(), array_values($this->productsToDelete));
+                }
+            } finally {
+                try {
+                    if ($this->productCategoriesToDelete !== []) {
+                        $this->deleteProductCategories($this->tracker(), array_values($this->productCategoriesToDelete));
+                    }
+                } finally {
+                    try {
+                        if ($this->brandsToDelete !== []) {
+                            $this->deleteBrands($this->tracker(), array_values($this->brandsToDelete));
+                        }
+                    } finally {
+                        if ($this->usersToDelete !== []) {
+                            $this->deleteUsers($this->tracker(), array_values($this->usersToDelete));
+                        }
+                    }
+                }
+            }
+        } finally {
+            parent::tearDown();
+        }
+    }
+
+    protected function deleteFixtureProductAfterTest(string $productId): void
+    {
+        $this->productsToDelete[$productId] = $productId;
+    }
+
+    protected function deleteFixtureProductCategoryAfterTest(string $categoryId): void
+    {
+        $this->productCategoriesToDelete[$categoryId] = $categoryId;
+    }
+
+    protected function deleteFixtureBrandAfterTest(string $brandId): void
+    {
+        $this->brandsToDelete[$brandId] = $brandId;
+    }
+
+    protected function fixtureUserId(string $name): string
+    {
+        $userId = $this->fixtureId($name);
+        $this->usersToDelete[$userId] = $userId;
+        return $userId;
+    }
+
     public function testGetDatasetIdAndApiKey(): void
     {
         self::assertNotNull($this->DATASET_ID());
@@ -74,12 +148,18 @@ class BaseTestCase extends TestCase
 
     protected function deleteProduct(Tracker $tracker, string $productId): void
     {
+        $this->deleteProducts($tracker, [$productId]);
+    }
+
+    /** @param string[] $productIds */
+    protected function deleteProducts(Tracker $tracker, array $productIds): void
+    {
         $tracking = $tracker->trackProductAdministrativeAction(
             TrackProductAdministrativeActionRequest::create(
                 ProductAdministrativeAction::create(
                     Language::UNDEFINED,
                     Currency::UNDEFINED,
-                    FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
+                    FilterCollection::create(ProductIdFilter::create()->setProductIdsFromArray($productIds)),
                     ProductAdministrativeActionUpdateKind::Delete,
                     ProductAdministrativeActionUpdateKind::None
                 )
@@ -89,9 +169,56 @@ class BaseTestCase extends TestCase
         self::assertNull($tracking);
     }
 
+    /** @param string[] $userIds */
+    protected function deleteUsers(Tracker $tracker, array $userIds): void
+    {
+        $tracking = $tracker->trackUserAdministrativeAction(
+            TrackUserAdministrativeActionRequest::create(
+                UserAdministrativeAction::create(
+                    UserConditionCollection::create(AuthenticatedIdCondition::create($userIds)),
+                    UserAdministrativeActionDeleteUser::create()
+                )
+            )
+        );
+        self::assertNull($tracking);
+    }
+
+    /** @param string[] $categoryIds */
+    protected function deleteProductCategories(Tracker $tracker, array $categoryIds): void
+    {
+        $tracking = $tracker->trackProductCategoryAdministrativeAction(
+            TrackProductCategoryAdministrativeActionRequest::create(
+                ProductCategoryAdministrativeAction::create(
+                    Language::UNDEFINED,
+                    Currency::UNDEFINED,
+                    CategoryAdministrativeActionUpdateKind::Delete
+                )->setFilters(FilterCollection::create(
+                    ProductCategoryIdFilter::create(CategoryScope::Ancestor)->setCategoryIdsFromArray($categoryIds)
+                ))
+            )
+        );
+        self::assertNull($tracking);
+    }
+
+    /** @param string[] $brandIds */
+    protected function deleteBrands(Tracker $tracker, array $brandIds): void
+    {
+        $tracking = $tracker->trackBrandAdministrativeAction(
+            TrackBrandAdministrativeActionRequest::create(
+                BrandAdministrativeAction::create(
+                    Language::UNDEFINED,
+                    Currency::UNDEFINED,
+                    FilterCollection::create(BrandIdFilter::create()->setBrandIdsFromArray($brandIds)),
+                    BrandAdministrativeActionUpdateKind::Delete
+                )
+            )
+        );
+        self::assertNull($tracking);
+    }
+
     protected function fixtureId(string $name): string
     {
-        return sprintf('php-sdk-integration-%s-v1', $this->normalizeIdentifierPart($name, 80));
+        return sprintf('php-sdk-integration-%s-%s', $this->normalizeIdentifierPart($name, 64), bin2hex(random_bytes(4)));
     }
 
     private function normalizeIdentifierPart(string $value, int $maximumLength): string

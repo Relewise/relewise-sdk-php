@@ -30,15 +30,28 @@ class TrackerTest extends BaseTestCase
     public function testProductView(): void
     {
         $tracker = $this->tracker();
+        $productId = $this->fixtureId('tracker-product-view-product');
+        $variantId = $this->fixtureId('tracker-product-view-variant');
+        $this->deleteFixtureProductAfterTest($productId);
+        $tracking = $tracker->trackProductUpdate(TrackProductUpdateRequest::create(
+            ProductUpdate::create(
+                Product::create($productId),
+                array(ProductVariant::create($variantId)),
+                ProductUpdateUpdateKind::ReplaceProvidedProperties
+            )
+        ));
+        self::assertNull($tracking);
 
-        $user = UserFactory::byTemporaryId($this->fixtureId('tracker-product-view-user'))
+        $userId = $this->fixtureUserId('tracker-product-view-user');
+        $user = UserFactory::byTemporaryId($userId)
+            ->setAuthenticatedId($userId)
             ->setChannel(Channel::create("Channel-1"));
 
         $productViewRequest = TrackProductViewRequest::create(
             ProductView::create(
                 $user,
-                Product::create("p-1"),
-                ProductVariant::create("v-1")
+                Product::create($productId),
+                ProductVariant::create($variantId)
             )
         );
 
@@ -54,6 +67,11 @@ class TrackerTest extends BaseTestCase
         $variantId = $this->fixtureId('tracker-product-variant-variant');
         $firstCategoryId = $this->fixtureId('tracker-product-variant-category-1');
         $secondCategoryId = $this->fixtureId('tracker-product-variant-category-2');
+        $brandId = $this->fixtureId('tracker-product-variant-brand');
+        $this->deleteFixtureProductAfterTest($productId);
+        $this->deleteFixtureProductCategoryAfterTest($firstCategoryId);
+        $this->deleteFixtureProductCategoryAfterTest($secondCategoryId);
+        $this->deleteFixtureBrandAfterTest($brandId);
 
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
@@ -65,7 +83,7 @@ class TrackerTest extends BaseTestCase
                             )
                     )
                     ->setBrand(
-                        Brand::create($this->fixtureId('tracker-product-variant-brand'))
+                        Brand::create($brandId)
                             ->setDisplayName("MyBrand1")
                     )
                     ->setCategoryPaths(CategoryPath::create(CategoryNameAndId::create($firstCategoryId, Multilingual::create(MultilingualValue::create(Language::create("da-dk"), "Category 1"))), CategoryNameAndId::create($secondCategoryId, Multilingual::create(MultilingualValue::create(Language::create("da-dk"), "Category 2")))))
@@ -87,13 +105,13 @@ class TrackerTest extends BaseTestCase
 
         $tracking = $tracker->trackProductUpdate($productUpdate);
         self::assertNull($tracking);
-
     }
     
     public function testDeleteAdministrativeAction(): void
     {
         $tracker = $this->tracker();
         $productId = $this->fixtureId('tracker-delete-product');
+        $this->deleteFixtureProductAfterTest($productId);
 
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
@@ -113,6 +131,7 @@ class TrackerTest extends BaseTestCase
     {
         $tracker = $this->tracker();
         $productId = $this->fixtureId('tracker-disable-product');
+        $this->deleteFixtureProductAfterTest($productId);
 
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
@@ -137,32 +156,17 @@ class TrackerTest extends BaseTestCase
         $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
         self::assertNull($tracking);
 
-        try {
-            $administrativeActionRequest = TrackProductAdministrativeActionRequest::create(
-                ProductAdministrativeAction::create(
-                    Language::UNDEFINED,
-                    Currency::UNDEFINED,
-                    FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
-                    ProductAdministrativeActionUpdateKind::Disable,
-                    ProductAdministrativeActionUpdateKind::None
-                )
-            );
+        $administrativeActionRequest = TrackProductAdministrativeActionRequest::create(
+            ProductAdministrativeAction::create(
+                Language::UNDEFINED,
+                Currency::UNDEFINED,
+                FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
+                ProductAdministrativeActionUpdateKind::Disable,
+                ProductAdministrativeActionUpdateKind::None
+            )
+        );
 
-            $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
-            self::assertNull($tracking);
-        } finally {
-            $administrativeActionRequest = TrackProductAdministrativeActionRequest::create(
-                ProductAdministrativeAction::create(
-                    Language::UNDEFINED,
-                    Currency::UNDEFINED,
-                    FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
-                    ProductAdministrativeActionUpdateKind::Enable,
-                    ProductAdministrativeActionUpdateKind::None
-                )
-            );
-
-            $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
-            self::assertNull($tracking);
-        }
+        $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
+        self::assertNull($tracking);
     }
 }

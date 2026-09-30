@@ -94,8 +94,9 @@ jobs:
 
       - name: Wake up API
         env:
-          DATASET_ID: ${{ secrets.INTEGRATIONTESTS_DATASET_ID }}
+          DATASET_ID: a5dab1ca-e6f3-43e7-93c5-69eea1bf8cfd
           API_KEY: ${{ secrets.INTEGRATIONTESTS_API_KEY }}
+          SERVER_URL: https://sandbox-api.relewise.com/
         run: |
           php <<'PHP'
           <?php
@@ -122,6 +123,7 @@ jobs:
           }
 
           $searcher = new Searcher($datasetId, $apiKey, 30);
+          $searcher->serverUrl = rtrim(getenv('SERVER_URL'), '/');
           $request = ProductSearchRequest::create(
               Language::create('en-US'),
               Currency::create('USD'),
@@ -145,8 +147,9 @@ jobs:
 
       - name: PHPUnit Tests
         env:
-          DATASET_ID: ${{ secrets.INTEGRATIONTESTS_DATASET_ID }}
+          DATASET_ID: a5dab1ca-e6f3-43e7-93c5-69eea1bf8cfd
           API_KEY: ${{ secrets.INTEGRATIONTESTS_API_KEY }}
+          SERVER_URL: https://sandbox-api.relewise.com/
           XDEBUG_MODE: coverage
         run: vendor/bin/phpunit --configuration tests/phpunit.xml
 

@@ -11,7 +11,10 @@ use Relewise\Models\Currency;
 use Relewise\Models\LineItem;
 use Relewise\Models\Order;
 use Relewise\Models\Product;
+use Relewise\Models\ProductUpdate;
+use Relewise\Models\ProductUpdateUpdateKind;
 use Relewise\Models\TrackOrderRequest;
+use Relewise\Models\TrackProductUpdateRequest;
 use Relewise\Models\User;
 
 class GeneratedRequestsTest extends BaseTestCase
@@ -19,13 +22,19 @@ class GeneratedRequestsTest extends BaseTestCase
     public function testTrackOrderRequestWithBuilderPatternAndCreatorMethod(): void
     {
         $tracker = $this->tracker();
+        $userId = $this->fixtureUserId('order-creator-user');
+        $productId = $this->fixtureId('order-creator-product');
+        $this->deleteFixtureProductAfterTest($productId);
+        $tracker->trackProductUpdate(TrackProductUpdateRequest::create(
+            ProductUpdate::create(Product::create($productId), [], ProductUpdateUpdateKind::ReplaceProvidedProperties)
+        ));
 
         $trackOrderRequest = TrackOrderRequest::create(
             Order::create(
-                UserFactory::byTemporaryId("t-Id"),
+                UserFactory::byTemporaryId($userId)->setAuthenticatedId($userId),
                 Money::create(Currency::create("DKK"), 100),
-                "1",
-                array(LineItem::create(Product::create("p-1"), null, 1, 100)),
+                $userId,
+                array(LineItem::create(Product::create($productId), null, 1, 100)),
                 "1"
             )
         );
@@ -40,17 +49,18 @@ class GeneratedRequestsTest extends BaseTestCase
     public function testTrackOrderRequestWithBuilderPattern(): void
     {
         $tracker = $this->tracker();
+        $userId = $this->fixtureUserId('order-builder-user');
 
         $trackOrderRequest = (new TrackOrderRequest())
             ->setOrder((new Order())
-                ->setUser(UserFactory::byTemporaryId("t-Id"))
+                ->setUser(UserFactory::byTemporaryId($userId)->setAuthenticatedId($userId))
                 ->setSubtotal((new Money())
                     ->setAmount(100)
                     ->setCurrency((new Currency())
                         ->setValue("DKK")
                     )
                 )
-                ->setOrderNumber("1"));
+                ->setOrderNumber($userId));
 
         $response = $tracker->request('TrackOrderRequest', $trackOrderRequest);
 
@@ -62,6 +72,7 @@ class GeneratedRequestsTest extends BaseTestCase
     public function testTrackOrderRequest(): void
     {
         $tracker = $this->tracker();
+        $userId = $this->fixtureUserId('order-direct-user');
 
         $money = new Money();
         $money->amount = 100;
@@ -69,9 +80,9 @@ class GeneratedRequestsTest extends BaseTestCase
         $money->currency->value = "DKK";
 
         $order = new Order();
-        $order->user = UserFactory::byTemporaryId("t-Id");
+        $order->user = UserFactory::byTemporaryId($userId)->setAuthenticatedId($userId);
         $order->subtotal = $money;
-        $order->orderNumber = "1";
+        $order->orderNumber = $userId;
 
         $trackOrderRequest = new TrackOrderRequest();
         $trackOrderRequest->order = $order;
@@ -86,6 +97,7 @@ class GeneratedRequestsTest extends BaseTestCase
     public function testTrackOrderRequestWithUserCreateMethod(): void
     {
         $tracker = $this->tracker();
+        $userId = $this->fixtureUserId('order-user-create-user');
 
         $money = new Money();
         $money->amount = 100;
@@ -93,9 +105,9 @@ class GeneratedRequestsTest extends BaseTestCase
         $money->currency->value = "DKK";
 
         $order = new Order();
-        $order->user = User::create(null, "t-Id", null, null, null, null, null);
+        $order->user = User::create($userId, $userId, null, null, null, null, null);
         $order->subtotal = $money;
-        $order->orderNumber = "1";
+        $order->orderNumber = $userId;
 
         $trackOrderRequest = new TrackOrderRequest();
         $trackOrderRequest->order = $order;
