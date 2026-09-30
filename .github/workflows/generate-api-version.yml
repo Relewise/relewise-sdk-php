@@ -95,7 +95,7 @@ jobs:
       - name: Wake up API
         env:
           DATASET_ID: a5dab1ca-e6f3-43e7-93c5-69eea1bf8cfd
-          API_KEY: ${{ secrets.INTEGRATIONTESTS_API_KEY }}
+          API_KEY: ${{ secrets.INTEGRATION_TESTS_DATASET_API_KEY }}
           SERVER_URL: https://sandbox-api.relewise.com/
         run: |
           php <<'PHP'
@@ -148,7 +148,7 @@ jobs:
       - name: PHPUnit Tests
         env:
           DATASET_ID: a5dab1ca-e6f3-43e7-93c5-69eea1bf8cfd
-          API_KEY: ${{ secrets.INTEGRATIONTESTS_API_KEY }}
+          API_KEY: ${{ secrets.INTEGRATION_TESTS_DATASET_API_KEY }}
           SERVER_URL: https://sandbox-api.relewise.com/
           XDEBUG_MODE: coverage
         run: vendor/bin/phpunit --configuration tests/phpunit.xml
