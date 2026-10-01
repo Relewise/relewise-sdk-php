@@ -30,11 +30,14 @@ class TimeoutTest extends BaseTestCase
         }
 
         $trackables = array();
+        $fixturePrefix = $this->fixtureId('timeout-products') . '-' . bin2hex(random_bytes(4));
         for ($i = 0; $i < 40; $i++) {
+            $productId = $fixturePrefix . '-' . $i;
+            $this->deleteFixtureProductAfterTest($productId);
             array_push(
                 $trackables,
                 ProductUpdate::create(
-                    Product::create("p-many-" . $i)->setDataFromAssociativeArray($data),
+                    Product::create($productId)->setDataFromAssociativeArray($data),
                     array(),
                     ProductUpdateUpdateKind::ReplaceProvidedProperties
                 )

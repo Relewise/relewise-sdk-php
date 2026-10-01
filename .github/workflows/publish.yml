@@ -33,8 +33,9 @@ jobs:
           configuration: tests/phpunit.xml
           test_suffix: .php
         env:
-          DATASET_ID: ${{secrets.INTEGRATIONTESTS_DATASET_ID}}
-          API_KEY: ${{secrets.INTEGRATIONTESTS_API_KEY}}
+          DATASET_ID: a5dab1ca-e6f3-43e7-93c5-69eea1bf8cfd
+          API_KEY: ${{secrets.INTEGRATION_TESTS_DATASET_API_KEY}}
+          SERVER_URL: https://sandbox-api.relewise.com/
 
       - name: Publish to Packagist
         run: composer publish relewise ${{ secrets.packagist_token }}
