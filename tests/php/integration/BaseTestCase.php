@@ -227,6 +227,7 @@ class BaseTestCase extends TestCase
             'integration fixture readiness', null, 0, 1
         )->setFilters(FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)));
         $searcher = $this->searcher();
+        // Check the exact fixture ID so unrelated dataset contents cannot satisfy readiness.
         $deadline = hrtime(true) + 45_000_000_000;
         do {
             $response = $searcher->productSearch($request);

@@ -9,6 +9,7 @@ use RuntimeException;
 /** Test-only access to the synchronous, master-key UI operations. */
 final class IntegrationSearchSync
 {
+    // Unit tests inject a fake client; integration tests use the real synchronous CurlClient.
     public function __construct(private ?Client $client = null)
     {
     }
@@ -21,6 +22,7 @@ final class IntegrationSearchSync
         $client = $this->client ?? new CurlClient();
         $baseUrl = rtrim($serverUrl, '/') . '/' . $datasetId . '/ui/';
         $headers = ['Authorization: APIKey ' . $apiKey, 'Content-Type: application/json', 'Accept: application/json'];
+        // Termless searches also need fresh presorted candidates, so rebuild alone is insufficient.
         foreach ([
             ['RebuildSearchIndexRequest', ['IndexId' => 'default'], 'rebuildTimeMs'],
             ['RefreshPresorterRequest', ['Fill' => true, 'Popular' => true, 'Fallback' => true], 'refreshTimeMs'],
@@ -30,6 +32,7 @@ final class IntegrationSearchSync
             if ($response->code < 200 || $response->code >= 300) {
                 throw new RuntimeException($operation . ' failed with HTTP ' . $response->code . ': ' . json_encode($response->body));
             }
+            // Require the completion payload as well as HTTP success before searching.
             $duration = is_array($response->body) ? ($response->body[$durationField] ?? null) : null;
             if ((!is_int($duration) && !is_float($duration)) || !is_finite((float) $duration) || $duration < 0) {
                 throw new RuntimeException($operation . ' returned an invalid ' . $durationField);

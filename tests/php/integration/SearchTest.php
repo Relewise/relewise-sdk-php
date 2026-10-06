@@ -29,6 +29,7 @@ class SearchTest extends BaseTestCase
 {
     private function seedSearchProduct(string $id, string $name, string $language, ?string $categoryId = null): void
     {
+        // Register cleanup before tracking so teardown also handles a partially failed setup.
         $this->deleteFixtureProductAfterTest($id);
         $displayName = \Relewise\Models\Multilingual::create(
             \Relewise\Models\MultilingualValue::create(Language::create($language), $name)
@@ -104,6 +105,7 @@ class SearchTest extends BaseTestCase
         $searcher = $this->searcher();
         $productId = $this->fixtureId('search-category-filter-product');
         $categoryId = $this->fixtureId('search-category-filter-category');
+        // Create the filtered product so this test cannot pass merely by returning an empty response.
         $this->seedSearchProduct($productId, 'category filter product', 'en-US', $categoryId);
         $this->awaitSearchableProduct($productId, 'en-US');
 

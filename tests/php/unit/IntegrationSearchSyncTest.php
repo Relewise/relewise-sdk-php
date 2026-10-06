@@ -10,6 +10,7 @@ use Relewise\Infrastructure\HttpClient\Response;
 use Relewise\Tests\Integration\IntegrationSearchSync;
 use RuntimeException;
 
+// Mock HTTP responses verify ordering and failures without credentials or real dataset changes.
 class IntegrationSearchSyncTest extends TestCase
 {
     public function testRebuildCompletesBeforeAllCandidateCachesAreRefreshed(): void
