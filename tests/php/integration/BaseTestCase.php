@@ -31,6 +31,8 @@ use Relewise\Models\ProductCategoryIdFilter;
 use Relewise\Models\TrackBrandAdministrativeActionRequest;
 use Relewise\Models\TrackProductCategoryAdministrativeActionRequest;
 
+require_once __DIR__ . '/IntegrationSearchSync.php';
+
 class BaseTestCase extends TestCase
 {
     /** @var string[] */
@@ -214,6 +216,26 @@ class BaseTestCase extends TestCase
             )
         );
         self::assertNull($tracking);
+    }
+
+    /** Synchronize once after all fixture writes, then verify the exact product is searchable. */
+    protected function awaitSearchableProduct(string $productId, string $language): void
+    {
+        (new IntegrationSearchSync())->synchronize($this->SERVER_URL(), $this->DATASET_ID(), $this->API_KEY());
+        $request = \Relewise\Models\ProductSearchRequest::create(
+            Language::create($language), Currency::create('USD'), \Relewise\Factory\UserFactory::anonymous(),
+            'integration fixture readiness', null, 0, 1
+        )->setFilters(FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)));
+        $searcher = $this->searcher();
+        $deadline = hrtime(true) + 45_000_000_000;
+        do {
+            $response = $searcher->productSearch($request);
+            if (array_map(fn($result) => $result->productId, $response->results) === [$productId]) {
+                return;
+            }
+            usleep(500_000);
+        } while (hrtime(true) < $deadline);
+        self::fail('Integration product fixture was not searchable within 45 seconds');
     }
 
     protected function fixtureId(string $name): string

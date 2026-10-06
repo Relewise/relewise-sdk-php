@@ -27,6 +27,24 @@ use Relewise\Models\RecentlyPurchasedFacet;
 
 class SearchTest extends BaseTestCase
 {
+    private function seedSearchProduct(string $id, string $name, string $language, ?string $categoryId = null): void
+    {
+        $this->deleteFixtureProductAfterTest($id);
+        $displayName = \Relewise\Models\Multilingual::create(
+            \Relewise\Models\MultilingualValue::create(Language::create($language), $name)
+        );
+        $product = \Relewise\Models\Product::create($id)->setDisplayName($displayName);
+        if ($categoryId !== null) {
+            $this->deleteFixtureProductCategoryAfterTest($categoryId);
+            $product->setCategoryPaths(\Relewise\Models\CategoryPath::create(
+                \Relewise\Models\CategoryNameAndId::create($categoryId, $displayName)
+            ));
+        }
+        $this->tracker()->trackProductUpdate(\Relewise\Models\TrackProductUpdateRequest::create(
+            \Relewise\Models\ProductUpdate::create($product, [], \Relewise\Models\ProductUpdateUpdateKind::ReplaceProvidedProperties)
+        ));
+    }
+
     public function testProductSearchWithNoConditions(): void
     {
         $searcher = $this->searcher();
@@ -86,6 +104,8 @@ class SearchTest extends BaseTestCase
         $searcher = $this->searcher();
         $productId = $this->fixtureId('search-category-filter-product');
         $categoryId = $this->fixtureId('search-category-filter-category');
+        $this->seedSearchProduct($productId, 'category filter product', 'en-US', $categoryId);
+        $this->awaitSearchableProduct($productId, 'en-US');
 
         $productSearch = ProductSearchRequest::create(
             Language::create("en-US"),
@@ -105,13 +125,15 @@ class SearchTest extends BaseTestCase
 
         $response = $searcher->productSearch($productSearch);
 
-        self::assertNotNull($response);
+        self::assertSame([$productId], array_map(fn($result) => $result->productId, $response->results));
     }
 
     public function testProductSearchWithHighlight(): void
     {
         $productId = $this->fixtureId('search-highlight-product');
         $language = Language::create($this->TEST_LANGUAGE());
+        $this->seedSearchProduct($productId, 'highlighted product', $this->TEST_LANGUAGE());
+        $this->awaitSearchableProduct($productId, $this->TEST_LANGUAGE());
 
         $searcher = $this->searcher();
 
@@ -149,7 +171,7 @@ class SearchTest extends BaseTestCase
 
         $response = $searcher->productSearch($productSearch);
 
-        self::assertNotNull($response);
+        self::assertSame([$productId], array_map(fn($result) => $result->productId, $response->results));
     }
     
     public function testRecentlyPurchasedFacetCanBuild(): void
@@ -186,4 +208,3 @@ class SearchTest extends BaseTestCase
         self::assertNotNull($response);
     }
 }
-

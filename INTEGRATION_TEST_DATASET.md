@@ -11,3 +11,5 @@ Before switching to a dedicated dataset:
 - Run the complete PHPUnit suite against the new dataset before switching the release workflow. Recommendation tests assert the SDK response contract; they do not require preloaded products or recommendation history.
 
 The workflows use dataset `a5dab1ca-e6f3-43e7-93c5-69eea1bf8cfd` at `https://sandbox-api.relewise.com/`. Configure that dataset's API key as the repository's `INTEGRATION_TESTS_DATASET_API_KEY` Actions secret before running them.
+
+The category-filter and highlight search tests seed unique products and await the master-key UI operations `RebuildSearchIndexRequest` for the `default` index, then `RefreshPresorterRequest` with Fill, Popular, and Fallback enabled. Each operation has a 120-second timeout and must return a successful completion response before search begins. An exact-ID readiness check remains to verify visibility, and teardown deletes only the fixtures created by the test. The configured API key must be a master key for these UI operations. Write-only tracking tests do not rebuild indexes.
