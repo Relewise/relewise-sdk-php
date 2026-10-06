@@ -2,7 +2,7 @@
 
 namespace Relewise\Tests\Unit;
 
-require_once dirname(__DIR__) . '/integration/IntegrationSearchSync.php';
+require_once dirname(__DIR__, 2) . '/support/IntegrationSearchSync.php';
 
 use PHPUnit\Framework\TestCase;
 use Relewise\Infrastructure\HttpClient\Client;

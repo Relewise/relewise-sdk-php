@@ -31,7 +31,7 @@ use Relewise\Models\ProductCategoryIdFilter;
 use Relewise\Models\TrackBrandAdministrativeActionRequest;
 use Relewise\Models\TrackProductCategoryAdministrativeActionRequest;
 
-require_once __DIR__ . '/IntegrationSearchSync.php';
+require_once dirname(__DIR__, 2) . '/support/IntegrationSearchSync.php';
 
 class BaseTestCase extends TestCase
 {
