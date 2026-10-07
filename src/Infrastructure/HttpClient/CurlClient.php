@@ -27,13 +27,6 @@ class CurlClient implements Client
         $this->curl = curl_init();
     }
 
-    public function __destruct()
-    {
-        if ($this->curl instanceof \CurlHandle) {
-            curl_close($this->curl);
-        }
-    }
-
     /**
      * {@inheritdoc}
      */
