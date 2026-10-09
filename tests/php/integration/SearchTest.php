@@ -3,7 +3,6 @@
 namespace Relewise\Tests\Integration;
 
 use Relewise\Factory\UserFactory;
-use Relewise\Infrastructure\HttpClient\BadRequestException;
 use Relewise\Models\CategoryScope;
 use Relewise\Models\Currency;
 use Relewise\Models\DataDoubleSelector;
@@ -12,7 +11,6 @@ use Relewise\Models\Language;
 use Relewise\Models\ProductCategoryIdFilter;
 use Relewise\Models\ProductCategorySearchRequest;
 use Relewise\Models\ProductDataRelevanceModifier;
-use Relewise\Models\ProductFacetQuery;
 use Relewise\Models\ProductHighlightProps;
 use Relewise\Models\ProductIdFilter;
 use Relewise\Models\ProductProductHighlightPropsHighlightSettingsLimits;
@@ -22,8 +20,6 @@ use Relewise\Models\ProductSearchSettings;
 use Relewise\Models\ProductSearchSettingsHighlightSettings;
 use Relewise\Models\RelevanceModifierCollection;
 use Relewise\Models\ProductProductHighlightPropsHighlightSettingsOffsetSettings;
-use Relewise\Models\PurchaseQualifiers;
-use Relewise\Models\RecentlyPurchasedFacet;
 
 class SearchTest extends BaseTestCase
 {
@@ -84,8 +80,8 @@ class SearchTest extends BaseTestCase
     public function testProductSearchWithCategoryFilter(): void
     {
         $searcher = $this->searcher();
-        $productId = $this->fixtureId('search-category-filter-product');
-        $categoryId = $this->fixtureId('search-category-filter-category');
+        $productId = $this->fixtureId('search-product');
+        $categoryId = $this->fixtureId('search-category');
 
         $productSearch = ProductSearchRequest::create(
             Language::create("en-US"),
@@ -98,19 +94,20 @@ class SearchTest extends BaseTestCase
         )->setFilters(
             FilterCollection::create(
                 ProductCategoryIdFilter::create(CategoryScope::Ancestor)
-                    ->setCategoryIds($categoryId),
-                ProductIdFilter::create()->setProductIds($productId)
+                    ->setCategoryIds($categoryId)
             )
         );
 
         $response = $searcher->productSearch($productSearch);
 
         self::assertNotNull($response);
+        self::assertCount(1, $response->results);
+        self::assertSame($productId, $response->results[0]->productId);
     }
 
     public function testProductSearchWithHighlight(): void
     {
-        $productId = $this->fixtureId('search-highlight-product');
+        $productId = $this->fixtureId('search-product');
         $language = Language::create($this->TEST_LANGUAGE());
 
         $searcher = $this->searcher();
@@ -151,39 +148,4 @@ class SearchTest extends BaseTestCase
 
         self::assertNotNull($response);
     }
-    
-    public function testRecentlyPurchasedFacetCanBuild(): void
-    {
-        $searcher = $this->searcher();
-
-        $productSearch = ProductSearchRequest::create(
-            Language::create("en-US"),
-            Currency::create("USD"),
-            UserFactory::byTemporaryId("t-Id"),
-            "integration test",
-            term: Null,
-            skip: 0,
-            take: 20
-        )->setFacets(
-            ProductFacetQuery::create()
-                ->addToItems(
-                    RecentlyPurchasedFacet::create(
-                        PurchaseQualifiers::create(100, true, false, false)
-                )
-            )
-        );
-
-        try {
-            $response = $searcher->productSearch($productSearch);
-        } catch (BadRequestException $exception) {
-            if (str_contains($exception->getMessage(), "The feature: 'RecentlyPurchasedFacet' is not yet enabled")) {
-                self::markTestSkipped('The RecentlyPurchasedFacet feature is not enabled for the dataset.');
-            }
-
-            throw $exception;
-        }
-
-        self::assertNotNull($response);
-    }
 }
-

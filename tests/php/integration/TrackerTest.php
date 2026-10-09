@@ -32,7 +32,6 @@ class TrackerTest extends BaseTestCase
         $tracker = $this->tracker();
         $productId = $this->fixtureId('tracker-product-view-product');
         $variantId = $this->fixtureId('tracker-product-view-variant');
-        $this->deleteFixtureProductAfterTest($productId);
         $tracking = $tracker->trackProductUpdate(TrackProductUpdateRequest::create(
             ProductUpdate::create(
                 Product::create($productId),
@@ -68,10 +67,6 @@ class TrackerTest extends BaseTestCase
         $firstCategoryId = $this->fixtureId('tracker-product-variant-category-1');
         $secondCategoryId = $this->fixtureId('tracker-product-variant-category-2');
         $brandId = $this->fixtureId('tracker-product-variant-brand');
-        $this->deleteFixtureProductAfterTest($productId);
-        $this->deleteFixtureProductCategoryAfterTest($firstCategoryId);
-        $this->deleteFixtureProductCategoryAfterTest($secondCategoryId);
-        $this->deleteFixtureBrandAfterTest($brandId);
 
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
@@ -110,7 +105,7 @@ class TrackerTest extends BaseTestCase
     public function testDeleteAdministrativeAction(): void
     {
         $tracker = $this->tracker();
-        $productId = $this->fixtureId('tracker-delete-product');
+        $productId = $this->fixtureId('tracker-delete-product') . '-' . bin2hex(random_bytes(4));
         $this->deleteFixtureProductAfterTest($productId);
 
         $productUpdate = TrackProductUpdateRequest::create(
@@ -131,7 +126,6 @@ class TrackerTest extends BaseTestCase
     {
         $tracker = $this->tracker();
         $productId = $this->fixtureId('tracker-disable-product');
-        $this->deleteFixtureProductAfterTest($productId);
 
         $productUpdate = TrackProductUpdateRequest::create(
             ProductUpdate::create(
@@ -144,29 +138,26 @@ class TrackerTest extends BaseTestCase
         $tracking = $tracker->trackProductUpdate($productUpdate);
         self::assertNull($tracking);
 
-        $administrativeActionRequest = TrackProductAdministrativeActionRequest::create(
-            ProductAdministrativeAction::create(
-                Language::UNDEFINED,
-                Currency::UNDEFINED,
-                FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
-                ProductAdministrativeActionUpdateKind::Enable,
-                ProductAdministrativeActionUpdateKind::None
-            )
-        );
-        $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
-        self::assertNull($tracking);
-
-        $administrativeActionRequest = TrackProductAdministrativeActionRequest::create(
-            ProductAdministrativeAction::create(
-                Language::UNDEFINED,
-                Currency::UNDEFINED,
-                FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
-                ProductAdministrativeActionUpdateKind::Disable,
-                ProductAdministrativeActionUpdateKind::None
-            )
+        $administrativeAction = ProductAdministrativeAction::create(
+            Language::UNDEFINED,
+            Currency::UNDEFINED,
+            FilterCollection::create(ProductIdFilter::create()->setProductIds($productId)),
+            ProductAdministrativeActionUpdateKind::Disable,
+            ProductAdministrativeActionUpdateKind::None
         );
 
-        $tracking = $tracker->trackProductAdministrativeAction($administrativeActionRequest);
-        self::assertNull($tracking);
+        try {
+            $tracking = $tracker->trackProductAdministrativeAction(
+                TrackProductAdministrativeActionRequest::create($administrativeAction)
+            );
+            self::assertNull($tracking);
+        } finally {
+            $tracking = $tracker->trackProductAdministrativeAction(
+                TrackProductAdministrativeActionRequest::create(
+                    $administrativeAction->setProductUpdateKind(ProductAdministrativeActionUpdateKind::Enable)
+                )
+            );
+            self::assertNull($tracking);
+        }
     }
 }

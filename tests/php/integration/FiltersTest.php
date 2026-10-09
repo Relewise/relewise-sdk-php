@@ -6,6 +6,9 @@ use DateTime;
 use Relewise\Factory\UserFactory;
 use Relewise\Models\Currency;
 use Relewise\Models\FilterCollection;
+use Relewise\Models\ApplyFilterSettings;
+use Relewise\Models\FilterScopes;
+use Relewise\Models\FilterSettings;
 use Relewise\Models\Language;
 use Relewise\Models\ProductAssortmentFilter;
 use Relewise\Models\ProductIdFilter;
@@ -42,7 +45,7 @@ class FiltersTest extends BaseTestCase
     public function testProductIdFilter(): void
     {
         $searcher = $this->searcher();
-        $productId = $this->fixtureId('filters-product-id-product');
+        $productId = $this->fixtureId('search-product');
 
         $productSearchRequest = ProductSearchRequest::create(
             Language::create("en-US"),
@@ -63,13 +66,15 @@ class FiltersTest extends BaseTestCase
         $response = $searcher->productSearch($productSearchRequest);
 
         self::assertNotNull($response);
+        self::assertCount(1, $response->results);
+        self::assertSame($productId, $response->results[0]->productId);
     }
 
     public function testProductRecentlyViewedByUserFilter(): void
     {
         $searcher = $this->searcher();
 
-        $user = UserFactory::byTemporaryId($this->fixtureId('filters-recently-viewed-user'));
+        $user = UserFactory::byTemporaryId($this->fixtureUserId('search-user'));
 
         $since = new DateTime("now");
         $since->modify("-1 hour");
@@ -83,11 +88,16 @@ class FiltersTest extends BaseTestCase
             0,
             20
         )->setFilters(
-            FilterCollection::create(ProductRecentlyViewedByUserFilter::create($since))
+            FilterCollection::create(ProductRecentlyViewedByUserFilter::create($since)
+                ->setSettings(FilterSettings::create()->setScopes(
+                    FilterScopes::create()->setDefault(ApplyFilterSettings::create(true))
+                )))
         );
 
         $response = $searcher->productSearch($productSearchRequest);
 
         self::assertNotNull($response);
+        self::assertCount(1, $response->results);
+        self::assertSame($this->fixtureId('search-product'), $response->results[0]->productId);
     }
 }

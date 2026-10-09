@@ -24,7 +24,6 @@ class GeneratedRequestsTest extends BaseTestCase
         $tracker = $this->tracker();
         $userId = $this->fixtureUserId('order-creator-user');
         $productId = $this->fixtureId('order-creator-product');
-        $this->deleteFixtureProductAfterTest($productId);
         $tracker->trackProductUpdate(TrackProductUpdateRequest::create(
             ProductUpdate::create(Product::create($productId), [], ProductUpdateUpdateKind::ReplaceProvidedProperties)
         ));
@@ -33,7 +32,7 @@ class GeneratedRequestsTest extends BaseTestCase
             Order::create(
                 UserFactory::byTemporaryId($userId)->setAuthenticatedId($userId),
                 Money::create(Currency::create("DKK"), 100),
-                $userId,
+                $userId . '-' . bin2hex(random_bytes(4)),
                 array(LineItem::create(Product::create($productId), null, 1, 100)),
                 "1"
             )
@@ -60,7 +59,7 @@ class GeneratedRequestsTest extends BaseTestCase
                         ->setValue("DKK")
                     )
                 )
-                ->setOrderNumber($userId));
+                ->setOrderNumber($userId . '-' . bin2hex(random_bytes(4))));
 
         $response = $tracker->request('TrackOrderRequest', $trackOrderRequest);
 
@@ -82,7 +81,7 @@ class GeneratedRequestsTest extends BaseTestCase
         $order = new Order();
         $order->user = UserFactory::byTemporaryId($userId)->setAuthenticatedId($userId);
         $order->subtotal = $money;
-        $order->orderNumber = $userId;
+        $order->orderNumber = $userId . '-' . bin2hex(random_bytes(4));
 
         $trackOrderRequest = new TrackOrderRequest();
         $trackOrderRequest->order = $order;
@@ -107,7 +106,7 @@ class GeneratedRequestsTest extends BaseTestCase
         $order = new Order();
         $order->user = User::create($userId, $userId, null, null, null, null, null);
         $order->subtotal = $money;
-        $order->orderNumber = $userId;
+        $order->orderNumber = $userId . '-' . bin2hex(random_bytes(4));
 
         $trackOrderRequest = new TrackOrderRequest();
         $trackOrderRequest->order = $order;

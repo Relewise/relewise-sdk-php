@@ -145,6 +145,13 @@ jobs:
       - name: Wait for API warm-up
         run: sleep 60
 
+      - name: Seed persistent integration fixtures
+        env:
+          DATASET_ID: a5dab1ca-e6f3-43e7-93c5-69eea1bf8cfd
+          API_KEY: ${{ secrets.INTEGRATION_TESTS_DATASET_API_KEY }}
+          SERVER_URL: https://sandbox-api.relewise.com/
+        run: php tests/seed-integration-fixtures.php
+
       - name: PHPUnit Tests
         env:
           DATASET_ID: a5dab1ca-e6f3-43e7-93c5-69eea1bf8cfd
@@ -197,6 +204,7 @@ jobs:
             '- pwsh ./generate.ps1'
             '- API wake-up request with integration dataset credentials'
             '- sleep 60'
+            '- php tests/seed-integration-fixtures.php'
             '- vendor/bin/phpunit --configuration tests/phpunit.xml'
           ) | Set-Content -Path $bodyPath
 

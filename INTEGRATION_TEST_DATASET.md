@@ -1,13 +1,17 @@
 # PHP SDK integration dataset
 
-The PHPUnit configuration runs unit and integration tests together. CI, API-version generation, and release publishing all run the integration tests against the dataset selected by `DATASET_ID` and `API_KEY`. The API-version workflow also sends a search request to warm the API before running tests.
-Integration tests create their own tracked products and users and remove them in teardown. Use a dedicated SDK dataset so fixture IDs cannot collide with unrelated data.
+The PHPUnit configuration runs unit and integration tests together. CI, API-version generation, and release publishing seed persistent fixtures before running tests against the dataset selected by `DATASET_ID` and `API_KEY`. The API-version workflow also sends a search request to warm the API before seeding.
 
-Before switching to a dedicated dataset:
+Use a dedicated SDK dataset. The seed step updates `php-sdk-search-product` and `php-sdk-search-category` and tracks a view for `php-sdk-search-user` using the public API. It waits up to five minutes for the category and recently viewed searches to return the fixture. Normal tests use stable `php-sdk-` IDs and retain products, categories, brands, and users so indexing and behavior persist across runs. Only the delete test and the timeout test use disposable product IDs and scoped cleanup. The disable test re-enables its own product in a `finally` block.
 
-- Create a dataset with a usable `default` search index. The search-administrator test checks the missing-index response without changing the default index.
-- Create an API key for that dataset that can search, request recommendations, track data, and administer search indexes. Keep the key in the repository's `INTEGRATION_TESTS_DATASET_API_KEY` Actions secret.
-- Ensure search requests work for `en-US`/`USD` and `da-dk`/`DKK`. Tests that require `RecentlyPurchasedFacet` currently skip if the feature is unavailable.
-- Run the complete PHPUnit suite against the new dataset before switching the release workflow. Recommendation tests assert the SDK response contract; they do not require preloaded products or recommendation history.
+For a local run, configure `DATASET_ID`, `API_KEY`, and optionally `SERVER_URL` in the environment or `tests/.env`, then run:
 
-The workflows use dataset `a5dab1ca-e6f3-43e7-93c5-69eea1bf8cfd` at `https://sandbox-api.relewise.com/`. Configure that dataset's API key as the repository's `INTEGRATION_TESTS_DATASET_API_KEY` Actions secret before running them.
+```sh
+composer install
+php tests/seed-integration-fixtures.php
+vendor/bin/phpunit --configuration tests/phpunit.xml
+```
+
+The dataset needs a usable `default` search index and an API key that can search, request recommendations, track data, and administer search indexes. Search must work for `en-US`/`USD` and `da-dk`/`DKK`. Seeding does not rebuild indexes or refresh candidate caches through the UI. Highlight coverage checks request acceptance; it does not require an index configured for highlights. The unsupported RecentlyPurchasedFacet integration test has been removed, matching the JavaScript SDK.
+
+The workflows use dataset `a5dab1ca-e6f3-43e7-93c5-69eea1bf8cfd` at `https://sandbox-api.relewise.com/`. Configure that dataset's API key as the repository's `INTEGRATION_TESTS_DATASET_API_KEY` Actions secret. The workflows serialize their runs against this dataset.
