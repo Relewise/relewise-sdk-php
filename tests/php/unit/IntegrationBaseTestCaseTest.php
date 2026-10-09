@@ -9,14 +9,14 @@ use Relewise\Tests\Integration\BaseTestCase;
 
 class IntegrationBaseTestCaseTest extends TestCase
 {
-    public function testFixtureIdsAreUniqueAndNamespaced(): void
+    public function testFixtureIdsAreStableAndNamespaced(): void
     {
         $testCase = $this->testCase();
         $first = $testCase->createFixtureId('Highlight Product');
         $second = $testCase->createFixtureId('Highlight Product');
 
-        self::assertMatchesRegularExpression('/^php-sdk-integration-highlight-product-[0-9a-f]{8}$/', $first);
-        self::assertNotSame($first, $second);
+        self::assertSame('php-sdk-highlight-product', $first);
+        self::assertSame($first, $second);
     }
 
     public function testConfiguredServerUrlIsAppliedToIntegrationClients(): void
