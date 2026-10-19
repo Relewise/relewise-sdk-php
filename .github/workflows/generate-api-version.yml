@@ -42,8 +42,8 @@ jobs:
         with:
           dotnet-version: '10.0.x'
       - name: Wait for exact NuGet package
-        shell: pwsh
-        run: ./.github/restore-generator.ps1 -Version $env:API_VERSION -WaitSeconds 3600
+        shell: bash
+        run: bash .github/restore-generator.sh "$API_VERSION" 3600
 
   generate-api-version:
     needs: wait-for-package
@@ -77,8 +77,8 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Restore and verify exact generator version
-        shell: pwsh
-        run: ./.github/restore-generator.ps1 -Version $env:API_VERSION
+        shell: bash
+        run: bash .github/restore-generator.sh "$API_VERSION"
 
       - name: Build generator
         run: dotnet build Generator/Generator.csproj --configuration Release --no-restore "-p:RelewiseClientVersion=[$API_VERSION]"
