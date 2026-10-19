@@ -12,10 +12,12 @@ use Relewise\Infrastructure\HttpClient\ProblemDetailsException;
 use Relewise\Infrastructure\HttpClient\Response;
 use Relewise\Infrastructure\HttpClient\ServiceUnavailableException;
 use Relewise\Infrastructure\HttpClient\UnauthorizedException;
+use Relewise\Infrastructure\HttpClient\OAuthChallenge;
 use Relewise\Models\LicensedRequest;
 
 abstract class RelewiseClient
 {
+    protected const OAUTH_DEFAULT_TIMEOUT = 5;
     private string $apiKeyNotDefinedMessage = "apiKey must not be empty.";
     private string $unauthorizedMessage = "Unauthorized. Verify that:";
     public string $serverUrl = "https://api.relewise.com";
@@ -26,11 +28,15 @@ abstract class RelewiseClient
     private Client $client;
     protected int $batchSize = 1000;
 
-    public function __construct(private string $datasetId, private string $apiKey, private int $timeout)
+    public function __construct(private string $datasetId, private string $apiKey, private int $timeout, private ?OAuthTokenProvider $oauthTokenProvider = null)
     {
-        if (trim($apiKey) == "")
+        if ($oauthTokenProvider === null && trim($apiKey) == "")
         {
             throw new InvalidArgumentException($this->apiKeyNotDefinedMessage);
+        }
+        if ($oauthTokenProvider !== null && ($apiKey !== '' || trim($datasetId) === '' || $timeout < 1))
+        {
+            throw new InvalidArgumentException('OAuth requires an empty apiKey, a datasetId, and a positive timeout.');
         }
         if (class_exists(\Composer\InstalledVersions::class))
         {
@@ -41,6 +47,24 @@ abstract class RelewiseClient
             $this->clientVersion = "dev";
         }
         $this->client = new CurlClient();
+    }
+
+    /**
+     * Create a backend client using OAuth client credentials. Reuse it to cache tokens.
+     * The timeout is per HTTP exchange, including token acquisition and the optional retry.
+     */
+    public static function createWithOAuth(string $datasetId, string $clientId, string $clientSecret, string $serverUrl, ?int $timeout = null): static
+    {
+        if (!filter_var($serverUrl, FILTER_VALIDATE_URL)
+            || strtolower((string) parse_url($serverUrl, PHP_URL_SCHEME)) !== 'https'
+            || parse_url($serverUrl, PHP_URL_USER) !== null || parse_url($serverUrl, PHP_URL_PASS) !== null
+            || parse_url($serverUrl, PHP_URL_QUERY) !== null || parse_url($serverUrl, PHP_URL_FRAGMENT) !== null)
+        {
+            throw new InvalidArgumentException('serverUrl must be an HTTPS URL without credentials, query, or fragment.');
+        }
+        $client = new static($datasetId, '', $timeout ?? static::OAUTH_DEFAULT_TIMEOUT, new OAuthTokenProvider($clientId, $clientSecret));
+        $client->serverUrl = $serverUrl;
+        return $client;
     }
 
     public function setBatchSize(int $batchSize)
@@ -84,11 +108,30 @@ abstract class RelewiseClient
 
     public function request(string $endpoint, LicensedRequest $request): Response
     {
+        $url = $this->createRequestUrl($this->serverUrl, $this->datasetId, $this->apiVersion, $endpoint);
+        $body = str_replace("\"typeDefinition\":", "\"\$type\":", json_encode($request));
+        if ($this->oauthTokenProvider !== null)
+        {
+            $tokenEndpoint = $this->createRequestUrl($this->serverUrl, $this->datasetId, 'oauth/token');
+            $token = $this->oauthTokenProvider->getToken($tokenEndpoint, $this->client, $this->timeout, $this->httpVersion);
+            $response = $this->sendRequest($url, $body, 'Bearer ' . $token->accessToken);
+            if (OAuthChallenge::isInvalidToken($response))
+            {
+                $token = $this->oauthTokenProvider->getToken($tokenEndpoint, $this->client, $this->timeout, $this->httpVersion, $token->accessToken);
+                return $this->sendRequest($url, $body, 'Bearer ' . $token->accessToken);
+            }
+            return $response;
+        }
+        return $this->sendRequest($url, $body, 'ApiKey ' . $this->apiKey);
+    }
+
+    private function sendRequest(string $url, string $body, string $authorization): Response
+    {
         return $this->client->post(
-            $this->createRequestUrl($this->serverUrl, $this->datasetId, $this->apiVersion, $endpoint),
-            str_replace("\"typeDefinition\":", "\"\$type\":", json_encode($request)),
+            $url,
+            $body,
             array(
-                "Authorization: ApiKey " . $this->apiKey,
+                "Authorization: " . $authorization,
                 "Content-Type: application/json",
                 "User-Agent: " . $this->clientName . "/" . $this->clientVersion
             ),
@@ -99,7 +142,7 @@ abstract class RelewiseClient
 
     public function requestAndValidate(string $endpoint, LicensedRequest $request)
     {
-        if (trim($this->apiKey) == "")
+        if ($this->oauthTokenProvider === null && trim($this->apiKey) == "")
         {
             throw new InvalidArgumentException($this->apiKeyNotDefinedMessage);
         }
@@ -167,6 +210,12 @@ abstract class RelewiseClient
             return $responseMessage;
         }
 
+        if ($this->oauthTokenProvider !== null)
+        {
+            return $this->unauthorizedMessage . PHP_EOL
+                . "- the OAuth credentials are valid and have permission to call " . $endpoint . PHP_EOL
+                . "- the datasetId and serverUrl match the intended OAuth credentials and environment";
+        }
         return $this->unauthorizedMessage . PHP_EOL
             . "- a valid API key has been provided" . PHP_EOL
             . "- the API key has permission to call " . $endpoint . PHP_EOL

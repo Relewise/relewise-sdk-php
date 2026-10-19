@@ -18,9 +18,10 @@ use Relewise\Models\SearchResponseCollection;
 
 class Searcher extends RelewiseClient
 {
-    public function __construct(private string $datasetId, private string $apiKey, private int $timeout = 5)
+    protected const OAUTH_DEFAULT_TIMEOUT = 5;
+    public function __construct(private string $datasetId, private string $apiKey, private int $timeout = 5, ?OAuthTokenProvider $oauthTokenProvider = null)
     {
-        parent::__construct($datasetId, $apiKey, $timeout);
+        parent::__construct($datasetId, $apiKey, $timeout, $oauthTokenProvider);
     }
     
     public function productSearch(ProductSearchRequest $request) : ?ProductSearchResponse

@@ -66,6 +66,21 @@ class CurlClient implements Client
         curl_setopt($this->curl, CURLOPT_TIMEOUT, $timeout);
         curl_setopt($this->curl, CURLOPT_HTTP_VERSION, $httpVersion);
 
+        $headers = [];
+        curl_setopt($this->curl, CURLOPT_HEADERFUNCTION, static function ($curl, string $line) use (&$headers): int {
+            if (preg_match('/^HTTP\/\S+\s+\d{3}/i', $line))
+            {
+                // Keep only the final response's headers (e.g. after 100 Continue).
+                $headers = [];
+            }
+            elseif (str_contains($line, ':'))
+            {
+                [$name, $value] = explode(':', $line, 2);
+                $headers[strtolower(trim($name))][] = trim($value);
+            }
+            return strlen($line);
+        });
+
         $content = curl_exec($this->curl);
 
         $error = curl_errno($this->curl);
@@ -86,6 +101,6 @@ class CurlClient implements Client
             $body = $content === '' ? null : $content;
         }
 
-        return new Response($body, $httpCode, $contentType ? $contentType : null);
+        return new Response($body, $httpCode, $contentType ? $contentType : null, $headers);
     }
 }

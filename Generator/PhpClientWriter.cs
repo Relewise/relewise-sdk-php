@@ -78,10 +78,11 @@ use Relewise\Infrastructure\HttpClient\Response;
         writer.WriteLine("{");
         writer.Indent++;
 
-        writer.WriteLine($"public function __construct(private string $datasetId, private string $apiKey, private int $timeout = {timeout})");
+        writer.WriteLine($"protected const OAUTH_DEFAULT_TIMEOUT = {timeout};");
+        writer.WriteLine($"public function __construct(private string $datasetId, private string $apiKey, private int $timeout = {timeout}, ?OAuthTokenProvider $oauthTokenProvider = null)");
         writer.WriteLine("{");
         writer.Indent++;
-        writer.WriteLine("parent::__construct($datasetId, $apiKey, $timeout);");
+        writer.WriteLine("parent::__construct($datasetId, $apiKey, $timeout, $oauthTokenProvider);");
         writer.Indent--;
         writer.WriteLine("}");
 
