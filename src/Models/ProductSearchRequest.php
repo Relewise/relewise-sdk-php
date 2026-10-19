@@ -2,7 +2,9 @@
 
 namespace Relewise\Models;
 
-class ProductSearchRequest extends PaginatedSearchRequest
+use JsonSerializable;
+
+class ProductSearchRequest extends PaginatedSearchRequest implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.Search.ProductSearchRequest, Relewise.Client";
     public ?string $term;
@@ -155,5 +157,23 @@ class ProductSearchRequest extends PaginatedSearchRequest
     {
         $this->contextValues = $contextValues;
         return $this;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        foreach ((array) $this as $name => $value)
+        {
+            // Private and protected property names contain a NUL byte when cast to an array.
+            if (!str_contains((string) $name, "\0"))
+            {
+                $result[$name] = $value;
+            }
+        }
+        if (isset($this->contextValues))
+        {
+            $result["contextValues"] = (object) $this->contextValues;
+        }
+        return (object) $result;
     }
 }

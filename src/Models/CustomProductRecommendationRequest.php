@@ -2,7 +2,9 @@
 
 namespace Relewise\Models;
 
-class CustomProductRecommendationRequest extends ProductRecommendationRequest
+use JsonSerializable;
+
+class CustomProductRecommendationRequest extends ProductRecommendationRequest implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.CustomProductRecommendationRequest, Relewise.Client";
     public string $recommendationType;
@@ -117,5 +119,23 @@ class CustomProductRecommendationRequest extends ProductRecommendationRequest
     {
         $this->contextValues = $contextValues;
         return $this;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        foreach ((array) $this as $name => $value)
+        {
+            // Private and protected property names contain a NUL byte when cast to an array.
+            if (!str_contains((string) $name, "\0"))
+            {
+                $result[$name] = $value;
+            }
+        }
+        if (isset($this->contextValues))
+        {
+            $result["contextValues"] = (object) $this->contextValues;
+        }
+        return (object) $result;
     }
 }

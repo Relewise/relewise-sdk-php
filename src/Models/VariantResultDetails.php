@@ -287,7 +287,7 @@ class VariantResultDetails implements JsonSerializable
         }
         if (isset($this->createdUtc))
         {
-            $result["createdUtc"] = $this->createdUtc->format(DATE_ATOM);
+            $result["createdUtc"] = $this->createdUtc->format('Y-m-d\TH:i:s.vP');
         }
         if (isset($this->lastPurchasedUtc))
         {

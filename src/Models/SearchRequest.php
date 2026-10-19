@@ -2,8 +2,10 @@
 
 namespace Relewise\Models;
 
+use JsonSerializable;
+
 /** The search request shape establishes language-currency context with search filters, optional user info. Defines Language. Currency pair, as well as Filters (both PostFilters). Products search is done through - ProductSearchRequest Content search is done through - ContentSearchRequest Search term prediction is done through - SearchTermPredictionRequest */
-abstract class SearchRequest extends LicensedRequest
+abstract class SearchRequest extends LicensedRequest implements JsonSerializable
 {
     public string $typeDefinition = "";
     public ?Language $language;
@@ -160,5 +162,23 @@ abstract class SearchRequest extends LicensedRequest
     {
         $this->contextValues = $contextValues;
         return $this;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        foreach ((array) $this as $name => $value)
+        {
+            // Private and protected property names contain a NUL byte when cast to an array.
+            if (!str_contains((string) $name, "\0"))
+            {
+                $result[$name] = $value;
+            }
+        }
+        if (isset($this->contextValues))
+        {
+            $result["contextValues"] = (object) $this->contextValues;
+        }
+        return (object) $result;
     }
 }

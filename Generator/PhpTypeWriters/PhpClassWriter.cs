@@ -1,4 +1,5 @@
 ﻿using Generator.Extensions;
+using Generator.PhpMemberWriters;
 using Relewise.Client.DataTypes.Search.Facets.Result;
 using System.CodeDom.Compiler;
 using System.Reflection;
@@ -63,6 +64,7 @@ public class PhpClassWriter : IPhpTypeWriter
         writer.WriteLine();
 
         bool hasDateTimeOrDateTimeOffsetProperty = gettableProperties.Any(p => p.propertyTypeName is "DateTime" or "?DateTime");
+        bool needsJsonSerializer = hasDateTimeOrDateTimeOffsetProperty || gettablePropertyInfo.Any(PhpJsonSerializerMethodWriter.IsContextDictionary);
         if (hasDateTimeOrDateTimeOffsetProperty)
         {
             writer.WriteLine("use DateTime;");
@@ -80,7 +82,7 @@ public class PhpClassWriter : IPhpTypeWriter
             }
         }
 
-        if (hasDateTimeOrDateTimeOffsetProperty)
+        if (needsJsonSerializer)
         {
             writer.WriteLine("use JsonSerializable;");
             writer.WriteLine();
@@ -126,10 +128,10 @@ public class PhpClassWriter : IPhpTypeWriter
         {
             writer.Write($" extends {baseTypeName}");
         }
-        if (implementedInterfaces.Length > 0 || hasDateTimeOrDateTimeOffsetProperty)
+        if (implementedInterfaces.Length > 0 || needsJsonSerializer)
         {
             writer.Write(" implements ");
-            var implementedTypes = implementedInterfaces.Concat(hasDateTimeOrDateTimeOffsetProperty ? ["JsonSerializable"] : Array.Empty<string>());
+            var implementedTypes = implementedInterfaces.Concat(needsJsonSerializer ? ["JsonSerializable"] : Array.Empty<string>());
             writer.Write(string.Join(", ", implementedTypes));
         }
         writer.WriteLine();
@@ -161,7 +163,7 @@ public class PhpClassWriter : IPhpTypeWriter
             phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, gettableProperties);
             phpWriter.PhpPropertySetterMethodsWriter.Write(writer, type, gettableProperties);
 
-            if (hasDateTimeOrDateTimeOffsetProperty)
+            if (needsJsonSerializer)
             {
                 phpWriter.PhpJsonSerializerMethodWriter.Write(writer, type, gettableProperties);
             }
@@ -180,7 +182,7 @@ public class PhpClassWriter : IPhpTypeWriter
             phpWriter.PhpHydrationMethodsWriter.Write(writer, type, typeName, ownedProperties);
             phpWriter.PhpPropertySetterMethodsWriter.Write(writer, type, settableProperties);
 
-            if (hasDateTimeOrDateTimeOffsetProperty)
+            if (needsJsonSerializer)
             {
                 phpWriter.PhpJsonSerializerMethodWriter.Write(writer, type, settableProperties);
             }

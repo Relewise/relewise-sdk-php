@@ -2,8 +2,10 @@
 
 namespace Relewise\Models;
 
+use JsonSerializable;
+
 /** Matches when the request contains every configured key and each key has one of its accepted values. For example, DeviceType can accept either Mobile or Tablet. Comparisons are exact and case-sensitive. */
-class ContextValuesMatchCondition extends ContextValueCondition
+class ContextValuesMatchCondition extends ContextValueCondition implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Merchandising.ContextValuesMatchCondition, Relewise.Client";
     /** The values that each request key may have. A null or empty dictionary adds no restriction. Each configured key must have a non-empty list with no null values. An empty string is a valid value. */
@@ -48,5 +50,23 @@ class ContextValuesMatchCondition extends ContextValueCondition
     {
         $this->acceptedValues = $acceptedValues;
         return $this;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        foreach ((array) $this as $name => $value)
+        {
+            // Private and protected property names contain a NUL byte when cast to an array.
+            if (!str_contains((string) $name, "\0"))
+            {
+                $result[$name] = $value;
+            }
+        }
+        if (isset($this->acceptedValues))
+        {
+            $result["acceptedValues"] = (object) $this->acceptedValues;
+        }
+        return (object) $result;
     }
 }

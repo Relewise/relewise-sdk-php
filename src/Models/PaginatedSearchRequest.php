@@ -2,7 +2,9 @@
 
 namespace Relewise\Models;
 
-abstract class PaginatedSearchRequest extends SearchRequest
+use JsonSerializable;
+
+abstract class PaginatedSearchRequest extends SearchRequest implements JsonSerializable
 {
     public string $typeDefinition = "";
     public int $skip;
@@ -119,5 +121,23 @@ abstract class PaginatedSearchRequest extends SearchRequest
     {
         $this->contextValues = $contextValues;
         return $this;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        foreach ((array) $this as $name => $value)
+        {
+            // Private and protected property names contain a NUL byte when cast to an array.
+            if (!str_contains((string) $name, "\0"))
+            {
+                $result[$name] = $value;
+            }
+        }
+        if (isset($this->contextValues))
+        {
+            $result["contextValues"] = (object) $this->contextValues;
+        }
+        return (object) $result;
     }
 }
