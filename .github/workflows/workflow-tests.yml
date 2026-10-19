@@ -12,4 +12,5 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Test exact-version restore
-        run: bash .github/test_restore_generator.sh
+        shell: pwsh
+        run: ./.github/test_restore_generator.ps1

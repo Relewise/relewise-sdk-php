@@ -49,9 +49,9 @@ failed run. Deploy these workflow inputs before enabling the API caller change.
 Offline readiness tests (no credentials or package downloads):
 
 ```sh
-bash .github/test_restore_generator.sh
+pwsh -NoProfile -File .github/test_restore_generator.ps1
 ```
 
-The restore helper targets Ubuntu CI and uses Bash, GNU timeout, and Python 3.
+The restore helper targets Ubuntu CI and uses PowerShell 7 and GNU timeout.
 Each restore attempt is limited to 120 seconds, with up to five additional seconds
 for forced termination. Offline regression tests run in a separate CI workflow.
