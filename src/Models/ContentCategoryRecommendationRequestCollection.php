@@ -10,9 +10,11 @@ class ContentCategoryRecommendationRequestCollection extends LicensedRequest
     /** Default context values used to determine which merchandising rules apply to requests in this batch, such as DeviceType=Mobile or SplitTestVariant=A. */
     public ?array $contextValues;
     
-    public static function create() : ContentCategoryRecommendationRequestCollection
+    public static function create(bool $requireDistinctCategoriesesAcrossResults, ContentCategoryRecommendationRequest ... $requests) : ContentCategoryRecommendationRequestCollection
     {
         $result = new ContentCategoryRecommendationRequestCollection();
+        $result->requireDistinctCategoriesAcrossResults = $requireDistinctCategoriesesAcrossResults;
+        $result->requests = $requests;
         return $result;
     }
     
