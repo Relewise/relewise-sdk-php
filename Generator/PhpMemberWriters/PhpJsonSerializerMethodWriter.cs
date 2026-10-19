@@ -33,8 +33,9 @@ public class PhpJsonSerializerMethodWriter
     public void Write(IndentedTextWriter writer, Type classType, (PropertyInfo info, string propertyTypeName, string propertyName, string lowerCaseName)[] propertyInformations)
     {
         bool hasDates = propertyInformations.Any(p => p.propertyTypeName is "DateTime" or "?DateTime");
-        bool onlyContextDictionaries = !hasDates && propertyInformations.Any(p => IsContextDictionary(p.info));
-        if (onlyContextDictionaries)
+        bool preservePublicProperties = classType == typeof(VariantResultDetails)
+            || (!hasDates && propertyInformations.Any(p => IsContextDictionary(p.info)));
+        if (preservePublicProperties)
         {
             writer.WriteLineNoTabs(string.Empty);
         }
@@ -46,7 +47,7 @@ public class PhpJsonSerializerMethodWriter
         writer.WriteLine("{");
         writer.Indent++;
 
-        if (onlyContextDictionaries)
+        if (preservePublicProperties)
         {
             // Match default JSON encoding of public properties, including nulls and subclass fields.
             writer.WriteLine("$result = array();");
@@ -71,6 +72,15 @@ public class PhpJsonSerializerMethodWriter
                 writer.Indent--;
                 writer.WriteLine("}");
             }
+            foreach (var property in propertyInformations.Where(p => p.propertyTypeName is "DateTime" or "?DateTime"))
+            {
+                writer.WriteLine($"if (isset($this->{property.lowerCaseName}))");
+                writer.WriteLine("{");
+                writer.Indent++;
+                writer.WriteLine($"$result[\"{property.lowerCaseName}\"] = $this->{property.lowerCaseName}->format({DateFormat(property.info)});");
+                writer.Indent--;
+                writer.WriteLine("}");
+            }
             writer.WriteLine("return (object) $result;");
             writer.Indent--;
             writer.WriteLine("}");
@@ -92,10 +102,7 @@ public class PhpJsonSerializerMethodWriter
 
             if (propertyTypeName is "DateTime" or "?DateTime")
             {
-                var format = info.DeclaringType == typeof(VariantResultDetails) && info.Name == nameof(VariantResultDetails.CreatedUtc)
-                    ? "'Y-m-d\\TH:i:s.vP'"
-                    : "DATE_ATOM";
-                writer.WriteLine($"$result[\"{lowerCaseName}\"] = $this->{lowerCaseName}->format({format});");
+                writer.WriteLine($"$result[\"{lowerCaseName}\"] = $this->{lowerCaseName}->format({DateFormat(info)});");
             }
             else if (IsContextDictionary(info))
             {
@@ -115,4 +122,8 @@ public class PhpJsonSerializerMethodWriter
         writer.Indent--;
         writer.WriteLine("}");
     }
+    private static string DateFormat(PropertyInfo property) =>
+        property.DeclaringType == typeof(VariantResultDetails) && property.Name == nameof(VariantResultDetails.CreatedUtc)
+            ? "'Y-m-d\\TH:i:s.vP'"
+            : "DATE_ATOM";
 }

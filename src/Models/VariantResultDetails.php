@@ -237,53 +237,17 @@ class VariantResultDetails implements JsonSerializable
         $this->lastViewedUtc = $lastViewedUtc;
         return $this;
     }
-    
+
     public function jsonSerialize(): mixed
     {
         $result = array();
-        if (isset($this->variantId))
+        foreach ((array) $this as $name => $value)
         {
-            $result["variantId"] = $this->variantId;
-        }
-        if (isset($this->displayName))
-        {
-            $result["displayName"] = $this->displayName;
-        }
-        if (isset($this->specification))
-        {
-            $result["specification"] = $this->specification;
-        }
-        if (isset($this->assortments))
-        {
-            $result["assortments"] = $this->assortments;
-        }
-        if (isset($this->data))
-        {
-            $result["data"] = $this->data;
-        }
-        if (isset($this->listPrice))
-        {
-            $result["listPrice"] = $this->listPrice;
-        }
-        if (isset($this->salesPrice))
-        {
-            $result["salesPrice"] = $this->salesPrice;
-        }
-        if (isset($this->disabled))
-        {
-            $result["disabled"] = $this->disabled;
-        }
-        if (isset($this->userEngagement))
-        {
-            $result["userEngagement"] = $this->userEngagement;
-        }
-        if (isset($this->containedInTotalNumberOfOrders))
-        {
-            $result["containedInTotalNumberOfOrders"] = $this->containedInTotalNumberOfOrders;
-        }
-        if (isset($this->viewedTotalNumberOfTimes))
-        {
-            $result["viewedTotalNumberOfTimes"] = $this->viewedTotalNumberOfTimes;
+            // Private and protected property names contain a NUL byte when cast to an array.
+            if (!str_contains((string) $name, "\0"))
+            {
+                $result[$name] = $value;
+            }
         }
         if (isset($this->createdUtc))
         {
@@ -297,6 +261,6 @@ class VariantResultDetails implements JsonSerializable
         {
             $result["lastViewedUtc"] = $this->lastViewedUtc->format(DATE_ATOM);
         }
-        return $result;
+        return (object) $result;
     }
 }
