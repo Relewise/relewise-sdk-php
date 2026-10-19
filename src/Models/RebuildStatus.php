@@ -32,6 +32,10 @@ class RebuildStatus implements JsonSerializable
     public DateInterval $staleDuration;
     /** The duration of how long the index was previously marked as stale before it was rebuilt. This property is set server-side. Any value sent from the client will be ignored. */
     public DateInterval $lastStaleDuration;
+    /** The timestamp when field changes were most recently checked for this index. This property is set server-side. Any value sent from the client will be ignored. */
+    public ?DateTime $lastFieldChangeCheck;
+    /** The timestamp when field changes most recently caused this index to be marked as stale. This property is set server-side. Any value sent from the client will be ignored. */
+    public ?DateTime $lastFieldChangeMarkedIndexStale;
     
     public static function create(bool $isBuilt, bool $isPartial, bool $isRebuilding, bool $isStale, DateTime $lastRebuildStarted, DateTime $lastRebuildCompleted, DateTime $lastRebuildOpportunity, DateInterval $lastRebuildDuration, DateTime $lastMarkedAsStale, DateInterval $staleDuration, DateInterval $lastStaleDuration) : RebuildStatus
     {
@@ -96,6 +100,14 @@ class RebuildStatus implements JsonSerializable
         if (array_key_exists("lastStaleDuration", $arr))
         {
             $result->lastStaleDuration = DateIntervalFactory::fromTimeSpanString($arr["lastStaleDuration"]);
+        }
+        if (array_key_exists("lastFieldChangeCheck", $arr))
+        {
+            $result->lastFieldChangeCheck = new DateTime($arr["lastFieldChangeCheck"]);
+        }
+        if (array_key_exists("lastFieldChangeMarkedIndexStale", $arr))
+        {
+            $result->lastFieldChangeMarkedIndexStale = new DateTime($arr["lastFieldChangeMarkedIndexStale"]);
         }
         return $result;
     }
@@ -177,6 +189,20 @@ class RebuildStatus implements JsonSerializable
         return $this;
     }
     
+    /** The timestamp when field changes were most recently checked for this index. This property is set server-side. Any value sent from the client will be ignored. */
+    function setLastFieldChangeCheck(?DateTime $lastFieldChangeCheck)
+    {
+        $this->lastFieldChangeCheck = $lastFieldChangeCheck;
+        return $this;
+    }
+    
+    /** The timestamp when field changes most recently caused this index to be marked as stale. This property is set server-side. Any value sent from the client will be ignored. */
+    function setLastFieldChangeMarkedIndexStale(?DateTime $lastFieldChangeMarkedIndexStale)
+    {
+        $this->lastFieldChangeMarkedIndexStale = $lastFieldChangeMarkedIndexStale;
+        return $this;
+    }
+    
     public function jsonSerialize(): mixed
     {
         $result = array();
@@ -223,6 +249,14 @@ class RebuildStatus implements JsonSerializable
         if (isset($this->lastStaleDuration))
         {
             $result["lastStaleDuration"] = $this->lastStaleDuration;
+        }
+        if (isset($this->lastFieldChangeCheck))
+        {
+            $result["lastFieldChangeCheck"] = $this->lastFieldChangeCheck->format(DATE_ATOM);
+        }
+        if (isset($this->lastFieldChangeMarkedIndexStale))
+        {
+            $result["lastFieldChangeMarkedIndexStale"] = $this->lastFieldChangeMarkedIndexStale->format(DATE_ATOM);
         }
         return $result;
     }

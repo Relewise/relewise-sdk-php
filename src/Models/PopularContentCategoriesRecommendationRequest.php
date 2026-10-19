@@ -86,4 +86,21 @@ class PopularContentCategoriesRecommendationRequest extends ContentCategoryRecom
         $this->currency = $currency;
         return $this;
     }
+    
+    function addToContextValues(string $key, string $value)
+    {
+        if (!isset($this->contextValues))
+        {
+            $this->contextValues = array();
+        }
+        $this->contextValues[$key] = $value;
+        return $this;
+    }
+    
+    /** @param ?array<string, string> $contextValues associative array. */
+    function setContextValuesFromAssociativeArray(array $contextValues)
+    {
+        $this->contextValues = $contextValues;
+        return $this;
+    }
 }

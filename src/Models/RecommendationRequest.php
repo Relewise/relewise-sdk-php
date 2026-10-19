@@ -11,6 +11,8 @@ abstract class RecommendationRequest extends LicensedRequest
     public FilterCollection $filters;
     public string $displayedAtLocationType;
     public ?Currency $currency;
+    /** Context values used to determine which merchandising rules apply to this request, such as DeviceType=Mobile or SplitTestVariant=A. */
+    public ?array $contextValues;
     
     
     public static function hydrate(array $arr)
@@ -153,6 +155,14 @@ abstract class RecommendationRequest extends LicensedRequest
         {
             $result->currency = Currency::hydrate($arr["currency"]);
         }
+        if (array_key_exists("contextValues", $arr))
+        {
+            $result->contextValues = array();
+            foreach($arr["contextValues"] as $key => $value)
+            {
+                $result->contextValues[$key] = $value;
+            }
+        }
         return $result;
     }
     
@@ -189,6 +199,27 @@ abstract class RecommendationRequest extends LicensedRequest
     function setCurrency(?Currency $currency)
     {
         $this->currency = $currency;
+        return $this;
+    }
+    
+    /** Context values used to determine which merchandising rules apply to this request, such as DeviceType=Mobile or SplitTestVariant=A. */
+    function addToContextValues(string $key, string $value)
+    {
+        if (!isset($this->contextValues))
+        {
+            $this->contextValues = array();
+        }
+        $this->contextValues[$key] = $value;
+        return $this;
+    }
+    
+    /**
+     * Context values used to determine which merchandising rules apply to this request, such as DeviceType=Mobile or SplitTestVariant=A.
+     * @param ?array<string, string> $contextValues associative array.
+     */
+    function setContextValuesFromAssociativeArray(array $contextValues)
+    {
+        $this->contextValues = $contextValues;
         return $this;
     }
 }

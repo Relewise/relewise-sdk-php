@@ -7,6 +7,8 @@ class ProductRecommendationRequestCollection extends LicensedRequest
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ProductRecommendationRequestCollection, Relewise.Client";
     public array $requests;
     public bool $requireDistinctProductsAcrossResults;
+    /** Default context values used to determine which merchandising rules apply to requests in this batch, such as DeviceType=Mobile or SplitTestVariant=A. */
+    public ?array $contextValues;
     
     public static function create(bool $requireDistinctProductsAcrossResults, ProductRecommendationRequest ... $requests) : ProductRecommendationRequestCollection
     {
@@ -30,6 +32,14 @@ class ProductRecommendationRequestCollection extends LicensedRequest
         if (array_key_exists("requireDistinctProductsAcrossResults", $arr))
         {
             $result->requireDistinctProductsAcrossResults = $arr["requireDistinctProductsAcrossResults"];
+        }
+        if (array_key_exists("contextValues", $arr))
+        {
+            $result->contextValues = array();
+            foreach($arr["contextValues"] as $key => $value)
+            {
+                $result->contextValues[$key] = $value;
+            }
         }
         return $result;
     }
@@ -60,6 +70,27 @@ class ProductRecommendationRequestCollection extends LicensedRequest
     function setRequireDistinctProductsAcrossResults(bool $requireDistinctProductsAcrossResults)
     {
         $this->requireDistinctProductsAcrossResults = $requireDistinctProductsAcrossResults;
+        return $this;
+    }
+    
+    /** Default context values used to determine which merchandising rules apply to requests in this batch, such as DeviceType=Mobile or SplitTestVariant=A. */
+    function addToContextValues(string $key, string $value)
+    {
+        if (!isset($this->contextValues))
+        {
+            $this->contextValues = array();
+        }
+        $this->contextValues[$key] = $value;
+        return $this;
+    }
+    
+    /**
+     * Default context values used to determine which merchandising rules apply to requests in this batch, such as DeviceType=Mobile or SplitTestVariant=A.
+     * @param ?array<string, string> $contextValues associative array.
+     */
+    function setContextValuesFromAssociativeArray(array $contextValues)
+    {
+        $this->contextValues = $contextValues;
         return $this;
     }
 }

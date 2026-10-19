@@ -14,6 +14,8 @@ abstract class SearchRequest extends LicensedRequest
     public ?FilterCollection $filters;
     public ?SearchIndexSelector $indexSelector;
     public ?FilterCollection $postFilters;
+    /** Context values used to determine which merchandising rules apply to this request, such as DeviceType=Mobile or SplitTestVariant=A. */
+    public ?array $contextValues;
     
     
     public static function hydrate(array $arr)
@@ -80,6 +82,14 @@ abstract class SearchRequest extends LicensedRequest
         {
             $result->postFilters = FilterCollection::hydrate($arr["postFilters"]);
         }
+        if (array_key_exists("contextValues", $arr))
+        {
+            $result->contextValues = array();
+            foreach($arr["contextValues"] as $key => $value)
+            {
+                $result->contextValues[$key] = $value;
+            }
+        }
         return $result;
     }
     
@@ -128,6 +138,27 @@ abstract class SearchRequest extends LicensedRequest
     function setPostFilters(?FilterCollection $postFilters)
     {
         $this->postFilters = $postFilters;
+        return $this;
+    }
+    
+    /** Context values used to determine which merchandising rules apply to this request, such as DeviceType=Mobile or SplitTestVariant=A. */
+    function addToContextValues(string $key, string $value)
+    {
+        if (!isset($this->contextValues))
+        {
+            $this->contextValues = array();
+        }
+        $this->contextValues[$key] = $value;
+        return $this;
+    }
+    
+    /**
+     * Context values used to determine which merchandising rules apply to this request, such as DeviceType=Mobile or SplitTestVariant=A.
+     * @param ?array<string, string> $contextValues associative array.
+     */
+    function setContextValuesFromAssociativeArray(array $contextValues)
+    {
+        $this->contextValues = $contextValues;
         return $this;
     }
 }
