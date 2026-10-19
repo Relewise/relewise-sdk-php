@@ -49,5 +49,5 @@ failed run. Deploy these workflow inputs before enabling the API caller change.
 Offline readiness tests (no credentials or package downloads):
 
 ```sh
-python3 -B -m unittest discover -s .github -p test_restore_generator.py
+pwsh -NoProfile -File .github/test_restore_generator.ps1
 ```
