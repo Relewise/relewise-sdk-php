@@ -31,12 +31,15 @@ $searcher = \Relewise\Searcher::createWithOAuth(
 );
 ```
 
-Use the OAuth API key's ID and secret from My Relewise; the client ID is separate
+Use the OAuth credential's ID and secret from My Relewise; the client ID is separate
 from the dataset ID. Keep credentials on the backend. The dataset server URL
 must use HTTPS. Existing calls such as `new Searcher($datasetId, $apiKey)` keep
 using API-key authentication.
 
-Reuse the client to cache tokens in memory. Tokens renew shortly before expiry.
+Dataset and client IDs must be nonzero UUIDs. Reuse the client to cache tokens in
+memory. Tokens renew on demand at
+`expiresAt - min(10, floor(expires_in / 10))` seconds: at 290 seconds for a
+300-second token, and at expiry for a five-second token. There is no background renewal.
 An HTTP 401 with a Bearer `invalid_token` challenge triggers one renewal and one
 retry; other failures are not automatically retried. The request URL and payload
 are preserved during that retry.
@@ -51,17 +54,120 @@ $searcher->serverUrl = $datasetServerUrl;
 $tracker->serverUrl = $datasetServerUrl;
 ```
 
-The cache belongs to the provider instance and is tied to the token endpoint.
-It does not persist across PHP requests or worker processes, and does not provide
-cross-process locking. This synchronous SDK does not coordinate concurrent token
-acquisition through custom asynchronous transports.
+### Standalone token acquisition
+
+A backend can acquire a token without sending an API request:
+
+```php
+$provider = new \Relewise\OAuthTokenProvider($clientId, $clientSecret);
+$token = $provider->getToken(
+    endpoint: rtrim($datasetServerUrl, '/') . '/' . $datasetId . '/oauth/token',
+    client: new \Relewise\Infrastructure\HttpClient\DeadlineCurlClient(),
+    timeout: 5
+);
+$accessToken = $token->accessToken;
+$expiresAt = $token->expiresAt; // DateTimeImmutable, original expiry in UTC
+```
+
+Cached reads retain the original expiry. Keep the provider on the backend.
+Only expose tokens with permissions appropriate for the browser, and ensure both
+backend acquisition and browser requests satisfy the credential's IP restrictions.
+Never expose the client secret to the browser.
+
+### HTTP transports and timeouts
+
+Pass `httpClient` to any client constructor or `createWithOAuth()`, or call
+`setHttpClient($transport)`. The selected transport handles both acquisition and
+API requests, with authorization supplied separately on each request.
+
+```php
+$searcher = \Relewise\Searcher::createWithOAuth(
+    $datasetId, $clientId, $clientSecret, $datasetServerUrl,
+    httpClient: $transport
+);
+```
+
+Custom OAuth transports must implement
+`Relewise\Infrastructure\HttpClient\DeadlineAwareClient`, which extends the existing
+`Client` interface with:
+
+```php
+public function postWithDeadline(
+    $url, $data, array $header,
+    \Relewise\Infrastructure\HttpClient\Deadline $deadline,
+    int $httpVersion = CURL_HTTP_VERSION_NONE
+): \Relewise\Infrastructure\HttpClient\Response;
+```
+
+Use `$deadline->remainingMilliseconds()` immediately before blocking work and
+`$deadline->throwIfExpired()` after it. Both throw `RequestTimeoutException` when
+less than one millisecond remains. Carry that same deadline through preparation,
+queueing, connections, redirects, and any internal retries. Do not reset the budget
+or forward authorization to a different origin. Preserve your transport's redirect
+policy; the SDK does not replace your chosen transport.
+
+OAuth uses the final `DeadlineCurlClient` by default, which uses millisecond
+transfer and connection timeouts and does not follow redirects. API-key clients
+continue using `CurlClient` and its existing seconds-based `Client::post()` contract.
+Existing `CurlClient` subclasses are not automatically opted into OAuth: they must
+explicitly implement the deadline contract, including their existing custom behavior.
+Unsupported OAuth transports are rejected before network activity.
 
 Omitting `timeout` retains each client's existing default (120 seconds for
 `Analyzer`, 30 for `SearchAdministrator`, and 5 for the other clients).
-As with existing PHP SDK requests, `timeout` applies to each HTTP exchange.
-A cold-cache request that receives an invalid-token challenge can make four
-exchanges: token acquisition, API call, token renewal, and API retry. This differs
-from the .NET client's total-operation timeout.
+For OAuth, one timeout covers serialization, cache and lock waiting, token
+acquisition, the API call, and any token replacement and retry. Standalone provider
+acquisition creates its own budget. Generated batch methods retain a separate
+budget for each chunk.
+
+This is a cooperative timeout: the SDK checks for expiry around blocking work and
+rejects late results, but synchronous PHP cannot interrupt arbitrary application
+code. Enforcement also depends on the transport, resolver, and cache implementation.
+A timeout cannot undo a remote write that has already completed. Network failures
+and timeouts do not trigger OAuth retries.
+
+### Sharing tokens across PHP web requests
+
+By default, the cache belongs to the provider instance and is tied to the token
+endpoint. It disappears when that instance is destroyed. Creating a provider on
+every web request can therefore acquire a token on every page request. The server's
+default issuance limit is 60 tokens per credential per minute, configurable on the
+server.
+
+For persistence, supply an application adapter implementing `Relewise\OAuthTokenCache`:
+
+```php
+// $tokenCache implements OAuthTokenCache using your application's cache and locks.
+$provider = new \Relewise\OAuthTokenProvider($clientId, $clientSecret, $tokenCache);
+// Or pass tokenCache: $tokenCache to createWithOAuth().
+```
+
+The contract has three operations:
+
+- `synchronized($key, $deadline, $callback)` acquires an exclusive lock for that key,
+  runs the callback once, returns its `OAuthToken`, and releases the lock in `finally`.
+  Bound waiting by the deadline. Keep exclusivity through acquisition and storage;
+  any lease must last or be renewed until the callback finishes.
+- `get($key, $deadline)` returns an `OAuthTokenCacheEntry` or `null`.
+- `set($key, $entry, $deadline)` stores the entry; a `null` entry removes it.
+
+`get` and `set` run under the lock and must also honor the deadline. Store the
+entry's access token, original `expiresAt`, and `renewAt` UTC Unix timestamp without
+recalculating them when reading. Storage TTL may expire an entry at its renewal
+boundary; it must not extend that boundary. Protect cached tokens as credentials.
+Do not persist the process-local `Deadline`.
+
+The SDK supplies an opaque hashed key bound to endpoint (including dataset) and
+credential configuration, so rotating the secret changes the key without exposing
+it. It re-reads shared storage under the lock before acquisition. A delayed
+rejection of token A reuses a valid replacement B; failed acquisition leaves the
+entry empty so a later caller can retry.
+
+Plain cache reads/writes without atomic coordination are insufficient. The SDK
+does not mandate a backend or ship a distributed-lock implementation. Cross-process
+coordination depends on the supplied adapter and its lock scope. The default
+in-memory provider is for synchronous use and does not promise concurrent Fiber or
+async acquisition safety.
 
 ## Contributing
 
