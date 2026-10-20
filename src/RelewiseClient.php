@@ -7,6 +7,9 @@ use Relewise\Infrastructure\HttpClient\BadRequestException;
 use Relewise\Infrastructure\HttpClient\Client;
 use Relewise\Infrastructure\HttpClient\ClientException;
 use Relewise\Infrastructure\HttpClient\CurlClient;
+use Relewise\Infrastructure\HttpClient\Deadline;
+use Relewise\Infrastructure\HttpClient\DeadlineAwareClient;
+use Relewise\Infrastructure\HttpClient\DeadlineCurlClient;
 use Relewise\Infrastructure\HttpClient\InternalServerErrorException;
 use Relewise\Infrastructure\HttpClient\ProblemDetailsException;
 use Relewise\Infrastructure\HttpClient\Response;
@@ -28,15 +31,17 @@ abstract class RelewiseClient
     private Client $client;
     protected int $batchSize = 1000;
 
-    public function __construct(private string $datasetId, private string $apiKey, private int $timeout, private ?OAuthTokenProvider $oauthTokenProvider = null)
+    public function __construct(private string $datasetId, private string $apiKey, private int $timeout, private ?OAuthTokenProvider $oauthTokenProvider = null, ?Client $httpClient = null)
     {
         if ($oauthTokenProvider === null && trim($apiKey) == "")
         {
             throw new InvalidArgumentException($this->apiKeyNotDefinedMessage);
         }
-        if ($oauthTokenProvider !== null && ($apiKey !== '' || trim($datasetId) === '' || $timeout < 1))
+        if ($oauthTokenProvider !== null && ($apiKey !== ''
+            || !preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\z/i', $datasetId)
+            || $datasetId === '00000000-0000-0000-0000-000000000000' || $timeout < 1))
         {
-            throw new InvalidArgumentException('OAuth requires an empty apiKey, a datasetId, and a positive timeout.');
+            throw new InvalidArgumentException('OAuth requires an empty apiKey, a nonempty dataset UUID, and a positive timeout.');
         }
         if (class_exists(\Composer\InstalledVersions::class))
         {
@@ -46,14 +51,14 @@ abstract class RelewiseClient
         {
             $this->clientVersion = "dev";
         }
-        $this->client = new CurlClient();
+        $this->setHttpClient($httpClient ?? ($oauthTokenProvider === null ? new CurlClient() : new DeadlineCurlClient()));
     }
 
     /**
      * Create a backend client using OAuth client credentials. Reuse it to cache tokens.
-     * The timeout is per HTTP exchange, including token acquisition and the optional retry.
+     * One timeout covers preparation, token acquisition, the API call and optional retry.
      */
-    public static function createWithOAuth(string $datasetId, string $clientId, string $clientSecret, string $serverUrl, ?int $timeout = null): static
+    public static function createWithOAuth(string $datasetId, string $clientId, string $clientSecret, string $serverUrl, ?int $timeout = null, ?Client $httpClient = null, ?OAuthTokenCache $tokenCache = null): static
     {
         if (!filter_var($serverUrl, FILTER_VALIDATE_URL)
             || strtolower((string) parse_url($serverUrl, PHP_URL_SCHEME)) !== 'https'
@@ -62,9 +67,19 @@ abstract class RelewiseClient
         {
             throw new InvalidArgumentException('serverUrl must be an HTTPS URL without credentials, query, or fragment.');
         }
-        $client = new static($datasetId, '', $timeout ?? static::OAUTH_DEFAULT_TIMEOUT, new OAuthTokenProvider($clientId, $clientSecret));
+        $client = new static($datasetId, '', $timeout ?? static::OAUTH_DEFAULT_TIMEOUT, new OAuthTokenProvider($clientId, $clientSecret, $tokenCache), $httpClient);
         $client->serverUrl = $serverUrl;
         return $client;
+    }
+
+    /** Select the transport used for both token acquisition and API requests. */
+    public function setHttpClient(Client $httpClient): void
+    {
+        if ($this->oauthTokenProvider !== null && !$httpClient instanceof DeadlineAwareClient)
+        {
+            throw new InvalidArgumentException('OAuth requires a transport implementing DeadlineAwareClient. Use DeadlineCurlClient or a deadline-aware custom transport.');
+        }
+        $this->client = $httpClient;
     }
 
     public function setBatchSize(int $batchSize)
@@ -108,36 +123,40 @@ abstract class RelewiseClient
 
     public function request(string $endpoint, LicensedRequest $request): Response
     {
+        $deadline = $this->oauthTokenProvider !== null ? new Deadline($this->timeout) : null;
         $url = $this->createRequestUrl($this->serverUrl, $this->datasetId, $this->apiVersion, $endpoint);
         $body = str_replace("\"typeDefinition\":", "\"\$type\":", json_encode($request));
         if ($this->oauthTokenProvider !== null)
         {
             $tokenEndpoint = $this->createRequestUrl($this->serverUrl, $this->datasetId, 'oauth/token');
-            $token = $this->oauthTokenProvider->getToken($tokenEndpoint, $this->client, $this->timeout, $this->httpVersion);
-            $response = $this->sendRequest($url, $body, 'Bearer ' . $token->accessToken);
+            $token = $this->oauthTokenProvider->getTokenWithDeadline($tokenEndpoint, $this->client, $deadline, $this->httpVersion);
+            $response = $this->sendRequest($url, $body, 'Bearer ' . $token->accessToken, $deadline);
             if (OAuthChallenge::isInvalidToken($response))
             {
-                $token = $this->oauthTokenProvider->getToken($tokenEndpoint, $this->client, $this->timeout, $this->httpVersion, $token->accessToken);
-                return $this->sendRequest($url, $body, 'Bearer ' . $token->accessToken);
+                $token = $this->oauthTokenProvider->getTokenWithDeadline($tokenEndpoint, $this->client, $deadline, $this->httpVersion, $token->accessToken);
+                return $this->sendRequest($url, $body, 'Bearer ' . $token->accessToken, $deadline);
             }
+            $deadline->throwIfExpired();
             return $response;
         }
         return $this->sendRequest($url, $body, 'ApiKey ' . $this->apiKey);
     }
 
-    private function sendRequest(string $url, string $body, string $authorization): Response
+    private function sendRequest(string $url, string $body, string $authorization, ?Deadline $deadline = null): Response
     {
-        return $this->client->post(
-            $url,
-            $body,
-            array(
-                "Authorization: " . $authorization,
-                "Content-Type: application/json",
-                "User-Agent: " . $this->clientName . "/" . $this->clientVersion
-            ),
-            $this->timeout,
-            $this->httpVersion
+        $headers = array(
+            "Authorization: " . $authorization,
+            "Content-Type: application/json",
+            "User-Agent: " . $this->clientName . "/" . $this->clientVersion
         );
+        if ($deadline !== null)
+        {
+            $deadline->throwIfExpired();
+            $response = $this->client->postWithDeadline($url, $body, $headers, $deadline, $this->httpVersion);
+            $deadline->throwIfExpired();
+            return $response;
+        }
+        return $this->client->post($url, $body, $headers, $this->timeout, $this->httpVersion);
     }
 
     public function requestAndValidate(string $endpoint, LicensedRequest $request)

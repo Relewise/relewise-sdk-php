@@ -5,13 +5,13 @@ namespace Relewise\Tests\Unit;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Relewise\{Analyzer, OAuthTokenProvider, Recommender, RelewiseClient, SearchAdministrator, Searcher, Tracker};
-use Relewise\Infrastructure\HttpClient\{Client, ClientException, OAuthChallenge, Response, UnauthorizedException};
+use Relewise\Infrastructure\HttpClient\{Client, ClientException, Deadline, DeadlineAwareClient, OAuthChallenge, Response, UnauthorizedException};
 use Relewise\Models\SearchRequestCollection;
 
 class OAuthTest extends TestCase
 {
     private const ID = '11111111-2222-3333-4444-555555555555';
-    private const ENDPOINT = 'https://example.test/dataset/oauth/token';
+    private const ENDPOINT = 'https://example.test/11111111-2222-3333-4444-555555555555/oauth/token';
 
     private function provider(): OAuthTestProvider
     {
@@ -26,7 +26,7 @@ class OAuthTest extends TestCase
     private function transport(RelewiseClient $client, array $responses): OAuthTestTransport
     {
         $transport = new OAuthTestTransport($responses);
-        (new \ReflectionProperty(RelewiseClient::class, 'client'))->setValue($client, $transport);
+        $client->setHttpClient($transport);
         return $transport;
     }
 
@@ -40,7 +40,7 @@ class OAuthTest extends TestCase
         self::assertSame('grant_type=client_credentials', $transport->calls[0]['data']);
         self::assertContains('Authorization: Basic ' . base64_encode(self::ID . ':secret%20%2B%3A%2F'), $transport->calls[0]['header']);
         self::assertContains('Content-Type: application/x-www-form-urlencoded', $transport->calls[0]['header']);
-        self::assertSame(7, $transport->calls[0]['timeout']);
+        self::assertGreaterThan(6000, $transport->calls[0]['remainingMilliseconds']);
         self::assertSame(CURL_HTTP_VERSION_1_1, $transport->calls[0]['httpVersion']);
         $provider->time = 1089;
         self::assertSame($first, $provider->getToken(self::ENDPOINT, $transport));
@@ -56,7 +56,9 @@ class OAuthTest extends TestCase
         $first = $provider->getToken(self::ENDPOINT, $transport);
         $provider->time = 1004;
         self::assertSame($first, $provider->getToken(self::ENDPOINT, $transport));
-        $provider->time = 1004.5;
+        $provider->time = 1004.999;
+        self::assertSame($first, $provider->getToken(self::ENDPOINT, $transport));
+        $provider->time = 1005;
         $replacement = $provider->getToken(self::ENDPOINT, $transport);
         self::assertSame('replacement', $replacement->accessToken);
         self::assertSame($replacement, $provider->getToken(self::ENDPOINT, $transport, rejectedToken: 'short'));
@@ -133,16 +135,16 @@ class OAuthTest extends TestCase
     #[DataProvider('clients')]
     public function testFactoriesAndExistingNamedApiKeyCalls(string $class): void
     {
-        $client = $class::createWithOAuth(datasetId: 'dataset', clientId: self::ID, clientSecret: 'secret', serverUrl: 'https://example.test/', timeout: 9);
+        $client = $class::createWithOAuth(datasetId: self::ID, clientId: self::ID, clientSecret: 'secret', serverUrl: 'https://example.test/', timeout: 9);
         self::assertInstanceOf($class, $client);
         $transport = $this->transport($client, [self::token(), new Response([], 200, null)]);
         $client->request('SearchRequestCollection', SearchRequestCollection::create());
         self::assertSame(self::ENDPOINT, $transport->calls[0]['url']);
-        self::assertSame('https://example.test/dataset/v1/SearchRequestCollection', $transport->calls[1]['url']);
+        self::assertSame('https://example.test/11111111-2222-3333-4444-555555555555/v1/SearchRequestCollection', $transport->calls[1]['url']);
         self::assertContains('Authorization: Bearer token-1', $transport->calls[1]['header']);
-        self::assertSame(9, $transport->calls[1]['timeout']);
+        self::assertGreaterThan(8000, $transport->calls[1]['remainingMilliseconds']);
 
-        $legacy = new $class(datasetId: 'dataset', apiKey: 'legacy-key', timeout: 7);
+        $legacy = new $class(datasetId: self::ID, apiKey: 'legacy-key', timeout: 7);
         $legacyTransport = $this->transport($legacy, [new Response([], 200, null)]);
         $legacy->request('SearchRequestCollection', SearchRequestCollection::create());
         self::assertCount(1, $legacyTransport->calls);
@@ -154,7 +156,7 @@ class OAuthTest extends TestCase
     public function testOAuthFactoryRetainsEachClientsDefaultTimeout(string $class): void
     {
         $default = (new \ReflectionMethod($class, '__construct'))->getParameters()[2]->getDefaultValue();
-        $client = $class::createWithOAuth('dataset', self::ID, 'secret', 'https://example.test');
+        $client = $class::createWithOAuth(self::ID, self::ID, 'secret', 'https://example.test');
         $transport = $this->transport($client, [self::token(), new Response(null, 401, null)]);
         try
         {
@@ -166,13 +168,13 @@ class OAuthTest extends TestCase
             self::assertStringContainsString('OAuth credentials', $exception->getMessage());
             self::assertStringNotContainsString('API key', $exception->getMessage());
         }
-        self::assertSame($default, $transport->calls[0]['timeout']);
-        self::assertSame($default, $transport->calls[1]['timeout']);
+        self::assertGreaterThan(($default - 1) * 1000, $transport->calls[0]['remainingMilliseconds']);
+        self::assertSame($transport->calls[0]['deadline'], $transport->calls[1]['deadline']);
     }
 
     public function testInvalidTokenRetriesOnceWithIdenticalPayload(): void
     {
-        $client = Searcher::createWithOAuth('dataset', self::ID, 'secret', 'https://example.test');
+        $client = Searcher::createWithOAuth(self::ID, self::ID, 'secret', 'https://example.test');
         $rejected = new Response([], 401, null, ['WWW-Authenticate' => ['Bearer error="invalid_token"']]);
         $transport = $this->transport($client, [self::token(), $rejected, self::token('renewed'), $rejected]);
         try
@@ -193,8 +195,8 @@ class OAuthTest extends TestCase
     public function testOrdinaryUnauthorizedDoesNotRenewAndCacheIsSharedAcrossClients(): void
     {
         $provider = $this->provider();
-        $first = new Searcher('dataset', '', oauthTokenProvider: $provider);
-        $second = new Tracker('dataset', '', oauthTokenProvider: $provider);
+        $first = new Searcher(self::ID, '', oauthTokenProvider: $provider);
+        $second = new Tracker(self::ID, '', oauthTokenProvider: $provider);
         $transport = $this->transport($first, [self::token(), new Response([], 401, null)]);
         $first->request('SearchRequestCollection', SearchRequestCollection::create());
         self::assertCount(2, $transport->calls);
@@ -206,7 +208,7 @@ class OAuthTest extends TestCase
 
     public function testSuccessfulRetryAndNextRequestReuseReplacement(): void
     {
-        $client = Searcher::createWithOAuth('dataset', self::ID, 'secret', 'https://example.test');
+        $client = Searcher::createWithOAuth(self::ID, self::ID, 'secret', 'https://example.test');
         $rejected = new Response(null, 401, null, ['WWW-Authenticate' => ['Bearer error="invalid_token"']]);
         $transport = $this->transport($client, [self::token(), $rejected, self::token('renewed'),
             new Response(['success' => true], 200, null), new Response([], 200, null)]);
@@ -218,7 +220,7 @@ class OAuthTest extends TestCase
 
     public function testApiKeyClientNeverUsesOAuthRetry(): void
     {
-        $client = new Searcher('dataset', 'key');
+        $client = new Searcher(self::ID, 'key');
         $response = new Response(null, 401, null, ['WWW-Authenticate' => ['Bearer error="invalid_token"']]);
         $transport = $this->transport($client, [$response]);
         self::assertSame($response, $client->request('SearchRequestCollection', SearchRequestCollection::create()));
@@ -227,7 +229,7 @@ class OAuthTest extends TestCase
 
     public function testTokenFailureDoesNotSendApiRequest(): void
     {
-        $client = Searcher::createWithOAuth('dataset', self::ID, 'secret', 'https://example.test');
+        $client = Searcher::createWithOAuth(self::ID, self::ID, 'secret', 'https://example.test');
         $transport = $this->transport($client, [new Response(['error' => 'invalid_client'], 401, null)]);
         try
         {
@@ -250,14 +252,18 @@ class OAuthTest extends TestCase
 
     public static function invalidConstruction(): iterable
     {
-        yield [fn() => new Searcher('dataset', '')];
-        yield [fn() => new Searcher('dataset', 'key', oauthTokenProvider: new OAuthTokenProvider(self::ID, 'secret'))];
-        yield [fn() => Searcher::createWithOAuth('dataset', self::ID, 'secret', 'http://example.test')];
-        yield [fn() => Searcher::createWithOAuth('dataset', self::ID, 'secret', 'https://user:pass@example.test')];
-        yield [fn() => Searcher::createWithOAuth('dataset', self::ID, 'secret', 'https://example.test?query=1')];
-        yield [fn() => Searcher::createWithOAuth('dataset', self::ID, 'secret', 'https://example.test#fragment')];
+        foreach (['dataset', '00000000-0000-0000-0000-000000000000', self::ID . "\n"] as $dataset)
+        {
+            yield [fn() => Searcher::createWithOAuth($dataset, self::ID, 'secret', 'https://example.test')];
+        }
+        yield [fn() => new Searcher(self::ID, '')];
+        yield [fn() => new Searcher(self::ID, 'key', oauthTokenProvider: new OAuthTokenProvider(self::ID, 'secret'))];
+        yield [fn() => Searcher::createWithOAuth(self::ID, self::ID, 'secret', 'http://example.test')];
+        yield [fn() => Searcher::createWithOAuth(self::ID, self::ID, 'secret', 'https://user:pass@example.test')];
+        yield [fn() => Searcher::createWithOAuth(self::ID, self::ID, 'secret', 'https://example.test?query=1')];
+        yield [fn() => Searcher::createWithOAuth(self::ID, self::ID, 'secret', 'https://example.test#fragment')];
         yield [fn() => Searcher::createWithOAuth('', self::ID, 'secret', 'https://example.test')];
-        yield [fn() => Searcher::createWithOAuth('dataset', self::ID, 'secret', 'https://example.test', 0)];
+        yield [fn() => Searcher::createWithOAuth(self::ID, self::ID, 'secret', 'https://example.test', 0)];
     }
 
     #[DataProvider('challenges')]
@@ -296,12 +302,13 @@ class OAuthTest extends TestCase
         yield ['', 'secret'];
         yield ['not-a-uuid', 'secret'];
         yield ['00000000-0000-0000-0000-000000000000', 'secret'];
+        yield [self::ID . "\n", 'secret'];
         yield [self::ID, ' '];
     }
 
     public function testMutableServerUrlCannotSendCredentialsOverHttp(): void
     {
-        $client = Searcher::createWithOAuth('dataset', self::ID, 'secret', 'https://example.test');
+        $client = Searcher::createWithOAuth(self::ID, self::ID, 'secret', 'https://example.test');
         $transport = $this->transport($client, []);
         $client->serverUrl = 'http://example.test';
         try
@@ -322,10 +329,17 @@ class OAuthTestProvider extends OAuthTokenProvider
     protected function now(): float { return $this->time; }
 }
 
-class OAuthTestTransport implements Client
+class OAuthTestTransport implements DeadlineAwareClient
 {
     public array $calls = [];
     public function __construct(private array $responses) {}
+    public function postWithDeadline($url, $data, array $header, Deadline $deadline, int $httpVersion = CURL_HTTP_VERSION_NONE): Response
+    {
+        $remainingMilliseconds = $deadline->remainingMilliseconds();
+        $this->calls[] = compact('url', 'data', 'header', 'deadline', 'remainingMilliseconds', 'httpVersion');
+        if ($this->responses === []) { throw new \RuntimeException('Unexpected HTTP call'); }
+        return array_shift($this->responses);
+    }
     public function post($url, $data = null, array $header = [], int $timeout = 3, int $httpVersion = CURL_HTTP_VERSION_NONE): Response
     {
         $this->calls[] = compact('url', 'data', 'header', 'timeout', 'httpVersion');

@@ -4,18 +4,19 @@ namespace Relewise;
 
 use Relewise\Infrastructure\HttpClient\Client;
 use Relewise\Infrastructure\HttpClient\ClientException;
+use Relewise\Infrastructure\HttpClient\Deadline;
+use Relewise\Infrastructure\HttpClient\DeadlineAwareClient;
 
 /** Acquires client-credentials tokens. Reuse the provider to share its in-memory cache. */
 class OAuthTokenProvider
 {
     private string $authorization;
     private ?string $endpoint = null;
-    private ?OAuthToken $token = null;
-    private float $renewAt = 0;
+    private ?OAuthTokenCacheEntry $entry = null;
 
-    public function __construct(string $clientId, string $clientSecret)
+    public function __construct(string $clientId, string $clientSecret, private ?OAuthTokenCache $cache = null)
     {
-        if (!preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i', $clientId)
+        if (!preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\z/i', $clientId)
             || $clientId === '00000000-0000-0000-0000-000000000000')
         {
             throw new \InvalidArgumentException('clientId must be a nonempty UUID.');
@@ -29,7 +30,7 @@ class OAuthTokenProvider
 
     /**
      * Get a cached token, or renew it. Pass the rejected token only after an invalid_token challenge.
-     * The timeout applies to the token HTTP request, as it does to other PHP SDK HTTP requests.
+     * Standalone acquisition has one timeout budget, including cache and lock waiting.
      */
     public function getToken(
         string $endpoint,
@@ -38,26 +39,71 @@ class OAuthTokenProvider
         int $httpVersion = CURL_HTTP_VERSION_NONE,
         ?string $rejectedToken = null
     ): OAuthToken {
-        if ($timeout < 1 || !filter_var($endpoint, FILTER_VALIDATE_URL)
+        return $this->getTokenWithDeadline($endpoint, $client, new Deadline($timeout), $httpVersion, $rejectedToken);
+    }
+
+    /** SDK requests pass their original deadline, including when replacing a rejected token. */
+    public function getTokenWithDeadline(
+        string $endpoint,
+        Client $client,
+        Deadline $deadline,
+        int $httpVersion = CURL_HTTP_VERSION_NONE,
+        ?string $rejectedToken = null
+    ): OAuthToken {
+        $deadline->throwIfExpired();
+        if (!$client instanceof DeadlineAwareClient)
+        {
+            throw new \InvalidArgumentException('OAuth requires a transport implementing DeadlineAwareClient. Use DeadlineCurlClient or a deadline-aware custom transport.');
+        }
+        if (!filter_var($endpoint, FILTER_VALIDATE_URL)
             || strtolower((string) parse_url($endpoint, PHP_URL_SCHEME)) !== 'https'
             || parse_url($endpoint, PHP_URL_USER) !== null || parse_url($endpoint, PHP_URL_PASS) !== null
             || parse_url($endpoint, PHP_URL_QUERY) !== null || parse_url($endpoint, PHP_URL_FRAGMENT) !== null)
         {
-            throw new \InvalidArgumentException('OAuth requires a positive timeout and an HTTPS token endpoint without credentials, query, or fragment.');
+            throw new \InvalidArgumentException('OAuth requires an HTTPS token endpoint without credentials, query, or fragment.');
         }
-        if ($this->endpoint === $endpoint && $this->token !== null
-            && $this->token->accessToken !== $rejectedToken && $this->renewAt > $this->now())
+        // The endpoint includes the dataset. Hashing the credential configuration isolates secret rotations.
+        $key = 'relewise:oauth:' . hash('sha256', $endpoint . "\0" . $this->authorization);
+        if ($this->cache !== null)
         {
-            return $this->token;
+            $token = $this->cache->synchronized($key, $deadline, function () use ($key, $endpoint, $client, $deadline, $httpVersion, $rejectedToken): OAuthToken {
+                return $this->acquire($key, $endpoint, $client, $deadline, $httpVersion, $rejectedToken);
+            });
+        }
+        else
+        {
+            $token = $this->acquire($key, $endpoint, $client, $deadline, $httpVersion, $rejectedToken);
+        }
+        $deadline->throwIfExpired();
+        return $token;
+    }
+
+    private function acquire(string $key, string $endpoint, DeadlineAwareClient $client, Deadline $deadline, int $httpVersion, ?string $rejectedToken): OAuthToken
+    {
+        $deadline->throwIfExpired();
+        // Shared storage is authoritative; re-read it under the lock rather than using local state.
+        $entry = $this->cache !== null
+            ? $this->cache->get($key, $deadline)
+            : ($this->endpoint === $endpoint ? $this->entry : null);
+        $deadline->throwIfExpired();
+        if ($entry !== null && $entry->token->accessToken !== $rejectedToken && $entry->renewAt > $this->now())
+        {
+            return $entry->token;
         }
 
-        $this->token = null;
+        $this->entry = null;
+        if ($this->cache !== null)
+        {
+            $this->cache->set($key, null, $deadline);
+        }
+        $deadline->throwIfExpired();
         $requestedAt = $this->now();
-        $response = $client->post($endpoint, 'grant_type=client_credentials', [
+        $response = $client->postWithDeadline($endpoint, 'grant_type=client_credentials', [
             $this->authorization,
             'Content-Type: application/x-www-form-urlencoded',
             'Accept: application/json',
-        ], $timeout, $httpVersion);
+        ], $deadline, $httpVersion);
+        $deadline->throwIfExpired();
 
         // Do not include token responses or credentials in exception messages.
         if ($response->code < 200 || $response->code >= 300)
@@ -79,9 +125,19 @@ class OAuthTokenProvider
         {
             throw new ClientException('The OAuth endpoint returned an invalid token expiry.');
         }
+        $entry = new OAuthTokenCacheEntry(
+            new OAuthToken($body['access_token'], $expiresAt),
+            $requestedAt + $body['expires_in'] - min(10, floor($body['expires_in'] / 10))
+        );
+        $deadline->throwIfExpired();
+        if ($this->cache !== null)
+        {
+            $this->cache->set($key, $entry, $deadline);
+        }
+        $deadline->throwIfExpired();
         $this->endpoint = $endpoint;
-        $this->renewAt = $requestedAt + $body['expires_in'] - min(10, $body['expires_in'] / 10);
-        return $this->token = new OAuthToken($body['access_token'], $expiresAt);
+        $this->entry = $entry;
+        return $entry->token;
     }
 
     /** Clock seam for deterministic expiry tests. */
