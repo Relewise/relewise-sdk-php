@@ -30,6 +30,47 @@ You can add these easily by creating a file called `.env` in the `/tests` folder
 
 Once you have these setup you can run the tests directly from within the UI of VS Code in the dev container.
 
+### Live OAuth integration tests
+
+Use a non-production dataset and a dedicated OAuth credential. Add these values to
+the Git-ignored `tests/.env`, without surrounding quotes:
+
+```text
+DATASET_ID=<dataset UUID>
+SERVER_URL=<HTTPS dataset server base URL>
+OAUTH_CLIENT_ID=<OAuth credential UUID>
+OAUTH_CLIENT_SECRET=<OAuth credential secret>
+TEST_LANGUAGE=en-US
+```
+
+The OAuth tests require permissions for product search, product updates, product
+view tracking, and product deletion. They create a random `php-sdk-oauth-*` product
+and delete it in cleanup; tracking events remain. They also send one deliberately
+invalid Bearer token to verify recovery and one invalid client secret to verify
+that acquisition failure prevents API traffic. Transport observations retain
+status codes, durations, and payload hashes, never tokens or credentials.
+
+The suite skips unless explicitly enabled:
+
+```powershell
+$env:RUN_OAUTH_INTEGRATION = '1'
+php vendor/bin/phpunit --configuration tests/phpunit.xml --testsuite OAuth
+```
+
+To run API-key regression coverage as well, configure `API_KEY` for the same test
+dataset. Prepare the fixtures as CI does, then run the full suite:
+
+```powershell
+php tests/seed-integration-fixtures.php
+php vendor/bin/phpunit --configuration tests/phpunit.xml
+```
+
+The existing integration suite and preparation step create and modify additional
+`php-sdk-*` fixtures and tracking events, and some fixtures remain afterward.
+
+These tests do not reload the engine, rotate credentials, or validate an
+application's distributed-cache adapter. Those require separately arranged tests.
+
 ## Automated API version generation
 
 The `Generate API Version` workflow requires `api-version` (a stable version such as
