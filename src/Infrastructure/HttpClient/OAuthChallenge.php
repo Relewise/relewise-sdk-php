@@ -44,18 +44,22 @@ final class OAuthChallenge
                 continue;
             }
             $parts[] = trim(substr($header, $start));
-            $parts[] = ''; // Finish the final challenge.
             $bearer = false;
             $valid = true;
             $error = null;
             $token = '[!#$%&\x27*+.^_`|~0-9A-Za-z-]+';
             foreach ($parts as $part)
             {
+                // Empty HTTP list elements do not end the current challenge.
+                if ($part === '')
+                {
+                    continue;
+                }
                 $isParameter = preg_match('/^(' . $token . ')\s*=\s*(?:(' . $token . ')|"((?:[^"\\\\\r\n]|\\\\[^\r\n])*)")$/D', $part, $parameter);
                 if (!$isParameter)
                 {
                     $isChallenge = preg_match('/^(' . $token . ')(?:[ \t]+(.*))?$/D', $part, $challenge);
-                    if ($part !== '' && !$isChallenge)
+                    if (!$isChallenge)
                     {
                         $valid = false;
                         continue;
@@ -67,12 +71,9 @@ final class OAuthChallenge
                     $bearer = false;
                     $valid = true;
                     $error = null;
-                    if ($isChallenge)
-                    {
-                        $bearer = strcasecmp($challenge[1], 'Bearer') === 0;
-                        $part = $challenge[2] ?? '';
-                        $isParameter = preg_match('/^(' . $token . ')\s*=\s*(?:(' . $token . ')|"((?:[^"\\\\\r\n]|\\\\[^\r\n])*)")$/D', $part, $parameter);
-                    }
+                    $bearer = strcasecmp($challenge[1], 'Bearer') === 0;
+                    $part = $challenge[2] ?? '';
+                    $isParameter = preg_match('/^(' . $token . ')\s*=\s*(?:(' . $token . ')|"((?:[^"\\\\\r\n]|\\\\[^\r\n])*)")$/D', $part, $parameter);
                 }
                 if ($bearer)
                 {
@@ -89,6 +90,10 @@ final class OAuthChallenge
                         $error = ($parameter[2] ?? '') !== '' ? $parameter[2] : preg_replace('/\\\\(.)/s', '$1', $parameter[3] ?? '');
                     }
                 }
+            }
+            if ($bearer && $valid && $error === 'invalid_token')
+            {
+                return true;
             }
         }
         return false;

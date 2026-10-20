@@ -283,6 +283,10 @@ class OAuthTest extends TestCase
         yield ['Bearer realm="relewise", error="invalid_token"', true];
         yield ['Bearer error_description="Expired, please renew", error="invalid_token"', true];
         yield ['bEaReR realm="relewise", ERROR = invalid_token', true];
+        yield [', , Bearer realm="relewise", , error="invalid_token", ,', true];
+        yield ['Bearer error="invalid_token", , error="insufficient_scope"', false];
+        yield ['Bearer error="insufficient_scope", , error="invalid_token"', false];
+        yield ['Basic realm="example", , Bearer error="invalid_token", , Basic realm="other"', true];
         yield ['Basic error="invalid_token"', false];
         yield ['Bearer error="insufficient_scope"', false];
         yield ['Bearer error="INVALID_TOKEN"', false];
