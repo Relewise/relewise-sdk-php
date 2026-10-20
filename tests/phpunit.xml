@@ -10,6 +10,9 @@
 		<testsuite name="OAuth">
 			<directory suffix=".php">./php/oauth</directory>
 		</testsuite>
+		<testsuite name="Redis">
+			<directory suffix=".php">./php/redis</directory>
+		</testsuite>
 	</testsuites>
 	<source>
 		<include>
