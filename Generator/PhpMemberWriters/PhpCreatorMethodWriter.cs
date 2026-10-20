@@ -5,6 +5,7 @@ using System.Reflection;
 using Relewise.Client.DataTypes.Search.Configuration;
 using Relewise.Client.DataTypes.Search.Configuration.Parsers;
 using Relewise.Client.Requests;
+using Relewise.Client.Requests.Recommendations;
 using Relewise.Client.Requests.RelevanceModifiers;
 using Relewise.Client.Requests.Conditions;
 using Relewise.Client.Requests.ValueSelectors;
@@ -22,6 +23,9 @@ public class PhpCreatorMethodWriter
     {
         // We override any matching logic and choose the constructor with one string parameter.
         [typeof(Channel)] = typeof(Channel).GetConstructor(new[] { typeof(string) })!,
+        // Preserve the released PHP factories when new properties affect constructor matching.
+        [typeof(ProductCategoryRecommendationRequestCollection)] = typeof(ProductCategoryRecommendationRequestCollection).GetConstructor(new[] { typeof(bool), typeof(ProductCategoryRecommendationRequest[]) })!,
+        [typeof(ContentCategoryRecommendationRequestCollection)] = typeof(ContentCategoryRecommendationRequestCollection).GetConstructor(new[] { typeof(bool), typeof(ContentCategoryRecommendationRequest[]) })!,
         // For backwards compatibility remove in next major release.
         [typeof(ProductDataRelevanceModifier)] = typeof(ProductDataRelevanceModifier).GetConstructor(new[] { typeof(string), typeof(List<ValueCondition>), typeof(ValueSelector), typeof(bool), typeof(bool) })!,
         // For backwards compatibility remove in next major release.
@@ -135,9 +139,10 @@ public class PhpCreatorMethodWriter
 
             foreach (var parameter in parameters)
             {
+                var matchingParameterName = ConstructorParameterPropertyName(type, parameter);
                 // We use settablePropertyInformations here as the only place as it was an error originally that we didn't use it, but it would create too many breaking changes if we corrected in all places.
                 var propertyName = settablePropertyInformations
-                    .Single(property => ContainedWithinEitherOne(property.propertyName, parameter.Name) && ParameterIsPersuadableIntoPropertyType(property.info, parameter, supportNullableValueTypes: true))
+                    .Single(property => ContainedWithinEitherOne(property.propertyName, matchingParameterName) && ParameterIsPersuadableIntoPropertyType(property.info, parameter, supportNullableValueTypes: true))
                     .lowerCaseName;
 
                 writer.WriteLine($"$result->{propertyName} = ${parameter.Name};");
@@ -305,6 +310,19 @@ public class PhpCreatorMethodWriter
         writer.WriteLine("return $result;");
         writer.Indent--;
         writer.WriteLine("}");
+    }
+
+    private static string? ConstructorParameterPropertyName(Type type, ParameterInfo parameter)
+    {
+        if ((type == typeof(ProductCategoryRecommendationRequestCollection)
+             || type == typeof(ContentCategoryRecommendationRequestCollection))
+            && parameter.Name == "requireDistinctCategoriesesAcrossResults")
+        {
+            // Match the property without changing the historical PHP named argument.
+            return nameof(ProductCategoryRecommendationRequestCollection.RequireDistinctCategoriesAcrossResults);
+        }
+
+        return parameter.Name;
     }
 
     private string DefaultValueSetter(ParameterInfo parameter)

@@ -2,11 +2,15 @@
 
 namespace Relewise\Models;
 
-class ContentCategoryRecommendationRequestCollection extends LicensedRequest
+use JsonSerializable;
+
+class ContentCategoryRecommendationRequestCollection extends LicensedRequest implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.ContentCategoryRecommendationRequestCollection, Relewise.Client";
     public array $requests;
     public bool $requireDistinctCategoriesAcrossResults;
+    /** Default context values used to determine which merchandising rules apply to requests in this batch, such as DeviceType=Mobile or SplitTestVariant=A. */
+    public ?array $contextValues;
     
     public static function create(bool $requireDistinctCategoriesesAcrossResults, ContentCategoryRecommendationRequest ... $requests) : ContentCategoryRecommendationRequestCollection
     {
@@ -30,6 +34,14 @@ class ContentCategoryRecommendationRequestCollection extends LicensedRequest
         if (array_key_exists("requireDistinctCategoriesAcrossResults", $arr))
         {
             $result->requireDistinctCategoriesAcrossResults = $arr["requireDistinctCategoriesAcrossResults"];
+        }
+        if (array_key_exists("contextValues", $arr))
+        {
+            $result->contextValues = array();
+            foreach($arr["contextValues"] as $key => $value)
+            {
+                $result->contextValues[$key] = $value;
+            }
         }
         return $result;
     }
@@ -61,5 +73,44 @@ class ContentCategoryRecommendationRequestCollection extends LicensedRequest
     {
         $this->requireDistinctCategoriesAcrossResults = $requireDistinctCategoriesAcrossResults;
         return $this;
+    }
+    
+    /** Default context values used to determine which merchandising rules apply to requests in this batch, such as DeviceType=Mobile or SplitTestVariant=A. */
+    function addToContextValues(string $key, string $value)
+    {
+        if (!isset($this->contextValues))
+        {
+            $this->contextValues = array();
+        }
+        $this->contextValues[$key] = $value;
+        return $this;
+    }
+    
+    /**
+     * Default context values used to determine which merchandising rules apply to requests in this batch, such as DeviceType=Mobile or SplitTestVariant=A.
+     * @param ?array<string, string> $contextValues associative array.
+     */
+    function setContextValuesFromAssociativeArray(array $contextValues)
+    {
+        $this->contextValues = $contextValues;
+        return $this;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        foreach ((array) $this as $name => $value)
+        {
+            // Private and protected property names contain a NUL byte when cast to an array.
+            if (!str_contains((string) $name, "\0"))
+            {
+                $result[$name] = $value;
+            }
+        }
+        if (isset($this->contextValues))
+        {
+            $result["contextValues"] = (object) $this->contextValues;
+        }
+        return (object) $result;
     }
 }

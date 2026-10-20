@@ -10,4 +10,5 @@ enum CampaignStatusWithHistoryStatusName : string
     case Inactive = 'Inactive';
     case ScheduleCompleted = 'ScheduleCompleted';
     case BudgetReached = 'BudgetReached';
+    case Scheduled = 'Scheduled';
 }

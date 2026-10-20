@@ -2,7 +2,10 @@
 
 namespace Relewise\Models;
 
-class VariantResultDetails
+use DateTime;
+use JsonSerializable;
+
+class VariantResultDetails implements JsonSerializable
 {
     public string $variantId;
     public Multilingual $displayName;
@@ -14,6 +17,16 @@ class VariantResultDetails
     public bool $disabled;
     /** Contains engagement signals (sentiment and favorite state) recorded for the current user on this variant. Populated only when the request sets UserEngagement to true. */
     public ?ProductEngagementData $userEngagement;
+    /** Total number of orders containing this variant, regardless of the quantity purchased in each order. */
+    public int $containedInTotalNumberOfOrders;
+    /** Total number of recorded views of this variant, including repeated views by the same user. */
+    public int $viewedTotalNumberOfTimes;
+    /** UTC timestamp when this variant was created in the dataset, with millisecond precision. */
+    public DateTime $createdUtc;
+    /** Recorded UTC timestamp of the last purchase of this variant, with minute precision. Null when no purchase timestamp is recorded. */
+    public ?DateTime $lastPurchasedUtc;
+    /** UTC timestamp of the most recent view of this variant, with minute precision. Null when no view timestamp is recorded. */
+    public ?DateTime $lastViewedUtc;
     
     public static function create(string $variantId) : VariantResultDetails
     {
@@ -72,6 +85,26 @@ class VariantResultDetails
         if (array_key_exists("userEngagement", $arr))
         {
             $result->userEngagement = ProductEngagementData::hydrate($arr["userEngagement"]);
+        }
+        if (array_key_exists("containedInTotalNumberOfOrders", $arr))
+        {
+            $result->containedInTotalNumberOfOrders = $arr["containedInTotalNumberOfOrders"];
+        }
+        if (array_key_exists("viewedTotalNumberOfTimes", $arr))
+        {
+            $result->viewedTotalNumberOfTimes = $arr["viewedTotalNumberOfTimes"];
+        }
+        if (array_key_exists("createdUtc", $arr))
+        {
+            $result->createdUtc = new DateTime($arr["createdUtc"]);
+        }
+        if (array_key_exists("lastPurchasedUtc", $arr))
+        {
+            $result->lastPurchasedUtc = new DateTime($arr["lastPurchasedUtc"]);
+        }
+        if (array_key_exists("lastViewedUtc", $arr))
+        {
+            $result->lastViewedUtc = new DateTime($arr["lastViewedUtc"]);
         }
         return $result;
     }
@@ -168,5 +201,66 @@ class VariantResultDetails
     {
         $this->userEngagement = $userEngagement;
         return $this;
+    }
+    
+    /** Total number of orders containing this variant, regardless of the quantity purchased in each order. */
+    function setContainedInTotalNumberOfOrders(int $containedInTotalNumberOfOrders)
+    {
+        $this->containedInTotalNumberOfOrders = $containedInTotalNumberOfOrders;
+        return $this;
+    }
+    
+    /** Total number of recorded views of this variant, including repeated views by the same user. */
+    function setViewedTotalNumberOfTimes(int $viewedTotalNumberOfTimes)
+    {
+        $this->viewedTotalNumberOfTimes = $viewedTotalNumberOfTimes;
+        return $this;
+    }
+    
+    /** UTC timestamp when this variant was created in the dataset, with millisecond precision. */
+    function setCreatedUtc(DateTime $createdUtc)
+    {
+        $this->createdUtc = $createdUtc;
+        return $this;
+    }
+    
+    /** Recorded UTC timestamp of the last purchase of this variant, with minute precision. Null when no purchase timestamp is recorded. */
+    function setLastPurchasedUtc(?DateTime $lastPurchasedUtc)
+    {
+        $this->lastPurchasedUtc = $lastPurchasedUtc;
+        return $this;
+    }
+    
+    /** UTC timestamp of the most recent view of this variant, with minute precision. Null when no view timestamp is recorded. */
+    function setLastViewedUtc(?DateTime $lastViewedUtc)
+    {
+        $this->lastViewedUtc = $lastViewedUtc;
+        return $this;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        foreach ((array) $this as $name => $value)
+        {
+            // Private and protected property names contain a NUL byte when cast to an array.
+            if (!str_contains((string) $name, "\0"))
+            {
+                $result[$name] = $value;
+            }
+        }
+        if (isset($this->createdUtc))
+        {
+            $result["createdUtc"] = $this->createdUtc->format('Y-m-d\TH:i:s.vP');
+        }
+        if (isset($this->lastPurchasedUtc))
+        {
+            $result["lastPurchasedUtc"] = $this->lastPurchasedUtc->format(DATE_ATOM);
+        }
+        if (isset($this->lastViewedUtc))
+        {
+            $result["lastViewedUtc"] = $this->lastViewedUtc->format(DATE_ATOM);
+        }
+        return (object) $result;
     }
 }

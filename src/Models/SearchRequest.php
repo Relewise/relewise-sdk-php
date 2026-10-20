@@ -2,8 +2,10 @@
 
 namespace Relewise\Models;
 
+use JsonSerializable;
+
 /** The search request shape establishes language-currency context with search filters, optional user info. Defines Language. Currency pair, as well as Filters (both PostFilters). Products search is done through - ProductSearchRequest Content search is done through - ContentSearchRequest Search term prediction is done through - SearchTermPredictionRequest */
-abstract class SearchRequest extends LicensedRequest
+abstract class SearchRequest extends LicensedRequest implements JsonSerializable
 {
     public string $typeDefinition = "";
     public ?Language $language;
@@ -14,6 +16,8 @@ abstract class SearchRequest extends LicensedRequest
     public ?FilterCollection $filters;
     public ?SearchIndexSelector $indexSelector;
     public ?FilterCollection $postFilters;
+    /** Context values used to determine which merchandising rules apply to this request, such as DeviceType=Mobile or SplitTestVariant=A. */
+    public ?array $contextValues;
     
     
     public static function hydrate(array $arr)
@@ -80,6 +84,14 @@ abstract class SearchRequest extends LicensedRequest
         {
             $result->postFilters = FilterCollection::hydrate($arr["postFilters"]);
         }
+        if (array_key_exists("contextValues", $arr))
+        {
+            $result->contextValues = array();
+            foreach($arr["contextValues"] as $key => $value)
+            {
+                $result->contextValues[$key] = $value;
+            }
+        }
         return $result;
     }
     
@@ -129,5 +141,44 @@ abstract class SearchRequest extends LicensedRequest
     {
         $this->postFilters = $postFilters;
         return $this;
+    }
+    
+    /** Context values used to determine which merchandising rules apply to this request, such as DeviceType=Mobile or SplitTestVariant=A. */
+    function addToContextValues(string $key, string $value)
+    {
+        if (!isset($this->contextValues))
+        {
+            $this->contextValues = array();
+        }
+        $this->contextValues[$key] = $value;
+        return $this;
+    }
+    
+    /**
+     * Context values used to determine which merchandising rules apply to this request, such as DeviceType=Mobile or SplitTestVariant=A.
+     * @param ?array<string, string> $contextValues associative array.
+     */
+    function setContextValuesFromAssociativeArray(array $contextValues)
+    {
+        $this->contextValues = $contextValues;
+        return $this;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        foreach ((array) $this as $name => $value)
+        {
+            // Private and protected property names contain a NUL byte when cast to an array.
+            if (!str_contains((string) $name, "\0"))
+            {
+                $result[$name] = $value;
+            }
+        }
+        if (isset($this->contextValues))
+        {
+            $result["contextValues"] = (object) $this->contextValues;
+        }
+        return (object) $result;
     }
 }

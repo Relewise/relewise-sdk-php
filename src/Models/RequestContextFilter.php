@@ -13,6 +13,8 @@ class RequestContextFilter
     /** @deprecated Use SearchTermCriteria instead */
     public ?SearchTermConditionByLanguageCollection $searchTerms;
     public ?SearchTermCriteria $searchTermCriteria;
+    /** A condition on values supplied with the request, such as device type or test variant. It must match along with the other criteria in this filter. Null adds no restriction. */
+    public ?ContextValueCondition $contextValueCondition;
     
     public static function create() : RequestContextFilter
     {
@@ -66,6 +68,10 @@ class RequestContextFilter
         if (array_key_exists("searchTermCriteria", $arr))
         {
             $result->searchTermCriteria = SearchTermCriteria::hydrate($arr["searchTermCriteria"]);
+        }
+        if (array_key_exists("contextValueCondition", $arr))
+        {
+            $result->contextValueCondition = ContextValueCondition::hydrate($arr["contextValueCondition"]);
         }
         return $result;
     }
@@ -167,6 +173,13 @@ class RequestContextFilter
     function setSearchTermCriteria(?SearchTermCriteria $searchTermCriteria)
     {
         $this->searchTermCriteria = $searchTermCriteria;
+        return $this;
+    }
+    
+    /** A condition on values supplied with the request, such as device type or test variant. It must match along with the other criteria in this filter. Null adds no restriction. */
+    function setContextValueCondition(?ContextValueCondition $contextValueCondition)
+    {
+        $this->contextValueCondition = $contextValueCondition;
         return $this;
     }
 }

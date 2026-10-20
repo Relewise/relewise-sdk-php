@@ -2,7 +2,9 @@
 
 namespace Relewise\Models;
 
-class PopularBrandsRecommendationRequest extends BrandRecommendationRequest
+use JsonSerializable;
+
+class PopularBrandsRecommendationRequest extends BrandRecommendationRequest implements JsonSerializable
 {
     public string $typeDefinition = "Relewise.Client.Requests.Recommendations.PopularBrandsRecommendationRequest, Relewise.Client";
     public int $sinceMinutesAgo;
@@ -85,5 +87,40 @@ class PopularBrandsRecommendationRequest extends BrandRecommendationRequest
     {
         $this->currency = $currency;
         return $this;
+    }
+    
+    function addToContextValues(string $key, string $value)
+    {
+        if (!isset($this->contextValues))
+        {
+            $this->contextValues = array();
+        }
+        $this->contextValues[$key] = $value;
+        return $this;
+    }
+    
+    /** @param ?array<string, string> $contextValues associative array. */
+    function setContextValuesFromAssociativeArray(array $contextValues)
+    {
+        $this->contextValues = $contextValues;
+        return $this;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        $result = array();
+        foreach ((array) $this as $name => $value)
+        {
+            // Private and protected property names contain a NUL byte when cast to an array.
+            if (!str_contains((string) $name, "\0"))
+            {
+                $result[$name] = $value;
+            }
+        }
+        if (isset($this->contextValues))
+        {
+            $result["contextValues"] = (object) $this->contextValues;
+        }
+        return (object) $result;
     }
 }
