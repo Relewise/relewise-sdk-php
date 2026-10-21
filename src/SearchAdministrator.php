@@ -3,6 +3,7 @@
 namespace Relewise;
 
 use Relewise\Infrastructure\HttpClient\Response;
+use Relewise\Infrastructure\HttpClient\Client;
 use Relewise\Models\DeleteSearchIndexRequest;
 use Relewise\Models\SaveSearchIndexRequest;
 use Relewise\Models\SearchIndexRequest;
@@ -48,9 +49,10 @@ use Relewise\Models\SaveSearchResultModifierRulesResponse;
 
 class SearchAdministrator extends RelewiseClient
 {
-    public function __construct(private string $datasetId, private string $apiKey, private int $timeout = 30)
+    protected const OAUTH_DEFAULT_TIMEOUT = 30;
+    public function __construct(private string $datasetId, private string $apiKey, private int $timeout = 30, ?OAuthTokenProvider $oauthTokenProvider = null, ?Client $httpClient = null)
     {
-        parent::__construct($datasetId, $apiKey, $timeout);
+        parent::__construct($datasetId, $apiKey, $timeout, $oauthTokenProvider, $httpClient);
     }
     
     public function deleteSearchIndex(DeleteSearchIndexRequest $request)

@@ -3,14 +3,16 @@
 namespace Relewise;
 
 use Relewise\Infrastructure\HttpClient\Response;
+use Relewise\Infrastructure\HttpClient\Client;
 use Relewise\Models\ProductPerformanceRequest;
 use Relewise\Models\ProductPerformanceResponse;
 
 class Analyzer extends RelewiseClient
 {
-    public function __construct(private string $datasetId, private string $apiKey, private int $timeout = 120)
+    protected const OAUTH_DEFAULT_TIMEOUT = 120;
+    public function __construct(private string $datasetId, private string $apiKey, private int $timeout = 120, ?OAuthTokenProvider $oauthTokenProvider = null, ?Client $httpClient = null)
     {
-        parent::__construct($datasetId, $apiKey, $timeout);
+        parent::__construct($datasetId, $apiKey, $timeout, $oauthTokenProvider, $httpClient);
     }
     
     public function productPerformance(ProductPerformanceRequest $request) : ?ProductPerformanceResponse

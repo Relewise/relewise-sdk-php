@@ -30,6 +30,83 @@ You can add these easily by creating a file called `.env` in the `/tests` folder
 
 Once you have these setup you can run the tests directly from within the UI of VS Code in the dev container.
 
+### Live OAuth integration tests
+
+Use a non-production dataset and a dedicated OAuth credential. Add these values to
+the Git-ignored `tests/.env`, without surrounding quotes:
+
+```text
+DATASET_ID=<dataset UUID>
+SERVER_URL=<HTTPS dataset server base URL>
+OAUTH_CLIENT_ID=<OAuth credential UUID>
+OAUTH_CLIENT_SECRET=<OAuth credential secret>
+TEST_LANGUAGE=en-US
+```
+
+The OAuth tests require permissions for product search, product updates, product
+view tracking, and product deletion. They create a random `php-sdk-oauth-*` product
+and delete it in cleanup; tracking events remain. They also send one deliberately
+invalid Bearer token to verify recovery and one invalid client secret to verify
+that acquisition failure prevents API traffic. Transport observations retain
+status codes, durations, and payload hashes, never tokens or credentials.
+
+The suite skips unless explicitly enabled:
+
+```powershell
+$env:RUN_OAUTH_INTEGRATION = '1'
+php vendor/bin/phpunit --configuration tests/phpunit.xml --testsuite OAuth
+```
+
+To run API-key regression coverage as well, configure `API_KEY` for the same test
+dataset. Prepare the fixtures as CI does, then run the full suite:
+
+```powershell
+php tests/seed-integration-fixtures.php
+php vendor/bin/phpunit --configuration tests/phpunit.xml
+```
+
+The existing integration suite and preparation step create and modify additional
+`php-sdk-*` fixtures and tracking events, and some fixtures remain afterward.
+
+These tests do not reload the engine or rotate credentials. Those require
+separately arranged tests.
+
+### Redis OAuth cache integration tests
+
+The optional `Redis` suite exercises the SDK cache interface using a test-only
+adapter and separate PHP processes against a real Redis server. It adds no Redis
+extension or package dependency. Use a **disposable, loopback-only Redis instance**:
+one test pauses the whole Redis instance for 1.5 seconds to check I/O deadlines.
+Do not point this suite at an application cache. Redis 6.0 or newer is required.
+
+For example, with Docker running:
+
+```powershell
+docker run --rm -d --name relewise-oauth-redis -p 127.0.0.1:16387:6379 redis:7.4 redis-server --save "" --appendonly no
+$env:OAUTH_REDIS_PORT = '16387'
+$env:RUN_OAUTH_REDIS = '1'
+php vendor/bin/phpunit --configuration tests/phpunit.xml --testsuite Redis
+docker stop relewise-oauth-redis
+```
+
+Set `RUN_OAUTH_INTEGRATION=1` as well to enable the live check with the credentials
+above. Eight processes acquire through the same Redis cache and each performs a
+product search; a ninth process verifies later reuse. Only token hashes and expiry
+values are returned to the parent process. Live search requests count as API usage.
+All test cache keys use random namespaces and are removed during cleanup.
+
+The remaining checks use controlled token responses with real Redis: concurrent
+cold acquisition, expiry and early renewal, replacement of rejected tokens,
+delayed rejection, credential/dataset isolation, acquisition failure, lock waiting,
+unrelated keys, expired lock ownership, and stalled Redis I/O.
+
+The adapter under `tests/php/fixtures` is a single-instance integration fixture,
+not a supported production Redis adapter. It uses owner-checked writes/unlocking
+and a lease covering the operation deadline plus 250ms. When the deadline or
+connection prevents explicit unlocking, that lease expires automatically.
+An application's own Redis library, deployment/failover behavior, and lease policy
+still need validation with its actual adapter.
+
 ## Automated API version generation
 
 The `Generate API Version` workflow requires `api-version` (a stable version such as

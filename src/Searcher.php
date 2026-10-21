@@ -3,6 +3,7 @@
 namespace Relewise;
 
 use Relewise\Infrastructure\HttpClient\Response;
+use Relewise\Infrastructure\HttpClient\Client;
 use Relewise\Models\ProductSearchRequest;
 use Relewise\Models\ContentSearchRequest;
 use Relewise\Models\ProductCategorySearchRequest;
@@ -18,9 +19,10 @@ use Relewise\Models\SearchResponseCollection;
 
 class Searcher extends RelewiseClient
 {
-    public function __construct(private string $datasetId, private string $apiKey, private int $timeout = 5)
+    protected const OAUTH_DEFAULT_TIMEOUT = 5;
+    public function __construct(private string $datasetId, private string $apiKey, private int $timeout = 5, ?OAuthTokenProvider $oauthTokenProvider = null, ?Client $httpClient = null)
     {
-        parent::__construct($datasetId, $apiKey, $timeout);
+        parent::__construct($datasetId, $apiKey, $timeout, $oauthTokenProvider, $httpClient);
     }
     
     public function productSearch(ProductSearchRequest $request) : ?ProductSearchResponse

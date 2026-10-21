@@ -62,6 +62,7 @@ public class PhpClientWriter
 namespace Relewise;
 
 use Relewise\Infrastructure\HttpClient\Response;
+use Relewise\Infrastructure\HttpClient\Client;
 """);
 
         foreach (var method in clientMethods.DistinctBy(method => method.parameterTypeName))
@@ -78,10 +79,11 @@ use Relewise\Infrastructure\HttpClient\Response;
         writer.WriteLine("{");
         writer.Indent++;
 
-        writer.WriteLine($"public function __construct(private string $datasetId, private string $apiKey, private int $timeout = {timeout})");
+        writer.WriteLine($"protected const OAUTH_DEFAULT_TIMEOUT = {timeout};");
+        writer.WriteLine($"public function __construct(private string $datasetId, private string $apiKey, private int $timeout = {timeout}, ?OAuthTokenProvider $oauthTokenProvider = null, ?Client $httpClient = null)");
         writer.WriteLine("{");
         writer.Indent++;
-        writer.WriteLine("parent::__construct($datasetId, $apiKey, $timeout);");
+        writer.WriteLine("parent::__construct($datasetId, $apiKey, $timeout, $oauthTokenProvider, $httpClient);");
         writer.Indent--;
         writer.WriteLine("}");
 
