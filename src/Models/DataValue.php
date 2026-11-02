@@ -2,6 +2,7 @@
 
 namespace Relewise\Models;
 
+/** Only used for receiving monetary data in the requested currency from the server, for example in search and recommendation results. Sending a DataValue of this type from client to server is not supported. Use MultiCurrency with a MultiCurrency value instead, even when supplying only one currency. */
 class DataValue
 {
     public DataValueDataValueTypes $type;
