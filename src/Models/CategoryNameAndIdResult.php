@@ -6,6 +6,7 @@ class CategoryNameAndIdResult
 {
     public string $id;
     public string $displayName;
+    public ?CategoryResult $category;
     
     public static function create(string $id, string $displayName) : CategoryNameAndIdResult
     {
@@ -26,6 +27,10 @@ class CategoryNameAndIdResult
         {
             $result->displayName = $arr["displayName"];
         }
+        if (array_key_exists("category", $arr))
+        {
+            $result->category = CategoryResult::hydrate($arr["category"]);
+        }
         return $result;
     }
     
@@ -38,6 +43,12 @@ class CategoryNameAndIdResult
     function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;
+        return $this;
+    }
+    
+    function setCategory(?CategoryResult $category)
+    {
+        $this->category = $category;
         return $this;
     }
 }
