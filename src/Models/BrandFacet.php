@@ -5,6 +5,9 @@ namespace Relewise\Models;
 class BrandFacet extends stringValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.BrandFacet, Relewise.Client";
+    /** Properties to include in each facet value's Brand. Null omits Brand. The outer Id and DisplayName are always returned. */
+    public ?SelectedBrandPropertiesSettings $selectedPropertiesSettings;
+    
     public static function create(string ... $selectedIds) : BrandFacet
     {
         $result = new BrandFacet();
@@ -15,7 +18,18 @@ class BrandFacet extends stringValueFacet
     public static function hydrate(array $arr) : BrandFacet
     {
         $result = stringValueFacet::hydrateBase(new BrandFacet(), $arr);
+        if (array_key_exists("selectedPropertiesSettings", $arr))
+        {
+            $result->selectedPropertiesSettings = SelectedBrandPropertiesSettings::hydrate($arr["selectedPropertiesSettings"]);
+        }
         return $result;
+    }
+    
+    /** Properties to include in each facet value's Brand. Null omits Brand. The outer Id and DisplayName are always returned. */
+    function setSelectedPropertiesSettings(?SelectedBrandPropertiesSettings $selectedPropertiesSettings)
+    {
+        $this->selectedPropertiesSettings = $selectedPropertiesSettings;
+        return $this;
     }
     
     function setSelected(string ... $selected)

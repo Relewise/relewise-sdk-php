@@ -6,6 +6,8 @@ class CategoryFacet extends stringValueFacet
 {
     public string $typeDefinition = "Relewise.Client.DataTypes.Search.Facets.Queries.CategoryFacet, Relewise.Client";
     public CategorySelectionStrategy $categorySelectionStrategy;
+    /** Properties to include in each facet value's Category. Null omits Category. The outer Id and DisplayName are always returned. */
+    public ?SelectedCategoryPropertiesSettings $selectedPropertiesSettings;
     
     public static function create(CategorySelectionStrategy $categorySelectionStrategy, string ... $selectedIds) : CategoryFacet
     {
@@ -22,12 +24,23 @@ class CategoryFacet extends stringValueFacet
         {
             $result->categorySelectionStrategy = CategorySelectionStrategy::from($arr["categorySelectionStrategy"]);
         }
+        if (array_key_exists("selectedPropertiesSettings", $arr))
+        {
+            $result->selectedPropertiesSettings = SelectedCategoryPropertiesSettings::hydrate($arr["selectedPropertiesSettings"]);
+        }
         return $result;
     }
     
     function setCategorySelectionStrategy(CategorySelectionStrategy $categorySelectionStrategy)
     {
         $this->categorySelectionStrategy = $categorySelectionStrategy;
+        return $this;
+    }
+    
+    /** Properties to include in each facet value's Category. Null omits Category. The outer Id and DisplayName are always returned. */
+    function setSelectedPropertiesSettings(?SelectedCategoryPropertiesSettings $selectedPropertiesSettings)
+    {
+        $this->selectedPropertiesSettings = $selectedPropertiesSettings;
         return $this;
     }
     
