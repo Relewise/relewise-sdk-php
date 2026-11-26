@@ -16,7 +16,16 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: php-actions/composer@v6
+      - name: Setup PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: ctype, curl, dom, json, libxml, mbstring, tokenizer, xml, xmlwriter
+          coverage: none
+          tools: composer:v2
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
 
       - name: Setup .NET 10
         uses: actions/setup-dotnet@v6
@@ -34,11 +43,7 @@ jobs:
         run: php tests/seed-integration-fixtures.php
 
       - name: PHPUnit Tests
-        uses: php-actions/phpunit@v4
-        with:
-          bootstrap: vendor/autoload.php
-          configuration: tests/phpunit.xml
-          test_suffix: .php
+        run: vendor/bin/phpunit --bootstrap vendor/autoload.php --configuration tests/phpunit.xml
         env:
           DATASET_ID: a5dab1ca-e6f3-43e7-93c5-69eea1bf8cfd
           API_KEY: ${{secrets.INTEGRATION_TESTS_DATASET_API_KEY}}
